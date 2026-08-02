@@ -1,0 +1,2812 @@
+{
+  "source_rom": "C:\\Users\\admin\\Desktop\\Games\\snes9x-1.62.3-win32-x64(1)\\Roms\\seeds\\Lufia_II_-_Rise_of_the_Sinistrals_USA.1721649189.sfc",
+  "source_rom_sha1": "1D0A95DDCCEB399E8FEC51BA5CBB6A6C5D30E0E0",
+  "authoritative_schema": "Terrorwave tables_list.frue.txt / MonsterMoveObject / struct_monster_move.txt",
+  "movement_table_rom_offset": "27F6B5",
+  "sprite_id_base": "80",
+  "count": 112,
+  "movement_modes_by_overworld_sprite": [
+    {
+      "overworld_sprite_id": 128,
+      "overworld_sprite_id_hex": "80",
+      "movement_mode": 41,
+      "movement_mode_hex": "29",
+      "rom_offset": "27F6B5"
+    },
+    {
+      "overworld_sprite_id": 129,
+      "overworld_sprite_id_hex": "81",
+      "movement_mode": 39,
+      "movement_mode_hex": "27",
+      "rom_offset": "27F6B6"
+    },
+    {
+      "overworld_sprite_id": 130,
+      "overworld_sprite_id_hex": "82",
+      "movement_mode": 44,
+      "movement_mode_hex": "2C",
+      "rom_offset": "27F6B7"
+    },
+    {
+      "overworld_sprite_id": 131,
+      "overworld_sprite_id_hex": "83",
+      "movement_mode": 30,
+      "movement_mode_hex": "1E",
+      "rom_offset": "27F6B8"
+    },
+    {
+      "overworld_sprite_id": 132,
+      "overworld_sprite_id_hex": "84",
+      "movement_mode": 41,
+      "movement_mode_hex": "29",
+      "rom_offset": "27F6B9"
+    },
+    {
+      "overworld_sprite_id": 133,
+      "overworld_sprite_id_hex": "85",
+      "movement_mode": 39,
+      "movement_mode_hex": "27",
+      "rom_offset": "27F6BA"
+    },
+    {
+      "overworld_sprite_id": 134,
+      "overworld_sprite_id_hex": "86",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F6BB"
+    },
+    {
+      "overworld_sprite_id": 135,
+      "overworld_sprite_id_hex": "87",
+      "movement_mode": 34,
+      "movement_mode_hex": "22",
+      "rom_offset": "27F6BC"
+    },
+    {
+      "overworld_sprite_id": 136,
+      "overworld_sprite_id_hex": "88",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6BD"
+    },
+    {
+      "overworld_sprite_id": 137,
+      "overworld_sprite_id_hex": "89",
+      "movement_mode": 43,
+      "movement_mode_hex": "2B",
+      "rom_offset": "27F6BE"
+    },
+    {
+      "overworld_sprite_id": 138,
+      "overworld_sprite_id_hex": "8A",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6BF"
+    },
+    {
+      "overworld_sprite_id": 139,
+      "overworld_sprite_id_hex": "8B",
+      "movement_mode": 23,
+      "movement_mode_hex": "17",
+      "rom_offset": "27F6C0"
+    },
+    {
+      "overworld_sprite_id": 140,
+      "overworld_sprite_id_hex": "8C",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F6C1"
+    },
+    {
+      "overworld_sprite_id": 141,
+      "overworld_sprite_id_hex": "8D",
+      "movement_mode": 27,
+      "movement_mode_hex": "1B",
+      "rom_offset": "27F6C2"
+    },
+    {
+      "overworld_sprite_id": 142,
+      "overworld_sprite_id_hex": "8E",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6C3"
+    },
+    {
+      "overworld_sprite_id": 143,
+      "overworld_sprite_id_hex": "8F",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F6C4"
+    },
+    {
+      "overworld_sprite_id": 144,
+      "overworld_sprite_id_hex": "90",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F6C5"
+    },
+    {
+      "overworld_sprite_id": 145,
+      "overworld_sprite_id_hex": "91",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F6C6"
+    },
+    {
+      "overworld_sprite_id": 146,
+      "overworld_sprite_id_hex": "92",
+      "movement_mode": 41,
+      "movement_mode_hex": "29",
+      "rom_offset": "27F6C7"
+    },
+    {
+      "overworld_sprite_id": 147,
+      "overworld_sprite_id_hex": "93",
+      "movement_mode": 34,
+      "movement_mode_hex": "22",
+      "rom_offset": "27F6C8"
+    },
+    {
+      "overworld_sprite_id": 148,
+      "overworld_sprite_id_hex": "94",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6C9"
+    },
+    {
+      "overworld_sprite_id": 149,
+      "overworld_sprite_id_hex": "95",
+      "movement_mode": 35,
+      "movement_mode_hex": "23",
+      "rom_offset": "27F6CA"
+    },
+    {
+      "overworld_sprite_id": 150,
+      "overworld_sprite_id_hex": "96",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F6CB"
+    },
+    {
+      "overworld_sprite_id": 151,
+      "overworld_sprite_id_hex": "97",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F6CC"
+    },
+    {
+      "overworld_sprite_id": 152,
+      "overworld_sprite_id_hex": "98",
+      "movement_mode": 19,
+      "movement_mode_hex": "13",
+      "rom_offset": "27F6CD"
+    },
+    {
+      "overworld_sprite_id": 153,
+      "overworld_sprite_id_hex": "99",
+      "movement_mode": 22,
+      "movement_mode_hex": "16",
+      "rom_offset": "27F6CE"
+    },
+    {
+      "overworld_sprite_id": 154,
+      "overworld_sprite_id_hex": "9A",
+      "movement_mode": 53,
+      "movement_mode_hex": "35",
+      "rom_offset": "27F6CF"
+    },
+    {
+      "overworld_sprite_id": 155,
+      "overworld_sprite_id_hex": "9B",
+      "movement_mode": 13,
+      "movement_mode_hex": "0D",
+      "rom_offset": "27F6D0"
+    },
+    {
+      "overworld_sprite_id": 156,
+      "overworld_sprite_id_hex": "9C",
+      "movement_mode": 20,
+      "movement_mode_hex": "14",
+      "rom_offset": "27F6D1"
+    },
+    {
+      "overworld_sprite_id": 157,
+      "overworld_sprite_id_hex": "9D",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F6D2"
+    },
+    {
+      "overworld_sprite_id": 158,
+      "overworld_sprite_id_hex": "9E",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6D3"
+    },
+    {
+      "overworld_sprite_id": 159,
+      "overworld_sprite_id_hex": "9F",
+      "movement_mode": 49,
+      "movement_mode_hex": "31",
+      "rom_offset": "27F6D4"
+    },
+    {
+      "overworld_sprite_id": 160,
+      "overworld_sprite_id_hex": "A0",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F6D5"
+    },
+    {
+      "overworld_sprite_id": 161,
+      "overworld_sprite_id_hex": "A1",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6D6"
+    },
+    {
+      "overworld_sprite_id": 162,
+      "overworld_sprite_id_hex": "A2",
+      "movement_mode": 43,
+      "movement_mode_hex": "2B",
+      "rom_offset": "27F6D7"
+    },
+    {
+      "overworld_sprite_id": 163,
+      "overworld_sprite_id_hex": "A3",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F6D8"
+    },
+    {
+      "overworld_sprite_id": 164,
+      "overworld_sprite_id_hex": "A4",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6D9"
+    },
+    {
+      "overworld_sprite_id": 165,
+      "overworld_sprite_id_hex": "A5",
+      "movement_mode": 22,
+      "movement_mode_hex": "16",
+      "rom_offset": "27F6DA"
+    },
+    {
+      "overworld_sprite_id": 166,
+      "overworld_sprite_id_hex": "A6",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F6DB"
+    },
+    {
+      "overworld_sprite_id": 167,
+      "overworld_sprite_id_hex": "A7",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6DC"
+    },
+    {
+      "overworld_sprite_id": 168,
+      "overworld_sprite_id_hex": "A8",
+      "movement_mode": 56,
+      "movement_mode_hex": "38",
+      "rom_offset": "27F6DD"
+    },
+    {
+      "overworld_sprite_id": 169,
+      "overworld_sprite_id_hex": "A9",
+      "movement_mode": 46,
+      "movement_mode_hex": "2E",
+      "rom_offset": "27F6DE"
+    },
+    {
+      "overworld_sprite_id": 170,
+      "overworld_sprite_id_hex": "AA",
+      "movement_mode": 49,
+      "movement_mode_hex": "31",
+      "rom_offset": "27F6DF"
+    },
+    {
+      "overworld_sprite_id": 171,
+      "overworld_sprite_id_hex": "AB",
+      "movement_mode": 42,
+      "movement_mode_hex": "2A",
+      "rom_offset": "27F6E0"
+    },
+    {
+      "overworld_sprite_id": 172,
+      "overworld_sprite_id_hex": "AC",
+      "movement_mode": 53,
+      "movement_mode_hex": "35",
+      "rom_offset": "27F6E1"
+    },
+    {
+      "overworld_sprite_id": 173,
+      "overworld_sprite_id_hex": "AD",
+      "movement_mode": 34,
+      "movement_mode_hex": "22",
+      "rom_offset": "27F6E2"
+    },
+    {
+      "overworld_sprite_id": 174,
+      "overworld_sprite_id_hex": "AE",
+      "movement_mode": 47,
+      "movement_mode_hex": "2F",
+      "rom_offset": "27F6E3"
+    },
+    {
+      "overworld_sprite_id": 175,
+      "overworld_sprite_id_hex": "AF",
+      "movement_mode": 19,
+      "movement_mode_hex": "13",
+      "rom_offset": "27F6E4"
+    },
+    {
+      "overworld_sprite_id": 176,
+      "overworld_sprite_id_hex": "B0",
+      "movement_mode": 13,
+      "movement_mode_hex": "0D",
+      "rom_offset": "27F6E5"
+    },
+    {
+      "overworld_sprite_id": 177,
+      "overworld_sprite_id_hex": "B1",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F6E6"
+    },
+    {
+      "overworld_sprite_id": 178,
+      "overworld_sprite_id_hex": "B2",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6E7"
+    },
+    {
+      "overworld_sprite_id": 179,
+      "overworld_sprite_id_hex": "B3",
+      "movement_mode": 56,
+      "movement_mode_hex": "38",
+      "rom_offset": "27F6E8"
+    },
+    {
+      "overworld_sprite_id": 180,
+      "overworld_sprite_id_hex": "B4",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F6E9"
+    },
+    {
+      "overworld_sprite_id": 181,
+      "overworld_sprite_id_hex": "B5",
+      "movement_mode": 52,
+      "movement_mode_hex": "34",
+      "rom_offset": "27F6EA"
+    },
+    {
+      "overworld_sprite_id": 182,
+      "overworld_sprite_id_hex": "B6",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C",
+      "rom_offset": "27F6EB"
+    },
+    {
+      "overworld_sprite_id": 183,
+      "overworld_sprite_id_hex": "B7",
+      "movement_mode": 54,
+      "movement_mode_hex": "36",
+      "rom_offset": "27F6EC"
+    },
+    {
+      "overworld_sprite_id": 184,
+      "overworld_sprite_id_hex": "B8",
+      "movement_mode": 40,
+      "movement_mode_hex": "28",
+      "rom_offset": "27F6ED"
+    },
+    {
+      "overworld_sprite_id": 185,
+      "overworld_sprite_id_hex": "B9",
+      "movement_mode": 22,
+      "movement_mode_hex": "16",
+      "rom_offset": "27F6EE"
+    },
+    {
+      "overworld_sprite_id": 186,
+      "overworld_sprite_id_hex": "BA",
+      "movement_mode": 27,
+      "movement_mode_hex": "1B",
+      "rom_offset": "27F6EF"
+    },
+    {
+      "overworld_sprite_id": 187,
+      "overworld_sprite_id_hex": "BB",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F6F0"
+    },
+    {
+      "overworld_sprite_id": 188,
+      "overworld_sprite_id_hex": "BC",
+      "movement_mode": 13,
+      "movement_mode_hex": "0D",
+      "rom_offset": "27F6F1"
+    },
+    {
+      "overworld_sprite_id": 189,
+      "overworld_sprite_id_hex": "BD",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6F2"
+    },
+    {
+      "overworld_sprite_id": 190,
+      "overworld_sprite_id_hex": "BE",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F6F3"
+    },
+    {
+      "overworld_sprite_id": 191,
+      "overworld_sprite_id_hex": "BF",
+      "movement_mode": 19,
+      "movement_mode_hex": "13",
+      "rom_offset": "27F6F4"
+    },
+    {
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "movement_mode": 52,
+      "movement_mode_hex": "34",
+      "rom_offset": "27F6F5"
+    },
+    {
+      "overworld_sprite_id": 193,
+      "overworld_sprite_id_hex": "C1",
+      "movement_mode": 41,
+      "movement_mode_hex": "29",
+      "rom_offset": "27F6F6"
+    },
+    {
+      "overworld_sprite_id": 194,
+      "overworld_sprite_id_hex": "C2",
+      "movement_mode": 23,
+      "movement_mode_hex": "17",
+      "rom_offset": "27F6F7"
+    },
+    {
+      "overworld_sprite_id": 195,
+      "overworld_sprite_id_hex": "C3",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F6F8"
+    },
+    {
+      "overworld_sprite_id": 196,
+      "overworld_sprite_id_hex": "C4",
+      "movement_mode": 41,
+      "movement_mode_hex": "29",
+      "rom_offset": "27F6F9"
+    },
+    {
+      "overworld_sprite_id": 197,
+      "overworld_sprite_id_hex": "C5",
+      "movement_mode": 49,
+      "movement_mode_hex": "31",
+      "rom_offset": "27F6FA"
+    },
+    {
+      "overworld_sprite_id": 198,
+      "overworld_sprite_id_hex": "C6",
+      "movement_mode": 49,
+      "movement_mode_hex": "31",
+      "rom_offset": "27F6FB"
+    },
+    {
+      "overworld_sprite_id": 199,
+      "overworld_sprite_id_hex": "C7",
+      "movement_mode": 52,
+      "movement_mode_hex": "34",
+      "rom_offset": "27F6FC"
+    },
+    {
+      "overworld_sprite_id": 200,
+      "overworld_sprite_id_hex": "C8",
+      "movement_mode": 23,
+      "movement_mode_hex": "17",
+      "rom_offset": "27F6FD"
+    },
+    {
+      "overworld_sprite_id": 201,
+      "overworld_sprite_id_hex": "C9",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C",
+      "rom_offset": "27F6FE"
+    },
+    {
+      "overworld_sprite_id": 202,
+      "overworld_sprite_id_hex": "CA",
+      "movement_mode": 19,
+      "movement_mode_hex": "13",
+      "rom_offset": "27F6FF"
+    },
+    {
+      "overworld_sprite_id": 203,
+      "overworld_sprite_id_hex": "CB",
+      "movement_mode": 20,
+      "movement_mode_hex": "14",
+      "rom_offset": "27F700"
+    },
+    {
+      "overworld_sprite_id": 204,
+      "overworld_sprite_id_hex": "CC",
+      "movement_mode": 12,
+      "movement_mode_hex": "0C",
+      "rom_offset": "27F701"
+    },
+    {
+      "overworld_sprite_id": 205,
+      "overworld_sprite_id_hex": "CD",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F702"
+    },
+    {
+      "overworld_sprite_id": 206,
+      "overworld_sprite_id_hex": "CE",
+      "movement_mode": 44,
+      "movement_mode_hex": "2C",
+      "rom_offset": "27F703"
+    },
+    {
+      "overworld_sprite_id": 207,
+      "overworld_sprite_id_hex": "CF",
+      "movement_mode": 21,
+      "movement_mode_hex": "15",
+      "rom_offset": "27F704"
+    },
+    {
+      "overworld_sprite_id": 208,
+      "overworld_sprite_id_hex": "D0",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F705"
+    },
+    {
+      "overworld_sprite_id": 209,
+      "overworld_sprite_id_hex": "D1",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F706"
+    },
+    {
+      "overworld_sprite_id": 210,
+      "overworld_sprite_id_hex": "D2",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F707"
+    },
+    {
+      "overworld_sprite_id": 211,
+      "overworld_sprite_id_hex": "D3",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C",
+      "rom_offset": "27F708"
+    },
+    {
+      "overworld_sprite_id": 212,
+      "overworld_sprite_id_hex": "D4",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C",
+      "rom_offset": "27F709"
+    },
+    {
+      "overworld_sprite_id": 213,
+      "overworld_sprite_id_hex": "D5",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F70A"
+    },
+    {
+      "overworld_sprite_id": 214,
+      "overworld_sprite_id_hex": "D6",
+      "movement_mode": 52,
+      "movement_mode_hex": "34",
+      "rom_offset": "27F70B"
+    },
+    {
+      "overworld_sprite_id": 215,
+      "overworld_sprite_id_hex": "D7",
+      "movement_mode": 12,
+      "movement_mode_hex": "0C",
+      "rom_offset": "27F70C"
+    },
+    {
+      "overworld_sprite_id": 216,
+      "overworld_sprite_id_hex": "D8",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C",
+      "rom_offset": "27F70D"
+    },
+    {
+      "overworld_sprite_id": 217,
+      "overworld_sprite_id_hex": "D9",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C",
+      "rom_offset": "27F70E"
+    },
+    {
+      "overworld_sprite_id": 218,
+      "overworld_sprite_id_hex": "DA",
+      "movement_mode": 31,
+      "movement_mode_hex": "1F",
+      "rom_offset": "27F70F"
+    },
+    {
+      "overworld_sprite_id": 219,
+      "overworld_sprite_id_hex": "DB",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F710"
+    },
+    {
+      "overworld_sprite_id": 220,
+      "overworld_sprite_id_hex": "DC",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F711"
+    },
+    {
+      "overworld_sprite_id": 221,
+      "overworld_sprite_id_hex": "DD",
+      "movement_mode": 52,
+      "movement_mode_hex": "34",
+      "rom_offset": "27F712"
+    },
+    {
+      "overworld_sprite_id": 222,
+      "overworld_sprite_id_hex": "DE",
+      "movement_mode": 49,
+      "movement_mode_hex": "31",
+      "rom_offset": "27F713"
+    },
+    {
+      "overworld_sprite_id": 223,
+      "overworld_sprite_id_hex": "DF",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F714"
+    },
+    {
+      "overworld_sprite_id": 224,
+      "overworld_sprite_id_hex": "E0",
+      "movement_mode": 54,
+      "movement_mode_hex": "36",
+      "rom_offset": "27F715"
+    },
+    {
+      "overworld_sprite_id": 225,
+      "overworld_sprite_id_hex": "E1",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F716"
+    },
+    {
+      "overworld_sprite_id": 226,
+      "overworld_sprite_id_hex": "E2",
+      "movement_mode": 21,
+      "movement_mode_hex": "15",
+      "rom_offset": "27F717"
+    },
+    {
+      "overworld_sprite_id": 227,
+      "overworld_sprite_id_hex": "E3",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F718"
+    },
+    {
+      "overworld_sprite_id": 228,
+      "overworld_sprite_id_hex": "E4",
+      "movement_mode": 51,
+      "movement_mode_hex": "33",
+      "rom_offset": "27F719"
+    },
+    {
+      "overworld_sprite_id": 229,
+      "overworld_sprite_id_hex": "E5",
+      "movement_mode": 42,
+      "movement_mode_hex": "2A",
+      "rom_offset": "27F71A"
+    },
+    {
+      "overworld_sprite_id": 230,
+      "overworld_sprite_id_hex": "E6",
+      "movement_mode": 36,
+      "movement_mode_hex": "24",
+      "rom_offset": "27F71B"
+    },
+    {
+      "overworld_sprite_id": 231,
+      "overworld_sprite_id_hex": "E7",
+      "movement_mode": 49,
+      "movement_mode_hex": "31",
+      "rom_offset": "27F71C"
+    },
+    {
+      "overworld_sprite_id": 232,
+      "overworld_sprite_id_hex": "E8",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F",
+      "rom_offset": "27F71D"
+    },
+    {
+      "overworld_sprite_id": 233,
+      "overworld_sprite_id_hex": "E9",
+      "movement_mode": 30,
+      "movement_mode_hex": "1E",
+      "rom_offset": "27F71E"
+    },
+    {
+      "overworld_sprite_id": 234,
+      "overworld_sprite_id_hex": "EA",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B",
+      "rom_offset": "27F71F"
+    },
+    {
+      "overworld_sprite_id": 235,
+      "overworld_sprite_id_hex": "EB",
+      "movement_mode": 56,
+      "movement_mode_hex": "38",
+      "rom_offset": "27F720"
+    },
+    {
+      "overworld_sprite_id": 236,
+      "overworld_sprite_id_hex": "EC",
+      "movement_mode": 16,
+      "movement_mode_hex": "10",
+      "rom_offset": "27F721"
+    },
+    {
+      "overworld_sprite_id": 237,
+      "overworld_sprite_id_hex": "ED",
+      "movement_mode": 41,
+      "movement_mode_hex": "29",
+      "rom_offset": "27F722"
+    },
+    {
+      "overworld_sprite_id": 238,
+      "overworld_sprite_id_hex": "EE",
+      "movement_mode": 30,
+      "movement_mode_hex": "1E",
+      "rom_offset": "27F723"
+    },
+    {
+      "overworld_sprite_id": 239,
+      "overworld_sprite_id_hex": "EF",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E",
+      "rom_offset": "27F724"
+    }
+  ],
+  "monsters": [
+    {
+      "monster_id": 0,
+      "monster_id_hex": "00",
+      "overworld_sprite_id": 157,
+      "overworld_sprite_id_hex": "9D",
+      "name": "Goblin",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 1,
+      "monster_id_hex": "01",
+      "overworld_sprite_id": 157,
+      "overworld_sprite_id_hex": "9D",
+      "name": "Armor goblin",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 2,
+      "monster_id_hex": "02",
+      "overworld_sprite_id": 157,
+      "overworld_sprite_id_hex": "9D",
+      "name": "Regal Goblin",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 3,
+      "monster_id_hex": "03",
+      "overworld_sprite_id": 157,
+      "overworld_sprite_id_hex": "9D",
+      "name": "Goblin Mage",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 4,
+      "monster_id_hex": "04",
+      "overworld_sprite_id": 169,
+      "overworld_sprite_id_hex": "A9",
+      "name": "Troll",
+      "movement_mode": 46,
+      "movement_mode_hex": "2E"
+    },
+    {
+      "monster_id": 5,
+      "monster_id_hex": "05",
+      "overworld_sprite_id": 165,
+      "overworld_sprite_id_hex": "A5",
+      "name": "Ork",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 6,
+      "monster_id_hex": "06",
+      "overworld_sprite_id": 165,
+      "overworld_sprite_id_hex": "A5",
+      "name": "Fighter ork",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 7,
+      "monster_id_hex": "07",
+      "overworld_sprite_id": 165,
+      "overworld_sprite_id_hex": "A5",
+      "name": "Ork Mage",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 8,
+      "monster_id_hex": "08",
+      "overworld_sprite_id": 158,
+      "overworld_sprite_id_hex": "9E",
+      "name": "Lizardman",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 9,
+      "monster_id_hex": "09",
+      "overworld_sprite_id": 158,
+      "overworld_sprite_id_hex": "9E",
+      "name": "Skull Lizard",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 10,
+      "monster_id_hex": "0A",
+      "overworld_sprite_id": 239,
+      "overworld_sprite_id_hex": "EF",
+      "name": "Armour Dait",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 11,
+      "monster_id_hex": "0B",
+      "overworld_sprite_id": 239,
+      "overworld_sprite_id_hex": "EF",
+      "name": "Dragonian",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 12,
+      "monster_id_hex": "0C",
+      "overworld_sprite_id": 185,
+      "overworld_sprite_id_hex": "B9",
+      "name": "Cyclops",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 13,
+      "monster_id_hex": "0D",
+      "overworld_sprite_id": 185,
+      "overworld_sprite_id_hex": "B9",
+      "name": "Mega Cyclops",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 14,
+      "monster_id_hex": "0E",
+      "overworld_sprite_id": 185,
+      "overworld_sprite_id_hex": "B9",
+      "name": "Flame genie",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 15,
+      "monster_id_hex": "0F",
+      "overworld_sprite_id": 185,
+      "overworld_sprite_id_hex": "B9",
+      "name": "Well Genie",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 16,
+      "monster_id_hex": "10",
+      "overworld_sprite_id": 185,
+      "overworld_sprite_id_hex": "B9",
+      "name": "Wind Genie",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 17,
+      "monster_id_hex": "11",
+      "overworld_sprite_id": 185,
+      "overworld_sprite_id_hex": "B9",
+      "name": "Earth Genie",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 18,
+      "monster_id_hex": "12",
+      "overworld_sprite_id": 166,
+      "overworld_sprite_id_hex": "A6",
+      "name": "Cobalt",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 19,
+      "monster_id_hex": "13",
+      "overworld_sprite_id": 174,
+      "overworld_sprite_id_hex": "AE",
+      "name": "Merman",
+      "movement_mode": 47,
+      "movement_mode_hex": "2F"
+    },
+    {
+      "monster_id": 20,
+      "monster_id_hex": "14",
+      "overworld_sprite_id": 174,
+      "overworld_sprite_id_hex": "AE",
+      "name": "Aqualoi",
+      "movement_mode": 47,
+      "movement_mode_hex": "2F"
+    },
+    {
+      "monster_id": 21,
+      "monster_id_hex": "15",
+      "overworld_sprite_id": 172,
+      "overworld_sprite_id_hex": "AC",
+      "name": "Imp",
+      "movement_mode": 53,
+      "movement_mode_hex": "35"
+    },
+    {
+      "monster_id": 22,
+      "monster_id_hex": "16",
+      "overworld_sprite_id": 189,
+      "overworld_sprite_id_hex": "BD",
+      "name": "Fiend",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 23,
+      "monster_id_hex": "17",
+      "overworld_sprite_id": 189,
+      "overworld_sprite_id_hex": "BD",
+      "name": "Archfiend",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 24,
+      "monster_id_hex": "18",
+      "overworld_sprite_id": 138,
+      "overworld_sprite_id_hex": "8A",
+      "name": "Hound",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 25,
+      "monster_id_hex": "19",
+      "overworld_sprite_id": 138,
+      "overworld_sprite_id_hex": "8A",
+      "name": "Doben",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 26,
+      "monster_id_hex": "1A",
+      "overworld_sprite_id": 177,
+      "overworld_sprite_id_hex": "B1",
+      "name": "Winger",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 27,
+      "monster_id_hex": "1B",
+      "overworld_sprite_id": 232,
+      "overworld_sprite_id_hex": "E8",
+      "name": "Serfaco",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 28,
+      "monster_id_hex": "1C",
+      "overworld_sprite_id": 141,
+      "overworld_sprite_id_hex": "8D",
+      "name": "Pug",
+      "movement_mode": 27,
+      "movement_mode_hex": "1B"
+    },
+    {
+      "monster_id": 29,
+      "monster_id_hex": "1D",
+      "overworld_sprite_id": 193,
+      "overworld_sprite_id_hex": "C1",
+      "name": "Salamander",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 30,
+      "monster_id_hex": "1E",
+      "overworld_sprite_id": 238,
+      "overworld_sprite_id_hex": "EE",
+      "name": "Brinz Lizard",
+      "movement_mode": 30,
+      "movement_mode_hex": "1E"
+    },
+    {
+      "monster_id": 31,
+      "monster_id_hex": "1F",
+      "overworld_sprite_id": 133,
+      "overworld_sprite_id_hex": "85",
+      "name": "Seahorse",
+      "movement_mode": 39,
+      "movement_mode_hex": "27"
+    },
+    {
+      "monster_id": 32,
+      "monster_id_hex": "20",
+      "overworld_sprite_id": 174,
+      "overworld_sprite_id_hex": "AE",
+      "name": "Seirein",
+      "movement_mode": 47,
+      "movement_mode_hex": "2F"
+    },
+    {
+      "monster_id": 33,
+      "monster_id_hex": "21",
+      "overworld_sprite_id": 179,
+      "overworld_sprite_id_hex": "B3",
+      "name": "Earth Viper",
+      "movement_mode": 56,
+      "movement_mode_hex": "38"
+    },
+    {
+      "monster_id": 34,
+      "monster_id_hex": "22",
+      "overworld_sprite_id": 165,
+      "overworld_sprite_id_hex": "A5",
+      "name": "Gnome",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 35,
+      "monster_id_hex": "23",
+      "overworld_sprite_id": 145,
+      "overworld_sprite_id_hex": "91",
+      "name": "Wispy",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 36,
+      "monster_id_hex": "24",
+      "overworld_sprite_id": 155,
+      "overworld_sprite_id_hex": "9B",
+      "name": "Thunderbeast",
+      "movement_mode": 13,
+      "movement_mode_hex": "0D"
+    },
+    {
+      "monster_id": 37,
+      "monster_id_hex": "25",
+      "overworld_sprite_id": 155,
+      "overworld_sprite_id_hex": "9B",
+      "name": "Lunar bear",
+      "movement_mode": 13,
+      "movement_mode_hex": "0D"
+    },
+    {
+      "monster_id": 38,
+      "monster_id_hex": "26",
+      "overworld_sprite_id": 146,
+      "overworld_sprite_id_hex": "92",
+      "name": "Shadowfly",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 39,
+      "monster_id_hex": "27",
+      "overworld_sprite_id": 178,
+      "overworld_sprite_id_hex": "B2",
+      "name": "Shadow",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 40,
+      "monster_id_hex": "28",
+      "overworld_sprite_id": 183,
+      "overworld_sprite_id_hex": "B7",
+      "name": "Lion",
+      "movement_mode": 54,
+      "movement_mode_hex": "36"
+    },
+    {
+      "monster_id": 41,
+      "monster_id_hex": "29",
+      "overworld_sprite_id": 183,
+      "overworld_sprite_id_hex": "B7",
+      "name": "Sphinx",
+      "movement_mode": 54,
+      "movement_mode_hex": "36"
+    },
+    {
+      "monster_id": 42,
+      "monster_id_hex": "2A",
+      "overworld_sprite_id": 133,
+      "overworld_sprite_id_hex": "85",
+      "name": "Mad horse",
+      "movement_mode": 39,
+      "movement_mode_hex": "27"
+    },
+    {
+      "monster_id": 43,
+      "monster_id_hex": "2B",
+      "overworld_sprite_id": 133,
+      "overworld_sprite_id_hex": "85",
+      "name": "Armor horse",
+      "movement_mode": 39,
+      "movement_mode_hex": "27"
+    },
+    {
+      "monster_id": 44,
+      "monster_id_hex": "2C",
+      "overworld_sprite_id": 132,
+      "overworld_sprite_id_hex": "84",
+      "name": "Buffalo",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 45,
+      "monster_id_hex": "2D",
+      "overworld_sprite_id": 132,
+      "overworld_sprite_id_hex": "84",
+      "name": "Bruse",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 46,
+      "monster_id_hex": "2E",
+      "overworld_sprite_id": 143,
+      "overworld_sprite_id_hex": "8F",
+      "name": "Bat",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 47,
+      "monster_id_hex": "2F",
+      "overworld_sprite_id": 143,
+      "overworld_sprite_id_hex": "8F",
+      "name": "Big Bat",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 48,
+      "monster_id_hex": "30",
+      "overworld_sprite_id": 143,
+      "overworld_sprite_id_hex": "8F",
+      "name": "Red Bat",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 49,
+      "monster_id_hex": "31",
+      "overworld_sprite_id": 232,
+      "overworld_sprite_id_hex": "E8",
+      "name": "Eagle",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 50,
+      "monster_id_hex": "32",
+      "overworld_sprite_id": 232,
+      "overworld_sprite_id_hex": "E8",
+      "name": "Hawk",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 51,
+      "monster_id_hex": "33",
+      "overworld_sprite_id": 180,
+      "overworld_sprite_id_hex": "B4",
+      "name": "Crow",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 52,
+      "monster_id_hex": "34",
+      "overworld_sprite_id": 190,
+      "overworld_sprite_id_hex": "BE",
+      "name": "Baby Frog",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 53,
+      "monster_id_hex": "35",
+      "overworld_sprite_id": 190,
+      "overworld_sprite_id_hex": "BE",
+      "name": "King Frog",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 54,
+      "monster_id_hex": "36",
+      "overworld_sprite_id": 131,
+      "overworld_sprite_id_hex": "83",
+      "name": "Lizard",
+      "movement_mode": 30,
+      "movement_mode_hex": "1E"
+    },
+    {
+      "monster_id": 55,
+      "monster_id_hex": "37",
+      "overworld_sprite_id": 131,
+      "overworld_sprite_id_hex": "83",
+      "name": "Newt",
+      "movement_mode": 30,
+      "movement_mode_hex": "1E"
+    },
+    {
+      "monster_id": 56,
+      "monster_id_hex": "38",
+      "overworld_sprite_id": 214,
+      "overworld_sprite_id_hex": "D6",
+      "name": "Needle Lizard",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 57,
+      "monster_id_hex": "39",
+      "overworld_sprite_id": 214,
+      "overworld_sprite_id_hex": "D6",
+      "name": "Poison Lizard",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 58,
+      "monster_id_hex": "3A",
+      "overworld_sprite_id": 156,
+      "overworld_sprite_id_hex": "9C",
+      "name": "Medusa",
+      "movement_mode": 20,
+      "movement_mode_hex": "14"
+    },
+    {
+      "monster_id": 59,
+      "monster_id_hex": "3B",
+      "overworld_sprite_id": 174,
+      "overworld_sprite_id_hex": "AE",
+      "name": "Ramia",
+      "movement_mode": 47,
+      "movement_mode_hex": "2F"
+    },
+    {
+      "monster_id": 60,
+      "monster_id_hex": "3C",
+      "overworld_sprite_id": 182,
+      "overworld_sprite_id_hex": "B6",
+      "name": "Basilisk",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C"
+    },
+    {
+      "monster_id": 61,
+      "monster_id_hex": "3D",
+      "overworld_sprite_id": 210,
+      "overworld_sprite_id_hex": "D2",
+      "name": "Cokatoris",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 62,
+      "monster_id_hex": "3E",
+      "overworld_sprite_id": 139,
+      "overworld_sprite_id_hex": "8B",
+      "name": "Scorpion",
+      "movement_mode": 23,
+      "movement_mode_hex": "17"
+    },
+    {
+      "monster_id": 63,
+      "monster_id_hex": "3F",
+      "overworld_sprite_id": 139,
+      "overworld_sprite_id_hex": "8B",
+      "name": "Antares",
+      "movement_mode": 23,
+      "movement_mode_hex": "17"
+    },
+    {
+      "monster_id": 64,
+      "monster_id_hex": "40",
+      "overworld_sprite_id": 135,
+      "overworld_sprite_id_hex": "87",
+      "name": "Small Crab",
+      "movement_mode": 34,
+      "movement_mode_hex": "22"
+    },
+    {
+      "monster_id": 65,
+      "monster_id_hex": "41",
+      "overworld_sprite_id": 216,
+      "overworld_sprite_id_hex": "D8",
+      "name": "Big Crab",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C"
+    },
+    {
+      "monster_id": 66,
+      "monster_id_hex": "42",
+      "overworld_sprite_id": 135,
+      "overworld_sprite_id_hex": "87",
+      "name": "Red Lobster",
+      "movement_mode": 34,
+      "movement_mode_hex": "22"
+    },
+    {
+      "monster_id": 67,
+      "monster_id_hex": "43",
+      "overworld_sprite_id": 217,
+      "overworld_sprite_id_hex": "D9",
+      "name": "Spider",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C"
+    },
+    {
+      "monster_id": 68,
+      "monster_id_hex": "44",
+      "overworld_sprite_id": 137,
+      "overworld_sprite_id_hex": "89",
+      "name": "Web Spider",
+      "movement_mode": 43,
+      "movement_mode_hex": "2B"
+    },
+    {
+      "monster_id": 69,
+      "monster_id_hex": "45",
+      "overworld_sprite_id": 134,
+      "overworld_sprite_id_hex": "86",
+      "name": "Beetle",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 70,
+      "monster_id_hex": "46",
+      "overworld_sprite_id": 215,
+      "overworld_sprite_id_hex": "D7",
+      "name": "Poison Beetle",
+      "movement_mode": 12,
+      "movement_mode_hex": "0C"
+    },
+    {
+      "monster_id": 71,
+      "monster_id_hex": "47",
+      "overworld_sprite_id": 146,
+      "overworld_sprite_id_hex": "92",
+      "name": "Mosquito",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 72,
+      "monster_id_hex": "48",
+      "overworld_sprite_id": 234,
+      "overworld_sprite_id_hex": "EA",
+      "name": "Coridras",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 73,
+      "monster_id_hex": "49",
+      "overworld_sprite_id": 233,
+      "overworld_sprite_id_hex": "E9",
+      "name": "Spinner",
+      "movement_mode": 30,
+      "movement_mode_hex": "1E"
+    },
+    {
+      "monster_id": 74,
+      "monster_id_hex": "4A",
+      "overworld_sprite_id": 184,
+      "overworld_sprite_id_hex": "B8",
+      "name": "Tartona",
+      "movement_mode": 40,
+      "movement_mode_hex": "28"
+    },
+    {
+      "monster_id": 75,
+      "monster_id_hex": "4B",
+      "overworld_sprite_id": 235,
+      "overworld_sprite_id_hex": "EB",
+      "name": "Armour Nail",
+      "movement_mode": 56,
+      "movement_mode_hex": "38"
+    },
+    {
+      "monster_id": 76,
+      "monster_id_hex": "4C",
+      "overworld_sprite_id": 147,
+      "overworld_sprite_id_hex": "93",
+      "name": "Moth",
+      "movement_mode": 34,
+      "movement_mode_hex": "22"
+    },
+    {
+      "monster_id": 77,
+      "monster_id_hex": "4D",
+      "overworld_sprite_id": 220,
+      "overworld_sprite_id_hex": "DC",
+      "name": "Mega  Moth",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 78,
+      "monster_id_hex": "4E",
+      "overworld_sprite_id": 152,
+      "overworld_sprite_id_hex": "98",
+      "name": "Big Bee",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 79,
+      "monster_id_hex": "4F",
+      "overworld_sprite_id": 146,
+      "overworld_sprite_id_hex": "92",
+      "name": "Dark Fly",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 80,
+      "monster_id_hex": "50",
+      "overworld_sprite_id": 152,
+      "overworld_sprite_id_hex": "98",
+      "name": "Stinger",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 81,
+      "monster_id_hex": "51",
+      "overworld_sprite_id": 152,
+      "overworld_sprite_id_hex": "98",
+      "name": "Armor Bee",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 82,
+      "monster_id_hex": "52",
+      "overworld_sprite_id": 218,
+      "overworld_sprite_id_hex": "DA",
+      "name": "Sentopez",
+      "movement_mode": 31,
+      "movement_mode_hex": "1F"
+    },
+    {
+      "monster_id": 83,
+      "monster_id_hex": "53",
+      "overworld_sprite_id": 135,
+      "overworld_sprite_id_hex": "87",
+      "name": "Cancer",
+      "movement_mode": 34,
+      "movement_mode_hex": "22"
+    },
+    {
+      "monster_id": 84,
+      "monster_id_hex": "54",
+      "overworld_sprite_id": 216,
+      "overworld_sprite_id_hex": "D8",
+      "name": "Garbost",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C"
+    },
+    {
+      "monster_id": 85,
+      "monster_id_hex": "55",
+      "overworld_sprite_id": 128,
+      "overworld_sprite_id_hex": "80",
+      "name": "Bolt Fish",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 86,
+      "monster_id_hex": "56",
+      "overworld_sprite_id": 233,
+      "overworld_sprite_id_hex": "E9",
+      "name": "Moray",
+      "movement_mode": 30,
+      "movement_mode_hex": "1E"
+    },
+    {
+      "monster_id": 87,
+      "monster_id_hex": "57",
+      "overworld_sprite_id": 234,
+      "overworld_sprite_id_hex": "EA",
+      "name": "She Viper",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 88,
+      "monster_id_hex": "58",
+      "overworld_sprite_id": 128,
+      "overworld_sprite_id_hex": "80",
+      "name": "Angler fish",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 89,
+      "monster_id_hex": "59",
+      "overworld_sprite_id": 133,
+      "overworld_sprite_id_hex": "85",
+      "name": "Unicorn",
+      "movement_mode": 39,
+      "movement_mode_hex": "27"
+    },
+    {
+      "monster_id": 90,
+      "monster_id_hex": "5A",
+      "overworld_sprite_id": 129,
+      "overworld_sprite_id_hex": "81",
+      "name": "Evil Shell",
+      "movement_mode": 39,
+      "movement_mode_hex": "27"
+    },
+    {
+      "monster_id": 91,
+      "monster_id_hex": "5B",
+      "overworld_sprite_id": 129,
+      "overworld_sprite_id_hex": "81",
+      "name": "Drill Shell",
+      "movement_mode": 39,
+      "movement_mode_hex": "27"
+    },
+    {
+      "monster_id": 92,
+      "monster_id_hex": "5C",
+      "overworld_sprite_id": 129,
+      "overworld_sprite_id_hex": "81",
+      "name": "Snell",
+      "movement_mode": 39,
+      "movement_mode_hex": "27"
+    },
+    {
+      "monster_id": 93,
+      "monster_id_hex": "5D",
+      "overworld_sprite_id": 129,
+      "overworld_sprite_id_hex": "81",
+      "name": "Ammonite",
+      "movement_mode": 39,
+      "movement_mode_hex": "27"
+    },
+    {
+      "monster_id": 94,
+      "monster_id_hex": "5E",
+      "overworld_sprite_id": 128,
+      "overworld_sprite_id_hex": "80",
+      "name": "Evil Fish",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 95,
+      "monster_id_hex": "5F",
+      "overworld_sprite_id": 128,
+      "overworld_sprite_id_hex": "80",
+      "name": "Squid",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 96,
+      "monster_id_hex": "60",
+      "overworld_sprite_id": 187,
+      "overworld_sprite_id_hex": "BB",
+      "name": "Kraken",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 97,
+      "monster_id_hex": "61",
+      "overworld_sprite_id": 194,
+      "overworld_sprite_id_hex": "C2",
+      "name": "Killer Whale",
+      "movement_mode": 23,
+      "movement_mode_hex": "17"
+    },
+    {
+      "monster_id": 98,
+      "monster_id_hex": "62",
+      "overworld_sprite_id": 194,
+      "overworld_sprite_id_hex": "C2",
+      "name": "White Whale",
+      "movement_mode": 23,
+      "movement_mode_hex": "17"
+    },
+    {
+      "monster_id": 99,
+      "monster_id_hex": "63",
+      "overworld_sprite_id": 182,
+      "overworld_sprite_id_hex": "B6",
+      "name": "Grianos",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C"
+    },
+    {
+      "monster_id": 100,
+      "monster_id_hex": "64",
+      "overworld_sprite_id": 182,
+      "overworld_sprite_id_hex": "B6",
+      "name": "Behemoth",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C"
+    },
+    {
+      "monster_id": 101,
+      "monster_id_hex": "65",
+      "overworld_sprite_id": 187,
+      "overworld_sprite_id_hex": "BB",
+      "name": "Perch",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 102,
+      "monster_id_hex": "66",
+      "overworld_sprite_id": 187,
+      "overworld_sprite_id_hex": "BB",
+      "name": "Current",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 103,
+      "monster_id_hex": "67",
+      "overworld_sprite_id": 150,
+      "overworld_sprite_id_hex": "96",
+      "name": "Vampire Rose",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 104,
+      "monster_id_hex": "68",
+      "overworld_sprite_id": 150,
+      "overworld_sprite_id_hex": "96",
+      "name": "Desert Rose",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 105,
+      "monster_id_hex": "69",
+      "overworld_sprite_id": 224,
+      "overworld_sprite_id_hex": "E0",
+      "name": "Venus Fly",
+      "movement_mode": 54,
+      "movement_mode_hex": "36"
+    },
+    {
+      "monster_id": 106,
+      "monster_id_hex": "6A",
+      "overworld_sprite_id": 154,
+      "overworld_sprite_id_hex": "9A",
+      "name": "Moray Vine",
+      "movement_mode": 53,
+      "movement_mode_hex": "35"
+    },
+    {
+      "monster_id": 107,
+      "monster_id_hex": "6B",
+      "overworld_sprite_id": 142,
+      "overworld_sprite_id_hex": "8E",
+      "name": "Torrent",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 108,
+      "monster_id_hex": "6C",
+      "overworld_sprite_id": 142,
+      "overworld_sprite_id_hex": "8E",
+      "name": "Mad Ent",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 109,
+      "monster_id_hex": "6D",
+      "overworld_sprite_id": 188,
+      "overworld_sprite_id_hex": "BC",
+      "name": "Crow Kelp",
+      "movement_mode": 13,
+      "movement_mode_hex": "0D"
+    },
+    {
+      "monster_id": 110,
+      "monster_id_hex": "6E",
+      "overworld_sprite_id": 236,
+      "overworld_sprite_id_hex": "EC",
+      "name": "Red Plant",
+      "movement_mode": 16,
+      "movement_mode_hex": "10"
+    },
+    {
+      "monster_id": 111,
+      "monster_id_hex": "6F",
+      "overworld_sprite_id": 151,
+      "overworld_sprite_id_hex": "97",
+      "name": "La Fleshia",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 112,
+      "monster_id_hex": "70",
+      "overworld_sprite_id": 151,
+      "overworld_sprite_id_hex": "97",
+      "name": "Wheel Eel",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 113,
+      "monster_id_hex": "71",
+      "overworld_sprite_id": 160,
+      "overworld_sprite_id_hex": "A0",
+      "name": "Skeleton",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 114,
+      "monster_id_hex": "72",
+      "overworld_sprite_id": 225,
+      "overworld_sprite_id_hex": "E1",
+      "name": "Ghoul",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 115,
+      "monster_id_hex": "73",
+      "overworld_sprite_id": 167,
+      "overworld_sprite_id_hex": "A7",
+      "name": "Zombie",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 116,
+      "monster_id_hex": "74",
+      "overworld_sprite_id": 173,
+      "overworld_sprite_id_hex": "AD",
+      "name": "Specter",
+      "movement_mode": 34,
+      "movement_mode_hex": "22"
+    },
+    {
+      "monster_id": 117,
+      "monster_id_hex": "75",
+      "overworld_sprite_id": 181,
+      "overworld_sprite_id_hex": "B5",
+      "name": "Dark Spirit",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 118,
+      "monster_id_hex": "76",
+      "overworld_sprite_id": 168,
+      "overworld_sprite_id_hex": "A8",
+      "name": "Snatcher",
+      "movement_mode": 56,
+      "movement_mode_hex": "38"
+    },
+    {
+      "monster_id": 119,
+      "monster_id_hex": "77",
+      "overworld_sprite_id": 213,
+      "overworld_sprite_id_hex": "D5",
+      "name": "Jurahan",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 120,
+      "monster_id_hex": "78",
+      "overworld_sprite_id": 231,
+      "overworld_sprite_id_hex": "E7",
+      "name": "Demise",
+      "movement_mode": 49,
+      "movement_mode_hex": "31"
+    },
+    {
+      "monster_id": 121,
+      "monster_id_hex": "79",
+      "overworld_sprite_id": 231,
+      "overworld_sprite_id_hex": "E7",
+      "name": "Leech",
+      "movement_mode": 49,
+      "movement_mode_hex": "31"
+    },
+    {
+      "monster_id": 122,
+      "monster_id_hex": "7A",
+      "overworld_sprite_id": 171,
+      "overworld_sprite_id_hex": "AB",
+      "name": "Necromancer",
+      "movement_mode": 42,
+      "movement_mode_hex": "2A"
+    },
+    {
+      "monster_id": 123,
+      "monster_id_hex": "7B",
+      "overworld_sprite_id": 186,
+      "overworld_sprite_id_hex": "BA",
+      "name": "Hade Chariot",
+      "movement_mode": 27,
+      "movement_mode_hex": "1B"
+    },
+    {
+      "monster_id": 124,
+      "monster_id_hex": "7C",
+      "overworld_sprite_id": 186,
+      "overworld_sprite_id_hex": "BA",
+      "name": "Hades",
+      "movement_mode": 27,
+      "movement_mode_hex": "1B"
+    },
+    {
+      "monster_id": 125,
+      "monster_id_hex": "7D",
+      "overworld_sprite_id": 181,
+      "overworld_sprite_id_hex": "B5",
+      "name": "Dark Skull",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 126,
+      "monster_id_hex": "7E",
+      "overworld_sprite_id": 181,
+      "overworld_sprite_id_hex": "B5",
+      "name": "Hades Skull",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 127,
+      "monster_id_hex": "7F",
+      "overworld_sprite_id": 168,
+      "overworld_sprite_id_hex": "A8",
+      "name": "Mummy",
+      "movement_mode": 56,
+      "movement_mode_hex": "38"
+    },
+    {
+      "monster_id": 128,
+      "monster_id_hex": "80",
+      "overworld_sprite_id": 159,
+      "overworld_sprite_id_hex": "9F",
+      "name": "Vampire",
+      "movement_mode": 49,
+      "movement_mode_hex": "31"
+    },
+    {
+      "monster_id": 129,
+      "monster_id_hex": "81",
+      "overworld_sprite_id": 159,
+      "overworld_sprite_id_hex": "9F",
+      "name": "Nosferato",
+      "movement_mode": 49,
+      "movement_mode_hex": "31"
+    },
+    {
+      "monster_id": 130,
+      "monster_id_hex": "82",
+      "overworld_sprite_id": 200,
+      "overworld_sprite_id_hex": "C8",
+      "name": "Ghost Ship",
+      "movement_mode": 23,
+      "movement_mode_hex": "17"
+    },
+    {
+      "monster_id": 131,
+      "monster_id_hex": "83",
+      "overworld_sprite_id": 144,
+      "overworld_sprite_id_hex": "90",
+      "name": "Deadly Sword",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 132,
+      "monster_id_hex": "84",
+      "overworld_sprite_id": 153,
+      "overworld_sprite_id_hex": "99",
+      "name": "Deadly Armor",
+      "movement_mode": 22,
+      "movement_mode_hex": "16"
+    },
+    {
+      "monster_id": 133,
+      "monster_id_hex": "85",
+      "overworld_sprite_id": 211,
+      "overworld_sprite_id_hex": "D3",
+      "name": "T Rex",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C"
+    },
+    {
+      "monster_id": 134,
+      "monster_id_hex": "86",
+      "overworld_sprite_id": 211,
+      "overworld_sprite_id_hex": "D3",
+      "name": "Brokion",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C"
+    },
+    {
+      "monster_id": 135,
+      "monster_id_hex": "87",
+      "overworld_sprite_id": 175,
+      "overworld_sprite_id_hex": "AF",
+      "name": "Pumpkin Head",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 136,
+      "monster_id_hex": "88",
+      "overworld_sprite_id": 175,
+      "overworld_sprite_id_hex": "AF",
+      "name": "Mad Head",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 137,
+      "monster_id_hex": "89",
+      "overworld_sprite_id": 210,
+      "overworld_sprite_id_hex": "D2",
+      "name": "Snow Gas",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 138,
+      "monster_id_hex": "8A",
+      "overworld_sprite_id": 210,
+      "overworld_sprite_id_hex": "D2",
+      "name": "Great Coca",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 139,
+      "monster_id_hex": "8B",
+      "overworld_sprite_id": 196,
+      "overworld_sprite_id_hex": "C4",
+      "name": "Gargoyle",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 140,
+      "monster_id_hex": "8C",
+      "overworld_sprite_id": 196,
+      "overworld_sprite_id_hex": "C4",
+      "name": "Rogue Shape",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 141,
+      "monster_id_hex": "8D",
+      "overworld_sprite_id": 160,
+      "overworld_sprite_id_hex": "A0",
+      "name": "Bone Gorem",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 142,
+      "monster_id_hex": "8E",
+      "overworld_sprite_id": 229,
+      "overworld_sprite_id_hex": "E5",
+      "name": "Nuborg",
+      "movement_mode": 42,
+      "movement_mode_hex": "2A"
+    },
+    {
+      "monster_id": 143,
+      "monster_id_hex": "8F",
+      "overworld_sprite_id": 162,
+      "overworld_sprite_id_hex": "A2",
+      "name": "Wood Gorem",
+      "movement_mode": 43,
+      "movement_mode_hex": "2B"
+    },
+    {
+      "monster_id": 144,
+      "monster_id_hex": "90",
+      "overworld_sprite_id": 163,
+      "overworld_sprite_id_hex": "A3",
+      "name": "Mad Gorem",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 145,
+      "monster_id_hex": "91",
+      "overworld_sprite_id": 230,
+      "overworld_sprite_id_hex": "E6",
+      "name": "Green Clay",
+      "movement_mode": 36,
+      "movement_mode_hex": "24"
+    },
+    {
+      "monster_id": 146,
+      "monster_id_hex": "92",
+      "overworld_sprite_id": 228,
+      "overworld_sprite_id_hex": "E4",
+      "name": "Sand Gorem",
+      "movement_mode": 51,
+      "movement_mode_hex": "33"
+    },
+    {
+      "monster_id": 147,
+      "monster_id_hex": "93",
+      "overworld_sprite_id": 227,
+      "overworld_sprite_id_hex": "E3",
+      "name": "Magma Gorem",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 148,
+      "monster_id_hex": "94",
+      "overworld_sprite_id": 161,
+      "overworld_sprite_id_hex": "A1",
+      "name": "Iron Gorem",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 149,
+      "monster_id_hex": "95",
+      "overworld_sprite_id": 226,
+      "overworld_sprite_id_hex": "E2",
+      "name": "Gold Gorem",
+      "movement_mode": 21,
+      "movement_mode_hex": "15"
+    },
+    {
+      "monster_id": 150,
+      "monster_id_hex": "96",
+      "overworld_sprite_id": 191,
+      "overworld_sprite_id_hex": "BF",
+      "name": "Hidora",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 151,
+      "monster_id_hex": "97",
+      "overworld_sprite_id": 191,
+      "overworld_sprite_id_hex": "BF",
+      "name": "Sea Hidora",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 152,
+      "monster_id_hex": "98",
+      "overworld_sprite_id": 191,
+      "overworld_sprite_id_hex": "BF",
+      "name": "High Hidora",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 153,
+      "monster_id_hex": "99",
+      "overworld_sprite_id": 191,
+      "overworld_sprite_id_hex": "BF",
+      "name": "King Hidora",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 154,
+      "monster_id_hex": "9A",
+      "overworld_sprite_id": 191,
+      "overworld_sprite_id_hex": "BF",
+      "name": "Orky",
+      "movement_mode": 19,
+      "movement_mode_hex": "13"
+    },
+    {
+      "monster_id": 155,
+      "monster_id_hex": "9B",
+      "overworld_sprite_id": 195,
+      "overworld_sprite_id_hex": "C3",
+      "name": "Waiban",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 156,
+      "monster_id_hex": "9C",
+      "overworld_sprite_id": 195,
+      "overworld_sprite_id_hex": "C3",
+      "name": "White Dragon",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 157,
+      "monster_id_hex": "9D",
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "name": "Red Dragon",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 158,
+      "monster_id_hex": "9E",
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "name": "Blue Dragon",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 159,
+      "monster_id_hex": "9F",
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "name": "Green Dragon",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 160,
+      "monster_id_hex": "A0",
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "name": "Black Dragon",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 161,
+      "monster_id_hex": "A1",
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "name": "Copper Dragon",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 162,
+      "monster_id_hex": "A2",
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "name": "Silver Dragon",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 163,
+      "monster_id_hex": "A3",
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "name": "Gold Dragon",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 164,
+      "monster_id_hex": "A4",
+      "overworld_sprite_id": 148,
+      "overworld_sprite_id_hex": "94",
+      "name": "Red Jelly",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 165,
+      "monster_id_hex": "A5",
+      "overworld_sprite_id": 221,
+      "overworld_sprite_id_hex": "DD",
+      "name": "Blue Jelly",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 166,
+      "monster_id_hex": "A6",
+      "overworld_sprite_id": 222,
+      "overworld_sprite_id_hex": "DE",
+      "name": "Bili Jelly",
+      "movement_mode": 49,
+      "movement_mode_hex": "31"
+    },
+    {
+      "monster_id": 167,
+      "monster_id_hex": "A7",
+      "overworld_sprite_id": 149,
+      "overworld_sprite_id_hex": "95",
+      "name": "Red Core",
+      "movement_mode": 35,
+      "movement_mode_hex": "23"
+    },
+    {
+      "monster_id": 168,
+      "monster_id_hex": "A8",
+      "overworld_sprite_id": 149,
+      "overworld_sprite_id_hex": "95",
+      "name": "Blue Core",
+      "movement_mode": 35,
+      "movement_mode_hex": "23"
+    },
+    {
+      "monster_id": 169,
+      "monster_id_hex": "A9",
+      "overworld_sprite_id": 149,
+      "overworld_sprite_id_hex": "95",
+      "name": "Green Core",
+      "movement_mode": 35,
+      "movement_mode_hex": "23"
+    },
+    {
+      "monster_id": 170,
+      "monster_id_hex": "AA",
+      "overworld_sprite_id": 149,
+      "overworld_sprite_id_hex": "95",
+      "name": "No Core",
+      "movement_mode": 35,
+      "movement_mode_hex": "23"
+    },
+    {
+      "monster_id": 171,
+      "monster_id_hex": "AB",
+      "overworld_sprite_id": 164,
+      "overworld_sprite_id_hex": "A4",
+      "name": "Mimic",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 172,
+      "monster_id_hex": "AC",
+      "overworld_sprite_id": 240,
+      "overworld_sprite_id_hex": "F0",
+      "name": "Blue Mimic",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 173,
+      "monster_id_hex": "AD",
+      "overworld_sprite_id": 189,
+      "overworld_sprite_id_hex": "BD",
+      "name": "Ice Roge",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 174,
+      "monster_id_hex": "AE",
+      "overworld_sprite_id": 140,
+      "overworld_sprite_id_hex": "8C",
+      "name": "Mushroom",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 175,
+      "monster_id_hex": "AF",
+      "overworld_sprite_id": 219,
+      "overworld_sprite_id_hex": "DB",
+      "name": "Big Mushr'm",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 176,
+      "monster_id_hex": "B0",
+      "overworld_sprite_id": 170,
+      "overworld_sprite_id_hex": "AA",
+      "name": "Minataurus",
+      "movement_mode": 49,
+      "movement_mode_hex": "31"
+    },
+    {
+      "monster_id": 177,
+      "monster_id_hex": "B1",
+      "overworld_sprite_id": 170,
+      "overworld_sprite_id_hex": "AA",
+      "name": "Gorgon",
+      "movement_mode": 49,
+      "movement_mode_hex": "31"
+    },
+    {
+      "monster_id": 178,
+      "monster_id_hex": "B2",
+      "overworld_sprite_id": 130,
+      "overworld_sprite_id_hex": "82",
+      "name": "Ninja",
+      "movement_mode": 44,
+      "movement_mode_hex": "2C"
+    },
+    {
+      "monster_id": 179,
+      "monster_id_hex": "B3",
+      "overworld_sprite_id": 130,
+      "overworld_sprite_id_hex": "82",
+      "name": "Asashin",
+      "movement_mode": 44,
+      "movement_mode_hex": "2C"
+    },
+    {
+      "monster_id": 180,
+      "monster_id_hex": "B4",
+      "overworld_sprite_id": 176,
+      "overworld_sprite_id_hex": "B0",
+      "name": "Samurai",
+      "movement_mode": 13,
+      "movement_mode_hex": "0D"
+    },
+    {
+      "monster_id": 181,
+      "monster_id_hex": "B5",
+      "overworld_sprite_id": 176,
+      "overworld_sprite_id_hex": "B0",
+      "name": "Dark Warrior",
+      "movement_mode": 13,
+      "movement_mode_hex": "0D"
+    },
+    {
+      "monster_id": 182,
+      "monster_id_hex": "B6",
+      "overworld_sprite_id": 176,
+      "overworld_sprite_id_hex": "B0",
+      "name": "Ochi Warrior",
+      "movement_mode": 13,
+      "movement_mode_hex": "0D"
+    },
+    {
+      "monster_id": 183,
+      "monster_id_hex": "B7",
+      "overworld_sprite_id": 237,
+      "overworld_sprite_id_hex": "ED",
+      "name": "Sly Fox",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 184,
+      "monster_id_hex": "B8",
+      "overworld_sprite_id": 212,
+      "overworld_sprite_id_hex": "D4",
+      "name": "Tengu",
+      "movement_mode": 28,
+      "movement_mode_hex": "1C"
+    },
+    {
+      "monster_id": 185,
+      "monster_id_hex": "B9",
+      "overworld_sprite_id": 136,
+      "overworld_sprite_id_hex": "88",
+      "name": "Warm Eye",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 186,
+      "monster_id_hex": "BA",
+      "overworld_sprite_id": 171,
+      "overworld_sprite_id_hex": "AB",
+      "name": "Wizard",
+      "movement_mode": 42,
+      "movement_mode_hex": "2A"
+    },
+    {
+      "monster_id": 187,
+      "monster_id_hex": "BB",
+      "overworld_sprite_id": 171,
+      "overworld_sprite_id_hex": "AB",
+      "name": "Dark Sum'ner",
+      "movement_mode": 42,
+      "movement_mode_hex": "2A"
+    },
+    {
+      "monster_id": 188,
+      "monster_id_hex": "BC",
+      "overworld_sprite_id": 197,
+      "overworld_sprite_id_hex": "C5",
+      "name": "Big Catfish",
+      "movement_mode": 49,
+      "movement_mode_hex": "31"
+    },
+    {
+      "monster_id": 189,
+      "monster_id_hex": "BD",
+      "overworld_sprite_id": 118,
+      "overworld_sprite_id_hex": "76",
+      "name": "Follower",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 190,
+      "monster_id_hex": "BE",
+      "overworld_sprite_id": 198,
+      "overworld_sprite_id_hex": "C6",
+      "name": "Tarantula",
+      "movement_mode": 49,
+      "movement_mode_hex": "31"
+    },
+    {
+      "monster_id": 191,
+      "monster_id_hex": "BF",
+      "overworld_sprite_id": 119,
+      "overworld_sprite_id_hex": "77",
+      "name": "Pierre",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 192,
+      "monster_id_hex": "C0",
+      "overworld_sprite_id": 120,
+      "overworld_sprite_id_hex": "78",
+      "name": "Daniele",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 193,
+      "monster_id_hex": "C1",
+      "overworld_sprite_id": 208,
+      "overworld_sprite_id_hex": "D0",
+      "name": "Venge Ghost",
+      "movement_mode": 14,
+      "movement_mode_hex": "0E"
+    },
+    {
+      "monster_id": 194,
+      "monster_id_hex": "C2",
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "name": "Fire Dragon",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 195,
+      "monster_id_hex": "C3",
+      "overworld_sprite_id": 199,
+      "overworld_sprite_id_hex": "C7",
+      "name": "Tank",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 196,
+      "monster_id_hex": "C4",
+      "overworld_sprite_id": 116,
+      "overworld_sprite_id_hex": "74",
+      "name": "Idura",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 197,
+      "monster_id_hex": "C5",
+      "overworld_sprite_id": 117,
+      "overworld_sprite_id_hex": "75",
+      "name": "Camu",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 198,
+      "monster_id_hex": "C6",
+      "overworld_sprite_id": 122,
+      "overworld_sprite_id_hex": "7A",
+      "name": "Gades",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 199,
+      "monster_id_hex": "C7",
+      "overworld_sprite_id": 121,
+      "overworld_sprite_id_hex": "79",
+      "name": "Amon",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 200,
+      "monster_id_hex": "C8",
+      "overworld_sprite_id": 124,
+      "overworld_sprite_id_hex": "7C",
+      "name": "Erim",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 201,
+      "monster_id_hex": "C9",
+      "overworld_sprite_id": 123,
+      "overworld_sprite_id_hex": "7B",
+      "name": "Daos",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 202,
+      "monster_id_hex": "CA",
+      "overworld_sprite_id": 158,
+      "overworld_sprite_id_hex": "9E",
+      "name": "Lizard Man",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    },
+    {
+      "monster_id": 203,
+      "monster_id_hex": "CB",
+      "overworld_sprite_id": 157,
+      "overworld_sprite_id_hex": "9D",
+      "name": "Goblin",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 204,
+      "monster_id_hex": "CC",
+      "overworld_sprite_id": 160,
+      "overworld_sprite_id_hex": "A0",
+      "name": "Skeleton",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 205,
+      "monster_id_hex": "CD",
+      "overworld_sprite_id": 157,
+      "overworld_sprite_id_hex": "9D",
+      "name": "Regal Goblin",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 206,
+      "monster_id_hex": "CE",
+      "overworld_sprite_id": 157,
+      "overworld_sprite_id_hex": "9D",
+      "name": "Goblin",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 207,
+      "monster_id_hex": "CF",
+      "overworld_sprite_id": 157,
+      "overworld_sprite_id_hex": "9D",
+      "name": "Goblin Mage",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 208,
+      "monster_id_hex": "D0",
+      "overworld_sprite_id": 118,
+      "overworld_sprite_id_hex": "76",
+      "name": "Slave",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 209,
+      "monster_id_hex": "D1",
+      "overworld_sprite_id": 118,
+      "overworld_sprite_id_hex": "76",
+      "name": "Follower",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 210,
+      "monster_id_hex": "D2",
+      "overworld_sprite_id": 118,
+      "overworld_sprite_id_hex": "76",
+      "name": "Groupie",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 211,
+      "monster_id_hex": "D3",
+      "overworld_sprite_id": 192,
+      "overworld_sprite_id_hex": "C0",
+      "name": "Egg Dragon",
+      "movement_mode": 52,
+      "movement_mode_hex": "34"
+    },
+    {
+      "monster_id": 212,
+      "monster_id_hex": "D4",
+      "overworld_sprite_id": 168,
+      "overworld_sprite_id_hex": "A8",
+      "name": "Mummy",
+      "movement_mode": 56,
+      "movement_mode_hex": "38"
+    },
+    {
+      "monster_id": 213,
+      "monster_id_hex": "D5",
+      "overworld_sprite_id": 169,
+      "overworld_sprite_id_hex": "A9",
+      "name": "Troll",
+      "movement_mode": 46,
+      "movement_mode_hex": "2E"
+    },
+    {
+      "monster_id": 214,
+      "monster_id_hex": "D6",
+      "overworld_sprite_id": 122,
+      "overworld_sprite_id_hex": "7A",
+      "name": "Gades",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 215,
+      "monster_id_hex": "D7",
+      "overworld_sprite_id": 116,
+      "overworld_sprite_id_hex": "74",
+      "name": "Idura",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 216,
+      "monster_id_hex": "D8",
+      "overworld_sprite_id": 183,
+      "overworld_sprite_id_hex": "B7",
+      "name": "Lion",
+      "movement_mode": 54,
+      "movement_mode_hex": "36"
+    },
+    {
+      "monster_id": 217,
+      "monster_id_hex": "D9",
+      "overworld_sprite_id": 150,
+      "overworld_sprite_id_hex": "96",
+      "name": "Rogue Flower",
+      "movement_mode": 11,
+      "movement_mode_hex": "0B"
+    },
+    {
+      "monster_id": 218,
+      "monster_id_hex": "DA",
+      "overworld_sprite_id": 196,
+      "overworld_sprite_id_hex": "C4",
+      "name": "Gargoyle",
+      "movement_mode": 41,
+      "movement_mode_hex": "29"
+    },
+    {
+      "monster_id": 219,
+      "monster_id_hex": "DB",
+      "overworld_sprite_id": 200,
+      "overworld_sprite_id_hex": "C8",
+      "name": "Ghost Ship",
+      "movement_mode": 23,
+      "movement_mode_hex": "17"
+    },
+    {
+      "monster_id": 220,
+      "monster_id_hex": "DC",
+      "overworld_sprite_id": 116,
+      "overworld_sprite_id_hex": "74",
+      "name": "Idura",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 221,
+      "monster_id_hex": "DD",
+      "overworld_sprite_id": 24,
+      "overworld_sprite_id_hex": "18",
+      "name": "Soldier",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 222,
+      "monster_id_hex": "DE",
+      "overworld_sprite_id": 122,
+      "overworld_sprite_id_hex": "7A",
+      "name": "Gades",
+      "movement_mode": null,
+      "movement_mode_hex": null
+    },
+    {
+      "monster_id": 223,
+      "monster_id_hex": "DF",
+      "overworld_sprite_id": 148,
+      "overworld_sprite_id_hex": "94",
+      "name": "Master",
+      "movement_mode": 15,
+      "movement_mode_hex": "0F"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Tower_Of_Sacrifice",
+  "marker_count": 264,
+  "type_counts": {
+    "door": 31,
+    "switch": 10,
+    "ladder": 9,
+    "walkable": 79,
+    "monster": 27,
+    "blocked": 49,
+    "puzzle": 42,
+    "chest": 1,
+    "stairs": 14,
+    "npc": 2
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

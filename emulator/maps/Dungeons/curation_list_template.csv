@@ -1,0 +1,481 @@
+﻿dungeon,coordinate,traversal,object,required_action,notes
+Secret_Skills_Cave,AK63,confirmed_walkable,player_probe,,dungeon entrance / exit
+,AL63,confirmed_walkable,player_probe,,dungeon entrance / exit
+,AE62,blocked,wall,,
+,AF62,blocked,wall,,
+,AG62,blocked,wall,,
+,AH62,blocked,wall,,
+,AI62,blocked,wall,,
+,AJ62,blocked,wall,,
+,AM62,blocked,wall,,
+,AN62,blocked,wall,,
+,AO62,blocked,wall,,
+,AP62,blocked,wall,,
+,AQ62,blocked,wall,,
+,AR62,blocked,wall,,
+,AS62,blocked,wall,,
+,AS61,blocked,wall,,
+,AT61,blocked,wall,,
+,AT60,blocked,wall,,
+,AT59,blocked,wall,,
+,AT58,blocked,wall,,
+,AT57,blocked,wall,,
+,AT56,blocked,wall,,
+,AT55,blocked,wall,,
+,AT54,blocked,wall,,
+,AT53,blocked,wall,,
+,AR52,blocked,Priest NPC,Talk,"Save, Heal, Cure"
+,AS52,blocked,wall,,
+,AR51,blocked,wall,,
+,AQ50,blocked,wall,,
+,AP50,blocked,wall,,
+,AO50,blocked,wall,,
+,AN50,blocked,wall,,
+,AM50,blocked,wall,,
+,AK50,confirmed_walkable,door,,
+,AL50,confirmed_walkable,door,,
+,AJ50,blocked,wall,,
+,AI50,blocked,wall,,
+,AH50,blocked,wall,,
+,AG50,blocked,wall,,
+,AF50,blocked,wall,,
+,AE52,blocked,Elf NPC,Talk,"Chat, Hint"
+,AD52,blocked,wall,,
+,AC52,blocked,wall,,
+,AC53,blocked,wall,,
+,AC54,blocked,wall,,
+,AC55,blocked,wall,,
+,AC56,blocked,wall,,
+,AC57,blocked,wall,,
+,AC58,blocked,wall,,
+,AC59,blocked,wall,,
+,AC60,blocked,wall,,
+,AC61,blocked,wall,,
+,AD61,blocked,wall,,
+,AJ63,blocked,wall,,
+,AM63,blocked,wall,,
+,AD57,confirmed_walkable,player_probe,,
+,AK49,confirmed_walkable,player_probe,,
+,AL49,confirmed_walkable,player_probe,,
+,AK47,confirmed_walkable,player_probe,,
+,AL47,confirmed_walkable,player_probe,,
+,AM47,blocked,wall,,
+,AN47,blocked,wall,,
+,AO47,blocked,wall,,
+,AO46,blocked,wall,,
+,AP46,blocked,wall,,
+,AQ45,blocked,wall,,
+,AR44,blocked,wall,,
+,AR43,blocked,wall,,
+,AR42,blocked,wall,,
+,AR41,blocked,wall,,
+,AR40,blocked,wall,,
+,AR39,blocked,wall,,
+,AR38,blocked,wall,,
+,AQ38,blocked,wall,,
+,AP37,blocked,wall,,
+,AO37,blocked,wall,,
+,AN37,blocked,wall,,
+,AM37,blocked,wall,,
+,AL37,confirmed_walkable,door,,
+,AK37,confirmed_walkable,door,,
+,AJ37,blocked,wall,,
+,AI37,blocked,wall,,
+,AH37,blocked,wall,,
+,AG37,blocked,wall,,
+,AG38,blocked,wall,,
+,AF38,blocked,wall,,
+,AE39,blocked,wall,,
+,AD39,blocked,wall,,
+,AD40,blocked,wall,,
+,AD41,blocked,wall,,
+,AD42,blocked,wall,,
+,AD43,blocked,wall,,
+,AD44,blocked,wall,,
+,AD45,blocked,wall,,
+,AE45,blocked,wall,,
+,AE46,blocked,wall,,
+,AF46,blocked,wall,,
+,AF47,blocked,wall,,
+,AG47,blocked,wall,,
+,AH47,blocked,wall,,
+,AI47,blocked,wall,,
+,AJ47,blocked,wall,,
+,AK42,conditional,monster,move_away_or_defeat,fight optional; the monster moves away from these cells
+,AL42,conditional,monster,move_away_or_defeat,fight optional; the monster moves away from these cells
+,AK36,confirmed_walkable,player_probe,,
+,AL36,confirmed_walkable,player_probe,,
+,AK35,confirmed_walkable,player_probe,,
+,AL35,confirmed_walkable,player_probe,,
+,AK34,confirmed_walkable,player_probe,,
+,AL34,confirmed_walkable,player_probe,,
+,AI28,conditional,puzzle,shoot arrow or hook,"Look left, turn lever to complete bridge at AF30 / AG30"
+,AB28,blocked,lever,,
+,AC28,blocked,lever,,
+,AF30,conditional,puzzle,shoot arrow or hook,shoot lever from AI28 first to  complete bridge at AF30 / AG30
+,AG30,conditional,puzzle,shoot arrow or hook,shoot lever from AI28 first to  complete bridge at AF30 / AG31
+,AE33,blocked,player_probe,,
+,AF33,blocked,player_probe,,
+,AG33,blocked,player_probe,,
+,AH33,blocked,player_probe,,
+,AE32,blocked,player_probe,,
+,AF32,blocked,player_probe,,
+,AG32,blocked,player_probe,,
+,AH32,blocked,player_probe,,
+,AE31,blocked,player_probe,,
+,AF31,blocked,player_probe,,
+,AG31,blocked,player_probe,,
+,AH31,blocked,player_probe,,
+,AE29,blocked,player_probe,,
+,AF29,blocked,player_probe,,
+,AG29,blocked,player_probe,,
+,AH29,blocked,player_probe,,
+,AE28,blocked,player_probe,,
+,AF28,blocked,player_probe,,
+,AG28,blocked,player_probe,,
+,AH28,blocked,player_probe,,
+,AF27,blocked,player_probe,,
+,AG27,blocked,player_probe,,
+,AH27,blocked,player_probe,,
+,AI27,blocked,player_probe,,
+,AJ27,blocked,player_probe,,
+,AK27,blocked,player_probe,,
+,AF26,blocked,player_probe,,
+,AG26,blocked,player_probe,,
+,AH26,blocked,player_probe,,
+,AI26,blocked,player_probe,,
+,AJ26,blocked,player_probe,,
+,AK26,blocked,player_probe,,
+,AF25,blocked,player_probe,,
+,AG25,blocked,player_probe,,
+,AH25,blocked,player_probe,,
+,AI25,blocked,player_probe,,
+,AJ25,blocked,player_probe,,
+,AK25,blocked,player_probe,,
+,W26,confirmed_walkable,door,,
+,X26,confirmed_walkable,door,,
+,W25,confirmed_walkable,player_probe,,
+,X25,confirmed_walkable,player_probe,,
+,W24,confirmed_walkable,player_probe,,
+,X24,confirmed_walkable,player_probe,,
+,W23,confirmed_walkable,player_probe,,
+,X23,confirmed_walkable,player_probe,,
+,S23,confirmed_walkable,player_probe,,
+,T23,confirmed_walkable,player_probe,,
+,S24,confirmed_walkable,player_probe,,
+,T24,confirmed_walkable,player_probe,,
+,S25,confirmed_walkable,player_probe,,
+,T25,confirmed_walkable,player_probe,,
+,S26,confirmed_walkable,door,,
+,T26,confirmed_walkable,door,,
+,M28,confirmed_walkable,player_probe,,
+,K21,confirmed_walkable,player_probe,,
+,L21,confirmed_walkable,player_probe,,
+,L25,conditional,pillar,push,"push pillar to G24, F24"
+,G24,conditional,floor switch,press,place pillar from L25 to open door at I20
+,F24,conditional,floor switch,press,place pillar from L25 to open door at I20
+,I20,conditional,door,open,"unlocks when floor switch at G24, F24 is pressed"
+,I19,confirmed_walkable,player_probe,,
+,I18,confirmed_walkable,player_probe,,
+,I17,confirmed_walkable,player_probe,,
+,J13,confirmed_walkable,jump,hold right,
+,J12,confirmed_walkable,jump,hold right,
+,J11,confirmed_walkable,jump,hold right,
+,N7,confirmed_walkable,jump,hold down,
+,O7,confirmed_walkable,jump,hold down,
+,P7,confirmed_walkable,jump,hold down,
+,M11,confirmed_walkable,player_probe,,
+,M12,confirmed_walkable,player_probe,,
+,L12,confirmed_walkable,player_probe,,
+,L13,confirmed_walkable,player_probe,,
+,L14,confirmed_walkable,player_probe,,
+,L15,confirmed_walkable,player_probe,,
+,M15,confirmed_walkable,player_probe,,
+,M16,confirmed_walkable,player_probe,,
+,N16,confirmed_walkable,player_probe,,
+,O16,confirmed_walkable,player_probe,,
+,P16,confirmed_walkable,player_probe,,
+,Q16,confirmed_walkable,player_probe,,
+,R16,confirmed_walkable,player_probe,,
+,S16,confirmed_walkable,player_probe,,
+,T16,confirmed_walkable,player_probe,,
+,T15,confirmed_walkable,player_probe,,
+,S15,confirmed_walkable,player_probe,,
+,R15,confirmed_walkable,ladder,climb,
+,R14,confirmed_walkable,ladder,climb,
+,R13,confirmed_walkable,ladder,climb,
+,V10,confirmed_walkable,door,,
+,V9,confirmed_walkable,player_probe,,
+,V8,confirmed_walkable,player_probe,,
+,V7,confirmed_walkable,player_probe,,
+,Z7,confirmed_walkable,player_probe,,
+,Z8,confirmed_walkable,player_probe,,
+,Z9,confirmed_walkable,player_probe,,
+,Z10,confirmed_walkable,door,,
+,AI9,confirmed_walkable,jump,hold right,
+,AJ9,confirmed_walkable,ladder,climb,
+,AJ10,confirmed_walkable,ladder,climb,
+,AJ11,confirmed_walkable,player_probe,,
+,AK11,confirmed_walkable,player_probe,,
+,AL11,confirmed_walkable,player_probe,,
+,AM11,confirmed_walkable,player_probe,,
+,AM10,confirmed_walkable,player_probe,,
+,AM9,confirmed_walkable,player_probe,,
+,AM12,confirmed_walkable,player_probe,,
+,AM13,confirmed_walkable,player_probe,,
+,AM14,confirmed_walkable,player_probe,,
+,AM15,confirmed_walkable,player_probe,,
+,AM16,confirmed_walkable,player_probe,,
+,AN13,confirmed_walkable,player_probe,,
+,AN14,confirmed_walkable,player_probe,,
+,AO13,confirmed_walkable,player_probe,,
+,AO14,confirmed_walkable,player_probe,,
+,AO12,confirmed_walkable,ladder,climb,
+,AO11,confirmed_walkable,ladder,climb,
+,AQ11,confirmed_walkable,jump,hold left,
+,AW10,confirmed_walkable,door,,
+,AW9,confirmed_walkable,player_probe,,
+,AW8,confirmed_walkable,player_probe,,
+,AW7,confirmed_walkable,player_probe,,
+,BA7,confirmed_walkable,player_probe,,
+,BA8,confirmed_walkable,player_probe,,
+,BA9,confirmed_walkable,player_probe,,
+,BA10,confirmed_walkable,door,,
+,BM7,blocked,monster,beat,may hold key item
+,BG11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BI10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BG16,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BG15,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BH15,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BI15,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BJ15,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BG14,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BH14,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BI14,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BJ14,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BH13,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BI13,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BJ13,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BH12,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BI12,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BJ12,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BK12,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BJ11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BK11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BL11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BM11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BN11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BO11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BP11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BQ11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BR11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BS11,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BS12,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BK10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BL10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BM10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BN10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BO10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BP10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BQ10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BR10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BS10,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BL9,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BM9,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BO9,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BP9,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BQ9,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BR9,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BS9,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BP8,blocked,bush,remove,"use sword, fire arrow or bomb"
+,BN15,conditional,puzzle,remove,"use sword, fire arrow or bomb, then walk on floor switch to open door at BN20"
+,BN16,confirmed_walkable,player_probe,,
+,BN17,confirmed_walkable,player_probe,,
+,BN18,confirmed_walkable,player_probe,,
+,BN19,confirmed_walkable,player_probe,,
+,BN20,conditional,door,open,unlocks when floor switch at BN15 is pressed
+,BS23,conditional,pot,pick up,place on BP22
+,AI8,conditional,monster,move_away_or_defeat,"optional, it moves away from that spot"
+,AO10,conditional,monster,defeat,mandatory; it will not let you pass otherwise
+,AP10,conditional,monster,defeat,mandatory; it will not let you pass otherwise
+,BP22,conditional,tile switch,activate,place pot from BS23 to open path at BN25
+,BN25,conditional,wall,open,placing pot from BS23 on tile switch BP23
+,BH29,conditional,pot,pick up,"place on tile at BK22 to open door at BC26, BD26"
+,BC26,conditional,door,open,pick up pot at BH29 and place on tile at BK22 to unlock
+,BD26,conditional,door,open,pick up pot at BH29 and place on tile at BK22 to unlock
+,BC25,confirmed_walkable,player_probe,,
+,BD25,confirmed_walkable,player_probe,,
+,BC24,confirmed_walkable,player_probe,,
+,BD24,confirmed_walkable,player_probe,,
+,BC23,confirmed_walkable,player_probe,,
+,BD23,confirmed_walkable,player_probe,,
+,AZ23,confirmed_walkable,player_probe,,
+,AZ24,confirmed_walkable,player_probe,,
+,AZ25,confirmed_walkable,player_probe,,
+,AZ26,confirmed_walkable,door,open,
+Cave_to_Sundletan,F88,confirmed_walkable,player_probe,,dungeon entrance from Elcid Region / exit to Elcid Region
+,N77,blocked,priest,talk,"Save, Heal, Cure"
+,I78,blocked,NPC,talk,"Chat, Hint"
+,J80,blocked,bush,remove,"use sword, fire arrow or bomb"
+,H79,blocked,bush,remove,"use sword, fire arrow or bomb"
+,I79,blocked,bush,remove,"use sword, fire arrow or bomb"
+,J79,blocked,bush,remove,"use sword, fire arrow or bomb"
+,H78,blocked,bush,remove,"use sword, fire arrow or bomb"
+,P83,blocked,bush,remove,"use sword, fire arrow or bomb"
+,P82,blocked,bush,remove,"use sword, fire arrow or bomb"
+,O82,blocked,bush,remove,"use sword, fire arrow or bomb"
+,N82,blocked,bush,remove,"use sword, fire arrow or bomb"
+,N81,blocked,bush,remove,"use sword, fire arrow or bomb"
+,O81,blocked,bush,remove,"use sword, fire arrow or bomb"
+,N80,blocked,bush,remove,"use sword, fire arrow or bomb"
+,J76,confirmed_walkable,door,open,
+,J75,confirmed_walkable,player_probe,,
+,J74,confirmed_walkable,player_probe,,
+,J73,confirmed_walkable,player_probe,,
+,J89,confirmed_walkable,bridge,,
+,J88,confirmed_walkable,bridge,,
+,J87,confirmed_walkable,bridge,,
+,J86,confirmed_walkable,bridge,,
+,J61,confirmed_walkable,door,open,
+,J60,confirmed_walkable,player_probe,,
+,J59,confirmed_walkable,player_probe,,
+,J58,confirmed_walkable,player_probe,,
+,J49,confirmed_walkable,door,open,"Exit to Sundletan Region, Entrance from Sundletan Region"
+,J48,confirmed_walkable,player_probe,,
+,J47,confirmed_walkable,player_probe,,
+,AA62,confirmed_walkable,door,open,
+,AA61,confirmed_walkable,player_probe,,
+,AA60,confirmed_walkable,player_probe,,
+,AA59,confirmed_walkable,player_probe,,
+,W53,blocked,pot,pick up,"Step 1: place at V56, Step 3: pick up and place on floor switch at S56"
+,X53,blocked,pot,pick up,Step 2: stand on on V55 and place on floor switch at V54
+,W51,blocked,door,puzzle,opens after pot from W53 is placed on floor switch on S56
+,S48,blocked,chest,open,may contain useful gear or items
+,AG51,confirmed_walkable,door,open,
+,AS49,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AT47,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AT48,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AT49,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AU51,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AU50,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AU49,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AU48,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AU47,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AV49,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AV48,blocked,bush,remove,"use sword, fire arrow or bomb"
+,AV47,blocked,chest,open,may contain useful gear or items
+,AA67,blocked,bush,remove,"use sword, fire arrow or bomb. Reveals floor switch"
+,AA76,blocked,door,unlock,press floor switch on AA67 to unlock
+,AA75,confirmed_walkable,player_probe,,
+,AA74,confirmed_walkable,player_probe,,
+,AA73,confirmed_walkable,player_probe,,
+,X80,blocked,bush,remove,"use sword, fire arrow or bomb."
+,X81,blocked,bush,remove,"use sword, fire arrow or bomb."
+,X82,blocked,bush,remove,"use sword, fire arrow or bomb."
+,X83,blocked,bush,remove,"use sword, fire arrow or bomb."
+,X84,blocked,bush,remove,"use sword, fire arrow or bomb."
+,Y82,blocked,bush,remove,"use sword, fire arrow or bomb."
+,Y83,blocked,bush,remove,"use sword, fire arrow or bomb."
+,Y84,blocked,bush,remove,"use sword, fire arrow or bomb."
+,Y85,blocked,bush,remove,"use sword, fire arrow or bomb."
+,Z82,blocked,bush,remove,"use sword, fire arrow or bomb."
+,Z83,blocked,bush,remove,"use sword, fire arrow or bomb."
+,Z84,blocked,bush,remove,"use sword, fire arrow or bomb."
+,Z85,blocked,bush,remove,"use sword, fire arrow or bomb."
+,Y81,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AA83,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AA84,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AA85,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AA86,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AB83,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AB84,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AB85,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AC82,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AC83,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AD83,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AD84,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AD85,blocked,bush,remove,"use sword, fire arrow or bomb."
+,AE85,blocked,bush,remove,"use sword, fire arrow or bomb."
+,W83,conditional,wall,,remove bush at X83
+,V83,conditional,wall,,
+,U83,conditional,wall,,
+,T82,blocked,chest,open,may contain useful gear or items
+,AH84,confirmed_walkable,door,open,
+,AH83,confirmed_walkable,,,
+,AH82,confirmed_walkable,,,
+,AH81,confirmed_walkable,,,
+,BC79,blocked,bush,remove,"use sword, fire arrow or bomb."
+,BD79,blocked,bush,remove,"use sword, fire arrow or bomb."
+,BE79,blocked,bush,remove,reveals floor switch. Place pot here from AX81 to open door at AX78
+,AX78,confirmed_walkable,door,open,unlock by placing pot on BE79
+,AX77,confirmed_walkable,player_probe,,
+,AX76,confirmed_walkable,player_probe,,
+,AX75,confirmed_walkable,player_probe,,
+,BJ62,confirmed_walkable,door,open,
+,BJ61,confirmed_walkable,player_probe,,
+,BJ60,confirmed_walkable,player_probe,,
+,BJ59,confirmed_walkable,player_probe,,
+,BJ56,confirmed_walkable,stairs,,takes player to BP56
+,BO52,blocked,stump,shoot,shoot hook from BO46 to traverse moat
+,BQ45,blocked,stump,shoot,shoot hook from BQ52 to traverse moat
+,BP44,confirmed_walkable,door,open,
+,BP43,confirmed_walkable,player_probe,,
+,BP42,confirmed_walkable,player_probe,,
+,BP41,confirmed_walkable,player_probe,,
+,BP39,blocked,chest,open,may contain useful gear or items
+,AM57,blocked,bush,remove,reveals floor switch. Place pot here from AQ77 to open door at AQ72
+,AQ72,conditional,door,open,unlock by placing pot on AM57
+,AQ71,confirmed_walkable,player_probe,,
+,AQ70,confirmed_walkable,player_probe,,
+,AQ69,confirmed_walkable,player_probe,,
+,AS62,blocked,block,push,"push down from AS61, will trigger fight with monster at AR62"
+,AS60,blocked,block,push,"push down from AS59, will trigger fight with monster at AR61"
+,AR62,blocked,block,push,push down from AR61
+,AQ62,confirmed_walkable,stairs,,send you to W6. You want to go here first.
+,S19,blocked,chest,,
+,AE16,blocked,switch,hit with sword,completes bridge at AK16 to AK20
+,AF13,confirmed_walkable,arrows,jump,"looking right, shortcut to bridge AK16"
+,BC60,confirmed_walkable,door,open,
+,BC59,confirmed_walkable,player_probe,,
+,BC658,confirmed_walkable,player_probe,,
+,BC57,confirmed_walkable,player_probe,,
+,BB53,confirmed_walkable,arrows,jump,facing left
+,AZ51,confirmed_walkable,ladder,climb,
+,AZ52,confirmed_walkable,ladder,climb,
+,AZ53,confirmed_walkable,ladder,climb,
+,AZ55,confirmed_walkable,stairs,,send you to AI7. Regular way to Bridge at AK16
+,AE28,confirmed_walkable,wall,,
+,AD28,confirmed_walkable,wall,,
+,AC28,confirmed_walkable,wall,,
+,AB28,confirmed_walkable,wall,,
+,AA28,confirmed_walkable,wall,,
+,Z28,confirmed_walkable,wall,,
+,Y28,confirmed_walkable,wall,,
+,X28,confirmed_walkable,wall,,
+,W28,confirmed_walkable,wall,,
+,V28,confirmed_walkable,wall,,
+,U28,confirmed_walkable,wall,,
+,U27,confirmed_walkable,wall,,
+,U26,confirmed_walkable,wall,,
+,U25,confirmed_walkable,wall,,
+,U22,confirmed_walkable,stairs,,lead to U36
+,U36,confirmed_walkable,stairs,,lead to U22
+,S39,blocked,chest,,
+,W36,blocked,chest,,
+,AH26,confirmed_walkable,stairs,,lead to AH36
+,AH36,confirmed_walkable,stairs,,lead to AH26
+,AM36,confirmed_walkable,recovery tile,stand,restores HP
+,AN36,confirmed_walkable,recovery tile,stand,restores MP
+,AO36,confirmed_walkable,save tile,stand,save game
+,AS36,confirmed_walkable,stairs,,lead to AX36
+,AX36,confirmed_walkable,stairs,,lead to AS36
+,BA29,confirmed_walkable,ladder,climb,
+,BA28,confirmed_walkable,ladder,climb,
+,BA26,blocked,monster,beat,may hold key item
+Lake_Cave,U123,confirmed_walkable,player_probe,,dungeon entrance / exit
+,V123,confirmed_walkable,player_probe,,dungeon entrance / exit
+,Q117,blocked,lever,shoot,shoot to raise water level
+,T120,blocked,tile,pick up and place,place at V116 after the lever has been flipped
+,W120,blocked,tile,pick up and place,place at V115 after the lever has been flipped
+,V118,blocked,tile,pick up and place,place at V114 after the lever has been flipped
+,V108,confirmed_walkable,door,open,

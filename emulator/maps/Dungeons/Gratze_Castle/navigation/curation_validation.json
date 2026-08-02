@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Gratze_Castle",
+  "marker_count": 380,
+  "type_counts": {
+    "blocked": 118,
+    "walkable": 92,
+    "door": 20,
+    "monster": 31,
+    "water": 70,
+    "switch": 13,
+    "chest": 2,
+    "puzzle": 13,
+    "bush": 1,
+    "stairs": 20
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

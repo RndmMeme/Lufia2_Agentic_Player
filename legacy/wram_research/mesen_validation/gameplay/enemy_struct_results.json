@@ -1,0 +1,225 @@
+{
+  "status": "CONFIRMED",
+  "checks": {
+    "three_identical_garbost_stat_blocks": true,
+    "enemy_name_is_inline_ascii": true,
+    "enemy_id_matches_abyssonym_table": true,
+    "second_species_uses_same_stat_offsets": true,
+    "unused_slots_have_zero_core_stats": true,
+    "current_hp_changes_at_struct_plus_0x14": true,
+    "max_hp_remains_at_struct_plus_0x28": true,
+    "disabled_status_bit_on_defeated_enemy": true,
+    "freeze_ball_sets_paralyze_bit_0x08": true,
+    "nonvolatile_combat_stats_remain_stable": true
+  },
+  "layout": {
+    "struct_base": "7E:1618 + slot*0xBE",
+    "slot_count": 6,
+    "stride": "0xBE",
+    "name": "struct +0x03, 13 ASCII bytes",
+    "enemy_id": "struct +0x53, uint8; Abyssonym monster table index",
+    "status_addresses": [
+      "7E:162A",
+      "7E:16E8",
+      "7E:17A6",
+      "7E:1864",
+      "7E:1922",
+      "7E:19E0"
+    ],
+    "status_bits": {
+      "poison": "0x01, inherited from identical party layout",
+      "silence": "0x02, inherited from identical party layout",
+      "disabled": "0x04, live confirmed",
+      "paralyze": "0x08, live confirmed",
+      "confusion": "0x10, inherited from identical party layout",
+      "sleep": "0x20, inherited from identical party layout"
+    },
+    "offsets": {
+      "level": "0x11",
+      "status": "0x12",
+      "current_hp": "0x14",
+      "current_mp": "0x16",
+      "max_hp": "0x28",
+      "max_mp": "0x2A",
+      "attack": "0x2C",
+      "defense": "0x2E",
+      "strength": "0x30",
+      "agility": "0x32",
+      "intelligence": "0x34",
+      "guts": "0x36",
+      "magic_resistance": "0x38"
+    },
+    "old_hp_anchor": "7E:162C + slot*0xBE = struct + 0x14"
+  },
+  "live_values": {
+    "enemy": "Garbost",
+    "enemy_id": "0x54",
+    "slots_0_to_2_before": [
+      {
+        "level": 50,
+        "status": 0,
+        "current_hp": 637,
+        "current_mp": 32,
+        "max_hp": 637,
+        "max_mp": 32,
+        "attack": 135,
+        "defense": 298,
+        "strength": 0,
+        "agility": 154,
+        "intelligence": 92,
+        "guts": 120,
+        "magic_resistance": 50
+      },
+      {
+        "level": 50,
+        "status": 0,
+        "current_hp": 637,
+        "current_mp": 32,
+        "max_hp": 637,
+        "max_mp": 32,
+        "attack": 135,
+        "defense": 298,
+        "strength": 0,
+        "agility": 154,
+        "intelligence": 92,
+        "guts": 120,
+        "magic_resistance": 50
+      },
+      {
+        "level": 50,
+        "status": 0,
+        "current_hp": 637,
+        "current_mp": 32,
+        "max_hp": 637,
+        "max_mp": 32,
+        "attack": 135,
+        "defense": 298,
+        "strength": 0,
+        "agility": 154,
+        "intelligence": 92,
+        "guts": 120,
+        "magic_resistance": 50
+      }
+    ],
+    "slots_0_to_2_after_round": [
+      {
+        "level": 50,
+        "status": 4,
+        "current_hp": 0,
+        "current_mp": 32,
+        "max_hp": 637,
+        "max_mp": 32,
+        "attack": 135,
+        "defense": 298,
+        "strength": 0,
+        "agility": 154,
+        "intelligence": 92,
+        "guts": 120,
+        "magic_resistance": 50
+      },
+      {
+        "level": 50,
+        "status": 0,
+        "current_hp": 336,
+        "current_mp": 32,
+        "max_hp": 637,
+        "max_mp": 32,
+        "attack": 135,
+        "defense": 298,
+        "strength": 0,
+        "agility": 154,
+        "intelligence": 92,
+        "guts": 120,
+        "magic_resistance": 50
+      },
+      {
+        "level": 50,
+        "status": 0,
+        "current_hp": 637,
+        "current_mp": 32,
+        "max_hp": 637,
+        "max_mp": 32,
+        "attack": 135,
+        "defense": 298,
+        "strength": 0,
+        "agility": 154,
+        "intelligence": 92,
+        "guts": 120,
+        "magic_resistance": 50
+      }
+    ],
+    "freeze_ball_target_slot_2": {
+      "level": 50,
+      "status": 8,
+      "current_hp": 637,
+      "current_mp": 32,
+      "max_hp": 637,
+      "max_mp": 32,
+      "attack": 135,
+      "defense": 298,
+      "strength": 0,
+      "agility": 154,
+      "intelligence": 92,
+      "guts": 120,
+      "magic_resistance": 50
+    },
+    "second_species": {
+      "name": "Ramia",
+      "enemy_id": "0x3B",
+      "slots_0_to_2": [
+        {
+          "level": 50,
+          "status": 0,
+          "current_hp": 575,
+          "current_mp": 108,
+          "max_hp": 575,
+          "max_mp": 108,
+          "attack": 256,
+          "defense": 212,
+          "strength": 0,
+          "agility": 44,
+          "intelligence": 88,
+          "guts": 112,
+          "magic_resistance": 66
+        },
+        {
+          "level": 50,
+          "status": 0,
+          "current_hp": 575,
+          "current_mp": 108,
+          "max_hp": 575,
+          "max_mp": 108,
+          "attack": 256,
+          "defense": 212,
+          "strength": 0,
+          "agility": 44,
+          "intelligence": 88,
+          "guts": 112,
+          "magic_resistance": 66
+        },
+        {
+          "level": 50,
+          "status": 0,
+          "current_hp": 575,
+          "current_mp": 108,
+          "max_hp": 575,
+          "max_mp": 108,
+          "attack": 256,
+          "defense": 212,
+          "strength": 0,
+          "agility": 44,
+          "intelligence": 88,
+          "guts": 112,
+          "magic_resistance": 66
+        }
+      ]
+    }
+  },
+  "confidence": {
+    "current_hp": "live effect confirmed",
+    "status_disabled_0x04": "live death transition confirmed",
+    "status_paralyze_0x08": "live Freeze ball transition confirmed",
+    "remaining_stat_names": "confirmed by exact character-layout alignment and stable identical enemy blocks",
+    "other_status_bits": "accepted inference from the identical party combat-stat layout"
+  }
+}

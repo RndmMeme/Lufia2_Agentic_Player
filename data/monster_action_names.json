@@ -1,0 +1,1800 @@
+{
+  "source_rom": "C:\\Users\\admin\\Desktop\\Games\\snes9x-1.62.3-win32-x64(1)\\Roms\\seeds\\Lufia_II_-_Rise_of_the_Sinistrals_USA.1721649189.sfc",
+  "source_rom_sha1": "1D0A95DDCCEB399E8FEC51BA5CBB6A6C5D30E0E0",
+  "pointer_table_rom_offset": "280000",
+  "count": 256,
+  "entries": [
+    {
+      "id": 0,
+      "id_hex": "00",
+      "name": "Ninja",
+      "pointer": "8200",
+      "rom_offset": "280200"
+    },
+    {
+      "id": 1,
+      "id_hex": "01",
+      "name": "Samurai",
+      "pointer": "8207",
+      "rom_offset": "280207"
+    },
+    {
+      "id": 2,
+      "id_hex": "02",
+      "name": "Kamikaze",
+      "pointer": "8210",
+      "rom_offset": "280210"
+    },
+    {
+      "id": 3,
+      "id_hex": "03",
+      "name": "Incendiary",
+      "pointer": "821A",
+      "rom_offset": "28021A"
+    },
+    {
+      "id": 4,
+      "id_hex": "04",
+      "name": "Frost",
+      "pointer": "8226",
+      "rom_offset": "280226"
+    },
+    {
+      "id": 5,
+      "id_hex": "05",
+      "name": "Voltage bolt",
+      "pointer": "822D",
+      "rom_offset": "28022D"
+    },
+    {
+      "id": 6,
+      "id_hex": "06",
+      "name": "Scolding",
+      "pointer": "823B",
+      "rom_offset": "28023B"
+    },
+    {
+      "id": 7,
+      "id_hex": "07",
+      "name": "Groundshock",
+      "pointer": "8245",
+      "rom_offset": "280245"
+    },
+    {
+      "id": 8,
+      "id_hex": "08",
+      "name": "Raging wave",
+      "pointer": "8252",
+      "rom_offset": "280252"
+    },
+    {
+      "id": 9,
+      "id_hex": "09",
+      "name": "Torrent",
+      "pointer": "825F",
+      "rom_offset": "28025F"
+    },
+    {
+      "id": 10,
+      "id_hex": "0A",
+      "name": "Gloomy",
+      "pointer": "8268",
+      "rom_offset": "280268"
+    },
+    {
+      "id": 11,
+      "id_hex": "0B",
+      "name": "Sizzle breath",
+      "pointer": "8270",
+      "rom_offset": "280270"
+    },
+    {
+      "id": 12,
+      "id_hex": "0C",
+      "name": "Whirlpool",
+      "pointer": "827F",
+      "rom_offset": "28027F"
+    },
+    {
+      "id": 13,
+      "id_hex": "0D",
+      "name": "Sandstorm",
+      "pointer": "828A",
+      "rom_offset": "28028A"
+    },
+    {
+      "id": 14,
+      "id_hex": "0E",
+      "name": "Thunderstorm",
+      "pointer": "8295",
+      "rom_offset": "280295"
+    },
+    {
+      "id": 15,
+      "id_hex": "0F",
+      "name": "Bite",
+      "pointer": "82A3",
+      "rom_offset": "2802A3"
+    },
+    {
+      "id": 16,
+      "id_hex": "10",
+      "name": "Frenzy",
+      "pointer": "82A9",
+      "rom_offset": "2802A9"
+    },
+    {
+      "id": 17,
+      "id_hex": "11",
+      "name": "Vampire",
+      "pointer": "82B1",
+      "rom_offset": "2802B1"
+    },
+    {
+      "id": 18,
+      "id_hex": "12",
+      "name": "Dive",
+      "pointer": "82BA",
+      "rom_offset": "2802BA"
+    },
+    {
+      "id": 19,
+      "id_hex": "13",
+      "name": "Immobilize",
+      "pointer": "82C0",
+      "rom_offset": "2802C0"
+    },
+    {
+      "id": 20,
+      "id_hex": "14",
+      "name": "Poison spit",
+      "pointer": "82CC",
+      "rom_offset": "2802CC"
+    },
+    {
+      "id": 21,
+      "id_hex": "15",
+      "name": "Miracle voice",
+      "pointer": "82D9",
+      "rom_offset": "2802D9"
+    },
+    {
+      "id": 22,
+      "id_hex": "16",
+      "name": "Tail attack",
+      "pointer": "82E8",
+      "rom_offset": "2802E8"
+    },
+    {
+      "id": 23,
+      "id_hex": "17",
+      "name": "Picking",
+      "pointer": "82F5",
+      "rom_offset": "2802F5"
+    },
+    {
+      "id": 24,
+      "id_hex": "18",
+      "name": "Blitzer",
+      "pointer": "82FE",
+      "rom_offset": "2802FE"
+    },
+    {
+      "id": 25,
+      "id_hex": "19",
+      "name": "Earthquake",
+      "pointer": "8307",
+      "rom_offset": "280307"
+    },
+    {
+      "id": 26,
+      "id_hex": "1A",
+      "name": "Tidal wave",
+      "pointer": "8313",
+      "rom_offset": "280313"
+    },
+    {
+      "id": 27,
+      "id_hex": "1B",
+      "name": "Final shadow",
+      "pointer": "831F",
+      "rom_offset": "28031F"
+    },
+    {
+      "id": 28,
+      "id_hex": "1C",
+      "name": "Black thunder",
+      "pointer": "832D",
+      "rom_offset": "28032D"
+    },
+    {
+      "id": 29,
+      "id_hex": "1D",
+      "name": "Dark force",
+      "pointer": "833C",
+      "rom_offset": "28033C"
+    },
+    {
+      "id": 30,
+      "id_hex": "1E",
+      "name": "Dark aura",
+      "pointer": "8348",
+      "rom_offset": "280348"
+    },
+    {
+      "id": 31,
+      "id_hex": "1F",
+      "name": "Evil lance",
+      "pointer": "8353",
+      "rom_offset": "280353"
+    },
+    {
+      "id": 32,
+      "id_hex": "20",
+      "name": "Energy shock",
+      "pointer": "835F",
+      "rom_offset": "28035F"
+    },
+    {
+      "id": 33,
+      "id_hex": "21",
+      "name": "Repeat attack",
+      "pointer": "836D",
+      "rom_offset": "28036D"
+    },
+    {
+      "id": 34,
+      "id_hex": "22",
+      "name": "Iron kick",
+      "pointer": "837C",
+      "rom_offset": "28037C"
+    },
+    {
+      "id": 35,
+      "id_hex": "23",
+      "name": "Head attack",
+      "pointer": "8387",
+      "rom_offset": "280387"
+    },
+    {
+      "id": 36,
+      "id_hex": "24",
+      "name": "Intensity punch",
+      "pointer": "8394",
+      "rom_offset": "280394"
+    },
+    {
+      "id": 37,
+      "id_hex": "25",
+      "name": "Fatal punch",
+      "pointer": "83A5",
+      "rom_offset": "2803A5"
+    },
+    {
+      "id": 38,
+      "id_hex": "26",
+      "name": "Magma blast",
+      "pointer": "83B2",
+      "rom_offset": "2803B2"
+    },
+    {
+      "id": 39,
+      "id_hex": "27",
+      "name": "Golden mist",
+      "pointer": "83BF",
+      "rom_offset": "2803BF"
+    },
+    {
+      "id": 40,
+      "id_hex": "28",
+      "name": "Triple attack",
+      "pointer": "83CC",
+      "rom_offset": "2803CC"
+    },
+    {
+      "id": 41,
+      "id_hex": "29",
+      "name": "Ice stream",
+      "pointer": "83DB",
+      "rom_offset": "2803DB"
+    },
+    {
+      "id": 42,
+      "id_hex": "2A",
+      "name": "Triple blast",
+      "pointer": "83E7",
+      "rom_offset": "2803E7"
+    },
+    {
+      "id": 43,
+      "id_hex": "2B",
+      "name": "Destructor beam",
+      "pointer": "83F5",
+      "rom_offset": "2803F5"
+    },
+    {
+      "id": 44,
+      "id_hex": "2C",
+      "name": "Octo-head blast",
+      "pointer": "8406",
+      "rom_offset": "280406"
+    },
+    {
+      "id": 45,
+      "id_hex": "2D",
+      "name": "Poison tail",
+      "pointer": "8417",
+      "rom_offset": "280417"
+    },
+    {
+      "id": 46,
+      "id_hex": "2E",
+      "name": "Cold stream",
+      "pointer": "8424",
+      "rom_offset": "280424"
+    },
+    {
+      "id": 47,
+      "id_hex": "2F",
+      "name": "Phoenix blast",
+      "pointer": "8431",
+      "rom_offset": "280431"
+    },
+    {
+      "id": 48,
+      "id_hex": "30",
+      "name": "Raio beam",
+      "pointer": "8440",
+      "rom_offset": "280440"
+    },
+    {
+      "id": 49,
+      "id_hex": "31",
+      "name": "Raging wave",
+      "pointer": "844B",
+      "rom_offset": "28044B"
+    },
+    {
+      "id": 50,
+      "id_hex": "32",
+      "name": "Gloomsplash",
+      "pointer": "8458",
+      "rom_offset": "280458"
+    },
+    {
+      "id": 51,
+      "id_hex": "33",
+      "name": "Cinder blast",
+      "pointer": "8465",
+      "rom_offset": "280465"
+    },
+    {
+      "id": 52,
+      "id_hex": "34",
+      "name": "Diamond dust",
+      "pointer": "8473",
+      "rom_offset": "280473"
+    },
+    {
+      "id": 53,
+      "id_hex": "35",
+      "name": "Stardust blow",
+      "pointer": "8481",
+      "rom_offset": "280481"
+    },
+    {
+      "id": 54,
+      "id_hex": "36",
+      "name": "Cruel storm",
+      "pointer": "8490",
+      "rom_offset": "280490"
+    },
+    {
+      "id": 55,
+      "id_hex": "37",
+      "name": "Spore",
+      "pointer": "849D",
+      "rom_offset": "28049D"
+    },
+    {
+      "id": 56,
+      "id_hex": "38",
+      "name": "Ax attack",
+      "pointer": "84A4",
+      "rom_offset": "2804A4"
+    },
+    {
+      "id": 57,
+      "id_hex": "39",
+      "name": "Total destruction",
+      "pointer": "84AF",
+      "rom_offset": "2804AF"
+    },
+    {
+      "id": 58,
+      "id_hex": "3A",
+      "name": "Terminal blow",
+      "pointer": "84C2",
+      "rom_offset": "2804C2"
+    },
+    {
+      "id": 59,
+      "id_hex": "3B",
+      "name": "Shockwave",
+      "pointer": "84D1",
+      "rom_offset": "2804D1"
+    },
+    {
+      "id": 60,
+      "id_hex": "3C",
+      "name": "Flame defender",
+      "pointer": "84DC",
+      "rom_offset": "2804DC"
+    },
+    {
+      "id": 61,
+      "id_hex": "3D",
+      "name": "Raio shock",
+      "pointer": "84EC",
+      "rom_offset": "2804EC"
+    },
+    {
+      "id": 62,
+      "id_hex": "3E",
+      "name": "Nail splash",
+      "pointer": "84F8",
+      "rom_offset": "2804F8"
+    },
+    {
+      "id": 63,
+      "id_hex": "3F",
+      "name": "Scissor slash",
+      "pointer": "8505",
+      "rom_offset": "280505"
+    },
+    {
+      "id": 64,
+      "id_hex": "40",
+      "name": "Bearhug",
+      "pointer": "8514",
+      "rom_offset": "280514"
+    },
+    {
+      "id": 65,
+      "id_hex": "41",
+      "name": "Bestial presence",
+      "pointer": "851D",
+      "rom_offset": "28051D"
+    },
+    {
+      "id": 66,
+      "id_hex": "42",
+      "name": "Cold shoulder",
+      "pointer": "852F",
+      "rom_offset": "28052F"
+    },
+    {
+      "id": 67,
+      "id_hex": "43",
+      "name": "Sunder",
+      "pointer": "853E",
+      "rom_offset": "28053E"
+    },
+    {
+      "id": 68,
+      "id_hex": "44",
+      "name": "Vile laughter",
+      "pointer": "8546",
+      "rom_offset": "280546"
+    },
+    {
+      "id": 69,
+      "id_hex": "45",
+      "name": "Oink",
+      "pointer": "8555",
+      "rom_offset": "280555"
+    },
+    {
+      "id": 70,
+      "id_hex": "46",
+      "name": "Squealer",
+      "pointer": "855B",
+      "rom_offset": "28055B"
+    },
+    {
+      "id": 71,
+      "id_hex": "47",
+      "name": "Sleep javelin",
+      "pointer": "8565",
+      "rom_offset": "280565"
+    },
+    {
+      "id": 72,
+      "id_hex": "48",
+      "name": "Twister",
+      "pointer": "8574",
+      "rom_offset": "280574"
+    },
+    {
+      "id": 73,
+      "id_hex": "49",
+      "name": "Flash",
+      "pointer": "857D",
+      "rom_offset": "28057D"
+    },
+    {
+      "id": 74,
+      "id_hex": "4A",
+      "name": "Scratch",
+      "pointer": "8584",
+      "rom_offset": "280584"
+    },
+    {
+      "id": 75,
+      "id_hex": "4B",
+      "name": "Riddler",
+      "pointer": "858D",
+      "rom_offset": "28058D"
+    },
+    {
+      "id": 76,
+      "id_hex": "4C",
+      "name": "Dash",
+      "pointer": "8596",
+      "rom_offset": "280596"
+    },
+    {
+      "id": 77,
+      "id_hex": "4D",
+      "name": "Double kick",
+      "pointer": "859C",
+      "rom_offset": "28059C"
+    },
+    {
+      "id": 78,
+      "id_hex": "4E",
+      "name": "Ribbit, ribbit",
+      "pointer": "85A9",
+      "rom_offset": "2805A9"
+    },
+    {
+      "id": 79,
+      "id_hex": "4F",
+      "name": "Chorus",
+      "pointer": "85B9",
+      "rom_offset": "2805B9"
+    },
+    {
+      "id": 80,
+      "id_hex": "50",
+      "name": "Do-re-mi",
+      "pointer": "85C1",
+      "rom_offset": "2805C1"
+    },
+    {
+      "id": 81,
+      "id_hex": "51",
+      "name": "Tra-la-la",
+      "pointer": "85CB",
+      "rom_offset": "2805CB"
+    },
+    {
+      "id": 82,
+      "id_hex": "52",
+      "name": "Doop-do-wah",
+      "pointer": "85D6",
+      "rom_offset": "2805D6"
+    },
+    {
+      "id": 83,
+      "id_hex": "53",
+      "name": "Da-dadah",
+      "pointer": "85E3",
+      "rom_offset": "2805E3"
+    },
+    {
+      "id": 84,
+      "id_hex": "54",
+      "name": "Voice training",
+      "pointer": "85ED",
+      "rom_offset": "2805ED"
+    },
+    {
+      "id": 85,
+      "id_hex": "55",
+      "name": "Poison spear",
+      "pointer": "85FD",
+      "rom_offset": "2805FD"
+    },
+    {
+      "id": 86,
+      "id_hex": "56",
+      "name": "Hold gaze",
+      "pointer": "860B",
+      "rom_offset": "28060B"
+    },
+    {
+      "id": 87,
+      "id_hex": "57",
+      "name": "Scissors",
+      "pointer": "8616",
+      "rom_offset": "280616"
+    },
+    {
+      "id": 88,
+      "id_hex": "58",
+      "name": "Flap flap dance",
+      "pointer": "8620",
+      "rom_offset": "280620"
+    },
+    {
+      "id": 89,
+      "id_hex": "59",
+      "name": "Lantern",
+      "pointer": "8631",
+      "rom_offset": "280631"
+    },
+    {
+      "id": 90,
+      "id_hex": "5A",
+      "name": "Tentacle",
+      "pointer": "863A",
+      "rom_offset": "28063A"
+    },
+    {
+      "id": 91,
+      "id_hex": "5B",
+      "name": "Octo ink",
+      "pointer": "8644",
+      "rom_offset": "280644"
+    },
+    {
+      "id": 92,
+      "id_hex": "5C",
+      "name": "Eight-legger",
+      "pointer": "864E",
+      "rom_offset": "28064E"
+    },
+    {
+      "id": 93,
+      "id_hex": "5D",
+      "name": "Squid ink",
+      "pointer": "865C",
+      "rom_offset": "28065C"
+    },
+    {
+      "id": 94,
+      "id_hex": "5E",
+      "name": "Ten-legger",
+      "pointer": "8667",
+      "rom_offset": "280667"
+    },
+    {
+      "id": 95,
+      "id_hex": "5F",
+      "name": "Confubite",
+      "pointer": "8673",
+      "rom_offset": "280673"
+    },
+    {
+      "id": 96,
+      "id_hex": "60",
+      "name": "Contact",
+      "pointer": "867E",
+      "rom_offset": "28067E"
+    },
+    {
+      "id": 97,
+      "id_hex": "61",
+      "name": "Ice beak",
+      "pointer": "8687",
+      "rom_offset": "280687"
+    },
+    {
+      "id": 98,
+      "id_hex": "62",
+      "name": "Beak bash",
+      "pointer": "8691",
+      "rom_offset": "280691"
+    },
+    {
+      "id": 99,
+      "id_hex": "63",
+      "name": "Mokujinken",
+      "pointer": "869C",
+      "rom_offset": "28069C"
+    },
+    {
+      "id": 100,
+      "id_hex": "64",
+      "name": "Magma fist",
+      "pointer": "86A8",
+      "rom_offset": "2806A8"
+    },
+    {
+      "id": 101,
+      "id_hex": "65",
+      "name": "Guillotine",
+      "pointer": "86B4",
+      "rom_offset": "2806B4"
+    },
+    {
+      "id": 102,
+      "id_hex": "66",
+      "name": "Knife thrower",
+      "pointer": "86C0",
+      "rom_offset": "2806C0"
+    },
+    {
+      "id": 103,
+      "id_hex": "67",
+      "name": "Buster attack",
+      "pointer": "86CF",
+      "rom_offset": "2806CF"
+    },
+    {
+      "id": 104,
+      "id_hex": "68",
+      "name": "Mega quake",
+      "pointer": "86DE",
+      "rom_offset": "2806DE"
+    },
+    {
+      "id": 105,
+      "id_hex": "69",
+      "name": "Poison shower",
+      "pointer": "86EA",
+      "rom_offset": "2806EA"
+    },
+    {
+      "id": 106,
+      "id_hex": "6A",
+      "name": "Devastation",
+      "pointer": "86F9",
+      "rom_offset": "2806F9"
+    },
+    {
+      "id": 107,
+      "id_hex": "6B",
+      "name": "Ha, ha, ha, ha, ha!",
+      "pointer": "8706",
+      "rom_offset": "280706"
+    },
+    {
+      "id": 108,
+      "id_hex": "6C",
+      "name": "Spiderweb",
+      "pointer": "871B",
+      "rom_offset": "28071B"
+    },
+    {
+      "id": 109,
+      "id_hex": "6D",
+      "name": "Plasma blaster",
+      "pointer": "8726",
+      "rom_offset": "280726"
+    },
+    {
+      "id": 110,
+      "id_hex": "6E",
+      "name": "Idura thunder",
+      "pointer": "8736",
+      "rom_offset": "280736"
+    },
+    {
+      "id": 111,
+      "id_hex": "6F",
+      "name": "Destructo-wave",
+      "pointer": "8745",
+      "rom_offset": "280745"
+    },
+    {
+      "id": 112,
+      "id_hex": "70",
+      "name": "Sneezespreader",
+      "pointer": "8755",
+      "rom_offset": "280755"
+    },
+    {
+      "id": 113,
+      "id_hex": "71",
+      "name": "Thorn",
+      "pointer": "8765",
+      "rom_offset": "280765"
+    },
+    {
+      "id": 114,
+      "id_hex": "72",
+      "name": "Doomcry",
+      "pointer": "876C",
+      "rom_offset": "28076C"
+    },
+    {
+      "id": 115,
+      "id_hex": "73",
+      "name": "Hatred",
+      "pointer": "8775",
+      "rom_offset": "280775"
+    },
+    {
+      "id": 116,
+      "id_hex": "74",
+      "name": "Piercer",
+      "pointer": "877D",
+      "rom_offset": "28077D"
+    },
+    {
+      "id": 117,
+      "id_hex": "75",
+      "name": "Incendiary bomb",
+      "pointer": "8786",
+      "rom_offset": "280786"
+    },
+    {
+      "id": 118,
+      "id_hex": "76",
+      "name": "Machine-gun attack",
+      "pointer": "8797",
+      "rom_offset": "280797"
+    },
+    {
+      "id": 119,
+      "id_hex": "77",
+      "name": "Missile blast",
+      "pointer": "87AB",
+      "rom_offset": "2807AB"
+    },
+    {
+      "id": 120,
+      "id_hex": "78",
+      "name": "Drowsy",
+      "pointer": "87BA",
+      "rom_offset": "2807BA"
+    },
+    {
+      "id": 121,
+      "id_hex": "79",
+      "name": "Galactic lancer",
+      "pointer": "87C2",
+      "rom_offset": "2807C2"
+    },
+    {
+      "id": 122,
+      "id_hex": "7A",
+      "name": "Chaos wave",
+      "pointer": "87D3",
+      "rom_offset": "2807D3"
+    },
+    {
+      "id": 123,
+      "id_hex": "7B",
+      "name": "Devastation wave",
+      "pointer": "87DF",
+      "rom_offset": "2807DF"
+    },
+    {
+      "id": 124,
+      "id_hex": "7C",
+      "name": "Eerie light",
+      "pointer": "87F1",
+      "rom_offset": "2807F1"
+    },
+    {
+      "id": 125,
+      "id_hex": "7D",
+      "name": "Dark fry",
+      "pointer": "87FE",
+      "rom_offset": "2807FE"
+    },
+    {
+      "id": 126,
+      "id_hex": "7E",
+      "name": "Terror wave",
+      "pointer": "8808",
+      "rom_offset": "280808"
+    },
+    {
+      "id": 127,
+      "id_hex": "7F",
+      "name": "Dark reflector",
+      "pointer": "8815",
+      "rom_offset": "280815"
+    },
+    {
+      "id": 128,
+      "id_hex": "80",
+      "name": "Sleep stinger",
+      "pointer": "8825",
+      "rom_offset": "280825"
+    },
+    {
+      "id": 129,
+      "id_hex": "81",
+      "name": "Magic gale bullet",
+      "pointer": "8834",
+      "rom_offset": "280834"
+    },
+    {
+      "id": 130,
+      "id_hex": "82",
+      "name": "Sunny-side up",
+      "pointer": "8847",
+      "rom_offset": "280847"
+    },
+    {
+      "id": 131,
+      "id_hex": "83",
+      "name": "Over-easy",
+      "pointer": "8856",
+      "rom_offset": "280856"
+    },
+    {
+      "id": 132,
+      "id_hex": "84",
+      "name": "Scrambled egg",
+      "pointer": "8861",
+      "rom_offset": "280861"
+    },
+    {
+      "id": 133,
+      "id_hex": "85",
+      "name": "Let's regain our strength.",
+      "pointer": "8870",
+      "rom_offset": "280870"
+    },
+    {
+      "id": 134,
+      "id_hex": "86",
+      "name": "Right, let's go!",
+      "pointer": "888C",
+      "rom_offset": "28088C"
+    },
+    {
+      "id": 135,
+      "id_hex": "87",
+      "name": "I'm out of here!",
+      "pointer": "889E",
+      "rom_offset": "28089E"
+    },
+    {
+      "id": 136,
+      "id_hex": "88",
+      "name": "Are we ready?",
+      "pointer": "88B0",
+      "rom_offset": "2808B0"
+    },
+    {
+      "id": 137,
+      "id_hex": "89",
+      "name": "Poison pin",
+      "pointer": "88BF",
+      "rom_offset": "2808BF"
+    },
+    {
+      "id": 138,
+      "id_hex": "8A",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 139,
+      "id_hex": "8B",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 140,
+      "id_hex": "8C",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 141,
+      "id_hex": "8D",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 142,
+      "id_hex": "8E",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 143,
+      "id_hex": "8F",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 144,
+      "id_hex": "90",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 145,
+      "id_hex": "91",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 146,
+      "id_hex": "92",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 147,
+      "id_hex": "93",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 148,
+      "id_hex": "94",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 149,
+      "id_hex": "95",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 150,
+      "id_hex": "96",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 151,
+      "id_hex": "97",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 152,
+      "id_hex": "98",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 153,
+      "id_hex": "99",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 154,
+      "id_hex": "9A",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 155,
+      "id_hex": "9B",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 156,
+      "id_hex": "9C",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 157,
+      "id_hex": "9D",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 158,
+      "id_hex": "9E",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 159,
+      "id_hex": "9F",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 160,
+      "id_hex": "A0",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 161,
+      "id_hex": "A1",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 162,
+      "id_hex": "A2",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 163,
+      "id_hex": "A3",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 164,
+      "id_hex": "A4",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 165,
+      "id_hex": "A5",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 166,
+      "id_hex": "A6",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 167,
+      "id_hex": "A7",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 168,
+      "id_hex": "A8",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 169,
+      "id_hex": "A9",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 170,
+      "id_hex": "AA",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 171,
+      "id_hex": "AB",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 172,
+      "id_hex": "AC",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 173,
+      "id_hex": "AD",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 174,
+      "id_hex": "AE",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 175,
+      "id_hex": "AF",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 176,
+      "id_hex": "B0",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 177,
+      "id_hex": "B1",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 178,
+      "id_hex": "B2",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 179,
+      "id_hex": "B3",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 180,
+      "id_hex": "B4",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 181,
+      "id_hex": "B5",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 182,
+      "id_hex": "B6",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 183,
+      "id_hex": "B7",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 184,
+      "id_hex": "B8",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 185,
+      "id_hex": "B9",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 186,
+      "id_hex": "BA",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 187,
+      "id_hex": "BB",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 188,
+      "id_hex": "BC",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 189,
+      "id_hex": "BD",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 190,
+      "id_hex": "BE",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 191,
+      "id_hex": "BF",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 192,
+      "id_hex": "C0",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 193,
+      "id_hex": "C1",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 194,
+      "id_hex": "C2",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 195,
+      "id_hex": "C3",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 196,
+      "id_hex": "C4",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 197,
+      "id_hex": "C5",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 198,
+      "id_hex": "C6",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 199,
+      "id_hex": "C7",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 200,
+      "id_hex": "C8",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 201,
+      "id_hex": "C9",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 202,
+      "id_hex": "CA",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 203,
+      "id_hex": "CB",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 204,
+      "id_hex": "CC",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 205,
+      "id_hex": "CD",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 206,
+      "id_hex": "CE",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 207,
+      "id_hex": "CF",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 208,
+      "id_hex": "D0",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 209,
+      "id_hex": "D1",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 210,
+      "id_hex": "D2",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 211,
+      "id_hex": "D3",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 212,
+      "id_hex": "D4",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 213,
+      "id_hex": "D5",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 214,
+      "id_hex": "D6",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 215,
+      "id_hex": "D7",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 216,
+      "id_hex": "D8",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 217,
+      "id_hex": "D9",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 218,
+      "id_hex": "DA",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 219,
+      "id_hex": "DB",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 220,
+      "id_hex": "DC",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 221,
+      "id_hex": "DD",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 222,
+      "id_hex": "DE",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 223,
+      "id_hex": "DF",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 224,
+      "id_hex": "E0",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 225,
+      "id_hex": "E1",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 226,
+      "id_hex": "E2",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 227,
+      "id_hex": "E3",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 228,
+      "id_hex": "E4",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 229,
+      "id_hex": "E5",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 230,
+      "id_hex": "E6",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 231,
+      "id_hex": "E7",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 232,
+      "id_hex": "E8",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 233,
+      "id_hex": "E9",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 234,
+      "id_hex": "EA",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 235,
+      "id_hex": "EB",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 236,
+      "id_hex": "EC",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 237,
+      "id_hex": "ED",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 238,
+      "id_hex": "EE",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 239,
+      "id_hex": "EF",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 240,
+      "id_hex": "F0",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 241,
+      "id_hex": "F1",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 242,
+      "id_hex": "F2",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 243,
+      "id_hex": "F3",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 244,
+      "id_hex": "F4",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 245,
+      "id_hex": "F5",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 246,
+      "id_hex": "F6",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 247,
+      "id_hex": "F7",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 248,
+      "id_hex": "F8",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 249,
+      "id_hex": "F9",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 250,
+      "id_hex": "FA",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 251,
+      "id_hex": "FB",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 252,
+      "id_hex": "FC",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 253,
+      "id_hex": "FD",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 254,
+      "id_hex": "FE",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    },
+    {
+      "id": 255,
+      "id_hex": "FF",
+      "name": "???",
+      "pointer": "88CB",
+      "rom_offset": "2808CB"
+    }
+  ]
+}

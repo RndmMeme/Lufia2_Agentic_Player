@@ -1,0 +1,25 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Dankirk_North_Dungeon",
+  "marker_count": 486,
+  "type_counts": {
+    "stairs": 19,
+    "npc": 2,
+    "door": 27,
+    "bush": 16,
+    "puzzle": 82,
+    "walkable": 197,
+    "monster": 40,
+    "switch": 22,
+    "chest": 7,
+    "blocked": 8,
+    "water": 66
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

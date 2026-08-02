@@ -1,0 +1,93 @@
+{
+  "emulator": {
+    "backend": "mesen_lua",
+    "bridge_protocol": 2,
+    "rom_sha1": "1D0A95DDCCEB399E8FEC51BA5CBB6A6C5D30E0E0",
+    "pulse_frames": 2,
+    "exploration_hold_frames": 12,
+    "exploration_frames_per_tile": 6,
+    "exploration_expected_tiles": 2,
+    "reset_menu_open_seconds": 0.75,
+    "reset_selection_seconds": 0.65,
+    "reset_confirmation_seconds": 0.75,
+    "reset_confirmation_presses": 2,
+    "chord_lead_frames": 2,
+    "chord_press_frames": 2,
+    "results_hold_max_frames": 3600,
+    "settle_seconds": 0.32
+  },
+  "battle": {
+    "execution_enabled": false
+  },
+  "llm": {
+    "enabled": false,
+    "provider": "auto",
+    "model": "",
+    "planner_model": "qwen3-vl:4b",
+    "vision_model": "qwen3-vl:4b",
+    "deliberate_model": "qwen3-vl:4b",
+    "battle_model": "qwen3-vl:4b",
+    "resident_policy": "single",
+    "planner_keep_alive": -1,
+    "vision_keep_alive": -1,
+    "deliberate_keep_alive": -1,
+    "battle_keep_alive": -1,
+    "planner_context_tokens": 4096,
+    "vision_context_tokens": 4096,
+    "deliberate_context_tokens": 4096,
+    "battle_context_tokens": 3072,
+    "planner_think": false,
+    "vision_think": false,
+    "deliberate_think": false,
+    "battle_think": false,
+    "planner_max_tokens": 220,
+    "vision_max_tokens": 320,
+    "deliberate_max_tokens": 480,
+    "battle_max_tokens": 260,
+    "ollama_num_batch": 128,
+    "providers": [
+      {
+        "name": "ollama",
+        "base_url": "http://127.0.0.1:11435",
+        "model": ""
+      },
+      {
+        "name": "llama_cpp",
+        "base_url": "http://127.0.0.1:8080/v1",
+        "model": ""
+      },
+      {
+        "name": "koboldcpp",
+        "base_url": "http://127.0.0.1:5001/v1",
+        "model": ""
+      }
+    ],
+    "probe_timeout_seconds": 2,
+    "timeout_seconds": 285,
+    "max_thinking_seconds": 270,
+    "watchdog_warning_seconds": 30,
+    "watchdog_bark_interval_seconds": 30,
+    "max_prompt_chars": 9000,
+    "max_same_intent_without_change": 2,
+    "max_reasoning_steps_per_stall": 12,
+    "max_tokens": 220,
+    "temperature": 0.1,
+    "min_actions_between_calls": 0
+  },
+  "limits": {
+    "max_actions_per_run": 200,
+    "max_minutes_per_run": 10,
+    "max_move_batch": 4,
+    "max_battle_inputs": 80,
+    "max_stall_repeats": 2
+  },
+  "overworld": {
+    "map_size": 4000,
+    "coordinate_verification_moves": 2,
+    "arrival_radius": 32
+  },
+  "knowledge": {
+    "max_snippets": 5,
+    "max_chars_per_snippet": 900
+  }
+}

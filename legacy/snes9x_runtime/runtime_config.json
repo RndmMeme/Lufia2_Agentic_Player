@@ -1,0 +1,13 @@
+{
+  "emulator": {
+    "window_title": "Snes9x"
+  },
+  "helper": {
+    "relative_executable_path": "emulator/csharp_helper/bin/Release/net8.0/win-x64/Lufia2AutoTracker.Helper.exe",
+    "startup_delay_seconds": 2
+  },
+  "llm": {
+    "api_url": "http://localhost:5001/api/v1/generate",
+    "request_timeout_seconds": 60
+  }
+}

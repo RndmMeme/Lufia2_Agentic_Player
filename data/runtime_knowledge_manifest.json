@@ -1,0 +1,47 @@
+{
+  "schema": "lufia2-runtime-knowledge-v1",
+  "authority_order": [
+    "wram_transition",
+    "curated_map",
+    "confirmed_rom_or_wram_table",
+    "vlm_hypothesis",
+    "walkthrough",
+    "llm_hypothesis"
+  ],
+  "state_truth": [
+    "data/lufia2_wram_base_of_truth.json",
+    "docs/lufia2_wram_base_of_truth.md",
+    "docs/lufia2_wram_checklist_merged_update_v5.txt"
+  ],
+  "retrieval_sources": [
+    "data/Walkthrough.txt",
+    "data/town_POI_coords.txt",
+    "data/locations_logic.json",
+    "data/locations.json",
+    "data/boss_locations.json",
+    "data/warp_data.json",
+    "data/Detail_Guide.json",
+    "data/Capsule_Monster_Feeding_Guide.json",
+    "data/Shop_&_merchandise_list.txt",
+    "data/monster_action_names.json",
+    "data/monster_movement_modes.json",
+    "data/spells_info.json",
+    "data/combat_items.json",
+    "emulator/maps/Dungeons/NAVIGATION_INDEX.md"
+  ],
+  "structured_runtime": [
+    "emulator/map_db.py",
+    "emulator/zone_db.py",
+    "data/terrorwave_reference/tables/zones.txt",
+    "data/terrorwave_reference/tables/struct_monster.txt",
+    "data/terrorwave_reference/tables/struct_monster_move.txt",
+    "data/terrorwave_reference/tables/struct_item.txt",
+    "data/terrorwave_reference/tables/struct_spell.txt",
+    "emulator/maps/Dungeons/navigation_index.json"
+  ],
+  "visual_runtime": [
+    "emulator/maps/Dungeons",
+    "emulator/sprites"
+  ],
+  "fallback_policy": "Retrieve walkthrough text only for the current named puzzle or after deterministic and visual recovery fail."
+}

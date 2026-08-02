@@ -1,0 +1,19 @@
+00ce71: 22 00 c5 fd
+:       ea
+00d011: 22 00 c5 fd
+:       ea
+
+3ec500: c9 bf
+:       d0 targeting_okay
+:       29 df
+.label targeting_okay
+:       8d 81 1b
+:       c2 20
+:       6b
+
+VALIDATION
+
+00ce71: 8d 81 1b
+:       c2 20
+00d011: 8d 81 1b
+:       c2 20

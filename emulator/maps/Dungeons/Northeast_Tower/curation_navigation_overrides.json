@@ -1,0 +1,18 @@
+{
+  "schema": "lufia2-dungeon-navigation-overrides-v1",
+  "dungeon": "Northeast_Tower",
+  "cells": [
+    {
+      "coordinate": "BJ10",
+      "effective_traversal": "confirmed_walkable",
+      "reason": "User-confirmed tight transition.",
+      "source": "user_confirmed"
+    },
+    {
+      "coordinate": "BS10",
+      "effective_traversal": "blocked",
+      "reason": "User-confirmed void.",
+      "source": "user_confirmed"
+    }
+  ]
+}

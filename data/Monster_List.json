@@ -1,0 +1,173 @@
+{
+    "document_info": {
+        "title": "Lufia II: Rise of the Sinistrals - A Monster List",
+        "version": "1.01",
+        "updated_date": "22.05.00",
+        "author": "Basil Brush"
+    },
+    "monster_data_summary": [
+        {
+            "name": "Ammonite",
+            "hp": 198,
+            "mp": 52,
+            "atp": 183,
+            "dfp": 188,
+            "exp": 725,
+            "gold": 840,
+            "dropped_object": "Sleep ball",
+            "odds": 200,
+            "special_attacks": [
+                "Tentacle"
+            ]
+        },
+        {
+            "name": "Amon",
+            "hp": 10000,
+            "mp": 5000,
+            "atp": 800,
+            "dfp": 200,
+            "exp": 50000,
+            "gold": 50000,
+            "dropped_object": null,
+            "odds": null,
+            "special_attacks": [
+                "Chaos wave",
+                "Galactic lancer"
+            ]
+        },
+        {
+            "name": "Behemoth",
+            "hp": 1272,
+            "mp": 280,
+            "atp": 358,
+            "dfp": 322,
+            "exp": 6325,
+            "gold": 6994,
+            "dropped_object": "Earth fruit",
+            "odds": 100,
+            "special_attacks": [
+                "Earthquake",
+                "Groundshock"
+            ]
+        },
+        {
+            "name": "Black Dragon",
+            "hp": 1200,
+            "mp": 400,
+            "atp": 398,
+            "dfp": 300,
+            "exp": 9386,
+            "gold": 9263,
+            "dropped_object": "Dark fruit",
+            "odds": 100,
+            "special_attacks": [
+                "Gloomsplash"
+            ]
+        },
+        {
+            "name": "Daos",
+            "hp": 20000,
+            "mp": 500,
+            "atp": 400,
+            "dfp": 50,
+            "exp": 50000,
+            "gold": 50000,
+            "dropped_object": null,
+            "odds": null,
+            "special_attacks": [
+                "Terror wave",
+                "Dark reflector",
+                "Dark fry"
+            ]
+        },
+        {
+            "name": "Egg Dragon",
+            "hp": 65535,
+            "mp": 2000,
+            "atp": 1500,
+            "dfp": 500,
+            "exp": 60000,
+            "gold": 60000,
+            "dropped_object": null,
+            "odds": null,
+            "special_attacks": [
+                "Sunny-side up",
+                "Over-easy",
+                "Scrambled egg"
+            ]
+        },
+        {
+            "name": "Erim",
+            "hp": 15000,
+            "mp": 5000,
+            "atp": 300,
+            "dfp": 250,
+            "exp": 50000,
+            "gold": 50000,
+            "dropped_object": null,
+            "odds": null,
+            "special_attacks": [
+                "Devastation wave",
+                "Dark fry",
+                "Eerie light"
+            ]
+        },
+        {
+            "name": "Gades (Incarnation 1)",
+            "hp": 7500,
+            "mp": 320,
+            "atp": 420,
+            "dfp": 290,
+            "exp": 50000,
+            "gold": 50000,
+            "dropped_object": "Gades sword (conditional)",
+            "odds": null,
+            "special_attacks": [
+                "Destructo-wave"
+            ]
+        },
+        {
+            "name": "Master (Ancient Cave Boss)",
+            "hp": 9980,
+            "mp": 0,
+            "atp": 10,
+            "dfp": 1,
+            "exp": 1,
+            "gold": 1,
+            "dropped_object": null,
+            "odds": null,
+            "special_attacks": [
+                "LetsRegainStrength",
+                "RightLetsGo",
+                "Are we ready?",
+                "I'm out of here"
+            ]
+        },
+        {
+            "name": "Tank",
+            "hp": 10000,
+            "mp": 0,
+            "atp": 1100,
+            "dfp": 300,
+            "exp": 40000,
+            "gold": 1,
+            "dropped_object": null,
+            "odds": null,
+            "special_attacks": [
+                "Piercer",
+                "MagGaleBull",
+                "IncendBomb",
+                "MachineGunAtt",
+                "MissileBlast"
+            ]
+        }
+    ],
+    "guide_notes": {
+        "winning_objects": "The list only includes randomly won objects, not those given automatically.",
+        "drop_odds": "Odds of 200 represent approximately an even chance of winning the object.",
+        "accuracy_warning": "The Special Attacks column may not be fully complete or accurate regarding magic spells.",
+        "danielle_pierre_variation": "On the second attempt, Danielle and Pierre provide 2300 Exp and 4000 Gold.",
+        "gades_secret": "Gades' first incarnation can be beaten for a Gades sword, but the game story continues as if the party lost.",
+        "master_cave_boss": "Must be defeated within three rounds to obtain the key to the Ancient Cave; can also be beaten by killing your own party within three rounds."
+    }
+}

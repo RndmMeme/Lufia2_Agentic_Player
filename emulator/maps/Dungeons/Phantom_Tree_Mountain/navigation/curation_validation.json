@@ -1,0 +1,26 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Phantom_Tree_Mountain",
+  "marker_count": 578,
+  "type_counts": {
+    "door": 32,
+    "puzzle": 28,
+    "chest": 3,
+    "blocked": 143,
+    "walkable": 171,
+    "monster": 32,
+    "bush": 57,
+    "stairs": 18,
+    "switch": 7,
+    "wall": 72,
+    "npc": 3,
+    "ladder": 12
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

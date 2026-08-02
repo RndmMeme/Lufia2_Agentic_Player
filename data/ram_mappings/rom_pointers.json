@@ -1,0 +1,12 @@
+{
+    "description": "ROM table addresses and direct ROM-logic pointers for Lufia 2.",
+    "rom_addresses": {
+        "PointerBaseAddress": "0xA52330",
+        "ShopOffset": "0xBF09F",
+        "ItemTableBase": "0xB4F69",
+        "SpellPointerTable": "0xAFAAB",
+        "ShopDirectoryBase": "0xBEE9F",
+        "CapsuleSpriteOffset": "0xBDCB8",
+        "MapIDAddress": "0xA328C0"
+    }
+}

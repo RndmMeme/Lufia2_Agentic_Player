@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Tanbel_Southeast_Tower",
+  "marker_count": 295,
+  "type_counts": {
+    "door": 33,
+    "ladder": 31,
+    "walkable": 95,
+    "switch": 17,
+    "puzzle": 30,
+    "blocked": 40,
+    "monster": 34,
+    "stairs": 8,
+    "npc": 2,
+    "chest": 5
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

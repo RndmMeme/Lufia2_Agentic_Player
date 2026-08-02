@@ -1,0 +1,19 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Daos' Shrine",
+  "marker_count": 77,
+  "type_counts": {
+    "door": 11,
+    "walkable": 41,
+    "stairs": 12,
+    "chest": 12,
+    "monster": 1
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

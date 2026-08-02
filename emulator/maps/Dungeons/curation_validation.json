@@ -1,0 +1,700 @@
+{
+  "schema": "lufia2-global-dungeon-curation-validation-v1",
+  "dungeon_count": 29,
+  "marker_count": 10052,
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "dungeons": [
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Alunze_Castle_Basement",
+      "marker_count": 233,
+      "type_counts": {
+        "stairs": 7,
+        "door": 16,
+        "npc": 6,
+        "walkable": 98,
+        "monster": 28,
+        "puzzle": 27,
+        "switch": 12,
+        "chest": 9,
+        "water": 14,
+        "blocked": 16
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Alunze_Northwest_Cave",
+      "marker_count": 471,
+      "type_counts": {
+        "door": 16,
+        "walkable": 128,
+        "npc": 1,
+        "ladder": 10,
+        "blocked": 51,
+        "switch": 10,
+        "monster": 26,
+        "chest": 14,
+        "puzzle": 29,
+        "stairs": 16,
+        "bush": 19,
+        "water": 151
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Ancient_Tower",
+      "marker_count": 340,
+      "type_counts": {
+        "door": 40,
+        "walkable": 94,
+        "stairs": 16,
+        "npc": 5,
+        "puzzle": 25,
+        "monster": 39,
+        "switch": 16,
+        "blocked": 78,
+        "chest": 6,
+        "ladder": 21
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Cave_To_Bound_Kingdom",
+      "marker_count": 132,
+      "type_counts": {
+        "stairs": 14,
+        "bush": 11,
+        "switch": 1,
+        "walkable": 39,
+        "chest": 2,
+        "puzzle": 2,
+        "door": 8,
+        "water": 26,
+        "monster": 1,
+        "blocked": 28
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Cave_to_Sundletan",
+      "marker_count": 285,
+      "type_counts": {
+        "bush": 50,
+        "chest": 7,
+        "walkable": 64,
+        "npc": 2,
+        "door": 14,
+        "water": 96,
+        "monster": 19,
+        "puzzle": 12,
+        "switch": 3,
+        "blocked": 1,
+        "stairs": 12,
+        "ladder": 5
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Dankirk_North_Dungeon",
+      "marker_count": 486,
+      "type_counts": {
+        "stairs": 19,
+        "npc": 2,
+        "door": 27,
+        "bush": 16,
+        "puzzle": 82,
+        "walkable": 197,
+        "monster": 40,
+        "switch": 22,
+        "chest": 7,
+        "blocked": 8,
+        "water": 66
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Daos' Shrine",
+      "marker_count": 77,
+      "type_counts": {
+        "door": 11,
+        "walkable": 41,
+        "stairs": 12,
+        "chest": 12,
+        "monster": 1
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Divine_Shrine",
+      "marker_count": 230,
+      "type_counts": {
+        "door": 14,
+        "walkable": 63,
+        "npc": 2,
+        "stairs": 22,
+        "monster": 26,
+        "puzzle": 57,
+        "blocked": 33,
+        "chest": 5,
+        "switch": 8
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Dragon_Mountain",
+      "marker_count": 1297,
+      "type_counts": {
+        "door": 27,
+        "walkable": 118,
+        "npc": 3,
+        "chest": 20,
+        "blocked": 121,
+        "bush": 11,
+        "puzzle": 62,
+        "lava": 810,
+        "monster": 36,
+        "ladder": 54,
+        "switch": 1,
+        "stairs": 34
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Flower_Mountain",
+      "marker_count": 436,
+      "type_counts": {
+        "npc": 1,
+        "door": 38,
+        "walkable": 102,
+        "monster": 26,
+        "puzzle": 82,
+        "blocked": 147,
+        "chest": 9,
+        "switch": 4,
+        "stairs": 12,
+        "bush": 15
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Gordovan_West_Tower",
+      "marker_count": 380,
+      "type_counts": {
+        "door": 46,
+        "walkable": 108,
+        "monster": 26,
+        "ladder": 20,
+        "switch": 20,
+        "puzzle": 34,
+        "blocked": 105,
+        "stairs": 12,
+        "chest": 6,
+        "npc": 3
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Gratze_Castle",
+      "marker_count": 380,
+      "type_counts": {
+        "blocked": 118,
+        "walkable": 92,
+        "door": 20,
+        "monster": 31,
+        "water": 70,
+        "switch": 13,
+        "chest": 2,
+        "puzzle": 13,
+        "bush": 1,
+        "stairs": 20
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Kamirno_Tower",
+      "marker_count": 132,
+      "type_counts": {
+        "door": 35,
+        "npc": 1,
+        "stairs": 36,
+        "chest": 1,
+        "monster": 17,
+        "walkable": 42
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Karlloon_North_Shrine",
+      "marker_count": 235,
+      "type_counts": {
+        "npc": 2,
+        "stairs": 14,
+        "door": 18,
+        "walkable": 96,
+        "monster": 18,
+        "blocked": 35,
+        "puzzle": 42,
+        "switch": 7,
+        "chest": 3
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Lake_Cave",
+      "marker_count": 279,
+      "type_counts": {
+        "monster": 23,
+        "water": 91,
+        "switch": 3,
+        "puzzle": 25,
+        "door": 16,
+        "walkable": 56,
+        "npc": 4,
+        "stairs": 6,
+        "chest": 5,
+        "bush": 43,
+        "ladder": 7
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Mountain_Of_No_Return",
+      "marker_count": 166,
+      "type_counts": {
+        "door": 17,
+        "npc": 1,
+        "walkable": 32,
+        "monster": 4,
+        "chest": 1,
+        "puzzle": 11,
+        "stairs": 6,
+        "blocked": 94
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Northeast_Tower",
+      "marker_count": 451,
+      "type_counts": {
+        "door": 29,
+        "ladder": 30,
+        "walkable": 134,
+        "blocked": 188,
+        "switch": 24,
+        "monster": 23,
+        "puzzle": 8,
+        "chest": 4,
+        "stairs": 10,
+        "npc": 1
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Northern_Labyrinth",
+      "marker_count": 357,
+      "type_counts": {
+        "npc": 3,
+        "door": 23,
+        "walkable": 81,
+        "monster": 15,
+        "stairs": 10,
+        "chest": 5,
+        "bush": 9,
+        "blocked": 115,
+        "puzzle": 86,
+        "switch": 10
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Northern_Lighthouse",
+      "marker_count": 384,
+      "type_counts": {
+        "monster": 31,
+        "blocked": 116,
+        "stairs": 16,
+        "door": 33,
+        "ladder": 20,
+        "walkable": 88,
+        "puzzle": 49,
+        "switch": 20,
+        "chest": 7,
+        "npc": 4
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Phantom_Tree_Mountain",
+      "marker_count": 578,
+      "type_counts": {
+        "door": 32,
+        "puzzle": 28,
+        "chest": 3,
+        "blocked": 143,
+        "walkable": 171,
+        "monster": 32,
+        "bush": 57,
+        "stairs": 18,
+        "switch": 7,
+        "wall": 72,
+        "npc": 3,
+        "ladder": 12
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Ruby_Cave",
+      "marker_count": 660,
+      "type_counts": {
+        "door": 8,
+        "walkable": 95,
+        "monster": 19,
+        "ladder": 6,
+        "blocked": 53,
+        "stairs": 14,
+        "bush": 30,
+        "switch": 6,
+        "npc": 2,
+        "puzzle": 23,
+        "lava": 388,
+        "chest": 4,
+        "wall": 12
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Secret_Skills_Cave",
+      "marker_count": 171,
+      "type_counts": {
+        "door": 13,
+        "walkable": 52,
+        "monster": 3,
+        "switch": 5,
+        "puzzle": 10,
+        "blocked": 41,
+        "ladder": 9,
+        "bush": 36,
+        "npc": 2
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Shrine_Of_Vengeance",
+      "marker_count": 386,
+      "type_counts": {
+        "blocked": 57,
+        "door": 26,
+        "walkable": 105,
+        "stairs": 30,
+        "puzzle": 82,
+        "switch": 11,
+        "npc": 3,
+        "monster": 31,
+        "ladder": 3,
+        "chest": 8,
+        "water": 25,
+        "bush": 5
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Shuman_Tower",
+      "marker_count": 136,
+      "type_counts": {
+        "npc": 1,
+        "door": 31,
+        "stairs": 20,
+        "chest": 3,
+        "walkable": 70,
+        "monster": 11
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Strahda_Tower",
+      "marker_count": 94,
+      "type_counts": {
+        "door": 25,
+        "stairs": 28,
+        "monster": 1,
+        "walkable": 39,
+        "npc": 1
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Tanbel_Southeast_Tower",
+      "marker_count": 295,
+      "type_counts": {
+        "door": 33,
+        "ladder": 31,
+        "walkable": 95,
+        "switch": 17,
+        "puzzle": 30,
+        "blocked": 40,
+        "monster": 34,
+        "stairs": 8,
+        "npc": 2,
+        "chest": 5
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Tower_Of_Sacrifice",
+      "marker_count": 264,
+      "type_counts": {
+        "door": 31,
+        "switch": 10,
+        "ladder": 9,
+        "walkable": 79,
+        "monster": 27,
+        "blocked": 49,
+        "puzzle": 42,
+        "chest": 1,
+        "stairs": 14,
+        "npc": 2
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Tower_Of_Truth",
+      "marker_count": 491,
+      "type_counts": {
+        "monster": 45,
+        "door": 36,
+        "ladder": 33,
+        "walkable": 123,
+        "switch": 26,
+        "puzzle": 77,
+        "blocked": 135,
+        "stairs": 10,
+        "chest": 5,
+        "npc": 1
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    },
+    {
+      "schema": "lufia2-dungeon-curation-validation-v1",
+      "dungeon": "Treasure_Sword_Shrine",
+      "marker_count": 226,
+      "type_counts": {
+        "door": 26,
+        "chest": 8,
+        "monster": 25,
+        "walkable": 89,
+        "stairs": 12,
+        "npc": 4,
+        "puzzle": 48,
+        "blocked": 8,
+        "switch": 6
+      },
+      "severity_counts": {
+        "error": 0,
+        "warning": 0,
+        "info": 0
+      },
+      "code_counts": {},
+      "findings": []
+    }
+  ]
+}

@@ -1,0 +1,696 @@
+
+
+ 3. Elcid
+4. Sundletan
+5. Alunze
+6. Tanbel
+7. Clamento
+8. Parcelyte
+9. Merix
+10. Bound
+11. Aleyn
+12. Narsysus
+13. Gruberik
+14. Karlloon
+15. Treadool
+16. Dankirk
+17. Auralio
+18. Forfeit
+19. Ferim
+20. Treble
+21. Portravia
+22. Barnan
+23. Eserikto
+24. Durale
+25. Chaed
+26. Preamarl
+27. Narvick
+
+3. Elcid *********************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Potion       | Item   |     8  |            | Strong       |   200  |
+    | Antidote     | Item   |     6  |            | Spark        |   300  |
+    | Warp         | Item   |   120  |            | Poison       |   300  |
+    | Escape       | Item   |   100  |            -------------------------
+    | Boomerang    | Weapon |    20  |
+    | Frypan       | Weapon |    10  |
+    | Knife        | Weapon |    13  |
+    | Small Knife  | Weapon |    20  |            Inn - Free
+    | Rapier       | Weapon |   100  |
+    | Apron        | Armor  |    60  |
+    | Dress        | Armor  |    90  |
+    | Cloth        | Armor  |   140  |
+    | Pot          | Armor  |    30  |
+    | Chop board   | Armor  |    30  |
+    ----------------------------------
+
+******************************************************************************
+4. Sundletan *****************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Potion       | Item   |     8  |            | Strong       |   200  |
+    | Antidote     | Item   |     6  |            | Spark        |   300  |
+    | Awake        | Item   |    10  |            | Droplet      |   400  |
+    | Shriek       | Item   |     5  |            | Poison       |   300  |
+    | Warp         | Item   |   120  |            | Drowsy       |  1000  |
+    | Escape       | Item   |   100  |            -------------------------
+    | Boomerang    | Item   |    20  |
+    | Rapier       | Weapon |   100  |            -------------------------
+    | Battle Knife | Weapon |   200  |            |          Pub          |
+    | Dagger       | Weapon |   400  |            -------------------------
+    | Whip         | Weapon |   300  |            |     Drink    |  Gold  |
+    | Dress        | Armor  |    90  |            -------------------------
+    | Cloth        | Armor  |   140  |            | Green Tea    |    10  |
+    | Hide Armor   | Armor  |   250  |            | Pear cider   |    10  |
+    | Frock        | Armor  |   400  |            | Sour cider   |    20  |
+    | Beret        | Armor  |   150  |            | Lime cider   |    40  |
+    | Cap          | Armor  |   240  |            | Plum  Cider  |    80  |
+    | Headband     | Armor  |   600  |            | Apple Cider  |  1000  |
+    | Small Shield | Armor  |   100  |            -------------------------
+    ----------------------------------
+
+                                                  Inn - 10 Gold
+
+******************************************************************************
+5. Alunze ********************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |         Casino        |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Coins    |  Gold  |
+    ----------------------------------            -------------------------
+    | Potion       | Item   |     8  |            | 1 coin       |    10  |
+    | Antidote     | Item   |     6  |            | 10 coin set  |   100  |
+    | Hi-Potion    | Item   |   100  |            | 50 coin set  |   500  |
+    | Awake        | Item   |    10  |            | 100 coin set |  1000  |
+    | Shriek       | Item   |     5  |            -------------------------
+    | Mystery Pin  | Item   |    30  |            |    Item      |  Coins |
+    | Warp         | Item   |   120  |            -------------------------
+    | Escape       | Item   |   100  |            | Flame Charm  |    400 |
+    | Boomerang    | Item   |    20  |            | Statue       |    200 |
+    | Mace         | Weapon |   600  |            | Zap charm    |    400 |
+    | Long knife   | Weapon |   800  |            | Rage knife   |   1000 |
+    | Short sword  | Weapon |   900  |            | Seethru cape |  10000 |
+    | Frock        | Armor  |   400  |            -------------------------
+    | Robe         | Armor  |   450  |
+    | Cloth armor  | Armor  |   600  |
+    | Headband     | Armor  |   600  |            Inn - 20 Gold
+    | Cloth helmet | Armor  |   400  |
+    | Hide shield  | Armor  |   400  |
+    | Buckler      | Armor  |   600  |
+    | Mini shield  | Armor  |   800  |
+    ----------------------------------
+
+******************************************************************************
+6. Tanbel ********************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |       Weapon & Armor Shop      |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Long Knife   | Weapon |   800  |            | Spark        |   300  |
+    | Wire         | Weapon |  1200  |            | Droplet      |   400  |
+    | Short sword  | Weapon |   900  |            | Gale         |   500  |
+    | Kukri        | Weapon |  1500  |            | Flash        |   600  |
+    | Tough hide   | Armor  |   800  |            | Strong       |   200  |
+    | Light dress  | Armor  |  1000  |            | Poison       |   300  |
+    | Light armor  | Armor  |  1200  |            | Drowsy       |  1000  |
+    | Hide helmet  | Armor  |   800  |            | Confuse      |  1000  | 
+    | Wood shield  | Armor  |  1200  |            -------------------------
+    | Bracelet     | Armor  |  1400  |
+    ----------------------------------
+
+    -------------------------
+    |        Item Shop      |
+    -------------------------
+    |      Item    |  Gold  |
+    -------------------------                     Inn - Free
+    | Hi-potion    |   100  |
+    | Awake        |    10  |
+    | Shriek       |     5  |
+    | Mystery pin  |    30  |
+    | Warp         |   120  |
+    | Escape       |   100  |
+    | Magic guard  |    50  |
+    | Big boomer   |   500  |
+    -------------------------
+
+******************************************************************************
+7. Clamento ******************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Hi-Potion    | Item   |   100  |            | Spark        |   300  |
+    | Awake        | Item   |    10  |            | Flash        |   600  |
+    | Shriek       | Item   |     5  |            | Droplet      |   400  |
+    | Mystery Pin  | Item   |    30  |            | Gale         |   500  |
+    | Warp         | Item   |   120  |            | Strong       |   200  |
+    | Escape       | Item   |   100  |            | Bravery      |  1000  |
+    | Power gourd  | Item   |   100  |            | Release      |   800  |
+    | Big boomer   | Item   |   500  |            | Escape       |  1000  |
+    | Kukri        | Weapon |  1500  |            -------------------------
+    | Rod          | Weapon |  1800  |
+    | Light armor  | Armor  |  1200  |            -------------------------
+    | Baggy        | Armor  |  1600  |            |      Crafts Shop      |
+    | Red beret    | Armor  |  1000  |            -------------------------
+    | Wood helmet  | Armor  |  1400  |            |     Item     |  Gold  |
+    | Wood shield  | Armor  |  1200  |            -------------------------
+    | Bracelet     | Armor  |  1400  |            | Ear jewel    |   500  |
+    ----------------------------------            | Glass ring   |  1000  |
+                                                  | Glass brace  |   800  |
+    Inn - 20 Gold                                 -------------------------
+
+******************************************************************************
+8. Parcelyte *****************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |       Weapon & Armor Shop      |            |        Item Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Item     |  Gold  |
+    ----------------------------------            -------------------------
+    | Chain        | Weapon |  2200  |            | Hi-Potion    |   100  |
+    | Fanshiska    | Weapon |  2600  |            | Regain       |   500  |
+    | Chainmail    | Armor  |  3000  |            | Awake        |    10  |
+    | Tight dress  | Armor  |  2850  |            | Shriek       |     5  |
+    | Ironmail     | Armor  |  3500  |            | Mystery pin  |    30  |
+    | Glass cap    | Armor  |  1300  |            | Warp         |   120  |
+    | Blue beret   | Armor  |  2300  |            | Escape       |   100  |
+    | Brone helmet | Armor  |  2500  |            | Mind gourd   |   100  |
+    | Stone helmet | Armor  |  2900  |            | Big boomer   |   500  |
+    | Kite shield  | Armor  |  2200  |            -------------------------
+    | Tough gloves | Armor  |  2600  |
+    ----------------------------------            Inn - 50 Gold
+
+******************************************************************************
+9. Merix *********************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Hi-Potion    | Item   |   100  |            | Fireball     |  6000  |
+    | Warp         | Item   |   120  |            | Fake         |  2000  |
+    | Escape       | Item   |   100  |            | Trick        |  2000  |
+    | Big Boomer   | Item   |   500  |            | Escape       |  1000  |
+    | Gladius      | Weapon |  2400  |            | Warp         |  2000  |
+    | Toga         | Armor  |  3600  |            -------------------------
+    | Cloche       | Armor  |  3000  |
+    ----------------------------------            Inn - 20 Gold
+
+******************************************************************************
+10. Bound ********************************************************************
+******************************************************************************
+    ----------------------------------
+    |       Weapon & Armor Shop      |
+    ----------------------------------
+    |     Item     |  Type  |  Gold  |
+    ----------------------------------
+    | Staff        | Weapon |  3600  |
+    | Scimitar     | Weapon |  4400  |            Inn - 30 Gold
+    | Bronze sword | Weapon |  5000  |
+    | Chain armor  | Armor  |  4500  |
+    | Thick cloth  | Armor  |  4700  |
+    | Stone plate  | Armor  |  4850  |
+    | Iron helmet  | Armor  |  3600  |
+    | Tight helmet | Armor  |  3800  |
+    | Round shield | Armor  |  4600  |
+    ----------------------------------
+
+******************************************************************************
+11. Aleyn ********************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Hi-Potion    | Item   |   100  |            | Vortex       |  8000  |
+    | Regain       | Item   |   500  |            | Blizzard     |  9000  |
+    | Warp         | Item   |   120  |            | Stronger     |  5000  |
+    | Escape       | Item   |   100  |            | Warp         |  2000  |
+    | Ice ball     | Item   |   200  |            | Rally        | 15000  |
+    | Fire ball    | Item   |   200  |            -------------------------
+    | Big Boomer   | Item   |   500  | 
+    | Hand ax      | Weapon |  6000  |            Inn - 10 Gold
+    | Long staff   | Weapon |  6200  |
+    | Thick cloth  | Armor  |  4700  |            -------------------------
+    | Stone plate  | Armor  |  4850  |            |          Pub          |
+    | Long robe    | Armor  |  5000  |            -------------------------
+    | Turban       | Armor  |  4100  |            |     Drink    |  Gold  |
+    | Plate cap    | Armor  |  4500  |            -------------------------
+    | Round shield | Armor  |  4600  |            | Sour cider   |    20  |
+    | Tecto gloves | Armor  |  4300  |            | Lime cider   |    40  |
+    ----------------------------------            | Plum  Cider  |    80  |
+                                                  | Apple Cider  |  1000  |
+                                                  -------------------------
+
+******************************************************************************
+12. Narsysus *****************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |       Weapon & Armor Shop      |            |        Item Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Item     |  Gold  |
+    ----------------------------------            -------------------------
+    | War rapier   | Weapon |  7600  |            | Hi potion    |   100  |
+    | Long sword   | Weapon |  8000  |            | Regain       |   500  |
+    | Long robe    | Armor  |  5000  |            | Warp         |   120  |
+    | Plated cloth | Armor  |  5800  |            | Escape       |   100  |
+    | Turban       | Armor  |  4100  |            | Ice ball     |   200  |
+    | Plate cap    | Armor  |  4500  |            | Fire ball    |   200  |
+    | Roomy helmet | Armor  |  4800  |            | Big boomer   |   500  |
+    | Round shield | Armor  |  4600  |            -------------------------
+    | Tecto gloves | Armor  |  4300  |
+    | Big shield   | Armor  |  5900  |            Inn - 40 Gold
+    ----------------------------------
+
+******************************************************************************
+13. Gruberik *****************************************************************
+******************************************************************************
+    ----------------------------------
+    |           General Shop         |
+    ----------------------------------
+    |     Item     |  Type  |  Gold  |
+    ----------------------------------
+    | Hi-Potion    | Item   |   100  |
+    | Regain       | Item   |   500  |
+    | Warp         | Item   |   120  |
+    | Escape       | Item   |   100  |
+    | Confuse ball | Item   |   100  |
+    | Sleep ball   | Item   |   100  |            Inn - 20 Gold
+    | Big Boomer   | Item   |   500  |
+    | War rapier   | Weapon |  7600  |
+    | Long sword   | Weapon |  8000  |
+    | Long robe    | Armor  |  5000  |
+    | Plated cloth | Armor  |  5800  |
+    | Turban       | Armor  |  4100  |
+    | Plate cap    | Armor  |  4500  |
+    | Roomy helmet | Armor  |  4800  |
+    | Round shield | Armor  |  4600  |
+    | Tecto gloves | Armor  |  4300  |
+    | Big shield   | Armor  |  5900  |
+    ----------------------------------
+
+******************************************************************************
+14. Karlloon *****************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Hi-Potion    | Item   |   100  |            | Bolt         | 10000  |
+    | Regain       | Item   |   500  |            | Fireball     |  6000  |
+    | Warp         | Item   |   120  |            | Vortex       |  8000  |
+    | Escape       | Item   |   100  |            | Blizzard     |  9000  |
+    | Magic guard  | Item   |    50  |            | Stronger     |  5000  |
+    | Power gourd  | Item   |   100  |            | Perish       | 15000  |
+    | Mind gourd   | Item   |   100  |            | Absorb       | 20000  |
+    | Big boomer   | Item   |   500  |            | Waken        |  5000  |
+    | Cutter whip  | Weapon |  9100  |            -------------------------
+    | Multi sword  | Weapon |  9450  |
+    | Iron plate   | Armor  |  5950  |
+    | Metal mail   | Armor  |  6250  |
+    | Tight turban | Armor  |  5000  |
+    | Rock helmet  | Armor  |  5700  |
+    | Plate helmet | Armor  |  5500  |
+    | Tall shield  | Armor  |  6000  |
+    | Silvo shield | Armor  |  6900  |
+    ----------------------------------            Inn - 20 Gold
+
+******************************************************************************
+15. Treadool *****************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |       Weapon & Armor Shop      |            |        Item Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Item     |  Gold  |
+    ----------------------------------            -------------------------
+    | Rockbreaker  | Weapon |  9850  |            | Hi potion    |   100  |
+    | Bronze ax    | Weapon |  9700  |            | Regain       |   500  |
+    | Morning star | Weapon | 10000  |            | Warp         |   120  |
+    | Vice pliers  | Weapon |  6000  |            | Escape       |   100  |
+    | Silver armor | Armor  |  7200  |            | Magic guard  |    50  |
+    | Silk toga    | Armor  |  6300  |            | Power gourd  |   100  |
+    | Light jacket | Armor  |  7600  |            | Mind gourd   |   100  |
+    | Plated cloth | Armor  |  5800  |            | Big boomer   |   500  |
+    | Iron plate   | Armor  |  5950  |            -------------------------
+    | Glass cloche | Armor  |  5200  |
+    | Metal cloche | Armor  |  6300  |
+    | SilverHelmet | Armor  |  6800  |            Inn - 50 Gold
+    | Spike shield | Armor  |  7500  |
+    | Slash shield | Armor  |  7500  |
+    ----------------------------------
+
+******************************************************************************
+16. Dankirk ******************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Hi-Potion    | Item   |   100  |            | Shield       |  5000  |
+    | Regain       | Item   |   500  |            | Courage      |  5000  |
+    | Magic guard  | Item   |    50  |            | Mirror       | 30000  |
+    | Power gourd  | Item   |   100  |            | Coma         | 10000  |
+    | Mind gourd   | Item   |   100  |            -------------------------
+    | Big boomer   | Item   |   500  |
+    | Broadsword   | Weapon | 11000  |
+    | Estok        | Weapon | 11500  |
+    | Superdriver  | Weapon | 12000  |
+    | Metal coat   | Armor  |  7750  |            Inn - 50 Gold
+    | Silver mail  | Armor  |  8700  |
+    | Power jacket | Armor  |  9000  |
+    | Shade hat    | Armor  |  6200  |
+    | Silver hat   | Armor  |  8500  |
+    | Tuff buckler | Armor  |  8200  |
+    ----------------------------------
+
+******************************************************************************
+17. Auralio ******************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |       Weapon & Armor Shop      |            |        Item Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Item     |  Gold  |
+    ----------------------------------            -------------------------
+    | Broadsword   | Weapon | 11000  |            | Hi potion    |   100  |
+    | Estok        | Weapon | 11500  |            | Regain       |   500  |
+    | Superdriver  | Weapon | 12000  |            | Magic guard  |    50  |
+    | Metal coat   | Armor  |  7750  |            | Power gourd  |   100  |
+    | Silver mail  | Armor  |  8700  |            | Mind gourd   |   100  |
+    | Power jacket | Armor  |  9000  |            | Big boomer   |   500  |
+    | Shade hat    | Armor  |  6200  |            -------------------------
+    | Silver hat   | Armor  |  8500  |
+    | Tuff buckler | Armor  |  8200  |
+    ----------------------------------            Inn - 30 Gold
+
+******************************************************************************
+18. Forfeit ******************************************************************
+******************************************************************************
+    -------------------------                     ------------------------- 
+    |      Weapon Shop      |                     |       Armor Shop      |
+    -------------------------                     -------------------------
+    |    Weapon    |  Gold  |                     |    Armor     |  Gold  |
+    -------------------------                     -------------------------
+    | Rockbreaker  |  9850  |                     | Silver armor |  7200  |
+    | Bronze ax    |  9700  |                     | Silk toga    |  6300  |
+    | Morning star | 10000  |                     | Light jacket |  7600  |
+    | Vice pliers  |  6000  |                     | Plated cloth |  5800  |
+    | Coma hit     |  8000  |                     | Iron plate   |  5950  |
+    -------------------------                     | Glass cloche |  5200  |
+                                                  | Metal cloche |  6300  |
+                                                  | SilverHelmet |  6800  |
+    Inn - 20 Gold                                 | Spike shield |  7500  |
+                                                  | Slash shield |  7500  |
+                                                  -------------------------
+
+    -------------------------                     ------------------------- 
+    |        Item Shop      |                     |          Pub          |
+    -------------------------                     ------------------------- 
+    |      Item    |  Gold  |                     |     Drink    |  Gold  |
+    -------------------------                     ------------------------- 
+    | Potion       |     8  |                     | Pear cider   |    10  |
+    | Hi-potion    |   100  |                     | Sour cider   |    20  |
+    | Ex-Potion    |   500  |                     | Lime cider   |    40  |
+    | Antidote     |     6  |                     | Plum cider   |    80  |
+    | Warp         |   120  |                     | Apple cider  |  1000  |
+    | Escape       |   100  |                     -------------------------
+    | Regain       |   500  |
+    | Awake        |    10  |
+    | Shriek       |     5  |
+    | Mystery pin  |    30  |
+    -------------------------
+
+    -------------------------
+    |         Casino        |
+    -------------------------                     Pawn Shop - sells every 
+    |     Coins    |  Gold  |                                 item Maxim
+    -------------------------                                 has sold.
+    | 1 coin       |    10  |
+    | 10 coin set  |   100  |
+    | 50 coin set  |   500  |
+    | 100 coin set |  1000  |
+    -------------------------
+    |    Item      |  Coins |
+    -------------------------
+    | Statue       |    200 |
+    | Magic lamp   |  15000 |
+    | Jewel sonar  |  20000 |
+    | Fortune whip |  50000 |
+    | Dragon blade | 500000 |
+    | Seethru silk |  10000 |
+    | Bunnysuit    |  60000 |
+    | Bunny ears   |  40000 |
+    | Bunnylady    |  40000 |
+    | Bunny sword  |  60000 |
+    | Bunny ring   |  20000 |
+    -------------------------
+
+******************************************************************************
+19. Ferim ********************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Ex-Potion    | Item   |   500  |            | Champion     | 20000  |
+    | Magic guard  | Item   |    50  |            | Firebird     | 20000  |
+    | Power gourd  | Item   |   100  |            | Ice Valk     | 25000  |
+    | Mind gourd   | Item   |   100  |            -------------------------
+    | Big boomer   | Item   |   500  |
+    | Royal whip   | Weapon | 13000  |
+    | Spear        | Weapon | 13500  |
+    | Silvo rapier | Weapon | 13200  |
+    | Quilted silk | Armor  |  9200  |
+    | Eron hat     | Armor  |  8800  |            Inn - 40 Gold
+    | Tuff buckler | Armor  |  8200  |
+    ----------------------------------
+
+******************************************************************************
+20. Treble *******************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |       Weapon & Armor Shop      |            |        Item Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Item     |  Gold  |
+    ----------------------------------            -------------------------
+    | Royal whip   | Weapon | 13000  |            | Ex-Potion    |   500  |
+    | Spear        | Weapon | 13500  |            | Confuse ball |   100  |
+    | Silvo rapier | Weapon | 13200  |            | Ice ball     |   200  |
+    | Pounder rod  | Weapon | 15500  |            | Fire ball    |   200  |
+    | Quilted silk | Armor  |  9200  |            | Sleep ball   |   100  |
+    | Eron hat     | Armor  |  8800  |            | Terror ball  |  1000  |
+    | Circlet      | Armor  |  9000  |            | Smoke ball   |   100  |
+    | Tuff buckler | Armor  |  8200  |            | Freeze ball  |   100  |
+    ----------------------------------            | Big boomer   |   500  |
+                                                  -------------------------
+    Inn - 40 Gold
+
+******************************************************************************
+21. Portravia ****************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Potion       | Item   |     8  |            | Thunder      | 30000  |
+    | Hi-Potion    | Item   |   100  |            | Dragon       | 25000  |
+    | Ex-Potion    | Item   |   500  |            | Valor        | 30000  |
+    | Antidote     | Item   |     6  |            -------------------------
+    | Warp         | Item   |   120  |
+    | Escape       | Item   |   100  |
+    | Regain       | Item   |   500  |
+    | Awake        | Item   |    10  |
+    | Shriek       | Item   |     5  |
+    | Mystery pin  | Item   |    30  |
+    | Magic guard  | Item   |    50  |
+    | Boomerang    | Item   |    20  |
+    | Big boomer   | Item   |   500  |
+    | Ice ball     | Item   |   200  |            Inn - 30 Gold
+    | Fire ball    | Item   |   200  |
+    | Confuse ball | Item   |   100  |
+    | Sleep ball   | Item   |   100  |
+    | Power gourd  | Item   |   100  |
+    | Mind gourd   | Item   |   100  |
+    | Launcher     | Weapon | 13000  |
+    | Pounder rod  | Weapon | 15500  |
+    | Battledriver | Weapon | 18200  |
+    | Rainy ax     | Weapon | 18500  |
+    | Metal armor  | Armor  |  9300  |
+    | Power cape   | Armor  | 10000  |
+    | Circlet      | Armor  |  9000  |
+    | Golden helm  | Armor  |  9200  |
+    | Tect buckler | Armor  |  8500  |
+    ----------------------------------
+
+******************************************************************************
+22. Barnan *******************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |       Weapon & Armor Shop      |            |        Item Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Item     |  Gold  |
+    ----------------------------------            -------------------------
+    | Red saber    | Weapon | 21400  |            | Ex potion    |   500  |
+    | Halberd      | Weapon | 23500  |            | Magic guard  |    50  |
+    | Crystal wand | Weapon | 24000  |            | Power gourd  |   100  |
+    | Mist rapier  | Weapon | 25100  |            | Mind gourd   |   100  |
+    | Plati plate  | Armor  | 12000  |            | Ex-boomer    |  2000  |
+    | Silk robe    | Armor  | 12700  |            -------------------------
+    | Plati helm   | Armor  | 10800  |
+    | Plati band   | Armor  | 10400  |
+    | Plati gloves | Armor  | 10600  |
+    | Plati shield | Armor  | 11400  |            Inn - 50 Gold
+    ----------------------------------
+
+******************************************************************************
+23. Eserikto *****************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Ex-Potion    | Item   |   500  |            | Thunder      | 30000  |
+    | Confuse ball | Item   |   100  |            | Firebird     | 20000  |
+    | Ice ball     | Item   |   200  |            | Dragon       | 25000  |
+    | Fire ball    | Item   |   200  |            | Ice Valk     | 25000  | 
+    | Sleep ball   | Item   |   100  |            | Fry          | 40000  |
+    | Terror ball  | Item   |  1000  |            -------------------------
+    | Smoke ball   | Item   |   100  |
+    | Freeze ball  | Item   |   100  |
+    | Ex-boomer    | Item   |  2000  |
+    | Crazy blade  | Weapon | 19700  |
+    | Trident      | Weapon | 20900  |
+    | Plate armor  | Armor  | 11300  |
+    | Evening gown | Armor  | 11100  |            Inn - Free
+    | Silver robe  | Armor  | 11000  |
+    | Gold band    | Armor  |  9400  |
+    | Gold shield  | Armor  |  8800  |
+    | Gold gloves  | Armor  |  8600  |
+    ----------------------------------
+
+******************************************************************************
+24. Durale *******************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |           General Shop         |            |       Spell Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Spell    |  Gold  |
+    ----------------------------------            -------------------------
+    | Ex-Potion    | Item   |   500  |            | Destroy      | 30000  |
+    | Confuse ball | Item   |   100  |            | Zap          | 65000  |
+    | Ice ball     | Item   |   200  |            -------------------------
+    | Fire ball    | Item   |   200  |
+    | Sleep ball   | Item   |   100  |
+    | Terror ball  | Item   |  1000  |
+    | Smoke ball   | Item   |   100  |            -------------------------
+    | Freeze ball  | Item   |   100  |            |          Pub          |
+    | Ex-boomer    | Item   |  2000  |            -------------------------
+    | Silver sword | Weapon | 29000  |            |     Drink    |  Gold  |
+    | Heavy lance  | Weapon | 31800  |            -------------------------
+    | Silver rod   | Weapon | 35000  |            | Pear cider   |    10  |
+    | Freeze bow   | Weapon | 37600  |            | Sour cider   |    20  |
+    | Crystal mail | Armor  | 14500  |            | Lime cider   |    40  |
+    | Crystal robe | Armor  | 15000  |            | Plum cider   |    80  |
+    | Crysto helm  | Armor  | 15200  |            | Apple cider  |  1000  |
+    | Crysto beret | Armor  | 14600  |            -------------------------
+    | Gauntlet     | Armor  | 13200  |
+    ----------------------------------            Inn - 40 Gold
+
+******************************************************************************
+25. Chaed ********************************************************************
+******************************************************************************
+    ----------------------------------            -------------------------
+    |       Weapon & Armor Shop      |            |        Item Shop      |
+    ----------------------------------            -------------------------
+    |     Item     |  Type  |  Gold  |            |     Item     |  Gold  |
+    ----------------------------------            -------------------------
+    | Buster sword | Weapon | 45500  |            | Ex potion    |   500  |
+    | Great ax     | Weapon | 47500  |            | Magic guard  |    50  |
+    | Zirco rod    | Weapon | 48000  |            | Power gourd  |   100  |
+    | Rune rapier  | Weapon | 49300  |            | Mind gourd   |   100  |
+    | Eron dress   | Armor  | 22000  |            | Ex-boomer    |  2000  |
+    | Metal jacket | Armor  | 20000  |            | Dragon tooth |   500  |
+    | Holy cap     | Armor  | 18600  |            -------------------------
+    | Rune gloves  | Armor  | 18800  |
+    ----------------------------------            Inn - 20 Gold
+
+******************************************************************************
+26. Preamarl *****************************************************************
+******************************************************************************
+    ----------------------------------
+    |           General Shop         |
+    ----------------------------------
+    |     Item     |  Type  |  Gold  |
+    ----------------------------------
+    | Ex-Potion    | Item   |   500  |
+    | Confuse ball | Item   |   100  |
+    | Ice ball     | Item   |   200  |
+    | Fire ball    | Item   |   200  |            Inn - 20 Gold
+    | Sleep ball   | Item   |   100  |
+    | Terror ball  | Item   |  1000  |
+    | Smoke ball   | Item   |   100  |
+    | Freeze ball  | Item   |   100  |
+    | Ex-boomer    | Item   |  2000  |
+    | Dragon tooth | Item   |   500  |
+    | Zirco sword  | Weapon | 51000  |
+    | Zirco flail  | Weapon | 52000  |
+    | Royal dress  | Armor  | 38000  |
+    | Full mail    | Armor  | 40000  |
+    | Holy cap     | Armor  | 18600  |
+    | Holy shield  | Armor  | 26300  |
+    ----------------------------------
+
+******************************************************************************
+27. Narvick ******************************************************************
+******************************************************************************
+    ----------------------------------
+    |           General Shop         |
+    ----------------------------------
+    |     Item     |  Type  |  Gold  |
+    ----------------------------------
+    | Ex-Potion    | Item   |   500  |
+    | Magic guard  | Item   |    50  |
+    | Power gourd  | Item   |   100  |
+    | Mind gourd   | Item   |   100  |
+    | Confuse ball | Item   |   100  |
+    | Ice ball     | Item   |   200  |
+    | Fire ball    | Item   |   200  |            Inn - 10 Gold
+    | Sleep ball   | Item   |   100  |
+    | Terror ball  | Item   |  1000  |
+    | Smoke ball   | Item   |   100  |
+    | Freeze ball  | Item   |   100  |
+    | Ex-boomer    | Item   |  2000  |
+    | Dragon tooth | Item   |   500  |
+    | Zirco rod    | Weapon | 48000  |
+    | Zirco whip   | Weapon | 52000  |
+    | Zirco flail  | Weapon | 52000  |
+    | Zirco sword  | Weapon | 51000  |
+    | Zirco ax     | Weapon | 52500  |
+    | Zircon armor | Weapon | 54000  |
+    | Zircon plate | Weapon | 51200  |
+    | Zirco helmet | Weapon | 34000  |
+    | Zirco band   | Weapon | 33200  |
+    | Zirco gloves | Weapon | 32300  |
+    | Zirco shield | Weapon | 34400  |
+    ----------------------------------
+

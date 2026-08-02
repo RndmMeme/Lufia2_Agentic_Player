@@ -1,0 +1,23 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Karlloon_North_Shrine",
+  "marker_count": 235,
+  "type_counts": {
+    "npc": 2,
+    "stairs": 14,
+    "door": 18,
+    "walkable": 96,
+    "monster": 18,
+    "blocked": 35,
+    "puzzle": 42,
+    "switch": 7,
+    "chest": 3
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

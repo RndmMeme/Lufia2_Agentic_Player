@@ -1,0 +1,19 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Strahda_Tower",
+  "marker_count": 94,
+  "type_counts": {
+    "door": 25,
+    "stairs": 28,
+    "monster": 1,
+    "walkable": 39,
+    "npc": 1
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

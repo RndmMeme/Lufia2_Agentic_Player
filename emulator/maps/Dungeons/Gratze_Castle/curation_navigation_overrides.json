@@ -1,0 +1,12 @@
+{
+  "schema": "lufia2-dungeon-navigation-overrides-v1",
+  "dungeon": "Gratze_Castle",
+  "cells": [
+    {
+      "coordinate": "CR34",
+      "effective_traversal": "confirmed_walkable",
+      "reason": "User-confirmed submarine dungeon entrance; required_action and marker notes describe the transition.",
+      "source": "user_confirmed"
+    }
+  ]
+}

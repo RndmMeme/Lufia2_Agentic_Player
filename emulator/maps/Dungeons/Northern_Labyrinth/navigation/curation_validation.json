@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Northern_Labyrinth",
+  "marker_count": 357,
+  "type_counts": {
+    "npc": 3,
+    "door": 23,
+    "walkable": 81,
+    "monster": 15,
+    "stairs": 10,
+    "chest": 5,
+    "bush": 9,
+    "blocked": 115,
+    "puzzle": 86,
+    "switch": 10
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

@@ -1,0 +1,62 @@
+!npc 1e (00) 87:07,1f
+EVENT 87-C-6D
+1000. 14(C2-{{iris_item_index}}-0001-30-@7000-FF)
+1010. 08: You have it! The
+          {{iris_item_name}}! Will you
+          sell it to me for
+          two million gold?<END MESSAGE>
+1020. 10(02-@1100-@1800)
+1030. 08: No.
+          Yes.<CHOICE>
+1100. 08: Bah. It's probably
+          fake, anyway.<END EVENT>
+1800. {{remove_item_command}}
+1810. 22(C350)
+1820. 22(C350)
+1830. 22(C350)
+1840. 22(C350)
+1850. 22(C350)
+1860. 22(C350)
+1870. 22(C350)
+1880. 22(C350)
+1890. 22(C350)
+18A0. 22(C350)
+18B0. 22(C350)
+18C0. 22(C350)
+18D0. 22(C350)
+18E0. 22(C350)
+18F0. 22(C350)
+1900. 22(C350)
+1910. 22(C350)
+1920. 22(C350)
+1930. 22(C350)
+1940. 22(C350)
+2810. 22(C350)
+2820. 22(C350)
+2830. 22(C350)
+2840. 22(C350)
+2850. 22(C350)
+2860. 22(C350)
+2870. 22(C350)
+2880. 22(C350)
+2890. 22(C350)
+28A0. 22(C350)
+28B0. 22(C350)
+28C0. 22(C350)
+28D0. 22(C350)
+28E0. 22(C350)
+28F0. 22(C350)
+2900. 22(C350)
+2910. 22(C350)
+2920. 22(C350)
+2930. 22(C350)
+2940. 22(C350)
+6F00. 08: Superb! Here you
+          are, two million gold!<END EVENT>
+7000. 08: In all my travels,
+          I could not find the
+          coveted {{iris_item_name}}.<END MESSAGE>
+7010. 08: Should you bring
+          it to me, I will
+          pay you handsomely
+          for it.<END EVENT>

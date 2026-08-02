@@ -1,0 +1,56 @@
+{
+  "status": "CONFIRMED",
+  "checks": {
+    "active_enemy_index_is_zero_based": true,
+    "enemy_single_target_masks": true,
+    "enemy_all_two_combines_live_bits": true,
+    "enemy_all_three_combines_live_bits": true,
+    "party_single_target_masks": true,
+    "party_all_combines_live_bits": true,
+    "target_is_record_byte_zero": true,
+    "champion_command_and_spell": true,
+    "actor_mask_is_not_target": true,
+    "guy_actor_mask": true
+  },
+  "addresses": {
+    "active_temporary_target_index": "7E:0026, zero-based; insufficient to detect R/all mode",
+    "party_command_base": "7F:F560",
+    "party_command_stride": "0x0C",
+    "stored_target_mask_offset": "0x00",
+    "command_offset": "0x04",
+    "selected_action_offset": "0x06",
+    "actor_mask_offset": "0x0A"
+  },
+  "encoding": {
+    "party": {
+      "index_bits": [
+        "0x01",
+        "0x02",
+        "0x04",
+        "0x08"
+      ],
+      "all_four": "0x0F"
+    },
+    "enemy": {
+      "flag": "0x80",
+      "confirmed_index_bits": [
+        "0x01",
+        "0x02",
+        "0x04"
+      ],
+      "confirmed_all_three": "0x87",
+      "derived_unseen_index_bits": [
+        "0x08",
+        "0x10",
+        "0x20"
+      ],
+      "derived_all_six": "0xBF"
+    }
+  },
+  "semantics": [
+    "R toggles a temporary all-target mode; it need not be held.",
+    "The fixed cursor remains on one target while all-target mode is active.",
+    "The confirmed command mask is authoritative for single versus all.",
+    "Enemy indices 3-5 are structurally derived because six-enemy encounters are rare and were not forced."
+  ]
+}

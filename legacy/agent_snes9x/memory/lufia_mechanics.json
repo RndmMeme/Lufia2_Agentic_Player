@@ -1,0 +1,105 @@
+{
+    "general_mechanics": [
+        "Lufia 2 is a turn-based RPG with heavy dungeon puzzle elements. Enemies only move when Maxim (the player) moves. If Maxim takes a step, enemies take a step.",
+        "To interact with NPCs, open chests, or read signs, face the object and press the A button.",
+        "Swinging the sword (pressing B without a direction) advances time by one step, causing enemies to move while the player stays in place. Use this to manipulate enemy pathing.",
+        "Bushes (or tall grass) block your path in dungeons and caves. You cannot walk through them. To destroy a bush, stand adjacent to it, face it, and swing your sword (press the B button).",
+        "The Reset time piece (tool) resets a puzzle room to its default state. This is crucial if blocks are pushed into unsolvable corners.",
+        "Saving the game requires speaking to a Priest in a church located in towns, or touching a glowing save tile in certain dungeons."
+    ],
+    "menu_navigation": {
+        "open_menu": "Press X while outside of active combat.",
+        "close_menu": "Press B repeatedly until the menu is closed.",
+        "layout": "When the menu opens, the cursor ALWAYS starts on 'ITEM'.",
+        "cursor_down_1": "From ITEM, pressing Down moves the cursor to 'SPELL'.",
+        "cursor_down_2": "From SPELL, pressing Down moves to 'CAPSULE'.",
+        "cursor_down_3": "From CAPSULE, pressing Down moves to 'EQUIP'.",
+        "cursor_right_1": "From ITEM, pressing Right moves the cursor to 'STATUS'.",
+        "cursor_status_down_1": "From STATUS, pressing Down moves to 'CHANGE' (swap party positions).",
+        "cursor_status_down_2": "From CHANGE, pressing Down moves to 'CONFIG'.",
+        "cursor_status_down_3": "From CONFIG, pressing Down moves to 'SCENARIO'.",
+        "item_usage": "Entering ITEM puts the cursor into the item list. Up/Down selects an item. Pressing A confirms. If consumable (like Potion), the cursor jumps to the first character. Press A to apply to them, or use directional buttons to select another character."
+    },
+    "battle_navigation": {
+        "layout": "The battle menu is a CROSS menu. Directions correspond to sub-menus.",
+        "center_a": "Fight / Physical Attack. Defaults to first enemy.",
+        "up_a": "Magic / Spell menu. Navigate list with Up/Down and confirm with A.",
+        "down_a": "IP / Special Attack menu. Uses Ikari Points built from taking damage.",
+        "left_a": "Item menu. Select consumable items for use in battle.",
+        "right_a": "Defend. Reduces incoming physical damage for the turn.",
+        "hold_down_a": "Flee / Escape attempt. Must be done from the pre-battle menu (Top/Center/Bottom check).",
+        "targeting": "After selecting an action, use Left/Right to cycle targets. Press A to confirm."
+    },
+    "select_menu_navigation": {
+        "open_menu": "Press the SNES Select button (space) while in a dungeon.",
+        "layout": "The Select menu contains tools and specialized actions like 'Reset'.",
+        "reset_usage": "Press 'up' to Select 'Reset' from the list and press A. This costs 0 MP and restores the current puzzle room to its initial state. Press B to exit the menu after use."
+    },
+    "item_effects": {
+        "Potion": "Restores 30 HP to one ally. RULE: Use when character HP is missing at least 30, but total HP is under 150.",
+        "Hi-Potion": "Restores 100 HP to one ally. RULE: Use when character HP is missing at least 100.",
+        "Ex-Potion": "Restores full HP to one ally. RULE: Use only in emergencies when Max HP > 200 and current HP is critically low (< 20%).",
+        "Magic Jar": "Restores 10 MP to one ally. RULE: Use when MP is missing at least 10.",
+        "Hi-Magic": "Restores 50 MP to one ally. RULE: Use when MP is missing at least 50.",
+        "Ex-Magic": "Restores full MP to one ally.",
+        "Regain": "Restores 200 HP to one ally. RULE: Use when character HP is missing at least 200.",
+        "Miracle": "Restores full HP and full MP to one ally.",
+        "Antidote": "Cures Poison status ailment.",
+        "Awake": "Cures Sleep status ailment.",
+        "Shriek": "Cures Confusion status ailment.",
+        "Mystery Pin": "Cures Paralysis status ailment.",
+        "Life Potion": "Permanently increases Max HP. Should be used outside of battle on characters like Tia or Selan who have low HP.",
+        "Spell Potion": "Permanently increases Max MP.",
+        "Power Potion": "Permanently increases Attack (STR).",
+        "Speed Potion": "Permanently increases Agility (AGI).",
+        "Mind Potion": "Permanently increases Intelligence (INT).",
+        "Brave": "Permanently increases Guts (GUT)."
+    },
+    "tools_and_puzzles": [
+        "The party can hold tools to solve puzzles and manipulate enemies.",
+        "Arrow: Triggers switches from afar and stuns enemies temporarily.",
+        "Bomb: Destroys cracked walls, bushes, and switches.",
+        "Hook: Pulls the player over gaps to far pillars or chests, and stuns enemies.",
+        "Fire: Lights torches and stuns enemies temporarily.",
+        "Hammer: Pushes blocks and pillars, destroys some cracked walls, and stuns enemies.",
+        "Using tools advances time. If you use a tool, enemies will move or recover while you are standing still.",
+        "Puzzles often involve pushing pillars onto switches, lighting torches in a specific sequence, or blowing up walls to reveal hidden doors."
+    ],
+    "combat_and_tactics": [
+        "Combat is initiated by touching visible enemies in a dungeon or after a certain step count on the world map.",
+        "Initiative: Encountering an enemy from behind grants a preemptive strike to the player. Conversely, if an enemy touches the player's back, the enemy gets the initiative strike.",
+        "Battle tactics: Prioritize maximizing damage while minimizing HP loss. Focus single-target damage to eliminate enemies quickly to reduce incoming attacks per turn.",
+        "IP Attacks (Ikari Points): Taking damage builds the IP gauge. Weapons and armor grant unique IP abilities which can turn the tide of battle without costing MP."
+    ],
+    "fleeing_tactics": [
+        "Fleeing from battle (pressing Down in the Pre-Battle menu) is NOT guaranteed to succeed.",
+        "A Flee attempt may fail if the enemy prevents it, forcing the party to waste their turn.",
+        "The party cannot flee if ALL members are afflicted by debilitating status ailments (Dead, Paralyzed, Sleeping, Confused). At least ONE character must be alive and well (Poison is acceptable) to execute a Flee attempt. Otherwise, the AI MUST choose to use an Awakening/Healing item or spell first.",
+        "To guarantee or highly increase the chance of fleeing, the AI should use specific items like a 'Smoke Ball', or cast crowd-control spells (like Sleep or Confusion) on the enemies before attempting to flee again.",
+        "Fleeing is generally disabled during boss encounters."
+    ],
+    "recovery_and_management": [
+        "Recovery: HP and MP can be restored by using consumable Items (like Potions or Magic Jars), casting Healing Spells (like Strong or Rally), or paying a Priest at a town church. Also in dungeons glowing tiles grant recovery.",
+        "Equipment Management: Characters must be kept equipped with the strongest available weapons and armor from shops, or gear found in chests. Old gear can be sold.",
+        "Spell Management: Magic is bought in town magic shops. Not all characters can learn all spells. Spells cost MP and are critical for targeting enemy elemental weaknesses."
+    ],
+    "characters": {
+        "Maxim": "The main protagonist. A sword-fighter with decent magic and the fastest speed. He leads the party and is essential for all boss fights.",
+        "Selan": "A fragile but incredibly powerful spellcaster. Specializes in multi-target black magic and strong white magic (healing).",
+        "Guy": "A pure physical powerhouse. High HP, high Strength, lowest agility. Cannot use magic. Excellent for soaking damage.",
+        "Artea": "An elf who joins late. Fast, high magic stats, and specializes in Holy magic and bow/arrow physical damage.",
+        "Tia": "A childhood friend. Decent early-game spellcaster with mixed utility.",
+        "Dekar": "An incredibly strong warrior with high HP. Slower than Guy but hits very hard.",
+        "Lexis": "A genius inventor with balanced stats and access to unique tools/spells. He is highly intelligent and relies on gadgets."
+    },
+    "capsule_monsters": [
+        "Capsule Monsters are AI-controlled 5th party members that fight alongside you but cannot be directly controlled.",
+        "They act automatically each turn and do not take up a party slot.",
+        "They can be fed old weapons, armor, or special fruits to increase their level and evolve them into stronger forms.",
+        "Different capsule monsters specialize in different roles (e.g., Foomy for physical damage, Darbi for dark magic/instant death)."
+    ],
+    "goals": [
+        "The overarching goal of Lufia 2 is to track down the Sinistrals (Gades, Amon, Erim, Daos) and stop them from destroying the world.",
+        "To proceed, the player must often visit towns, talk to NPCs to gather clues about the next dungeon, enter the dungeon, solve its puzzles, and defeat the boss at the end."
+    ]
+}

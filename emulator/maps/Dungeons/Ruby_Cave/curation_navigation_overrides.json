@@ -1,0 +1,46 @@
+{
+  "schema": "lufia2-dungeon-navigation-overrides-v1",
+  "dungeon": "Ruby_Cave",
+  "cells": [
+    {
+      "coordinate": "S77",
+      "effective_traversal": "confirmed_walkable",
+      "reason": "User-confirmed tight lava/walkable transition.",
+      "source": "user_confirmed"
+    },
+    {
+      "coordinate": "V77",
+      "effective_traversal": "confirmed_walkable",
+      "reason": "User-confirmed tight lava/walkable transition.",
+      "source": "user_confirmed"
+    },
+    {
+      "coordinate": "X77",
+      "effective_traversal": "confirmed_walkable",
+      "confidence": 0.99,
+      "reason": "User assessed the tight lava/walkable transition as 99 percent walkable.",
+      "source": "user_confirmed"
+    },
+    {
+      "coordinate": "AJ88",
+      "effective_traversal": "conditional",
+      "required_action": "Lift or move the ice block overlapping from AJ87.",
+      "reason": "The underlying part of the small island is walkable after the ice block is removed.",
+      "source": "user_confirmed"
+    },
+    {
+      "coordinate": "AJ87",
+      "effective_traversal": "blocked",
+      "terrain": "lava",
+      "reason": "User-confirmed lava beneath/adjacent to the ice-block puzzle.",
+      "source": "user_confirmed"
+    },
+    {
+      "coordinate": "AJ89",
+      "effective_traversal": "partial",
+      "walkable_fraction": 0.5,
+      "reason": "User-confirmed half-tile transition between the small island and lava; exact pixel geometry is authoritative.",
+      "source": "user_confirmed"
+    }
+  ]
+}

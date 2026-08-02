@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-08-02T05:13:19.807952",
+  "contract": "schema-bound intents plus one gated Mesen screenshot",
+  "models": [
+    {
+      "model": "qwen3-vl:4b",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "error": "move intent requires north/south/east/west; model_json={\"kind\": \"move\", \"count\": 1, \"rationale\": \"The suggested direction is east, and there are no known obstacles in the current frame. Moving forward aligns with the exploration goal and follows the navigation policy.\"}",
+          "seconds": 1.219
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "error": "move intent requires north/south/east/west; model_json={\"kind\": \"move\", \"count\": 1, \"rationale\": \"The player is at [28,42] facing north with a blocked east direction. The suggested direction is west, which aligns with the unknown_directions list and the need to explore the Secret Skills Cave. Moving west is the logical next step to progress through the dungeon.\"}",
+          "seconds": 1.11
+        },
+        {
+          "case": "dialog",
+          "passed": true,
+          "intent": {
+            "kind": "interact",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "tool": null,
+            "rationale": "The dialog is active, so interacting with the current dialogue option is required to proceed. This aligns with the mode being 'dialog' and the need to resolve the dialog before moving forward."
+          },
+          "seconds": 0.906
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "error": "move intent requires north/south/east/west; model_json={\"kind\": \"move\", \"count\": 1, \"rationale\": \"The player is in a battle, so moving away from the enemy to avoid combat is necessary for progression. The current position [28,42] with direction north suggests an open path forward.\"}",
+          "seconds": 0.89
+        }
+      ],
+      "vision": null,
+      "planner_passes": 1
+    }
+  ]
+}

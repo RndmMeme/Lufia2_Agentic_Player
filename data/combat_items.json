@@ -1,0 +1,39 @@
+{
+  "even": {
+    "01": { "name": "Charred Newt", "desc": "Restores 5HP + 5MP" },
+    "02": { "name": "Potion", "desc": "Restores 30HP" },
+    "03": { "name": "Hi-Potion", "desc": "Restores 90HP" },
+    "04": { "name": "Ex-Potion", "desc": "Restores 300HP" },
+    "08": { "name": "Regain", "desc": "Restores Life, and 100HP" },
+    "09": { "name": "Miracle", "desc": "Restores Life, and All HP + MP" },
+    "05": { "name": "Magic Jar", "desc": "Restores 8MP" },
+    "06": { "name": "Hi-Magic", "desc": "Restores 40MP" },
+    "07": { "name": "Ex-Magic", "desc": "Restores 95MP" },
+    "0A": { "name": "Antidote", "desc": "Heals poison" },
+    "0C": { "name": "Shriek", "desc": "Cures Confusion Status" },
+    "0B": { "name": "Awake", "desc": "Cures Sleep Status" },
+    "0D": { "name": "Mystery Pin", "desc": "Cures Paralysis Status" },
+    "24": { "name": "Boomerang", "desc": "Damage all enemies", "target": "All" },
+    "25": { "name": "Big-Boomer", "desc": "Stronger PHYSICAL attack", "target": "All" },
+    "26": { "name": "Ex-Boomer", "desc": "Powerful PHYSICAL attack", "target": "All" },
+    "27": { "name": "Dragon Tooth", "desc": "Stronger PHYSICAL attack", "target": "All" },
+    "20": { "name": "Ice Ball", "desc": "Inflicts Cold Damage", "target": "Single" },
+    "21": { "name": "Fire Ball", "desc": "Inflicts Fire Damage", "target": "Single" },
+    "1C": { "name": "Sleep Ball", "desc": "Puts foes to sleep", "target": "Single" },
+    "1F": { "name": "Smoke Ball", "desc": "Escape from Battle!" },
+    "22": { "name": "Terror Ball", "desc": "Total Annihilation", "target": "Single" },
+    "1E": { "name": "Freeze Ball", "desc": "Inflicts Paralysis", "target": "Single" },
+    "1D": { "name": "Confuse Ball", "desc": "Brain Damages Foes", "target": "Single" },
+    "17": { "name": "Pear Cider", "desc": "Increases ATP in battle and Restores 8HP" },
+    "18": { "name": "Sour Cider", "desc": "Increases ATP in battle and Restores 10HP" },
+    "19": { "name": "Lime Cider", "desc": "Increases ATP in battle and Restores 15HP" },
+    "1A": { "name": "Plum Cider", "desc": "Increases ATP in battle and Restores 20HP" },
+    "1B": { "name": "Apple Cider", "desc": "Increases ATP in battle and Restores 165HP" }
+  },
+  "odd": {
+    "91": { "name": "Statue", "desc": "Restores 200HP", "target": "All" },
+    "8F": { "name": "Zap Charm", "desc": "Casts 'Flash' on foes", "target": "Single" },
+    "8E": { "name": "Flame Charm", "desc": "Casts 'Spark' on foes", "target": "Single" },
+    "90": { "name": "Magic Lamp", "desc": "Buster Attack", "target": "All" }
+  }
+}

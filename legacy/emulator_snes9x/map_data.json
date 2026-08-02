@@ -1,0 +1,3530 @@
+{
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Alunze Castle (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Closed": [
+            {
+                "pixel_x": 293.0,
+                "pixel_y": 176.0,
+                "center_x": 312.0,
+                "center_y": 200.0,
+                "confidence": 0.9919570684432983
+            },
+            {
+                "pixel_x": 885.0,
+                "pixel_y": 176.0,
+                "center_x": 904.0,
+                "center_y": 200.0,
+                "confidence": 0.9999998211860657
+            },
+            {
+                "pixel_x": 277.0,
+                "pixel_y": 352.0,
+                "center_x": 296.0,
+                "center_y": 376.0,
+                "confidence": 0.993852436542511
+            },
+            {
+                "pixel_x": 869.0,
+                "pixel_y": 352.0,
+                "center_x": 888.0,
+                "center_y": 376.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Open": [
+            {
+                "pixel_x": 116.0,
+                "pixel_y": 640.0,
+                "center_x": 136.0,
+                "center_y": 656.0,
+                "confidence": 0.9858976006507874
+            },
+            {
+                "pixel_x": 708.0,
+                "pixel_y": 640.0,
+                "center_x": 728.0,
+                "center_y": 656.0,
+                "confidence": 0.9999997615814209
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Alunze Castle (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_L": [
+            {
+                "pixel_x": 320.0,
+                "pixel_y": 112.0,
+                "center_x": 328.0,
+                "center_y": 120.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 1088.0,
+                "pixel_y": 112.0,
+                "center_x": 1096.0,
+                "center_y": 120.0,
+                "confidence": 0.9999989867210388
+            },
+            {
+                "pixel_x": 448.0,
+                "pixel_y": 656.0,
+                "center_x": 456.0,
+                "center_y": 664.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 704.0,
+                "pixel_y": 656.0,
+                "center_x": 712.0,
+                "center_y": 664.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 160.0,
+                "pixel_y": 1136.0,
+                "center_x": 168.0,
+                "center_y": 1144.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 800.0,
+                "pixel_y": 1136.0,
+                "center_x": 808.0,
+                "center_y": 1144.0,
+                "confidence": 0.9999995231628418
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_R": [
+            {
+                "pixel_x": 192.0,
+                "pixel_y": 512.0,
+                "center_x": 200.0,
+                "center_y": 520.0,
+                "confidence": 0.9825457334518433
+            },
+            {
+                "pixel_x": 672.0,
+                "pixel_y": 512.0,
+                "center_x": 680.0,
+                "center_y": 520.0,
+                "confidence": 0.9825457334518433
+            },
+            {
+                "pixel_x": 64.0,
+                "pixel_y": 656.0,
+                "center_x": 72.0,
+                "center_y": 664.0,
+                "confidence": 0.9825462698936462
+            },
+            {
+                "pixel_x": 320.0,
+                "pixel_y": 656.0,
+                "center_x": 328.0,
+                "center_y": 664.0,
+                "confidence": 0.9825468063354492
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Up_R": [
+            {
+                "pixel_x": 64.0,
+                "pixel_y": 89.0,
+                "center_x": 72.0,
+                "center_y": 100.0,
+                "confidence": 0.9689335227012634
+            },
+            {
+                "pixel_x": 320.0,
+                "pixel_y": 89.0,
+                "center_x": 328.0,
+                "center_y": 100.0,
+                "confidence": 0.9689335227012634
+            },
+            {
+                "pixel_x": 832.0,
+                "pixel_y": 89.0,
+                "center_x": 840.0,
+                "center_y": 100.0,
+                "confidence": 0.8828083276748657
+            },
+            {
+                "pixel_x": 1088.0,
+                "pixel_y": 89.0,
+                "center_x": 1096.0,
+                "center_y": 100.0,
+                "confidence": 0.8828080892562866
+            },
+            {
+                "pixel_x": 48.0,
+                "pixel_y": 505.0,
+                "center_x": 56.0,
+                "center_y": 516.0,
+                "confidence": 0.9113402366638184
+            },
+            {
+                "pixel_x": 288.0,
+                "pixel_y": 505.0,
+                "center_x": 296.0,
+                "center_y": 516.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Alunze Kingdom (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 184.0,
+                "pixel_y": 160.0,
+                "center_x": 200.0,
+                "center_y": 172.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 488.0,
+                "pixel_y": 320.0,
+                "center_x": 504.0,
+                "center_y": 332.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 352.0,
+                "center_x": 88.0,
+                "center_y": 364.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 544.0,
+                "center_x": 104.0,
+                "center_y": 556.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Ancient Cave (Entrance).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Closed": [
+            {
+                "pixel_x": 112.0,
+                "pixel_y": 304.0,
+                "center_x": 120.0,
+                "center_y": 312.0,
+                "confidence": 0.9900076389312744
+            },
+            {
+                "pixel_x": 144.0,
+                "pixel_y": 304.0,
+                "center_x": 152.0,
+                "center_y": 312.0,
+                "confidence": 0.9900076389312744
+            },
+            {
+                "pixel_x": 624.0,
+                "pixel_y": 304.0,
+                "center_x": 632.0,
+                "center_y": 312.0,
+                "confidence": 0.9900076389312744
+            },
+            {
+                "pixel_x": 656.0,
+                "pixel_y": 304.0,
+                "center_x": 664.0,
+                "center_y": 312.0,
+                "confidence": 0.9900079965591431
+            },
+            {
+                "pixel_x": 112.0,
+                "pixel_y": 320.0,
+                "center_x": 120.0,
+                "center_y": 328.0,
+                "confidence": 0.9900076389312744
+            },
+            {
+                "pixel_x": 624.0,
+                "pixel_y": 320.0,
+                "center_x": 632.0,
+                "center_y": 328.0,
+                "confidence": 0.9900076389312744
+            },
+            {
+                "pixel_x": 656.0,
+                "pixel_y": 320.0,
+                "center_x": 664.0,
+                "center_y": 328.0,
+                "confidence": 0.9900074601173401
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Open": [
+            {
+                "pixel_x": 144.0,
+                "pixel_y": 320.0,
+                "center_x": 152.0,
+                "center_y": 328.0,
+                "confidence": 0.9966787695884705
+            },
+            {
+                "pixel_x": 400.0,
+                "pixel_y": 320.0,
+                "center_x": 408.0,
+                "center_y": 328.0,
+                "confidence": 0.9966785907745361
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Crate": [
+            {
+                "pixel_x": 112.0,
+                "pixel_y": 111.0,
+                "center_x": 120.0,
+                "center_y": 119.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 400.0,
+                "pixel_y": 112.0,
+                "center_x": 408.0,
+                "center_y": 120.0,
+                "confidence": 0.9999997019767761
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Door_Closed": [
+            {
+                "pixel_x": 64.0,
+                "pixel_y": 35.0,
+                "center_x": 72.0,
+                "center_y": 48.0,
+                "confidence": 0.9552437663078308
+            },
+            {
+                "pixel_x": 224.0,
+                "pixel_y": 35.0,
+                "center_x": 232.0,
+                "center_y": 48.0,
+                "confidence": 0.9552435874938965
+            },
+            {
+                "pixel_x": 352.0,
+                "pixel_y": 36.0,
+                "center_x": 360.0,
+                "center_y": 49.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 512.0,
+                "pixel_y": 36.0,
+                "center_x": 520.0,
+                "center_y": 49.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 48.0,
+                "pixel_y": 372.0,
+                "center_x": 56.0,
+                "center_y": 385.0,
+                "confidence": 0.9552437663078308
+            },
+            {
+                "pixel_x": 208.0,
+                "pixel_y": 372.0,
+                "center_x": 216.0,
+                "center_y": 385.0,
+                "confidence": 0.9552435874938965
+            },
+            {
+                "pixel_x": 304.0,
+                "pixel_y": 372.0,
+                "center_x": 312.0,
+                "center_y": 385.0,
+                "confidence": 0.9999997615814209
+            },
+            {
+                "pixel_x": 464.0,
+                "pixel_y": 372.0,
+                "center_x": 472.0,
+                "center_y": 385.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Door_Locked": [
+            {
+                "pixel_x": 144.0,
+                "pixel_y": 35.0,
+                "center_x": 152.0,
+                "center_y": 48.0,
+                "confidence": 0.9062392115592957
+            },
+            {
+                "pixel_x": 432.0,
+                "pixel_y": 36.0,
+                "center_x": 440.0,
+                "center_y": 49.0,
+                "confidence": 0.9999997615814209
+            },
+            {
+                "pixel_x": 128.0,
+                "pixel_y": 372.0,
+                "center_x": 136.0,
+                "center_y": 385.0,
+                "confidence": 0.906238853931427
+            },
+            {
+                "pixel_x": 384.0,
+                "pixel_y": 372.0,
+                "center_x": 392.0,
+                "center_y": 385.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Door_Open": [
+            {
+                "pixel_x": 640.0,
+                "pixel_y": 34.0,
+                "center_x": 647.0,
+                "center_y": 48.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 720.0,
+                "pixel_y": 34.0,
+                "center_x": 727.0,
+                "center_y": 48.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 800.0,
+                "pixel_y": 34.0,
+                "center_x": 807.0,
+                "center_y": 48.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 560.0,
+                "pixel_y": 371.0,
+                "center_x": 567.0,
+                "center_y": 385.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 640.0,
+                "pixel_y": 371.0,
+                "center_x": 647.0,
+                "center_y": 385.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 720.0,
+                "pixel_y": 371.0,
+                "center_x": 727.0,
+                "center_y": 385.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Closed": [
+            {
+                "pixel_x": 112.0,
+                "pixel_y": 304.0,
+                "center_x": 120.0,
+                "center_y": 312.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 144.0,
+                "pixel_y": 304.0,
+                "center_x": 152.0,
+                "center_y": 312.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 624.0,
+                "pixel_y": 304.0,
+                "center_x": 632.0,
+                "center_y": 312.0,
+                "confidence": 0.9999996423721313
+            },
+            {
+                "pixel_x": 656.0,
+                "pixel_y": 304.0,
+                "center_x": 664.0,
+                "center_y": 312.0,
+                "confidence": 0.9999998211860657
+            },
+            {
+                "pixel_x": 112.0,
+                "pixel_y": 320.0,
+                "center_x": 120.0,
+                "center_y": 328.0,
+                "confidence": 0.9999996423721313
+            },
+            {
+                "pixel_x": 624.0,
+                "pixel_y": 320.0,
+                "center_x": 632.0,
+                "center_y": 328.0,
+                "confidence": 0.9999996423721313
+            },
+            {
+                "pixel_x": 656.0,
+                "pixel_y": 320.0,
+                "center_x": 664.0,
+                "center_y": 328.0,
+                "confidence": 0.9999998211860657
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Open": [
+            {
+                "pixel_x": 144.0,
+                "pixel_y": 320.0,
+                "center_x": 152.0,
+                "center_y": 328.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 400.0,
+                "pixel_y": 320.0,
+                "center_x": 408.0,
+                "center_y": 328.0,
+                "confidence": 0.9999997615814209
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Up_L": [
+            {
+                "pixel_x": 144.0,
+                "pixel_y": 175.0,
+                "center_x": 152.0,
+                "center_y": 183.0,
+                "confidence": 0.8775057792663574
+            },
+            {
+                "pixel_x": 432.0,
+                "pixel_y": 176.0,
+                "center_x": 440.0,
+                "center_y": 184.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Statue_Horse_L": [
+            {
+                "pixel_x": 80.0,
+                "pixel_y": 79.0,
+                "center_x": 88.0,
+                "center_y": 95.0,
+                "confidence": 0.9329909682273865
+            },
+            {
+                "pixel_x": 240.0,
+                "pixel_y": 79.0,
+                "center_x": 248.0,
+                "center_y": 95.0,
+                "confidence": 0.9329906702041626
+            },
+            {
+                "pixel_x": 368.0,
+                "pixel_y": 80.0,
+                "center_x": 376.0,
+                "center_y": 96.0,
+                "confidence": 0.9999997019767761
+            },
+            {
+                "pixel_x": 528.0,
+                "pixel_y": 80.0,
+                "center_x": 536.0,
+                "center_y": 96.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Statue_Horse_R": [
+            {
+                "pixel_x": 48.0,
+                "pixel_y": 79.0,
+                "center_x": 56.0,
+                "center_y": 95.0,
+                "confidence": 0.9318631291389465
+            },
+            {
+                "pixel_x": 208.0,
+                "pixel_y": 79.0,
+                "center_x": 216.0,
+                "center_y": 95.0,
+                "confidence": 0.9318628311157227
+            },
+            {
+                "pixel_x": 336.0,
+                "pixel_y": 80.0,
+                "center_x": 344.0,
+                "center_y": 96.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 496.0,
+                "pixel_y": 80.0,
+                "center_x": 504.0,
+                "center_y": 96.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Teleport_Active": [
+            {
+                "pixel_x": 48.0,
+                "pixel_y": 304.0,
+                "center_x": 56.0,
+                "center_y": 312.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 208.0,
+                "pixel_y": 304.0,
+                "center_x": 216.0,
+                "center_y": 312.0,
+                "confidence": 0.9999996423721313
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Teleport_Inactive": [
+            {
+                "pixel_x": 304.0,
+                "pixel_y": 304.0,
+                "center_x": 312.0,
+                "center_y": 312.0,
+                "confidence": 0.9996458888053894
+            },
+            {
+                "pixel_x": 464.0,
+                "pixel_y": 304.0,
+                "center_x": 472.0,
+                "center_y": 312.0,
+                "confidence": 0.9996455311775208
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Auralio Kingdom (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 144.0,
+                "center_x": 72.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 648.0,
+                "pixel_y": 144.0,
+                "center_x": 664.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 664.0,
+                "pixel_y": 320.0,
+                "center_x": 680.0,
+                "center_y": 332.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 560.0,
+                "center_x": 72.0,
+                "center_y": 572.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 120.0,
+                "pixel_y": 752.0,
+                "center_x": 136.0,
+                "center_y": 764.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Barnan (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 136.0,
+                "pixel_y": 144.0,
+                "center_x": 152.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 680.0,
+                "pixel_y": 160.0,
+                "center_x": 696.0,
+                "center_y": 172.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 336.0,
+                "center_x": 104.0,
+                "center_y": 348.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 616.0,
+                "pixel_y": 336.0,
+                "center_x": 632.0,
+                "center_y": 348.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 648.0,
+                "pixel_y": 496.0,
+                "center_x": 664.0,
+                "center_y": 508.0,
+                "confidence": 0.9999995231628418
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Bound Kingdom (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Closed": [
+            {
+                "pixel_x": 341.0,
+                "pixel_y": 256.0,
+                "center_x": 360.0,
+                "center_y": 280.0,
+                "confidence": 0.9902587532997131
+            },
+            {
+                "pixel_x": 1061.0,
+                "pixel_y": 256.0,
+                "center_x": 1080.0,
+                "center_y": 280.0,
+                "confidence": 0.9976068735122681
+            },
+            {
+                "pixel_x": 325.0,
+                "pixel_y": 464.0,
+                "center_x": 344.0,
+                "center_y": 488.0,
+                "confidence": 0.992818295955658
+            },
+            {
+                "pixel_x": 1045.0,
+                "pixel_y": 464.0,
+                "center_x": 1064.0,
+                "center_y": 488.0,
+                "confidence": 0.9976066946983337
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Open": [
+            {
+                "pixel_x": 676.0,
+                "pixel_y": 912.0,
+                "center_x": 696.0,
+                "center_y": 928.0,
+                "confidence": 0.9856986999511719
+            },
+            {
+                "pixel_x": 1396.0,
+                "pixel_y": 912.0,
+                "center_x": 1416.0,
+                "center_y": 928.0,
+                "confidence": 0.9982248544692993
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Bound Kingdom (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_L": [
+            {
+                "pixel_x": 784.0,
+                "pixel_y": 832.0,
+                "center_x": 792.0,
+                "center_y": 840.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 1104.0,
+                "pixel_y": 832.0,
+                "center_x": 1112.0,
+                "center_y": 840.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_R": [
+            {
+                "pixel_x": 224.0,
+                "pixel_y": 96.0,
+                "center_x": 232.0,
+                "center_y": 104.0,
+                "confidence": 0.9825468063354492
+            },
+            {
+                "pixel_x": 960.0,
+                "pixel_y": 96.0,
+                "center_x": 968.0,
+                "center_y": 104.0,
+                "confidence": 0.9825462698936462
+            },
+            {
+                "pixel_x": 80.0,
+                "pixel_y": 592.0,
+                "center_x": 88.0,
+                "center_y": 600.0,
+                "confidence": 0.9825468063354492
+            },
+            {
+                "pixel_x": 624.0,
+                "pixel_y": 592.0,
+                "center_x": 632.0,
+                "center_y": 600.0,
+                "confidence": 0.9825462698936462
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Up_R": [
+            {
+                "pixel_x": 48.0,
+                "pixel_y": 585.0,
+                "center_x": 56.0,
+                "center_y": 596.0,
+                "confidence": 0.9113402366638184
+            },
+            {
+                "pixel_x": 64.0,
+                "pixel_y": 809.0,
+                "center_x": 72.0,
+                "center_y": 820.0,
+                "confidence": 0.9002413749694824
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Capsule Monsters Shrine.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Capsule_Shrine_Stairs": [
+            {
+                "pixel_x": 238.0,
+                "pixel_y": 190.0,
+                "center_x": 263.0,
+                "center_y": 247.0,
+                "confidence": 0.9999997019767761
+            },
+            {
+                "pixel_x": 1294.0,
+                "pixel_y": 190.0,
+                "center_x": 1319.0,
+                "center_y": 247.0,
+                "confidence": 0.9999997019767761
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Chaed (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 144.0,
+                "center_x": 88.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 632.0,
+                "pixel_y": 144.0,
+                "center_x": 648.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 616.0,
+                "pixel_y": 320.0,
+                "center_x": 632.0,
+                "center_y": 332.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 120.0,
+                "pixel_y": 336.0,
+                "center_x": 136.0,
+                "center_y": 348.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 648.0,
+                "pixel_y": 480.0,
+                "center_x": 664.0,
+                "center_y": 492.0,
+                "confidence": 0.9999990463256836
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Clamento (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 120.0,
+                "pixel_y": 192.0,
+                "center_x": 136.0,
+                "center_y": 204.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 920.0,
+                "pixel_y": 352.0,
+                "center_x": 936.0,
+                "center_y": 364.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 368.0,
+                "center_x": 72.0,
+                "center_y": 380.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 888.0,
+                "pixel_y": 544.0,
+                "center_x": 904.0,
+                "center_y": 556.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 104.0,
+                "pixel_y": 672.0,
+                "center_x": 120.0,
+                "center_y": 684.0,
+                "confidence": 0.9999990463256836
+            },
+            {
+                "pixel_x": 872.0,
+                "pixel_y": 720.0,
+                "center_x": 888.0,
+                "center_y": 732.0,
+                "confidence": 0.9999995231628418
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Dankirk Kingdom (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Closed": [
+            {
+                "pixel_x": 309.0,
+                "pixel_y": 112.0,
+                "center_x": 328.0,
+                "center_y": 136.0,
+                "confidence": 0.968255877494812
+            },
+            {
+                "pixel_x": 469.0,
+                "pixel_y": 112.0,
+                "center_x": 488.0,
+                "center_y": 136.0,
+                "confidence": 0.9682560563087463
+            },
+            {
+                "pixel_x": 389.0,
+                "pixel_y": 480.0,
+                "center_x": 408.0,
+                "center_y": 504.0,
+                "confidence": 0.9708818197250366
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Open": [
+            {
+                "pixel_x": 116.0,
+                "pixel_y": 720.0,
+                "center_x": 136.0,
+                "center_y": 736.0,
+                "confidence": 0.9679725170135498
+            },
+            {
+                "pixel_x": 932.0,
+                "pixel_y": 720.0,
+                "center_x": 952.0,
+                "center_y": 736.0,
+                "confidence": 0.979562520980835
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Dankirk Kingdom (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_L": [
+            {
+                "pixel_x": 96.0,
+                "pixel_y": 80.0,
+                "center_x": 104.0,
+                "center_y": 88.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 480.0,
+                "pixel_y": 80.0,
+                "center_x": 488.0,
+                "center_y": 88.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 864.0,
+                "pixel_y": 80.0,
+                "center_x": 872.0,
+                "center_y": 88.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 160.0,
+                "pixel_y": 912.0,
+                "center_x": 168.0,
+                "center_y": 920.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 768.0,
+                "pixel_y": 912.0,
+                "center_x": 776.0,
+                "center_y": 920.0,
+                "confidence": 0.9999995231628418
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_R": [
+            {
+                "pixel_x": 48.0,
+                "pixel_y": 320.0,
+                "center_x": 56.0,
+                "center_y": 328.0,
+                "confidence": 0.9825468063354492
+            },
+            {
+                "pixel_x": 432.0,
+                "pixel_y": 320.0,
+                "center_x": 440.0,
+                "center_y": 328.0,
+                "confidence": 0.9825462698936462
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Up_R": [
+            {
+                "pixel_x": 736.0,
+                "pixel_y": 601.0,
+                "center_x": 744.0,
+                "center_y": 612.0,
+                "confidence": 0.9002411365509033
+            },
+            {
+                "pixel_x": 944.0,
+                "pixel_y": 601.0,
+                "center_x": 952.0,
+                "center_y": 612.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 48.0,
+                "pixel_y": 617.0,
+                "center_x": 56.0,
+                "center_y": 628.0,
+                "confidence": 0.9002413749694824
+            },
+            {
+                "pixel_x": 272.0,
+                "pixel_y": 617.0,
+                "center_x": 280.0,
+                "center_y": 628.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Doom Island.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Closed": [
+            {
+                "pixel_x": 568.0,
+                "pixel_y": 85.0,
+                "center_x": 576.0,
+                "center_y": 93.0,
+                "confidence": 0.9881395697593689
+            },
+            {
+                "pixel_x": 514.0,
+                "pixel_y": 87.0,
+                "center_x": 522.0,
+                "center_y": 95.0,
+                "confidence": 0.9881401062011719
+            },
+            {
+                "pixel_x": 910.0,
+                "pixel_y": 283.0,
+                "center_x": 918.0,
+                "center_y": 291.0,
+                "confidence": 0.9881401062011719
+            },
+            {
+                "pixel_x": 926.0,
+                "pixel_y": 283.0,
+                "center_x": 934.0,
+                "center_y": 291.0,
+                "confidence": 0.9881401062011719
+            },
+            {
+                "pixel_x": 942.0,
+                "pixel_y": 283.0,
+                "center_x": 950.0,
+                "center_y": 291.0,
+                "confidence": 0.9881401062011719
+            },
+            {
+                "pixel_x": 384.0,
+                "pixel_y": 797.0,
+                "center_x": 392.0,
+                "center_y": 805.0,
+                "confidence": 0.9881397485733032
+            },
+            {
+                "pixel_x": 249.0,
+                "pixel_y": 1622.0,
+                "center_x": 257.0,
+                "center_y": 1630.0,
+                "confidence": 0.9881401062011719
+            },
+            {
+                "pixel_x": 281.0,
+                "pixel_y": 1622.0,
+                "center_x": 289.0,
+                "center_y": 1630.0,
+                "confidence": 0.9881401062011719
+            },
+            {
+                "pixel_x": 797.0,
+                "pixel_y": 1872.0,
+                "center_x": 805.0,
+                "center_y": 1880.0,
+                "confidence": 0.9881399273872375
+            },
+            {
+                "pixel_x": 621.0,
+                "pixel_y": 2048.0,
+                "center_x": 629.0,
+                "center_y": 2056.0,
+                "confidence": 0.9881399273872375
+            },
+            {
+                "pixel_x": 973.0,
+                "pixel_y": 2048.0,
+                "center_x": 981.0,
+                "center_y": 2056.0,
+                "confidence": 0.9881401062011719
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Open": [
+            {
+                "pixel_x": 66.0,
+                "pixel_y": 5024.0,
+                "center_x": 74.0,
+                "center_y": 5032.0,
+                "confidence": 0.9911012053489685
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Closed": [
+            {
+                "pixel_x": 568.0,
+                "pixel_y": 85.0,
+                "center_x": 576.0,
+                "center_y": 93.0,
+                "confidence": 0.9979203939437866
+            },
+            {
+                "pixel_x": 514.0,
+                "pixel_y": 87.0,
+                "center_x": 522.0,
+                "center_y": 95.0,
+                "confidence": 0.9979209303855896
+            },
+            {
+                "pixel_x": 910.0,
+                "pixel_y": 283.0,
+                "center_x": 918.0,
+                "center_y": 291.0,
+                "confidence": 0.9979209303855896
+            },
+            {
+                "pixel_x": 926.0,
+                "pixel_y": 283.0,
+                "center_x": 934.0,
+                "center_y": 291.0,
+                "confidence": 0.9979209303855896
+            },
+            {
+                "pixel_x": 942.0,
+                "pixel_y": 283.0,
+                "center_x": 950.0,
+                "center_y": 291.0,
+                "confidence": 0.9979209303855896
+            },
+            {
+                "pixel_x": 384.0,
+                "pixel_y": 797.0,
+                "center_x": 392.0,
+                "center_y": 805.0,
+                "confidence": 0.997920572757721
+            },
+            {
+                "pixel_x": 249.0,
+                "pixel_y": 1622.0,
+                "center_x": 257.0,
+                "center_y": 1630.0,
+                "confidence": 0.9979209303855896
+            },
+            {
+                "pixel_x": 281.0,
+                "pixel_y": 1622.0,
+                "center_x": 289.0,
+                "center_y": 1630.0,
+                "confidence": 0.9979209303855896
+            },
+            {
+                "pixel_x": 797.0,
+                "pixel_y": 1872.0,
+                "center_x": 805.0,
+                "center_y": 1880.0,
+                "confidence": 0.997920572757721
+            },
+            {
+                "pixel_x": 621.0,
+                "pixel_y": 2048.0,
+                "center_x": 629.0,
+                "center_y": 2056.0,
+                "confidence": 0.9979209303855896
+            },
+            {
+                "pixel_x": 973.0,
+                "pixel_y": 2048.0,
+                "center_x": 981.0,
+                "center_y": 2056.0,
+                "confidence": 0.9979209303855896
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Open": [
+            {
+                "pixel_x": 66.0,
+                "pixel_y": 5024.0,
+                "center_x": 74.0,
+                "center_y": 5032.0,
+                "confidence": 0.9961404204368591
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Teleport_Active": [
+            {
+                "pixel_x": 797.0,
+                "pixel_y": 2048.0,
+                "center_x": 805.0,
+                "center_y": 2056.0,
+                "confidence": 0.8976104855537415
+            },
+            {
+                "pixel_x": 623.0,
+                "pixel_y": 2476.0,
+                "center_x": 631.0,
+                "center_y": 2484.0,
+                "confidence": 0.8976099491119385
+            },
+            {
+                "pixel_x": 494.0,
+                "pixel_y": 2663.0,
+                "center_x": 502.0,
+                "center_y": 2671.0,
+                "confidence": 0.8976101279258728
+            },
+            {
+                "pixel_x": 195.0,
+                "pixel_y": 2789.0,
+                "center_x": 203.0,
+                "center_y": 2797.0,
+                "confidence": 0.8976104855537415
+            },
+            {
+                "pixel_x": 64.0,
+                "pixel_y": 5048.0,
+                "center_x": 72.0,
+                "center_y": 5056.0,
+                "confidence": 0.8938711285591125
+            },
+            {
+                "pixel_x": 82.0,
+                "pixel_y": 5048.0,
+                "center_x": 90.0,
+                "center_y": 5056.0,
+                "confidence": 0.9638870358467102
+            },
+            {
+                "pixel_x": 100.0,
+                "pixel_y": 5048.0,
+                "center_x": 108.0,
+                "center_y": 5056.0,
+                "confidence": 0.9439833760261536
+            },
+            {
+                "pixel_x": 118.0,
+                "pixel_y": 5048.0,
+                "center_x": 126.0,
+                "center_y": 5056.0,
+                "confidence": 0.8976099491119385
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Teleport_Inactive": [
+            {
+                "pixel_x": 797.0,
+                "pixel_y": 2048.0,
+                "center_x": 805.0,
+                "center_y": 2056.0,
+                "confidence": 0.8928124904632568
+            },
+            {
+                "pixel_x": 623.0,
+                "pixel_y": 2476.0,
+                "center_x": 631.0,
+                "center_y": 2484.0,
+                "confidence": 0.8928121328353882
+            },
+            {
+                "pixel_x": 494.0,
+                "pixel_y": 2663.0,
+                "center_x": 502.0,
+                "center_y": 2671.0,
+                "confidence": 0.8928121328353882
+            },
+            {
+                "pixel_x": 195.0,
+                "pixel_y": 2789.0,
+                "center_x": 203.0,
+                "center_y": 2797.0,
+                "confidence": 0.8928124904632568
+            },
+            {
+                "pixel_x": 64.0,
+                "pixel_y": 5048.0,
+                "center_x": 72.0,
+                "center_y": 5056.0,
+                "confidence": 0.8983020782470703
+            },
+            {
+                "pixel_x": 82.0,
+                "pixel_y": 5048.0,
+                "center_x": 90.0,
+                "center_y": 5056.0,
+                "confidence": 0.8685298562049866
+            },
+            {
+                "pixel_x": 100.0,
+                "pixel_y": 5048.0,
+                "center_x": 108.0,
+                "center_y": 5056.0,
+                "confidence": 0.8663120269775391
+            },
+            {
+                "pixel_x": 118.0,
+                "pixel_y": 5048.0,
+                "center_x": 126.0,
+                "center_y": 5056.0,
+                "confidence": 0.8928124904632568
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Dragon Mountain (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Closed": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 32.0,
+                "center_x": 8.0,
+                "center_y": 40.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 272.0,
+                "pixel_y": 704.0,
+                "center_x": 280.0,
+                "center_y": 712.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Open": [
+            {
+                "pixel_x": 32.0,
+                "pixel_y": 32.0,
+                "center_x": 40.0,
+                "center_y": 40.0,
+                "confidence": 0.9999997615814209
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Bush": [
+            {
+                "pixel_x": 17.0,
+                "pixel_y": 64.0,
+                "center_x": 25.0,
+                "center_y": 72.0,
+                "confidence": 0.9999992847442627
+            },
+            {
+                "pixel_x": 689.0,
+                "pixel_y": 80.0,
+                "center_x": 697.0,
+                "center_y": 88.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 753.0,
+                "pixel_y": 208.0,
+                "center_x": 761.0,
+                "center_y": 216.0,
+                "confidence": 0.9999992847442627
+            },
+            {
+                "pixel_x": 433.0,
+                "pixel_y": 336.0,
+                "center_x": 441.0,
+                "center_y": 344.0,
+                "confidence": 0.9999992847442627
+            },
+            {
+                "pixel_x": 257.0,
+                "pixel_y": 384.0,
+                "center_x": 265.0,
+                "center_y": 392.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 289.0,
+                "pixel_y": 448.0,
+                "center_x": 297.0,
+                "center_y": 456.0,
+                "confidence": 0.9999992847442627
+            },
+            {
+                "pixel_x": 673.0,
+                "pixel_y": 448.0,
+                "center_x": 681.0,
+                "center_y": 456.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 401.0,
+                "pixel_y": 496.0,
+                "center_x": 409.0,
+                "center_y": 504.0,
+                "confidence": 0.9999996423721313
+            },
+            {
+                "pixel_x": 897.0,
+                "pixel_y": 640.0,
+                "center_x": 905.0,
+                "center_y": 648.0,
+                "confidence": 0.9999992847442627
+            },
+            {
+                "pixel_x": 593.0,
+                "pixel_y": 672.0,
+                "center_x": 601.0,
+                "center_y": 680.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 817.0,
+                "pixel_y": 672.0,
+                "center_x": 825.0,
+                "center_y": 680.0,
+                "confidence": 0.9999992847442627
+            },
+            {
+                "pixel_x": 769.0,
+                "pixel_y": 688.0,
+                "center_x": 777.0,
+                "center_y": 696.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 433.0,
+                "pixel_y": 720.0,
+                "center_x": 441.0,
+                "center_y": 728.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Hookable_Stump": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 74.0,
+                "center_x": 8.0,
+                "center_y": 84.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 320.0,
+                "pixel_y": 330.0,
+                "center_x": 328.0,
+                "center_y": 340.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Door_Closed": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 0.0,
+                "center_x": 8.0,
+                "center_y": 16.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Door_Open": [
+            {
+                "pixel_x": 15.0,
+                "pixel_y": 0.0,
+                "center_x": 23.0,
+                "center_y": 16.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 31.0,
+                "pixel_y": 0.0,
+                "center_x": 39.0,
+                "center_y": 16.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 703.0,
+                "pixel_y": 144.0,
+                "center_x": 711.0,
+                "center_y": 160.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 271.0,
+                "pixel_y": 256.0,
+                "center_x": 279.0,
+                "center_y": 272.0,
+                "confidence": 0.9828638434410095
+            },
+            {
+                "pixel_x": 623.0,
+                "pixel_y": 256.0,
+                "center_x": 631.0,
+                "center_y": 272.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 831.0,
+                "pixel_y": 368.0,
+                "center_x": 839.0,
+                "center_y": 384.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 623.0,
+                "pixel_y": 384.0,
+                "center_x": 631.0,
+                "center_y": 400.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 799.0,
+                "pixel_y": 480.0,
+                "center_x": 807.0,
+                "center_y": 496.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 271.0,
+                "pixel_y": 624.0,
+                "center_x": 279.0,
+                "center_y": 640.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 511.0,
+                "pixel_y": 624.0,
+                "center_x": 519.0,
+                "center_y": 640.0,
+                "confidence": 0.9828640222549438
+            },
+            {
+                "pixel_x": 319.0,
+                "pixel_y": 768.0,
+                "center_x": 327.0,
+                "center_y": 784.0,
+                "confidence": 0.9828636646270752
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Stairs": [
+            {
+                "pixel_x": 750.0,
+                "pixel_y": 235.0,
+                "center_x": 767.0,
+                "center_y": 262.0,
+                "confidence": 0.9878442287445068
+            },
+            {
+                "pixel_x": 750.0,
+                "pixel_y": 251.0,
+                "center_x": 767.0,
+                "center_y": 278.0,
+                "confidence": 0.8608628511428833
+            },
+            {
+                "pixel_x": 462.0,
+                "pixel_y": 395.0,
+                "center_x": 479.0,
+                "center_y": 422.0,
+                "confidence": 0.986729085445404
+            },
+            {
+                "pixel_x": 462.0,
+                "pixel_y": 411.0,
+                "center_x": 479.0,
+                "center_y": 438.0,
+                "confidence": 0.865717887878418
+            },
+            {
+                "pixel_x": 798.0,
+                "pixel_y": 539.0,
+                "center_x": 815.0,
+                "center_y": 566.0,
+                "confidence": 0.9999997615814209
+            },
+            {
+                "pixel_x": 478.0,
+                "pixel_y": 715.0,
+                "center_x": 495.0,
+                "center_y": 742.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 350.0,
+                "pixel_y": 859.0,
+                "center_x": 367.0,
+                "center_y": 886.0,
+                "confidence": 0.9944673180580139
+            },
+            {
+                "pixel_x": 350.0,
+                "pixel_y": 875.0,
+                "center_x": 367.0,
+                "center_y": 902.0,
+                "confidence": 0.9036030173301697
+            },
+            {
+                "pixel_x": 350.0,
+                "pixel_y": 891.0,
+                "center_x": 367.0,
+                "center_y": 918.0,
+                "confidence": 0.8836994767189026
+            },
+            {
+                "pixel_x": 350.0,
+                "pixel_y": 907.0,
+                "center_x": 367.0,
+                "center_y": 934.0,
+                "confidence": 0.8919028639793396
+            },
+            {
+                "pixel_x": 350.0,
+                "pixel_y": 923.0,
+                "center_x": 367.0,
+                "center_y": 950.0,
+                "confidence": 0.8881133794784546
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Closed": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 32.0,
+                "center_x": 8.0,
+                "center_y": 40.0,
+                "confidence": 0.9900076389312744
+            },
+            {
+                "pixel_x": 272.0,
+                "pixel_y": 704.0,
+                "center_x": 280.0,
+                "center_y": 712.0,
+                "confidence": 0.9900079965591431
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Open": [
+            {
+                "pixel_x": 32.0,
+                "pixel_y": 32.0,
+                "center_x": 40.0,
+                "center_y": 40.0,
+                "confidence": 0.9966785907745361
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Durale (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 144.0,
+                "center_x": 72.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 584.0,
+                "pixel_y": 144.0,
+                "center_x": 600.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 40.0,
+                "pixel_y": 336.0,
+                "center_x": 56.0,
+                "center_y": 348.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 584.0,
+                "pixel_y": 336.0,
+                "center_x": 600.0,
+                "center_y": 348.0,
+                "confidence": 0.9430184960365295
+            },
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 512.0,
+                "center_x": 104.0,
+                "center_y": 524.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 520.0,
+                "pixel_y": 528.0,
+                "center_x": 536.0,
+                "center_y": 540.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Elcid (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 120.0,
+                "pixel_y": 144.0,
+                "center_x": 136.0,
+                "center_y": 156.0,
+                "confidence": 0.9999985694885254
+            },
+            {
+                "pixel_x": 136.0,
+                "pixel_y": 432.0,
+                "center_x": 152.0,
+                "center_y": 444.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 848.0,
+                "center_x": 88.0,
+                "center_y": 860.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 1008.0,
+                "center_x": 88.0,
+                "center_y": 1020.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 568.0,
+                "pixel_y": 1008.0,
+                "center_x": 584.0,
+                "center_y": 1020.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Elcid.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 816.0,
+                "pixel_y": 144.0,
+                "center_x": 832.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 1059.0,
+                "pixel_y": 387.0,
+                "center_x": 1075.0,
+                "center_y": 399.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 896.0,
+                "pixel_y": 442.0,
+                "center_x": 912.0,
+                "center_y": 454.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 1119.0,
+                "pixel_y": 560.0,
+                "center_x": 1135.0,
+                "center_y": 572.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 848.0,
+                "pixel_y": 672.0,
+                "center_x": 864.0,
+                "center_y": 684.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Eserikto (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 136.0,
+                "pixel_y": 144.0,
+                "center_x": 152.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 648.0,
+                "pixel_y": 176.0,
+                "center_x": 664.0,
+                "center_y": 188.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 120.0,
+                "pixel_y": 304.0,
+                "center_x": 136.0,
+                "center_y": 316.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 680.0,
+                "pixel_y": 352.0,
+                "center_x": 696.0,
+                "center_y": 364.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Ferim Kingdom (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Closed": [
+            {
+                "pixel_x": 341.0,
+                "pixel_y": 240.0,
+                "center_x": 360.0,
+                "center_y": 264.0,
+                "confidence": 0.9905732870101929
+            },
+            {
+                "pixel_x": 261.0,
+                "pixel_y": 512.0,
+                "center_x": 280.0,
+                "center_y": 536.0,
+                "confidence": 0.9905738234519958
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Open": [
+            {
+                "pixel_x": 644.0,
+                "pixel_y": 816.0,
+                "center_x": 664.0,
+                "center_y": 832.0,
+                "confidence": 0.9854046106338501
+            },
+            {
+                "pixel_x": 1332.0,
+                "pixel_y": 816.0,
+                "center_x": 1352.0,
+                "center_y": 832.0,
+                "confidence": 0.9987068176269531
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Ferim Kingdom (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_L": [
+            {
+                "pixel_x": 304.0,
+                "pixel_y": 96.0,
+                "center_x": 312.0,
+                "center_y": 104.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 688.0,
+                "pixel_y": 96.0,
+                "center_x": 696.0,
+                "center_y": 104.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 144.0,
+                "pixel_y": 912.0,
+                "center_x": 152.0,
+                "center_y": 920.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 496.0,
+                "pixel_y": 912.0,
+                "center_x": 504.0,
+                "center_y": 920.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_R": [
+            {
+                "pixel_x": 336.0,
+                "pixel_y": 96.0,
+                "center_x": 344.0,
+                "center_y": 104.0,
+                "confidence": 0.9825462698936462
+            },
+            {
+                "pixel_x": 720.0,
+                "pixel_y": 96.0,
+                "center_x": 728.0,
+                "center_y": 104.0,
+                "confidence": 0.9825468063354492
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Up_R": [
+            {
+                "pixel_x": 640.0,
+                "pixel_y": 633.0,
+                "center_x": 648.0,
+                "center_y": 644.0,
+                "confidence": 0.9113398194313049
+            },
+            {
+                "pixel_x": 832.0,
+                "pixel_y": 633.0,
+                "center_x": 840.0,
+                "center_y": 644.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Flower Mountain (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Closed": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 32.0,
+                "center_x": 8.0,
+                "center_y": 40.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 256.0,
+                "pixel_y": 368.0,
+                "center_x": 264.0,
+                "center_y": 376.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Open": [
+            {
+                "pixel_x": 32.0,
+                "pixel_y": 32.0,
+                "center_x": 40.0,
+                "center_y": 40.0,
+                "confidence": 0.9999997615814209
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Hookable_Stump": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 74.0,
+                "center_x": 8.0,
+                "center_y": 84.0,
+                "confidence": 0.9985707998275757
+            },
+            {
+                "pixel_x": 432.0,
+                "pixel_y": 154.0,
+                "center_x": 440.0,
+                "center_y": 164.0,
+                "confidence": 0.9985718727111816
+            },
+            {
+                "pixel_x": 528.0,
+                "pixel_y": 154.0,
+                "center_x": 536.0,
+                "center_y": 164.0,
+                "confidence": 0.998571515083313
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Door_Closed": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 0.0,
+                "center_x": 8.0,
+                "center_y": 16.0,
+                "confidence": 0.997635543346405
+            },
+            {
+                "pixel_x": 272.0,
+                "pixel_y": 560.0,
+                "center_x": 280.0,
+                "center_y": 576.0,
+                "confidence": 0.9976351857185364
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Door_Open": [
+            {
+                "pixel_x": 15.0,
+                "pixel_y": 0.0,
+                "center_x": 23.0,
+                "center_y": 16.0,
+                "confidence": 0.9980928897857666
+            },
+            {
+                "pixel_x": 31.0,
+                "pixel_y": 0.0,
+                "center_x": 39.0,
+                "center_y": 16.0,
+                "confidence": 0.9980928897857666
+            },
+            {
+                "pixel_x": 607.0,
+                "pixel_y": 208.0,
+                "center_x": 615.0,
+                "center_y": 224.0,
+                "confidence": 0.9803856611251831
+            },
+            {
+                "pixel_x": 559.0,
+                "pixel_y": 304.0,
+                "center_x": 567.0,
+                "center_y": 320.0,
+                "confidence": 0.9803851842880249
+            },
+            {
+                "pixel_x": 287.0,
+                "pixel_y": 320.0,
+                "center_x": 295.0,
+                "center_y": 336.0,
+                "confidence": 0.9803850650787354
+            },
+            {
+                "pixel_x": 415.0,
+                "pixel_y": 320.0,
+                "center_x": 423.0,
+                "center_y": 336.0,
+                "confidence": 0.9803853631019592
+            },
+            {
+                "pixel_x": 671.0,
+                "pixel_y": 384.0,
+                "center_x": 679.0,
+                "center_y": 400.0,
+                "confidence": 0.9803851842880249
+            },
+            {
+                "pixel_x": 511.0,
+                "pixel_y": 416.0,
+                "center_x": 519.0,
+                "center_y": 432.0,
+                "confidence": 0.9803850650787354
+            },
+            {
+                "pixel_x": 271.0,
+                "pixel_y": 432.0,
+                "center_x": 279.0,
+                "center_y": 448.0,
+                "confidence": 0.9803851842880249
+            },
+            {
+                "pixel_x": 687.0,
+                "pixel_y": 528.0,
+                "center_x": 695.0,
+                "center_y": 544.0,
+                "confidence": 0.9803853631019592
+            },
+            {
+                "pixel_x": 479.0,
+                "pixel_y": 544.0,
+                "center_x": 487.0,
+                "center_y": 560.0,
+                "confidence": 0.9803851842880249
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Stairs": [
+            {
+                "pixel_x": 334.0,
+                "pixel_y": 619.0,
+                "center_x": 351.0,
+                "center_y": 646.0,
+                "confidence": 0.9881331920623779
+            },
+            {
+                "pixel_x": 334.0,
+                "pixel_y": 635.0,
+                "center_x": 351.0,
+                "center_y": 662.0,
+                "confidence": 0.904039204120636
+            },
+            {
+                "pixel_x": 334.0,
+                "pixel_y": 651.0,
+                "center_x": 351.0,
+                "center_y": 678.0,
+                "confidence": 0.8832341432571411
+            },
+            {
+                "pixel_x": 334.0,
+                "pixel_y": 667.0,
+                "center_x": 351.0,
+                "center_y": 694.0,
+                "confidence": 0.891119122505188
+            },
+            {
+                "pixel_x": 334.0,
+                "pixel_y": 683.0,
+                "center_x": 351.0,
+                "center_y": 710.0,
+                "confidence": 0.8874725103378296
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Closed": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 32.0,
+                "center_x": 8.0,
+                "center_y": 40.0,
+                "confidence": 0.9900078177452087
+            },
+            {
+                "pixel_x": 256.0,
+                "pixel_y": 368.0,
+                "center_x": 264.0,
+                "center_y": 376.0,
+                "confidence": 0.9900079965591431
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Open": [
+            {
+                "pixel_x": 32.0,
+                "pixel_y": 32.0,
+                "center_x": 40.0,
+                "center_y": 40.0,
+                "confidence": 0.9966785907745361
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Forfeit Island (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 616.0,
+                "pixel_y": 112.0,
+                "center_x": 632.0,
+                "center_y": 124.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 144.0,
+                "center_x": 104.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 664.0,
+                "pixel_y": 480.0,
+                "center_x": 680.0,
+                "center_y": 492.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 40.0,
+                "pixel_y": 640.0,
+                "center_x": 56.0,
+                "center_y": 652.0,
+                "confidence": 0.9999990463256836
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Forfeit Island (Markao).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_L": [
+            {
+                "pixel_x": 288.0,
+                "pixel_y": 256.0,
+                "center_x": 296.0,
+                "center_y": 264.0,
+                "confidence": 0.999961793422699
+            },
+            {
+                "pixel_x": 992.0,
+                "pixel_y": 256.0,
+                "center_x": 1000.0,
+                "center_y": 264.0,
+                "confidence": 0.999961793422699
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Forfeit Island.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 746.0,
+                "pixel_y": 357.0,
+                "center_x": 762.0,
+                "center_y": 369.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 592.0,
+                "pixel_y": 639.0,
+                "center_x": 608.0,
+                "center_y": 651.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 79.0,
+                "pixel_y": 674.0,
+                "center_x": 95.0,
+                "center_y": 686.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 30.0,
+                "pixel_y": 857.0,
+                "center_x": 46.0,
+                "center_y": 869.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_L": [
+            {
+                "pixel_x": 710.0,
+                "pixel_y": 798.0,
+                "center_x": 718.0,
+                "center_y": 806.0,
+                "confidence": 0.9999613165855408
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Gratze Kingdom (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Closed": [
+            {
+                "pixel_x": 389.0,
+                "pixel_y": 160.0,
+                "center_x": 408.0,
+                "center_y": 184.0,
+                "confidence": 0.9908409714698792
+            },
+            {
+                "pixel_x": 1173.0,
+                "pixel_y": 160.0,
+                "center_x": 1192.0,
+                "center_y": 184.0,
+                "confidence": 0.9957430958747864
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Open": [
+            {
+                "pixel_x": 116.0,
+                "pixel_y": 16.0,
+                "center_x": 136.0,
+                "center_y": 32.0,
+                "confidence": 0.983110785484314
+            },
+            {
+                "pixel_x": 900.0,
+                "pixel_y": 16.0,
+                "center_x": 920.0,
+                "center_y": 32.0,
+                "confidence": 0.9967252612113953
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Gratze Kingdom (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_L": [
+            {
+                "pixel_x": 64.0,
+                "pixel_y": 96.0,
+                "center_x": 72.0,
+                "center_y": 104.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 192.0,
+                "pixel_y": 96.0,
+                "center_x": 200.0,
+                "center_y": 104.0,
+                "confidence": 0.9999995231628418
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_R": [
+            {
+                "pixel_x": 64.0,
+                "pixel_y": 240.0,
+                "center_x": 72.0,
+                "center_y": 248.0,
+                "confidence": 0.9825468063354492
+            },
+            {
+                "pixel_x": 192.0,
+                "pixel_y": 240.0,
+                "center_x": 200.0,
+                "center_y": 248.0,
+                "confidence": 0.9825468063354492
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Gruberik (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 144.0,
+                "center_x": 72.0,
+                "center_y": 156.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 744.0,
+                "pixel_y": 144.0,
+                "center_x": 760.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 728.0,
+                "pixel_y": 352.0,
+                "center_x": 744.0,
+                "center_y": 364.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 696.0,
+                "pixel_y": 544.0,
+                "center_x": 712.0,
+                "center_y": 556.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 696.0,
+                "pixel_y": 720.0,
+                "center_x": 712.0,
+                "center_y": 732.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Kamirno Island Sealed Tower.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Open": [
+            {
+                "pixel_x": 682.0,
+                "pixel_y": 1886.0,
+                "center_x": 690.0,
+                "center_y": 1894.0,
+                "confidence": 0.9966787695884705
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Open": [
+            {
+                "pixel_x": 682.0,
+                "pixel_y": 1886.0,
+                "center_x": 690.0,
+                "center_y": 1894.0,
+                "confidence": 0.9999997615814209
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Teleport_Active": [
+            {
+                "pixel_x": 107.0,
+                "pixel_y": 2095.0,
+                "center_x": 115.0,
+                "center_y": 2103.0,
+                "confidence": 0.921118974685669
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Karlloon (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 648.0,
+                "pixel_y": 160.0,
+                "center_x": 664.0,
+                "center_y": 172.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 104.0,
+                "pixel_y": 176.0,
+                "center_x": 120.0,
+                "center_y": 188.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 632.0,
+                "pixel_y": 336.0,
+                "center_x": 648.0,
+                "center_y": 348.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 120.0,
+                "pixel_y": 368.0,
+                "center_x": 136.0,
+                "center_y": 380.0,
+                "confidence": 0.9999995231628418
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Merix Village (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 176.0,
+                "center_x": 88.0,
+                "center_y": 188.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 712.0,
+                "pixel_y": 368.0,
+                "center_x": 728.0,
+                "center_y": 380.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 400.0,
+                "center_x": 104.0,
+                "center_y": 412.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 712.0,
+                "pixel_y": 528.0,
+                "center_x": 728.0,
+                "center_y": 540.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 576.0,
+                "center_x": 72.0,
+                "center_y": 588.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain of No Return (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Bush": [
+            {
+                "pixel_x": 1.0,
+                "pixel_y": 48.0,
+                "center_x": 9.0,
+                "center_y": 56.0,
+                "confidence": 0.9898906946182251
+            },
+            {
+                "pixel_x": 433.0,
+                "pixel_y": 80.0,
+                "center_x": 441.0,
+                "center_y": 88.0,
+                "confidence": 0.9898914694786072
+            },
+            {
+                "pixel_x": 433.0,
+                "pixel_y": 112.0,
+                "center_x": 441.0,
+                "center_y": 120.0,
+                "confidence": 0.9898918867111206
+            },
+            {
+                "pixel_x": 305.0,
+                "pixel_y": 144.0,
+                "center_x": 313.0,
+                "center_y": 152.0,
+                "confidence": 0.9898914694786072
+            },
+            {
+                "pixel_x": 849.0,
+                "pixel_y": 176.0,
+                "center_x": 857.0,
+                "center_y": 184.0,
+                "confidence": 0.9898914694786072
+            },
+            {
+                "pixel_x": 449.0,
+                "pixel_y": 256.0,
+                "center_x": 457.0,
+                "center_y": 264.0,
+                "confidence": 0.9898918867111206
+            },
+            {
+                "pixel_x": 737.0,
+                "pixel_y": 304.0,
+                "center_x": 745.0,
+                "center_y": 312.0,
+                "confidence": 0.9898918867111206
+            },
+            {
+                "pixel_x": 833.0,
+                "pixel_y": 320.0,
+                "center_x": 841.0,
+                "center_y": 328.0,
+                "confidence": 0.9898911118507385
+            },
+            {
+                "pixel_x": 961.0,
+                "pixel_y": 384.0,
+                "center_x": 969.0,
+                "center_y": 392.0,
+                "confidence": 0.9898914694786072
+            },
+            {
+                "pixel_x": 385.0,
+                "pixel_y": 432.0,
+                "center_x": 393.0,
+                "center_y": 440.0,
+                "confidence": 0.9898914694786072
+            },
+            {
+                "pixel_x": 353.0,
+                "pixel_y": 448.0,
+                "center_x": 361.0,
+                "center_y": 456.0,
+                "confidence": 0.9898918867111206
+            },
+            {
+                "pixel_x": 689.0,
+                "pixel_y": 448.0,
+                "center_x": 697.0,
+                "center_y": 456.0,
+                "confidence": 0.9898911118507385
+            },
+            {
+                "pixel_x": 705.0,
+                "pixel_y": 464.0,
+                "center_x": 713.0,
+                "center_y": 472.0,
+                "confidence": 0.9898914694786072
+            },
+            {
+                "pixel_x": 977.0,
+                "pixel_y": 560.0,
+                "center_x": 985.0,
+                "center_y": 568.0,
+                "confidence": 0.9898911118507385
+            },
+            {
+                "pixel_x": 833.0,
+                "pixel_y": 576.0,
+                "center_x": 841.0,
+                "center_y": 584.0,
+                "confidence": 0.9898914694786072
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Door_Open": [
+            {
+                "pixel_x": 447.0,
+                "pixel_y": 176.0,
+                "center_x": 455.0,
+                "center_y": 192.0,
+                "confidence": 0.9817140102386475
+            },
+            {
+                "pixel_x": 335.0,
+                "pixel_y": 256.0,
+                "center_x": 343.0,
+                "center_y": 272.0,
+                "confidence": 0.9817137122154236
+            },
+            {
+                "pixel_x": 831.0,
+                "pixel_y": 256.0,
+                "center_x": 839.0,
+                "center_y": 272.0,
+                "confidence": 0.9817138314247131
+            },
+            {
+                "pixel_x": 255.0,
+                "pixel_y": 272.0,
+                "center_x": 263.0,
+                "center_y": 288.0,
+                "confidence": 0.9817140102386475
+            },
+            {
+                "pixel_x": 255.0,
+                "pixel_y": 368.0,
+                "center_x": 263.0,
+                "center_y": 384.0,
+                "confidence": 0.9817135334014893
+            },
+            {
+                "pixel_x": 767.0,
+                "pixel_y": 400.0,
+                "center_x": 775.0,
+                "center_y": 416.0,
+                "confidence": 0.9817140102386475
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Stairs": [
+            {
+                "pixel_x": 254.0,
+                "pixel_y": 459.0,
+                "center_x": 271.0,
+                "center_y": 486.0,
+                "confidence": 0.9887707233428955
+            },
+            {
+                "pixel_x": 910.0,
+                "pixel_y": 459.0,
+                "center_x": 927.0,
+                "center_y": 486.0,
+                "confidence": 0.9887707233428955
+            },
+            {
+                "pixel_x": 302.0,
+                "pixel_y": 571.0,
+                "center_x": 319.0,
+                "center_y": 598.0,
+                "confidence": 0.9899870753288269
+            },
+            {
+                "pixel_x": 302.0,
+                "pixel_y": 587.0,
+                "center_x": 319.0,
+                "center_y": 614.0,
+                "confidence": 0.9034789800643921
+            },
+            {
+                "pixel_x": 910.0,
+                "pixel_y": 587.0,
+                "center_x": 927.0,
+                "center_y": 614.0,
+                "confidence": 0.9839529991149902
+            },
+            {
+                "pixel_x": 302.0,
+                "pixel_y": 603.0,
+                "center_x": 319.0,
+                "center_y": 630.0,
+                "confidence": 0.8831861019134521
+            },
+            {
+                "pixel_x": 910.0,
+                "pixel_y": 603.0,
+                "center_x": 927.0,
+                "center_y": 630.0,
+                "confidence": 0.9069646596908569
+            },
+            {
+                "pixel_x": 302.0,
+                "pixel_y": 619.0,
+                "center_x": 319.0,
+                "center_y": 646.0,
+                "confidence": 0.890981137752533
+            },
+            {
+                "pixel_x": 302.0,
+                "pixel_y": 635.0,
+                "center_x": 319.0,
+                "center_y": 662.0,
+                "confidence": 0.8872359395027161
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Narcysus (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 632.0,
+                "pixel_y": 144.0,
+                "center_x": 648.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 160.0,
+                "center_x": 88.0,
+                "center_y": 172.0,
+                "confidence": 0.9999990463256836
+            },
+            {
+                "pixel_x": 648.0,
+                "pixel_y": 384.0,
+                "center_x": 664.0,
+                "center_y": 396.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 632.0,
+                "pixel_y": 560.0,
+                "center_x": 648.0,
+                "center_y": 572.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Narvick (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 128.0,
+                "center_x": 104.0,
+                "center_y": 140.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 584.0,
+                "pixel_y": 144.0,
+                "center_x": 600.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 496.0,
+                "center_x": 72.0,
+                "center_y": 508.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 520.0,
+                "pixel_y": 560.0,
+                "center_x": 536.0,
+                "center_y": 572.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 688.0,
+                "center_x": 72.0,
+                "center_y": 700.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Narvick.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 935.0,
+                "pixel_y": 124.0,
+                "center_x": 951.0,
+                "center_y": 136.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 1040.0,
+                "pixel_y": 139.0,
+                "center_x": 1056.0,
+                "center_y": 151.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 764.0,
+                "pixel_y": 140.0,
+                "center_x": 780.0,
+                "center_y": 152.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 765.0,
+                "pixel_y": 333.0,
+                "center_x": 781.0,
+                "center_y": 345.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 802.0,
+                "pixel_y": 508.0,
+                "center_x": 818.0,
+                "center_y": 520.0,
+                "confidence": 0.9999995231628418
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Parcelyte (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 128.0,
+                "center_x": 104.0,
+                "center_y": 140.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 664.0,
+                "pixel_y": 288.0,
+                "center_x": 680.0,
+                "center_y": 300.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 104.0,
+                "pixel_y": 432.0,
+                "center_x": 120.0,
+                "center_y": 444.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 592.0,
+                "center_x": 104.0,
+                "center_y": 604.0,
+                "confidence": 0.9999990463256836
+            },
+            {
+                "pixel_x": 648.0,
+                "pixel_y": 704.0,
+                "center_x": 664.0,
+                "center_y": 716.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Parcelyte Castle (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Closed": [
+            {
+                "pixel_x": 325.0,
+                "pixel_y": 144.0,
+                "center_x": 344.0,
+                "center_y": 168.0,
+                "confidence": 0.9809504151344299
+            },
+            {
+                "pixel_x": 1013.0,
+                "pixel_y": 144.0,
+                "center_x": 1032.0,
+                "center_y": 168.0,
+                "confidence": 0.9867278337478638
+            },
+            {
+                "pixel_x": 325.0,
+                "pixel_y": 480.0,
+                "center_x": 344.0,
+                "center_y": 504.0,
+                "confidence": 0.9827882051467896
+            },
+            {
+                "pixel_x": 1013.0,
+                "pixel_y": 480.0,
+                "center_x": 1032.0,
+                "center_y": 504.0,
+                "confidence": 0.9867280125617981
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Castle_Door_Open": [
+            {
+                "pixel_x": 116.0,
+                "pixel_y": 848.0,
+                "center_x": 136.0,
+                "center_y": 864.0,
+                "confidence": 0.9812192320823669
+            },
+            {
+                "pixel_x": 804.0,
+                "pixel_y": 848.0,
+                "center_x": 824.0,
+                "center_y": 864.0,
+                "confidence": 0.9915359616279602
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Parcelyte Castle (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_L": [
+            {
+                "pixel_x": 192.0,
+                "pixel_y": 80.0,
+                "center_x": 200.0,
+                "center_y": 88.0,
+                "confidence": 0.9999995231628418
+            },
+            {
+                "pixel_x": 960.0,
+                "pixel_y": 80.0,
+                "center_x": 968.0,
+                "center_y": 88.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Down_R": [
+            {
+                "pixel_x": 624.0,
+                "pixel_y": 768.0,
+                "center_x": 632.0,
+                "center_y": 776.0,
+                "confidence": 0.9825462698936462
+            },
+            {
+                "pixel_x": 848.0,
+                "pixel_y": 768.0,
+                "center_x": 856.0,
+                "center_y": 776.0,
+                "confidence": 0.9825462698936462
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Stairs_Up_R": [
+            {
+                "pixel_x": 288.0,
+                "pixel_y": 89.0,
+                "center_x": 296.0,
+                "center_y": 100.0,
+                "confidence": 0.9689335227012634
+            },
+            {
+                "pixel_x": 1056.0,
+                "pixel_y": 89.0,
+                "center_x": 1064.0,
+                "center_y": 100.0,
+                "confidence": 0.8828086256980896
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Phantom Tree Mountain (Exterior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Closed": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 48.0,
+                "center_x": 8.0,
+                "center_y": 56.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 240.0,
+                "pixel_y": 288.0,
+                "center_x": 248.0,
+                "center_y": 296.0,
+                "confidence": 0.9999996423721313
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Open": [
+            {
+                "pixel_x": 32.0,
+                "pixel_y": 48.0,
+                "center_x": 40.0,
+                "center_y": 56.0,
+                "confidence": 0.9999997615814209
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Bush": [
+            {
+                "pixel_x": 929.0,
+                "pixel_y": 448.0,
+                "center_x": 937.0,
+                "center_y": 456.0,
+                "confidence": 0.9806311130523682
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Hookable_Stump": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 90.0,
+                "center_x": 8.0,
+                "center_y": 100.0,
+                "confidence": 0.997934877872467
+            },
+            {
+                "pixel_x": 720.0,
+                "pixel_y": 378.0,
+                "center_x": 728.0,
+                "center_y": 388.0,
+                "confidence": 0.9979351758956909
+            },
+            {
+                "pixel_x": 800.0,
+                "pixel_y": 378.0,
+                "center_x": 808.0,
+                "center_y": 388.0,
+                "confidence": 0.9979355335235596
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Door_Closed": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 16.0,
+                "center_x": 8.0,
+                "center_y": 32.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 720.0,
+                "pixel_y": 208.0,
+                "center_x": 728.0,
+                "center_y": 224.0,
+                "confidence": 0.9999998211860657
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Door_Open": [
+            {
+                "pixel_x": 15.0,
+                "pixel_y": 16.0,
+                "center_x": 23.0,
+                "center_y": 32.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 31.0,
+                "pixel_y": 16.0,
+                "center_x": 39.0,
+                "center_y": 32.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 351.0,
+                "pixel_y": 192.0,
+                "center_x": 359.0,
+                "center_y": 208.0,
+                "confidence": 0.9828635454177856
+            },
+            {
+                "pixel_x": 399.0,
+                "pixel_y": 288.0,
+                "center_x": 407.0,
+                "center_y": 304.0,
+                "confidence": 0.982863187789917
+            },
+            {
+                "pixel_x": 703.0,
+                "pixel_y": 320.0,
+                "center_x": 711.0,
+                "center_y": 336.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 271.0,
+                "pixel_y": 368.0,
+                "center_x": 279.0,
+                "center_y": 384.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 383.0,
+                "pixel_y": 384.0,
+                "center_x": 391.0,
+                "center_y": 400.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 287.0,
+                "pixel_y": 464.0,
+                "center_x": 295.0,
+                "center_y": 480.0,
+                "confidence": 0.9828633666038513
+            },
+            {
+                "pixel_x": 239.0,
+                "pixel_y": 560.0,
+                "center_x": 247.0,
+                "center_y": 576.0,
+                "confidence": 0.9828636646270752
+            },
+            {
+                "pixel_x": 383.0,
+                "pixel_y": 576.0,
+                "center_x": 391.0,
+                "center_y": 592.0,
+                "confidence": 0.9828635454177856
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Mountain_Stairs": [
+            {
+                "pixel_x": 318.0,
+                "pixel_y": 635.0,
+                "center_x": 335.0,
+                "center_y": 662.0,
+                "confidence": 0.9737468957901001
+            },
+            {
+                "pixel_x": 318.0,
+                "pixel_y": 651.0,
+                "center_x": 335.0,
+                "center_y": 678.0,
+                "confidence": 0.8925451636314392
+            },
+            {
+                "pixel_x": 318.0,
+                "pixel_y": 667.0,
+                "center_x": 335.0,
+                "center_y": 694.0,
+                "confidence": 0.8971198201179504
+            },
+            {
+                "pixel_x": 318.0,
+                "pixel_y": 683.0,
+                "center_x": 335.0,
+                "center_y": 710.0,
+                "confidence": 0.8848729729652405
+            },
+            {
+                "pixel_x": 318.0,
+                "pixel_y": 699.0,
+                "center_x": 335.0,
+                "center_y": 726.0,
+                "confidence": 0.8927304148674011
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Closed": [
+            {
+                "pixel_x": 0.0,
+                "pixel_y": 48.0,
+                "center_x": 8.0,
+                "center_y": 56.0,
+                "confidence": 0.9900076389312744
+            },
+            {
+                "pixel_x": 240.0,
+                "pixel_y": 288.0,
+                "center_x": 248.0,
+                "center_y": 296.0,
+                "confidence": 0.9900079965591431
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Open": [
+            {
+                "pixel_x": 32.0,
+                "pixel_y": 48.0,
+                "center_x": 40.0,
+                "center_y": 56.0,
+                "confidence": 0.9966785907745361
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Pico Forest (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 176.0,
+                "center_x": 88.0,
+                "center_y": 188.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 105.0,
+                "pixel_y": 360.0,
+                "center_x": 121.0,
+                "center_y": 372.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Port Town of Aleyn (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 696.0,
+                "pixel_y": 144.0,
+                "center_x": 712.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 304.0,
+                "center_x": 72.0,
+                "center_y": 316.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 728.0,
+                "pixel_y": 320.0,
+                "center_x": 744.0,
+                "center_y": 332.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 744.0,
+                "pixel_y": 496.0,
+                "center_x": 760.0,
+                "center_y": 508.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 528.0,
+                "center_x": 104.0,
+                "center_y": 540.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 688.0,
+                "center_x": 88.0,
+                "center_y": 700.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Portravia (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 616.0,
+                "pixel_y": 240.0,
+                "center_x": 632.0,
+                "center_y": 252.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 104.0,
+                "pixel_y": 384.0,
+                "center_x": 120.0,
+                "center_y": 396.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 544.0,
+                "center_x": 72.0,
+                "center_y": 556.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 720.0,
+                "center_x": 88.0,
+                "center_y": 732.0,
+                "confidence": 0.9999995231628418
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Shuman Island Sealed Tower.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Open": [
+            {
+                "pixel_x": 966.0,
+                "pixel_y": 1680.0,
+                "center_x": 974.0,
+                "center_y": 1688.0,
+                "confidence": 0.9966785907745361
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Open": [
+            {
+                "pixel_x": 966.0,
+                "pixel_y": 1680.0,
+                "center_x": 974.0,
+                "center_y": 1688.0,
+                "confidence": 1.0
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Teleport_Active": [
+            {
+                "pixel_x": 783.0,
+                "pixel_y": 1658.0,
+                "center_x": 791.0,
+                "center_y": 1666.0,
+                "confidence": 0.921118974685669
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Small Shrine to Dragon Egg.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Capsule_Shrine_Stairs": [
+            {
+                "pixel_x": 254.0,
+                "pixel_y": 222.0,
+                "center_x": 279.0,
+                "center_y": 279.0,
+                "confidence": 0.9808531999588013
+            },
+            {
+                "pixel_x": 1310.0,
+                "pixel_y": 222.0,
+                "center_x": 1335.0,
+                "center_y": 279.0,
+                "confidence": 0.9808531999588013
+            },
+            {
+                "pixel_x": 254.0,
+                "pixel_y": 238.0,
+                "center_x": 279.0,
+                "center_y": 295.0,
+                "confidence": 0.9306527972221375
+            },
+            {
+                "pixel_x": 1310.0,
+                "pixel_y": 238.0,
+                "center_x": 1335.0,
+                "center_y": 295.0,
+                "confidence": 0.9306533932685852
+            },
+            {
+                "pixel_x": 254.0,
+                "pixel_y": 254.0,
+                "center_x": 279.0,
+                "center_y": 311.0,
+                "confidence": 0.949110209941864
+            },
+            {
+                "pixel_x": 1310.0,
+                "pixel_y": 254.0,
+                "center_x": 1335.0,
+                "center_y": 311.0,
+                "confidence": 0.949110209941864
+            },
+            {
+                "pixel_x": 254.0,
+                "pixel_y": 270.0,
+                "center_x": 279.0,
+                "center_y": 327.0,
+                "confidence": 0.9306522607803345
+            },
+            {
+                "pixel_x": 1310.0,
+                "pixel_y": 270.0,
+                "center_x": 1335.0,
+                "center_y": 327.0,
+                "confidence": 0.9306527972221375
+            },
+            {
+                "pixel_x": 254.0,
+                "pixel_y": 286.0,
+                "center_x": 279.0,
+                "center_y": 343.0,
+                "confidence": 0.9491090774536133
+            },
+            {
+                "pixel_x": 1310.0,
+                "pixel_y": 286.0,
+                "center_x": 1335.0,
+                "center_y": 343.0,
+                "confidence": 0.949110209941864
+            },
+            {
+                "pixel_x": 254.0,
+                "pixel_y": 302.0,
+                "center_x": 279.0,
+                "center_y": 359.0,
+                "confidence": 0.9306539297103882
+            },
+            {
+                "pixel_x": 1310.0,
+                "pixel_y": 302.0,
+                "center_x": 1335.0,
+                "center_y": 359.0,
+                "confidence": 0.9306522607803345
+            },
+            {
+                "pixel_x": 254.0,
+                "pixel_y": 318.0,
+                "center_x": 279.0,
+                "center_y": 375.0,
+                "confidence": 0.949110209941864
+            },
+            {
+                "pixel_x": 1310.0,
+                "pixel_y": 318.0,
+                "center_x": 1335.0,
+                "center_y": 375.0,
+                "confidence": 0.949110209941864
+            },
+            {
+                "pixel_x": 254.0,
+                "pixel_y": 334.0,
+                "center_x": 279.0,
+                "center_y": 391.0,
+                "confidence": 0.9306522607803345
+            },
+            {
+                "pixel_x": 1310.0,
+                "pixel_y": 334.0,
+                "center_x": 1335.0,
+                "center_y": 391.0,
+                "confidence": 0.9306522607803345
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Strahda Island Sealed Tower.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Teleport_Active": [
+            {
+                "pixel_x": 720.0,
+                "pixel_y": 1670.0,
+                "center_x": 728.0,
+                "center_y": 1678.0,
+                "confidence": 0.921118974685669
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Submarine Cave Shrine (Waterless Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Teleport_Active": [
+            {
+                "pixel_x": 320.0,
+                "pixel_y": 1232.0,
+                "center_x": 328.0,
+                "center_y": 1240.0,
+                "confidence": 0.9638868570327759
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Teleport_Inactive": [
+            {
+                "pixel_x": 320.0,
+                "pixel_y": 1232.0,
+                "center_x": 328.0,
+                "center_y": 1240.0,
+                "confidence": 0.8685287237167358
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Sundletan (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 136.0,
+                "pixel_y": 144.0,
+                "center_x": 152.0,
+                "center_y": 156.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 792.0,
+                "pixel_y": 144.0,
+                "center_x": 808.0,
+                "center_y": 156.0,
+                "confidence": 0.9735618233680725
+            },
+            {
+                "pixel_x": 104.0,
+                "pixel_y": 336.0,
+                "center_x": 120.0,
+                "center_y": 348.0,
+                "confidence": 0.9735623002052307
+            },
+            {
+                "pixel_x": 840.0,
+                "pixel_y": 352.0,
+                "center_x": 856.0,
+                "center_y": 364.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 792.0,
+                "pixel_y": 560.0,
+                "center_x": 808.0,
+                "center_y": 572.0,
+                "confidence": 0.9735627770423889
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Tanbel (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 1000.0,
+                "pixel_y": 160.0,
+                "center_x": 1016.0,
+                "center_y": 172.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 232.0,
+                "pixel_y": 336.0,
+                "center_x": 248.0,
+                "center_y": 348.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 1000.0,
+                "pixel_y": 368.0,
+                "center_x": 1016.0,
+                "center_y": 380.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 1032.0,
+                "pixel_y": 560.0,
+                "center_x": 1048.0,
+                "center_y": 572.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 968.0,
+                "pixel_y": 736.0,
+                "center_x": 984.0,
+                "center_y": 748.0,
+                "confidence": 0.9999990463256836
+            },
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 752.0,
+                "center_x": 88.0,
+                "center_y": 764.0,
+                "confidence": 0.9999995231628418
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Treadool (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 632.0,
+                "pixel_y": 128.0,
+                "center_x": 648.0,
+                "center_y": 140.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 648.0,
+                "pixel_y": 288.0,
+                "center_x": 664.0,
+                "center_y": 300.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 384.0,
+                "center_x": 88.0,
+                "center_y": 396.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 632.0,
+                "pixel_y": 464.0,
+                "center_x": 648.0,
+                "center_y": 476.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 88.0,
+                "pixel_y": 560.0,
+                "center_x": 104.0,
+                "center_y": 572.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 712.0,
+                "pixel_y": 640.0,
+                "center_x": 728.0,
+                "center_y": 652.0,
+                "confidence": 1.0
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Treble (Interior).png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - House_Exit_(Interior)": [
+            {
+                "pixel_x": 584.0,
+                "pixel_y": 128.0,
+                "center_x": 600.0,
+                "center_y": 140.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 72.0,
+                "pixel_y": 336.0,
+                "center_x": 88.0,
+                "center_y": 348.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 568.0,
+                "pixel_y": 336.0,
+                "center_x": 584.0,
+                "center_y": 348.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 552.0,
+                "pixel_y": 480.0,
+                "center_x": 568.0,
+                "center_y": 492.0,
+                "confidence": 1.0
+            },
+            {
+                "pixel_x": 56.0,
+                "pixel_y": 512.0,
+                "center_x": 72.0,
+                "center_y": 524.0,
+                "confidence": 0.9999995231628418
+            }
+        ]
+    },
+    "SNES - Lufia 2_ Rise of the Sinistrals - Miscellaneous - Overworld Objects & Vehicles.png": {
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Blue_Chest_Closed": [
+            {
+                "pixel_x": 32.0,
+                "pixel_y": 14.0,
+                "center_x": 40.0,
+                "center_y": 22.0,
+                "confidence": 0.9651458263397217
+            }
+        ],
+        "SNES - Lufia 2_ Rise of the Sinistrals - Maps - Red_Chest_Closed": [
+            {
+                "pixel_x": 32.0,
+                "pixel_y": 14.0,
+                "center_x": 40.0,
+                "center_y": 22.0,
+                "confidence": 0.9614784717559814
+            }
+        ]
+    }
+}

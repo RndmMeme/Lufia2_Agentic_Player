@@ -1,0 +1,169 @@
+{
+  "status": "CONFIRMED",
+  "checks": {
+    "up_changes_only_y_negative": true,
+    "down_changes_only_y_positive": true,
+    "right_changes_only_x_positive": true,
+    "left_changes_only_x_negative": true,
+    "blocked_attempt_keeps_coordinates": true,
+    "facing_low_bits": true,
+    "movement_state_idle_direction_codes": true,
+    "stable_actor_direction_codes": true,
+    "blocked_direction_down": true,
+    "runtime_modes_match_terrorwave_rom_table": true,
+    "old_3586_blocked_claim_is_not_supported": true
+  },
+  "layout": {
+    "slot_count": 40,
+    "empty_sprite": "FF",
+    "sprite_id": "7E:05D2 + slot",
+    "movement_state": "7E:066A + slot",
+    "direction": "7E:0692 + slot",
+    "tile_x": "7E:06BA + slot",
+    "tile_y": "7E:06E2 + slot",
+    "movement_mode": "7E:070A + slot",
+    "facing": "7F:E466 + slot, low two bits",
+    "last_blocked_direction": "7E:1272; FF means no blocked attempt"
+  },
+  "movement_state": {
+    "bit_0": "movement active",
+    "idle": {
+      "00": "down",
+      "02": "left",
+      "04": "up",
+      "06": "right"
+    },
+    "moving": {
+      "01": "down",
+      "03": "left",
+      "05": "up",
+      "07": "right"
+    }
+  },
+  "actor_direction": {
+    "00": "down",
+    "02": "left",
+    "04": "up",
+    "06": "right"
+  },
+  "facing": {
+    "00": "up",
+    "01": "down",
+    "02": "left",
+    "03": "right"
+  },
+  "blocked_direction": {
+    "FF": "clear/no blocked attempt",
+    "00": "up",
+    "01": "down",
+    "02": "left",
+    "03": "right"
+  },
+  "active_actors": [
+    {
+      "slot": 0,
+      "sprite_id": 2,
+      "movement_state": 2,
+      "direction": 2,
+      "x": 13,
+      "y": 27,
+      "movement_mode": 3,
+      "facing_raw": 2,
+      "facing": 2
+    },
+    {
+      "slot": 8,
+      "sprite_id": 50,
+      "movement_state": 0,
+      "direction": 0,
+      "x": 15,
+      "y": 45,
+      "movement_mode": 9,
+      "facing_raw": 0,
+      "facing": 0
+    },
+    {
+      "slot": 9,
+      "sprite_id": 55,
+      "movement_state": 0,
+      "direction": 0,
+      "x": 9,
+      "y": 45,
+      "movement_mode": 9,
+      "facing_raw": 0,
+      "facing": 0
+    },
+    {
+      "slot": 10,
+      "sprite_id": 216,
+      "movement_state": 7,
+      "direction": 6,
+      "x": 15,
+      "y": 38,
+      "movement_mode": 28,
+      "facing_raw": 39,
+      "facing": 3
+    },
+    {
+      "slot": 11,
+      "sprite_id": 150,
+      "movement_state": 0,
+      "direction": 0,
+      "x": 16,
+      "y": 18,
+      "movement_mode": 11,
+      "facing_raw": 0,
+      "facing": 0
+    },
+    {
+      "slot": 12,
+      "sprite_id": 174,
+      "movement_state": 0,
+      "direction": 0,
+      "x": 22,
+      "y": 14,
+      "movement_mode": 47,
+      "facing_raw": 1,
+      "facing": 1
+    },
+    {
+      "slot": 13,
+      "sprite_id": 168,
+      "movement_state": 0,
+      "direction": 0,
+      "x": 30,
+      "y": 32,
+      "movement_mode": 56,
+      "facing_raw": 0,
+      "facing": 0
+    },
+    {
+      "slot": 14,
+      "sprite_id": 216,
+      "movement_state": 0,
+      "direction": 0,
+      "x": 34,
+      "y": 22,
+      "movement_mode": 28,
+      "facing_raw": 0,
+      "facing": 0
+    },
+    {
+      "slot": 15,
+      "sprite_id": 150,
+      "movement_state": 1,
+      "direction": 0,
+      "x": 4,
+      "y": 8,
+      "movement_mode": 11,
+      "facing_raw": 0,
+      "facing": 0
+    }
+  ],
+  "notes": [
+    "Slot 00 is the controlled player actor in this capture.",
+    "Sprites 80-EF use Terrorwave MonsterMoveObject indexed by sprite-80.",
+    "A blocked down attempt left X/Y unchanged and did not change 7E:3586.",
+    "The same blocked attempt changed 7E:1272 from FF to 01."
+  ]
+}

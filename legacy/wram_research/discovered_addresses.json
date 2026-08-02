@@ -1,0 +1,724 @@
+{
+  "generated_by": "WRAM Discovery Agent v1.1",
+  "wram_base": "0x7E0000",
+  "total_discovered": 52,
+  "addresses": [
+    {
+      "hex": "0x2318",
+      "offset": 8984,
+      "changes_count": 1,
+      "observed_values": [
+        96,
+        112
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x231E",
+      "offset": 8990,
+      "changes_count": 1,
+      "observed_values": [
+        0,
+        255
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2320",
+      "offset": 8992,
+      "changes_count": 2,
+      "observed_values": [
+        0,
+        2
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2327",
+      "offset": 8999,
+      "changes_count": 1,
+      "observed_values": [
+        0,
+        2
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2354",
+      "offset": 9044,
+      "changes_count": 10,
+      "observed_values": [
+        1,
+        3,
+        14,
+        17,
+        30,
+        104,
+        136,
+        137,
+        138,
+        151,
+        165
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2355",
+      "offset": 9045,
+      "changes_count": 5,
+      "observed_values": [
+        0,
+        1,
+        252,
+        253,
+        254,
+        255
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2356",
+      "offset": 9046,
+      "changes_count": 10,
+      "observed_values": [
+        39,
+        41,
+        52,
+        55,
+        68,
+        142,
+        174,
+        175,
+        176,
+        189,
+        203
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2357",
+      "offset": 9047,
+      "changes_count": 5,
+      "observed_values": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x236C",
+      "offset": 9068,
+      "changes_count": 1,
+      "observed_values": [
+        24,
+        40
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2417",
+      "offset": 9239,
+      "changes_count": 1,
+      "observed_values": [
+        52,
+        116
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x241B",
+      "offset": 9243,
+      "changes_count": 1,
+      "observed_values": [
+        52,
+        116
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x241C",
+      "offset": 9244,
+      "changes_count": 1,
+      "observed_values": [
+        96,
+        112
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x241D",
+      "offset": 9245,
+      "changes_count": 1,
+      "observed_values": [
+        44,
+        60
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x286D",
+      "offset": 10349,
+      "changes_count": 1,
+      "observed_values": [
+        45,
+        46
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x286E",
+      "offset": 10350,
+      "changes_count": 8,
+      "observed_values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2870",
+      "offset": 10352,
+      "changes_count": 10,
+      "observed_values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2E62",
+      "offset": 11874,
+      "changes_count": 1,
+      "observed_values": [
+        58,
+        59
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2E63",
+      "offset": 11875,
+      "changes_count": 10,
+      "observed_values": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        16,
+        18,
+        58,
+        59
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x2E64",
+      "offset": 11876,
+      "changes_count": 10,
+      "observed_values": [
+        1,
+        2,
+        25,
+        26,
+        27,
+        28,
+        30,
+        31,
+        32,
+        46,
+        59
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x34F7",
+      "offset": 13559,
+      "changes_count": 2,
+      "observed_values": [
+        4,
+        5,
+        6
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x34F8",
+      "offset": 13560,
+      "changes_count": 2,
+      "observed_values": [
+        4,
+        5,
+        6
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x34FC",
+      "offset": 13564,
+      "changes_count": 1,
+      "observed_values": [
+        152,
+        168
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x34FE",
+      "offset": 13566,
+      "changes_count": 1,
+      "observed_values": [
+        232,
+        248
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3501",
+      "offset": 13569,
+      "changes_count": 2,
+      "observed_values": [
+        0,
+        2,
+        254
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3502",
+      "offset": 13570,
+      "changes_count": 1,
+      "observed_values": [
+        0,
+        255
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3504",
+      "offset": 13572,
+      "changes_count": 2,
+      "observed_values": [
+        0,
+        2
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3506",
+      "offset": 13574,
+      "changes_count": 1,
+      "observed_values": [
+        57,
+        58
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3508",
+      "offset": 13576,
+      "changes_count": 1,
+      "observed_values": [
+        190,
+        191
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x350A",
+      "offset": 13578,
+      "changes_count": 1,
+      "observed_values": [
+        57,
+        58
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x350B",
+      "offset": 13579,
+      "changes_count": 1,
+      "observed_values": [
+        190,
+        191
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x350C",
+      "offset": 13580,
+      "changes_count": 1,
+      "observed_values": [
+        152,
+        168
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x350E",
+      "offset": 13582,
+      "changes_count": 1,
+      "observed_values": [
+        88,
+        104
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3517",
+      "offset": 13591,
+      "changes_count": 2,
+      "observed_values": [
+        64,
+        128,
+        192
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x355C",
+      "offset": 13660,
+      "changes_count": 2,
+      "observed_values": [
+        64,
+        128,
+        192
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3563",
+      "offset": 13667,
+      "changes_count": 1,
+      "observed_values": [
+        232,
+        248
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x35E9",
+      "offset": 13801,
+      "changes_count": 2,
+      "observed_values": [
+        134,
+        146
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x367B",
+      "offset": 13947,
+      "changes_count": 2,
+      "observed_values": [
+        134,
+        146
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x378C",
+      "offset": 14220,
+      "changes_count": 2,
+      "observed_values": [
+        1,
+        2,
+        3
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3796",
+      "offset": 14230,
+      "changes_count": 2,
+      "observed_values": [
+        134,
+        146
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x37A1",
+      "offset": 14241,
+      "changes_count": 1,
+      "observed_values": [
+        112,
+        128
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x37A3",
+      "offset": 14243,
+      "changes_count": 1,
+      "observed_values": [
+        64,
+        80
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x39FF",
+      "offset": 14847,
+      "changes_count": 9,
+      "observed_values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3A00",
+      "offset": 14848,
+      "changes_count": 10,
+      "observed_values": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3A04",
+      "offset": 14852,
+      "changes_count": 10,
+      "observed_values": [
+        2,
+        3,
+        5,
+        6,
+        7
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3A05",
+      "offset": 14853,
+      "changes_count": 10,
+      "observed_values": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3A09",
+      "offset": 14857,
+      "changes_count": 9,
+      "observed_values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3A0A",
+      "offset": 14858,
+      "changes_count": 10,
+      "observed_values": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3A0E",
+      "offset": 14862,
+      "changes_count": 9,
+      "observed_values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3A0F",
+      "offset": 14863,
+      "changes_count": 10,
+      "observed_values": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "first_seen": "2026-07-24T23:39:28",
+      "last_seen": "2026-07-24T23:39:47",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3A27",
+      "offset": 14887,
+      "changes_count": 1,
+      "observed_values": [
+        29,
+        30
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x3A28",
+      "offset": 14888,
+      "changes_count": 1,
+      "observed_values": [
+        50,
+        52
+      ],
+      "first_seen": "2026-07-24T23:39:32",
+      "last_seen": "2026-07-24T23:39:32",
+      "possible_flags": []
+    },
+    {
+      "hex": "0x42F0",
+      "offset": 17136,
+      "changes_count": 1,
+      "observed_values": [
+        20,
+        53
+      ],
+      "first_seen": "2026-07-24T23:39:30",
+      "last_seen": "2026-07-24T23:39:30",
+      "possible_flags": []
+    }
+  ]
+}

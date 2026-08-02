@@ -1,0 +1,48 @@
+{
+  "schema": "lufia2-dungeon-annotations-v2",
+  "dungeon": "Lake_Cave",
+  "annotations": {
+    "U123": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": "dungeon entrance / exit"
+    },
+    "V123": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": "dungeon entrance / exit"
+    },
+    "Q117": {
+      "traversal": "blocked",
+      "object": "lever",
+      "required_action": "shoot",
+      "notes": "shoot to raise water level"
+    },
+    "T120": {
+      "traversal": "blocked",
+      "object": "tile",
+      "required_action": "pick up and place",
+      "notes": "place at V116 after the lever has been flipped"
+    },
+    "W120": {
+      "traversal": "blocked",
+      "object": "tile",
+      "required_action": "pick up and place",
+      "notes": "place at V115 after the lever has been flipped"
+    },
+    "V118": {
+      "traversal": "blocked",
+      "object": "tile",
+      "required_action": "pick up and place",
+      "notes": "place at V114 after the lever has been flipped"
+    },
+    "V108": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "status": "CONFIRMED",
+  "source_capture": "ramia_all_defend_round_20260726_155254_events.json",
+  "checks": {
+    "initiative_queue_actor_order": true,
+    "initiative_queue_values": true,
+    "queue_is_descending": true,
+    "active_actor_follows_queue": true,
+    "enemy_actor_masks": true,
+    "enemy_target_masks": true,
+    "enemy_command_and_action_id": true,
+    "ramia_action_0x16_is_tail_attack": true,
+    "tia_hp_changes_match_target_0x08": true
+  },
+  "addresses": {
+    "initiative_queue": "7E:1B8C, actor u8 + initiative u16 LE, stride 3, max 11 actors",
+    "active_action": "7F:F44E",
+    "active_actor_mask": "+0x00",
+    "active_target_mask": "+0x02",
+    "active_command": "+0x06",
+    "active_action_id": "+0x0A",
+    "observed_parameter": "+0x0C"
+  },
+  "actor_masks": {
+    "capsule": "0x01",
+    "Guy": "0x02",
+    "Arty": "0x04",
+    "Selan": "0x08",
+    "Tia": "0x10",
+    "enemy": "0x80 | (1 << enemy_index)"
+  },
+  "party_target_masks": {
+    "Guy": "0x01",
+    "Arty": "0x02",
+    "Selan": "0x04",
+    "Tia": "0x08",
+    "capsule": "0x10"
+  },
+  "initiative_queue_values": [
+    {
+      "actor_mask": 4,
+      "initiative": 266
+    },
+    {
+      "actor_mask": 2,
+      "initiative": 187
+    },
+    {
+      "actor_mask": 8,
+      "initiative": 140
+    },
+    {
+      "actor_mask": 16,
+      "initiative": 133
+    },
+    {
+      "actor_mask": 1,
+      "initiative": 108
+    },
+    {
+      "actor_mask": 129,
+      "initiative": 45
+    },
+    {
+      "actor_mask": 132,
+      "initiative": 45
+    },
+    {
+      "actor_mask": 130,
+      "initiative": 43
+    }
+  ],
+  "active_action_timeline": [
+    {
+      "t": 2.641,
+      "actor_mask": 4,
+      "target_mask": 129,
+      "command": 4,
+      "action_id": 0,
+      "parameter_0c": 0,
+      "raw": "04 00 81 00 00 00 04 00 00 00 00 00 00 00"
+    },
+    {
+      "t": 3.438,
+      "actor_mask": 2,
+      "target_mask": 129,
+      "command": 4,
+      "action_id": 0,
+      "parameter_0c": 0,
+      "raw": "02 00 81 00 00 00 04 00 00 00 00 00 00 00"
+    },
+    {
+      "t": 4.25,
+      "actor_mask": 8,
+      "target_mask": 129,
+      "command": 4,
+      "action_id": 0,
+      "parameter_0c": 0,
+      "raw": "08 00 81 00 00 00 04 00 00 00 00 00 00 00"
+    },
+    {
+      "t": 5.047,
+      "actor_mask": 16,
+      "target_mask": 132,
+      "command": 1,
+      "action_id": 0,
+      "parameter_0c": 0,
+      "raw": "10 00 84 00 00 00 01 00 00 00 00 00 00 00"
+    },
+    {
+      "t": 7.391,
+      "actor_mask": 1,
+      "target_mask": 129,
+      "command": 4,
+      "action_id": 0,
+      "parameter_0c": 0,
+      "raw": "01 00 81 00 00 00 04 00 00 00 00 00 00 00"
+    },
+    {
+      "t": 8.188,
+      "actor_mask": 129,
+      "target_mask": 8,
+      "command": 5,
+      "action_id": 22,
+      "parameter_0c": 32,
+      "raw": "81 00 08 00 00 00 05 00 00 00 16 00 20 00"
+    },
+    {
+      "t": 15.797,
+      "actor_mask": 132,
+      "target_mask": 16,
+      "command": 5,
+      "action_id": 22,
+      "parameter_0c": 32,
+      "raw": "84 00 10 00 00 00 05 00 00 00 16 00 20 00"
+    },
+    {
+      "t": 23.328,
+      "actor_mask": 130,
+      "target_mask": 8,
+      "command": 5,
+      "action_id": 22,
+      "parameter_0c": 32,
+      "raw": "82 00 08 00 00 00 05 00 00 00 16 00 20 00"
+    }
+  ],
+  "tia_hp_timeline": [
+    [
+      0.0,
+      619
+    ],
+    [
+      8.188,
+      596
+    ],
+    [
+      23.328,
+      571
+    ]
+  ],
+  "notes": [
+    "The initiative queue is materialized before execution and consumed in descending value order.",
+    "Enemy target 08 correlated with both Tia HP changes; target 10 is the capsule target.",
+    "Ramia command 05, action ID 16 and parameter 20 are live values.",
+    "The randomized ROM action-name pointer table maps 15=Miracle voice, 16=Tail attack and 17=Picking (hex IDs)."
+  ]
+}

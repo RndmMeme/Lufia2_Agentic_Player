@@ -1,0 +1,45 @@
+{
+  "status": "CONFIRMED",
+  "npc_dialog_indicator": {
+    "address": "7E:099B-099C",
+    "closed": "00 00",
+    "tested_npc_open": "88 01",
+    "shop_open": "00 00"
+  },
+  "non_specific_candidates": {
+    "7E:0622": "20 idle, 21 NPC dialog and shop",
+    "7E:06F1": "06 idle, 05 NPC dialog and shop"
+  },
+  "captures": {
+    "moving_npc_closed": {
+      "npc_dialog": "00 00",
+      "general_interaction": "20",
+      "control_state": "06"
+    },
+    "moving_npc_open": {
+      "npc_dialog": "88 01",
+      "general_interaction": "21",
+      "control_state": "05"
+    },
+    "stationary_npc_closed": {
+      "npc_dialog": "00 00",
+      "general_interaction": "20",
+      "control_state": "06"
+    },
+    "stationary_npc_open": {
+      "npc_dialog": "88 01",
+      "general_interaction": "21",
+      "control_state": "05"
+    },
+    "stationary_npc_return": {
+      "npc_dialog": "00 00",
+      "general_interaction": "20",
+      "control_state": "06"
+    },
+    "shop_open": {
+      "npc_dialog": "00 00",
+      "general_interaction": "21",
+      "control_state": "05"
+    }
+  }
+}

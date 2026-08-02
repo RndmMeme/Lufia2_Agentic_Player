@@ -1,0 +1,1889 @@
+{
+  "schema": "lufia2-dungeon-annotations-v2",
+  "annotations": {
+    "AC55": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AK63": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": "dungeon entrance / exit"
+    },
+    "AL63": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": "dungeon entrance / exit"
+    },
+    "AE62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AF62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AG62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AH62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AI62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AJ62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AM62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AN62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AO62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AP62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AQ62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AS62": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AS61": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AT61": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AT60": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AT59": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AT58": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AT57": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AT56": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AT55": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AT54": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AT53": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR52": {
+      "traversal": "blocked",
+      "object": "Priest NPC",
+      "required_action": "Talk",
+      "notes": "Save, Heal, Cure"
+    },
+    "AS52": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR51": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AQ50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AP50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AO50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AN50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AM50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AK50": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "AL50": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "AJ50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AI50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AH50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AG50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AF50": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AE52": {
+      "traversal": "blocked",
+      "object": "Elf NPC",
+      "required_action": "Talk",
+      "notes": "Chat, Hint"
+    },
+    "AD52": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC52": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC53": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC54": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC56": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC57": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC58": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC59": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC60": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC61": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD61": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AJ63": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AM63": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD57": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AK49": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AL49": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AK47": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AL47": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AM47": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AN47": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AO47": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AO46": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AP46": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AQ45": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR44": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR43": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR42": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR41": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR40": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR39": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AR38": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AQ38": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AP37": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AO37": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AN37": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AM37": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AL37": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "AK37": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "AJ37": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AI37": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AH37": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AG37": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AG38": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AF38": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AE39": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD39": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD40": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD41": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD42": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD43": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD44": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD45": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AE45": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AE46": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AF46": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AF47": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AG47": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AH47": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AI47": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AJ47": {
+      "traversal": "blocked",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AK42": {
+      "traversal": "conditional",
+      "object": "monster",
+      "required_action": "move_away_or_defeat",
+      "notes": "fight optional; the monster moves away from these cells"
+    },
+    "AL42": {
+      "traversal": "conditional",
+      "object": "monster",
+      "required_action": "move_away_or_defeat",
+      "notes": "fight optional; the monster moves away from these cells"
+    },
+    "AK36": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AL36": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AK35": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AL35": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AK34": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AL34": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AI28": {
+      "traversal": "conditional",
+      "object": "puzzle",
+      "required_action": "shoot arrow or hook",
+      "notes": "Look left, turn lever to complete bridge at AF30 / AG30"
+    },
+    "AB28": {
+      "traversal": "blocked",
+      "object": "lever",
+      "required_action": null,
+      "notes": null
+    },
+    "AC28": {
+      "traversal": "blocked",
+      "object": "lever",
+      "required_action": null,
+      "notes": null
+    },
+    "AF30": {
+      "traversal": "conditional",
+      "object": "puzzle",
+      "required_action": "shoot arrow or hook",
+      "notes": "shoot lever from AI28 first to  complete bridge at AF30 / AG30"
+    },
+    "AG30": {
+      "traversal": "conditional",
+      "object": "puzzle",
+      "required_action": "shoot arrow or hook",
+      "notes": "shoot lever from AI28 first to  complete bridge at AF30 / AG31"
+    },
+    "AE33": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AF33": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AG33": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AH33": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AE32": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AF32": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AG32": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AH32": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AE31": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AF31": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AG31": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AH31": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AE29": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AF29": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AG29": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AH29": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AE28": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AF28": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AG28": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AH28": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AF27": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AG27": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AH27": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AI27": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AJ27": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AK27": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AF26": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AG26": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AH26": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AI26": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AJ26": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AK26": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AF25": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AG25": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AH25": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AI25": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AJ25": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AK25": {
+      "traversal": "blocked",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "W26": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "X26": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "W25": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "X25": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "W24": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "X24": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "W23": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "X23": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "S23": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "T23": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "S24": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "T24": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "S25": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "T25": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "S26": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "T26": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "M28": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "K21": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "L21": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "L25": {
+      "traversal": "conditional",
+      "object": "pillar",
+      "required_action": "push",
+      "notes": "push pillar to G24, F24"
+    },
+    "G24": {
+      "traversal": "conditional",
+      "object": "floor switch",
+      "required_action": "press",
+      "notes": "place pillar from L25 to open door at I20"
+    },
+    "F24": {
+      "traversal": "conditional",
+      "object": "floor switch",
+      "required_action": "press",
+      "notes": "place pillar from L25 to open door at I20"
+    },
+    "I20": {
+      "traversal": "conditional",
+      "object": "door",
+      "required_action": "open",
+      "notes": "unlocks when floor switch at G24, F24 is pressed"
+    },
+    "I19": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "I18": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "I17": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "J13": {
+      "traversal": "confirmed_walkable",
+      "object": "jump",
+      "required_action": "hold right",
+      "notes": null
+    },
+    "J12": {
+      "traversal": "confirmed_walkable",
+      "object": "jump",
+      "required_action": "hold right",
+      "notes": null
+    },
+    "J11": {
+      "traversal": "confirmed_walkable",
+      "object": "jump",
+      "required_action": "hold right",
+      "notes": null
+    },
+    "N7": {
+      "traversal": "confirmed_walkable",
+      "object": "jump",
+      "required_action": "hold down",
+      "notes": null
+    },
+    "O7": {
+      "traversal": "confirmed_walkable",
+      "object": "jump",
+      "required_action": "hold down",
+      "notes": null
+    },
+    "P7": {
+      "traversal": "confirmed_walkable",
+      "object": "jump",
+      "required_action": "hold down",
+      "notes": null
+    },
+    "M11": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "M12": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "L12": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "L13": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "L14": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "L15": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "M15": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "M16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "N16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "O16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "P16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "Q16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "R16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "S16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "T16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "T15": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "S15": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "R15": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "R14": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "R13": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "V10": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "V9": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "V8": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "V7": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "Z7": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "Z8": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "Z9": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "Z10": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "AI9": {
+      "traversal": "confirmed_walkable",
+      "object": "jump",
+      "required_action": "hold right",
+      "notes": null
+    },
+    "AJ9": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "AJ10": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "AJ11": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AK11": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AL11": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AM11": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AM10": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AM9": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AM12": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AM13": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AM14": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AM15": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AM16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AN13": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AN14": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AO13": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AO14": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AO12": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "AO11": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "AQ11": {
+      "traversal": "confirmed_walkable",
+      "object": "jump",
+      "required_action": "hold left",
+      "notes": null
+    },
+    "AW10": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "AW9": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AW8": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AW7": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BA7": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BA8": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BA9": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BA10": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": null,
+      "notes": null
+    },
+    "BM7": {
+      "traversal": "blocked",
+      "object": "monster",
+      "required_action": "beat",
+      "notes": "may hold key item"
+    },
+    "BG11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BI10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BG16": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BG15": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BH15": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BI15": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BJ15": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BG14": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BH14": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BI14": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BJ14": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BH13": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BI13": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BJ13": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BH12": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BI12": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BJ12": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BK12": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BJ11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BK11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BL11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BM11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BN11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BO11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BP11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BQ11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BR11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BS11": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BS12": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BK10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BL10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BM10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BN10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BO10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BP10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BQ10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BR10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BS10": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BL9": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BM9": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BO9": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BP9": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BQ9": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BR9": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BS9": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BP8": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "BN15": {
+      "traversal": "conditional",
+      "object": "puzzle",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb, then walk on floor switch to open door at BN20"
+    },
+    "BN16": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BN17": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BN18": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BN19": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BN20": {
+      "traversal": "conditional",
+      "object": "door",
+      "required_action": "open",
+      "notes": "unlocks when floor switch at BN15 is pressed"
+    },
+    "BS23": {
+      "traversal": "conditional",
+      "object": "pot",
+      "required_action": "pick up",
+      "notes": "place on BP22"
+    },
+    "AI8": {
+      "traversal": "conditional",
+      "object": "monster",
+      "required_action": "move_away_or_defeat",
+      "notes": "optional, it moves away from that spot"
+    },
+    "AO10": {
+      "traversal": "conditional",
+      "object": "monster",
+      "required_action": "defeat",
+      "notes": "mandatory; it will not let you pass otherwise"
+    },
+    "BP22": {
+      "traversal": "conditional",
+      "object": "tile switch",
+      "required_action": "activate",
+      "notes": "place pot from BS23 to open path at BN25"
+    },
+    "BN25": {
+      "traversal": "conditional",
+      "object": "wall",
+      "required_action": "open",
+      "notes": "placing pot from BS23 on tile switch BP23"
+    },
+    "BH29": {
+      "traversal": "conditional",
+      "object": "pot",
+      "required_action": "pick up",
+      "notes": "place on tile at BK22 to open door at BC26, BD26"
+    },
+    "BC26": {
+      "traversal": "conditional",
+      "object": "door",
+      "required_action": "open",
+      "notes": "pick up pot at BH29 and place on tile at BK22 to unlock"
+    },
+    "BD26": {
+      "traversal": "conditional",
+      "object": "door",
+      "required_action": "open",
+      "notes": "pick up pot at BH29 and place on tile at BK22 to unlock"
+    },
+    "BC25": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BD25": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BC24": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BD24": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BC23": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BD23": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AZ23": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AZ24": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AZ25": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AZ26": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    },
+    "AP10": {
+      "traversal": "conditional",
+      "object": "monster",
+      "required_action": "defeat",
+      "notes": "mandatory; it will not let you pass otherwise"
+    }
+  }
+}

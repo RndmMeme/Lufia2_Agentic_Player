@@ -1,0 +1,226 @@
+{
+  "button": "a",
+  "frames": 2,
+  "duration_seconds": 1.2,
+  "samples": 17,
+  "transitions": [
+    {
+      "battle_mode": "01",
+      "ui_phase_0b4e": "28",
+      "input_step_1f55e": "01",
+      "target_index_0026": "03",
+      "target_flags_0027": "00",
+      "formation": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "party": [
+        {
+          "identity": 2,
+          "hp": 747,
+          "mp": 464,
+          "status": "00"
+        },
+        {
+          "identity": 3,
+          "hp": 566,
+          "mp": 0,
+          "status": "00"
+        },
+        {
+          "identity": 1,
+          "hp": 615,
+          "mp": 541,
+          "status": "00"
+        },
+        {
+          "identity": 4,
+          "hp": 571,
+          "mp": 372,
+          "status": "00"
+        }
+      ],
+      "enemies": [
+        {
+          "slot": 0,
+          "identity": "A4",
+          "hp": 6,
+          "mp": 0,
+          "status": "00"
+        },
+        {
+          "slot": 1,
+          "identity": "A4",
+          "hp": 6,
+          "mp": 0,
+          "status": "00"
+        }
+      ],
+      "commands": [
+        {
+          "slot": 0,
+          "target": "81",
+          "command": "01",
+          "ability": "0078",
+          "actor": "02"
+        },
+        {
+          "slot": 1,
+          "target": "81",
+          "command": "01",
+          "ability": "0078",
+          "actor": "04"
+        },
+        {
+          "slot": 2,
+          "target": "81",
+          "command": "01",
+          "ability": "0064",
+          "actor": "08"
+        },
+        {
+          "slot": 3,
+          "target": "81",
+          "command": "00",
+          "ability": "0064",
+          "actor": "00"
+        }
+      ],
+      "initiative": [
+        {
+          "slot": 0,
+          "actor": "04",
+          "value": 266
+        },
+        {
+          "slot": 1,
+          "actor": "02",
+          "value": 187
+        },
+        {
+          "slot": 2,
+          "actor": "01",
+          "value": 108
+        }
+      ],
+      "active": {
+        "actor": "00",
+        "target": "00",
+        "command": "00",
+        "action": "0000"
+      },
+      "t_ms": 0
+    },
+    {
+      "battle_mode": "01",
+      "ui_phase_0b4e": "28",
+      "input_step_1f55e": "01",
+      "target_index_0026": "00",
+      "target_flags_0027": "80",
+      "formation": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "party": [
+        {
+          "identity": 2,
+          "hp": 747,
+          "mp": 464,
+          "status": "00"
+        },
+        {
+          "identity": 3,
+          "hp": 566,
+          "mp": 0,
+          "status": "00"
+        },
+        {
+          "identity": 1,
+          "hp": 615,
+          "mp": 541,
+          "status": "00"
+        },
+        {
+          "identity": 4,
+          "hp": 571,
+          "mp": 372,
+          "status": "00"
+        }
+      ],
+      "enemies": [
+        {
+          "slot": 0,
+          "identity": "A4",
+          "hp": 6,
+          "mp": 0,
+          "status": "00"
+        },
+        {
+          "slot": 1,
+          "identity": "A4",
+          "hp": 6,
+          "mp": 0,
+          "status": "00"
+        }
+      ],
+      "commands": [
+        {
+          "slot": 0,
+          "target": "81",
+          "command": "01",
+          "ability": "0078",
+          "actor": "02"
+        },
+        {
+          "slot": 1,
+          "target": "81",
+          "command": "01",
+          "ability": "0078",
+          "actor": "04"
+        },
+        {
+          "slot": 2,
+          "target": "81",
+          "command": "01",
+          "ability": "0064",
+          "actor": "08"
+        },
+        {
+          "slot": 3,
+          "target": "81",
+          "command": "00",
+          "ability": "0064",
+          "actor": "00"
+        }
+      ],
+      "initiative": [
+        {
+          "slot": 0,
+          "actor": "04",
+          "value": 266
+        },
+        {
+          "slot": 1,
+          "actor": "02",
+          "value": 187
+        },
+        {
+          "slot": 2,
+          "actor": "01",
+          "value": 108
+        }
+      ],
+      "active": {
+        "actor": "00",
+        "target": "00",
+        "command": "00",
+        "action": "0000"
+      },
+      "t_ms": 313
+    }
+  ]
+}

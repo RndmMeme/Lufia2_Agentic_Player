@@ -1,0 +1,130 @@
+{
+  "timestamp": "2026-08-02T00:28:03.569405",
+  "contract": "schema-bound intents plus one gated Mesen screenshot",
+  "models": [
+    {
+      "model": "gemma3:4b",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "error": "Unsupported intent kind: ''",
+          "seconds": 21.656
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "error": "Unsupported intent kind: ''",
+          "seconds": 5.969
+        },
+        {
+          "case": "dialog",
+          "passed": false,
+          "error": "Unsupported intent kind: ''",
+          "seconds": 5.844
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "error": "Unsupported intent kind: ''",
+          "seconds": 5.875
+        }
+      ],
+      "vision": {
+        "passed_schema": true,
+        "result": {
+          "scene_type": "room",
+          "relevant_objects": [
+            {
+              "name": "Red Orb",
+              "x": 28,
+              "y": 42,
+              "semantic": "target"
+            },
+            {
+              "name": "Stone Staircase",
+              "x": 28,
+              "y": 42,
+              "semantic": "path"
+            }
+          ],
+          "navigation_hypothesis": "The player is in a room with a red orb and a stone staircase. The primary navigation goal is to ascend the staircase.",
+          "confidence": 0.95,
+          "safe_next_test": "north"
+        },
+        "seconds": 71.875
+      },
+      "planner_passes": 0
+    },
+    {
+      "model": "hf.co/unsloth/gemma-4-E2B-it-GGUF:UD-Q4_K_XL",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "error": "Model response contained no JSON object",
+          "seconds": 31.187
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "error": "Model response contained no JSON object",
+          "seconds": 9.578
+        },
+        {
+          "case": "dialog",
+          "passed": false,
+          "error": "Model response contained no JSON object",
+          "seconds": 9.532
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "error": "Model response contained no JSON object",
+          "seconds": 9.703
+        }
+      ],
+      "vision": {
+        "passed_schema": false,
+        "error": "Model response contained no JSON object",
+        "seconds": 35.25
+      },
+      "planner_passes": 0
+    },
+    {
+      "model": "hf.co/unsloth/gemma-4-12B-it-qat-GGUF:UD-Q4_K_XL",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "error": "Unsupported intent kind: ''",
+          "seconds": 49.157
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "error": "Model response contained no JSON object",
+          "seconds": 17.546
+        },
+        {
+          "case": "dialog",
+          "passed": false,
+          "error": "Model response contained no JSON object",
+          "seconds": 17.407
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "error": "Model response contained no JSON object",
+          "seconds": 17.906
+        }
+      ],
+      "vision": {
+        "passed_schema": false,
+        "error": "Model response contained no JSON object",
+        "seconds": 43.234
+      },
+      "planner_passes": 0
+    }
+  ]
+}

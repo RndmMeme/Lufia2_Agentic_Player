@@ -1,0 +1,23 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Treasure_Sword_Shrine",
+  "marker_count": 226,
+  "type_counts": {
+    "door": 26,
+    "chest": 8,
+    "monster": 25,
+    "walkable": 89,
+    "stairs": 12,
+    "npc": 4,
+    "puzzle": 48,
+    "blocked": 8,
+    "switch": 6
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "lufia2-navigation-semantics-v1",
+  "scope": "global_engine",
+  "rules": [
+    {
+      "id": "actor_feet_anchor",
+      "status": "confirmed",
+      "rule": "WRAM actor x/y and collision contact refer to the actor's feet, not the sprite head or full bounding box."
+    },
+    {
+      "id": "blocked_now_not_wall",
+      "status": "confirmed",
+      "rule": "A failed directed movement proves only that the edge is impassable now. It does not classify wall, door, actor, bush, movable object, elevation edge or puzzle state."
+    },
+    {
+      "id": "blocked_direction_codes",
+      "status": "confirmed",
+      "address": "7E:1272",
+      "values": {"FF": "clear", "00": "north", "01": "south", "02": "west", "03": "east"}
+    },
+    {
+      "id": "humanoid_input",
+      "status": "confirmed",
+      "rule": "Exploration may use bounded direction holds. Menu choices use short human-sized presses and state verification."
+    }
+  ]
+}

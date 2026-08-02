@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Alunze_Castle_Basement",
+  "marker_count": 233,
+  "type_counts": {
+    "stairs": 7,
+    "door": 16,
+    "npc": 6,
+    "walkable": 98,
+    "monster": 28,
+    "puzzle": 27,
+    "switch": 12,
+    "chest": 9,
+    "water": 14,
+    "blocked": 16
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

@@ -1,0 +1,31 @@
+{
+    "total_rounds": 190,
+    "perfect_rounds": 24,
+    "hall_of_fame": [
+        {
+            "enemy": "Enemy 1, Enemy 2, Enemy 3, Enemy 4, Enemy 5, Enemy 6",
+            "thought": "Party HP is low. Enemy threat is high. IP is unavailable.",
+            "command": "[BATTLE: FLEE]"
+        },
+        {
+            "enemy": "Enemy 1, Enemy 2, Enemy 3, Enemy 4, Enemy 5, Enemy 6",
+            "thought": "Party HP is low. Enemy threat is high. IP is unavailable.",
+            "command": "[BATTLE: FLEE]"
+        },
+        {
+            "enemy": "Enemy 1, Enemy 2, Enemy 3, Enemy 4, Enemy 5, Enemy 6",
+            "thought": "Party HP is low. Enemy threat is high. IP is unavailable.",
+            "command": "[BATTLE: FLEE]"
+        },
+        {
+            "enemy": "Enemy 1, Enemy 2, Enemy 3, Enemy 4, Enemy 5, Enemy 6",
+            "thought": "Party HP is low. Enemy threat is high. IP is unavailable.",
+            "command": "[BATTLE: FLEE]"
+        },
+        {
+            "enemy": "Enemy 1, Enemy 2, Enemy 3, Enemy 4, Enemy 5, Enemy 6",
+            "thought": "The goal is to survive the confrontation. Fighting or fleeing is the contextually appropriate action.",
+            "command": "[BATTLE: FLEE]"
+        }
+    ]
+}

@@ -1,0 +1,2048 @@
+{
+  "3": {
+    "name": "Elcid",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 120,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 152,
+        "y": 80,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 232,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Spells entrance",
+        "x": 120,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 232,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "4": {
+    "name": "Elcid",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 24,
+        "y": 96,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 208,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 40,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 216,
+        "y": 48,
+        "type": ""
+      }
+    ]
+  },
+  "8": {
+    "name": "Sundletan",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 136,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 184,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 200,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Spells entrance",
+        "x": 120,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Tea Shop",
+        "x": 152,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 40,
+        "y": 16,
+        "type": ""
+      }
+    ]
+  },
+  "9": {
+    "name": "Sundletan",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 200,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 168,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 72,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 200,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Tea Shop Clerk",
+        "x": 216,
+        "y": 0,
+        "type": ""
+      }
+    ]
+  },
+  "15": {
+    "name": "Alunze",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 232,
+        "y": 96,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 88,
+        "y": 112,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 136,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 24,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "1F Castle entrance",
+        "x": 152,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 152,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "2F Castle entrance (Throne area)",
+        "x": 168,
+        "y": 96,
+        "type": ""
+      },
+      {
+        "name": "2F Castle entrance (towards Basement)",
+        "x": 8,
+        "y": 32,
+        "type": ""
+      },
+      {
+        "name": "10    1F Stairs Up (from exit)",
+        "x": 232,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "2F Stairs Down (to exit)",
+        "x": 56,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "2F King",
+        "x": 56,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "2F Exit",
+        "x": 56,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "2F Exit (from basement)",
+        "x": 88,
+        "y": 80,
+        "type": ""
+      },
+      {
+        "name": "2F Stairs (towards basement)",
+        "x": 88,
+        "y": 32,
+        "type": ""
+      },
+      {
+        "name": "1F Stairs up to 2F",
+        "x": 104,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "1F Stairs down to B1",
+        "x": 104,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "B1 Stairs to 1F",
+        "x": 184,
+        "y": 112,
+        "type": ""
+      },
+      {
+        "name": "B1 Stairs to B2",
+        "x": 72,
+        "y": 112,
+        "type": ""
+      },
+      {
+        "name": "B2 Stairs to B1",
+        "x": 216,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "B2 Door to Dungeon",
+        "x": 136,
+        "y": 48,
+        "type": ""
+      }
+    ]
+  },
+  "16": {
+    "name": "Alunze",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 232,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 24,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 56,
+        "y": 16,
+        "type": ""
+      }
+    ]
+  },
+  "28": {
+    "name": "Tanbel",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 216,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 184,
+        "y": 64,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 248,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Spells entrance",
+        "x": 88,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 24,
+        "y": 48,
+        "type": ""
+      }
+    ]
+  },
+  "29": {
+    "name": "Tanbel",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 232,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 248,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 232,
+        "y": 176,
+        "type": ""
+      }
+    ]
+  },
+  "25": {
+    "name": "Clamento",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 72,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 200,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 184,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "Spells entrance",
+        "x": 88,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Jyad House (Items)",
+        "x": 168,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Mayor House",
+        "x": 24,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 24,
+        "y": 0,
+        "type": ""
+      }
+    ]
+  },
+  "26": {
+    "name": "Clamento",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 168,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 248,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 72,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 104,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Jyad House, his wife",
+        "x": 56,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Jyad (sells items)",
+        "x": 184,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Jyad House Exit",
+        "x": 72,
+        "y": 32,
+        "type": ""
+      },
+      {
+        "name": "Mayor",
+        "x": 248,
+        "y": 128,
+        "type": ""
+      }
+    ]
+  },
+  "44": {
+    "name": "Parcelyte",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 56,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 184,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 248,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Item Shop",
+        "x": 88,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 248,
+        "y": 48,
+        "type": ""
+      }
+    ]
+  },
+  "45": {
+    "name": "Parcelyte",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 184,
+        "y": 112,
+        "type": ""
+      },
+      {
+        "name": "Item Clerk",
+        "x": 184,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 248,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 184,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "1F Castle entrance",
+        "x": 200,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "2F Castle Entrance (Throne Room)",
+        "x": 200,
+        "y": 64,
+        "type": ""
+      },
+      {
+        "name": "Castle entrance",
+        "x": 200,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "leave Castle",
+        "x": 200,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "1F Castle Exit",
+        "x": 232,
+        "y": 48,
+        "type": ""
+      },
+      {
+        "name": "1F Stairs to B1",
+        "x": 232,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "B1 Stairs to 1F",
+        "x": 88,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "B1 Guard",
+        "x": 216,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "B1 Treasure Door",
+        "x": 200,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "2F Exit (from Throne) int",
+        "x": 8,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "2F King",
+        "x": 8,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Castle entrance",
+        "x": 200,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 200,
+        "y": 144,
+        "type": ""
+      }
+    ]
+  },
+  "36": {
+    "name": "Gordovan",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 72,
+        "y": 96,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 120,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 8,
+        "y": 208,
+        "type": ""
+      }
+    ]
+  },
+  "62": {
+    "name": "Merix",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 56,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 104,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 120,
+        "y": 112,
+        "type": ""
+      },
+      {
+        "name": "Spells Shop",
+        "x": 232,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 8,
+        "y": 224,
+        "type": ""
+      }
+    ]
+  },
+  "63": {
+    "name": "Merix",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 88,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 216,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 40,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 232,
+        "y": 16,
+        "type": ""
+      }
+    ]
+  },
+  "46": {
+    "name": "Bound Kingdom",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 216,
+        "y": 32,
+        "type": ""
+      },
+      {
+        "name": "Castle exit",
+        "x": 40,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 232,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "1F Stairs to B1",
+        "x": 104,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "B1 Stairs to 1F",
+        "x": 184,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "B1 Stairs to B2",
+        "x": 216,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "B2 Stairs to B1",
+        "x": 56,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "2F Priest",
+        "x": 120,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "B2 Item Clerk",
+        "x": 104,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "1F Stairs to 2F",
+        "x": 184,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "2F Stairs to 1F",
+        "x": 152,
+        "y": 0,
+        "type": ""
+      }
+    ]
+  },
+  "94": {
+    "name": "Aleyn",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 88,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 136,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 200,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Spells entrance",
+        "x": 232,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Bar entrance",
+        "x": 152,
+        "y": 80,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 24,
+        "y": 32,
+        "type": ""
+      }
+    ]
+  },
+  "95": {
+    "name": "Aleyn",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 184,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 104,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 216,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 216,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Bar keep",
+        "x": 168,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "68": {
+    "name": "Gruberik",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 72,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 168,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 88,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 24,
+        "y": 16,
+        "type": ""
+      }
+    ]
+  },
+  "69": {
+    "name": "Gruberik",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 200,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 200,
+        "y": 122,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 232,
+        "y": 96,
+        "type": ""
+      }
+    ]
+  },
+  "106": {
+    "name": "Narcysus",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 200,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 168,
+        "y": 112,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 104,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Item Shop entrance",
+        "x": 8,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 24,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "107": {
+    "name": "Narcysus",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 152,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 104,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 216,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Item clerk",
+        "x": 248,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "73": {
+    "name": "Karlloon",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 24,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 120,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 200,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Spells entrance",
+        "x": 184,
+        "y": 80,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 200,
+        "y": 0,
+        "type": ""
+      }
+    ]
+  },
+  "74": {
+    "name": "Karlloon",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 184,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 8,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 24,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 216,
+        "y": 16,
+        "type": ""
+      }
+    ]
+  },
+  "122": {
+    "name": "Treadool",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 232,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 136,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 72,
+        "y": 32,
+        "type": ""
+      },
+      {
+        "name": "Item Shop entrance",
+        "x": 104,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 232,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "123": {
+    "name": "Treadool",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 136,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 136,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 216,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Item Shop Clerk",
+        "x": 216,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "124": {
+    "name": "Shaia Lab",
+    "pois": [
+      {
+        "name": "Exit",
+        "x": 184,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "1st door in",
+        "x": 56,
+        "y": 64,
+        "type": ""
+      },
+      {
+        "name": "2nd door in",
+        "x": 120,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "3rd door in",
+        "x": 104,
+        "y": 96,
+        "type": ""
+      },
+      {
+        "name": "4th door in",
+        "x": 168,
+        "y": 112,
+        "type": ""
+      },
+      {
+        "name": "1F Stairs to B1",
+        "x": 184,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "B1 Stairs to 1F",
+        "x": 216,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Lexis / Boss",
+        "x": 200,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "4th door out",
+        "x": 168,
+        "y": 80,
+        "type": ""
+      },
+      {
+        "name": "5th door in to B1",
+        "x": 72,
+        "y": 112,
+        "type": ""
+      },
+      {
+        "name": "Plattform",
+        "x": 202,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Esc B1 Stairs to 1F",
+        "x": 184,
+        "y": 144,
+        "type": ""
+      }
+    ]
+  },
+  "85": {
+    "name": "Forfeit Island",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 200,
+        "y": 48,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 72,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 248,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Bar entrance",
+        "x": 104,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 248,
+        "y": 128,
+        "type": ""
+      }
+    ]
+  },
+  "86": {
+    "name": "Forfeit Island",
+    "pois": [
+      {
+        "name": "Weapon Clerk 1F",
+        "x": 184,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "Stairs down to B1",
+        "x": 232,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Stairs up to 1F",
+        "x": 168,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Armor Clerk B1",
+        "x": 184,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Stairs down to B2",
+        "x": 168,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "Stairs up to B1",
+        "x": 104,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "Item Clerk B2",
+        "x": 104,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 168,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 232,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Bar Keep",
+        "x": 248,
+        "y": 160,
+        "type": ""
+      }
+    ]
+  },
+  "88": {
+    "name": "Dankirk",
+    "pois": [
+      {
+        "name": "Castle entrance",
+        "x": 8,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "leave Castle",
+        "x": 8,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "89": {
+    "name": "Dankirk",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 184,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "1F Stairs to B1",
+        "x": 232,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "B1 Stairs to 1F",
+        "x": 72,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 216,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 40,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "B1 Spells Clerk",
+        "x": 120,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Castle Exit",
+        "x": 72,
+        "y": 128,
+        "type": ""
+      }
+    ]
+  },
+  "138": {
+    "name": "Auralio",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 56,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 120,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 136,
+        "y": 48,
+        "type": ""
+      },
+      {
+        "name": "Item Shop entrance",
+        "x": 200,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 216,
+        "y": 32,
+        "type": ""
+      }
+    ]
+  },
+  "139": {
+    "name": "Auralio",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 216,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 200,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 136,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Item Shop Clerk",
+        "x": 104,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "91": {
+    "name": "Ferim",
+    "pois": [
+      {
+        "name": "Castle entrance",
+        "x": 136,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "leave Castle",
+        "x": 136,
+        "y": 64,
+        "type": ""
+      }
+    ]
+  },
+  "92": {
+    "name": "Ferim",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 216,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 200,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "1F Stairs to B1 Priest",
+        "x": 184,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "B1 Stairs from Priest to 1F",
+        "x": 200,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "B1 Priest",
+        "x": 168,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "1F Stairs to B1 Spells Clerk",
+        "x": 216,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "B1 Stairs from Spells to 1F",
+        "x": 136,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 168,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Castle Exit",
+        "x": 72,
+        "y": 112,
+        "type": ""
+      }
+    ]
+  },
+  "154": {
+    "name": "Agurio",
+    "pois": [
+      {
+        "name": "Egg Girl",
+        "x": 40,
+        "y": 112,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 24,
+        "y": 208,
+        "type": ""
+      }
+    ]
+  },
+  "155": {
+    "name": "Treble",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 136,
+        "y": 160,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 24,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 8,
+        "y": 16,
+        "type": ""
+      },
+      {
+        "name": "Item Shop entrance",
+        "x": 200,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 8,
+        "y": 160,
+        "type": ""
+      }
+    ]
+  },
+  "156": {
+    "name": "Treble",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 40,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 248,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 120,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Item Shop Clerk",
+        "x": 216,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "157": {
+    "name": "Pico",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 136,
+        "y": 80,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 104,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 216,
+        "y": 160,
+        "type": ""
+      }
+    ]
+  },
+  "158": {
+    "name": "Pico",
+    "pois": [
+      {
+        "name": "Inn keeper",
+        "x": 72,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 120,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "160": {
+    "name": "Portravia",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 56,
+        "y": 48,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 168,
+        "y": 48,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 136,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Lab entrance",
+        "x": 24,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 24,
+        "y": 96,
+        "type": ""
+      }
+    ]
+  },
+  "161": {
+    "name": "Portravia",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 152,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Shop 1F Stairs to B1",
+        "x": 120,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "Shop B1 Stairs to 1F",
+        "x": 184,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 88,
+        "y": 48,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 216,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Shop B1 Spells Clerk",
+        "x": 232,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Lab exit",
+        "x": 216,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "1F Lab Stairs to B1",
+        "x": 168,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "B1 Lab Stairs to 1F",
+        "x": 216,
+        "y": 48,
+        "type": ""
+      },
+      {
+        "name": "B1 Lab Scientist",
+        "x": 88,
+        "y": 128,
+        "type": ""
+      }
+    ]
+  },
+  "166": {
+    "name": "Eserikto",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 184,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 56,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 8,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Spells entrance",
+        "x": 136,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 248,
+        "y": 224,
+        "type": ""
+      }
+    ]
+  },
+  "167": {
+    "name": "Eserikto",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 72,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 24,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 120,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 200,
+        "y": 16,
+        "type": ""
+      }
+    ]
+  },
+  "172": {
+    "name": "Barnan",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 200,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 88,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 88,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Item Shop entrance",
+        "x": 8,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 248,
+        "y": 16,
+        "type": ""
+      }
+    ]
+  },
+  "173": {
+    "name": "Barnan",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 24,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 56,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 232,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "Item Shop Clerk",
+        "x": 168,
+        "y": 0,
+        "type": ""
+      }
+    ]
+  },
+  "181": {
+    "name": "Durale",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 40,
+        "y": 192,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 136,
+        "y": 64,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 40,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Spells entrance",
+        "x": 184,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "Tea Shop entrance",
+        "x": 152,
+        "y": 144,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 248,
+        "y": 0,
+        "type": ""
+      }
+    ]
+  },
+  "182": {
+    "name": "Durale",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 56,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 184,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 136,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Tea Shop Clerk",
+        "x": 104,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Spells Clerk",
+        "x": 248,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "190": {
+    "name": "Chaed",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 232,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 56,
+        "y": 80,
+        "type": ""
+      },
+      {
+        "name": "Item Shop entrance",
+        "x": 152,
+        "y": 80,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 88,
+        "y": 176,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 24,
+        "y": 0,
+        "type": ""
+      }
+    ]
+  },
+  "191": {
+    "name": "Chaed",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 184,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Item Shop Clerk",
+        "x": 120,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 72,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 232,
+        "y": 208,
+        "type": ""
+      }
+    ]
+  },
+  "216": {
+    "name": "Narvick",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 104,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 232,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 88,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "leave town",
+        "x": 56,
+        "y": 160,
+        "type": ""
+      }
+    ]
+  },
+  "217": {
+    "name": "Narvick",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 120,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 184,
+        "y": 240,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 40,
+        "y": 240,
+        "type": ""
+      }
+    ]
+  },
+  "201": {
+    "name": "Preamarl",
+    "pois": [
+      {
+        "name": "Inn entrance",
+        "x": 152,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Shop entrance",
+        "x": 136,
+        "y": 128,
+        "type": ""
+      },
+      {
+        "name": "Church entrance",
+        "x": 56,
+        "y": 96,
+        "type": ""
+      },
+      {
+        "name": "leave town (ship)",
+        "x": 248,
+        "y": 208,
+        "type": ""
+      },
+      {
+        "name": "board ship",
+        "x": 248,
+        "y": 144,
+        "type": ""
+      }
+    ]
+  },
+  "202": {
+    "name": "Preamarl",
+    "pois": [
+      {
+        "name": "Shop Clerk",
+        "x": 136,
+        "y": 0,
+        "type": ""
+      },
+      {
+        "name": "Inn keeper",
+        "x": 24,
+        "y": 224,
+        "type": ""
+      },
+      {
+        "name": "Priest",
+        "x": 72,
+        "y": 32,
+        "type": ""
+      }
+    ]
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "rom_sha1": "1D0A95DDCCEB399E8FEC51BA5CBB6A6C5D30E0E0",
+  "emulator": "Mesen 2.1.1",
+  "legacy_helper_delta": "-0x2314",
+  "counts": {
+    "CONTRADICTED": 2,
+    "CONFIRMED": 35,
+    "OBSERVED": 5,
+    "UNRELIABLE": 1
+  },
+  "results": [
+    {
+      "status": "CONTRADICTED",
+      "claim": "Helper offsets are true SNES-WRAM offsets",
+      "legacy_offset": "0x02D8F",
+      "mesen_offset": "7E:2D8F (0x02D8F)",
+      "observed": "18 58 18 5A",
+      "evidence": "18 58 18 5A are impossible party IDs; visible party is Guy/Arty/Selan/Tia"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Party order and IDs",
+      "legacy_offset": "0x02D8F",
+      "mesen_offset": "7E:0A7B (0x00A7B)",
+      "observed": "02 03 01 04 = Guy, Arty, Selan, Tia",
+      "evidence": "exact match with gameplay/menu_stable.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Gold uint24 little-endian",
+      "legacy_offset": "0x02D9E",
+      "mesen_offset": "7E:0A8A (0x00A8A)",
+      "observed": "2D 94 98 = 9999405",
+      "evidence": "menu_stable.png visibly shows GOLD 9999405"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Inventory stream start and ordering",
+      "legacy_offset": "0x02DA1",
+      "mesen_offset": "7E:0A8D (0x00A8D)",
+      "observed": "first IDs 16 01 2C 29 0C 1E",
+      "evidence": "item_menu.png shows Brave, Charred Newt, Curselifter, Escape, Shriek, Freeze Ball in this order"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Guy: level, current/max HP and current/max MP",
+      "legacy_offset": "0x0303A",
+      "mesen_offset": "7E:0D26 (0x00D26)",
+      "observed": "Lv/HP/MaxHP/MP/MaxMP = (99, 828, 828, 471, 471)",
+      "evidence": "exact match with menu_stable.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Arty: level, current/max HP and current/max MP",
+      "legacy_offset": "0x030F8",
+      "mesen_offset": "7E:0DE4 (0x00DE4)",
+      "observed": "Lv/HP/MaxHP/MP/MaxMP = (99, 568, 568, 0, 0)",
+      "evidence": "exact match with menu_stable.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Selan: level, current/max HP and current/max MP",
+      "legacy_offset": "0x02F7C",
+      "mesen_offset": "7E:0C68 (0x00C68)",
+      "observed": "Lv/HP/MaxHP/MP/MaxMP = (99, 642, 642, 547, 547)",
+      "evidence": "exact match with menu_stable.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Tia: level, current/max HP and current/max MP",
+      "legacy_offset": "0x031B6",
+      "mesen_offset": "7E:0EA2 (0x00EA2)",
+      "observed": "Lv/HP/MaxHP/MP/MaxMP = (99, 619, 619, 372, 372)",
+      "evidence": "exact match with menu_stable.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Guy: ATP/DFP/STR/AGL/INT/GUT/MGR",
+      "legacy_offset": "0x0303A",
+      "mesen_offset": "7E:0D52 (0x00D52)",
+      "observed": "(571, 429, 183, 108, 284, 83, 246)",
+      "evidence": "exact match with status_guy_stable.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Guy: equipped weapon/armor/hands/head/ring/jewel",
+      "legacy_offset": "0x0303A",
+      "mesen_offset": "7E:0D8F (0x00D8F)",
+      "observed": "0078 00DE 00F9 013A 0153 0187",
+      "evidence": "Zirco ax / Zircon plate / Mage shield / Old helmet / Sonic Ring / Black Eye; exact match with status_guy_stable.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Guy: IP raw value",
+      "legacy_offset": "0x030F9",
+      "mesen_offset": "7E:0DE5 (0x00DE5)",
+      "observed": "60 (96) -> visible 37%",
+      "evidence": "status_guy_stable.png confirms intentional next-block overlap"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Arty: ATP/DFP/STR/AGL/INT/GUT/MGR",
+      "legacy_offset": "0x030F8",
+      "mesen_offset": "7E:0E10 (0x00E10)",
+      "observed": "(765, 563, 377, 187, 209, 113, 278)",
+      "evidence": "exact match with status_party_2.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Arty: equipped weapon/armor/hands/head/ring/jewel",
+      "legacy_offset": "0x030F8",
+      "mesen_offset": "7E:0E4D (0x00E4D)",
+      "observed": "0078 00CE 0103 013A 015A 0187",
+      "evidence": "Zirco ax / Crystal mail / Zirco gloves / Old helmet / S-Thun ring / Black Eye; exact match with status_party_2.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Arty: IP raw value",
+      "legacy_offset": "0x031B7",
+      "mesen_offset": "7E:0EA3 (0x00EA3)",
+      "observed": "09 (9) -> visible 3%",
+      "evidence": "status_party_2.png confirms intentional next-block overlap"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Selan: ATP/DFP/STR/AGL/INT/GUT/MGR",
+      "legacy_offset": "0x02F7C",
+      "mesen_offset": "7E:0C94 (0x00C94)",
+      "observed": "(752, 562, 389, 266, 143, 83, 187)",
+      "evidence": "exact match with status_party_4.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Selan: equipped weapon/armor/hands/head/ring/jewel",
+      "legacy_offset": "0x02F7C",
+      "mesen_offset": "7E:0CD1 (0x00CD1)",
+      "observed": "0064 00D3 0104 0138 0150 0187",
+      "evidence": "Bustery sword / Deadly armor / Zirco shield / Zirco band / Thunder ring / Black Eye; exact match with status_party_4.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Selan: IP raw value",
+      "legacy_offset": "0x0303B",
+      "mesen_offset": "7E:0D27 (0x00D27)",
+      "observed": "20 (32) -> visible 12%",
+      "evidence": "status_party_4.png confirms intentional next-block overlap"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Tia: ATP/DFP/STR/AGL/INT/GUT/MGR",
+      "legacy_offset": "0x031B6",
+      "mesen_offset": "7E:0ECE (0x00ECE)",
+      "observed": "(479, 336, 132, 140, 188, 81, 205)",
+      "evidence": "exact match with status_party_3.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Tia: equipped weapon/armor/hands/head/ring/jewel",
+      "legacy_offset": "0x031B6",
+      "mesen_offset": "7E:0F0B (0x00F0B)",
+      "observed": "0067 00CB 00EE 0138 015A 0181",
+      "evidence": "Lizard blow / Plati plate / Anger brace / Zirco band / S-Thun ring / Kraken rock; exact match with status_party_3.png"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Tia: IP raw value",
+      "legacy_offset": "0x03275",
+      "mesen_offset": "7E:0F61 (0x00F61)",
+      "observed": "4A (74) -> visible 29%",
+      "evidence": "status_party_3.png confirms intentional next-block overlap"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Selan character-name anchor",
+      "legacy_offset": "0x02F7E",
+      "mesen_offset": "7E:0C6A (0x00C6A)",
+      "observed": "SSelan at 7E:0C6A",
+      "evidence": "found inside the corrected character block"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Guy character-name anchor",
+      "legacy_offset": "0x0303C",
+      "mesen_offset": "7E:0D28 (0x00D28)",
+      "observed": "GGuy at 7E:0D28",
+      "evidence": "found inside the corrected character block"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Arty character-name anchor",
+      "legacy_offset": "0x030FA",
+      "mesen_offset": "7E:0DE6 (0x00DE6)",
+      "observed": "AArty at 7E:0DE6",
+      "evidence": "found inside the corrected character block"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Tia character-name anchor",
+      "legacy_offset": "0x031B8",
+      "mesen_offset": "7E:0EA4 (0x00EA4)",
+      "observed": "TTia at 7E:0EA4",
+      "evidence": "found inside the corrected character block"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Dekar character-name anchor",
+      "legacy_offset": "0x03276",
+      "mesen_offset": "7E:0F62 (0x00F62)",
+      "observed": "DDekar at 7E:0F62",
+      "evidence": "found inside the corrected character block"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Lexis character-name anchor",
+      "legacy_offset": "0x03334",
+      "mesen_offset": "7E:1020 (0x01020)",
+      "observed": "LLexis at 7E:1020",
+      "evidence": "found inside the corrected character block"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Direction FIFO: 01 south, 03 east",
+      "legacy_offset": "0x02CB5",
+      "mesen_offset": "7E:09A1 (0x009A1)",
+      "observed": "Down capture 01 01 01 01 01; later Right capture 03 03 03 01 01",
+      "evidence": "normal controller presses plus live reads"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Town X",
+      "legacy_offset": "0x028A8",
+      "mesen_offset": "7E:0594 (0x00594)",
+      "observed": "28 -> 58",
+      "evidence": "move_before.bin vs move_right.bin after visible Right movement"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Town Y",
+      "legacy_offset": "0x028AA",
+      "mesen_offset": "7E:0596 (0x00596)",
+      "observed": "80 -> A6",
+      "evidence": "move_before.bin vs move_after.bin after visible Down movement"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Dungeon X high",
+      "legacy_offset": "0x03532",
+      "mesen_offset": "7E:121E (0x0121E)",
+      "observed": "20 -> 50",
+      "evidence": "move_before.bin vs move_right.bin after visible Right movement"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Dungeon Y high",
+      "legacy_offset": "0x0353A",
+      "mesen_offset": "7E:1226 (0x01226)",
+      "observed": "80 -> A6",
+      "evidence": "move_before.bin vs move_after.bin after visible Down movement"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Local X",
+      "legacy_offset": "0x02368",
+      "mesen_offset": "7E:0054 (0x00054)",
+      "observed": "40 -> 70",
+      "evidence": "move_before.bin vs move_right.bin after visible Right movement"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Local Y",
+      "legacy_offset": "0x0236E",
+      "mesen_offset": "7E:005A (0x0005A)",
+      "observed": "90 -> B6",
+      "evidence": "move_before.bin vs move_after.bin after visible Down movement"
+    },
+    {
+      "status": "OBSERVED",
+      "claim": "Scenario bitfield",
+      "legacy_offset": "0x02C32",
+      "mesen_offset": "7E:091E (0x0091E)",
+      "observed": "FE FF 7F",
+      "evidence": "corrected helper-block location; semantic transition not exercised"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Capsule status bytes",
+      "legacy_offset": "0x034CF",
+      "mesen_offset": "7E:11BB (0x011BB)",
+      "observed": "01 01 01 03 01 01 01",
+      "evidence": "all seven present; capsule_menu.png opens Sully; randomized capsule identity is position-dependent"
+    },
+    {
+      "status": "OBSERVED",
+      "claim": "Dungeon flag bytes",
+      "legacy_offset": "0x02A96",
+      "mesen_offset": "7E:0782 (0x00782)",
+      "observed": "55 55 55 55 A1 6A 55 55 59 50",
+      "evidence": "corrected helper-block location; semantic transition not exercised"
+    },
+    {
+      "status": "OBSERVED",
+      "claim": "Transport mode",
+      "legacy_offset": "0x02CF5",
+      "mesen_offset": "7E:09E1 (0x009E1)",
+      "observed": "00",
+      "evidence": "corrected helper-block location; semantic transition not exercised"
+    },
+    {
+      "status": "OBSERVED",
+      "claim": "Walk/world coordinates",
+      "legacy_offset": "0x0377F",
+      "mesen_offset": "7E:146B (0x0146B)",
+      "observed": "00 00 00 00 00",
+      "evidence": "corrected helper-block location; semantic transition not exercised"
+    },
+    {
+      "status": "OBSERVED",
+      "claim": "Ship coordinates",
+      "legacy_offset": "0x0379C",
+      "mesen_offset": "7E:1488 (0x01488)",
+      "observed": "02 04 00 00 0E",
+      "evidence": "corrected helper-block location; semantic transition not exercised"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Current Map ID",
+      "legacy_offset": "0x028C0",
+      "mesen_offset": "7E:05AC (0x005AC)",
+      "observed": "00 Overworld -> 05 Secret Skills Cave",
+      "evidence": "uint8 map/floor ID; parent zone is derived through zones.txt"
+    },
+    {
+      "status": "CONFIRMED",
+      "claim": "Previous/origin Map ID",
+      "legacy_offset": "0x028C2",
+      "mesen_offset": "7E:05AE (0x005AE)",
+      "observed": "05 Overworld -> 00 Secret Skills Cave",
+      "evidence": "uint8 origin map; values are the inverse side of the tested transition"
+    },
+    {
+      "status": "CONTRADICTED",
+      "claim": "Legacy 0x351E is Current Map ID",
+      "legacy_offset": "0x0351E",
+      "mesen_offset": "7E:120A (0x0120A)",
+      "observed": "15 13 initially, later 00 00 without a map transition",
+      "evidence": "wrong historical helper field; do not use 7E:351E or translated 7E:120A"
+    },
+    {
+      "status": "UNRELIABLE",
+      "claim": "Blocked-step flag",
+      "legacy_offset": "0x03586",
+      "mesen_offset": "7E:1272 (0x01272)",
+      "observed": "9D",
+      "evidence": "value is outside documented FF/00-03 domain and did not validate"
+    }
+  ]
+}

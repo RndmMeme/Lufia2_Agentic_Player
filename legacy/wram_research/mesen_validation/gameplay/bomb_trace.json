@@ -1,0 +1,19 @@
+{
+  "rom_sha1": "1D0A95DDCCEB399E8FEC51BA5CBB6A6C5D30E0E0",
+  "selected_tool_code_at_7E_0A06": "A8 01",
+  "selected_tool_name_at_7E_0B77": "Bomb",
+  "action_state_at_7E_09A8": {
+    "idle": ["00"],
+    "placed": ["77", "77", "77", "77"],
+    "after_movement_1": ["77", "77", "77", "77"],
+    "after_movement_2": ["77", "77", "77", "77"],
+    "after_movement_3": ["7F", "7F", "7F", "7F", "7F", "00", "00"],
+    "after_movement_4": ["00"]
+  },
+  "input": {
+    "placement": "normal two-frame Y press",
+    "counter_ticks": ["left", "right", "left", "right"],
+    "note": "A sword swing and a completed movement both decrement the bomb fuse."
+  },
+  "status": "CONFIRMED"
+}

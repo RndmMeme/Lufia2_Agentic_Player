@@ -1,0 +1,1283 @@
+LUFIA II: RISE OF THE SINISTRALS (SNES)
+WRAM-MAPPING-CHECKLISTE – NUR SPIELSPEZIFISCHE ZUSTÄNDE UND AKTIONEN
+Area in CheatEngine, Snes9x:
+====================================================================
+
+Legende:
+[ ] noch nicht zugeordnet
+Adresse/Struktur jeweils direkt hinter den Eintrag schreiben.
+
+
+1. GRUNDZUSTAND DES SPIELS
+==========================
+
+[ ] Boot-/Initialisierungszustand
+[ ] Natsume-/Taito-Logo aktiv
+[ ] Titelbild aktiv
+------------------------
+[ ] Dateiauswahl aktiv
+[ ] Namenseingabe aktiv
+------------------------
+[ ] Intro/Cutscene aktiv
+[ ] normales Spielfeld aktiv
+[ ] Stadt aktiv
+[ ] Dungeon aktiv
+[ ] Weltkarte aktiv
+[ ] Sub-Screen/Hauptmenü aktiv
+[ ] Shop aktiv
+[ ] Save-Schrein aktiv
+[ ] Kampftransition aktiv
+[ ] Kampf aktiv
+[ ] Kampfergebnis aktiv
+[ ] Casino aktiv
+[ ] Ancient Cave aktiv
+[ ] Game Over aktiv
+[ ] Ending/Credits aktiv
+[ ] aktueller Hauptmodus
+[ ] aktueller Untermodus
+[ ] Steuerung für den Spieler freigegeben/gesperrt
+[ ] Script/Cutscene kontrolliert die Spielfigur
+[ ] Bildschirmübergang/Fade aktiv
+[ ] aktueller Fade-Wert
+[ ] aktueller Framecounter
+[ ] globaler Spieltimer
+[ ] RNG-Zustand/Seed
+[ ] aktueller Musiktrack
+[ ] aktuell angeforderter Soundeffekt
+
+
+2. CONTROLLER UND EINGABEN
+==========================
+
+[ ] D-Pad oben 
+[ ] D-Pad unten 
+[ ] D-Pad links 
+[ ] D-Pad rechts 
+[ ] A 
+[ ] B 
+[ ] X 
+[ ] Y 
+[ ] L 
+[ ] R 
+[ ] Start
+[ ] Select 
+
+[ ] zuletzt verarbeitete Eingabe
+
+
+3. SPIELER, KARTE UND BEWEGUNG
+==============================
+
+[ ] aktuelle Map-ID
+[ ] aktuelle Raum-ID
+[ ] vorherige Map-ID
+[ ] vorherige Raum-ID
+[ ] Ziel-Map-ID beim Übergang
+[ ] Ziel-Raum-ID beim Übergang
+[ ] aktueller Karten-/Gebietstyp
+[ ] Spieler-X
+[ ] Spieler-Y
+[ ] Spieler-X innerhalb des Tiles/Subpixel
+[ ] Spieler-Y innerhalb des Tiles/Subpixel
+[ ] Ziel-X des laufenden Schritts
+[ ] Ziel-Y des laufenden Schritts
+[ ] Spawn-X
+[ ] Spawn-Y
+[ ] Blickrichtung
+[ ] tatsächliche Bewegungsrichtung
+[ ] Bewegung aktiv
+[ ] Schrittfortschritt
+[ ] Bewegungs-/Animationsframe
+[ ] Spieler-Sprite-ID
+[ ] Spieler-Pose
+[ ] gegen Hindernis gelaufen
+[ ] Bewegung blockiert
+[ ] Tür-/Treppen-/Exit-Übergang aktiv
+[ ] Fall-/Sprungbewegung aktiv
+[ ] automatische Bewegung aktiv
+[ ] Kamera-X
+[ ] Kamera-Y
+[ ] Kamera-Scroll aktiv
+[ ] Kamera-Zielposition
+[ ] Bildschirmshake aktiv
+[ ] Lead-Charakter/angezeigter Charakter
+[ ] aktueller Stadtnamen-/Ortsnamen-Einblendetimer
+
+
+4. FELD UND WELTKARTE
+=====================
+
+[ ] Weltkartenposition X
+[ ] Weltkartenposition Y
+[ ] Weltkarten-Kamera X
+[ ] Weltkarten-Kamera Y
+[ ] betretenes Gebiet/Stadt/Dungeon
+[ ] Zielort vor dem Betreten
+[ ] aktueller Terrain-/Gebietstyp
+[ ] Zufallskampf-Zähler
+[ ] Zufallskampf-Schwellenwert
+[ ] Zufallskampf ausgelöst
+[ ] gewählte Encounter-/Gegnergruppe
+[ ] Warp-Zielauswahl aktiv
+[ ] freigeschaltete Warp-Ziele
+[ ] aktuell markiertes Warp-Ziel
+[ ] ausgeführtes Warp-Ziel
+[ ] Excerion vorhanden/freigeschaltet
+[ ] Excerion-Modus: Boot
+[ ] Excerion-Modus: U-Boot
+[ ] Excerion-Modus: Luftschiff/Blimp
+[ ] Excerion-X
+[ ] Excerion-Y
+[ ] Spieler befindet sich im Excerion
+[ ] Excerion wird betreten
+[ ] Excerion wird verlassen
+[ ] Excerion taucht ab
+[ ] Excerion taucht auf
+[ ] Excerion startet
+[ ] Excerion landet
+[ ] Excerion-Bewegungsrichtung
+[ ] Excerion-Bewegungszustand
+
+
+5. STÄDTE, NPCS UND KARTENOBJEKTE
+=================================
+
+[ ] Anzahl aktiver NPCs/Objekte im Raum
+[ ] NPC-/Objekt-Slot aktiv
+[ ] NPC-/Objekt-ID
+[ ] NPC-/Objekt-Sprite-ID
+[ ] NPC-/Objekt-X
+[ ] NPC-/Objekt-Y
+[ ] NPC-/Objekt-Blickrichtung
+[ ] NPC-/Objekt-Bewegungsrichtung
+[ ] NPC-/Objekt-Animationsframe
+[ ] NPC-/Objekt-Bewegungstimer
+[ ] NPC-/Objekt-Bewegungsmuster
+[ ] NPC-/Objekt-Script-ID
+[ ] NPC-/Objekt-Event-ID
+[ ] NPC-/Objekt sichtbar
+[ ] NPC-/Objekt kollidierbar
+[ ] NPC-/Objekt ansprechbar
+[ ] NPC-/Objekt temporär entfernt
+[ ] Objekt/NPC direkt vor dem Spieler
+[ ] A-Interaktion mit NPC
+[ ] A-Interaktion mit Tür
+[ ] A-Interaktion mit Schild/Hinweis
+[ ] Gebäude betreten
+[ ] Gebäude verlassen
+[ ] Treppe hoch
+[ ] Treppe runter
+
+
+6. DUNGEON-MONSTER
+==================
+
+[ ] Anzahl aktiver Dungeon-Monster
+[ ] Dungeon-Monster-Slot aktiv
+[ ] Dungeon-Monster-ID
+[ ] Dungeon-Monster-Sprite-ID
+[ ] Dungeon-Monster-X
+[ ] Dungeon-Monster-Y
+[ ] Dungeon-Monster-Blickrichtung
+[ ] Dungeon-Monster-Bewegungsrichtung
+[ ] Dungeon-Monster-Bewegungsmuster
+[ ] Dungeon-Monster bewegt sich
+[ ] Dungeon-Monster reagiert auf Spielerschritt
+[ ] Dungeon-Monster kollidiert mit Spieler
+[ ] Dungeon-Monster löst Kampf aus
+[ ] Dungeon-Monster durch Pfeil betäubt
+[ ] Dungeon-Monster durch Feuerpfeil betäubt
+[ ] Dungeon-Monster durch Hook betäubt
+[ ] Dungeon-Monster durch Hammer betäubt
+[ ] Dungeon-Monster-Betäubungstimer
+[ ] Dungeon-Monster besiegt/entfernt
+[ ] Dungeon-Monster nach Raum-Reset wiederhergestellt
+
+
+7. DUNGEON-SPEZIALFÄHIGKEITEN
+=============================
+
+[ ] aktuell ausgewählte Spezialfähigkeit
+[ ] Select-Spezialfähigkeitenmenü geöffnet
+[ ] Cursor im Spezialfähigkeitenmenü
+[ ] Schwert mit B benutzt
+[ ] Schwert-Schwung aktiv
+[ ] Schwert-Treffer erkannt
+[ ] Pfeil ausgewählt
+[ ] Pfeil abgefeuert
+[ ] Pfeilprojektil aktiv
+[ ] Pfeil-X
+[ ] Pfeil-Y
+[ ] Pfeil trifft Monster
+[ ] Pfeil trifft Schalter
+[ ] Bombe ausgewählt
+[ ] Bombe platziert
+[ ] Bomben-X
+[ ] Bomben-Y
+[ ] Bomben-Schritt-/Explosionszähler
+[ ] Bombe explodiert
+[ ] Bombe zerstört schwache Wand
+[ ] Bombe trifft Monster
+[ ] Hook ausgewählt
+[ ] Hook abgefeuert
+[ ] Hookprojektil aktiv
+[ ] Hook-Ziel erkannt
+[ ] Hook zieht Gruppe über Lücke
+[ ] Feuerpfeil ausgewählt
+[ ] Feuerpfeil abgefeuert
+[ ] Feuerpfeilprojektil aktiv
+[ ] Feuerpfeil verbrennt Gras/Moos
+[ ] Feuerpfeil trifft Schalter
+[ ] Feuerpfeil trifft Monster
+[ ] Hammer ausgewählt
+[ ] Hammer benutzt
+[ ] Hammer-Treffer erkannt
+[ ] Hammer bewegt/zerstört Dungeonobjekt
+[ ] Reset-Fähigkeit ausgewählt
+[ ] aktueller Raum wird zurückgesetzt
+[ ] Reset abgeschlossen
+
+
+8. DUNGEON-PUZZLES UND OBJEKTE
+==============================
+
+[ ] Schatztruhe vorhanden
+[ ] Schatztruhen-ID
+[ ] Schatztruhe geschlossen
+[ ] Schatztruhe geöffnet
+[ ] Schatztruhen-Inhalt
+[ ] Schatztruhen-Inhalt bereits erhalten
+[ ] Dungeon-Schlüssel erhalten
+[ ] Dungeon-Schlüssel vorhanden
+[ ] Dungeon-Schlüssel automatisch benutzt
+[ ] verschlossene Tür
+[ ] Tür geöffnet
+[ ] Bodenschalter nicht gedrückt
+[ ] Bodenschalter gedrückt
+[ ] Pfeilschalter nicht aktiviert
+[ ] Pfeilschalter aktiviert
+[ ] Brücke eingefahren
+[ ] Brücke ausgefahren
+[ ] Leiter unvollständig/eingefahren
+[ ] Leiter ausgefahren
+[ ] Block-/Statue-ID
+[ ] Block-/Statue-X
+[ ] Block-/Statue-Y
+[ ] Block/Statue wird geschoben
+[ ] Block/Statue steht auf Schalter
+[ ] Vase/tragbares Objekt vorhanden
+[ ] Vase/Objekt aufgenommen
+[ ] Vase/Objekt wird getragen
+[ ] Vase/Objekt abgestellt
+[ ] Vase/Objekt-X
+[ ] Vase/Objekt-Y
+[ ] Gras/Moos vorhanden
+[ ] Gras/Moos geschnitten
+[ ] versteckter Schalter freigelegt
+[ ] geheimer Durchgang freigelegt
+[ ] schwache Wand intakt
+[ ] schwache Wand zerstört
+[ ] schwacher Boden intakt
+[ ] schwacher Boden bricht
+[ ] Spieler fällt durch Boden
+[ ] Sprungpfeil-/Absprungfeld erkannt
+[ ] Spieler springt eine Ebene hinunter
+[ ] Hint Sign gelesen
+[ ] HP-Heilfeld betreten
+[ ] MP-Heilfeld betreten
+[ ] Save-Feld betreten
+[ ] Raum-Puzzlestatus
+[ ] Raum-Puzzle gelöst
+[ ] permanenter Dungeon-Schalter
+[ ] temporärer Raum-Schalter
+[ ] Raumobjekt-Liste
+[ ] Raumobjekt-Zustandsbits
+
+
+9. TEXTE UND TEXTBOXEN
+======================
+
+[ ] Textbox geschlossen
+[ ] Textbox wird geöffnet
+[ ] Textbox aktiv
+[ ] Text wird Zeichen für Zeichen ausgegeben
+[ ] Textseite vollständig
+[ ] Text wartet auf A/L
+[ ] Text wechselt zur nächsten Seite
+[ ] Textbox wird geschlossen
+[ ] aktuelle Text-/Message-ID
+[ ] aktueller Textpointer
+[ ] aktueller Zeichenindex
+[ ] aktuelle Zeile
+[ ] aktuelle Textseite
+[ ] Textausgabe-Timer
+[ ] eingestellte Textgeschwindigkeit
+[ ] Dialog eines NPCs
+[ ] Hinweisschild-Text
+[ ] Item-erhalten-Textbox
+[ ] Schlüssel-erhalten-Textbox
+[ ] Systemmeldung
+[ ] Kampfmeldung
+[ ] Shopdialog
+[ ] Save-Dialog
+[ ] Ja/Nein-Auswahl aktiv
+[ ] Anzahl Auswahlmöglichkeiten
+[ ] Auswahlcursor
+[ ] bestätigte Auswahl
+[ ] abgebrochene Auswahl
+[ ] dynamisch eingesetzter Charaktername
+[ ] dynamisch eingesetzter Itemname
+[ ] dynamisch eingesetzter Zahlenwert
+[ ] Namenseingabe-Puffer
+[ ] Namenseingabe-Cursor
+[ ] bestätigter Maxim-Name
+
+
+10. SUB-SCREEN / HAUPTMENÜ
+==========================
+
+[ ] Sub-Screen geschlossen
+[ ] Sub-Screen geöffnet
+[ ] aktuell markierte Hauptkategorie
+[ ] Item-Kategorie gewählt
+[ ] Spell-Kategorie gewählt
+[ ] Capsule-Kategorie gewählt
+[ ] Equip-Kategorie gewählt
+[ ] Status-Kategorie gewählt
+[ ] Change-Kategorie gewählt
+[ ] Config-Kategorie gewählt
+[ ] Scenario-Kategorie gewählt
+[ ] Hauptmenü-Cursor
+[ ] Untermenü-Cursor
+[ ] Listen-Scrollposition
+[ ] aktuell ausgewählter Charakter
+[ ] Menü-Eingabesperre
+[ ] Menü wird geschlossen
+[ ] angezeigte Spielzeit
+[ ] angezeigtes Gold
+
+
+11. ITEM-INVENTAR
+=================
+
+[ ] Inventar-Array/Inventar-Basis
+[ ] Item-ID pro Inventarplatz
+[ ] Itemanzahl pro Inventarplatz
+[ ] leerer Inventarplatz
+[ ] Anzahl belegter Inventarplätze
+[ ] aktuell markiertes Item
+[ ] Item-Liste-Scrollposition
+[ ] Item benutzen
+[ ] Itemziel auswählen
+[ ] Item auf Charakter anwenden
+[ ] Item im Kampf anwenden
+[ ] Item außerhalb des Kampfes anwenden
+[ ] Itemverbrauch erfolgreich
+[ ] Item kann nicht benutzt werden
+[ ] Item-Sortierung ausgelöst
+[ ] Item-Sortierung abgeschlossen
+[ ] Item fallenlassen/Drop gewählt
+[ ] Item fallenlassen bestätigt
+[ ] Itemmenge sinkt
+[ ] Itemstack verschwindet bei Menge 0
+[ ] neues Item erhalten
+[ ] Inventar voll
+[ ] zuletzt erhaltenes Item
+[ ] zuletzt benutztes Item
+[ ] Item-Informationsfenster mit X
+[ ] aktuelle Itembeschreibung/Text-ID
+
+
+12. SCENARIO-ITEMS UND SCHLÜSSEL
+===============================
+
+[ ] Scenario-Liste geöffnet
+[ ] Scenario-Item-/Schlüssel-Array
+[ ] Scenario-Item vorhanden
+[ ] aktuell markiertes Scenario-Item
+[ ] Scenario-Liste-Scrollposition
+[ ] Schlüssel durch Storyevent erhalten
+[ ] Schlüssel an passender Tür verbraucht/verwendet
+[ ] Schlüssel bleibt nach Verwendung in der Liste
+[ ] Dragon Egg vorhanden
+[ ] Dragon-Egg-Anzahl
+[ ] einzelne Dragon-Egg-Fundflags
+[ ] Jewel Sonar vorhanden
+[ ] VIP Card vorhanden
+[ ] Providence vorhanden
+[ ] Iris-Treasure-Fundflags
+
+
+13. ZAUBER
+==========
+
+[ ] Zauberliste pro Charakter
+[ ] Zauber gelernt/gekauft
+[ ] Zauber-ID
+[ ] aktuell markierter Zauber
+[ ] Zauberlisten-Scrollposition
+[ ] Zauber-Informationsfenster
+[ ] Zauberkosten
+[ ] Zauber außerhalb Kampf auswählbar
+[ ] Zauber außerhalb Kampf benutzt
+[ ] Zauber im Kampf auswählbar
+[ ] Zauber im Kampf benutzt
+[ ] Zauberziel
+[ ] Einzelziel
+[ ] alle Verbündeten als Ziel
+[ ] einzelner Gegner als Ziel
+[ ] alle Gegner als Ziel
+[ ] nicht genug MP
+[ ] MP wird abgezogen
+[ ] Heilzauber-Ergebnis
+[ ] Schadenszauber-Ergebnis
+[ ] Statuszauber-Ergebnis
+[ ] Wiederbelebungszauber-Ergebnis
+[ ] Zauberanimation aktiv
+[ ] aktuell ausgeführte Zauber-ID
+
+
+14. PARTY UND SPIELBARE CHARAKTERE
+=================================
+
+[ ] Partygröße
+[ ] Partyreihenfolge
+[ ] Lead-Charakter
+[ ] Partyplatz 1
+[ ] Partyplatz 2
+[ ] Partyplatz 3
+[ ] Partyplatz 4
+[ ] Maxim-Charakter-ID
+[ ] Tia-Charakter-ID
+[ ] Guy-Charakter-ID
+[ ] Selan-Charakter-ID
+[ ] Dekar-Charakter-ID
+[ ] Lexis-Charakter-ID
+[ ] Arty-Charakter-ID
+[ ] Charakter der Party beigetreten
+[ ] Charakter hat Party verlassen
+[ ] Change-Menü aktiv
+[ ] erster für Tausch gewählter Charakter
+[ ] zweiter für Tausch gewählter Charakter
+[ ] Partyreihenfolge geändert
+
+
+15. CHARAKTERWERTE
+==================
+
+Für jeden der sieben spielbaren Charaktere:
+
+[ ] Charaktername
+[ ] Level
+[ ] aktuelle EXP
+[ ] EXP bis zum nächsten Level
+[ ] aktuelle HP
+[ ] maximale HP
+[ ] aktuelle MP
+[ ] maximale MP
+[ ] ATP
+[ ] DFP
+[ ] STR
+[ ] AGL
+[ ] INT
+[ ] GUT
+[ ] MGR
+[ ] aktueller IP-Wert
+[ ] maximaler IP-Wert
+[ ] Poison
+[ ] Sleep
+[ ] Paralyze
+[ ] Confusion
+[ ] Disabled/0 HP
+[ ] aktuelle Statusbits
+[ ] effektive Elementresistenzen
+[ ] effektive Statusresistenzen
+[ ] permanenter Wert nach Stat-Potion
+[ ] Level-up aktiv
+[ ] HP-Zuwachs beim Level-up
+[ ] MP-Zuwachs beim Level-up
+[ ] STR-Zuwachs beim Level-up
+[ ] AGL-Zuwachs beim Level-up
+[ ] INT-Zuwachs beim Level-up
+[ ] GUT-Zuwachs beim Level-up
+[ ] MGR-Zuwachs beim Level-up
+
+
+16. AUSRÜSTUNG
+==============
+
+Für jeden Charakter:
+
+[ ] ausgerüstete Weapon-ID
+[ ] ausgerüstete Armor-ID
+[ ] ausgerüstete Shield-ID
+[ ] ausgerüstete Helmet-ID
+[ ] ausgerüstete Ring-ID
+[ ] ausgerüstete Rock-ID
+[ ] leerer Ausrüstungsslot
+[ ] aktuell ausgewählter Ausrüstungsslot
+[ ] aktuell markiertes Ersatzitem
+[ ] Ausrüstungswechsel bestätigt
+[ ] Ausrüstung abgelegt
+[ ] Strongest/automatische beste Ausrüstung gewählt
+[ ] Equipability für ausgewählten Charakter
+[ ] ATP-Vorschau im Equip-/Shop-Menü
+[ ] DFP-Vorschau im Equip-/Shop-Menü
+[ ] STR-Vorschau
+[ ] AGL-Vorschau
+[ ] INT-Vorschau
+[ ] GUT-Vorschau
+[ ] MGR-Vorschau
+[ ] IP-Fähigkeit der ausgerüsteten Weapon
+[ ] IP-Fähigkeit der ausgerüsteten Armor
+[ ] IP-Fähigkeit des ausgerüsteten Shield
+[ ] IP-Fähigkeit des ausgerüsteten Helmet
+[ ] IP-Fähigkeit des ausgerüsteten Ring
+[ ] IP-Fähigkeit des ausgerüsteten Rock
+[ ] verfluchte Ausrüstung
+[ ] Ausrüstung kann nicht abgelegt werden
+
+
+17. CAPSULE MONSTERS
+====================
+
+[ ] Capsule-Menü geöffnet
+[ ] aktives Capsule Monster
+[ ] Capsule-Monster-Auswahlcursor
+[ ] Neutral-Capsule-Monster gefunden
+[ ] Light-Capsule-Monster gefunden
+[ ] Wind-Capsule-Monster gefunden
+[ ] Water-Capsule-Monster gefunden
+[ ] Dark-Capsule-Monster gefunden
+[ ] Fire-Capsule-Monster gefunden
+[ ] Earth-Capsule-Monster gefunden
+
+Für jedes Capsule Monster:
+
+[ ] Name
+[ ] Element
+[ ] aktuelle Klasse/Form
+[ ] M-Klasse/Mutation erreicht
+[ ] Level
+[ ] aktuelle EXP
+[ ] EXP bis nächstes Level
+[ ] aktuelle HP
+[ ] maximale HP
+[ ] ATP
+[ ] DFP
+[ ] STR
+[ ] AGL
+[ ] INT
+[ ] GUT
+[ ] MGR
+[ ] gelernte Fähigkeiten
+[ ] aktuelle Growth-Meter-Füllung
+[ ] aktuelles Craving
+[ ] Feed-Menü aktiv
+[ ] aktuell markiertes Futteritem
+[ ] Item verfüttert
+[ ] Growth-Meter steigt
+[ ] Klassenwechsel verfügbar
+[ ] Klassenwechsel durchgeführt
+[ ] Mutation durchgeführt
+[ ] Name-Menü aktiv
+[ ] Capsule-Monster umbenannt
+[ ] Capsule Monster im Kampf aktiv
+[ ] Capsule-Monster-Aktion
+[ ] Capsule-Monster-Ziel
+[ ] Capsule Monster erhält Schaden
+[ ] Capsule Monster wird kampfunfähig
+[ ] Capsule Monster flieht aus Kampf
+
+
+18. SHOP UND DIENSTE
+====================
+
+[ ] Shop aktiv
+[ ] Shop-ID
+[ ] Shoptyp
+[ ] Item-Shop-Kategorie
+[ ] Weapon-Shop-Kategorie
+[ ] Armor-Shop-Kategorie
+[ ] Spell-Shop
+[ ] Sell-Modus
+[ ] Shop-Angebotsliste
+[ ] angebotene Item-/Spell-ID
+[ ] Angebotspreis
+[ ] Shop-Cursor
+[ ] Shop-Scrollposition
+[ ] aktuell ausgewählter Käufer/Charakter
+[ ] Item kann von Charakter ausgerüstet werden
+[ ] Kauf bestätigt
+[ ] Kauf abgebrochen
+[ ] Verkauf bestätigt
+[ ] Verkauf abgebrochen
+[ ] Gold vor Transaktion
+[ ] Gold nach Transaktion
+[ ] gekaufte Menge
+[ ] verkaufte Menge
+[ ] Inventar voll beim Kauf
+[ ] zu wenig Gold
+[ ] Pawn-Shop-/Rückkauf-Inventar
+[ ] verkauftes Item im Pawn Shop
+[ ] Item aus Pawn Shop zurückgekauft
+[ ] Inn aktiv
+[ ] Inn-Preis
+[ ] Übernachtung bestätigt
+[ ] Party nach Übernachtung geheilt
+[ ] Save-Schrein aktiv
+[ ] Wiederbelebung am Schrein
+[ ] Statusheilung am Schrein
+[ ] HP-Heilfeld benutzt
+[ ] MP-Heilfeld benutzt
+
+
+19. SAVE, DATEIAUSWAHL UND SPIELMODI
+===================================
+
+[x] vier Save-Slot-Strukturen
+
+Savedatei Auswahl Screen
+
+Cursor @ 0xA32454 - 0xA32455
+"START": 10 14
+"RETRY": 50 14
+"GIFT" : 90 14
+"SAVE FILE 1" : 10 34
+"SAVE FILE 2" : 88 34
+"SAVE FILE 3" : 10 8C
+"SAVE FILE 4" : 88 8C
+
+[x] Save-Slot bennenen
+
+Savedatei Auswahl Screen "START", "RETRY" oder "GIFT" gewählt:
+
+Name the character screen:
+"NAME" @ 0xA35460 . 0xA35467 4E 20 41 20 4D 20 45 20
+namefield @ 0xA35476 - 0xA3547F (max characters (range)
+
+CURSOR @ column 0xA32414, row 0xA32415
+0, 0 = "0" 2D 43
+9, 0 = "9" C5 43
+0, 1 = "A" 2D 53
+9, 1 = "e" C5 53
+0, 2 = "F" 2D 63
+9, 2 = "j" C5 63
+0, 3 = "K" 2D 73
+9, 3 = "o" C5 73
+0, 4 = "P" 2D 83
+9, 4 = "t" C5 83
+0, 5 = "U" 2D 93
+9, 5 = "y" C5 93
+0, 6 = "Z" 2D A3
+7, 6 = "?" A5 A3
+
+Characters selection Trennbyte 20 20 20 zwischen jedem Zeichen
+numerals @ 0xA35560 - 0xA35587
+capital letters A - E @ 0xA355E0 - 0x355F0
+lower case a - e @ 0xA355F6 - 0xA35606
+capital letter F -J @ 0xA35660 - 0xA35670
+lower case f - j @ 0xA35676 - 0xA35686
+capital letter K - O @ 0xA356E0 - 0xA356F0
+lower case k - o @ 0xA356F6 - 0xA35706
+capital letter P - T @ 0xA35760 - 0xA35770
+lower case p - t @ 0xA35776 - 0xA35786
+capital letter U - Y @ 0xA357E0 - 0xA357F0
+lower case u - y @ 0xA357F6 - 0xA35806
+capital Z and ! ? @ 0xA35860 - 0xA35868
+lower case z and ! ? @ 0xA35876 - 0xA3587E
+
+[x] Save-Slot-Charaktername
+
+Savefile 1 Name (oben links):
+"NAME" @ 0xA354DC - 0xA354E2 4E 20 41 20 4D 20 45
+Trennbyte 20 @ 0xA354E3 - 0xA354E5
+Filename (max characters range) @ 0xA354E6 - 0xA354EE 
+
+Savefile 2 Name (oben rechts):
+"NAME" @ 0xA354FA - 0xA35500 4E 20 41 20 4D 20 45
+Trennbyte 20 @ 0xA35501 - 0xA35503
+Filename (max characters range) @ 0xA35504 - 0xA3550D 
+
+Savefile 3 Name (unten links):
+"NAME" @ 0xA3579C - 0xA357A2 4E 20 41 20 4D 20 45
+Trennbyte 20 @ 0xA357A3 - 0xA357A5
+Filename (max characters range) @ 0xA357A6 - 0xA357AE
+
+Savefile 4 Name (unten rechts):
+"NAME" @ 0xA357BA - 0xA357C0 4E 20 41 20 4D 20 45
+Trennbyte 20 @ 0xA357C1 - 0xA357C3
+Filename (max characters range) @ 0xA357C4 - 0xA357CC
+
+[x] Save-Slot-Spielzeit
+
+Save 1
+"TIME" @ 0xA3555C - 0xA35562 54 20 49 20 4D 20 45
+Trennbyte 20 @ 0xA35563 - 0xA35565
+time value @ 0xA35566 - 0xA3556E
+
+Save 2
+"TIME" @ 0xA3557A - 0xA35580 54 20 49 20 4D 20 45
+Trennbyte 20 @ 0xA35581 - 0xA35583
+time value @ 0xA35584 - 0xA3558C
+
+Save 3
+"TIME" @ 0xA3581C - 0xA35822 54 20 49 20 4D 20 45
+Trennbyte 20 @ 0xA35823 - 0xA35825
+time value @ 0xA35826 - 0xA3582E
+
+Save 4
+"TIME" @ 0xA3583A - 0xA35840 54 20 49 20 4D 20 45
+Trennbyte 20 @ 0xA35841 - 0xA35843
+time value @ 0xA35844 - 0xA3584C
+
+
+[x] Save-Slot-Party
+[x] Save-Slot-Levelanzeige
+
+Save 1
+Level per active hero:
+hero 1 @ 0xA3569A - 0xA3569C (level (0)1 = 20 20 31)
+Trennbyte 20 @ 0xA3569D
+Leerraum 00 @ 0xA3569E - 0xA3569F
+
+hero 2 @ 0xA356A0 - 0xA356A2
+Trennbyte 20 @ 0xA356A3
+Leerraum 00 @ 0xA356A4 - 0xA356A5
+
+hero 3 @ 0xA356A6 - 0xA356A8
+Trennbyte 20 @ 0xA356A9
+Leerraum 00 @ 0xA356AA - 0xA356AB
+
+hero 4 @ 0xA356AC - 0xA356AE
+Trennbyte 20 @ 0xA356AF
+Leerraum 00 @ 0xA356B0 - 0xA356B1
+
+Save 2
+Level per active hero:
+hero 1 @ 0xA356B8 - 0xA356BA (level (0)1 = 20 20 31)
+Trennbyte 20 @ 0xA356BB
+Leerraum 00 @ 0xA356BC - 0xA356BE
+
+hero 2 @ 0xA356BF - 0xA356C0
+Trennbyte 20 @ 0xA356C1
+Leerraum 00 @ 0xA356C2 - 0xA356C3
+
+hero 3 @ 0xA356C4 - 0xA356C6
+Trennbyte 20 @ 0xA356C7
+Leerraum 00 @ 0xA356C8 - 0xA356C9
+
+hero 4 @ 0xA356CA - 0xA356CC
+Trennbyte 20 @ 0xA356CD
+Leerraum 00 @ 0xA356CE - 0xA356CF
+
+Save 3
+Level per active hero:
+hero 1 @ 0xA3595A - 0xA3595C (level (0)1 = 20 20 31)
+Trennbyte 20 @ 0xA3595D
+Leerraum 00 @ 0xA3595E - 0xA3595F
+
+hero 2 @ 0xA35960 - 0xA35963
+Trennbyte 20 @ 0xA35964
+Leerraum 00 @ 0xA35965 - 0xA35967
+
+hero 3 @ 0xA35968 - 0xA3596A
+Trennbyte 20 @ 0xA3596B
+Leerraum 00 @ 0xA3596C - 0xA3596D
+
+hero 4 @ 0xA3596E - 0xA35970
+Trennbyte 20 @ 0xA35971
+Leerraum 00 @ 0xA35972 - 0xA35974
+
+Save 4
+Level per active hero:
+hero 1 @ 0xA35978 - 0xA35981 (level (0)1 = 20 20 31)
+Trennbyte 20 @ 0xA35982
+Leerraum 00 @ 0xA35983 - 0xA35984
+
+hero 2 @ 0xA35985 - 0xA35988
+Trennbyte 20 @ 0xA35989
+Leerraum 00 @ 0xA3598A - 0xA3598B
+
+hero 3 @ 0xA3598C - 0xA3598E
+Trennbyte 20 @ 0xA3598F
+Leerraum 00 @ 0xA35990 - 0xA35991
+
+hero 4 @ 0xA35992 - 0xA35994
+Trennbyte 20 @ 0xA35995
+Leerraum 00 @ 0xA35996 - 0xA35997
+
+[x] aktuell markierter Save-Slot
+
+Cursor @ 0xA32454 - 0xA32455
+"SAVE FILE 1" : 10 34
+"SAVE FILE 2" : 88 34
+"SAVE FILE 3" : 10 8C
+"SAVE FILE 4" : 88 8C
+
+[x] aktueller geladener Save-Slot
+
+Confirm File Screen:
+CURSOR for Savefile 1, 3 & 4 @ 0xA32435
+"YES" : B8
+"NO" : C4
+
+CURSOR for Savefile 2 @ 0xA32455
+"YES" : B8
+"NO" : C4
+
+Screen indicator text "Start" @ 0xA357FC - 0xA35804 53 20 74 20 61 20 72 20 74
+"Yes" @ 0xA35982 - 0x35987 59 20 45 20 53 20
+"No" @ 0x35A02 - 0xA35A05 4E 20 4F 20
+
+[x] Save-Dialog aktiv (Bei Priester)
+
+"SAVE" @ 0xA35802 - 0xA35809 CURSOR 90 @ 0xA32425
+"CURE" @ 0xA35882 - 0xA35889 CURSOR 9C @ 0xA32425
+"LIFT" @ 0xA35902 - 0xA35909 CURSOR A8 @ 0xA32425
+ 
+[x] Überschreiben-Bestätigung
+
+Confirm File Screen:
+CURSOR for Savefile 1, 3 & 4 @ 0xA32435
+"YES" : B8
+"NO" : C4
+
+CURSOR for Savefile 2 @ 0xA32455
+"YES" : B8
+"NO" : C4
+
+[ ] Speichern gestartet
+[x] Speichern abgeschlossen
+"Game saved" @ 0xA3595C - 0xA3596E
+
+[ ] Laden gestartet
+[ ] Laden abgeschlossen
+[x] Normal Mode verfügbar
+
+"START" @ 0xA353DC - 0xA353E4 53 20 54 20 41 20 52 20 54 
+Trennbyte 20 @ 0xA353E5
+Leerraum 00 @ 0xA353E6 - 0xA353EB
+
+[x] Retry Mode freigeschaltet
+
+"RETRY" @ 0xA353EC - 0xA353F4 52 20 45 20 54 20 52 20 59 
+Trennbyte 20 @ 0xA353F5
+Leerraum 00 @ 0xA353F6 - 0xA353FB
+
+[x] Gift Mode freigeschaltet
+
+"GIFT" @ 0xA353FC - 0xA35402 47 20 49 20 46 20 54
+Trennbyte 20 @ 0xA35403
+
+[ ] aktueller Modus: Normal
+[ ] aktueller Modus: Retry
+[ ] aktueller Modus: Gift
+[ ] Spiel abgeschlossen/Clear-Flag
+[ ] Game-Over-Zustand
+[x] Continue nach Game Over
+-> vier save-slot struktur screen
+
+
+20. STORY, EVENTS UND FLAGS
+===========================
+
+[ ] aktuelle Event-/Script-ID
+[ ] aktueller Scriptpointer
+[ ] aktueller Script-Schritt
+[ ] Script wartet auf Text
+[ ] Script wartet auf Eingabe
+[ ] Script wartet auf Bewegung
+[ ] Script wartet auf Kampfende
+[ ] Script wartet auf Timer
+[ ] aktueller Script-Timer
+[ ] lokale Eventvariable
+[ ] globale Storyflags
+[ ] einmaliges Dialogflag
+[ ] NPC erschienen
+[ ] NPC verschwunden
+[ ] Storytür geöffnet
+[ ] Storybrücke repariert/aktiviert
+[ ] Stadt-/Gebietsstatus geändert
+[ ] Boss-besiegt-Flag
+[ ] Sinistral-Kampfstatus
+[ ] Partybeitritt-Flag
+[ ] Partyaustritt-Flag
+[ ] Storyitem erhalten
+[ ] Storyitem verwendet
+[ ] Schatztruhe-permanent-geöffnet-Flags
+[ ] Dungeon-Schalter-permanent-Flags
+[ ] Dragon-Egg-Fundflags
+[ ] Capsule-Monster-Fundflags
+[ ] freigeschaltete Warp-Orte
+[ ] Excerion-Upgrade-Flags
+[ ] Retry-/Gift-Unlockflags
+
+
+21. KAMPF – GLOBAL
+==================
+
+[ ] Kampfstart
+[ ] Kampftransition
+[ ] Kampf vollständig geladen
+[ ] Encounter-/Formation-ID
+[ ] Kampf-Hintergrund-ID
+[ ] Anzahl Gegner
+[ ] Anzahl aktiver Partycharaktere
+[ ] Capsule Monster im Kampf vorhanden
+[ ] Überraschungsangriff gegen die Party
+[ ] normaler Kampfbeginn
+[ ] Boss-/Scriptkampf
+[ ] aktuelle Kampfrunde
+[ ] aktuelle Kampfphase
+[ ] aktueller Actor
+[ ] aktueller Eingabecharakter
+[ ] Eingabephase
+[ ] Aktionsausführung
+[ ] Animation läuft
+[ ] Schadensauswertung
+[ ] Rundenende
+[ ] Sieg
+[ ] Niederlage
+[ ] Fluchtversuch
+[ ] Flucht erfolgreich
+[ ] Flucht fehlgeschlagen
+[ ] Rückkehr zur Karte
+[ ] Kampf-RNG-Zustand
+
+
+22. KAMPF – HAUPTMENÜ UND BEFEHLE
+=================================
+
+[ ] Battle-Hauptmenü aktiv
+[ ] Battle-Hauptmenü-Cursor
+[ ] Trade Places markiert
+[ ] Trade Places gewählt
+[ ] Battle-Partyreihenfolge geändert
+[ ] Attack-Hauptoption markiert
+[ ] Attack-Hauptoption gewählt
+[ ] Escape markiert
+[ ] Escape gewählt
+[ ] Charakter-Befehlsmenü aktiv
+[ ] Charakter-Befehlsmenü-Cursor
+[ ] Attack-Befehl gewählt
+[ ] Use Magic gewählt
+[ ] Use Item gewählt
+[ ] Use IP gewählt
+[ ] Defend gewählt
+[ ] Befehl abgebrochen
+[ ] Befehl für Charakter bestätigt
+[ ] gespeicherter Befehl pro Charakter
+[ ] nächste Figur zur Befehlseingabe
+[ ] alle Befehle eingegeben
+[ ] Aktionsreihenfolge/Queue
+
+
+23. KAMPF – ZIELAUSWAHL
+=======================
+
+[ ] Zielauswahl aktiv
+[ ] Zielcursor
+[ ] einzelner Gegner als Ziel
+[ ] mehrere/alle Gegner als Ziel
+[ ] einzelner Verbündeter als Ziel
+[ ] mehrere/alle Verbündeten als Ziel
+[ ] eigener Charakter als Ziel
+[ ] Zielmaske
+[ ] Ziel mit L gewechselt
+[ ] alle Ziele mit R gewählt
+[ ] ungültiges Ziel
+[ ] Ziel bestätigt
+[ ] Zielauswahl abgebrochen
+
+
+24. KAMPF – PARTYDATEN
+======================
+
+Für jeden aktiven Partyplatz:
+
+[ ] Charakter-ID
+[ ] Battle-Slot
+[ ] aktuelle HP
+[ ] maximale HP
+[ ] aktuelle MP
+[ ] maximale MP
+[ ] aktueller IP-Wert
+[ ] Poison
+[ ] Sleep
+[ ] Paralyze
+[ ] Confusion
+[ ] Disabled
+[ ] Defend aktiv
+[ ] gewählter Befehl
+[ ] gewählte Spell-ID
+[ ] gewählte Item-ID
+[ ] gewählte IP-Fähigkeit
+[ ] gewähltes Ziel
+[ ] Initiative/Aktionsreihenfolge
+[ ] Aktion wird ausgeführt
+[ ] Aktion abgeschlossen
+[ ] Charakter erhält Schaden
+[ ] Charakter wird geheilt
+[ ] Charakter wird kampfunfähig
+[ ] Charakter wird wiederbelebt
+
+
+25. KAMPF – GEGNERDATEN
+=======================
+
+Für jeden Gegnerslot:
+
+[ ] Gegnerslot aktiv
+[ ] Gegner-ID
+[ ] Gegner-Instanz
+[ ] Gegnerposition
+[ ] aktuelle HP
+[ ] maximale HP
+[ ] aktueller Status
+[ ] Poison
+[ ] Sleep
+[ ] Paralyze
+[ ] Confusion
+[ ] Disabled/tot
+[ ] effektive Elementresistenzen
+[ ] effektive Statusresistenzen
+[ ] gewählte Gegneraktion
+[ ] Gegnerziel
+[ ] Gegnerinitiative/Aktionsreihenfolge
+[ ] Gegneraktion wird ausgeführt
+[ ] Gegner erhält Schaden
+[ ] Gegner wird geheilt
+[ ] Gegner besiegt
+[ ] Gegner entfernt
+[ ] Gegner-Drop-ID
+[ ] Gegner-Dropchance
+[ ] Gegner-EXP
+[ ] Gegner-Gold
+
+
+26. KAMPF – SCHADEN, HEILUNG UND STATUS
+=======================================
+
+[ ] aktuell ausgeführte Aktions-ID
+[ ] aktuell ausgeführte Spell-ID
+[ ] aktuell ausgeführte Item-ID
+[ ] aktuell ausgeführte IP-ID
+[ ] physischer Treffer
+[ ] magischer Treffer
+[ ] Schaden berechnet
+[ ] finaler Schadenswert
+[ ] angezeigter Schadenswert
+[ ] Heilwert
+[ ] Miss
+[ ] kritischer Treffer
+[ ] Resist/verminderter Effekt
+[ ] Immunität
+[ ] Status erfolgreich zugefügt
+[ ] Status fehlgeschlagen
+[ ] Poison zugefügt
+[ ] Sleep zugefügt
+[ ] Paralyze zugefügt
+[ ] Confusion zugefügt
+[ ] Disabled ausgelöst
+[ ] Status geheilt
+[ ] Schadenszahl aktiv
+[ ] Schadenszahl-Timer
+[ ] Kampftext-/Message-ID
+[ ] IP steigt durch erhaltenen Treffer
+[ ] IP wird durch IP-Fähigkeit verbraucht
+
+
+27. KAMPFENDE UND BELOHNUNGEN
+=============================
+
+[ ] alle Gegner besiegt
+[ ] Siegmeldung aktiv
+[ ] erhaltene EXP gesamt
+[ ] erhaltenes Gold
+[ ] Drop vorhanden
+[ ] erhaltene Drop-Item-ID
+[ ] Dropmenge
+[ ] EXP auf Partycharaktere verteilt
+[ ] EXP auf Capsule Monster verteilt
+[ ] Charakter-Level-up
+[ ] Capsule-Monster-Level-up
+[ ] Capsule-Monster-Klassenwechsel möglich
+[ ] Kampfergebnis bestätigt
+[ ] Bossflag nach Kampf gesetzt
+[ ] Script nach Kampf gestartet
+[ ] Party vollständig besiegt
+[ ] Game Over ausgelöst
+
+
+28. IP-SYSTEM
+=============
+
+[ ] IP-Wert pro Charakter außerhalb Kampf
+[ ] IP-Wert pro Charakter im Kampf
+[ ] IP-Gewinn durch Treffer
+[ ] IP-Anzeige/Gauge
+[ ] verfügbares IP durch aktuell angelegte Ausrüstung
+[ ] IP-Menü geöffnet
+[ ] ausrüstungsgebundene IP-Fähigkeitenliste
+[ ] aktuell markierte IP-Fähigkeit
+[ ] benötigte IP-Menge
+[ ] IP-Fähigkeit nicht verfügbar
+[ ] IP-Fähigkeit gewählt
+[ ] IP-Fähigkeit ausgeführt
+[ ] IP-Kosten abgezogen
+[ ] IP-Fähigkeitsziel
+[ ] IP-Fähigkeitsergebnis
+
+
+29. CASINO
+==========
+
+[ ] Casino betreten
+[ ] Casino-Coin-Bestand
+[ ] aktuell gewähltes Casinospiel
+
+Pachinko Slot:
+[ ] Pachinko Slot aktiv
+[ ] Einsatz
+[ ] Walze 1
+[ ] Walze 2
+[ ] Walze 3
+[ ] Walze 1 gestoppt
+[ ] Walze 2 gestoppt
+[ ] Walze 3 gestoppt
+[ ] Gewinnkombination
+[ ] Auszahlung
+
+Black Jack:
+[ ] Black Jack aktiv
+[ ] Einsatz
+[ ] Spielerdeck/Hand
+[ ] Dealerdeck/Hand
+[ ] Spieler-Handwert
+[ ] Dealer-Handwert
+[ ] Hit gewählt
+[ ] Stand gewählt
+[ ] Bust
+[ ] Gewinn/Verlust/Unentschieden
+[ ] Auszahlung
+
+Slot Machine:
+[ ] Slot Machine aktiv
+[ ] Einsatz
+[ ] Walzenzustände
+[ ] Walzen gestoppt
+[ ] Gewinnlinie
+[ ] Auszahlung
+
+Stud Poker:
+[ ] Stud Poker aktiv
+[ ] Einsatz
+[ ] ausgeteilte Karten
+[ ] gehaltene Karten
+[ ] ersetzte Karten
+[ ] fertige Pokerhand
+[ ] Auszahlung
+
+Action Bingo:
+[ ] Action Bingo aktiv
+[ ] Einsatz
+[ ] Bingofeld
+[ ] aktuell gezogene Zahl/Kugel
+[ ] markierte Felder
+[ ] vollständige Reihe/Spalte/Diagonale
+[ ] Spiel beendet
+[ ] Auszahlung
+
+
+30. DRAGON EGGS UND EGG DRAGON
+==============================
+
+[ ] Anzahl gefundener Dragon Eggs
+[ ] Fundflag für jedes Dragon Egg
+[ ] alle acht Dragon Eggs gesammelt
+[ ] Egg-Dragon-Begegnung aktiv
+[ ] Wunsch-Auswahl aktiv
+[ ] Wunsch-Cursor
+[ ] gewählter Wunsch
+[ ] Belohnung erhalten
+[ ] aktueller Dragon-Egg-Zyklus
+[ ] Dragon Eggs nach Wunsch neu verteilt
+[ ] neue Dragon-Egg-Ortsflags
+[ ] Egg Dragon als Kampfgegner aktiv
+[ ] Egg Dragon besiegt
+
+
+31. ANCIENT CAVE
+================
+
+[ ] Ancient-Cave-Modus aktiv
+[ ] aktuelle Etage
+[ ] aktuelle Raum-ID
+[ ] aktueller Cave-Layout-/Generierungsseed
+[ ] generierter Raumzustand
+[ ] Treppen nach unten vorhanden
+[ ] Treppe zur nächsten Etage benutzt
+[ ] rote Truhe
+[ ] blaue Truhe
+[ ] Mimic statt Truhe
+[ ] Item aus roter Truhe
+[ ] Item aus blauer Truhe
+[ ] temporäres Ancient-Cave-Inventar
+[ ] dauerhaft mitnehmbares Blue-Chest-Item
+[ ] außerhalb gefundene Blue-Chest-Items beim Eintritt
+[ ] Providence gefunden
+[ ] Providence benutzt
+[ ] Ancient Cave verlassen
+[ ] Party beim Eintritt auf Level 1 gesetzt
+[ ] Startinventar der Ancient Cave
+[ ] aktuelle Ancient-Cave-Party
+[ ] Gift-Mode-Partyauswahl
+[ ] Gift-Mode-Capsule-Auswahl
+[ ] Iris Treasure gefunden
+[ ] Iris-Treasure-Fundflags
+[ ] Iris-Treasure-Abgabe in Gruberik
+[ ] ausgestellte Iris Treasures
+[ ] Jelly/Royal-Jelly-Begegnung aktiv
+[ ] Jelly-Rundenzähler
+[ ] Jelly besiegt
+[ ] Etage 99 erreicht
+[ ] Ancient-Cave-Lauf beendet
+
+
+32. CONFIG
+==========
+
+[ ] Config-Menü geöffnet
+[ ] Config-Cursor
+[ ] sämtliche Config-Optionswerte
+[ ] Message-/Textgeschwindigkeit
+[ ] geänderte Config-Option bestätigt
+[ ] Config-Werte im Save gespeichert
+
+
+33. TECHNISCHE ZUSTÄNDE, DIE FÜR EINEN AGENTEN NÜTZLICH SIND
+============================================================
+
+[ ] aktueller Event-/Script-Timer
+[ ] aktueller Animationstimer
+[ ] aktueller Texttimer
+[ ] aktueller Bewegungstimer
+[ ] aktueller Dungeon-Monster-Timer
+[ ] aktueller Encounter-RNG
+[ ] aktueller Kampf-RNG
+[ ] aktueller Casino-RNG
+[ ] aktueller Ancient-Cave-Seed
+[ ] Spieler hat seit letzter Aktion Position verändert
+[ ] Map/Raum hat seit letzter Aktion gewechselt
+[ ] Textbox hat seit letzter Aktion gewechselt
+[ ] Menü hat seit letzter Aktion gewechselt
+[ ] Kampfphase hat seit letzter Aktion gewechselt
+[ ] HP/MP/IP hat sich seit letzter Aktion verändert
+[ ] Inventar hat sich seit letzter Aktion verändert
+[ ] Storyflag hat sich seit letzter Aktion verändert
+[ ] keine Zustandsänderung/Fortschritt
+[ ] gleiche Aktion wiederholt sich ohne Fortschritt
+[ ] letzter stabiler Spielzustand
+[ ] letzter bestätigter Controllerzustand
+[ ] letzter abgeschlossener Scriptzustand

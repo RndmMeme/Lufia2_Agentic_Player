@@ -1,0 +1,35 @@
+{
+  "status": "CONFIRMED",
+  "addresses": {
+    "selected_name": "7E:0B77 (ASCII, zero terminated)",
+    "selected_price": "7E:0B89-0B8A (uint16 little-endian)",
+    "shop_cursor": "7E:1574-1575 (uint16 little-endian, row stride 0x0C)",
+    "legacy_price_0x2CCE": "CONTRADICTED"
+  },
+  "rows": [
+    {
+      "capture": "shop_item_active_1.bin",
+      "name": "Hi-Potion",
+      "price": 95,
+      "cursor": 0,
+      "legacy_price_bytes": "3F 0C",
+      "passed": true
+    },
+    {
+      "capture": "shop_item_active_2.bin",
+      "name": "Confuse ball",
+      "price": 79,
+      "cursor": 12,
+      "legacy_price_bytes": "3F 0C",
+      "passed": true
+    },
+    {
+      "capture": "shop_item_active_3.bin",
+      "name": "Escape",
+      "price": 95,
+      "cursor": 24,
+      "legacy_price_bytes": "3F 0C",
+      "passed": true
+    }
+  ]
+}

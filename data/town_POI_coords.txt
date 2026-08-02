@@ -1,0 +1,357 @@
+Town		map_id	  Building	  	(ext / int)	coords
+
+Elcid		 3 	  Inn entrance	   	ext		120, 128
+ 			  Shop entrance    	ext		152, 80
+			  Church entrance	ext		232, 160
+			  Spells entrance	ext		120, 160
+			  leave town		ext		232, 240
+
+Elcid		 4	  Shop Clerk		int		24, 96
+			  Inn keeper		int		248-40, 240
+			  Priest 		int		40, 0
+			  Spells Clerk		int		216, 48
+
+Sundletan	 8	  Inn entrance	   	ext		136, 144
+ 			  Shop entrance    	ext		184, 144
+			  Church entrance	ext		200, 160
+			  Spells entrance	ext		120, 192
+			  Tea Shop		ext		152, 144
+			  leave town		ext		40, 16
+
+Sundletan	 9	  Shop Clerk		int		200, 192
+			  Inn keeper		int		168, 192
+			  Priest 		int		72, 240
+			  Spells Clerk		int		200, 144
+			  Tea Shop Clerk	int		216, 0
+
+Alunze		 15 	  Inn entrance	   	ext		232, 96
+ 			  Shop entrance    	ext		88, 112
+			  Church entrance	ext		136, 192
+			  leave town		ext		24, 0
+
+Alunze		 16	  Shop Clerk		int		232, 224
+			  Inn keeper		int		24, 16
+			  Priest 		int		56, 16
+
+Alunze Castle	 0F 	  1F Castle entrance   	ext		152, 16
+ 			  leave town		ext		152, 208
+	2F Castle entrance (Throne area)	ext		168, 96
+	2F Castle entrance (towards Basement)	ext		8, 32
+
+Alunze Castle	 10    1F Stairs Up (from exit)	int		232, 208
+		       2F Stairs Down (to exit)	int		56, 176
+		       2F King	 		int		56, 144
+		       2F Exit			int		56, 224
+		       2F Exit (from basement)	int		88, 80
+		   2F Stairs (towards basement)	int		88, 32
+		   1F Stairs up to 2F		int		104, 240
+		   1F Stairs down to B1		int		104, 0
+		   B1 Stairs to 1F		int 		184, 112
+		   B1 Stairs to B2		int		72, 112
+		   B2 Stairs to B1		int		216, 16
+		   B2 Door to Dungeon		int		136, 48
+
+Tanbel		 1C 	  Inn entrance	   	ext		216, 208
+ 			  Shop entrance    	ext		184, 64
+			  Church entrance	ext		248, 208
+			  Spells entrance	ext		88, 128
+			  leave town		ext		24, 48
+
+Tanbel		 1D	  Shop Clerk		int		232, 240
+			  No Inn keeper		int		
+			  Priest 		int		248, 208
+			  Spells Clerk		int		232, 176
+
+Clamento	 25 	  Inn entrance	   	ext		72, 176
+ 			  Shop entrance    	ext		200, 160
+			  Church entrance	ext		184, 16
+			  Spells entrance	ext		88, 144
+			  Jyad House (Items)	ext		168, 160
+			  Mayor House		ext		24, 176
+			  leave town		ext		24, 0
+
+Clamento	 26	  Shop Clerk		int		168, 176
+			  Inn keeper		int		248, 176
+			  Priest 		int		72, 240
+			  Spells Clerk		int		104, 192
+			  Jyad House, his wife	int		56, 240
+			  Jyad (sells items)	int		184, 240
+			  Jyad House Exit	int		72, 32
+			  Mayor			int 		248, 128
+
+Parcelyte	 2C 	  Inn entrance	   	ext		56, 224
+ 			  Shop entrance    	ext		184, 192
+			  Church entrance	ext		248, 176
+			  Item Shop		ext		88, 160
+			  leave town		ext		248, 48
+
+Parcelyte	 2D	  Shop Clerk		int		184, 112
+			  Item Clerk		int		184, 176
+			  Inn keeper		int		248, 240
+			  Priest 		int		184, 0
+
+Parcelyte Castle 2E 	  1F Castle entrance	ext		200, 144
+ 	    2F Castle Entrance (Throne Room)   	ext		200, 64
+			  Castle entrance	ext		200, 144
+			  leave Castle		ext		200, 128
+
+Parcelyte Castle 2F	  1F Castle Exit	int		232, 48
+			  1F Stairs to B1	int		232, 224
+			  B1 Stairs to 1F	int		88, 224
+			  B1 Guard		int		216, 224
+			  B1 Treasure Door	int		200, 224
+			  2F Exit (from Throne) int		8, 144
+			  2F King		int		8, 128
+
+Gordovan	 36 	  Inn entrance	   	ext		72, 96
+			  Church entrance	ext		120, 176
+			  leave town		ext		8, 208
+
+Merix		 3E 	  Inn entrance	   	ext		56, 192
+ 			  Shop entrance    	ext		104, 208
+			  Church entrance	ext		120, 112
+			  Spells Shop		ext		232, 224
+			  leave town		ext		8, 224
+
+Merix		 3F	  Shop Clerk		int		88, 224
+			  Inn keeper		int		216, 0
+			  Priest 		int		40, 240
+			  Spells Clerk		int		232, 16
+
+Bound Kingdom	 45 	  Castle entrance	ext		200, 128
+			  leave town		ext		200, 144
+
+Bound Kingdom	 46	  Shop Clerk		int		216, 32
+			  Castle exit		int		40, 128
+			  Inn keeper		int		232, 0
+		         1F Stairs to B1	int		104, 16
+			 B1 Stairs to 1F	int		184, 128
+			 B1 Stairs to B2	int		216, 128
+			 B2 Stairs to B1	int		56, 0
+			 2F Priest 		int		120, 240
+			 B2 Item Clerk		int		104, 0
+			 1F Stairs to 2F	int 		184, 16
+			 2F Stairs to 1F	int		152, 0
+
+Aleyn		 5E 	  Inn entrance	   	ext		88, 160
+ 			  Shop entrance    	ext		136, 176
+			  Church entrance	ext		200, 192
+			  Spells entrance	ext		232, 208
+			  Bar entrance		ext		152, 80
+			  leave town		ext		24, 32
+
+Aleyn		 5F	  Shop Clerk		int		184, 192
+			  Inn keeper		int		104, 240
+			  Priest 		int		216, 160
+			  Spells Clerk		int		216, 192
+			  Bar keep		int		168, 240
+
+Gruberik	 68 	  Inn entrance	   	ext		72, 240
+ 			  Shop entrance    	ext		168, 160
+			  Church entrance	ext		88, 176
+			  leave town		ext		24, 16
+
+Gruberik	 69	  Shop Clerk		int		200, 144
+			  Inn keeper		int		200, 122
+			  Priest 		int		232, 96
+
+Narcysus	 6A	  Inn entrance	   	ext		200, 224
+ 			  Shop entrance    	ext		168, 112
+			  Church entrance	ext		104, 192
+			  Item Shop entrance	ext		8, 160
+			  leave town		ext		24, 240
+
+Narcysus	 6B	  Shop Clerk		int		152, 208
+			  Inn keeper		int		104, 240
+			  Priest 		int		216, 208
+			  Item clerk		int		248, 240
+
+Karlloon	 73 	  Inn entrance	   	ext		24, 176
+ 			  Shop entrance    	ext		120, 160
+			  Church entrance	ext		200, 128
+			  Spells entrance	ext		184, 80
+			  leave town		ext		200, 0
+
+Karlloon	 74	  Shop Clerk		int		184, 240
+			  Inn keeper		int		8, 224
+			  Priest 		int		24, 240
+			  Spells Clerk		int		216, 16
+
+Treadool	 7A 	  Inn entrance	   	ext		232, 160
+ 			  Shop entrance    	ext		136, 160
+			  Church entrance	ext		72, 32
+			  Item Shop entrance	ext		104, 160
+			  leave town		ext		232, 240
+
+Treadool	 7B	  Shop Clerk		int		136, 240
+			  Inn keeper		int		136, 176
+			  Priest 		int		216, 224
+			  Item Shop Clerk	int		216, 240
+
+Shaia Lab	 7C	  Exit			int		184, 144
+			  1st door in		int		56, 64
+			  2nd door in		int		120, 144
+			  3rd door in		int		104, 96
+			  4th door in		int		168, 112 (swing sword)
+			  1F Stairs to B1	int		184, 0
+			  B1 Stairs to 1F	int		216, 144
+			  Lexis / Boss		int		200, 16 
+			  4th door out		int		168, 80 (swing sword)
+			  5th door in to B1	int		72, 112
+			  Plattform		int		202, 128
+			  Esc B1 Stairs to 1F	int		184, 144
+
+Forfeit Island	 85 	  Inn entrance	   	ext		200, 48
+ 			  Shop entrance    	ext		72, 192
+			  Church entrance	ext		248, 176
+			  Bar entrance		ext		104, 128
+			  leave town		ext		248, 128
+
+Forfeit Island	 86	  Weapon Clerk 1F		int		184, 0
+			  Stairs down to B1	int		232, 208
+			  Stairs up to 1F	int		168, 208
+			  Armor Clerk B1	int 		184, 224
+			  Stairs down to B2	int		168, 16
+			  Stairs up to B1	int		104, 16
+			  Item Clerk B2		int		104, 240
+			  Inn keeper		int		168, 208
+			  Priest 		int		232, 192
+			  Bar Keep		int		248, 160
+
+Dankirk		 88 	  Castle entrance	ext		8, 144
+			  leave Castle		ext		8, 240
+
+Dankirk		 89	  Shop Clerk		int		184, 240
+			  1F Stairs to B1	int		232, 224
+			  B1 Stairs to 1F	int		72, 240
+			  Inn keeper		int		216, 224
+			  Priest 		int		40, 0
+			  B1 Spells Clerk	int		120, 240
+			  Castle Exit		int		72, 128
+
+Auralio		 8A 	  Inn entrance	   	ext		56, 128
+ 			  Shop entrance    	ext		120, 144
+			  Church entrance	ext		136, 48
+			  Item Shop entrance	ext		200, 192
+			  leave town		ext		216, 32
+
+Auralio		 8B	  Shop Clerk		int		216, 240
+			  Inn keeper		int		200, 240
+			  Priest 		int		136, 192
+			  Item Shop Clerk	int		104, 240
+
+Ferim		 91 	  Castle entrance	ext		136, 176
+			  leave Castle		ext		136, 64
+
+Ferim		 92	  Shop Clerk		int		216, 240
+			  Inn keeper		int		200, 208
+			1F Stairs to B1 Priest	int		184, 240
+		B1 Stairs from Priest to 1F	int		200, 176
+			  B1 Priest 		int		168, 144
+		1F Stairs to B1 Spells Clerk	int		216, 240
+		B1 Stairs from Spells to 1F	int		136, 224
+			  Spells Clerk		int		168, 192
+			  Castle Exit		int		72, 112
+
+Agurio		 9A	  Egg Girl	   	ext		40, 112
+			  leave town		ext		24, 208
+ 			  
+Treble		 9B 	  Inn entrance	   	ext		136, 160
+ 			  Shop entrance    	ext		24, 128
+			  Church entrance	ext		8, 16
+			  Item Shop entrance	ext		200, 144
+			  leave town		ext		8, 160
+
+Treble		 9C	  Shop Clerk		int		40, 240
+			  Inn keeper		int		248, 192
+			  Priest 		int		120, 240
+			  Item Shop Clerk	int		216, 240
+
+Pico		 9D 	  Inn entrance	   	ext		136, 80
+ 			  Church entrance	ext		104, 128
+			  leave town		ext		216, 160
+
+Pico		 9E	  Inn keeper		int		72, 240
+			  Priest 		int		120, 240
+
+Portravia	 A0 	  Inn entrance	   	ext		56, 48
+ 			  Shop entrance    	ext		168, 48
+			  Church entrance	ext		136, 176
+			  Lab entrance		ext		24, 192
+			  leave town		ext		24, 96
+			  
+Portravia	 A1	  Shop Clerk		int		152, 240
+			  Shop 1F Stairs to B1	int		120, 0
+			  Shop B1 Stairs to 1F	int		184, 0	
+			  Inn keeper		int		88, 48
+			  Priest 		int		216, 176
+			  Shop B1 Spells Clerk	int		232, 240
+			  Lab exit		int		216, 128
+			1F Lab Stairs to B1	int		168, 0
+			B1 Lab Stairs to 1F	int		216, 48
+			B1 Lab Scientist	int		88, 128
+
+Eserikto	 A6 	  Inn entrance	   	ext		184, 128
+ 			  Shop entrance    	ext		56, 144
+			  Church entrance	ext		8, 176
+			  Spells entrance	ext		136, 240
+			  leave town		ext		248, 224
+
+Eserikto	 A7	  Shop Clerk		int		72, 240
+			  Inn keeper		int		24, 224
+			  Priest 		int		120, 240
+			  Spells Clerk		int		200, 16
+
+Barnan		 AC	  Inn entrance	   	ext		200, 192
+ 			  Shop entrance    	ext		88, 224
+			  Church entrance	ext		88, 176
+			  Item Shop entrance	ext		8, 144
+			  leave town		ext		248, 16
+
+Barnan		 AD	  Shop Clerk		int		24, 0
+			  Inn keeper		int		56, 240
+			  Priest 		int		232, 208
+			  Item Shop Clerk	int		168, 0
+
+Durale		 B5 	  Inn entrance	   	ext		40, 192
+ 			  Shop entrance    	ext		136, 64
+			  Church entrance	ext		40, 144
+			  Spells entrance	ext		184, 144
+			  Tea Shop entrance	ext		152, 144
+			  leave town		ext		248, 0
+
+Durale		 B6	  Shop Clerk		int		56, 240
+			  Inn keeper		int		184, 240
+			  Priest 		int		136, 224
+			  Tea Shop Clerk	int		104, 240
+			  Spells Clerk		int		248, 240
+
+Chaed		 BE 	  Inn entrance	   	ext		232, 176	
+ 			  Shop entrance    	ext		56, 80
+			  Item Shop entrance	ext		152, 80
+			  Church entrance	ext		88, 176		
+			  leave town		ext		24, 0	
+
+Chaed		 BF	  Shop Clerk		int		184, 240
+			  Item Shop Clerk	int		120, 240
+			  Inn keeper		int		72, 240
+			  Priest 		int		232, 208
+
+Narvick		 D8 	  Inn entrance	   	ext		104, 128
+ 			  Shop entrance    	ext		232, 224
+			  Church entrance	ext		88, 208
+			  leave town		ext		56, 160
+
+Narvick		 D9	  Shop Clerk		int		120, 240
+			  Inn keeper		int		184, 240
+			  Priest 		int		40, 240
+			  
+Preamarl	 C9 	  Inn entrance	   	ext		152, 128
+ 			  Shop entrance    	ext		136, 128
+			  Church entrance	ext		56, 96
+			  leave town (ship)	ext		248, 208
+			  board ship		ext		248, 144
+
+Preamarl	 CA	  Shop Clerk		int		136, 0
+			  Inn keeper		int		24, 224
+			  Priest 		int		72, 32

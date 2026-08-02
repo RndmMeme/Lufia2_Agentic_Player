@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Flower_Mountain",
+  "marker_count": 436,
+  "type_counts": {
+    "npc": 1,
+    "door": 38,
+    "walkable": 102,
+    "monster": 26,
+    "puzzle": 82,
+    "blocked": 147,
+    "chest": 9,
+    "switch": 4,
+    "stairs": 12,
+    "bush": 15
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

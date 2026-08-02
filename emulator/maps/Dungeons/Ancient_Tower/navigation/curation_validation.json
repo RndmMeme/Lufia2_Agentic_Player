@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Ancient_Tower",
+  "marker_count": 340,
+  "type_counts": {
+    "door": 40,
+    "walkable": 94,
+    "stairs": 16,
+    "npc": 5,
+    "puzzle": 25,
+    "monster": 39,
+    "switch": 16,
+    "blocked": 78,
+    "chest": 6,
+    "ladder": 21
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

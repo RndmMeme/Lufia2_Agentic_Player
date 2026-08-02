@@ -1,0 +1,4147 @@
+{
+  "format_version": 1,
+  "created_at": "2026-07-26T00:05:33",
+  "label": "Saveauswahl",
+  "trials_requested": 5,
+  "control_seconds": 0.5,
+  "settle_seconds": 0.05,
+  "keys": null,
+  "checklist": "docs\\lufia2_wram_checklist_merged_update_v5.txt",
+  "trials": [
+    {
+      "number": 1,
+      "captured_at": "2026-07-26T00:06:10.731",
+      "control_before": "trial_001_control_before.bin",
+      "before": "trial_001_before.bin",
+      "after": "trial_001_after.bin",
+      "control_changes": 23,
+      "action_changes": 35,
+      "state": {
+        "tracker_status": {
+          "state": "attached",
+          "message": "Auto-tracker attached with WRAM and ROM support.",
+          "process": "snes9x-x64",
+          "profile": "Canonical root from Snes9x 1.62.3 standard"
+        },
+        "inventory": [
+          "Arrow"
+        ],
+        "characters": [
+          "Maxim"
+        ],
+        "capsules": [],
+        "capsule_sprite_values": [
+          "A502",
+          "0B0D",
+          "880F",
+          "AF07",
+          "4600",
+          "4305",
+          "580A"
+        ],
+        "player_x": 0,
+        "player_y": 0,
+        "transport_mode": "walk",
+        "cleared_locations": [],
+        "scenario": [],
+        "maidens": {},
+        "spoiler_log": [
+          {
+            "item": "Hook",
+            "location": "Alunze Cave",
+            "boss": "Ork Mage"
+          },
+          {
+            "item": "Fire arrow",
+            "location": "North Dungeon",
+            "boss": "Dark Warrior"
+          },
+          {
+            "item": "Hammer",
+            "location": "Gratze Castle",
+            "boss": "Basilisk"
+          },
+          {
+            "item": "Mermaid jade",
+            "location": "Ancient Tower",
+            "boss": "Rogue Flower"
+          },
+          {
+            "item": "Engine",
+            "location": "Divine Shrine",
+            "boss": "Venge Ghost"
+          },
+          {
+            "item": "Lake key",
+            "location": "North Dungeon",
+            "boss": "Tarantula"
+          },
+          {
+            "item": "Ruby key",
+            "location": "Flower Mountain",
+            "boss": "Lion"
+          },
+          {
+            "item": "Wind key",
+            "location": "Kamirno Tower",
+            "boss": "Archfiend"
+          },
+          {
+            "item": "Cloud key",
+            "location": "Sundletan Cave",
+            "boss": "Wispy"
+          },
+          {
+            "item": "Light key",
+            "location": "Tanbel Tower",
+            "boss": "Pierre"
+          },
+          {
+            "item": "Sword key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Tree key",
+            "location": "Dankirk Dungeon",
+            "boss": "Wind Genie"
+          },
+          {
+            "item": "Flower key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Magma key",
+            "location": "Tower of Truth",
+            "boss": "Fire Dragon"
+          },
+          {
+            "item": "Heart key",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Ghost key",
+            "location": "Lake Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Trial key",
+            "location": "Secret Skills Cave",
+            "boss": "No Core"
+          },
+          {
+            "item": "Dankirk key",
+            "location": "Dragon Mountain",
+            "boss": "Daos"
+          },
+          {
+            "item": "Basement key",
+            "location": "Foomy Woods",
+            "boss": "Big Catfish"
+          },
+          {
+            "item": "Narcysus key",
+            "location": "Mountain of No Return",
+            "boss": "Mummy"
+          },
+          {
+            "item": "Truth key",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Lisa",
+            "location": "Shrine of Vengeance",
+            "boss": "Idura"
+          },
+          {
+            "item": "Marie",
+            "location": "Shuman Tower",
+            "boss": "Ghost Ship"
+          },
+          {
+            "item": "Clare",
+            "location": "Zeppy Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Maxim",
+            "location": "Strahda Tower",
+            "boss": "Tank"
+          },
+          {
+            "item": "Selan",
+            "location": "Alunze Castle",
+            "boss": "Goblin"
+          },
+          {
+            "item": "Artea",
+            "location": "Lexis Shaia Laboratory",
+            "boss": "Follower"
+          },
+          {
+            "item": "Tia",
+            "location": "Tower of Sacrifice",
+            "boss": "Camu"
+          },
+          {
+            "item": "Dekar",
+            "location": "Ruby Cave",
+            "boss": "Gades"
+          },
+          {
+            "item": "Lexis",
+            "location": "Treasure Sword Shrine",
+            "boss": "Gargoyle"
+          },
+          {
+            "item": "Shaggy",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Raddisher",
+            "location": "Karlloon Shrine",
+            "boss": "Troll"
+          },
+          {
+            "item": "Armor Dog",
+            "location": "Darbi Shrine",
+            "boss": "Lizard Man"
+          },
+          {
+            "item": "Red Fish",
+            "location": "Cave Bridge",
+            "boss": "Daniele"
+          },
+          {
+            "item": "Foomy S",
+            "location": "Submarine Shrine",
+            "boss": "Kraken"
+          },
+          {
+            "item": "Hard Hat",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Myconido",
+            "location": "Flower Mountain",
+            "boss": "White Dragon"
+          },
+          {
+            "item": "Ancient key",
+            "location": "Treasure Sword Shrine",
+            "boss": "VIP card"
+          },
+          {
+            "item": "Flower Mountain",
+            "location": "Iris sword",
+            "boss": "Phantom Tree Mountain"
+          },
+          {
+            "item": "Iris shield",
+            "location": "Eserikto",
+            "boss": "Iris helmet"
+          },
+          {
+            "item": "Ferim Tower",
+            "location": "Iris armor",
+            "boss": "Flower Mountain"
+          },
+          {
+            "item": "Iris ring",
+            "location": "Gratze Castle",
+            "boss": "Iris jewel"
+          },
+          {
+            "item": "Shrine of Vengeance",
+            "location": "Iris staff",
+            "boss": "Tower of Sacrifice"
+          },
+          {
+            "item": "Iris pot",
+            "location": "Alunze",
+            "boss": "Iris tiara"
+          },
+          {
+            "item": "Ancient Tower",
+            "location": "Master Jelly",
+            "boss": "Gratze Castle"
+          },
+          {
+            "item": "STAFF",
+            "location": "Creative Director",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Game Experience Planning",
+            "location": "Abyssonym",
+            "boss": "Reverse Engineering"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Tools Development",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Director of Making Tia the",
+            "location": "Protagonist of the Game",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Testing and Debugging",
+            "location": "Abyssonym",
+            "boss": "Standards and Compliance"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Documentation",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Assistant",
+            "location": "Abyssonym",
+            "boss": "Fixxxer Patch Author"
+          },
+          {
+            "item": "Relnqshd",
+            "location": "Legacy Documentation",
+            "boss": "Relnqshd"
+          },
+          {
+            "item": "Sprite Art",
+            "location": "Eve The Feesh",
+            "boss": "Background Listening"
+          },
+          {
+            "item": "Two Tone Tony",
+            "location": "Special Thanks",
+            "boss": "Lufia II Speedrun Community"
+          }
+        ],
+        "gold": 0,
+        "map_id": 0,
+        "party_stats": [
+          {
+            "level": 5,
+            "status": 0,
+            "hp": 51,
+            "max_hp": 51,
+            "mp": 26,
+            "max_mp": 26,
+            "ip": 0,
+            "spells": [],
+            "ip_attacks": []
+          }
+        ],
+        "raw_inventory": [
+          {
+            "slot": 0,
+            "byte1": 2,
+            "byte2": 20
+          },
+          {
+            "slot": 1,
+            "byte1": 169,
+            "byte2": 3
+          },
+          {
+            "slot": 2,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 3,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 4,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 5,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 6,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 7,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 8,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 9,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 10,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 11,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 12,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 13,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 14,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 15,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 16,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 17,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 18,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 19,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 20,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 21,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 22,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 23,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 24,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 25,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 26,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 27,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 28,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 29,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 30,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 31,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 32,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 33,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 34,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 35,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 36,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 37,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 38,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 39,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 40,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 41,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 42,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 43,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 44,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 45,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 46,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 47,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 48,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 49,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 50,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 51,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 52,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 53,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 54,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 55,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 56,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 57,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 58,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 59,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 60,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 61,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 62,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 63,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 64,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 65,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 66,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 67,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 68,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 69,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 70,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 71,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 72,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 73,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 74,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 75,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 76,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 77,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 78,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 79,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 80,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 81,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 82,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 83,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 84,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 85,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 86,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 87,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 88,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 89,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 90,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 91,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 92,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 93,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 94,
+            "byte1": 0,
+            "byte2": 0
+          }
+        ],
+        "enemy_hp_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "dungeon_x": 1,
+        "dungeon_y": 0,
+        "dungeon_blocking": 157,
+        "map_context_flag": 0,
+        "exploration_mode_flag": 0,
+        "battle_mode_flag": 0,
+        "facing_contact_state": 255,
+        "dungeon_axis_mirror_x": 34,
+        "dungeon_axis_mirror_y": 68,
+        "dungeon_axis_chunk_y": 0,
+        "in_battle": false
+      }
+    },
+    {
+      "number": 2,
+      "captured_at": "2026-07-26T00:06:17.663",
+      "control_before": "trial_002_control_before.bin",
+      "before": "trial_002_before.bin",
+      "after": "trial_002_after.bin",
+      "control_changes": 21,
+      "action_changes": 35,
+      "state": {
+        "tracker_status": {
+          "state": "attached",
+          "message": "Auto-tracker attached with WRAM and ROM support.",
+          "process": "snes9x-x64",
+          "profile": "Canonical root from Snes9x 1.62.3 standard"
+        },
+        "inventory": [
+          "Arrow"
+        ],
+        "characters": [
+          "Maxim"
+        ],
+        "capsules": [],
+        "capsule_sprite_values": [
+          "A502",
+          "0B0D",
+          "880F",
+          "AF07",
+          "4600",
+          "4305",
+          "580A"
+        ],
+        "player_x": 0,
+        "player_y": 0,
+        "transport_mode": "walk",
+        "cleared_locations": [],
+        "scenario": [],
+        "maidens": {},
+        "spoiler_log": [
+          {
+            "item": "Hook",
+            "location": "Alunze Cave",
+            "boss": "Ork Mage"
+          },
+          {
+            "item": "Fire arrow",
+            "location": "North Dungeon",
+            "boss": "Dark Warrior"
+          },
+          {
+            "item": "Hammer",
+            "location": "Gratze Castle",
+            "boss": "Basilisk"
+          },
+          {
+            "item": "Mermaid jade",
+            "location": "Ancient Tower",
+            "boss": "Rogue Flower"
+          },
+          {
+            "item": "Engine",
+            "location": "Divine Shrine",
+            "boss": "Venge Ghost"
+          },
+          {
+            "item": "Lake key",
+            "location": "North Dungeon",
+            "boss": "Tarantula"
+          },
+          {
+            "item": "Ruby key",
+            "location": "Flower Mountain",
+            "boss": "Lion"
+          },
+          {
+            "item": "Wind key",
+            "location": "Kamirno Tower",
+            "boss": "Archfiend"
+          },
+          {
+            "item": "Cloud key",
+            "location": "Sundletan Cave",
+            "boss": "Wispy"
+          },
+          {
+            "item": "Light key",
+            "location": "Tanbel Tower",
+            "boss": "Pierre"
+          },
+          {
+            "item": "Sword key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Tree key",
+            "location": "Dankirk Dungeon",
+            "boss": "Wind Genie"
+          },
+          {
+            "item": "Flower key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Magma key",
+            "location": "Tower of Truth",
+            "boss": "Fire Dragon"
+          },
+          {
+            "item": "Heart key",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Ghost key",
+            "location": "Lake Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Trial key",
+            "location": "Secret Skills Cave",
+            "boss": "No Core"
+          },
+          {
+            "item": "Dankirk key",
+            "location": "Dragon Mountain",
+            "boss": "Daos"
+          },
+          {
+            "item": "Basement key",
+            "location": "Foomy Woods",
+            "boss": "Big Catfish"
+          },
+          {
+            "item": "Narcysus key",
+            "location": "Mountain of No Return",
+            "boss": "Mummy"
+          },
+          {
+            "item": "Truth key",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Lisa",
+            "location": "Shrine of Vengeance",
+            "boss": "Idura"
+          },
+          {
+            "item": "Marie",
+            "location": "Shuman Tower",
+            "boss": "Ghost Ship"
+          },
+          {
+            "item": "Clare",
+            "location": "Zeppy Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Maxim",
+            "location": "Strahda Tower",
+            "boss": "Tank"
+          },
+          {
+            "item": "Selan",
+            "location": "Alunze Castle",
+            "boss": "Goblin"
+          },
+          {
+            "item": "Artea",
+            "location": "Lexis Shaia Laboratory",
+            "boss": "Follower"
+          },
+          {
+            "item": "Tia",
+            "location": "Tower of Sacrifice",
+            "boss": "Camu"
+          },
+          {
+            "item": "Dekar",
+            "location": "Ruby Cave",
+            "boss": "Gades"
+          },
+          {
+            "item": "Lexis",
+            "location": "Treasure Sword Shrine",
+            "boss": "Gargoyle"
+          },
+          {
+            "item": "Shaggy",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Raddisher",
+            "location": "Karlloon Shrine",
+            "boss": "Troll"
+          },
+          {
+            "item": "Armor Dog",
+            "location": "Darbi Shrine",
+            "boss": "Lizard Man"
+          },
+          {
+            "item": "Red Fish",
+            "location": "Cave Bridge",
+            "boss": "Daniele"
+          },
+          {
+            "item": "Foomy S",
+            "location": "Submarine Shrine",
+            "boss": "Kraken"
+          },
+          {
+            "item": "Hard Hat",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Myconido",
+            "location": "Flower Mountain",
+            "boss": "White Dragon"
+          },
+          {
+            "item": "Ancient key",
+            "location": "Treasure Sword Shrine",
+            "boss": "VIP card"
+          },
+          {
+            "item": "Flower Mountain",
+            "location": "Iris sword",
+            "boss": "Phantom Tree Mountain"
+          },
+          {
+            "item": "Iris shield",
+            "location": "Eserikto",
+            "boss": "Iris helmet"
+          },
+          {
+            "item": "Ferim Tower",
+            "location": "Iris armor",
+            "boss": "Flower Mountain"
+          },
+          {
+            "item": "Iris ring",
+            "location": "Gratze Castle",
+            "boss": "Iris jewel"
+          },
+          {
+            "item": "Shrine of Vengeance",
+            "location": "Iris staff",
+            "boss": "Tower of Sacrifice"
+          },
+          {
+            "item": "Iris pot",
+            "location": "Alunze",
+            "boss": "Iris tiara"
+          },
+          {
+            "item": "Ancient Tower",
+            "location": "Master Jelly",
+            "boss": "Gratze Castle"
+          },
+          {
+            "item": "STAFF",
+            "location": "Creative Director",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Game Experience Planning",
+            "location": "Abyssonym",
+            "boss": "Reverse Engineering"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Tools Development",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Director of Making Tia the",
+            "location": "Protagonist of the Game",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Testing and Debugging",
+            "location": "Abyssonym",
+            "boss": "Standards and Compliance"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Documentation",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Assistant",
+            "location": "Abyssonym",
+            "boss": "Fixxxer Patch Author"
+          },
+          {
+            "item": "Relnqshd",
+            "location": "Legacy Documentation",
+            "boss": "Relnqshd"
+          },
+          {
+            "item": "Sprite Art",
+            "location": "Eve The Feesh",
+            "boss": "Background Listening"
+          },
+          {
+            "item": "Two Tone Tony",
+            "location": "Special Thanks",
+            "boss": "Lufia II Speedrun Community"
+          }
+        ],
+        "gold": 0,
+        "map_id": 0,
+        "party_stats": [
+          {
+            "level": 5,
+            "status": 0,
+            "hp": 51,
+            "max_hp": 51,
+            "mp": 26,
+            "max_mp": 26,
+            "ip": 0,
+            "spells": [],
+            "ip_attacks": []
+          }
+        ],
+        "raw_inventory": [
+          {
+            "slot": 0,
+            "byte1": 2,
+            "byte2": 20
+          },
+          {
+            "slot": 1,
+            "byte1": 169,
+            "byte2": 3
+          },
+          {
+            "slot": 2,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 3,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 4,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 5,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 6,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 7,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 8,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 9,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 10,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 11,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 12,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 13,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 14,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 15,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 16,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 17,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 18,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 19,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 20,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 21,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 22,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 23,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 24,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 25,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 26,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 27,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 28,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 29,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 30,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 31,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 32,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 33,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 34,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 35,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 36,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 37,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 38,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 39,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 40,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 41,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 42,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 43,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 44,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 45,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 46,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 47,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 48,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 49,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 50,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 51,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 52,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 53,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 54,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 55,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 56,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 57,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 58,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 59,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 60,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 61,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 62,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 63,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 64,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 65,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 66,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 67,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 68,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 69,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 70,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 71,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 72,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 73,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 74,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 75,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 76,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 77,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 78,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 79,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 80,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 81,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 82,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 83,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 84,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 85,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 86,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 87,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 88,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 89,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 90,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 91,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 92,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 93,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 94,
+            "byte1": 0,
+            "byte2": 0
+          }
+        ],
+        "enemy_hp_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "dungeon_x": 1,
+        "dungeon_y": 0,
+        "dungeon_blocking": 157,
+        "map_context_flag": 0,
+        "exploration_mode_flag": 0,
+        "battle_mode_flag": 0,
+        "facing_contact_state": 255,
+        "dungeon_axis_mirror_x": 34,
+        "dungeon_axis_mirror_y": 68,
+        "dungeon_axis_chunk_y": 0,
+        "in_battle": false
+      }
+    },
+    {
+      "number": 3,
+      "captured_at": "2026-07-26T00:06:23.277",
+      "control_before": "trial_003_control_before.bin",
+      "before": "trial_003_before.bin",
+      "after": "trial_003_after.bin",
+      "control_changes": 21,
+      "action_changes": 85,
+      "state": {
+        "tracker_status": {
+          "state": "attached",
+          "message": "Auto-tracker attached with WRAM and ROM support.",
+          "process": "snes9x-x64",
+          "profile": "Canonical root from Snes9x 1.62.3 standard"
+        },
+        "inventory": [
+          "Arrow"
+        ],
+        "characters": [
+          "Maxim"
+        ],
+        "capsules": [],
+        "capsule_sprite_values": [
+          "A502",
+          "0B0D",
+          "880F",
+          "AF07",
+          "4600",
+          "4305",
+          "580A"
+        ],
+        "player_x": 0,
+        "player_y": 0,
+        "transport_mode": "walk",
+        "cleared_locations": [],
+        "scenario": [],
+        "maidens": {},
+        "spoiler_log": [
+          {
+            "item": "Hook",
+            "location": "Alunze Cave",
+            "boss": "Ork Mage"
+          },
+          {
+            "item": "Fire arrow",
+            "location": "North Dungeon",
+            "boss": "Dark Warrior"
+          },
+          {
+            "item": "Hammer",
+            "location": "Gratze Castle",
+            "boss": "Basilisk"
+          },
+          {
+            "item": "Mermaid jade",
+            "location": "Ancient Tower",
+            "boss": "Rogue Flower"
+          },
+          {
+            "item": "Engine",
+            "location": "Divine Shrine",
+            "boss": "Venge Ghost"
+          },
+          {
+            "item": "Lake key",
+            "location": "North Dungeon",
+            "boss": "Tarantula"
+          },
+          {
+            "item": "Ruby key",
+            "location": "Flower Mountain",
+            "boss": "Lion"
+          },
+          {
+            "item": "Wind key",
+            "location": "Kamirno Tower",
+            "boss": "Archfiend"
+          },
+          {
+            "item": "Cloud key",
+            "location": "Sundletan Cave",
+            "boss": "Wispy"
+          },
+          {
+            "item": "Light key",
+            "location": "Tanbel Tower",
+            "boss": "Pierre"
+          },
+          {
+            "item": "Sword key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Tree key",
+            "location": "Dankirk Dungeon",
+            "boss": "Wind Genie"
+          },
+          {
+            "item": "Flower key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Magma key",
+            "location": "Tower of Truth",
+            "boss": "Fire Dragon"
+          },
+          {
+            "item": "Heart key",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Ghost key",
+            "location": "Lake Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Trial key",
+            "location": "Secret Skills Cave",
+            "boss": "No Core"
+          },
+          {
+            "item": "Dankirk key",
+            "location": "Dragon Mountain",
+            "boss": "Daos"
+          },
+          {
+            "item": "Basement key",
+            "location": "Foomy Woods",
+            "boss": "Big Catfish"
+          },
+          {
+            "item": "Narcysus key",
+            "location": "Mountain of No Return",
+            "boss": "Mummy"
+          },
+          {
+            "item": "Truth key",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Lisa",
+            "location": "Shrine of Vengeance",
+            "boss": "Idura"
+          },
+          {
+            "item": "Marie",
+            "location": "Shuman Tower",
+            "boss": "Ghost Ship"
+          },
+          {
+            "item": "Clare",
+            "location": "Zeppy Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Maxim",
+            "location": "Strahda Tower",
+            "boss": "Tank"
+          },
+          {
+            "item": "Selan",
+            "location": "Alunze Castle",
+            "boss": "Goblin"
+          },
+          {
+            "item": "Artea",
+            "location": "Lexis Shaia Laboratory",
+            "boss": "Follower"
+          },
+          {
+            "item": "Tia",
+            "location": "Tower of Sacrifice",
+            "boss": "Camu"
+          },
+          {
+            "item": "Dekar",
+            "location": "Ruby Cave",
+            "boss": "Gades"
+          },
+          {
+            "item": "Lexis",
+            "location": "Treasure Sword Shrine",
+            "boss": "Gargoyle"
+          },
+          {
+            "item": "Shaggy",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Raddisher",
+            "location": "Karlloon Shrine",
+            "boss": "Troll"
+          },
+          {
+            "item": "Armor Dog",
+            "location": "Darbi Shrine",
+            "boss": "Lizard Man"
+          },
+          {
+            "item": "Red Fish",
+            "location": "Cave Bridge",
+            "boss": "Daniele"
+          },
+          {
+            "item": "Foomy S",
+            "location": "Submarine Shrine",
+            "boss": "Kraken"
+          },
+          {
+            "item": "Hard Hat",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Myconido",
+            "location": "Flower Mountain",
+            "boss": "White Dragon"
+          },
+          {
+            "item": "Ancient key",
+            "location": "Treasure Sword Shrine",
+            "boss": "VIP card"
+          },
+          {
+            "item": "Flower Mountain",
+            "location": "Iris sword",
+            "boss": "Phantom Tree Mountain"
+          },
+          {
+            "item": "Iris shield",
+            "location": "Eserikto",
+            "boss": "Iris helmet"
+          },
+          {
+            "item": "Ferim Tower",
+            "location": "Iris armor",
+            "boss": "Flower Mountain"
+          },
+          {
+            "item": "Iris ring",
+            "location": "Gratze Castle",
+            "boss": "Iris jewel"
+          },
+          {
+            "item": "Shrine of Vengeance",
+            "location": "Iris staff",
+            "boss": "Tower of Sacrifice"
+          },
+          {
+            "item": "Iris pot",
+            "location": "Alunze",
+            "boss": "Iris tiara"
+          },
+          {
+            "item": "Ancient Tower",
+            "location": "Master Jelly",
+            "boss": "Gratze Castle"
+          },
+          {
+            "item": "STAFF",
+            "location": "Creative Director",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Game Experience Planning",
+            "location": "Abyssonym",
+            "boss": "Reverse Engineering"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Tools Development",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Director of Making Tia the",
+            "location": "Protagonist of the Game",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Testing and Debugging",
+            "location": "Abyssonym",
+            "boss": "Standards and Compliance"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Documentation",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Assistant",
+            "location": "Abyssonym",
+            "boss": "Fixxxer Patch Author"
+          },
+          {
+            "item": "Relnqshd",
+            "location": "Legacy Documentation",
+            "boss": "Relnqshd"
+          },
+          {
+            "item": "Sprite Art",
+            "location": "Eve The Feesh",
+            "boss": "Background Listening"
+          },
+          {
+            "item": "Two Tone Tony",
+            "location": "Special Thanks",
+            "boss": "Lufia II Speedrun Community"
+          }
+        ],
+        "gold": 0,
+        "map_id": 0,
+        "party_stats": [
+          {
+            "level": 5,
+            "status": 0,
+            "hp": 51,
+            "max_hp": 51,
+            "mp": 26,
+            "max_mp": 26,
+            "ip": 0,
+            "spells": [],
+            "ip_attacks": []
+          }
+        ],
+        "raw_inventory": [
+          {
+            "slot": 0,
+            "byte1": 2,
+            "byte2": 20
+          },
+          {
+            "slot": 1,
+            "byte1": 169,
+            "byte2": 3
+          },
+          {
+            "slot": 2,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 3,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 4,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 5,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 6,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 7,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 8,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 9,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 10,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 11,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 12,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 13,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 14,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 15,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 16,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 17,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 18,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 19,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 20,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 21,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 22,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 23,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 24,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 25,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 26,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 27,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 28,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 29,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 30,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 31,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 32,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 33,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 34,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 35,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 36,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 37,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 38,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 39,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 40,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 41,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 42,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 43,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 44,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 45,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 46,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 47,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 48,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 49,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 50,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 51,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 52,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 53,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 54,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 55,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 56,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 57,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 58,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 59,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 60,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 61,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 62,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 63,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 64,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 65,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 66,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 67,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 68,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 69,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 70,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 71,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 72,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 73,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 74,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 75,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 76,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 77,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 78,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 79,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 80,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 81,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 82,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 83,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 84,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 85,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 86,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 87,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 88,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 89,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 90,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 91,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 92,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 93,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 94,
+            "byte1": 0,
+            "byte2": 0
+          }
+        ],
+        "enemy_hp_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "dungeon_x": 1,
+        "dungeon_y": 0,
+        "dungeon_blocking": 157,
+        "map_context_flag": 0,
+        "exploration_mode_flag": 0,
+        "battle_mode_flag": 0,
+        "facing_contact_state": 255,
+        "dungeon_axis_mirror_x": 34,
+        "dungeon_axis_mirror_y": 68,
+        "dungeon_axis_chunk_y": 0,
+        "in_battle": false
+      }
+    },
+    {
+      "number": 4,
+      "captured_at": "2026-07-26T00:06:28.002",
+      "control_before": "trial_004_control_before.bin",
+      "before": "trial_004_before.bin",
+      "after": "trial_004_after.bin",
+      "control_changes": 16,
+      "action_changes": 39,
+      "state": {
+        "tracker_status": {
+          "state": "attached",
+          "message": "Auto-tracker attached with WRAM and ROM support.",
+          "process": "snes9x-x64",
+          "profile": "Canonical root from Snes9x 1.62.3 standard"
+        },
+        "inventory": [
+          "Arrow"
+        ],
+        "characters": [
+          "Maxim"
+        ],
+        "capsules": [],
+        "capsule_sprite_values": [
+          "A502",
+          "0B0D",
+          "880F",
+          "AF07",
+          "4600",
+          "4305",
+          "580A"
+        ],
+        "player_x": 0,
+        "player_y": 0,
+        "transport_mode": "walk",
+        "cleared_locations": [],
+        "scenario": [],
+        "maidens": {},
+        "spoiler_log": [
+          {
+            "item": "Hook",
+            "location": "Alunze Cave",
+            "boss": "Ork Mage"
+          },
+          {
+            "item": "Fire arrow",
+            "location": "North Dungeon",
+            "boss": "Dark Warrior"
+          },
+          {
+            "item": "Hammer",
+            "location": "Gratze Castle",
+            "boss": "Basilisk"
+          },
+          {
+            "item": "Mermaid jade",
+            "location": "Ancient Tower",
+            "boss": "Rogue Flower"
+          },
+          {
+            "item": "Engine",
+            "location": "Divine Shrine",
+            "boss": "Venge Ghost"
+          },
+          {
+            "item": "Lake key",
+            "location": "North Dungeon",
+            "boss": "Tarantula"
+          },
+          {
+            "item": "Ruby key",
+            "location": "Flower Mountain",
+            "boss": "Lion"
+          },
+          {
+            "item": "Wind key",
+            "location": "Kamirno Tower",
+            "boss": "Archfiend"
+          },
+          {
+            "item": "Cloud key",
+            "location": "Sundletan Cave",
+            "boss": "Wispy"
+          },
+          {
+            "item": "Light key",
+            "location": "Tanbel Tower",
+            "boss": "Pierre"
+          },
+          {
+            "item": "Sword key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Tree key",
+            "location": "Dankirk Dungeon",
+            "boss": "Wind Genie"
+          },
+          {
+            "item": "Flower key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Magma key",
+            "location": "Tower of Truth",
+            "boss": "Fire Dragon"
+          },
+          {
+            "item": "Heart key",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Ghost key",
+            "location": "Lake Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Trial key",
+            "location": "Secret Skills Cave",
+            "boss": "No Core"
+          },
+          {
+            "item": "Dankirk key",
+            "location": "Dragon Mountain",
+            "boss": "Daos"
+          },
+          {
+            "item": "Basement key",
+            "location": "Foomy Woods",
+            "boss": "Big Catfish"
+          },
+          {
+            "item": "Narcysus key",
+            "location": "Mountain of No Return",
+            "boss": "Mummy"
+          },
+          {
+            "item": "Truth key",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Lisa",
+            "location": "Shrine of Vengeance",
+            "boss": "Idura"
+          },
+          {
+            "item": "Marie",
+            "location": "Shuman Tower",
+            "boss": "Ghost Ship"
+          },
+          {
+            "item": "Clare",
+            "location": "Zeppy Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Maxim",
+            "location": "Strahda Tower",
+            "boss": "Tank"
+          },
+          {
+            "item": "Selan",
+            "location": "Alunze Castle",
+            "boss": "Goblin"
+          },
+          {
+            "item": "Artea",
+            "location": "Lexis Shaia Laboratory",
+            "boss": "Follower"
+          },
+          {
+            "item": "Tia",
+            "location": "Tower of Sacrifice",
+            "boss": "Camu"
+          },
+          {
+            "item": "Dekar",
+            "location": "Ruby Cave",
+            "boss": "Gades"
+          },
+          {
+            "item": "Lexis",
+            "location": "Treasure Sword Shrine",
+            "boss": "Gargoyle"
+          },
+          {
+            "item": "Shaggy",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Raddisher",
+            "location": "Karlloon Shrine",
+            "boss": "Troll"
+          },
+          {
+            "item": "Armor Dog",
+            "location": "Darbi Shrine",
+            "boss": "Lizard Man"
+          },
+          {
+            "item": "Red Fish",
+            "location": "Cave Bridge",
+            "boss": "Daniele"
+          },
+          {
+            "item": "Foomy S",
+            "location": "Submarine Shrine",
+            "boss": "Kraken"
+          },
+          {
+            "item": "Hard Hat",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Myconido",
+            "location": "Flower Mountain",
+            "boss": "White Dragon"
+          },
+          {
+            "item": "Ancient key",
+            "location": "Treasure Sword Shrine",
+            "boss": "VIP card"
+          },
+          {
+            "item": "Flower Mountain",
+            "location": "Iris sword",
+            "boss": "Phantom Tree Mountain"
+          },
+          {
+            "item": "Iris shield",
+            "location": "Eserikto",
+            "boss": "Iris helmet"
+          },
+          {
+            "item": "Ferim Tower",
+            "location": "Iris armor",
+            "boss": "Flower Mountain"
+          },
+          {
+            "item": "Iris ring",
+            "location": "Gratze Castle",
+            "boss": "Iris jewel"
+          },
+          {
+            "item": "Shrine of Vengeance",
+            "location": "Iris staff",
+            "boss": "Tower of Sacrifice"
+          },
+          {
+            "item": "Iris pot",
+            "location": "Alunze",
+            "boss": "Iris tiara"
+          },
+          {
+            "item": "Ancient Tower",
+            "location": "Master Jelly",
+            "boss": "Gratze Castle"
+          },
+          {
+            "item": "STAFF",
+            "location": "Creative Director",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Game Experience Planning",
+            "location": "Abyssonym",
+            "boss": "Reverse Engineering"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Tools Development",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Director of Making Tia the",
+            "location": "Protagonist of the Game",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Testing and Debugging",
+            "location": "Abyssonym",
+            "boss": "Standards and Compliance"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Documentation",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Assistant",
+            "location": "Abyssonym",
+            "boss": "Fixxxer Patch Author"
+          },
+          {
+            "item": "Relnqshd",
+            "location": "Legacy Documentation",
+            "boss": "Relnqshd"
+          },
+          {
+            "item": "Sprite Art",
+            "location": "Eve The Feesh",
+            "boss": "Background Listening"
+          },
+          {
+            "item": "Two Tone Tony",
+            "location": "Special Thanks",
+            "boss": "Lufia II Speedrun Community"
+          }
+        ],
+        "gold": 0,
+        "map_id": 0,
+        "party_stats": [
+          {
+            "level": 5,
+            "status": 0,
+            "hp": 51,
+            "max_hp": 51,
+            "mp": 26,
+            "max_mp": 26,
+            "ip": 0,
+            "spells": [],
+            "ip_attacks": []
+          }
+        ],
+        "raw_inventory": [
+          {
+            "slot": 0,
+            "byte1": 2,
+            "byte2": 20
+          },
+          {
+            "slot": 1,
+            "byte1": 169,
+            "byte2": 3
+          },
+          {
+            "slot": 2,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 3,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 4,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 5,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 6,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 7,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 8,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 9,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 10,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 11,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 12,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 13,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 14,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 15,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 16,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 17,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 18,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 19,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 20,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 21,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 22,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 23,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 24,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 25,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 26,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 27,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 28,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 29,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 30,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 31,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 32,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 33,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 34,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 35,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 36,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 37,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 38,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 39,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 40,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 41,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 42,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 43,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 44,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 45,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 46,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 47,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 48,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 49,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 50,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 51,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 52,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 53,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 54,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 55,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 56,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 57,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 58,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 59,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 60,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 61,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 62,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 63,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 64,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 65,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 66,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 67,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 68,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 69,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 70,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 71,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 72,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 73,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 74,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 75,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 76,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 77,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 78,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 79,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 80,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 81,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 82,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 83,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 84,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 85,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 86,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 87,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 88,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 89,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 90,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 91,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 92,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 93,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 94,
+            "byte1": 0,
+            "byte2": 0
+          }
+        ],
+        "enemy_hp_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "dungeon_x": 1,
+        "dungeon_y": 0,
+        "dungeon_blocking": 157,
+        "map_context_flag": 0,
+        "exploration_mode_flag": 0,
+        "battle_mode_flag": 0,
+        "facing_contact_state": 255,
+        "dungeon_axis_mirror_x": 34,
+        "dungeon_axis_mirror_y": 68,
+        "dungeon_axis_chunk_y": 0,
+        "in_battle": false
+      }
+    },
+    {
+      "number": 5,
+      "captured_at": "2026-07-26T00:06:33.122",
+      "control_before": "trial_005_control_before.bin",
+      "before": "trial_005_before.bin",
+      "after": "trial_005_after.bin",
+      "control_changes": 22,
+      "action_changes": 37,
+      "state": {
+        "tracker_status": {
+          "state": "attached",
+          "message": "Auto-tracker attached with WRAM and ROM support.",
+          "process": "snes9x-x64",
+          "profile": "Canonical root from Snes9x 1.62.3 standard"
+        },
+        "inventory": [
+          "Arrow"
+        ],
+        "characters": [
+          "Maxim"
+        ],
+        "capsules": [],
+        "capsule_sprite_values": [
+          "A502",
+          "0B0D",
+          "880F",
+          "AF07",
+          "4600",
+          "4305",
+          "580A"
+        ],
+        "player_x": 0,
+        "player_y": 0,
+        "transport_mode": "walk",
+        "cleared_locations": [],
+        "scenario": [],
+        "maidens": {},
+        "spoiler_log": [
+          {
+            "item": "Hook",
+            "location": "Alunze Cave",
+            "boss": "Ork Mage"
+          },
+          {
+            "item": "Fire arrow",
+            "location": "North Dungeon",
+            "boss": "Dark Warrior"
+          },
+          {
+            "item": "Hammer",
+            "location": "Gratze Castle",
+            "boss": "Basilisk"
+          },
+          {
+            "item": "Mermaid jade",
+            "location": "Ancient Tower",
+            "boss": "Rogue Flower"
+          },
+          {
+            "item": "Engine",
+            "location": "Divine Shrine",
+            "boss": "Venge Ghost"
+          },
+          {
+            "item": "Lake key",
+            "location": "North Dungeon",
+            "boss": "Tarantula"
+          },
+          {
+            "item": "Ruby key",
+            "location": "Flower Mountain",
+            "boss": "Lion"
+          },
+          {
+            "item": "Wind key",
+            "location": "Kamirno Tower",
+            "boss": "Archfiend"
+          },
+          {
+            "item": "Cloud key",
+            "location": "Sundletan Cave",
+            "boss": "Wispy"
+          },
+          {
+            "item": "Light key",
+            "location": "Tanbel Tower",
+            "boss": "Pierre"
+          },
+          {
+            "item": "Sword key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Tree key",
+            "location": "Dankirk Dungeon",
+            "boss": "Wind Genie"
+          },
+          {
+            "item": "Flower key",
+            "location": "Ferim Tower",
+            "boss": "Demise"
+          },
+          {
+            "item": "Magma key",
+            "location": "Tower of Truth",
+            "boss": "Fire Dragon"
+          },
+          {
+            "item": "Heart key",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Ghost key",
+            "location": "Lake Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Trial key",
+            "location": "Secret Skills Cave",
+            "boss": "No Core"
+          },
+          {
+            "item": "Dankirk key",
+            "location": "Dragon Mountain",
+            "boss": "Daos"
+          },
+          {
+            "item": "Basement key",
+            "location": "Foomy Woods",
+            "boss": "Big Catfish"
+          },
+          {
+            "item": "Narcysus key",
+            "location": "Mountain of No Return",
+            "boss": "Mummy"
+          },
+          {
+            "item": "Truth key",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Lisa",
+            "location": "Shrine of Vengeance",
+            "boss": "Idura"
+          },
+          {
+            "item": "Marie",
+            "location": "Shuman Tower",
+            "boss": "Ghost Ship"
+          },
+          {
+            "item": "Clare",
+            "location": "Zeppy Cave",
+            "boss": "King Hidora"
+          },
+          {
+            "item": "Maxim",
+            "location": "Strahda Tower",
+            "boss": "Tank"
+          },
+          {
+            "item": "Selan",
+            "location": "Alunze Castle",
+            "boss": "Goblin"
+          },
+          {
+            "item": "Artea",
+            "location": "Lexis Shaia Laboratory",
+            "boss": "Follower"
+          },
+          {
+            "item": "Tia",
+            "location": "Tower of Sacrifice",
+            "boss": "Camu"
+          },
+          {
+            "item": "Dekar",
+            "location": "Ruby Cave",
+            "boss": "Gades"
+          },
+          {
+            "item": "Lexis",
+            "location": "Treasure Sword Shrine",
+            "boss": "Gargoyle"
+          },
+          {
+            "item": "Shaggy",
+            "location": "Gordovan Tower",
+            "boss": "Amon"
+          },
+          {
+            "item": "Raddisher",
+            "location": "Karlloon Shrine",
+            "boss": "Troll"
+          },
+          {
+            "item": "Armor Dog",
+            "location": "Darbi Shrine",
+            "boss": "Lizard Man"
+          },
+          {
+            "item": "Red Fish",
+            "location": "Cave Bridge",
+            "boss": "Daniele"
+          },
+          {
+            "item": "Foomy S",
+            "location": "Submarine Shrine",
+            "boss": "Kraken"
+          },
+          {
+            "item": "Hard Hat",
+            "location": "Lighthouse",
+            "boss": "Soldier"
+          },
+          {
+            "item": "Myconido",
+            "location": "Flower Mountain",
+            "boss": "White Dragon"
+          },
+          {
+            "item": "Ancient key",
+            "location": "Treasure Sword Shrine",
+            "boss": "VIP card"
+          },
+          {
+            "item": "Flower Mountain",
+            "location": "Iris sword",
+            "boss": "Phantom Tree Mountain"
+          },
+          {
+            "item": "Iris shield",
+            "location": "Eserikto",
+            "boss": "Iris helmet"
+          },
+          {
+            "item": "Ferim Tower",
+            "location": "Iris armor",
+            "boss": "Flower Mountain"
+          },
+          {
+            "item": "Iris ring",
+            "location": "Gratze Castle",
+            "boss": "Iris jewel"
+          },
+          {
+            "item": "Shrine of Vengeance",
+            "location": "Iris staff",
+            "boss": "Tower of Sacrifice"
+          },
+          {
+            "item": "Iris pot",
+            "location": "Alunze",
+            "boss": "Iris tiara"
+          },
+          {
+            "item": "Ancient Tower",
+            "location": "Master Jelly",
+            "boss": "Gratze Castle"
+          },
+          {
+            "item": "STAFF",
+            "location": "Creative Director",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Game Experience Planning",
+            "location": "Abyssonym",
+            "boss": "Reverse Engineering"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Tools Development",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Director of Making Tia the",
+            "location": "Protagonist of the Game",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Testing and Debugging",
+            "location": "Abyssonym",
+            "boss": "Standards and Compliance"
+          },
+          {
+            "item": "Abyssonym",
+            "location": "Documentation",
+            "boss": "Abyssonym"
+          },
+          {
+            "item": "Assistant",
+            "location": "Abyssonym",
+            "boss": "Fixxxer Patch Author"
+          },
+          {
+            "item": "Relnqshd",
+            "location": "Legacy Documentation",
+            "boss": "Relnqshd"
+          },
+          {
+            "item": "Sprite Art",
+            "location": "Eve The Feesh",
+            "boss": "Background Listening"
+          },
+          {
+            "item": "Two Tone Tony",
+            "location": "Special Thanks",
+            "boss": "Lufia II Speedrun Community"
+          }
+        ],
+        "gold": 0,
+        "map_id": 0,
+        "party_stats": [
+          {
+            "level": 5,
+            "status": 0,
+            "hp": 51,
+            "max_hp": 51,
+            "mp": 26,
+            "max_mp": 26,
+            "ip": 0,
+            "spells": [],
+            "ip_attacks": []
+          }
+        ],
+        "raw_inventory": [
+          {
+            "slot": 0,
+            "byte1": 2,
+            "byte2": 20
+          },
+          {
+            "slot": 1,
+            "byte1": 169,
+            "byte2": 3
+          },
+          {
+            "slot": 2,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 3,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 4,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 5,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 6,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 7,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 8,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 9,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 10,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 11,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 12,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 13,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 14,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 15,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 16,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 17,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 18,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 19,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 20,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 21,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 22,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 23,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 24,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 25,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 26,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 27,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 28,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 29,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 30,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 31,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 32,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 33,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 34,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 35,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 36,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 37,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 38,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 39,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 40,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 41,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 42,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 43,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 44,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 45,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 46,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 47,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 48,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 49,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 50,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 51,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 52,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 53,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 54,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 55,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 56,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 57,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 58,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 59,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 60,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 61,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 62,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 63,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 64,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 65,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 66,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 67,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 68,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 69,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 70,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 71,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 72,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 73,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 74,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 75,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 76,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 77,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 78,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 79,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 80,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 81,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 82,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 83,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 84,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 85,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 86,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 87,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 88,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 89,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 90,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 91,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 92,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 93,
+            "byte1": 0,
+            "byte2": 0
+          },
+          {
+            "slot": 94,
+            "byte1": 0,
+            "byte2": 0
+          }
+        ],
+        "enemy_hp_list": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "dungeon_x": 1,
+        "dungeon_y": 0,
+        "dungeon_blocking": 157,
+        "map_context_flag": 0,
+        "exploration_mode_flag": 0,
+        "battle_mode_flag": 0,
+        "facing_contact_state": 255,
+        "dungeon_axis_mirror_x": 34,
+        "dungeon_axis_mirror_y": 68,
+        "dungeon_axis_chunk_y": 0,
+        "in_battle": false
+      }
+    }
+  ]
+}

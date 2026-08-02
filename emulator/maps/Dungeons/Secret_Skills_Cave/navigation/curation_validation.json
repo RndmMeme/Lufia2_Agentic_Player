@@ -1,0 +1,23 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Secret_Skills_Cave",
+  "marker_count": 171,
+  "type_counts": {
+    "door": 13,
+    "walkable": 52,
+    "monster": 3,
+    "switch": 5,
+    "puzzle": 10,
+    "blocked": 41,
+    "ladder": 9,
+    "bush": 36,
+    "npc": 2
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

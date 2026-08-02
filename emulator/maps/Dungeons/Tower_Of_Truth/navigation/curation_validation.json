@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Tower_Of_Truth",
+  "marker_count": 491,
+  "type_counts": {
+    "monster": 45,
+    "door": 36,
+    "ladder": 33,
+    "walkable": 123,
+    "switch": 26,
+    "puzzle": 77,
+    "blocked": 135,
+    "stairs": 10,
+    "chest": 5,
+    "npc": 1
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

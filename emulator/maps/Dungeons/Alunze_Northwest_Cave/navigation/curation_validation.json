@@ -1,0 +1,26 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Alunze_Northwest_Cave",
+  "marker_count": 471,
+  "type_counts": {
+    "door": 16,
+    "walkable": 128,
+    "npc": 1,
+    "ladder": 10,
+    "blocked": 51,
+    "switch": 10,
+    "monster": 26,
+    "chest": 14,
+    "puzzle": 29,
+    "stairs": 16,
+    "bush": 19,
+    "water": 151
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

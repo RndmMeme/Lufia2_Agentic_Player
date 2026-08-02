@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Gordovan_West_Tower",
+  "marker_count": 380,
+  "type_counts": {
+    "door": 46,
+    "walkable": 108,
+    "monster": 26,
+    "ladder": 20,
+    "switch": 20,
+    "puzzle": 34,
+    "blocked": 105,
+    "stairs": 12,
+    "chest": 6,
+    "npc": 3
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

@@ -1,0 +1,43 @@
+{
+    "description": "Character and Enemy stat block structures for Lufia 2.",
+    "character_struct": {
+        "block_size": "0xBE",
+        "offsets": {
+            "Level": "0x11",
+            "Status": "0x12",
+            "CurrentHP": "0x14",
+            "CurrentMP": "0x16",
+            "MaxHP": "0x28",
+            "MaxMP": "0x2A",
+            "ATP": "0x2C",
+            "DFP": "0x2E",
+            "STR": "0x30",
+            "AGL": "0x32",
+            "INT": "0x34",
+            "GUT": "0x36",
+            "MGR": "0x38",
+            "SpellsStart": "0x99",
+            "SpellsEnd": "0xBC"
+        },
+        "party_bases": {
+            "Maxim": "0x2EBE",
+            "Selan": "0x2F7C",
+            "Guy": "0x303A",
+            "Artea": "0x30F8",
+            "Tia": "0x31B6",
+            "Dekar": "0x3274",
+            "Lexis": "0x3332"
+        }
+    },
+    "enemy_struct": {
+        "block_size": "0xBE",
+        "slot_bases": [
+            "0x3940",
+            "0x39FE",
+            "0x3ABC",
+            "0x3B7A",
+            "0x3C38",
+            "0x3CF6"
+        ]
+    }
+}

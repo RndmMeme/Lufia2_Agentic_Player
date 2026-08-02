@@ -1,0 +1,27 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Ruby_Cave",
+  "marker_count": 660,
+  "type_counts": {
+    "door": 8,
+    "walkable": 95,
+    "monster": 19,
+    "ladder": 6,
+    "blocked": 53,
+    "stairs": 14,
+    "bush": 30,
+    "switch": 6,
+    "npc": 2,
+    "puzzle": 23,
+    "lava": 388,
+    "chest": 4,
+    "wall": 12
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

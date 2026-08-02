@@ -1,0 +1,94 @@
+{
+  "game_title": "Lufia II: Rise of the Sinistrals",
+  "character_technical_data": {
+    "growth_mechanics": "Character stats grow across 13 distinct stages from level 1 to 99. For example, Maxim gains a minimum of 7 HP per level in Stage 1 (levels 1-8) but only a minimum of 3 HP per level in Stage 13 (levels 96-99).",
+    "ancient_cave_starting_bonuses": [
+      { "name": "Maxim", "bonuses": "+13 HP, +20 MP, +16 STR, +8 AGL, +6 INT, +5 MGR" },
+      { "name": "Selan", "bonuses": "+8 HP, +23 MP, +3 STR, +10 AGL, +15 INT, +8 MGR" },
+      { "name": "Guy", "bonuses": "+18 HP, +30 STR, +4 AGL, +1 INT, +3 MGR" },
+      { "name": "Artea", "bonuses": "+12 HP, +28 MP, +16 STR, +10 AGL, +15 INT, +30 MGR" },
+      { "name": "Tia", "bonuses": "+13 HP, +20 MP, +10 STR, +8 AGL, +15 INT, +6 MGR" },
+      { "name": "Dekar", "bonuses": "+28 HP, +38 STR, +4 AGL" },
+      { "name": "Lexis", "bonuses": "+12 HP, +38 MP, +7 STR, +2 AGL, +20 INT, +20 MGR" }
+    ]
+  },
+  "capsule_monster_deep_dive": {
+    "evolution_and_traits": [
+      {
+        "monster": "Jelze (Neutral)",
+        "master_form": "Gold Fox (evolved via Secret Fruit)",
+        "key_moves": "Tail Smash (9x ATP damage), Tackle (Critical hit on all enemies)",
+        "immunities": "Poison, Silence, Paralysis, Confusion, and Sleep"
+      },
+      {
+        "monster": "Blaze (Fire)",
+        "master_form": "Firebird (evolved via Charm Fruit)",
+        "key_moves": "Inferno (6x INT magic damage to all), Terminate (4x INT magic damage to all)",
+        "weakness": "Vulnerable to Water"
+      },
+      {
+        "monster": "Flash (Light)",
+        "master_form": "Unicorn (evolved via Dark Fruit)",
+        "key_moves": "Healing Aura (Restores 180-220 HP to all), Holy Thunder (4x INT magic damage to one)",
+        "weakness": "Vulnerable to Shadow"
+      },
+      {
+        "monster": "Gusto (Wind)",
+        "master_form": "Sky Dragon (evolved via Earth Fruit)",
+        "key_moves": "Sonic Blast (8x INT magic damage to all), Dragon Fang (3.5x ATP critical hit)",
+        "passive": "Evasion probability is calculated as (CM AGL - Attacker AGL) / CM AGL"
+      },
+      {
+        "monster": "Sully (Soil)",
+        "master_form": "Centaur (evolved via Breeze Fruit)",
+        "key_moves": "Stone Crush (3x ATP critical hit to all), Tackle (3x ATP critical hit to all + 60% Paralysis chance)",
+        "resistance": "Resistant to Thunder and Hard-type attacks"
+      },
+      {
+        "monster": "Darbi (Shadow)",
+        "master_form": "Red Dragon (evolved via Holy Fruit)",
+        "key_moves": "Eliminator (90% Instant Death chance to all), Evil Aura (6x INT magic damage to all)",
+        "traits": "The only CM immune to Instant Death"
+      },
+      {
+        "monster": "Zeppy (Water)",
+        "master_form": "Fish Head (evolved via Flame Fruit)",
+        "key_moves": "Energy Wave (Increases party ATP by 40%), Hyper Kick (5x ATP damage to one)",
+        "best_forms": "Level 3 (Sea Giant) is recommended for general use, while Level 4 (Blue Titan) is better for boss fights"
+      }
+    ]
+  },
+  "equipment_and_combat_strategy": {
+    "ip_skills_to_seek": [
+      { "skill": "Octo-strike", "cost": 255, "effect": "Hits one enemy 8 times; highest raw damage in game (Gades Blade)" },
+      { "skill": "Hardboiled", "cost": 8, "effect": "Low cost; affects enemy attributes or causes total defeat (Egg Sword)" },
+      { "skill": "Battle Fury", "cost": 192, "effect": "Reduces enemy HP by 1/4; can hit for 9999 damage on the Egg Dragon (Myth Blade)" },
+      { "skill": "Sudden Cure", "cost": 96, "effect": "Restores party HP by 50% of user's Max HP (Bright Armor, Zircon Plate)" }
+    ],
+    "status_immunity_guide": [
+      { "ailment": "Silence", "protection": "Pearl Shield, Mage Shield, Old Shield, S-myst Ring" },
+      { "ailment": "Instant Death", "protection": "Pearl Armor, Undead Ring, Ghost Ring, Ruse Armor" },
+      { "ailment": "Paralysis", "protection": "Pearl Armor, Pearl Brace, Mirak Plate, Magic Bikini" },
+      { "ailment": "Confusion", "protection": "Pearl Helmet, Legend Helm, Power Brace, Safety Hat" },
+      { "ailment": "Sleep", "protection": "Mystery Ring, S-myst Ring, Fury Ribbon, Anger Brace" }
+    ],
+    "elemental_weaponry": {
+      "light": "Dual Blade, Gladius, Super Sword, Fry Sword, Holy Staff",
+      "shadow": "Gades Blade, Deadly Sword, Beserk Blade, Fatal Pick",
+      "special_efficacy": "Weapons like the Lizard Blow are exclusively effective against Dragons; the Flying Ax is effective against flying enemies"
+    }
+  },
+  "advanced_game_secrets": {
+    "egg_dragon_wishes": [
+      { "wish": "Set of Status Potions" },
+      { "wish": "Set of Capsule Monster Fruits" },
+      { "wish": "Ancient Shield" },
+      { "wish": "Set of specialized Rings" }
+    ],
+    "ancient_cave_rules": "A 99-floor dungeon where you enter at level 1 with no gear. Only rare 'Blue Chest' items can be permanently removed from the cave. After floor 20, players must find the 'Providence' item to exit the cave successfully.",
+    "post_game_modes": [
+      { "name": "Retry Mode", "benefit": "Earn 4x experience in battles" },
+      { "name": "Gift Mode", "benefit": "Access the Ancient Cave immediately with any character choice" }
+    ]
+  }
+}

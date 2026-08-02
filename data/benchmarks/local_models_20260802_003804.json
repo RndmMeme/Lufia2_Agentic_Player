@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-08-02T00:35:23.055567",
+  "contract": "schema-bound intents plus one gated Mesen screenshot",
+  "models": [
+    {
+      "model": "gemma3:4b",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "error": "Unsupported intent kind: ''",
+          "seconds": 18.344
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "error": "Unsupported intent kind: ''",
+          "seconds": 5.359
+        },
+        {
+          "case": "dialog",
+          "passed": false,
+          "error": "Unsupported intent kind: ''",
+          "seconds": 5.172
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "error": "Unsupported intent kind: ''",
+          "seconds": 5.266
+        }
+      ],
+      "vision": {
+        "passed_schema": true,
+        "result": {
+          "scene_type": "room",
+          "relevant_objects": [
+            {
+              "name": "Red Orb",
+              "x": 28,
+              "y": 45,
+              "semantic": "target"
+            },
+            {
+              "name": "Stone Staircase",
+              "x": 30,
+              "y": 46,
+              "semantic": "path"
+            }
+          ],
+          "navigation_hypothesis": "The player should attempt to move east towards the red orb.",
+          "confidence": 0.85,
+          "safe_next_test": "east"
+        },
+        "seconds": 67.281
+      },
+      "planner_passes": 0
+    },
+    {
+      "model": "hf.co/unsloth/gemma-4-E2B-it-GGUF:UD-Q4_K_XL",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": true,
+          "intent": {
+            "kind": "move",
+            "direction": "east",
+            "count": 1,
+            "question": null,
+            "query": null,
+            "rationale": "suggested_direction is east for exploration."
+          },
+          "seconds": 21.844
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": true,
+          "intent": {
+            "kind": "move",
+            "direction": "west",
+            "count": 1,
+            "question": null,
+            "query": null,
+            "rationale": "The suggested direction is west."
+          },
+          "seconds": 4.156
+        },
+        {
+          "case": "dialog",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": "for look",
+            "rationale": "Show current surroundings to understand the environment."
+          },
+          "seconds": 3.781
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": "for look",
+            "rationale": "The current state is a battle, and I need to observe the environment to decide the next move."
+          },
+          "seconds": 4.297
+        }
+      ],
+      "vision": {
+        "passed_schema": true,
+        "result": {
+          "scene_type": "cave_room",
+          "relevant_objects": [
+            {
+              "object_name": "stone_structure",
+              "navigation_semantics": [
+                "path"
+              ]
+            },
+            {
+              "object_name": "exit_or_doorway",
+              "navigation_semantics": [
+                "path"
+              ]
+            }
+          ],
+          "navigation_hypothesis": "The player is in a room with a central stone structure and an exit/doorway visible. The suggested direction is 'east'.",
+          "confidence": 0.85,
+          "safe_next_test": "Move east."
+        },
+        "seconds": 25.938
+      },
+      "planner_passes": 2
+    }
+  ]
+}

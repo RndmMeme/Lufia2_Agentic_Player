@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-08-02T05:11:30.531855",
+  "contract": "schema-bound intents plus one gated Mesen screenshot",
+  "models": [
+    {
+      "model": "qwen3-vl:4b",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "error": "move intent requires north/south/east/west",
+          "seconds": 45.172
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "error": "move intent requires north/south/east/west",
+          "seconds": 1.203
+        },
+        {
+          "case": "dialog",
+          "passed": true,
+          "intent": {
+            "kind": "interact",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "tool": null,
+            "rationale": "The dialog is active, so interacting with the current dialogue option is required to proceed. This aligns with the mode being 'dialog' and the need to resolve the conversation before moving forward."
+          },
+          "seconds": 1.219
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "error": "move intent requires north/south/east/west",
+          "seconds": 1.046
+        }
+      ],
+      "vision": {
+        "passed_schema": true,
+        "result": {
+          "scene_type": "cave",
+          "relevant_objects": [
+            {
+              "type": "door",
+              "position": [
+                49,
+                25
+              ],
+              "description": "Red door with golden frame"
+            },
+            {
+              "type": "ground",
+              "position": [
+                30,
+                55
+              ],
+              "description": "Player's current position on cave floor"
+            }
+          ],
+          "navigation_hypothesis": "The red door is the primary navigation target. The player should move towards it to proceed.",
+          "confidence": 0.9,
+          "safe_next_test": "north"
+        },
+        "seconds": 16.969
+      },
+      "planner_passes": 1
+    }
+  ]
+}

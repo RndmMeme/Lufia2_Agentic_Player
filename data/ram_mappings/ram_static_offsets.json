@@ -1,0 +1,38 @@
+{
+    "description": "Global WRAM offsets for Lufia 2. Use with WRAM Base 7E0000.",
+    "world_state": {
+        "Gold": "0x2D9E",
+        "CurrentMap": "0x28C0",
+        "EventFlagsStart": "0x077E",
+        "EventFlagsEnd": "0x079D",
+        "ScenarioStart": "0x2C32",
+        "ScenarioEnd": "0x2C34",
+        "DungeonFlagStart": "0x2A96",
+        "DungeonFlagEnd": "0x2A9F",
+        "TransportFlag": "0x2CF5"
+    },
+    "movement": {
+        "ShipXFast": "0x379C",
+        "ShipXSlow": "0x379D",
+        "ShipYFast": "0x379F",
+        "ShipYSlow": "0x37A0",
+        "WalkXFast": "0x377F",
+        "WalkXSlow": "0x3780",
+        "WalkYFast": "0x3782",
+        "WalkYSlow": "0x3783",
+        "DungeonXHigh": "0x3532",
+        "DungeonXLow": "0x3534",
+        "DungeonYHigh": "0x353A",
+        "DungeonYLow": "0x353C",
+        "DungeonBlocking": "0x3586",
+        "TownX": "0x28A8",
+        "TownY": "0x28AA"
+    },
+    "inventory": {
+        "InventoryStart": "0x2DA1",
+        "InventoryEnd": "0x2E60",
+        "CurrentToolName": "0x2E8B",
+        "SelectedItemPrice": "0x2CCE",
+        "ShopCursorPosition": "0x3888"
+    }
+}

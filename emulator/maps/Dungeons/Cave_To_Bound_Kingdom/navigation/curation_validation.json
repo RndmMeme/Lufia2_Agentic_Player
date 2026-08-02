@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Cave_To_Bound_Kingdom",
+  "marker_count": 132,
+  "type_counts": {
+    "stairs": 14,
+    "bush": 11,
+    "switch": 1,
+    "walkable": 39,
+    "chest": 2,
+    "puzzle": 2,
+    "door": 8,
+    "water": 26,
+    "monster": 1,
+    "blocked": 28
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

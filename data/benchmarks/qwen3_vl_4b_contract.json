@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-08-02T05:05:50.796204",
+  "contract": "schema-bound intents plus one gated Mesen screenshot",
+  "models": [
+    {
+      "model": "qwen3-vl:4b",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "error": "Model response contained no JSON object: ''",
+          "seconds": 20.781
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "error": "Model response contained no JSON object: ''",
+          "seconds": 3.5
+        },
+        {
+          "case": "dialog",
+          "passed": false,
+          "error": "Model response contained no JSON object: ''",
+          "seconds": 3.672
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "error": "Model response contained no JSON object: ''",
+          "seconds": 3.781
+        }
+      ],
+      "vision": {
+        "passed_schema": false,
+        "error": "Model response contained no JSON object: ''",
+        "seconds": 17.719
+      },
+      "planner_passes": 0
+    }
+  ]
+}

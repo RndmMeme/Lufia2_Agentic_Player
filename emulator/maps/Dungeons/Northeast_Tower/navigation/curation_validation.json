@@ -1,0 +1,24 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Northeast_Tower",
+  "marker_count": 451,
+  "type_counts": {
+    "door": 29,
+    "ladder": 30,
+    "walkable": 134,
+    "blocked": 188,
+    "switch": 24,
+    "monster": 23,
+    "puzzle": 8,
+    "chest": 4,
+    "stairs": 10,
+    "npc": 1
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

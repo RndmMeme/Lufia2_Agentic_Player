@@ -1,0 +1,24 @@
+WRAM BOOT HOOK KANDIDATEN
+Basis: Lufia_II_-_Rise_of_the_Sinistrals_USA.1721649189 - SnesWorkRam_base.dmp
+Boot:  Lufia_II_-_Rise_of_the_Sinistrals_USA.1721649189 - SnesWorkRam_boot_Natsume.dmp
+Gefundene Aenderungen: 58
+Kandidaten: 16
+
+Score | Offset     | SNES         | Alt      | Neu      | Bits  | Begruendung
+----------------------------------------------------------------------------------------------------
+    5 | 0x01FDD    | 7E:1FDD      | 0x00     | 0x80     | 1     | Initialisierung 0x00 -> Wert; 1-Bit-Flag (Bit 7)
+    5 | 0x01FF1    | 7E:1FF1      | 0x00     | 0x80     | 1     | Initialisierung 0x00 -> Wert; 1-Bit-Flag (Bit 7)
+    4 | 0x0058F    | 7E:058F      | 0x00     | 0xFF     | 8     | Initialisierung 0x00 -> Wert; Stabiler Wert: 0xFF
+    4 | 0x00590    | 7E:0590      | 0x00     | 0xFF     | 8     | Initialisierung 0x00 -> Wert; Stabiler Wert: 0xFF
+    4 | 0x00591    | 7E:0591      | 0x00     | 0xFF     | 8     | Initialisierung 0x00 -> Wert; Stabiler Wert: 0xFF
+    4 | 0x00592    | 7E:0592      | 0x00     | 0xFF     | 8     | Initialisierung 0x00 -> Wert; Stabiler Wert: 0xFF
+    4 | 0x00593    | 7E:0593      | 0x00     | 0xFF     | 8     | Initialisierung 0x00 -> Wert; Stabiler Wert: 0xFF
+    4 | 0x01FDF    | 7E:1FDF      | 0x00     | 0x98     | 3     | Initialisierung 0x00 -> Wert; Kompakt (3 Bits)
+    4 | 0x01FF2    | 7E:1FF2      | 0x00     | 0x26     | 3     | Initialisierung 0x00 -> Wert; Kompakt (3 Bits)
+    3 | 0x00060    | 7E:0060      | 0x00     | 0xF4     | 5     | Initialisierung 0x00 -> Wert
+    3 | 0x01FD6    | 7E:1FD6      | 0x00     | 0xBE     | 6     | Initialisierung 0x00 -> Wert
+    3 | 0x01FD7    | 7E:1FD7      | 0x80     | 0x00     | 1     | 1-Bit-Flag (Bit 7); Stabiler Wert: 0x00
+    3 | 0x01FDC    | 7E:1FDC      | 0x00     | 0x99     | 4     | Initialisierung 0x00 -> Wert
+    3 | 0x01FE5    | 7E:1FE5      | 0x80     | 0x00     | 1     | 1-Bit-Flag (Bit 7); Stabiler Wert: 0x00
+    3 | 0x01FEB    | 7E:1FEB      | 0x00     | 0x3D     | 5     | Initialisierung 0x00 -> Wert
+    3 | 0x01FF5    | 7E:1FF5      | 0x80     | 0x00     | 1     | 1-Bit-Flag (Bit 7); Stabiler Wert: 0x00

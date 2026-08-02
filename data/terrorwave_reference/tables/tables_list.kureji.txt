@@ -1,0 +1,23 @@
+# objname tablefile address count grouped
+ChestObject         struct_chest.txt            pointers_chest.txt
+AncientChest2Object struct_ancient_chest.txt    8ffdc   9
+BlueChestObject     struct_blue_chest.txt       30d880  42
+AncientChest1Object struct_ancient_chest.txt    a713d   31
+SpellObject         struct_spell.txt            pointers_spell.frue.txt
+# kureji has 7 extra monsters, but we're ignoring bosses
+MonsterObject       struct_monster.txt          282000  188     point1  282000 2
+ItemObject          struct_item.txt             b4f69   467     point1  b4f69 2
+CharGrowthObject    struct_char_growth.txt      pointers_char_growth.txt
+CharacterObject     struct_character.txt        bb93c   7
+CapPaletteObject    struct_cap_palette.txt      bd258   35
+CapsuleObject       struct_capsule.txt          bdcb8   35      point1  bdcb8 2
+# kureji needs special shop pointers
+ShopObject          struct_shop.txt             pointers_shop.kureji.txt
+ItemNameObject      struct_item_name.txt        f47e8   467
+CapSpritePTRObject  struct_cap_sprite_ptr.txt   1384bc  35
+MonsterMoveObject   struct_monster_move.txt     27f6b5  112
+$capsule_end        beead
+$rng1               63
+$rng2               2f4
+.patch              patch_clear_initial_spells.txt
+.option             patch_ac_music_hack.txt

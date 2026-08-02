@@ -1,0 +1,624 @@
+INTRODUCTION
+
+In a dark castle, three spheres of energy arrive and some time later they leave. Soon after, a fourth sphere arrives; It’s Erin. She speaks to Arek, who asks who, in her opinion, should rule the world: humans or sinistrals. Erin responds that she has no doubt that they, the sinistrals, must rule, and Arek says that the day of judgment for the Dual Blade is approaching. Erin asks if the Dual Blade is ringing yet, and Arek says she should go now.
+
+ELCID
+
+Maxim, a monster hunter, arrives to sell his kill at Tia’s shop. She says she can’t pay a higher price, as the number of monsters is increasing and, instead of 180, you only get 120 G. Maxim says it would be worse if there were no monsters, as he would lose his job. Tia asks if he couldn’t choose another profession, like a store owner. Maxim laughs and Tia gets angry. Go out and talk to everyone in the city, try to leave it from the south and an old man says he wants to meet you in a cave south of here; head there.
+
+SECRET SKILL CAVE
+
+Talk to the old man to learn the basics of Lufia II’s gameplay system. Firstly, there are no random battles here, the enemies are visible and to fight you have to tap on them. Enemies only move when you move. Fight the Jelly, after detonating it, go to the next room. Here, the old man explains how to use the tools; At the moment, you only have the arrows, but you will pick up others as the game progresses. Arrows can paralyze an enemy for a period of time, allowing you to get close enough to engage them. To use them, press Y. Detonate some more Jellys and go to the next room. Here there is a broken bridge and the door to the northeast is locked. The old man says that arrows are also used to activate mechanisms from a distance; then use them on the lever on the other side to make a bridge appear. Cross it and go through two doors in a row.
+
+There’s a locked door here. After the conversation, step on the button in the middle of the brick floor and the door opens, but if you leave, it closes again. Talk to the old man and he says to push the pillar towards the button. Get close and hold A to push him. Place it on top of the button and go through the door, but first, the old man will give you the “Reset” spell, which is used to restore things in the room to their original state. Use it when you get stuck on a puzzle, and believe me there are many in the game. Well, in the next room, simply fall to the location with the arrow keys and climb the ladder to reach the next door. In this room, the old man says that to open the next door you must kill all the monsters. So do that and move forward to a place full of weeds. The old man says to use your sword with the B button and cut the bush; sometimes there are things hidden beneath it, which is not the case here. What you should find is a hidden button to open the next door and reach a place with a vase and two white buttons on the floor. Pick up the vase with the A button, hold R and use the directional pad to change direction without moving. Place the vase on the right button to open the wall. Now, take the other vase and place it on the other button to open the door. Move forward until the old man says the training is over. Exit the cave and return to Elcid.
+
+ELCID
+
+Go to the Shop and talk to Tia. She invites Maxim to dinner and serves him some Phantom Fish, which turns out to be inedible. But Maxim solves the problem by adding a little lemon. Tia asks why Maxim is always fighting monsters, because no one else does that. He says he’s been fighting for as long as he’s been around and he’s never asked himself why. After dinner, he would go out and walk around a bit. A guy arrives and says that a bunch of monsters invaded the cave to the north and won’t let anyone pass. He talks to the old man and he asks Maxim to take care of it. Before you go, I advise you to buy some potions from Tia. Head north to the cave.
+
+CAVE TO SUNDLETON
+
+Talk to the pink-haired man, who says that a strange woman entered the cave and he couldn’t do anything to stop it. Go forward, enter the upper right door, eliminate the monsters, take a vase and place it a little after the button that lowers the spikes, but not on top of it. Then take the other vase, go close to the first one, turn it around and place it on the button. Pick up another vase and place it on the button behind the spikes to open the door. Follow it and get a Life Potion from the chest. Go back and go through the door on the right, cut the bush to get an Escape, go back two screens and cut the bush to reveal a button. Step on it and go through the door to the south.
+
+Cut the bushes near the wall on the left and go through the secret passage to get an Antidote. Go through the next door. In this room, cut through all the bush to reveal two buds, place the vases on top of them and go through the door on the left. Push the rocks to clear the path to the stairs, go down it and get a Power Potion from the southernmost chest. Use an arrow on the red button to make a bridge appear, fall to the location with the arrow and cross the bridge to another staircase. You will see three symbols on the ground; they are HP, MP and Save Point rechargers. Recover, save and climb the next ladder to face the first boss of the game.
+
+BOSS: Lizard Man
+
+He only uses physical attacks. Obviously, you have no other option than the normal attack. Attack him and heal yourself with items whenever his HP drops below 15. When you defeat him, you gain the Key of the Door.
+
+Maxim wonders how the Lizard Men got so smart as to steal the key. Then, a woman appears and says that a huge force is responsible for the change in the monsters and that Maxim is destined to face this force. He must go on a journey to find others who also share this destiny. Before going, she introduces herself as Iris and says they will meet again. She leaves the cave and returns to Elcid just to buy the Strong and Poison spells. If he has any money left over, he buys new equipment from Tia. Go back to the cave, enter the next room and go through the upper left door. Use the key to open the door and exit on the other side, head to the village of Sundletan just to the north and when you enter, an earthquake will occur. Talk to the villagers to discover that there is a monster causing the earthquakes; he is in the cave to the north. Head there.
+
+LAKE CAVE
+
+Shoot an arrow at the lever to make the water rise, use the planks to form a bridge and go to the next room. Go through the left door, notice that there is a part where the floor is cracked, leave it for now and enter the next door. Head to the southernmost door and get a Power Potion from the chest. Go back and go through the door to the north of this one, push the top pillar to the west to open the door to the south. Follow it and push the lower right stone to reveal a staircase. You will see rocks forming a downward arrow; you must form an upward arrow to open the next door. See the scheme:
+
+12345
+ 678
+  9
+
+Push rocks 1 and 5 down once, then push rock 9 on top of rock 3. Go in and get the Lake Key from the chest. Go back to the pillar room and push the bottom pillar to the north to open the door on the right. Follow it and, when you enter the next door, there is a line of monsters; you will have to eliminate them all to get the Speed ​​Ring in the chest. Be careful with the Eagles, they have thick skin. Go back and go to the end of the hallway on the right and go through the wall on the left to get a Miracle from the chest.
+
+Now, go all the way back to the place with the cracked floor. Don’t step on it now. Continue forward and, in the next room, go through the door on the right. The door to the south leads to HP and MP rechargers if you need them. Eliminate all the monsters and three more will appear behind the spikes. You must hit them in the correct order to open the door to the north. Unfortunately, this order changes from game to game, so if you make a mistake, use Reset and try again until you get it right. Now, go forward to a chest containing an Insect Crush. Now, go back to the cracked floor and step on the crack below the one in the middle-north to fall onto a button that opens the door on the right; the one on the left has a save point. In the next room, use three planks to form a bridge to the lever. Take the fourth plank and throw it into the water. Activate the lever, go down the ladder and use the board to reach the other ladder. Go forward and open the next door with Lake Key. Get ready for the boss.
+
+BOSS: Big Catfish
+
+In addition to the physical attack, he uses Mega Quake, which deals around 20 HP of damage. Just like the previous boss, you don’t have many options. Attack normally and heal whenever your HP drops below 20. It’s not difficult at all.
+
+The monster apologizes and says he will sleep at the bottom of the lake and won’t disturb anyone again. He leaves the cave and returns to Sundletan. Buy new equipment and Droplet magic. Talk to the blue-haired man near the entrance, who says that a girl was here looking for him and went to the Lake Cave. Head there and go to the place with the spikes. You will find Tia being attacked by monsters. Finish them off, and she says she came after Maxim because she felt he was going on a big trip. Maxim explains the whole story and Tia says she will accompany him. Maxim hesitates, but when he sees that she is unyielding, he ends up accepting and Tia joins the group. Return to Sundletan and buy new equipment for Tia. If possible, buy the Droplet and Poison spells. Head to the building to the northwest and exit the other side. Now, head south to a large tree. Enter it and talk to the woman to get “Capsule Monster” from her first, Jelzy. More details about capsule monsters will be explained in a separate topic. Leave here and head north to a town with a castle.
+
+ALUNZE KINGDOM
+
+On the second floor of the INN, there is a slot machine. To play, you need to buy chips from the blue-haired man. It would be interesting to try to get 1000 tokens and exchange them for the Rage Knife, which is a very powerful weapon at this point in the game. There is also an excellent armor that has the IP Miracle, which restores all of the party’s HP, but it costs 10000 tokens, and I doubt you will have the patience to get it. Well, head to the castle and climb the first staircase, head north to reach the throne room. There is a crowning ceremony for the prince, but Betty and Bart, two thieves, arrive and steal the crown. Go through the door to the south and then go right, go down the stairs and talk to the fallen man. Go forward two screens and go south. Place the jug on the button to open the next door. You will see two white stones; push the one on the right once to the south and the one on the left once to the west to widen the southern corridor. Push the other rock down this hallway to the black square near the door to open it. Go to the chest that contains a new tool, the bombs.
+
+Go back to the room with four pillars. Note that there is a cracked wall on the right. Use a bomb on it to open the way. You will be in a huge room. Take the vase and place it on a button to the south. Get the Headband from the chest to the southwest and follow the bridge that formed. In the next room, there is a cracked wall, but first, go through the door on the right and defeat the monster to open the next door and reach the rechargers and a save point. Go back and now use the bomb to blow up the cracked wall. Take the vase and place it on the north button to open the door to the north. Go in and get the Escape from the chest. Go back and place the vase on the southern button. Go through the door that opened and you will see some colored blocks. You must align blocks of the same color. There are 6 yellow, 5 blue and 5 red blocks. If you line up three blocks, they will disappear. They are arranged according to the following scheme:
+
+     1 2
+   34567
+   890AB
+    CD E
+    F
+
+Well, do the following: push the F block to the left of the 8, this eliminates 3 yellow ones. Move block 4 above 3 and 1 to the left once and up once. Now, place block 2 between blocks 3 and 5 to eliminate the rest of the yellow ones. Move block 4 up once and block 1 right once. Place block C to the right of 4, move block D below 4 and E to the right of D. Move block 0 up to eliminate the blue ones. Place block B to the right of 1 and A between blocks C and 1 to eliminate the red ones and open the passages. In the door to the north, there is a Coat; take it and go through the door to the south. Push the middle stone down, the right one right, and the middle one left again to reach the stairs. Go forward until you reach a blue circle with four buttons around it. Go left and push the block into the black square in front of it. Go back and place the vase on the top left button. Step into the circle and place a bomb near the box. Exit the spike area, get the Dragon Egg from the chest and exit through the door to the south. Push the block onto the other black square to lower the spikes on the left.
+
+Place the vase on the top right button, step on the circle and go to the chest with a Secret Fruit. Go back and place the vase on the bottom right button. You must defeat the monster to be able to lower the spikes and get the item from the chest. The problem is that he keeps running away from you. Do the following: stay right below the blue circle and keep the directional pad down for a while. Now, go anywhere, leaning against the wall, and he will come towards you. Finish him off and get the Light Knife from the chest. Go back and place the vase on the bottom left button, finish off the monsters to open the next door. Follow it and you finally find Betty and Bart. After a series of mistakes between the two, head south to recover the crown. Use an Escape to get out of here and go talk to the king to return the crown. He says he wants to reward them. Choose the last option to earn 3000 G. Go rest at the city’s INN and head to the temple to the north. You discover you can’t get through because a boy named Abel has the key and has gone to the cave to the west. Head there.
+
+ALUNZE WEST CAVE
+
+You meet Abel at the entrance. He says a monster took the key. When he’s gone, pick up the planks and use them to complete the bridges. He falls to the arrow location and activates the lever. Get the Hi-potion from the chest and head to the northwest door. Activate the lever to open it. Go down the stairs and head to the south door. Go straight past the ladder and you’ll reach the reloaders. Cut through the bush to the north to reveal a secret corridor. At the end of it, there is a Brave and a Miracle. Go back through the left door and go down the stairs. There are three chests on the right containing a Hi-Potion, Hi-Magic, and a Power Brace. Get everything and kill all the monsters to get out of here. Go back up the stairs and head north. Go to the door to the northeast and go forward until you reach a spot with a vase. Walk around until a staircase appears on the other side when you step on a certain part. Place the vase in that part and go back to the recharger room.
+
+Go through the door on the right and go down the stairs. Now comes the annoying part. There is a button to the north and it is blocked by brush. You must push the white stone to the button. The problem is that when you cut the bush, it grows back after a few seconds, so you’ll have to be pretty quick. Place the rock facing the button, use a bomb near the bush and, as soon as it explodes, push the rock towards the button. Do this until you succeed. There is a lever to the west. Stay a good distance away and shoot an arrow at it. Go back to the place with the three chests near the spikes and push the pillars into the water to form a bridge. Head north to a chest containing a Jet Helmet. Go down the ladder near the pillars. Here there are two doors and a staircase. Go down the stairs and go forward until you reach a pool. In the room before it, there is a secret passage that takes you to a chest with a Miracle. Press the button to lower the water. Go back and go through the door on the right. Go forward until you reach another pool. Press the button and go back. Go through the right door, recover, save and use a bomb on the cracked wall. Get ready for the boss.
+
+BOSS: Regal Goblin
+
+He has a powerful physical attack, which could be a problem for Tia. Keep her healing all the time. He also summons other monsters to help him. Don’t worry about them and focus your attacks on Regal. After it falls, get rid of the rest.
+
+Get the Shrine Key from the chest and go back to the first room. Head through the door to the east and you’ll see three buttons and two vases, but there’s a third hidden behind the pillar on the right. Place them on the buttons and go through the door. You will come to two white rocks. Push the bottom one to the side and the top one up once to pass. Now push it back to the button to open the door. Get the Horse Rock from the chest and leave this place. Head to the temple and you will be able to pass through. Head north to the next town.
+
+TANBEL
+
+First of all, buy new equipment and spells. Talk to the blonde girl at the entrance; She is Hilda and invites you to dinner at her inn. You will also meet her brother, Guy. After some small talk, Guy invites Maxim to train with him. Head north and talk to him. Just as they were about to start, a monster appears and orders his henchmen to attack Guy. Maxim and Tia decide to help. After an easy battle, the monster escapes. Then someone arrives and says that he took Hilda to the southeast tower. Maxim says he will go with Guy to rescue her. If she has the money, buy Guy some equipment and head to the southeast tower.
+
+TANBEL SOUTHEAST TOWER
+
+Go through the door on the left, step on the symbol in the middle. Push the north stone to the south button and the side stones to their respective buttons. Pick up the vase in the lower left and place it on the northern button to open the door. Enter and go up the stairs. Enter through the door to the south and eliminate the goblin in the middle of the blue floor. Step on the button and go forward to an outside part. Enter the other door and push the pillar on the right into the black square. Follow the passage that opened and go up two stairs. There are two doors here. Follow the southern one, enter the blue floor where there is no yellow outline and step on the button. Continue south to the outside. Climb the ladder to the left and pull the lever.
+
+Go back to the room with two doors and go through the northern one. Push the pillar to the white button and then place the vases on the symbols that appeared (one of them is behind the pillar and you can’t see it). Follow the door that opened and head south to a dead end, but notice the skull next to it. Place a bomb on top of it to reveal a button. Step on it to open a passage. Go outside, go down the stairs and enter the next door. You will see three squares with musical symbols below three black blocks. Do the following: from right to left, take a swing at the first one, shoot an arrow at the second one and put a bomb at the third one. This will open the next door. Enter through it and get the Sky Key from the chest.
+
+Go back to the room where you blew up the skull and go up the stairs. Head south, recover, save and move forward to the outside. Enter the door on the right and the next one, push the block to the left square and the pillar to the north square. Enter the door that opened and pull the lever. Go back outside and climb the stairs on the left. Enter the next door and use the Sky Key to open the next one. Move forward and prepare for the boss.
+
+BOSS: Camu
+
+As far as I know, he only uses physical attacks and sometimes uses “Strong” to heal himself. He is weak to thunder, so it would be good for Maxim and Guy to have the Kukri weapon equipped to be able to use the IP Thunder Blast, which does tremendous damage to him. Flash magic also helps. Tia should heal and use Flash when possible. Sometimes he calls some monsters to help, but don’t worry about them and focus your attacks on Camu. After he falls, he gets rid of the rest.
+
+Before dying, Camu says that soon the Sinistrals will rule this world. Guy asks who these Sinistrals are, but Camu says they don’t need to know, since they won’t leave this tower. He then uses the last of his strength to lock the room, but soon Iris appears and teleports everyone to Tanbel. Guy wants to thank her, but she’s not there anymore. The group takes Hilda to the INN to rest. Guy wants to go along with Maxim, but is reluctant to leave his sister alone. Then Jessy, Guy’s girlfriend, appears and says she will take care of Hilda. More relaxed, Guy then joins the group permanently. He leaves the city and goes back to the tower. You may have seen that in the boss room there were three chests that you cannot get. Well, go all the way there again and get a Camu Armor, Fire Dagger and Pearl Bracelet. Go back to the beginning of the tower and go through the door to the north and continue forward until you exit the tower on the other side. Follow it to the small village ahead.
+
+CLEMENT
+
+Buy new equipment and spells. There is a store that sells glass objects; buy a Glass Brace for Tia. Head to the large house to the north and talk to Rochey. He says that in the cave to the north there is an apple-shaped ruby, and if you bring it there he will pay a good price. His wife then says that the owners of the glass store were late with the rent again. Well, leave the city and head to the cave to the north.
+
+RUBY CAVE
+
+Enter the door on the left and place a bomb on the cracked wall on the right. Go forward until you reach a place with four levers. You must turn all four to the left, but when you turn one, you also turn two others. They are arranged this way:
+
+AB
+
+CD
+
+Flip them in this order: B -> C -> D -> A. This will make the lava at the beginning of the cave disappear. Place a bomb on the cracked wall just ahead and, in the next room, step on the blue circle. Talk to the animal on the left to get your second “capsule monster”: Blaze. Go all the way back to the room with the first cracked wall, go down the stairs and go forward to a part with lava. Take the plank and complete the bridge. Head north to two stairs, go down the one on the right and shoot an arrow at the lever on the left. Go back and go down the stairs on the left. Head south to another staircase, go down and cut the weeds on the wall to reveal a door. Go through it and get the Ruby Key from the chest.
+
+Go back to the two stairs and go down the one on the left. Pick up a blue stone and throw it into the lava at the bottom left to reach the next platform. Throw another rock to the left of this one to reach a chest with a Flame Fruit. Go back and throw another blue rock near the platform with a ladder. Go down and cut the weeds on the wall to reveal another door. Follow it until you reach a save point. Recover, save and go through the door on the left. Open the next door with the Ruby Key. You will find the Ruby Apple, but it is a trap prepared by an animal that wants to eat you.
+
+BOSS: Tarantula
+
+The biggest problem here is the Poison Shower, which hits everyone, deals up to 30 damage and can poison. It can also paralyze a character. So have the Release magic. He is weak to fire. With Maxim, have the Fire Dagger equipped and use the IP Blaze Attack whenever possible. Tia should heal and, when possible, use Spark. Have Guy equipped with a Horse Rock and use IP Dive, which isn’t much, but it helps. Have Blaze in the party, but unfortunately, he shouldn’t last long. Again, don’t pay attention to the monsters he summons. Finish them off after the big guy falls.
+
+The Ruby Apple ends up breaking during the battle, but Tia finds it strange, as the ruby ​​is supposed to be a resistant stone. She enters the door ahead to find Jaffy. She is the owner of the glass shop and says that she came here to look for the treasure to get out of difficulties, but ended up captured by the Tarantula. As thanks, she offers a fake glass Ruby Apple. Tia then shows the other one that broke and Jaffy says she was the one who made it and sold it a long time ago. She has no idea how he got here. Guy then has the idea of ​​giving the fake apple to Rochey and getting the money. Tia thinks it’s wrong, but Maxim agrees with Guy, to the girl’s surprise. Well, go back to Clemento and go talk to Rochey. He is very happy and gives you the money for Ruby. Maxim then decides to give everything to Jaffy and only asks for a glass jewel in return, which he gives as a gift to Tia, who literally jumps with joy. Well, leave the city and head to the northwest temple. He exits the other side and heads into the town ahead.
+
+PARCELYTE
+
+When you enter, you will see some kids messing with a little girl, but a woman named Selan arrives and scares them both away. After she’s gone, explore the city and buy new things. Head to the castle to the north and you will see Selan practicing with one of the guards. Guy and especially Maxim are impressed by the girl’s skills, which makes Tia jealous. Enter the castle and go to the throne room, which is upstairs. Talk to the king and he asks you to find the Treasure Sword which is in a fortress north of here. Accept and the king will order Selan to come with you. She doesn’t like the idea at all, but she must obey the king. Leave the castle and head to a building northwest of here.
+
+TREASURE SWORD SHRINE
+
+Go through the door on the left and enter the next one, go through the wall on the right, take the vase and place it on the button to the north to remove the spikes. Blow up the cracked wall in front of them, and in the next room, step on the cracked floor. Go forward to a chest containing a Round Shield. Push the rocks to open the way and climb the ladder. Go back to the beginning and enter the door on the right and then the next one. Go down the stairs and you will reach a room with some platforms that move when you step on them. Go down a little and step on the first one to reach a chest containing an Undead Ring. Go back to that platform and step on it again and then on the next one and the one above. Now step on the one to the south to reach the chest with an Ice Rapier. Go back and step on the top one and go to the bottom one. Go out and step on the one on the far left. Leave this one and go back to the previous platform and then the one above to reach two chests containing an Anger Brace and the Sword Key.
+
+Go back to the beginning and, with the key, open the middle door. Continue defeating the enemies that are lying in wait, open the next door and climb the stairs. Head south until you reach a room with some levers; At first, only two are accessible. Pull the top one, the bottom one, up, down and up again. Head through the southwest door and get the Bat Rock from the chest. Go back and pull the bottom lever and then the top one. Go to the other side to reach the other two. Pull the top one and then the bottom one. Enter the next door and go forward to a staircase. Go up and you will see two wooden boxes. Put a bomb in the one on the left and then in the one on the right. Walk towards the door ahead until the bombs explode and clear the way. Enter through the door and go forward until you reach a room with four blocks, two yellow and two red, arranged in a line. Simply take the first yellow block and place it to the right of the last red block to open the next door. In this room, things get a little more complicated, as there are more blocks; they are arranged as follows:
+
+    5
+   3
+12 689
+   47
+
+You can only move one of each color to make them all yellow, so take block 7 and place it between blocks 3 and 4, then take block 4 and place it to the right of block 2, enter the next door and another group of red and yellow blocks, this time they are in the following formation:
+
+1 2 
+345 
+678
+
+This time, you will only be able to move two yellow blocks and one red block to make them all yellow. Then do the following: move block 2 to the right of block 8; then move block 4 to the right of block 1; and finally move block 7 above block 1. Enter the next door, recover, save and move forward to a door that can be opened with the Sword Key. In the next room, try to open the next door and you will have to face two monsters, one at a time. Choose one and detonate it, it’s very easy, but soon after it comes back and sends you to the previous room. Do the same with the other monster and, again, it will revive. Selan then says that they must defeat them both at the same time, so Maxim divides the group into two: he and Tia will face one and Guy and Selan, the other. Return to the Save Point to recover and proceed to the real battle:
+
+BOSS: Pierre and Danielle
+
+Maxim and Tia will face Pierre. Its most dangerous attack is Flash; he is weak to ice, so have Maxim equipped with the Ice Rapier and use the IP Glacial Attack for high damage. Tia heals and uses Gale whenever possible. Guy and Selan face Danielle. She uses ice magic, and the fact that Guy and Selan are a little slow can be a problem. Selan should heal and use Spark when possible. Have Guy equipped with the Kukri and use Blaze Attack. If you are well prepared, this will even be an easy battle.
+
+After the conversation, get the Treasure Sword from the chest and return to Parcelyte. Go talk to the King, and he says that as a reward you can take the treasures from the chest. A soldier then appears and says that the nearby town of Gordovan was completely destroyed by a single man. Selan asks the king to go and investigate, but he is reluctant. Maxim then says that he will also go, and then the King calms down and allows Selan to go. After the conversation, go to the castle’s basement, talk to the guard and he will let you through. Get the Holy Wings from the chest and leave. Buy new equipment in town for those who don’t already have it and head to the temple to the west. Exit the other side and enter Gordovan just to the south. Talk to the people to learn that a giant destroyed the city and kidnapped a traveling woman; he took her to a tower to the west. So let’s go there.
+
+GORDOVAN WEST TOWER
+
+Enter through the door on the left. You will arrive in a room with two doors; We should go through the one on the left, but it’s locked. To open it, you must make the monster step on the button; just keep walking against the door and eventually he will do it. Climb the ladder and head south. In the next room, hit the red button to lower the red blocks. After them, there are some stones that are in the following formation:
+
+    7 
+   6 8 
+   5 9 
+123 
+  4
+
+Push block 2 down twice, block 4 right once, and block 3 up once. Step on the white square between blocks 5 and 9, stand to the left of block 7 and shoot an arrow at the blue button to lower the blue blocks. Move block 7 out of the way and pull the lever on the right. Go through the door to the south and enter the next one. Go forward until you reach a room with a vase and two buttons. Take the vase and put it on the button on the right. Follow the black path to the right door, climb the stairs and go through the south door. Take your third tool, Hook, from the chest, a hook with which you can cross previously inaccessible places. Go back and push the pillar above to the right. Go to the bottom and use the hook to reach the other side. Push the pillar up and move to the left side using the grappling hook. Enter the next door and go up the stairs.
+
+Go through the door on the left, place a bomb near the box and leave the area where it is to avoid getting trapped. Go through the door to the south and pull the lever. Go back and press the button on the left to lower the spikes. Go through the right door to reach the elevator. Go to the fourth floor, go south and get a Miracle from the chest. Go back and go to the second floor, go south and get a Speed ​​Potion from the chest. Go back and go to the first floor, go right and go up the stairs. Go through the next door and get a Muscle Ring from the chest. Go back to the elevator and go north and then left. There’s a cracked wall here, but it’s kind of hard to see. Place a bomb to detonate it and head to a chest with an Eagle Rock. Go back and head to the third floor.
+
+Go left to reach a room with two pillars and a button. Push the only accessible pillar to the left twice. Go around and use the hook on it to cross. Push the bottom one down twice. Now, push the top one to the right until the end, up three times, left, down three times and left until the end. Go around and use the hook on the pillar below. Now, push the top one to the button and go through the door to the south. Climb the stairs and enter the door to reach another puzzle. Press the button and the red buttons will turn blue in a certain order. You have to hit them in that order, but it changes from game to game, so be careful. When you succeed, the monster blocking the door disappears and you can pass through. Get the Wind Key from the chest and go down the stairs. Use the hook on the pillar to get to the elevator. Go to the fifth floor and go left. With the Wind Key, open the door to the south and go forward to the outside. Climb the ladder to reach the top of the tower.
+
+Go ahead and try to open the green door, the giant then appears and introduces himself as Gades, the Master of Destruction (Wow!). He challenges you to a battle, but don’t waste time using your best attacks, as the group will be massacred anyway. Gades leaves and Iris arrives to save them. She says that Guy and Selan are also destined to travel with Maxim to confront him. Once she’s gone, enter the room to the north to find two chests containing a Scimitar and a Block Shield. She returns to Parcelyte and goes to talk to the king. Selan says she wants to investigate Gades. Then, a messenger arrives and tells Guy that his sister’s health has worsened. He then decides to return to Tanbel, but says that as soon as Hilda gets better, he will be back. He leaves the castle and returns to Aluze (use Selan’s Warp magic). Go to the dungeon where you chased Bart and Betty. You may have seen a chest that you couldn’t reach before. Now that you have the hook, you can. In it, there is a Water Jewel. Head to Cave to Sundletan and go to the part with wooden stakes. Use the grappling hook to get across and you’ll come to a chest containing a Dragon Egg. Return to Gordovan West Tower, inside, go through the green door on the right and go through the door to the north to exit on the other side. Head north to the village of Merix, buy new equipment and spells. Talk to the people to learn that Gades went to the northern cave. Let’s go there.
+
+CAVE BRIDGE
+
+Talk to the man at the entrance, he says he can’t fix the bridge because of the monsters. Go down the stairs and go through the next door, and the next one, to get a Regain. Go back and head right, cut the bushes and use a bomb on the cracked wall. Enter and pull the lever. Go back to the start and use the hook on the stake on the other side. Go forward to a room with two doors. On the right, there is a Hi-Magic. Follow the one on the left. Here, there is apparently nothing, but the group finds it strange. Tia starts walking around the room and falls into a hole. Selan immediately jumps in after her and is followed by Maxim. Selan saves Tia from a monster. After the conversation, it is Selan’s turn to fall into another hole and this time it is Maxim who jumps immediately after her, followed by Tia. After more conversation, move forward to a room full of monsters. Finish off the one in front of the black sphere and then destroy it, to open the door on the right and make the rest of the monsters disappear.
+
+Continue forward up a series of stairs until you reach the other side of the bridge. Now that the monsters are gone, the man can fix it. After he’s gone, go back to Merix and go to his house to the southeast. Talk to his daughter to get a Dragon Egg. Rest at the Inn if you need, and return to the cave. Climb the stairs to the north to emerge on the other side. Head north to a castle.
+
+BOUND KINGDOM
+
+Soon after arriving, a group of monsters attack, but a guy with blue hair appears who appears to be very strong, although not very smart. He finishes off the monsters and their leader, Idura, escapes promising revenge. Then, the prince of the castle appears and finishes off the remaining jelly, still thinking he’s the good guy, and the worst part is that his subjects are still supportive. He talks to the guy with blue hair, whose name is Dekar. After the conversation, he enters the castle and buys new equipment, goes upstairs and goes to the throne room. A messenger says that the leader of the monsters has fled to the northern labyrinth. Then, Prince Alex says he will defeat him and, despite Dekar’s pleas, leaves together with his faithful servant Josef. The King asks Dekar to protect him without him knowing. He leaves the castle and heads north to the labyrinth.
+
+NORTH DUNGEON
+
+Enter the rightmost door and go down the stairs. Cut the bush until you find a button on the ground, step on it and go back to the beginning. Enter the door on the left and go forward until you reach a staircase that escapes you when you try to go down. The secret here is to get to the left side so that it moves down and gets stuck on the tip of the arrow. When you do, go forward to a room with a pillar and a vase. Push the pillar to the right once and use the hook below it. Take the vase and put it on the button, move the pillar out of the way and go through the door to the south.
+
+Go down the stairs and enter the door on the right. Step on the platforms with arrows to reach the upper right door. There are four pillars here. You must place them in the black square to the north of them to form a bridge to a chest containing a Dragon Egg. Return to the previous room and step on the platforms until you reach the lower right door. Using the hooks, go right and then north. Soon you will reach where the third capsule monster, Flash, is. Take it and return to the platform room. This time, you must reach the upper left door. Here you will see some panels where you must place bombs until they light up everyone. A good tip is to place the bombs in unlit places. When you do, cross the bridge that appears and get the Life Potion from the chest. Go down the stairs and go to the save point. Save and go to the next room. Push the pillar to the right button to open the next door. Go inside and you’ll find Alex and Josef, but Idura appears and sends some monsters to attack you. Finish them off and Idura says that as long as he lives, he can send a multitude of monsters. Then Dekar arrives and breaks up his party, who once again runs away. Prince Alex finally realizes that he is not “the guy” and apologizes to Dekar. He says he wants to learn how to fight from him. After the conversation, return to Bound Kingdom.
+
+Upon arrival, a guard says that Gades was here and spoke to the king. He goes to the throne room and the king will say that Gades has given a warning: he will sink the island of Seim, where Parcelyte is, and soon after he will destroy the kingdom of Bound. Maxim says that he will face him together with Dekar, but that Tia and Selan won’t be able to go. He asks the two to go to Parcelyte to alert the population. Despite the girls’ protests, they end up accepting. Guy then arrives to complete the team. Buy new equipment for him and Dekar and head to the tower east of the castle.
+
+ANCIENT TOWER
+
+The enemies in this place are tough and, with only Maxim to heal, your life can get very difficult here. So, it’s good to have a stock of Hi-Potions. Push the pillar on the left to the middle of the red carpet; Now push him against the wall until you can’t anymore and then to the left until a door appears. Enter and go forward until you reach a room with four pillars and a white circle in the middle of them. You must make the enemy here step on this circle to open the door. Well, there is no scheme for this, what you must keep in mind is that it always moves in the opposite direction to yours. When you do, go through the door and you will reach a room with a staircase surrounded by spikes, which will go up if you get close. Here is a pillar, push it to the bottom left corner of them and on the other side, use the hook to enter, climb the ladder.
+
+Go south until you reach an outside part. Enter the next door and place a bomb on the cracked wall above the lever, follow it. When you try to enter through the next door, you won’t be able to; the fact is that there is no door there, the real one is invisible just above the black and white squares on the right. Follow it and go forward until you reach a room with four blue circles; only one is accessible. Step on it, but to the left, to reach the stairs. Go up and through the door to the south for a chest containing a Fozya Shield. Go back to the circle room and now step into the middle circle to the right, enter the door to the south and move the vase out of the way to reach the chests, containing a Pumpkin Rock, Muscle Ring and Protect Ring. Take everything and return to the previous room, go through the south door to reach the outside.
+
+Climb the stairs and go forward to a room with a locked door. Push the blocks onto the white squares to make a lever appear. Shoot an arrow at it to open the door. In the next room, step on the button on the left and go all the way back to the room with the blue circles. Go to the stairs on the right and then enter the door to the north; Now go to the left and pull the lever. Go back, press the button to open the way to the door to the south, go to the outside, enter the door on the left and the next. Defeat the monsters to open the next door, go through it to reach a chest containing the Cloud Key. Go back outside, go down the stairs on the left and go forward to a place with four pillars. Push the topmost one onto the button and the other three upwards once. Go through the door and go up the stairs to reach a large room.
+
+Here there are two statues, one on a blue carpet and the other on a red carpet. Well, give 3 swords to the red statue and 5 to the blue one. Then step into the circle between them. This will make HP and MP rechargers appear (HALLELUJAH!!!!!). Recover and go through the door to the south, save and continue forward until you reach a room with three blue circles. It seems like a complicated puzzle, but it isn’t. The objective is to make the skeleton step on the white circle at the same time as you step on the blue circle on the right. Just step into the circle and keep the directional pad held to the right. The skeleton will eventually step into the white circle and you will be transported to the door to the northeast. Enter and pull the lever, go back two rooms and go through the door to the south to reach the outside. Enter the left door and open the next door with the Cloud Key, go up the stairs and you will finally find Gades. Get ready!
+
+BOSS: Gades
+
+This time you don’t have the option to lose. His physical attack takes away more than 100 HP and he has a more powerful attack that deals almost 200 damage, in addition to the Destructo Wave, which hits everyone and deals up to 50 damage to each one and which he uses very frequently. Maxim shouldn’t do anything other than heal, while Guy and Dekar use their best IPs; the one from Pumpkin Jewel is very efficient. As a capsule monster, you can have Flash to help with healing, but he shouldn’t last long in the giant’s hands. Good luck!
+
+Gades does not believe that mere mortals could defeat him. He starts to back away and Maxim follows. The floor then collapses and prevents Guy and Dekar from going after them. Gades then activates a mechanism that begins to make the island of Seim sink and disappear. Tia and Selan arrive and say they came because they were worried. Maxim orders everyone to leave the tower and says he will find a way to stop the mechanism, but Tia doesn’t want to leave it at all. Selan then says that there is no other way and that they must trust Maxim. The group then leaves. Back in hero control, go down the stairs on the right and blow up the statue with a bomb. Go back and go down the stairs to the north, shoot an arrow at the statue and continue forward to a chest containing a Magic Bikini. Go back and go down the one on the left, go forward stepping on all the black squares you see to turn them white and open a door ahead. Go to a room with another black square on the floor, step on it to deactivate the mechanism, but it seems that our hero has reached the end of the line, as there is no way out, right? Wrong. Iris appears and teleports Maxim to Parcelyte.
+
+Everything seems to be fine. Maxim is greeted by Selan, who says everyone is safe. Then the two find themselves madly in love. Tia then understands that she doesn’t have the slightest chance and tells Dekar that Maxim has always protected her since she was a child and it was this Maxim that she fell in love with, not the warrior Maxim. She had no faith, Selan trusted him and waited for him, knowing he would return and that’s why she won him. Aunt leaves without saying goodbye. Maxim and Selan get married; a year later, their first son, Jeros, is born, and they all live happily ever after.
+
+END!?
+
+…NO WAY!
+
+One day Idura appears and kidnaps Jeros. He takes you to the tower northeast of Parcelyte. Let’s go there.
+
+NORTH LIGHTHOUSE
+
+Go through the green door and push the blocks to form an arrow to the right. Go through the door that has opened. In this room, on the right, there are three boxes and three buttons, as well as a white square with a symbol surrounded by spikes. Well, put a box on each of the northernmost buttons to make a door appear. Take the third box and put it right in the middle of that door. Take one of the button boxes and put it on the bottom button to lower the spikes. Take the other box and put it in the square with the symbol. Head through the door to find three chests containing a Mystery Ring, a Dragon Egg, and a Big Shield. Go back and go through the left door, ignore the blue circle and go up the stairs. Continue forward until you reach a memory game; It’s pretty easy, so I’ll let you figure this one out on your own. When you complete it, follow the stairs to the left, press the button to climb two pillars, go back and go through the door to the south.
+
+Go forward to the room where the button you pressed to climb the pillars is. Go to the other side with the hook and go through the door to the north. Blow up the cracked wall and pull the lever inside. Go back to the pillar room and go through the lower left door. Climb the ladder and get a Fire Ring from the chest. Go back and go through the lower right door, go up the stairs and enter for another puzzle. Step on the button and the symbols will mix. You must place the two vases on the symbols that were black, which are arranged as follows after you step on the button.
+
+    6
+   4 5
+    23
+      1
+
+Place the vases on symbols 4 and 5, get the Light Key from the chest and step on the blue circle on the left, you will end up in the room with the box puzzle, go back to the previous room and this time push the blocks to form the arrow to the left, go through the door and open the next one with the Light Key, go forward to a room with two doors, the one on the left takes you to the rechargers and save point, do what you have to do, go back and go through the door to the right, go up the stairs and enter the door to the south, on the right there is a pillar, push it to the left and you will see that the floor below it is cracked, put a bomb on it to open a hole, push the pillar into that hole and then fall into it, push the pillar to the button without an arrow and get a Bee Rock from the chest, step on the button with an arrow and use the hook to go to the other side, go to the room where the pillar was and go through the door next to it. south.
+
+Save and recover if you need to, move forward until you reach a room with four blocks and four buttons, push three blocks to their adjacent buttons and push the four blocks to the side, step on the remaining button to make a staircase appear, go up and you will find Jeros, but Idura appears and says he will end Maxim’s race, literally, Iris arrives and takes Jeros away from Idura, time to go on the attack:
+
+BOSS: Idura
+
+Even though we only have Maxim and Selan, this will be a very easy battle, he is weak against ice, so it would be good to have Selan equipped with the Water Jewel and use his Frost IP, Maxim uses the best IP he has and the Gale magic, have Flash as capsule monster and with a little luck you might not even need to heal.
+
+Maxim asks Iris what happened, because he did everything as she said, met other people and defeated Gades, but Iris says that his destiny changed, as he should have died in the tower after defeating Gades, if that had happened, the world would be at peace, but the fact that Iris saved him changed the course of history and now Maxim will have to fight again to protect the world and the people he loves, Iris leaves and Selan says he will go with Maxim, but he says she should stay with Jeros, she replies that she would if she were a normal mother, but she knows how to fight and wants to protect the world and guarantee a future for her son, even if she never sees him again, back in Parcelyte, Selan leaves Jeros in the care of his aunt, head to a temple just east of the Ancient Tower, talk to the guard to pass and enter the portal, on the other side you will find Guy and Dekar who join the group, leave and head to the next city.
+
+PORT TOWN OF ALEYN
+
+Buy new equipment and spells, especially Stronger and Rally, talk to people to find out that a guy appeared and sank all the ships there, one of the people says that a guy called Jyad can make another ship quickly but he is on a mountain north of here , so let’s go there.
+
+PHANTOM TREE MOUNTAIN
+
+Enter the door ahead, there are two doors here, the one on the left has three bushes in front, if you cut them, they will come back soon after, stay in the middle of them and place a bomb to eliminate them at once and open the door. door, go forward to a lever, pull it and go back to the beginning, go through the door on the right and go forward until you reach a place full of bushes, use a bomb on the cracked wall on the right, go forward to a chest containing the Tree Key, go back to the bushes room, some are small and if you step on them, they grow, the door will open, when they all grow, they are in the following formation:
+
+123
+45678
+90ABC
+DEFGH
+ IJK
+
+Step on the bushes in this order, 4, 5, 0, A, 6, 7, B, G, F, J, I, D, 9, 2 and C, this will open the door, go in and get your fourth tool from the chest , Fire Arrow, go forward to the outside, enter the door below, here there is a door hidden behind the bush on the right, go through it and you will arrive at a series of puzzles, first, go up the stairs to the right and eliminate all the bushes you can, using the fire arrow, push the stone that is lower to the left, eliminate the last two bushes to the north of the two stones, push the one on the left up and the one on the right to the right, now just push the last one towards the button, go up the ladder that appeared, burn the bushes that block the rocks and push them towards the two buttons, go to the cracked floor area, you can only step on each frame once, if you step on it again, you will fall to the previous floor which is full of monsters, ok, from the entrance, in the right corner, take one step north, one step east, one step north, and go east to the vase, grab it, take two steps north, two steps west, one step south and go west until you can’t go any further, take one step south, two steps west and go north until the second vase, take one step east and one step north, hold R and turn east, drop the vase there and pick up the other, step north and put it on the button in front, step east , turn south and take the other vase, put it on the other button and follow the remaining path to the door to the north, phew!
+
+Blow up the cracked wall and enter, go down to the lowest part and climb onto a platform to the north, use the hook on the wooden stakes until you reach the door to the northeast, enter and climb the ladder, stay right in front of the stake that is down on the other side, walk towards it until the monster steps on the button and lifts it up, use the hook to pass and move forward to the outside, cross the bridge and put a bomb on the blocked door, enter and attract the monster to the square in the center of the room so that you and he are on top of it, making it give way, go down the ladder and open the next door with the Tree Key, you will find Jyad, he says there is a tree ahead whose wood It’s excellent for making ships, but there’s a monster guarding it, recover, save and move on to face it.
+
+BOSS: Lion x 2
+
+Very easy, they have little HP and their attacks are nothing that a Stronger can’t solve, use your best IPs and they don’t last long.
+
+Go forward to a large tree, after the conversation, the group returns to Aleyn, Jyad says that the ship will be ready in two days, Guy and Dekar decide to take a walk around the city, buy some equipment or magic that is missing and sleep on the spot. INN twice and head to the port, Jyad is on the left, talk to him and after some conversation you will leave, Jyad asks where you want to go, there are two options: Narcysus or Gruberik, where the Ancient Cave is, the dungeon hardest in the game (and perhaps of all RPG games), I’ll try to explain it in a separate topic, if you want to go there now or leave it for later, it doesn’t matter, because even if you’re at maximum level, with the best weapons and spells and healing items to give and sell, all of this will be taken from you, you will enter at level 1, completely unequipped and with only 10 potions, the only advantage of leaving it for later is that you can bring a monster Most powerful capsule, well, it’s up to you, anyway let’s go to Narcysus.
+
+NARCYSUS
+
+Upon arrival the group will hear the sound of a flute, then all the young women in the city begin to go to the tower to the north as if they were hypnotized, after the scene, if you can, buy new equipment and head to the tower.
+
+TOWER OF SACRIFICE
+
+Go forward and into the room with the black sphere with white eyes, go behind it to get to the next door, continue forward to a lever, pull it and go to the other side with the hook, into the next room before stepping use the buttons, explode the cracked wall on the right, now step on the buttons and return to the previous room, enter again through the passage you opened and follow the door to the south, go forward to the outside, enter the door to the right, go up the stairs and blow up the cracked wall to the north, go forward to a chest containing the Narcysus Key, go back to the last cracked wall and go through the door to the south, enter the one on the left and open the next door with the Narcysus Key.
+
+In this room, push the stone in front of you to the left until you are facing the black sphere that looks down, pull the lever and push the other stone in front of the other black sphere that looks to the right, step on the button and go through the door and go up the stairs, here there are three doors, two are blocked by an enigma, the middle one leads to the fourth capsule monster, Gusto, try to get him and go back, in this room there are two arrows, inside them, black symbols , you must make them all white by using bombs on them, start with the arrow on the right, follow the diagram below.
+
+   7
+ 148C
+ 259DF
+ 36AE
+   B
+
+Place the bombs in this order: 1, 3, 5, 8, A and F, go through the door and go to the outside, pull the lever and go back to the arrow room, follow the same scheme with the arrow on the left, follow forward to a room with some stones that move when you pass next to them, you must place all four on top of the buttons to open the door, do the following, go to the bottom right corner and go up to place the first stone, then walk to the left and go down the third corridor, go up the fourth, go down the fifth and go up the first to reach the open door, go forward and you will reach where the girls are, but the group falls into a trap and ends up trapped, Idura appears and says that the young women will be sacrificed to revive Gades, but Dekar, who did not fall into the trap, says that he will end Idura, he then disappears and says that he cannot beat him, but this is just another trap and the “clever ” Dekar ends up falling like a duck, and now everyone is trapped, but Dekar doesn’t give up and demonstrates all his strength, breaking through the bars, now it’s time to go to fight with the boss.
+
+BOSS: Idura
+
+His most dangerous attack is Plasma Blaster which hits everyone and causes 50 to 60 damage, have Maxim heal constantly and use IPs and ice spells when he can, Selan uses the IP of the Water Jewel and the Blizzard spell and Dekar and Guy send his best IPs, don’t care about the monsters he calls, even though they heal him, leave them for after Idura falls.
+
+Idura once again runs away, the young women thank Dekar, but soon their respective fiancés arrive and take them away, leaving the poor guy in the lurch, well, after the conversation go back to Narcysus and talk to the people to find out that Idura has fled to Karlloon which is east of here, sleep at the Inn if you need to and head there.
+
+KARLLOON
+
+Talk to the people to discover that a strange light passed through there and headed towards the temple to the north, before going there, buy new equipment and if you can, buy the Bolt and Absorb spells, the rest is dispensable for now, if you need it sleep at the Inn and head to the temple.
+
+KARLLOON NORTH SHRINE
+
+Go through the door ahead, put bombs on the pieces of pillars on the floor to reveal a gray square, push the golden pillar towards it and go through the door that opened, go forward to a room with a teleportation circle, take a swing at the two blue and red devices to make a pillar appear on the other side, use the hook to cross and get the Dekar Blade from the chest, leave this room and use the hook to activate the lever on the left, now use it on the pillar to cross, continue forward until you reach a lit chandelier, take a swing at it to turn it off and open the door on the right, continue forward to a room with a chest, push the stone that doesn’t have an X to the right once and then north to go through and get to the next door, don’t forget to get the Lion Fang from the chest.
+
+Go forward to a teleportation circle, enter it and go through the next door, push the rocks to open the way to the next circle, it’s not difficult, so I’ll leave this one up to you, when you do, put bombs on the walls cracked, enter the one on the right and pull the lever, go back and follow the one on the left, reload, save and step into the next circle, enter the next door to find Idura, he says that due to his constant failures, he lost the trust of his master Amon, one of the four Sinistrals and therefore has nothing left to lose and will end the group anyway:
+
+BOSS: Idura
+
+He remains the same as always, so follow the same scheme as always, use your best ice attacks and also the IP of the Dekar Sword to destroy half of his HP, heal whenever necessary.
+
+Before disappearing forever, Idura says that the group will never escape this temple, enter through the next door to find Iris, she says that she was captured by Idura, Selan tries to use the Escape magic but it is blocked and the temple is collapsing, Iris says there must be a device that blocks the Escape magic, go south to a room with two pillars, push the one on the left to the square on the right and vice versa, a large pillar will appear, use the hook on it to fall into the hole, go Go down the stairs and get a Fury Ring from the chest and put bombs on the three cracked pillars, go up the stairs to the left and go down another one halfway, before entering the next door, take all of Dekar’s equipment, go in and you will arrive at the such a blocking device, Iris and Dekar go to it and destroy it, but then Idura’s ghost appears and orders some monsters to attack Dekar who is surrounded, he orders Iris to get everyone out of there and after much hesitation, she obeys, the tower collapses with Dekar inside.
+
+Back in Karlloon, the group is desolate, Iris says that the only thing she can do is pray for Dekar and if she goes, buy something that is missing and head to the temple to the east, exit the other side and head north to the next city.
+
+TREADOOL
+
+Talk to the guy with blue hair and he asks if you want to buy a boat, say yes and he takes you to the dock, but the owner of the boat is not there, his name is Lexis and the sailor says he is an inventor and that he is always in need of money to fund his inventions, that’s why he is selling the ship, he also says that Lexis is in the cave to the north, which is his laboratory and to make the purchase, you will have to speak directly to him, let’s go to there then.
+
+SHAIA LABORATORY
+
+Read the sign at the entrance and go through the door that opens, go through the right door and then the left one, in the next room, cut the bush to the right of the door to reveal another one, go through it and go down the stairs to find Lexis, the group asks him why he wants to sell the ship, he says that despite it being a good ship, it is not suitable for installing his new invention, an oil engine, according to Lexis, with it a ship will be able to move without wind, like the group doesn’t have much faith, he makes a demonstration, with almost disastrous results, the group then thinks it’s better to ask Jyad to make the ship, Lexis then says that she thought Jyad wouldn’t make any more ships until he found the Phantom Tree, but upon learning that he has already found it, he decides to go with the group to him so he can make a ship suitable for his engine, Guy says he doesn’t want the ship to explode in the middle of the sea, but the inventor manages to convince them and asks them to go ahead while he readies the engine.
+
+Go back to Aleyn and go talk to Jyad, he says it will take some time to make the ship and asks you to wait for him in Treadol, then head there and at the entrance you will find a girl selling flowers, but she is not very well and ends up fainting, the group takes her home with her brothers, soon she wakes up and says that she needs to pick flowers to sell the next day, with her insistence on getting up even in bad conditions, Maxim tells Selan to put her to sleep with Douse magic, the group then decides to get the flowers for her, the brothers say she usually gets them from the mountain to the south, head there.
+
+FLOWER MOUNTAIN
+
+Place a bomb on the blocked door, go forward to a chest, in it is your fifth tool, HAMMER, with it you can push certain types of pillars and break rocks and cracked walls, continue forward to a corridor with rocks blocking it, take it out. Move them out of the way with the Hammer and continue to a room with a pillar behind some spikes, use the Hammer to push it to the button and open the door ahead, go through it and the next one, climb the ladder and push the white block, break the stone and push the other block to open the way, notice that there is a locked door here, remember this place, in the next room, a puzzle, you must step on the three circles between the spikes to proceed, start on the left, step on the button and take a step north, go west to the end and then north until you are on the straight line of the circle, now go to it, the next one is on the right, step on it and go north until you are on the straight on the circle, head west to it, finally follow the only one possible to the third circle.
+
+Go right to the end and break the weakest wall to find three chests containing a Flying Axe, a Power Ring and a Dragon Egg, go back and go through the door on the left and go forward to the outside, use the hook on the stakes and go forward until you find the fifth capsule monster, Sully, go back to the room with white blocks, go down the stairs and go to the room with a pillar and two stakes, go to the other side and go through the door to the north, go up the stairs and go through the door to the south, fall in the place with the arrows, walk a little to the left and fall again, go through the next door, to a room full of monsters, in the next room cut the bush to reveal a secret door, follow the thorn path until you reach a chest containing a Life Potion, now go to a space where you face the darker wall, use the Hammer on it, go back to the previous room and go through the door on the right, follow the path of thorns to the broken wall and inside get a Snake Rock, go back and follow the stairs, climb until you reach a place apparently with no way out and full of rocks and bushes, keep breaking the rocks and cutting through the bushes until you find a crack in the ground, fall into it, get the Burn Sword from the chest and go through the door to the south to find a chest containing the Flower Key, go back to the room with the locked door and use the Flower Key to open it, now just go forward until we reach the special flower that Leefa wanted, but first we will have to go through an obstacle that is not a flower to smell:
+
+BOSS: Rogue Flower
+
+He has a very powerful physical attack, so it’s a good idea to increase the group’s defense early on, another of his attacks hits everyone and takes up to 120 HP from each one, use your best fire attacks on him and have Maxim heal and use his best IPs when available, Burn Sword is very efficient, Blaze is the best option as a capsule monster.
+
+Get the Pretty Flower item and return to Treadol, go to Leefa’s house and the group gives her the flower, she is very happy and says that the flower still doesn’t have a name and asks Selan to name it, she then chooses the name Priphea, Leefa says she will plant it and show everyone how beautiful it is, ok, we’ve done our good deed for the day, let’s continue with our journey, buy new equipment here, if you haven’t already done so, follow to the dock where Lexis will be waiting for you, he says Jyad is taking the motorized ship for a test drive, Jyad arrives and compliments Lexis on the great invention, he says the ship is his as long as he lets him use his lab , Lexis sees no problem and Jyad heads there, Lexis joins the group and now you have the Excerion ship, our next stop is Dankirk which is to the south, but if you want, you can stop by Forteit Island, a little further south, it’s like the Las Vegas of Lufia’s world, where you can play games like Black Jack, Slots and Bingo, if you win a lot of chips you can exchange them for great items, here there is also a special store, where All the items you sold or fed to the capsule monsters are for sale, if you have money to spare, here is the best place to evolve them to maximum level, ok, let’s continue with the script.
+
+DANKIRK
+
+Buy new equipment and spells, climb the southernmost staircase and enter the left door that is guarded, talk to the people inside, it seems that the kingdoms of Dankirk and Auralio were at war not long ago, but Leon, the prince of Auralio, decided to present the king of Dankirk with the “Ruby Icon”, Auralio’s greatest treasure, and thus try to put an end to the conflict, there will be a ceremony the next day for the delivery to be carried out, leave and enter the door to right, talk to the king and then try to leave the castle, two messengers from Auralio have a strange conversation, it seems that something is wrong, talk to everyone in the castle to discover that the Ruby Icon has been stolen and this threatens the peace treaty, leave the castle and go to Clemento, talk to Jaffy, (the Ruby Apple guy, remember?) and he will make a replica of the Ruby Icon, return to Dankirk and give the replica to Prince Leon, he realizes that it is not the real one , but still decides to use it, in the throne room, the king is very happy with the gift, but the queen also notices the forgery and things get tense, so the princess of Dankirk enters the room and tells her parents about the robbery, you learn that James, a servant of the king, left some time ago and was seen going to the cave to the north, let’s go there then.
+
+DANKIRK NORTH CAVE
+
+Enter the next door and cut the bush to the north to reveal a button, put the vase on top of it to open the door, in the next room there are two doors to the north, go through the one on the left and go forward to a pillar and an eye on the wall, push the pillar in front of the eye to be able to continue, in the next room, hit the red button to make it blue, go back to the room with the two doors and go through the one on the right, go forward until a button on the floor , press it and go back to the large room again, pull the lever and fall to the place with the arrow, climb the platform in the center and use the hook on the pillar to the south, go forward to a place with an arrow, fall and use a bomb on the bones to reveal a button, press it and follow the path that opened to a button, turn it blue and follow it to the platform with bushes on the wall, cut them and use bombs on the cracked part until it breaks , go in, press the button and get an Earth Fruit and a Brave from the chest, push the blocks to open the way and go back to the large room.
+
+Go through the left door to the room with spikes, go through the door to the south and go forward to a place with three levers, shoot arrows at them to continue, go to a room with a chest containing a Fury Ribbon, put a bomb in the cracked wall ahead and in the next room cut the bush on the walls to reveal two eyes, put bombs in front of them to close them and make the stone fall on the button on the floor, behind the stairs there is another eye hidden in the bush, close Use it so that the red button falls, turn it blue and go down the stairs, go to a blue chest that is inaccessible, step on the circle and push the gray block to one of the side buttons, go back to the previous room and step on the place where there would be the button to light one of the torches, go back and repeat the process with the other button and you will be able to access the chest that contains the Dankirk Key, step on the circle again and place the block on the middle symbol to access the red button, turn -the blue one and go back to the room with spikes.
+
+Go down the stairs to the north of the thorns and follow it to a locked door, notice that the right of it has a slightly different floor, step on it to open it, but before going through it, cut the bush below and follow a secret passage until you reach three chests, containing a Flame Jewel, a Figgoru (weapon for Lexis) and a Dragon Egg, now, go through the door, in the next room there are two stairs, one of which is inaccessible, there is also a square on the floor , you can remove it from there to reveal a hole, fall into it, pull the lever to the south and go up the ladder, use the hook on the pillar and go down the other ladder, recover, save and continue forward to the room with the lever, use an arrow on it and follow the bridge that appeared, push the blocks on the black squares to form a downward arrow, it’s very easy, so I’ll leave this puzzle for you to solve alone, when you do, move forward until get to the door that can be opened with the Dankirk Key, in the next room, there is a small maze to get to the next door you must follow a somewhat hidden path on the left, go straight and in the middle of the path, save if you want, Soon you meet James, he brought the Ruby Icon to give it to Klaus, the prince of Gratze, in return he would be a noble in this kingdom, but to end their party are here the “Powerful and Invincible Guy”, the “ Warrior of Justice Maxim”, the “Genius of the Century Lexis” and the… MAGIC WIFE SELAN? We have to agree with the girl, that name is pretty stupid, too, it was created by Guy, well, the prince then orders his guards to attack you.
+
+BOSS: Guard x4
+
+It’s not even worth mentioning your attacks, use spells and IPs that hit everyone, preferably of the fire element and they shouldn’t go beyond the second round.
+
+Prince Klaus escapes and the group recovers the Ruby Icon and captures James, back at the castle, the king orders James to be thrown in prison and peace between the kingdoms seems to finally be a reality, leave the castle and head to Auralio which is next door. south of here.
+
+AURALIO KINGDOM
+
+There’s not much to do here, buy the few new things in the store and head to the palace to the north (well, palace is quite a compliment, this is more like a townhouse on the outskirts), talk to the prince so that It opens the water gate and you can proceed, take the boat and head south to a castle.
+
+FERIM KINGDOM
+
+Talk to the people to find out that a strange man entered the tower to the northeast, buy new things and if possible buy the Champion magic, go to the second floor and talk to the guy with red hair, he is Hanz, a castle guard and says he needs to go to the tower, but Maxim says that if the man who entered there is one of the Sinstrals, it is not good for Hanz to go, but he says he needs to get a jewel that is at the top of the tower for Prince Eric, because This was the condition that the princess of Ferim gave to marry him, but Hanz will not do it for the prince, but for the princess, as he is in love with her and wants to see her happy, after Hanz leaves the country. castle and head to the tower.
+
+NORTHEAST TOWER
+
+Enter the next door and use the Hammer on the cracked wall on the right, go forward to a room with one movable pillar and two fixed ones, use the hammer on the movable pillar once and then use the hook and go through the door to the south, go up the stairs and enter the door on the left, hit the two circles with arrows so that they face to the right and then pull the lever, go back and enter the door on the right, go forward until a large room, here is a chest containing the Stun Gun for Lexis, continue forward until a room with a puzzle, you turn all the black symbols white by stepping on them, enter from the north and follow south until the end, take two steps to the left, two to the north, one right, two north, go left until the end, take one step south, one right, one south and from there just follow the rest of the way to the southern exit.
+
+Enter through the door that has opened, go down the stairs and get the Trial Key from the chest, go back to the mobile bridge room and place the two arrows on the right pointing to the left, go to the part on the left and pull the lever, follow forward to a room with moving platforms, step on the one just ahead and then step on the one to the north to reach a chest containing a Samu Jewel, step on the only accessible platform to return to the beginning, use the arrow to turn it to the right, step on the platform and then move the arrow to the south to turn it to the right, step on the platform below to reach the chest containing a Mysto Jewel, go back to the beginning and turn the arrow down, climb on the platform and then turn the arrow up, climb the platform to reach the next door, go forward to the door that can be opened with the Trial Key.
+
+In the next room, pull the two levers to make the two monsters incommunicado, now walk against the door to the north and eventually they will step on both buttons at the same time opening it, you will find Hanz, he cannot move due to a strong wave of energy, you will then meet Amon, the second Sinistral, Guy tries to attack him, but is easily repelled, Amon says that it is still too early to show them the true terror and leaves, Hanz says that the jewel is in the room Next, go inside and what the group finds appears to be a simple stone, but Hanz says that’s exactly what he came for and goes back to the castle, you go back too and go to the throne room, Prince Eric doesn’t believe that a simple stone is the jewel that was in the tower and offers the princess a sapphire, but she rejects it and says that the stone that was in the tower was a gift from Hanz when they were still children and that all this time she kept it as a treasure , Hanz says that he is still not worthy of the princess and will train to become stronger, she asks him not to keep her waiting too long and he promises that he won’t, the prince leaves furious and everything seems to be fine, when then a guard arrives and informs that a man destroyed the city of Agurio, north of the tower we just visited, the group concludes that it is Amon, let’s go there.
+
+AGURIO
+
+Everything is in ruins and all the inhabitants have been massacred, you will find Iris to the north, she says that Maxim must give up as he does not have enough power to defeat Amon, but Maxim says he cannot know until he tries, Iris then says that to defeat the Sinistrals you need to have a large wave of energy and there is a sword called Dual Blade that amplifies this energy, but Iris doesn’t know where it is, Maxim says he will look for it, Iris says she saw a sphere of light heading south and before As we leave she asks to help her bury the dead, after the job is done, Iris leaves and Maxim asks if she will ever say who she really is, she says that one day she will say but maybe he doesn’t like to know, well, go back to Ferim, take the boat and head south to the village of Treble, the only thing to do here is buy a couple of new things, plus keep going south to another town.
+
+POTRAVIA
+
+Buy new equipment and spells if you can and talk to people to find out that there is an elf village to the south of here, but to get there you have to go through the Mountain of No Return (Wow, that’s awesome!), go to a big house to the north , this is the laboratory of Dr. Kirmo, a friend of Lexis, go down the stairs and talk to him, it’s the guy with green hair, he says he has developed a way to transform your ship into a submarine and asks if you allow him do this, accept and Kirmo orders to get the submarine plans, but a girl steals them, one of the scientists says that it was an elf girl and that without the plans it will not be possible to make the submarine, leave the city and head east and then south along the forest to a mountain.
+
+MOUNTAIN OF NO RETURN
+
+Enter the door ahead and you will see two statues that repel you if you stand in front of them, push the statue on the right up once and go behind it, in the next room there are several statues and a pillar, they are arranged as follows manner:
+
+  3 | <- 4
+    v | 5
+ 2->v
+                | 6
+1->v
+
+
+       
+      7-> <-8
+
+
+             P
+
+The arrows indicate where statues are facing, do the following: push statue 7 up once and push statue 8 to the left until it is on the straight line of statue 2, push the pillar to the left until it is facing the statue 3, go behind it and push statue 8 up to the end, push the pillar north to the end, then push statue 7 to the right twice and north to the end, go to the door next and go forward until you reach another room with statues, push the first statue you see, which is facing to the left, down twice, then push the statue that was next to it, facing north, to right seven times, push the statue below south four times, now there are three parallel statues on the left side, push the middle one down and get an Aqua Sword from the chest, push the first statue you pushed up three times, then follow west and south until the end, push the statue on the right up until you can’t do any more, then go east until the end and push the statue facing left down three times, push the statue facing down before it to down to the end, now just go to the next door, phew! You will find the girl, but a group of monsters surrounds her, let’s fight:
+
+BOSS: Gargoyle x4
+
+The most advisable thing here is to have powerful IPs that hit everyone, if this is not possible, finish them off one at a time, but very quickly, as they have a powerful physical attack, don’t hesitate to use Champion if necessary.
+
+The girl says she didn’t ask for her help, then another elf named Artea appears and fights with her, saying that stealing is wrong, even though the lab is leaking oil and killing the flowers, Lexis says she will remodel the lab so it doesn’t leak. more oil and goes to fill Potravia with flowers, Lexis leaves the group and says she will be waiting for Maxim and the others, soon, more elves appear and say that a ball of energy has appeared over their village, Maxim says they should go there quickly, but Artea says she can’t take humans to the village, Guy says there’s no time to argue or the people of the village will be massacred, Artea ends up accepting and transports everyone to the village, upon arrival you learn that Amon kidnapped Karyn, the girl’s mother, and took her to the Divine Temple south of here, Artea says that there is a very strong energy there, Guy then says that the last thing they need is a more powerful Amon and that they should go there now, Artea says that they will not be able to enter without an elf and joins the group, there are new things to buy in the store, but above all, I advise you to buy the Fry magic for Artea, sleep at the Inn and when you are ready leave the village and head south to the temple.
+
+DIVINE SHRINE
+
+Go forward until you reach a huge room, full of fixed and movable pillars and stairs, use the hook to reach a movable pillar on the left, push it to the north until you can no longer do so, go back to the leftmost part and head north to another moving pillar, move it out of the way and head south until you reach a ladder, climb it to reach a chest containing a Revive Armor, go back and head to the first ladder, this time head to a moving pillar on the right , push north until you can’t anymore, go back to the previous platform and go left to a lever, but before pulling it, go up the ladder and go forward to a blue chest containing the Heart Key, go back and use the hook on the lever to raise a platform, using it you can reach the mobile pillar that you pushed and follow it to a ladder, going up, you will reach a place full of vases, remove the vases from the northern part until you find a button that removes the thorns forward, go to the next staircase to reach a chest containing the Rocket Ring, fall to the arrow location and return to the first staircase, go all the way to the vase room again and remove the ones in the southern part until you find a cracked floor, Step on it to go back to the bottom floor, go south and then east until you reach another staircase, go forward to a room with a moving platform, use the hook on the button north of it to go to the other side.
+
+Continue moving forward until a cracked wall, explode it and inside a very easy puzzle, there are five squares with musical notes arranged in a horizontal line (12345), step in that order, 3-2-4-1-5 and the spikes will lower, go to the chest containing a Dragon Egg, go back to the previous room and go through the door to the south and go forward until you reach the door that can be opened with the Heart Key, in the next room, use the Hammer to push the pillars to the white squares and open the next door, go forward and you will reach where Karyn and Amon are, she uses all her power to try to destroy Sinistral, but it is no use, although he felt the blow and landed in the foot, Karyn ends up dying and says that Artea is the last hope of the elves and must destroy this evil, Artea says that she will accompany Maxim on his journey and joins the group definitively, return to Eskerito to give the bad news to Karyn’s daughter, after the conversation, head to Potravia, go to the laboratory and talk to Lexis who says that your submarine ship is ready.
+
+Our next stop is Barnan west of here, but first let’s get the last two capsule monsters, head to an island west of Barnan, there is a big tree, enter it to find the sixth capsule monster, Darbi, now head to Parcelyte and take the ship, go underwater and a little south you will see a hole, enter it and look in this place, for some whirlpools, one of them takes you to the seventh and final Zeppy capsule monster, the others take you to chests with Secret Fruits, there is also a village called Pico, in the far east, to the west of it you will see a temple, it can only be accessed underwater, in it is the Egg Dragon, if you got the eight Dragon Eggs, talk to it and he will grant you a wish, you will have four options, a set of potions that increase status, a set of Fruits for capsule monsters, an Ancient Shield and a set of Rings, choose one and the Dragon will spread the eggs throughout the world in random dungeons, to find them more easily you need the Jewel Sonar which can be won on Forfeit Island, if you manage to make all four requests, the dragon will challenge you and he is the most powerful enemy in the game, even with everyone at Lv. 99, you’ll have a lot of work, but if you manage to defeat him you’ll win the Egg Ring, the best ring in the game and the Egg Sword, a relatively weak sword but with a monstrous IP, ok, now head to Barnan, buy new equipment and go to the temple to the south, but the floor at the entrance has collapsed and you can’t proceed from here, take the ship and go underwater, to the south of the continent there is a hole, enter it and go to the whirlpool just ahead .
+
+SHRINE OF VENGEANCE
+
+Go up the stairs, hit the red button to turn it green and open the door to the north, go to a room with a staircase in the middle, go down it to reach a room with four blocks, two blue and two red and one button that is red, first, put the red blocks on the black squares that are accessible, this will lower part of the spikes, now put the blue blocks on the other squares and hit the red button to lower the rest of the spikes and be able to get the Ghost Key in the chest, return to the previous room and climb the stairs on the left, go through the door to the south and you will arrive at a place with several cracked walls, explode them all to reveal two passages, the one on the right takes you to a chest with a Heal Armor and the one on the left takes you to the door that can be opened with the Ghost Key.
+
+Go down the ladder and climb on the moving platform, go forward to a room with a fallen pillar and some skulls, blow up everything to find a cracked floor, step on it and go to a teleportation circle, but don’t step on it, there is a ladder here apparently inaccessible, put bombs on the cracked pillars to be able to continue, go forward until you reach a place apparently with no way out, notice that the right has a cracked pillar, leave it there for now, go left to the end and put a bomb there, go up take the stairs until you reach a chest containing the Evil Jewel, not the team, it is cursed, go back one floor and put a bomb on the wall on the right, go in and get a Bright Armor from the chest, go back to the cracked pillar that I said before and use the Hammer on it to proceed, enter the next door and you will see two carpets, one green and one red, there is also a block, you must leave the red carpet smooth, passing the block over it, to open the door to the north , follow it, recover, save and continue forward until you reach a black sphere, prepare for a boss:
+
+BOSS: Venge Ghost
+
+He can use spells like Thunder and Firebird, so pay attention to healing, avoid using spells on him, as they are not very efficient, send your best IPs, the Crystal Wand is very efficient against him, I cannot recommend a capsule monster for this situation, as I doubt any of them will last more than two turns.
+
+Artea puts the ghost to rest in peace, go ahead and get the Cursed Bow from the chest and leave this place, return to Barnan, Iris will be waiting for you, talk to her and she says she needs to talk to Maxim alone, Selan won’t allow it and Iris says that the bonds between them are so fragile, that she doesn’t trust him, Selan says that’s not the case, so Iris tells them to go to the tower of truth, where the truth about each one will be revealed, after she if so, equip the Cursed Bow in Artea, go to the church and ask the priest to remove the curse (LIFT), the Cursed Bow will transform into Arty’s Bow, which hits all enemies at once, leave the city, get the boat and head south to the village of Durale, there buy new equipment and, if possible, the Zap magic, leave and head west to a tower.
+
+TOWER OF TRUTH
+
+Go forward to a room with buttons with musical notes and two buttons below, step on the one on the left and the pillars below will each rise to a height, well, step on the musical buttons in order from lowest to highest and you will open the door on the right, go forward to a lever, pull it and go back to the room before the puzzle, there is a cracked wall to the north, blow it up and use the hook to go to the other side, go forward up to a room where there are eyes that push you and a red button, hit it with an arrow to go up the pillars, use the hook on the pillar to the south, turn around and hit the button again, go behind the eye, go west and hit the button once more to be able to proceed.
+
+Climb the first staircase and enter the door, go to a place with a cracked floor and fall, detonate the cracked wall and get a Super Sword from the chest, break another wall and go all the way to the outside, climb two stairs and enter the door to see two buttons on the floor, step on the one on the right and go to the next room, you will see more buttons with musical notes, step on the bottom ones in the following order from left to right: third, second, fourth and first and then use the hook to step on the button above, go down the stairs to the right and go to a room with two vases and a box, put the box on the left button and one of the vases on the other button, go through the door that opened and go forward to a room full of monsters, follow the door to the north, until you reach a room with a box, a vase and buttons.
+
+Do the following: put the vase and the box on the buttons to the left, cross the bridges to the end and push the block to the bottom button, take the vase and put it on the button to the south, take the box and put it on the next button follow to the left and push the block to the top button, go back, take the box and put it on the southernmost button, when you do this put a bomb near it and go through the door to the south before it explodes, enter the next door and get the Truth Key in the chest, go all the way back outside, go up the stairs and enter the door, open the next door with the Truth Key, go up the stairs and go north to a save point, go back and go through the door next south, go forward until you find Iris, she says that the mirror is in the next room and Maxim and Selan enter, inside they have a conversation where they say that they are sure of their feelings for each other and they don’t need any mirror for that, so , they decide not to look at him, the others and you are attacked by some dragons, nothing to worry about, notice that Maxim and Selan’s reflection appears in the mirror when they retreat close to it, after finishing them the mirror will be broken and Iris will have missing, after the group leaves, she returns and rebuilds the mirror, but the figure that appears in it has blue hair, you may remember her from the beginning of the game, Erin…
+
+Leave this place, take your boat and head west until you see a city surrounded by mountains, dive and enter the space in the middle and rise to the surface, enter Chaed and talk to the people to learn that there is a dragon on the mountain to the west and that it is about to erupt, buy new equipment and head to the mountain.
+
+DRAGON MOUNTAIN
+
+Walk a little to the right, climb the stairs and enter the door ahead, follow until you reach a place with two doors and some bushes, to open the door on the left you must eliminate them all, but they regenerate after some time, they are arranged as follows:
+
+123
+  45
+ 6 7
+8
+
+Do the following: Cut bush 5 and stay in its place, cut bush 4 and from there, make a path of bombs to bush 8, this will wipe them all out, go through the door that opened and get Sonic Ring the chest, use the hook on the stake on the right to pass, climb the ladder and go forward until a crossroads, but you can’t go north or south, on the right there is a cracked floor, you must attract the monster For him, if you can, you can go through the door to the south, go through it and use the hook on the stake on the left, now just go forward to a chest containing the Magma Key.
+
+Go back to the previous room and finish off the three monsters, step on the cracked floor to go back to the beginning, go to the rightmost door and open the next door with the Magma Key, here you must use the Hammer to move the pillars so If you can use the hook on them, first go to where there are three chests containing a Miracle, an S-Pro Ring and a Magical Armor, now use the Reset magic and go to the right, climb the stairs and go to a place with a puzzle quite annoying, you must use fire arrows on the plants before they fully grow, if this happens the puzzle is reset, the plants are arranged as follows:
+
+1 2 3
+
+4 5 6
+
+7 8 9
+
+From the door, step right and go south to plant 5, turn left and shoot, step left and shoot again, go under plant 6, turn up and shoot, follow go left until you are between plants 4 and 7, turn down and shoot, turn up and shoot again, go right until you are between plants 6 and 9, turn up and shoot, turn down and shoot again , take two steps left, turn down and shoot, take two steps right, turn up and shoot, take one step left, one step up, turn left and shoot, take one step down , one to the left, turn up and shoot, turn down and shoot again, two steps to the right, turn and shoot, phew! Go south and go up the stairs and go forward until a save point, go down the stairs to reach a place with two others, go down the one on the left to reach a room full of monsters and with three chests containing an S-Mind Ring, an Angry Ring and a Kraken Rock, get them and go back, go down the stairs on the right and some more, go south and use the hook on the stake, go forward to two chests containing an S-Witch Ring and a Hi Power Ring, go back to the save point.
+
+In the previous room there is a secret passage, opening it is a little complicated, use bombs on the wall to the north until one of them breaks, but soon it returns to normal, do the following: put a bomb in front of it, take two steps left and one down, swing and go back in front of the wall placing bombs in the way, switch to the Hammer and swing until the bombs start to explode, use the hammer at the exact moment the last bomb explodes and you can continue, go down a series of stairs and you will find a girl, talk to her and she says that if you want to get to the four chests ahead, you will have to solve the MOST DIFFICULT PUZZLE IN THE WORLD (Believe me, it’s no joke!), you must move the blocks with the directional pad, press A to change blocks, the objective is to bring the biggest block to the lowest part, if you want to try it on your own, skip what comes next, anyway, below you will see a diagram how the blocks are arranged:
+
+ABBC
+ABBC
+DEEF
+DGHF
+IJ
+
+Here's the solution: (J <- <-) (F ↓) (E ->) (G ↑) (J ↑) (I ->) (D ↓) (G <-) (E <-) 
+(F ↑) (H ↓ ->) (J ->) (I ->) (D ->) (G ↓ ↓) (A ↓ ↓) (B <-) (C <-) 
+(F ↑ ↑ ) (H ↑ ↑) (J ->) (I ->) (D ->) (G ->) (A ↓) (E <-) (D ↑) (G ↑) 
+(I <- <-) (D ↓ ) (J ↓) (H ↓) (E -> ->) (G ↑ <-) (I ↑ ↑) (A ->) (G ↓ ↓) 
+(I <- ↓) (E <- <-) (H ↑ <-) (F ↓ ↓) (C ->) (H ↑ ↑) (D ↑ ↑) (J <- ↑) (F ↓) (C ↓) 
+(H ->) (D ↑) ( J ↑) (F <-) (C ↓ ↓) (H ↓ ↓) (D ->) (J ↑ ↑) (H <- ↑) 
+(D ↓) (J ->) (H ↑) (F ↑ ↑) (A ->) (I -> ↓) (E ↓) (B ↓) (H <- <-) (J <- <-) 
+(F ↑) (D ↑) (C ↑) (A ↑ ) (I -> ->) (G -> ->) (E ↓) (B ↓) (J ↓ <-) (F <-) 
+(A ↑ ↑) (B ->) (J ↓ ↓) ( G ↓ ↓) (F <-) (A <-) (D <-) (C ↑ ↑) (B ->) (J -> ↑) 
+(E ↑) (G <- <-) (I <- <-) (B ↓) (J -> ->) (H -> ->) (E ↑) (I ↑ ->) (B <-).
+
+If you managed to do it without using this solution, you can shout a big swear word followed by the phrase “I AM THE GREATEST!”, anyway, get the items Mega Shield, Holy Robe, Legend Helmet and Lizard Tail from the chests, go down the stairs to the right and head north until you reach three chests containing an S-Myst Ring, an S-Power Ring and a Miracle, fall to the place with a button and step on it, follow it to a chest containing a Hidora Rock, continue falling until you reach the bridge , go west to the stake, use the hook and continue west and then north to a cracked wall, behind it there is a chest containing a Gorgon Rock, go back and follow the bridge until it changes position, go down the ladder and go forward until you find the Elder of Chaed, after some conversation, it’s time to face the Dragon:
+
+BOSS: Fire Dragon
+He has attacks with Incendiary that deals around 200 fire damage, Douse, which can put the group to sleep in addition to the very powerful physical attack, heals every turn to avoid major problems, if you have the Lizard Tail , her IP is wonderful here, besides, use spells with Dragon, Ice Valkyrie and any other water or ice attack, if you have Zeppy at a high level, it’s also a good choice.
+
+The Elder is impressed by the group’s power and says he will be waiting for them in Chaed, leave this place and head there, his house is one with a guy with blue hair in front, go in and talk to the old man, he will tell you that you should go to Preamarl, the land of mermaids, as the queen there may know where the Dual Blade is, the Elder gives you the Jade of Mermaids, leave the city and head to the northeast island, it is the same with the big tree where you got Darbi, dive down and enter the hole, move forward to the whirlpool.
+
+PREAMARL
+
+Buy some new equipment and go to the palace to the north, talk to Queen Marla and she says that in a temple located in the center of three islands, there is a sword that could be the Dual Blade, at that time a soldier arrives and says that the Princess Piara was taken by sea currents to a cave where the dangerous Ghost Ship lives, the Queen leaves, head to the three triangular islands to the north and enter the hole in the center of them, go forward and you will find the Queen and her daughter, but Soon after, you will have to face the ghost ship:
+
+BOSS: Ghost Ship
+
+He doesn’t have any worrying attacks if you’re at a high level, use spells like Zap and Firebird in addition to your best IPs, don’t pay attention to the enemies he calls and focus your attacks on the ship.
+
+The sea currents return to normal, after the conversation, the mermaids are swept away by another current, enter one of the whirlpools ahead and you will soon find them at the entrance to the temple, Maxim feels a great energy inside, the mermaids try to enter but are vaporized, wanting revenge, the Queen tries to enter too, but is stopped by Selan who puts her to sleep, Maxim tells the princess to take her mother away and says she is going to enter the temple, enter and follow to a teleportation circle, step on it and head north until you find the Dual Blade that resonates for Maxim, you will then meet Daos, the leader of the Sinistrals, he says he wants to destroy the world because of the Dual Blade, because the fact that it is resonating is because there are humans capable of fighting against it. the Sinistrals and this they cannot admit because this world must be ruled by the strongest, Maxim says he will defeat him with the Dual Blade, but when he tries to take it, it disappears, Daos then says that Maxim is not worthy of the sword and the group is transported to Chaed, an island appears in the sky, controlled by Daos, he destroys Chaed and challenges Maxim to go there.
+
+Leave the city and head to Potravia, go talk to Lexis and he says that to get to Doom Island (the name he gave himself) he will remodel the ship to become an aircraft, but for that he needs another engine and like the first It took years to build, it’s not possible to build another one in time, but he says there is another way, there is a nation governed by military people called Gratze (we’ve heard of these guys), whose technology is very advanced, they have tanks that have the necessary engine, but they won’t just give it to us on a platter, so we’ll have to get the power, leave Potravia and telport to Dankirk, take the ship and head to the northern part of the continent, dive and look for a hole in that area, enter and follow the whirlpool to the east, exit the ship and continue forward until you reach the castle.
+
+GRATZE
+
+When you leave, the guards will take you to the prison, there you will find two old acquaintances, Bart and Berty, after some conversation, they open the cell and leave, reload and save in the cell on the left and go through the door to the south , finish off the guards and go up the stairs, go forward to a room with weeds on the wall, cut them down and put a bomb on the cracked wall, go inside and go up the stairs, push the moving pillar to reveal another staircase, go down and shoot an arrow on the lever, get the Basement Key from the chest and go back to the room with the bushes, go through the door on the left, here is a vase and a button, but contrary to what you might think, you can’t put the vase in the button, I confess that I messed up a little in this part until I discovered that it was stepping on the button holding the vase (banana cone), enter through the door that opened and push the pillar towards the button, use the hook to go to the other side and activate the lever, return to the previous room and go through the door to the south.
+
+Hit the eye with an arrow to continue, go forward to a place with three more doors, enter through the lower right door and go to the next one, activate the lever and use the hook to reach the chest that contains a Miracle, go back to room with the three doors and follow the door to the north, go forward and soon you reach the door that can be opened with the Basement Key, in the next room there is a puzzle, just follow the following route: south, south, east, east, south, north, east, south, west and south, go forward until you reach where Bart and Berty are, they were captured and the prince of Gratze wants to practice target shooting with them, after a lot of conversation, he orders the soldiers to attack you, but they are just appetizers, finish them and let’s get to the main course:
+
+BOSS: Tank
+
+Right from the start, increase everyone’s defense, as this thing has some very powerful attacks, don’t use magic against it, as they are inefficient, increase everyone’s attack and use normal attacks and IPs that don’t cause elemental damage, pay attention to healing.
+
+You get the engine, but the prince becomes completely possessed and activates a kind of self-destruction mechanism in the castle, Bart and Berty leave and Selan transports the group to Potravia, go talk to Lexis to get your aircraft, head to three triangular islands and enter the village of Narvick, buy new equipment, they are the best you can buy, go further north and talk to the Elder, he says that you need to get special items from the three towers that are on the three islands, but they are sealed and to break this seal you take three “key girls”, one for each tower, the first, Lisa, joins you, we then go to the tower near the city.
+
+SHUMAN ISLAND SEALED TOWER
+
+Go forward to the first door you find, enter and go to another door, inside there is a chest with an S-Ice Ring, go back to the first door and go forward to two others, enter the one on the left and go up the stairs , two more doors, enter the one on the left and get the S-Water Ring from the chest, go back and follow the one on the right, go forward until a dead end, finish off the monster and a ladder will appear, go up and go forward until a place with a staircase in the eastern part, before it there is a door, go down the stairs and go forward to a chest containing an S-Thunder Ring, go back to the door before the stairs and finish off the dragon to reveal another staircase , move forward to the save point, recover, save and continue forward to reach the seal, but Gades is back and says that thanks to Erin he can revive, ok, let’s attack.
+
+BOSS: Gades
+
+He has the same attacks as the last battle, that is, nothing to worry about, use the IP Force Field as soon as the battle starts and you won’t even need to heal, send your best attacks and the Zap, Thunder and Gades spells don’t last long.
+
+Gades says that as long as Erin lives he will always come back to torment us, Lisa breaks the first seal and you get the Pearl Armor, which is not the best armor in terms of defense, but it has an excellent IP, leave this place and return to Narvick, talk to the Elder and Marie, the second key girl will join you, head to the northeast tower.
+
+STRADA ISLAND SEALED TOWER
+
+Climb the first staircase on the left and then climb the other one on the right, go forward until a dead end, finish off the ghost to reveal a staircase, go up and go through the door to the northwest, finish off the dragon to reveal another staircase, follow Go ahead and save on the way, soon you will reach the seal and Amon appears, this time there is no way, we will have to face him:
+
+BOSS: Amon
+
+He is certainly much stronger than Gades, Chaos Wave can cause confusion, Glacial Lance hits everyone and causes around 150 damage, he can also use Ice Valkyrie which causes similar damage, use the same strategy you used against Gades, but This time the healing will be much more constant.
+
+Marie breaks the second seal and you get the Pearl Helmet, a good helmet with a great IP, go back to Narvick to get the third girl, Clare and take her to the last tower to the northwest, but first a warning, if you have any optional thing to do, do it now, because you won’t have another chance later.
+
+KAMIRNO ISLAND SEALED TOWER
+
+Enter the first door and follow it until the second one, there is an S-Fire Ring in the chest, go back and go forward until you reach a dead end where you will have to kill another monster to reveal a staircase, go forward until you reach a room with a ghost in front of a black square, finish it to reveal another staircase, go forward and if you want, save halfway, soon you will reach the third seal and Clare will undo it, you will win the Pearl Shield, but Daos appears and wants to take Maxim’s “Pearl Items”, he uses his power to defeat the group, but Maxim resists and the two have an energy duel, so the Dual Blade finally chooses Maxim to be its bearer, which leaves Daos angry, he leaves, the three girls then unite and trap Doom Island in a force field, but Amon had attacked the ship and without her they can’t get there, Selan transports the group to Potravia, there Lexis says he will go repair the ship and send the group to rest in the meantime, Maxim asks to have a talk with Selan, he asks her to stay, but is soon interrupted by her who tells him to stop wanting to leave her out of his battles, she will accompany him wherever he goes and the two will return together to their son Jeros, Guy overhears their conversation and tells Artea that he is worried for them, Artea says that they know what they must do and who they must protect and says that Guy There must also be someone waiting for him, he says yes and that when all this is over he will have a big party, after the conversation, head to where Lexis is and he will have finished the repairs on the ship, but the city is invaded by monsters that are at sea too and that way you can’t move it, things seemed lost when then, behold, Dekar appears, ALIVE, to everyone’s joy, he says he will take care of the monsters here and tells the group to go to the Sinistrals’ castle , they then leave and despite Amon’s attacks, they manage to reach the island, the final battle approaches.
+
+DOOM ISLAND (Final Dungeon, and there is no return)
+
+First of all, equip the Dual Blade on Maxim, if you haven’t already done so, go through the door on the left and get a Miracle from the chest, go down the stairs and exit through the door to the south, enter the middle door and get three more Miracles, go back and go through the right door, go up the stairs and get another Miracle, exit to the south and follow the central corridor to find Gades.
+
+BOSS: Gades
+
+He’s still the same weakling as in the previous battle, use Force Field right at the beginning and use Thunder with Selan and Zap with Artea, Maxim and Guy use normal attacks, don’t spend IP on him, as Gades isn’t worthy of that.
+
+Climb the ladder and move forward, examining the side rooms for some more Miracles, when climbing the second ladder, go to the northernmost part for another two chests with Miracles, go back and go up to the highest part to find Amon, get ready if:
+
+BOSS: Amon
+
+He has the same attacks as before and this time he can use Thunder magic, so don’t hesitate, use Force Field right at the beginning and Brillance with Maxim which then increases Guy’s and his own attack and they both send normal attacks, Selan uses Thunder and Artea use Fry, both of them should be ready for healing as well.
+
+Before going up the next ladder, go down the one further north, it takes you to HP and MP rechargers, recover, go back and now, go up the ladder, walk around the central part to find three more chests containing Miracles, move forward to find Erin.
+
+BOSS: Erin
+
+Now it gets a little complicated, Davastation Wave can kill the entire group instantly, but if you are at a high level this is unlikely to happen, even so, Selan and Artea are very susceptible to this attack, be ready to use Valor or Miracle at any time, Dark Fry hits everyone and can deal up to 250 damage, Maxim, Guy and Artea use the same scheme as in previous battles, Selan only cares about healing and increasing everyone’s stats, as his attack spells are not very efficient here.
+
+After defeating her, return to the chargers to recover, enter the teleportation circle to find Daos, it’s time for the decisive battle:
+
+FINAL BOSS: Daos
+
+Although he is not that dangerous, Terror Wave can poison you, nothing to worry about, he can also use Dark Fry and Dark Reflect which reflects special attacks, if he does this use a weak one on him to remove the effect without causing high damage to the user , he also uses the Ice Valkyrie, Thunder and Fire Bird spells, Maxim and Guy should use their best IPs here and normal attacks when this is not possible, Selan heals and increases the group’s stats and Artea uses Zap and also heals if necessary, I could wish you good luck, but if you’re at a good level, you won’t even need it.
+
+In a last effort, Daos still tries to gather the power of the four Sinistrals to defeat the group, but Maxim and the others join their forces and manage to defeat the evil energy, but, in the process, Selan is mortally injured, the castle begins to collapse and the The bridge that gave access to the throne of Daos falls, separating Maxim and Selan from Guy and Artea, Artea cannot teleport everyone because Maxim and Selan are too far away, Maxim then tells Artea and Guy to leave as he will not leave his beloved behind, after After much hesitation, Artea ends up being convinced by Guy who sees no other way out, she promises to tell everyone what happened here and the two leave, Maxim laments that he and Selan will not be able to see the new era of peace that is beginning, then, the spirit of Daos appears and says he will throw the island at Parcelyte in his last act of terror, after he is gone, Iris, I mean, Erin appears and says that to stop this Maxim must destroy three magical stones that control the island, in her last effort before disappearing, she opens a teleportation circle to the place where they are, ok, enter it and go to the right, soon you will see the first stone, get close so that Maxim can destroy it, enter the door north and go forward to the second stone, destroy it and enter the door to the north, follow the only possible path to the last stone, But Maxim is exhausted and cannot destroy it alone, so the Dual Blade uses its powers to help him.
+
+Well, I’ll leave the rest of the ending up to you, after the credits there’s a dialogue that will be very familiar to anyone who played Lufia 1, when the expression “The End” appears, wait a little longer and you’ll see a full game report, the time played, the number of battles, how many chests you opened and so on, reset the game and when you load your last save, you will see the “Retry” option next to “Start”, choose this option to enter a new mode, where you gain quadruple the experience in battles, in this mode it is much easier to reach level 99 and defeat the Egg Dragon, if you finish the game in this mode, you will access Gift Mode, where you can play the Ancient Cave with everyone the characters at any time, and that’s it, thanks guys and see you next time.
+CHARACTERS
+Character	Description	Assessment
+Maxim	A young warrior who hunted monsters to survive and found himself on a mission to save the world from a terrible evil. He sets out on a journey to find others who share his destiny, so that together they can save the world from the Sinistrals.	Maxim is a good character, there’s nothing extraordinary about him, all his stats are well balanced, he’s not very good with magic, but he’s a great asset in times of emergency.
+Aunt	Maxim’s childhood friend, he always protected her and that’s why Tia is in love with him, but it is not reciprocated, as Maxim sees her as a sister. She goes with him for part of his journey and sees that her chances of winning him diminish when he meets a certain young woman from Parcelyte.	Tia has horrible attack and defense, but she’s great with magic, maybe even better than Selan. It’s a shame she doesn’t stay in the group for long, as she has great potential.
+Guy	A young warrior living in the village of Tanbel, Guy is very confident in his strength which makes him a little arrogant at times, but ultimately he is a good man. He joins the group after Maxim helps him save his sister from the clutches of one of the Sinistrals’ servants.	He has good attack power and the best defense among the characters, but he is very slow and cannot use spells. If it weren’t for the IPs, he would be a very annoying character to use.
+Selan	A young warrior from the Kingdom of Parcelyte, Selan is greatly admired for her strength and sense of justice, qualities that end up winning Maxim’s heart and the love of these two will be her most powerful weapon in the fight against the Sinistrals.	Selan is the best mage among the main characters and as such has a very low attack and defense. Whenever you buy spells, give priority to it, especially healing ones.
+Dekar	A warrior who protects the Kingdom of Bound, extremely strong, but not very smart, he joins the group for a while, but ends up sacrificing himself (or not) to save them from great danger.	Dekar is a slightly better version of Guy and could perfectly replace him if it weren’t for the fact that Guy is one of the main characters. Really, a shame.
+Lexis	A scientist who helps the group several times with his incredible inventions. I don’t have much other information about him.	Lexis is potentially the best mage in the game, unfortunately she is the one who spends the least amount of time in the group. If not for that, he would be an excellent replacement for Artea.
+Artea	An elf who lives in a secret village, far from humans, she ends up joining the group because she doesn’t want to see the world destroyed by the Sinistrals.	Artea has similar statuses to Maxim, with the difference that she is much better with spells and has some exclusive ones like Fry and Zap, which means that in some cases she is more useful than Selan.
+CAPSULE MONSTERS
+
+These are monsters that you encounter during your journey and that help you with a fifth character, but you cannot control them, heal them or increase their status, they use different attacks that can damage enemies, heal them or increase their status. your group, among others, if they die in a battle, in the next battle they return fully recovered, they can evolve into a more powerful form, for this you must feed them with items, weapons, armor, etc. depending on the item you give them the evolution bar increases a lot, little or nothing if they don’t like the snack, when the bar fills they evolve to the next level and when they reach level four they must be fed a special fruit to reach the “Master” level, below is a list of all capsule monsters and their characteristics:
+JELZE
+Attribute	Details
+Element	None
+Location	Large tree south of Alunze Kingdom
+Application for Master	Feed it a Secret Fruit in shape 4.
+Levels and Attacks	Level 1 – Foomy S: Foomy Punch
+	Level 2 – Foomy L: Foomy Punch, Headbutt
+	Level 3 – Foomy L: Foomy Punch, Headbutt, Tackle, Mega Punch
+	Level 4 – Foomy H: Foomy Punch, Headbutt, Tackle, Mega Punch
+	Master Level – Gold Fox: Fang Attack, Bubble Blow, Tail Smash
+BLAZE
+Attribute	Details
+Element	Fire
+Location	Ruby Cave
+Application for Master	Feed it a Charm Fruit in shape 3.
+Levels and Attacks	Level 1 – Armor Dog: Tail
+	Level 2 – Winged Lion: Tail, Burning Fang
+	Level 3 – Wing Lizard: Fang Attack, Iron Claw, Flame Breath
+	Level 4 – Blaze Dragon: Flame Punch, Burning Fang, Flame Breath, Terminate
+	Master Level – Firebird: Burning Rain, Tailspin, Inferno
+FLASH
+Attribute	Details
+Element	Light
+Location	North Dungeon
+Application for Master	Feed it a Dark Fruit in shape 2.
+Levels and Attacks	Level 1 – Shaggy: Spear Revive
+	Level 2 – Sprite: Healing Kiss, Wink
+	Level 3 – Cupid: Sacred Song, Restoration, Thunderbolt
+	Level 4 – Twinkle: Holy Energy, Purification, Bolt Attack
+	Master Level – Unicorn: Dash, Antler Stab, Healing Aura, Holy Thunder
+GUSTO
+Attribute	Details
+Element	Wind
+Location	Tower of Sacrifice
+Application for Master	Feed it an Earth Fruit in shape 4.
+Levels and Attacks	Level 1 – Hard Hat: Fang Attack
+	Level 2 – Bluebird: Beak Bash, Iron Claw, Spiral Wave
+	Level 3 – Winged Horse: Electro Bolt, Finale, Air Attack
+	Level 4 – Green Titan: Iron Fist, Twister, Sonic Blast
+	Master Level – Sky Dragon: Tornado Blow, Dragon Fang, Electro Bolt, Cyclone Wave
+SULLY
+Attribute	Details
+Element	Earth
+Location	Flower Mountain
+Application for Master	Feed it a Breeze Fruit in shape 4.
+Levels and Attacks	Level 1 – Raddisher: Radish Kick
+	Level 2 – Red Cap: Perish Punch, Glow Knuckle
+	Level 3 – Giant: Fist, Heel Drop, Shakedown, Battle Anger
+	Level 4 – Stonehead: Battle Anger, Head Butt, Stone Crush
+	Master Level – Centaur: Battle Bow, Hammer Punch, Tackle
+DARBI
+Attribute	Details
+Element	Darkness
+Location	Big tree on a crescent shaped island
+Application for Master	Feed him a Holy Fruit in form 2
+Levels and Attacks	Level 1 – Myconido: Trancemaker, Shriek
+	Level 2 – Wolfman: Wolf Fang, Wolf Punch, Sizzle Smash (replaces Wolf Punch)
+	Level 3 – Mini Imp: Destruction, Mega Trident, Dark Flame, Terminate (replaces Dark Flame)
+	Level 4 – Big Imp: Sizzle Smash, Terminate, Dark Thunder, Evil Aura (replaces Dark Thunder)
+	Master Level – Red Dragon: Dash, Dragon Blast, Eliminator
+ZEPPY
+Attribute	Details
+Element	Water
+Location	Underwater cave south of Parcelyte
+Application for Master	Feed him a Flame Fruit in form 3
+Levels and Attacks	Level 1 – Red Fish: Fish Kick, Bubble Blast
+	Level 2 – Toadie: Frog Song, Frog Kick, Iron Trident, Mega Trident (replaces Iron Trident)
+	Level 3 – Sea Giant: Energy Wave, Hail Attack, Iron Trident
+	Level 4 – Blue Titan: Thunderblast, Thunder Fist, Power Fist (replaces Thunder Fist)
+	Master Level – Fish Head: Fish Kick, Dive Attack, Magic Freeze, Hyper Kick (replaces Fish Kick), Diving Claw (replaces Dive Attack)
+ANCIENT CAVE
+
+This is an optional dungeon in Lufia II, perhaps the most difficult of all RPG games. It is north of Gruberik and has no less than 99 floors, each one more difficult than the last. It’s practically another game within a game. You can access it from the moment Jyad makes a ship to transport you. It doesn’t matter if you access it in this part or when you are almost at the end of the game, because even if you are at level 99 with everyone, have the best equipment, spells and 99 of all healing items, there is no point, because all this will be taken away from him. You will enter the cave with all characters (including capsule monsters) at level 1, completely unequipped, without spells and with only 10 Potions.
+
+Once entering the cave, there are only two ways to leave: the easiest is to have the group annihilated; the other way is using the Providence item, which is only found after the twentieth floor. Each floor only has a descending staircase, that is, if you go to the next floor, you will not be able to return to the previous one. Each floor is random and changes from game to game. The items you find in the red chests cannot be taken outside the cave, only those in the blue chests, which are very rare. You can also find spells in chests and then use them in the cave. The deeper you go, the better the items you pick up and the tougher the enemies. In the case of spells, you can get the best ones right from the beginning and not even be able to use them due to lack of MP.
+
+Good luck!

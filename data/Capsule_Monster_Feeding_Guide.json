@@ -1,0 +1,132 @@
+{
+    "guide_title": "Lufia II: Capsule Monster Feeding Guide",
+    "introduction": {
+        "overview": "Capsule Monsters (CMs) are uncontrollable sidekicks that fight independently, are immune to most status effects, and start every battle with full HP.",
+        "evolution_system": "CMs progress through classes 1 to 4 and a final Master Class, improving base stats and gaining new abilities at each stage."
+    },
+    "feeding_mechanics": {
+        "gauge_system": "The feeding gauge consists of 32 'bars' that must be filled to trigger an evolution.",
+        "item_quality_reactions": [
+            "0 bars: Ughh - Yuk!",
+            "1 bar: Mmmm - Good!",
+            "2 bars: Yummy!",
+            "4 bars: Yummy, Yummy!",
+            "6 bars: Thank you!!",
+            "8 bars: Incredible!"
+        ],
+        "craving_logic": "CMs crave specific items. Feeding high-quality (high-bar) items raises their craving for more expensive goods; feeding low-quality items lowers their craving back to basics."
+    },
+    "economical_progression_list": [
+        {
+            "evolution_stage": "Class 1 to 2",
+            "best_item": "Battle Knife",
+            "location": "Sundletan shop ($200 each)",
+            "total_cost": "$6,400 for 32 bars"
+        },
+        {
+            "evolution_stage": "Class 2 to 3",
+            "best_item": "Apple Cider",
+            "location": "Sundletan shop ($1,000 each)",
+            "total_cost": "$32,000 for 32 bars"
+        },
+        {
+            "evolution_stage": "Class 3 to 4",
+            "options": [
+                "Bee Rock: Found in Ruby Cave (5% drop rate)",
+                "Bronze Sword: Bound Kingdom shop ($5,000 each)",
+                "War Rapier: Narsysus shop ($7,600 each)"
+            ],
+            "note": "While more expensive, later items are easier to afford due to higher battle loot."
+        },
+        {
+            "evolution_stage": "Any Class (8-Bar Skip)",
+            "item": "Magic Fruit",
+            "source": "Groupie monster drops or Ancient Cave chests",
+            "benefit": "Instantly fills 8 bars for any CM class"
+        }
+    ],
+    "master_class_requirements": {
+        "logic": "To reach Master Class, a CM must reach Class 4 (or lower for some) and be 'no longer hungry.'",
+        "table": [
+            {
+                "cm": "Jelze",
+                "item": "Secret Fruit",
+                "required_class": 4,
+                "revert_item": "Secret Fruit"
+            },
+            {
+                "cm": "Blaze",
+                "item": "Charm Fruit",
+                "required_class": 3,
+                "revert_item": "Flame Fruit"
+            },
+            {
+                "cm": "Flash",
+                "item": "Dark Fruit",
+                "required_class": 2,
+                "revert_item": "Holy Fruit"
+            },
+            {
+                "cm": "Gusto",
+                "item": "Earth Fruit",
+                "required_class": 4,
+                "revert_item": "Wind Fruit"
+            },
+            {
+                "cm": "Zeppy",
+                "item": "Flame Fruit",
+                "required_class": 3,
+                "revert_item": "Charm Fruit"
+            },
+            {
+                "cm": "Darbi",
+                "item": "Holy Fruit",
+                "required_class": 2,
+                "revert_item": "Dark Fruit"
+            },
+            {
+                "cm": "Sully",
+                "item": "Wind Fruit",
+                "required_class": 4,
+                "revert_item": "Earth Fruit"
+            }
+        ]
+    },
+    "fruit_drop_locations": [
+        {
+            "item": "Secret Fruit",
+            "monster": "Wood Gorem",
+            "location": "Treasure Sword Shrine"
+        },
+        {
+            "item": "Charm Fruit",
+            "monster": "Evil Fish, Merman",
+            "location": "Tower of Sacrifice"
+        },
+        {
+            "item": "Dark Fruit",
+            "monster": "Black Dragon",
+            "location": "Fruit Island"
+        },
+        {
+            "item": "Earth Fruit",
+            "monster": "Sand Gorem, Behemoth",
+            "location": "Northern Labyrinth"
+        },
+        {
+            "item": "Flame Fruit",
+            "monster": "Pug",
+            "location": "Tower of Sacrifice"
+        },
+        {
+            "item": "Holy Fruit",
+            "monster": "White Dragon",
+            "location": "Tower of Truth / Fruit Island"
+        },
+        {
+            "item": "Wind Fruit",
+            "monster": "Green Clay, Serfaco",
+            "location": "Northern Labyrinth"
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Kamirno_Tower",
+  "marker_count": 132,
+  "type_counts": {
+    "door": 35,
+    "npc": 1,
+    "stairs": 36,
+    "chest": 1,
+    "monster": 17,
+    "walkable": 42
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

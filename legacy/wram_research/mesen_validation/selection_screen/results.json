@@ -1,0 +1,17 @@
+{
+  "emulator": "Mesen 2.1.1",
+  "rom": "Lufia_II_-_Rise_of_the_Sinistrals_USA.1721649189.sfc",
+  "rom_sha1": "1D0A95DDCCEB399E8FEC51BA5CBB6A6C5D30E0E0",
+  "memory_type": "snesWorkRam",
+  "address": "7E:0108-0109",
+  "capture_method": "atomic WRAM read plus screenshot in the same endFrame callback",
+  "results": [
+    {"selection": "START", "value": "10 14", "screenshot": "start_10_14.png"},
+    {"selection": "RETRY", "value": "50 14", "screenshot": "retry_50_14.png"},
+    {"selection": "GIFT", "value": "90 14", "screenshot": "gift_90_14.png"},
+    {"selection": "SAVE FILE 1", "value": "10 34", "screenshot": "save1_10_34.png"},
+    {"selection": "SAVE FILE 2", "value": "88 34", "screenshot": "save2_88_34.png"},
+    {"selection": "SAVE FILE 3", "value": "10 8C", "screenshot": "save3_10_8C.png"},
+    {"selection": "SAVE FILE 4", "value": "88 8C", "screenshot": "save4_88_8C.png"}
+  ]
+}

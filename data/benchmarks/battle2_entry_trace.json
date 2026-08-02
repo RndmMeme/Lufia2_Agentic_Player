@@ -1,0 +1,101 @@
+{
+  "button": null,
+  "frames": null,
+  "duration_seconds": 5.0,
+  "samples": 89,
+  "transitions": [
+    {
+      "battle_mode": "01",
+      "ui_phase_0b4e": "3A",
+      "input_step_1f55e": "00",
+      "target_index_0026": "03",
+      "target_flags_0027": "00",
+      "formation": [
+        2,
+        3,
+        1,
+        4
+      ],
+      "party": [
+        {
+          "identity": 2,
+          "hp": 747,
+          "mp": 464,
+          "status": "00"
+        },
+        {
+          "identity": 3,
+          "hp": 566,
+          "mp": 0,
+          "status": "00"
+        },
+        {
+          "identity": 1,
+          "hp": 615,
+          "mp": 541,
+          "status": "00"
+        },
+        {
+          "identity": 4,
+          "hp": 571,
+          "mp": 372,
+          "status": "00"
+        }
+      ],
+      "enemies": [
+        {
+          "slot": 0,
+          "identity": "A4",
+          "hp": 6,
+          "mp": 0,
+          "status": "00"
+        },
+        {
+          "slot": 1,
+          "identity": "A4",
+          "hp": 6,
+          "mp": 0,
+          "status": "00"
+        }
+      ],
+      "commands": [
+        {
+          "slot": 0,
+          "target": "00",
+          "command": "00",
+          "ability": "0000",
+          "actor": "00"
+        },
+        {
+          "slot": 1,
+          "target": "00",
+          "command": "00",
+          "ability": "0000",
+          "actor": "00"
+        },
+        {
+          "slot": 2,
+          "target": "00",
+          "command": "00",
+          "ability": "0000",
+          "actor": "00"
+        },
+        {
+          "slot": 3,
+          "target": "00",
+          "command": "00",
+          "ability": "0000",
+          "actor": "00"
+        }
+      ],
+      "initiative": [],
+      "active": {
+        "actor": "00",
+        "target": "00",
+        "command": "00",
+        "action": "0000"
+      },
+      "t_ms": 0
+    }
+  ]
+}

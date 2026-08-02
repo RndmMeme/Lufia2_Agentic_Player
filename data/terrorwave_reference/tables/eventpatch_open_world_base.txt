@@ -1,0 +1,734 @@
+!exit +1 (40) 00:c8,20->d6:18,23 2x2
+
+EVENT 03-X-XX
+0000. 69(98)
+0008. 4B(02)
+0027. 68(50-0C)                      # Load NPC (15,1a) 50: 0c Blue Man
+002A. 68(51-0A)                      # Load NPC (1e,11) 51: 0a Red Boy
+002D. 68(52-0F)                      # Load NPC (0d,15) 52: 0f Green Middle Woman
+0030. 68(53-19)                      # Load NPC (13,15) 53: 19 Red Man
+0033. 68(56-0D)                      # Load NPC (21,23) 56: 0d Yellow Woman
+0036. 68(57-0B)                      # Load NPC (1e,1e) 57: 0b Green Girl
+0039. 68(58-0E)                      # Load NPC (19,13) 58: 0e Yellow Middle Man
+0049. 68(5C-70)                      # Load NPC (14,25) 5c: 70 Nothing
+004C. 00()                           # End Event
+
+!npc 0f (00) 05:17,2e
+EVENT 05-X-XX
+0000. 74(0B)                         # Set Battle BG
+0002. 69(09)
+0004. 69(19)
+0006. 4B(17)                         # Preload Music
+0008. 7B(52-83)                      # Load Monster NPC (1a,06) 52: 83 Lizard
+000B. 7B(53-94)                      # Load Monster NPC (21,07) 53: 94 Jelly
+000E. 7B(54-94)                      # Load Monster NPC (1c,23) 54: 94 Jelly
+0011. 68(5E-37)
+0020. 00()                           # End Event
+
+EVENT 05-C-5E
+0000. 08: Are you sick of
+          switching between
+          your tools?<END MESSAGE>
+0010. 08: Hold {R+A} and press {L}
+          to use whichever tool
+          is at the top of your
+          inventory,<END MESSAGE>
+0020. 08: regardless of which
+          tool you have selected.<END MESSAGE>
+0030. 08: With this tech, you
+          can easily use two
+          tools without switching
+          between them!<END EVENT>
+
+!npc 01 (00) 0e:11,18
+EVENT 0E-X-XX
+0000. 69(08)
+0002. 69(98)
+0004. 4B(14)                         # Preload Music
+0006. 68(50-37)                      # Load NPC (0f,16) 50: 0d Yellow Woman
+000C. 00()                           # End Event
+
+EVENT 0E-C-50
+0000. 08: Did you know that
+          if you have more
+          than one capsule
+          monster,<END MESSAGE>
+0010. 08: they'll automatically
+          tag out with each
+          other in battle?<END MESSAGE>
+0020. 08: Also, if you have
+          any Iris Treasures,
+          your monsters will
+          get a feeding bonus!<END MESSAGE>
+0030. 08: But don't feed them
+          any Dragon Eggs.
+          Dragon Eggs are
+          very valuable!<END EVENT>
+
+EVENT 0E-D-01
+0000. 00()
+
+!npc 07 (00) 1d:01<=12<=fe,01<=22<=fe
+!npc 0f (00) 1d:1c,13
+EVENT 1D-X-XX  # $394ed:394ed
+0000. 69(90)                         # Set Map Properties (escapable, etc.)
+0002. 15(B0-@C)                      # Branch on Flag B0 ($0794:01)
+0006. 4B(02)                         # Play BGM
+0008. 1C(@12)                        # Jump
+000B. 00()                           # End Event
+# LABEL @C $394f9
+000C. 4B(2E)                         # Play BGM
+000E. 1C(@12)                        # Jump
+0011. 00()                           # End Event
+# LABEL @12 $394ff
+0012. 68(50-11)                      # Load NPC (14,21) 50: 11 Gray Old Woman
+0015. 68(51-0E)                      # Load NPC (26,04) 51: 0e Yellow Middle Man
+0018. 68(52-10)                      # Load NPC (06,20) 52: 10 Bald Old Man
+001B. 68(53-5C)                      # Load NPC (06,12) 53: 5c Bald Cleric
+001E. 68(54-0C)                      # Load NPC (07,05) 54: 0c Blue Man
+0021. 68(55-10)                      # Load NPC (14,06) 55: 10 Bald Old Man
+0024. 68(56-45)                      # Load NPC (16,12) 56: 45 Green Dress Girl
+0027. 68(58-32)                      # Load NPC (27,12) 58: 32 Priest
+0030. 68(5E-37)
+7FFF. 00()                           # End Event
+
+EVENT 1D-C-5E
+0000. 08: Hello! I am definitely
+          the owner of this inn.
+          It's 200 gold. Are you
+          staying or what?<END MESSAGE>
+0010. 10(02-@40-@30)
+0020. 08: Yes.
+          No.<CHOICE>
+0030. 00()
+0040. 08: Great! Checkout is
+          at 7:30am. Enjoy
+          your stay!<END MESSAGE>
+0050. 17(C8)
+0060. 00()
+
+EVENT 27-X-XX
+0000. 74(12)                         # Set Battle BG
+0002. 69(01)
+0004. 69(11)
+0006. 4B(17)                         # Preload Music
+0008. 7B(50-89)                      # Load Monster NPC (16,20) 50: 89 Spider
+000B. 7B(51-98)                      # Load Monster NPC (14,0f) 51: 98 Hornet
+000E. 7B(52-8F)                      # Load Monster NPC (28,09) 52: 8f Bat
+0011. 7B(53-98)                      # Load Monster NPC (28,1a) 53: 98 Hornet
+001E. 00()                           # End Event
+
+!exit +1 (F1) 42:0a,0c->43:08,15
+!tile 0a 42:0a,0c
+EVENT 42-D-0A
+0000. 43(01-02)
+0010. 00()
+
+EVENT 43-X-XX
+0000. 74(0B)                         # Set Battle BG
+0002. 69(01)
+0004. 69(09)
+0006. 69(19)
+0008. 4B(17)                         # Preload Music
+000D. 00()                           # End Event
+
+!exit +1 (F1) 43:08,11->44:06,25
+!tile 0a 43:08,11
+EVENT 43-D-0A
+0000. 43(01-02)
+7FFF. 00()
+
+EVENT 44-X-XX
+0000. 74(0B)                         # Set Battle BG
+0002. 69(01)
+0004. 69(09)
+0006. 69(99)
+0100. 68(50-37)
+1008. 4B(17)                         # Preload Music
+100A. 00()                           # End Event
+
+EVENT 44-A-00
+0000. 54(00)
+7FFF. 00()
+
+EVENT 44-A-01
+0000. 00()
+
+EVENT 44-C-50
+0000. 08: Sorry, if I let
+          you touch this orb,
+          it will crash the
+          game.
+7FFF. 00()
+
+EVENT 49-X-XX
+0000. 74(09)                         # Set Battle BG
+0002. 69(01)
+0004. 69(11)
+0006. 4B(08)                         # Preload Music
+0008. 7B(50-E4)                      # Load Monster NPC (05,16) 50: e4 Sand Golem
+000B. 7B(51-90)                      # Load Monster NPC (0c,1b) 51: 90 Sword
+000E. 7B(52-9E)                      # Load Monster NPC (0b,17) 52: 9e Lizardman
+0011. 7B(53-A5)                      # Load Monster NPC (05,09) 53: a5 Hobgoblin
+001E. 68(55-70)                      # Load NPC (13,05) 55: 70 Nothing
+0021. 00()                           # End Event
+
+EVENT 70-X-XX
+0000. 74(0A)                         # Set Battle BG
+0002. 69(01)
+0004. 69(11)
+0006. 4B(05)                         # Preload Music
+0008. 68(50-70)                      # Load NPC (14,04) 50: 70 Nothing
+000B. 7B(51-B0)                      # Load Monster NPC (1f,16) 51: b0 Samurai
+000E. 7B(52-81)                      # Load Monster NPC (1e,22) 52: 81 Snail
+0011. 7B(53-80)                      # Load Monster NPC (1b,27) 53: 80 Octopus
+0014. 7B(54-B0)                      # Load Monster NPC (09,16) 54: b0 Samurai
+0017. 7B(55-81)                      # Load Monster NPC (07,20) 55: 81 Snail
+001A. 7B(56-80)                      # Load Monster NPC (0d,20) 56: 80 Octopus
+0027. 00()                           # End Event
+
+EVENT 7E-X-XX
+0000. 74(07)                         # Set Battle BG
+0002. 69(01)
+0004. 69(11)
+0006. 69(31)
+0008. 4B(13)                         # Preload Music
+002C. 00()
+
+!npc 0f (00) 8c:09,2d
+EVENT 8C-X-XX
+0000. 68(5E-37)
+0003. 74(09)                         # Set Battle BG
+0005. 69(11)                         # Set Map Properties (escapable, etc.)
+0007. 4B(08)                         # Play BGM
+0009. 7B(51-D8)                      # Load Monster NPC (11,26) 51: d8 Blue Crab
+000C. 7B(52-96)                      # Load Monster NPC (10,12) 52: 96 Orange Flower
+000F. 7B(53-AE)                      # Load Monster NPC (15,0e) 53: ae Lamia
+0012. 7B(54-A8)                      # Load Monster NPC (1e,20) 54: a8 Mummy
+0015. 7B(55-D8)                      # Load Monster NPC (22,16) 55: d8 Blue Crab
+0018. 7B(56-96)                      # Load Monster NPC (04,08) 56: 96 Orange Flower
+001B. 00()                           # End Event
+
+EVENT 8C-C-5E
+0000. 08: Dankirk Dungeon monsters
+          hate Iris treasures!
+          The more you have, the
+          fewer you'll see!<END EVENT>
+
+EVENT 90-A-01
+0000. 54(05)
+0010. 14(C2-01C0-0001-20-@40-FF)
+0020. 14(C2-01C1-0001-20-@40-FF)
+0030. 00()                           # End Event
+0040. 43(01-03)
+0050. 00()                           # End Event
+
+EVENT 90-D-03
+0000. 00()
+
+EVENT 90-D-04
+0000. 00()
+
+EVENT 90-D-05
+0000. 00()
+
+!npc 0f (00) 9a:1a,0d
+EVENT 9A-X-XX
+0000. 69(90)                         # Set Map Properties (escapable, etc.)
+0002. 4B(11)                         # Play BGM
+0010. 68(5E-37)
+7FFF. 00()                           # End Event
+
+EVENT 9A-C-5E
+0800. 08: You want keys? I
+          got keys. Three eggs,
+          any key you want.
+          Interested?<END MESSAGE>
+0810. 10(02-@900-@6200)
+0820. 08: I'm interested.
+          Nope.<CHOICE>
+0830. 1C(@6200)
+0900. 14(C2-002B-0003-30-@6300-FF)
+0910. 08: Great. Go ahead
+          and pick your
+          favorite key
+          from the list.<END MESSAGE>
+0920. 10(04-@1000-@2000-@3000-@4000)
+0930. 08: Dungeon keys
+          Mountain keys
+          Shrine keys
+          Tower keys<CHOICE>
+0940. 1C(@6200)
+1000. 10(04-@1100-@1200-@1300-@1030)
+1010. 08: Ancient key
+          Basement key
+          Dankirk key
+          Next page<CHOICE>
+1020. 1C(@6200)
+1030. 10(02-@1400-@1500)
+1040. 08: Lake key
+          Ruby key<CHOICE>
+1050. 1C(@6200)
+1100. 14(C2-01C2-0001-20-@6000-FF)
+1110. 21(C2-01)
+1120. 24(2B-03)
+1130. 08: You got it. Here's
+          your Ancient key.<END MESSAGE>
+1140. 4B(33)
+1150. 8C(00-0A-08)
+1160. 86(00-40)
+1170. 49(C8)
+1180. 9E: <POSITION 02>Gets the
+          Ancient key.<END MESSAGE>
+1190. 1C(@6100)
+1200. 14(C2-01BD-0001-20-@6000-FF)
+1210. 21(BD-01)
+1220. 24(2B-03)
+1230. 08: You got it. Here's
+          your Basement key.<END MESSAGE>
+1240. 4B(33)
+1250. 8C(00-0A-08)
+1260. 86(00-40)
+1270. 49(C8)
+1280. 9E: <POSITION 02>Gets the
+          Basement key.<END MESSAGE>
+1290. 1C(@6100)
+1300. 14(C2-01BC-0001-20-@6000-FF)
+1310. 21(BC-01)
+1320. 24(2B-03)
+1330. 08: You got it. Here's
+          your Dankirk key.<END MESSAGE>
+1340. 4B(33)
+1350. 8C(00-0A-08)
+1360. 86(00-40)
+1370. 49(C8)
+1380. 9E: <POSITION 02>Gets the
+          Dankirk key.<END MESSAGE>
+1390. 1C(@6100)
+1400. 14(C2-01B0-0001-20-@6000-FF)
+1410. 21(B0-01)
+1420. 24(2B-03)
+1430. 08: You got it. Here's
+          your Lake key.<END MESSAGE>
+1440. 4B(33)
+1450. 8C(00-0A-08)
+1460. 86(00-40)
+1470. 49(C8)
+1480. 9E: <POSITION 02>Gets the
+          Lake key.<END MESSAGE>
+1490. 1C(@6100)
+1500. 14(C2-01B1-0001-20-@6000-FF)
+1510. 21(B1-01)
+1520. 24(2B-03)
+1530. 08: You got it. Here's
+          your Ruby key.<END MESSAGE>
+1540. 4B(33)
+1550. 8C(00-0A-08)
+1560. 86(00-40)
+1570. 49(C8)
+1580. 9E: <POSITION 02>Gets the
+          Ruby key.<END MESSAGE>
+1590. 1C(@6100)
+2000. 10(03-@2100-@2200-@2300)
+2010. 08: Flower key
+          Magma key
+          Tree key<CHOICE>
+2020. 1C(@6200)
+2100. 14(C2-01B7-0001-20-@6000-FF)
+2110. 21(B7-01)
+2120. 24(2B-03)
+2130. 08: You got it. Here's
+          your Flower key.<END MESSAGE>
+2140. 4B(33)
+2150. 8C(00-0A-08)
+2160. 86(00-40)
+2170. 49(C8)
+2180. 9E: <POSITION 02>Gets the
+          Flower key.<END MESSAGE>
+2190. 1C(@6100)
+2200. 14(C2-01B8-0001-20-@6000-FF)
+2210. 21(B8-01)
+2220. 24(2B-03)
+2230. 08: You got it. Here's
+          your Magma key.<END MESSAGE>
+2240. 4B(33)
+2250. 8C(00-0A-08)
+2260. 86(00-40)
+2270. 49(C8)
+2280. 9E: <POSITION 02>Gets the
+          Magma key.<END MESSAGE>
+2290. 1C(@6100)
+2300. 14(C2-01B6-0001-20-@6000-FF)
+2310. 21(B6-01)
+2320. 24(2B-03)
+2330. 08: You got it. Here's
+          your Tree key.<END MESSAGE>
+2340. 4B(33)
+2350. 8C(00-0A-08)
+2360. 86(00-40)
+2370. 49(C8)
+2380. 9E: <POSITION 02>Gets the
+          Tree key.<END MESSAGE>
+2390. 1C(@6100)
+3000. 10(03-@3100-@3200-@3300)
+3010. 08: Ghost key
+          Heart key
+          Sword key<CHOICE>
+3020. 1C(@6200)
+3100. 14(C2-01BA-0001-20-@6000-FF)
+3110. 21(BA-01)
+3120. 24(2B-03)
+3130. 08: You got it. Here's
+          your Ghost key.<END MESSAGE>
+3140. 4B(33)
+3150. 8C(00-0A-08)
+3160. 86(00-40)
+3170. 49(C8)
+3180. 9E: <POSITION 02>Gets the
+          Ghost key.<END MESSAGE>
+3190. 1C(@6100)
+3200. 14(C2-01B9-0001-20-@6000-FF)
+3210. 21(B9-01)
+3220. 24(2B-03)
+3230. 08: You got it. Here's
+          your Heart key.<END MESSAGE>
+3240. 4B(33)
+3250. 8C(00-0A-08)
+3260. 86(00-40)
+3270. 49(C8)
+3280. 9E: <POSITION 02>Gets the
+          Heart key.<END MESSAGE>
+3290. 1C(@6100)
+3300. 14(C2-01B5-0001-20-@6000-FF)
+3310. 21(B5-01)
+3320. 24(2B-03)
+3330. 08: You got it. Here's
+          your Sword key.<END MESSAGE>
+3340. 4B(33)
+3350. 8C(00-0A-08)
+3360. 86(00-40)
+3370. 49(C8)
+3380. 9E: <POSITION 02>Gets the
+          Sword key.<END MESSAGE>
+3390. 1C(@6100)
+4000. 10(04-@4100-@4200-@4300-@4030)
+4010. 08: Cloud key
+          Light key
+          Narcysus key
+          Next page<CHOICE>
+4020. 1C(@6200)
+4030. 10(04-@4400-@4500-@4600-@4700)
+4040. 08: Sky key
+          Trial key
+          Truth key
+          Wind key<CHOICE>
+4050. 1C(@6200)
+4100. 14(C2-01B3-0001-20-@6000-FF)
+4110. 21(B3-01)
+4120. 24(2B-03)
+4130. 08: You got it. Here's
+          your Cloud key.<END MESSAGE>
+4140. 4B(33)
+4150. 8C(00-0A-08)
+4160. 86(00-40)
+4170. 49(C8)
+4180. 9E: <POSITION 02>Gets the
+          Cloud key.<END MESSAGE>
+4190. 1C(@6100)
+4200. 14(C2-01B4-0001-20-@6000-FF)
+4210. 21(B4-01)
+4220. 24(2B-03)
+4230. 08: You got it. Here's
+          your Light key.<END MESSAGE>
+4240. 4B(33)
+4250. 8C(00-0A-08)
+4260. 86(00-40)
+4270. 49(C8)
+4280. 9E: <POSITION 02>Gets the
+          Light key.<END MESSAGE>
+4290. 1C(@6100)
+4300. 14(C2-01BE-0001-20-@6000-FF)
+4310. 21(BE-01)
+4320. 24(2B-03)
+4330. 08: You got it. Here's
+          your Narcysus key.<END MESSAGE>
+4340. 4B(33)
+4350. 8C(00-0A-08)
+4360. 86(00-40)
+4370. 49(C8)
+4380. 9E: <POSITION 02>Gets the
+          Narcysus key.<END MESSAGE>
+4390. 1C(@6100)
+4400. 14(C2-01AF-0001-20-@6000-FF)
+4410. 21(AF-01)
+4420. 24(2B-03)
+4430. 08: You got it. Here's
+          your Sky key.<END MESSAGE>
+4440. 4B(33)
+4450. 8C(00-0A-08)
+4460. 86(00-40)
+4470. 49(C8)
+4480. 9E: <POSITION 02>Gets the
+          Sky key.<END MESSAGE>
+4490. 1C(@6100)
+4500. 14(C2-01BB-0001-20-@6000-FF)
+4510. 21(BB-01)
+4520. 24(2B-03)
+4530. 08: You got it. Here's
+          your Trial key.<END MESSAGE>
+4540. 4B(33)
+4550. 8C(00-0A-08)
+4560. 86(00-40)
+4570. 49(C8)
+4580. 9E: <POSITION 02>Gets the
+          Trial key.<END MESSAGE>
+4590. 1C(@6100)
+4600. 14(C2-01BF-0001-20-@6000-FF)
+4610. 21(BF-01)
+4620. 24(2B-03)
+4630. 08: You got it. Here's
+          your Truth key.<END MESSAGE>
+4640. 4B(33)
+4650. 8C(00-0A-08)
+4660. 86(00-40)
+4670. 49(C8)
+4680. 9E: <POSITION 02>Gets the
+          Truth key.<END MESSAGE>
+4690. 1C(@6100)
+4700. 14(C2-01B2-0001-20-@6000-FF)
+4710. 21(B2-01)
+4720. 24(2B-03)
+4730. 08: You got it. Here's
+          your Wind key.<END MESSAGE>
+4740. 4B(33)
+4750. 8C(00-0A-08)
+4760. 86(00-40)
+4770. 49(C8)
+4780. 9E: <POSITION 02>Gets the
+          Wind key.<END MESSAGE>
+4790. 1C(@6100)
+6000. 08: Hey, don't you already
+          have this key? Don't
+          ever say I ain't never
+          lookin' out for ya.<END EVENT>
+6100. 89(00)
+6110. 49(00)
+6120. 4B(11)                         # Play BGM
+6130. 00()
+6200. 08: Sure, sure. You
+          ever need keys, you
+          you know where to
+          find me.<END EVENT>
+6300. 08: You need three eggs,
+          pal. Count 'em,<PAUSE 82> one,<PAUSE 82>
+          two,<PAUSE 82> THREE.<PAUSE 82> Get outta
+          my sight.<END EVENT>
+7FFF. 00()
+
+EVENT 9F-C-50
+    0000. 14(12-08-04-20-@1F1-FF)        # If Variable 08 ($07a6) >= 4 then jump to @1F1
+    0008. AB(08)                         # Check Dragon Eggs Obtained
+    000A. 6A(FF-@363)                    # Branch on NOT Flag FF ($079d:80)
+    000E. 08: I see you've collected
+              eight Dragon Eggs.
+              Choose a wish.<END MESSAGE>
+    0035. 48(07-03)
+    0038. 10(04-@8C-@E5-@143-@18D)       # Set Up Branching Event
+    0042. 08: A set of 10 potions.
+              A set of 20 fruits.
+              Dual Blade.
+              A set of Super Rings.<CHOICE>
+    0075. 08: Take your time and
+              think it over.<END EVENT>
+    # LABEL @8C
+    008C. 08: I see. I shall make
+              your wish come true!<END MESSAGE>
+    00A7. 4B(33)                         # Preload Music
+    00A9. 8C(00-0A-16)                   # Load animation frame 0A-16 for sprite 04
+    00AD. 86(00-40)                      # Character Movement?
+    00B0. 49(C8)
+    00B2. 9E: <POSITION 06>Gets a set of 10 potions.<END MESSAGE>
+    00C2. 89(00)
+    00C4. 49(00)
+    00C6. 20(11-0A)                      # Get Item 0XX (Life potion x10)
+    00C9. 20(12-0A)                      # Get Item 0XX (Spell potion x10)
+    00CC. 20(14-0A)                      # Get Item 0XX (Speed potion x10)
+    00CF. 20(15-0A)                      # Get Item 0XX (Mind potion x10)
+    00D2. 20(13-0A)                      # Get Item 0XX (Power potion x10)
+    00D5. 20(16-0A)                      # Get Item 0XX (Brave x10)
+    00E1. 1C(@388)                       # Jump
+    00E4. 00()                           # End Event
+    # LABEL @E5
+    00E5. 08: I see. I shall make
+              your wish come true!<END MESSAGE>
+    0100. 4B(33)                         # Preload Music
+    0102. 8C(00-0A-17)                   # Load animation frame 0A-17 for sprite 04
+    0106. 86(00-40)                      # Character Movement?
+    0109. 49(C8)
+    010B. 9E: <POSITION 06>Gets a set of 20 fruits.<END MESSAGE>
+    011A. 89(00)
+    011C. 49(00)
+    011E. 20(2E-14)                      # Get Item 0XX (Secret fruit x20)
+    0121. 20(2F-14)                      # Get Item 0XX (Holy fruit x20)
+    0124. 20(30-14)                      # Get Item 0XX (Breeze fruit x20)
+    0127. 20(31-14)                      # Get Item 0XX (Charm fruit x20)
+    012A. 20(32-14)                      # Get Item 0XX (Dark fruit x20)
+    012D. 20(33-14)                      # Get Item 0XX (Earth fruit x20)
+    0130. 20(34-14)                      # Get Item 0XX (Flame fruit x20)
+    0133. 20(35-14)                      # Get Item 0XX (Magic fruit x20)
+    013F. 1C(@388)                       # Jump
+    0142. 00()                           # End Event
+    # LABEL @143
+    0143. 08: I see. I shall make
+              your wish come true!<END MESSAGE>
+    015E. 4B(33)                         # Preload Music
+    0160. 8C(00-0A-01)                   # Load animation frame 0A-01 for sprite 04
+    0164. 86(00-40)                      # Character Movement?
+    0167. 49(C8)
+    0169. 9E: <POSITION 06>Gets the Dual Blade.<END MESSAGE>
+    0179. 89(00)
+    017B. 49(00)
+    017D. 20(36-01)                      # Get Item 0XX (Dual blade x1)
+    0189. 1C(@388)                       # Jump
+    018C. 00()                           # End Event
+    # LABEL @18D
+    018D. 08: I see. I shall make
+              your wish come true!<END MESSAGE>
+    01A8. 4B(33)                         # Preload Music
+    01AA. 8C(00-0A-06)                   # Load animation frame 0A-06 for sprite 04
+    01AE. 86(00-40)                      # Character Movement?
+    01B1. 49(C8)
+    01B3. 9E: <POSITION 06>Gets a set of Super Rings.<END MESSAGE>
+    01C5. 89(00)
+    01C7. 49(00)
+    01C9. 21(5B-01)                      # Get Item 1XX (S-power ring x1)
+    01CC. 21(5D-01)                      # Get Item 1XX (S-pro ring x1)
+    01CF. 21(5C-01)                      # Get Item 1XX (S-mind ring x1)
+    01D2. 21(5E-01)                      # Get Item 1XX (S-witch ring x1)
+    01D5. 21(63-01)                      # Get Item 1XX (S-myst ring x1)
+    01D8. 21(5A-01)                      # Get Item 1XX (S-thun ring x1)
+    01DB. 21(57-01)                      # Get Item 1XX (S-fire ring x1)
+    01DE. 21(58-01)                      # Get Item 1XX (S-water ring x1)
+    01E1. 21(59-01)                      # Get Item 1XX (S-ice ring x1)
+    01ED. 1C(@388)                       # Jump
+    01F0. 00()                           # End Event
+    # LABEL @1F1
+    01F1. 08: I have made your
+              wish come true. There
+              is nothing else I can do.<END MESSAGE>
+    0219. 48(04-03)
+    021C. 10(02-@241-@24D)               # Set Up Branching Event
+    0222. 08: Go back.
+              Fight the Egg Dragon!<CHOICE>
+    023A. 08: So long.<END EVENT>
+    # LABEL @241
+    0241. 08: So...so long...<END EVENT>
+    # LABEL @24D
+    024D. 08: I see you wish to
+              battle me! I will
+              give you all I've got!<END MESSAGE>
+    0276. 4B(19)                         # Preload Music
+    0278. 74(04)                         # Set Battle BG
+    027A. 53(25)                         # Invoke Battle (Egg Dragon x1)
+    027C. 15(FF-@343)                    # Branch on Flag FF ($079d:80)
+    0280. 70()                           # Silence
+    0281. CC()
+    0282. A4()                           # Screen Mosaic
+    0283. 76()
+    0284. 6F(2C)                         # Change Music
+    0286. 08: I see you people are
+              quite the warriors. It has
+              been a long time since
+              I've so enjoyed myself!<END MESSAGE>
+    02BF. 15(C1-@31A)                    # Branch on Flag C1 ($0796:02)
+    02C3. 08: To show my
+              appreciation, let me
+              give you this.<END MESSAGE>
+    02E4. 4B(33)                         # Preload Music
+    02E6. 8C(00-0A-01)                   # Load animation frame 0A-01 for sprite 04
+    02EA. 86(00-40)                      # Character Movement?
+    02ED. 49(C8)
+    02EF. 9E: <POSITION 06>Gets the Egg Sword
+              and Egg Ring.<END MESSAGE>
+    0308. 89(00)
+    030A. 49(00)
+    030C. 20(70-01)                      # Get Item 0XX (Egg sword x1)
+    030F. 21(68-01)                      # Get Item 1XX (Egg ring x1)
+    0312. 1A(C1)                         # Set Event Flag C1 ($0796:02)
+    0314. 4B(2C)                         # Preload Music
+    0316. 31(00-01)                      # Change Facing
+    0319. 00()                           # End Event
+    # LABEL @31A
+    031A. 08: I have nothing else to
+              give you, but I will
+              fight with you anytime.<END EVENT>
+    # LABEL @343
+    0343. 70()                           # Silence
+    0344. A4()                           # Screen Mosaic
+    0345. 76()
+    0346. 6F(2C)                         # Change Music
+    0348. 08: You need more practice.
+              Come back later.<END MESSAGE>
+    0361. 28()
+    0362. 00()                           # End Event
+    # LABEL @363
+    0363. 08: Collect eight Dragon Eggs
+              and I will grant your
+              wish.<END EVENT>
+    # LABEL @388
+    0388. 4B(2C)                         # Preload Music
+    0390. 1E(08-01)                      # Add Value to Variable 08 ($07a6)
+    0400. 1D(0A-00)
+    0410. 24(2B-08)
+    0420. 14(C2-002B-0001-30-@800-FF)
+    0430. 1E(0A-01)
+    0440. 24(2B-01)
+    0450. 1C(@420)
+    0800. 20(2B-08)
+    0810. AD(31-00-01)                   # Dragon eggs related?
+    0820. 14(12-0A-01-30-@1388-FF)
+    0830. 1E(0A-FF)
+    0840. 20(2B-01)
+    0850. 1C(@820)
+    1388. 37(1E)                         # Pause
+    138A. 95(BF-00-3C)                   # Screen tint animation
+    138E. 37(3C)                         # Pause
+    1390. 97()
+    1391. 37(14)                         # Pause
+    1393. 4C(2F)                         # Play Sound
+    1395. C1(0A-12)
+    1398. C2(00-01-08-08-00-00)
+    139F. 90(00-00-21)                   # Wave motion right-left
+    13A3. 8F(00-00-41)                   # Wave motion up-down
+    13A7. 9F(00-C6-12)                   # Wave motion shrink
+    13AB. A2(00)
+    13AD. 00()                           # End Event
+
+EVENT D6-X-XX
+0000. 69(08)
+0002. 69(98)
+0004. 4B(01)                         # Preload Music
+7FFF. 00()
+
+EVENT D6-D-01
+0000. 00()
+
+EVENT E7-B-62
+0000. 59(11)
+0010. 1A(71)
+7FFF. 00()
+
+EVENT E9-B-0A
+0000. 59(11)
+0010. 00()
+
+EVENT ED-X-XX
+0000. 69(98)
+0002. 4B(14)                         # Preload Music
+000E. 00()                           # End Event
+
+EVENT EF-X-XX
+0000. 69(01)
+0002. 69(91)
+0004. 4B(14)                         # Preload Music
+0010. 00()

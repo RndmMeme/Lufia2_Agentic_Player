@@ -1,0 +1,26 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Dragon_Mountain",
+  "marker_count": 1297,
+  "type_counts": {
+    "door": 27,
+    "walkable": 118,
+    "npc": 3,
+    "chest": 20,
+    "blocked": 121,
+    "bush": 11,
+    "puzzle": 62,
+    "lava": 810,
+    "monster": 36,
+    "ladder": 54,
+    "switch": 1,
+    "stairs": 34
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

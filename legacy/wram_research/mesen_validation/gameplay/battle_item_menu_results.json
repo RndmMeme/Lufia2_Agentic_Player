@@ -1,0 +1,48 @@
+{
+  "status": "CONFIRMED",
+  "checks": {
+    "slot1_empty": true,
+    "slot2_charred_newt": true,
+    "slot3_curselifter": true,
+    "slot4_escape": true,
+    "slot5_shriek": true,
+    "slot6_freeze_ball": true,
+    "top_empty_cursor": true,
+    "slot2_cursor": true,
+    "slot3_cursor": true,
+    "true_96_slot_end": true,
+    "last_slot_has_two_bytes": true,
+    "charred_newt_precondition": true,
+    "item_selection_stores_raw_pair": true,
+    "selection_transition_temporarily_clears_slot": true,
+    "item_execution_consumes_stack_and_restores_mp": true
+  },
+  "addresses": {
+    "inventory": "7E:0A8D-0B4C inclusive, 0xC0 bytes, 96 two-byte slots",
+    "window_first_byte_offset": "7E:0011",
+    "selected_inventory_byte_offset": "7E:0012 = 2*(slot-1)",
+    "selected_visible_row": "7E:0014",
+    "cursor_xy": "7E:0100-0101",
+    "prompt": "7E:3046 interleaved ASCII",
+    "first_rendered_row": "7E:3147",
+    "rendered_row_stride": "0x80",
+    "availability_attribute": "row + 0x02: 20 usable, 24 disabled"
+  },
+  "semantics": {
+    "storage_slot": "Fixed 1-based raw inventory slot, including empty slots.",
+    "selected_byte_offset": "Zero-based storage slot index multiplied by two.",
+    "occupied_ordinal": "Separate display/reporting concept; must not be used for navigation."
+  },
+  "conclusion": "Battle preserves all 96 raw inventory slots, including empties. The old 0xBF-byte helper length omitted the second byte of slot 96; the correct length is 0xC0. Charred Newt stored raw pair 01 02 in the command. The selection transition temporarily cleared the slot; only the final empty slot together with the +5 MP effect proves execution.",
+  "execution_test": {
+    "item": "Charred newt",
+    "storage_slot": 2,
+    "raw_pair": "01 02",
+    "battle_command": "0x03",
+    "before_mp": 465,
+    "after_selection_mp": 465,
+    "selection_transition_slot": "00 00 (temporary reservation/removal)",
+    "after_execution_mp": 470,
+    "slot_after_execution": "00 00"
+  }
+}

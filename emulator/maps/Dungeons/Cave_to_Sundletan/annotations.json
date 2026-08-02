@@ -1,0 +1,960 @@
+{
+  "schema": "lufia2-dungeon-annotations-v2",
+  "dungeon": "Cave_to_Sundletan",
+  "annotations": {
+    "F88": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": "dungeon entrance from Elcid Region / exit to Elcid Region"
+    },
+    "N77": {
+      "traversal": "blocked",
+      "object": "priest",
+      "required_action": "talk",
+      "notes": "Save, Heal, Cure"
+    },
+    "I78": {
+      "traversal": "blocked",
+      "object": "NPC",
+      "required_action": "talk",
+      "notes": "Chat, Hint"
+    },
+    "J80": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "H79": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "I79": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "J79": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "H78": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "P83": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "P82": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "O82": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "N82": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "N81": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "O81": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "N80": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "J76": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    },
+    "J75": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "J74": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "J73": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "J89": {
+      "traversal": "confirmed_walkable",
+      "object": "bridge",
+      "required_action": null,
+      "notes": null
+    },
+    "J88": {
+      "traversal": "confirmed_walkable",
+      "object": "bridge",
+      "required_action": null,
+      "notes": null
+    },
+    "J87": {
+      "traversal": "confirmed_walkable",
+      "object": "bridge",
+      "required_action": null,
+      "notes": null
+    },
+    "J86": {
+      "traversal": "confirmed_walkable",
+      "object": "bridge",
+      "required_action": null,
+      "notes": null
+    },
+    "J61": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    },
+    "J60": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "J59": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "J58": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "J49": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": "Exit to Sundletan Region, Entrance from Sundletan Region"
+    },
+    "J48": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "J47": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AA62": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    },
+    "AA61": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AA60": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AA59": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "W53": {
+      "traversal": "blocked",
+      "object": "pot",
+      "required_action": "pick up",
+      "notes": "Step 1: place at V56, Step 3: pick up and place on floor switch at S56"
+    },
+    "X53": {
+      "traversal": "blocked",
+      "object": "pot",
+      "required_action": "pick up",
+      "notes": "Step 2: stand on on V55 and place on floor switch at V54"
+    },
+    "W51": {
+      "traversal": "blocked",
+      "object": "door",
+      "required_action": "puzzle",
+      "notes": "opens after pot from W53 is placed on floor switch on S56"
+    },
+    "S48": {
+      "traversal": "blocked",
+      "object": "chest",
+      "required_action": "open",
+      "notes": "may contain useful gear or items"
+    },
+    "AG51": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    },
+    "AS49": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AT47": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AT48": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AT49": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AU51": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AU50": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AU49": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AU48": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AU47": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AV49": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AV48": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb"
+    },
+    "AV47": {
+      "traversal": "blocked",
+      "object": "chest",
+      "required_action": "open",
+      "notes": "may contain useful gear or items"
+    },
+    "AA67": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb. Reveals floor switch"
+    },
+    "AA76": {
+      "traversal": "blocked",
+      "object": "door",
+      "required_action": "unlock",
+      "notes": "press floor switch on AA67 to unlock"
+    },
+    "AA75": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AA74": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AA73": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "X80": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "X81": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "X82": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "X83": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "X84": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "Y82": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "Y83": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "Y84": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "Y85": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "Z82": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "Z83": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "Z84": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "Z85": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "Y81": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AA83": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AA84": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AA85": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AA86": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AB83": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AB84": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AB85": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AC82": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AC83": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AD83": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AD84": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AD85": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "AE85": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "W83": {
+      "traversal": "conditional",
+      "object": "wall",
+      "required_action": null,
+      "notes": "remove bush at X83"
+    },
+    "V83": {
+      "traversal": "conditional",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "U83": {
+      "traversal": "conditional",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "T82": {
+      "traversal": "blocked",
+      "object": "chest",
+      "required_action": "open",
+      "notes": "may contain useful gear or items"
+    },
+    "AH84": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    },
+    "AH83": {
+      "traversal": "confirmed_walkable",
+      "object": null,
+      "required_action": null,
+      "notes": null
+    },
+    "AH82": {
+      "traversal": "confirmed_walkable",
+      "object": null,
+      "required_action": null,
+      "notes": null
+    },
+    "AH81": {
+      "traversal": "confirmed_walkable",
+      "object": null,
+      "required_action": null,
+      "notes": null
+    },
+    "BC79": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "BD79": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "use sword, fire arrow or bomb."
+    },
+    "BE79": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "reveals floor switch. Place pot here from AX81 to open door at AX78"
+    },
+    "AX78": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": "unlock by placing pot on BE79"
+    },
+    "AX77": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AX76": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AX75": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BJ62": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    },
+    "BJ61": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BJ60": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BJ59": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BJ56": {
+      "traversal": "confirmed_walkable",
+      "object": "stairs",
+      "required_action": null,
+      "notes": "takes player to BP56"
+    },
+    "BO52": {
+      "traversal": "blocked",
+      "object": "stump",
+      "required_action": "shoot",
+      "notes": "shoot hook from BO46 to traverse moat"
+    },
+    "BQ45": {
+      "traversal": "blocked",
+      "object": "stump",
+      "required_action": "shoot",
+      "notes": "shoot hook from BQ52 to traverse moat"
+    },
+    "BP44": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    },
+    "BP43": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BP42": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BP41": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BP39": {
+      "traversal": "blocked",
+      "object": "chest",
+      "required_action": "open",
+      "notes": "may contain useful gear or items"
+    },
+    "AM57": {
+      "traversal": "blocked",
+      "object": "bush",
+      "required_action": "remove",
+      "notes": "reveals floor switch. Place pot here from AQ77 to open door at AQ72"
+    },
+    "AQ72": {
+      "traversal": "conditional",
+      "object": "door",
+      "required_action": "open",
+      "notes": "unlock by placing pot on AM57"
+    },
+    "AQ71": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AQ70": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AQ69": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "AS62": {
+      "traversal": "blocked",
+      "object": "block",
+      "required_action": "push",
+      "notes": "push down from AS61, will trigger fight with monster at AR62"
+    },
+    "AS60": {
+      "traversal": "blocked",
+      "object": "block",
+      "required_action": "push",
+      "notes": "push down from AS59, will trigger fight with monster at AR61"
+    },
+    "AR62": {
+      "traversal": "blocked",
+      "object": "block",
+      "required_action": "push",
+      "notes": "push down from AR61"
+    },
+    "AQ62": {
+      "traversal": "confirmed_walkable",
+      "object": "stairs",
+      "required_action": null,
+      "notes": "send you to W6. You want to go here first."
+    },
+    "S19": {
+      "traversal": "blocked",
+      "object": "chest",
+      "required_action": null,
+      "notes": null
+    },
+    "AE16": {
+      "traversal": "blocked",
+      "object": "switch",
+      "required_action": "hit with sword",
+      "notes": "completes bridge at AK16 to AK20"
+    },
+    "AF13": {
+      "traversal": "confirmed_walkable",
+      "object": "arrows",
+      "required_action": "jump",
+      "notes": "looking right, shortcut to bridge AK16"
+    },
+    "BC60": {
+      "traversal": "confirmed_walkable",
+      "object": "door",
+      "required_action": "open",
+      "notes": null
+    },
+    "BC59": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BC658": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BC57": {
+      "traversal": "confirmed_walkable",
+      "object": "player_probe",
+      "required_action": null,
+      "notes": null
+    },
+    "BB53": {
+      "traversal": "confirmed_walkable",
+      "object": "arrows",
+      "required_action": "jump",
+      "notes": "facing left"
+    },
+    "AZ51": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "AZ52": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "AZ53": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "AZ55": {
+      "traversal": "confirmed_walkable",
+      "object": "stairs",
+      "required_action": null,
+      "notes": "send you to AI7. Regular way to Bridge at AK16"
+    },
+    "AE28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AD28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AC28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AB28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "AA28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "Z28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "Y28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "X28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "W28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "V28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "U28": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "U27": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "U26": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "U25": {
+      "traversal": "confirmed_walkable",
+      "object": "wall",
+      "required_action": null,
+      "notes": null
+    },
+    "U22": {
+      "traversal": "confirmed_walkable",
+      "object": "stairs",
+      "required_action": null,
+      "notes": "lead to U36"
+    },
+    "U36": {
+      "traversal": "confirmed_walkable",
+      "object": "stairs",
+      "required_action": null,
+      "notes": "lead to U22"
+    },
+    "S39": {
+      "traversal": "blocked",
+      "object": "chest",
+      "required_action": null,
+      "notes": null
+    },
+    "W36": {
+      "traversal": "blocked",
+      "object": "chest",
+      "required_action": null,
+      "notes": null
+    },
+    "AH26": {
+      "traversal": "confirmed_walkable",
+      "object": "stairs",
+      "required_action": null,
+      "notes": "lead to AH36"
+    },
+    "AH36": {
+      "traversal": "confirmed_walkable",
+      "object": "stairs",
+      "required_action": null,
+      "notes": "lead to AH26"
+    },
+    "AM36": {
+      "traversal": "confirmed_walkable",
+      "object": "recovery tile",
+      "required_action": "stand",
+      "notes": "restores HP"
+    },
+    "AN36": {
+      "traversal": "confirmed_walkable",
+      "object": "recovery tile",
+      "required_action": "stand",
+      "notes": "restores MP"
+    },
+    "AO36": {
+      "traversal": "confirmed_walkable",
+      "object": "save tile",
+      "required_action": "stand",
+      "notes": "save game"
+    },
+    "AS36": {
+      "traversal": "confirmed_walkable",
+      "object": "stairs",
+      "required_action": null,
+      "notes": "lead to AX36"
+    },
+    "AX36": {
+      "traversal": "confirmed_walkable",
+      "object": "stairs",
+      "required_action": null,
+      "notes": "lead to AS36"
+    },
+    "BA29": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "BA28": {
+      "traversal": "confirmed_walkable",
+      "object": "ladder",
+      "required_action": "climb",
+      "notes": null
+    },
+    "BA26": {
+      "traversal": "blocked",
+      "object": "monster",
+      "required_action": "beat",
+      "notes": "may hold key item"
+    }
+  }
+}

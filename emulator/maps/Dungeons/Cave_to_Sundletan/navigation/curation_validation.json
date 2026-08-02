@@ -1,0 +1,26 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Cave_to_Sundletan",
+  "marker_count": 285,
+  "type_counts": {
+    "bush": 50,
+    "chest": 7,
+    "walkable": 64,
+    "npc": 2,
+    "door": 14,
+    "water": 96,
+    "monster": 19,
+    "puzzle": 12,
+    "switch": 3,
+    "blocked": 1,
+    "stairs": 12,
+    "ladder": 5
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

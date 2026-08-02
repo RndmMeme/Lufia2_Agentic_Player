@@ -1,0 +1,6 @@
+{
+  "current_goal": "[MOVE: SOUTH 3]",
+  "last_navigation_summary": "Move south succeeded; dungeon position changed.",
+  "last_navigation_failure": "",
+  "last_battle_result": "DEFEATED"
+}

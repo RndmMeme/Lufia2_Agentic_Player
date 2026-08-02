@@ -1,0 +1,54 @@
+{
+  "status": "CONFIRMED",
+  "checks": {
+    "exploration_01_to_00": true,
+    "battle_00_to_01": true,
+    "three_enemies_637_hp": true,
+    "enemy_hp_tracks_damage_and_removal": true,
+    "commands_swapped": true,
+    "slot3_stride": true,
+    "slot4_stride": true,
+    "all_character_commands": true,
+    "legacy_defend_field_unchanged": true,
+    "group_menu_options": true,
+    "battle_formation_swapped_only": true,
+    "escape_returns_to_exploration": true,
+    "enemy_hp_is_stale_after_escape": true,
+    "victory_rewards": true,
+    "victory_result_is_still_battle": true,
+    "victory_return_ends_battle": true,
+    "rewards_are_stale_after_return": true,
+    "victory_clears_enemy_hp": true
+  },
+  "addresses": {
+    "exploration_mode": "7E:09A9",
+    "battle_mode": "7E:09AA",
+    "enemy_hp_base": "7E:162C",
+    "enemy_stride": "0xBE",
+    "enemy_count": 6,
+    "party_command_base": "7F:F560",
+    "party_command_stride": "0x0C",
+    "command_offset": "0x04",
+    "command_values": {
+      "Attack": "0x01",
+      "Magic": "0x02",
+      "Item": "0x03",
+      "Defend": "0x04",
+      "IP": "0x08"
+    },
+    "selected_action_or_ability_offset": "0x06",
+    "observed_target_companion_offset": "0x0A",
+    "legacy_character_defend_plus_0x13": "CONTRADICTED",
+    "group_menu_selection": "7E:0B4E",
+    "group_menu_values": {
+      "Fight": "0x09",
+      "Trade positions": "0x0A",
+      "Escape": "0x0B"
+    },
+    "battle_formation": "7E:153D-1540",
+    "battle_active_rule": "7E:09AA != 0; enemy HP alone is stale after escape",
+    "victory_exp": "7E:1605-1606 uint16 little-endian",
+    "victory_gold": "7E:1608-1609 uint16 little-endian",
+    "reward_validity": "Reward values remain stale after returning to exploration"
+  }
+}

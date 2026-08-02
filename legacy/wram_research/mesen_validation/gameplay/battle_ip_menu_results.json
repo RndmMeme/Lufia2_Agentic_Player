@@ -1,0 +1,100 @@
+{
+  "status": "CONFIRMED",
+  "checks": {
+    "cursor_index_0_to_5": true,
+    "cursor_index_double_mirror": true,
+    "cursor_y_stride_0x0c": true,
+    "equipment_working_list": true,
+    "six_rendered_gear_names": true,
+    "six_rendered_ip_names": true,
+    "six_ip_costs_resolve": true,
+    "guy_current_ip": true,
+    "availability_attributes": true,
+    "pane_matches_ip_greater_or_equal_cost": true,
+    "sleep_stinger_precondition": true,
+    "sleep_stinger_selection_keeps_ip": true,
+    "sleep_stinger_target_confirmation_keeps_ip": true,
+    "sleep_stinger_execution_consumes_96_ip": true,
+    "row_stride_0x80": true
+  },
+  "addresses": {
+    "cursor_index": "7E:0014 (00-05)",
+    "cursor_y": "7E:0101 (20 + row*0C)",
+    "equipment_working_list": "7E:1357-1362 (six uint16 LE item IDs)",
+    "prompt": "7E:3046 interleaved ASCII",
+    "first_rendered_row": "7E:3147",
+    "rendered_row_stride": "0x80",
+    "ip_name_in_row": "row + 0x1B",
+    "availability_attribute": "row + 0x02: 20 usable, 24 insufficient IP",
+    "rendered_pane_end": "7E:3447",
+    "guy_current_ip": "7E:0DE5 = 96"
+  },
+  "rows": [
+    {
+      "slot": 1,
+      "item_id": "7800",
+      "gear": "Zirco ax",
+      "ip": "Holy mirror",
+      "cost": 164,
+      "available": false,
+      "render_attribute": "0x24"
+    },
+    {
+      "slot": 2,
+      "item_id": "DE00",
+      "gear": "Zircon plate",
+      "ip": "Anger mirror",
+      "cost": 216,
+      "available": false,
+      "render_attribute": "0x24"
+    },
+    {
+      "slot": 3,
+      "item_id": "F900",
+      "gear": "Mage shield",
+      "ip": "Sleep stinger",
+      "cost": 96,
+      "available": true,
+      "render_attribute": "0x20"
+    },
+    {
+      "slot": 4,
+      "item_id": "3A01",
+      "gear": "Old helmet",
+      "ip": "Bomb attack",
+      "cost": 64,
+      "available": true,
+      "render_attribute": "0x20"
+    },
+    {
+      "slot": 5,
+      "item_id": "5301",
+      "gear": "Sonic ring",
+      "ip": "Sluggish",
+      "cost": 128,
+      "available": false,
+      "render_attribute": "0x24"
+    },
+    {
+      "slot": 6,
+      "item_id": "8701",
+      "gear": "Black eye",
+      "ip": "Hardboiled",
+      "cost": 8,
+      "available": true,
+      "render_attribute": "0x20"
+    }
+  ],
+  "conclusion": "The menu materializes six equipment IDs plus rendered item/IP text. No separate six-entry IP-skill-ID list was observed in WRAM. Sleep Stinger selection and targeting kept Guy at 96 IP; actual execution consumed all 96 IP and left zero.",
+  "execution_test": {
+    "ability": "Sleep stinger",
+    "cost": 96,
+    "current_ip_address": "7E:0DE5",
+    "before": 96,
+    "after_selection": 96,
+    "after_target_confirmation": 96,
+    "after_execution": 0,
+    "battle_command": "0x08",
+    "observed_selected_action": "0x1B"
+  }
+}

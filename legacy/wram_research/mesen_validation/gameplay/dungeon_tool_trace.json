@@ -1,0 +1,42 @@
+{
+  "rom_sha1": "1D0A95DDCCEB399E8FEC51BA5CBB6A6C5D30E0E0",
+  "addresses": {
+    "selected_code": "7E:0A06-0A07",
+    "selected_name": "7E:0B77, zero-terminated ASCII",
+    "action_state": "7E:09A8"
+  },
+  "tools": [
+    {
+      "name": "Hook",
+      "selected_code": "A7 01",
+      "action_sequence": ["7E", "00"]
+    },
+    {
+      "name": "Bomb",
+      "selected_code": "A8 01",
+      "action_sequence": ["77", "7F", "00"]
+    },
+    {
+      "name": "Arrow",
+      "selected_code": "A9 01",
+      "action_sequence": ["6F", "6E", "6F", "00"]
+    },
+    {
+      "name": "Fire arrow",
+      "selected_code": "AA 01",
+      "action_sequence": ["6F", "6E", "6F", "00"]
+    },
+    {
+      "name": "Hammer",
+      "selected_code": "AB 01",
+      "action_sequence": ["7F", "00"]
+    },
+    {
+      "name": "Sword",
+      "selected_code": null,
+      "action_sequence": ["00"],
+      "note": "A normal sword swing is not represented by 7E:09A8."
+    }
+  ],
+  "status": "CONFIRMED"
+}

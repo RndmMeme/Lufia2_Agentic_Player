@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Virtual environments
+.venv/
+legacy/environments/
+legacy/agent_snes9x/memory/chroma_db/
+legacy/runtime_artifacts/
+
+# Build products
+**/bin/
+**/obj/
+legacy/generated/
+
+# Editor settings
+.vscode/
+
+# Runtime state and ad-hoc dumps
+data/runs/
+data/online_maps/
+data/vision_observations/
+*.srm
+*.sav
+*.state
+*.state[0-9]*
+
+# Copyrighted game images must never enter source control
+*.sfc
+*.smc
+*.fig
+*.swc
+
+# Optional local overrides
+runtime_config.local.json
+
+# Mesen Lua bridge transport
+wram_discovery/mesen_bridge/shared/*
+!wram_discovery/mesen_bridge/shared/.gitkeep

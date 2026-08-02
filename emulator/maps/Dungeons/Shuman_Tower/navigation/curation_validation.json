@@ -1,0 +1,20 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Shuman_Tower",
+  "marker_count": 136,
+  "type_counts": {
+    "npc": 1,
+    "door": 31,
+    "stairs": 20,
+    "chest": 3,
+    "walkable": 70,
+    "monster": 11
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

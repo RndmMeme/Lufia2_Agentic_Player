@@ -1,0 +1,1193 @@
+[
+    {
+        "name": "Ancient Power",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "2X MGR & DFP for a short period of time"
+    },
+    {
+        "name": "Anger Mirror",
+        "cost": 216,
+        "elements": [],
+        "properties": [],
+        "description": "Repels Attacks and counterattack"
+    },
+    {
+        "name": "Antidote",
+        "cost": 16,
+        "elements": [],
+        "properties": [],
+        "description": "Cures Poison status for all allies"
+    },
+    {
+        "name": "Aqua Attack",
+        "cost": 164,
+        "elements": [
+            "Water"
+        ],
+        "properties": [],
+        "description": "3X normal damage"
+    },
+    {
+        "name": "Aqua Mirror",
+        "cost": 164,
+        "elements": [
+            "Water"
+        ],
+        "properties": [],
+        "description": "Repels All Water Attacks"
+    },
+    {
+        "name": "Arctic Freeze",
+        "cost": 224,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "Powerful attack on all enemies"
+    },
+    {
+        "name": "Aura Protect",
+        "cost": 196,
+        "elements": [],
+        "properties": [],
+        "description": "Increases MGR during battle"
+    },
+    {
+        "name": "Ax Attack",
+        "cost": 164,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases HP of foes by 1/8"
+    },
+    {
+        "name": "Battle Cry",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases HP of foes by 1/6"
+    },
+    {
+        "name": "Battle Fury",
+        "cost": 192,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases HP of foes by 1/4"
+    },
+    {
+        "name": "Battle Lust",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Increases ATP during battle"
+    },
+    {
+        "name": "Beserker",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Increases ATP during battle"
+    },
+    {
+        "name": "Bite",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "2X normal damage"
+    },
+    {
+        "name": "Blaze Attack",
+        "cost": 164,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "3X normal damage"
+    },
+    {
+        "name": "Blizzard",
+        "cost": 64,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "Moderate magic attack"
+    },
+    {
+        "name": "Bolt",
+        "cost": 64,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "Moderate magic attack"
+    },
+    {
+        "name": "Bomb Attack",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Attack all enemies"
+    },
+    {
+        "name": "Boomerang",
+        "cost": 164,
+        "elements": [],
+        "properties": [],
+        "description": "Repels attacks and counterattack with 1/2 damage"
+    },
+    {
+        "name": "Bravery",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Increases DFP during battle"
+    },
+    {
+        "name": "Brilliance",
+        "cost": 255,
+        "elements": [],
+        "properties": [],
+        "description": "Repels attacks and counterattack with 2x damage"
+    },
+    {
+        "name": "Buster Attack",
+        "cost": 128,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "High powered Magic Attack"
+    },
+    {
+        "name": "Celestial",
+        "cost": 224,
+        "elements": [
+            "Zap"
+        ],
+        "properties": [],
+        "description": "Attacks all enemies"
+    },
+    {
+        "name": "Champion",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Restores HP (INT+999)/Allies"
+    },
+    {
+        "name": "Combo Attack",
+        "cost": 196,
+        "elements": [
+            "Thunder",
+            "Water",
+            "Fire",
+            "Ice"
+        ],
+        "properties": [],
+        "description": "Attack using four different elements"
+    },
+    {
+        "name": "Confuse",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Inflicts Confusion Status"
+    },
+    {
+        "name": "Confusion",
+        "cost": 96,
+        "elements": [],
+        "properties": [],
+        "description": "Basic attack, instlicts Confusion Status"
+    },
+    {
+        "name": "Courage",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Increases DFP during battle"
+    },
+    {
+        "name": "Crisis Cure",
+        "cost": 164,
+        "elements": [],
+        "properties": [],
+        "description": "Restores Max HP to all allies"
+    },
+    {
+        "name": "Dark Force",
+        "cost": 128,
+        "elements": [
+            "Dark"
+        ],
+        "properties": [],
+        "description": "Powerful Magic Attack possible instant death"
+    },
+    {
+        "name": "Dark Mirror",
+        "cost": 164,
+        "elements": [
+            "Dark"
+        ],
+        "properties": [],
+        "description": "Repels all magic attacks"
+    },
+    {
+        "name": "Dark Mist",
+        "cost": 255,
+        "elements": [
+            "Dark"
+        ],
+        "properties": [],
+        "description": "High Defense vs Dark Attacks"
+    },
+    {
+        "name": "Dash",
+        "cost": 96,
+        "elements": [],
+        "properties": [],
+        "description": "2X normal damage"
+    },
+    {
+        "name": "Deadly Smash",
+        "cost": 164,
+        "elements": [],
+        "properties": [
+            "Strong vs Flying Enemies"
+        ],
+        "description": "3X normal damage"
+    },
+    {
+        "name": "Deep Freeze",
+        "cost": 255,
+        "elements": [],
+        "properties": [],
+        "description": "Hit all foes and cast \"Ice Valk\" Spell"
+    },
+    {
+        "name": "Deflect",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Freezes Magic of all foes"
+    },
+    {
+        "name": "Destroy",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Instant death"
+    },
+    {
+        "name": "Devastation",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases HP of foes by 1/8"
+    },
+    {
+        "name": "Diamond Dust",
+        "cost": 196,
+        "elements": [
+            "Water",
+            "Ice"
+        ],
+        "properties": [],
+        "description": "Powerful  Magic attack"
+    },
+    {
+        "name": "Dimwit",
+        "cost": 196,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases INT of foes"
+    },
+    {
+        "name": "Dive",
+        "cost": 128,
+        "elements": [],
+        "properties": [
+            "Strong vs Flying Enemies"
+        ],
+        "description": "2X normal damage"
+    },
+    {
+        "name": "Dive Bomber",
+        "cost": 96,
+        "elements": [],
+        "properties": [
+            "Strong vs Flying Enemies"
+        ],
+        "description": "1.5X normal damage"
+    },
+    {
+        "name": "Divine Cure",
+        "cost": 96,
+        "elements": [],
+        "properties": [],
+        "description": "Restores 25% of Max HP to all allies"
+    },
+    {
+        "name": "Do-Re-Mi",
+        "cost": 96,
+        "elements": [],
+        "properties": [],
+        "description": "Inflicts Confusion Status"
+    },
+    {
+        "name": "Dragon",
+        "cost": 128,
+        "elements": [
+            "Water"
+        ],
+        "properties": [],
+        "description": "Powerful magic attack"
+    },
+    {
+        "name": "Dragon Rush",
+        "cost": 164,
+        "elements": [],
+        "properties": [
+            "Strong vs Dragons"
+        ],
+        "description": "3X normal damage"
+    },
+    {
+        "name": "Dread",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases DFP of foes"
+    },
+    {
+        "name": "Fake",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Increases AGL during battle"
+    },
+    {
+        "name": "Fatal Blow",
+        "cost": 255,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases HP of foes by 1/2"
+    },
+    {
+        "name": "Fireball",
+        "cost": 64,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "Moderate magic attack"
+    },
+    {
+        "name": "Fire Bird",
+        "cost": 128,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "Powerful magic attack"
+    },
+    {
+        "name": "Firestorm",
+        "cost": 224,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "Attack all enemies"
+    },
+    {
+        "name": "Flameblock",
+        "cost": 255,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "High Defense vs Fire Attacks"
+    },
+    {
+        "name": "Flame Guard",
+        "cost": 128,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "Reduces Fire Damage!"
+    },
+    {
+        "name": "Flame Return",
+        "cost": 164,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "Repels all fire magic attacks!"
+    },
+    {
+        "name": "Flash",
+        "cost": 96,
+        "elements": [
+            "Zap"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Fleet",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Increases AGL during battle"
+    },
+    {
+        "name": "Flood",
+        "cost": 255,
+        "elements": [],
+        "properties": [],
+        "description": "Hit all foes! Casts \"Dragon\" Spell!"
+    },
+    {
+        "name": "Forcefield",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Increases DFP during battle"
+    },
+    {
+        "name": "Forgetful",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases INT"
+    },
+    {
+        "name": "Free Magic",
+        "cost": 16,
+        "elements": [],
+        "properties": [],
+        "description": "Unfreezes Magic of all allies"
+    },
+    {
+        "name": "Frenzy",
+        "cost": 96,
+        "elements": [],
+        "properties": [],
+        "description": "1.5X normal damage"
+    },
+    {
+        "name": "Frost",
+        "cost": 164,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Glacial Blast",
+        "cost": 164,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "3X normal damage"
+    },
+    {
+        "name": "Gloomy",
+        "cost": 164,
+        "elements": [
+            "Dark"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Gloomsplash",
+        "cost": 196,
+        "elements": [
+            "Fire",
+            "Dark"
+        ],
+        "properties": [],
+        "description": "Extreme magic attack"
+    },
+    {
+        "name": "Groundshock",
+        "cost": 164,
+        "elements": [
+            "Earth"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Hard Boiled",
+        "cost": 8,
+        "elements": [],
+        "properties": [],
+        "description": "Affects enemy's attributes"
+    },
+    {
+        "name": "Head Attack",
+        "cost": 164,
+        "elements": [],
+        "properties": [],
+        "description": "2X normal damage"
+    },
+    {
+        "name": "Holy Attack",
+        "cost": 164,
+        "elements": [
+            "Zap"
+        ],
+        "properties": [],
+        "description": "3X normal damage"
+    },
+    {
+        "name": "Holy Healing",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Restores 75% of Max HP to all allies"
+    },
+    {
+        "name": "Holy Mirror",
+        "cost": 164,
+        "elements": [
+            "Zap"
+        ],
+        "properties": [],
+        "description": "Repels all magic attacks"
+    },
+    {
+        "name": "Holy Shield",
+        "cost": 255,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "High defense vs ice attacks"
+    },
+    {
+        "name": "Holy Wall",
+        "cost": 255,
+        "elements": [
+            "Zap"
+        ],
+        "properties": [],
+        "description": "High defense vs zap attacks"
+    },
+    {
+        "name": "Ice.....",
+        "cost": 128,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Ice Attack",
+        "cost": 96,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "1.5X normal damage"
+    },
+    {
+        "name": "Ice Guard",
+        "cost": 128,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "Reduces Ice Damage!"
+    },
+    {
+        "name": "Ice Mirror",
+        "cost": 164,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "Repels all ice magic attacks"
+    },
+    {
+        "name": "Immobilize",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Basic Attack, can cause Lock status"
+    },
+    {
+        "name": "Incendiary",
+        "cost": 164,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Iron Barrier",
+        "cost": 255,
+        "elements": [],
+        "properties": [],
+        "description": "High Defense vs Physical Attacks"
+    },
+    {
+        "name": "Ironclad",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Increases DFP during battle"
+    },
+    {
+        "name": "Ironkick",
+        "cost": 48,
+        "elements": [],
+        "properties": [],
+        "description": "Attacks all foes"
+    },
+    {
+        "name": "Light Attack",
+        "cost": 96,
+        "elements": [
+            "Zap"
+        ],
+        "properties": [],
+        "description": "1.5X normal damage"
+    },
+    {
+        "name": "Light Guard",
+        "cost": 128,
+        "elements": [
+            "Zap"
+        ],
+        "properties": [],
+        "description": "High Defense vs Zap attacks"
+    },
+    {
+        "name": "Lightbulb",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Increases INT during battle"
+    },
+    {
+        "name": "Magic Cure",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Restores 25% of Max MP"
+    },
+    {
+        "name": "Magic Healing",
+        "cost": 192,
+        "elements": [],
+        "properties": [],
+        "description": "Restores 50% of Max MP"
+    },
+    {
+        "name": "Magic Rebirth",
+        "cost": 255,
+        "elements": [],
+        "properties": [],
+        "description": "Restores all of Max MP"
+    },
+    {
+        "name": "Magma Blast",
+        "cost": 164,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Megaquake",
+        "cost": 20,
+        "elements": [
+            "Earth"
+        ],
+        "properties": [],
+        "description": "Moderate powered magic attack"
+    },
+    {
+        "name": "Meltdown",
+        "cost": 192,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases ATP of foes by 1/6"
+    },
+    {
+        "name": "Menace",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases ATP of foes by 1/8"
+    },
+    {
+        "name": "Miracle Care",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Take zero damage for a short period of time"
+    },
+    {
+        "name": "Mirror",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Repels Magic Attacks"
+    },
+    {
+        "name": "Mirror Block",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Protects vs Mirror Spell"
+    },
+    {
+        "name": "Ninja",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Instant Death"
+    },
+    {
+        "name": "Paralysis Cure",
+        "cost": 16,
+        "elements": [],
+        "properties": [],
+        "description": "Cures Paralysis Status"
+    },
+    {
+        "name": "Perish",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Instant Death"
+    },
+    {
+        "name": "Phoenix",
+        "cost": 255,
+        "elements": [],
+        "properties": [],
+        "description": "Restores Life, all HP, and all MP"
+    },
+    {
+        "name": "Phoenix Blow",
+        "cost": 255,
+        "elements": [
+            "Fire"
+        ],
+        "properties": [],
+        "description": "Hits all foes! Casts \"Firebird\" Spell"
+    },
+    {
+        "name": "Power Guard",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "High Defense vs Physical Attacks"
+    },
+    {
+        "name": "Power Healing",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Restores all of Max HP"
+    },
+    {
+        "name": "Quicksilver",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Increases AGL during battle"
+    },
+    {
+        "name": "Reawaken",
+        "cost": 16,
+        "elements": [],
+        "properties": [],
+        "description": "Cures Sleep Status"
+    },
+    {
+        "name": "Rebirth",
+        "cost": 224,
+        "elements": [],
+        "properties": [],
+        "description": "Restores all of Max HP"
+    },
+    {
+        "name": "Recovery",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Restores all of users HP"
+    },
+    {
+        "name": "Regeneration",
+        "cost": 255,
+        "elements": [],
+        "properties": [],
+        "description": "Revives and Restores HP"
+    },
+    {
+        "name": "Rejuvenation",
+        "cost": 192,
+        "elements": [],
+        "properties": [],
+        "description": "Restores 50% of Max HP to all allies"
+    },
+    {
+        "name": "Revival Sleep",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Cures all Status ailments"
+    },
+    {
+        "name": "Reviver",
+        "cost": 164,
+        "elements": [],
+        "properties": [],
+        "description": "Revives and Restores with 50% of Max HP"
+    },
+    {
+        "name": "Re-energize",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Restores 50% of Max HP"
+    },
+    {
+        "name": "Sacred Song",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Restores all of Max HP"
+    },
+    {
+        "name": "Samurai",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "2X normal damage"
+    },
+    {
+        "name": "Scissor Slash",
+        "cost": 96,
+        "elements": [],
+        "properties": [],
+        "description": "2X normal damage to all enemies"
+    },
+    {
+        "name": "Shadow Guard",
+        "cost": 128,
+        "elements": [
+            "Dark"
+        ],
+        "properties": [],
+        "description": "High Defense vs Dark Attacks"
+    },
+    {
+        "name": "Sizzle",
+        "cost": 255,
+        "elements": [
+            "Zap"
+        ],
+        "properties": [],
+        "description": "Hits all foes! Casts \"Zap\" Spell"
+    },
+    {
+        "name": "Skysplitter",
+        "cost": 255,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "Hits all foes! Casts \"Thunder\" spell"
+    },
+    {
+        "name": "Sleep Stinger",
+        "cost": 96,
+        "elements": [],
+        "properties": [],
+        "description": "Basic Attack, inflicts Sleep Status"
+    },
+    {
+        "name": "Slow",
+        "cost": 196,
+        "elements": [],
+        "properties": [],
+        "description": "Reduces speed of all foes"
+    },
+    {
+        "name": "Sluggish",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases AGL of foes"
+    },
+    {
+        "name": "Spell Repel",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Increases MGR during battle"
+    },
+    {
+        "name": "Spellstruck",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases MGR of foes"
+    },
+    {
+        "name": "Spiderweb",
+        "cost": 64,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases AGL of foes"
+    },
+    {
+        "name": "Stardust Blow",
+        "cost": 224,
+        "elements": [
+            "Thunder",
+            "Zap"
+        ],
+        "properties": [],
+        "description": "Powerful magic attack"
+    },
+    {
+        "name": "Stun Shocker",
+        "cost": 96,
+        "elements": [],
+        "properties": [],
+        "description": "Basic Attack., Inflicts Paralysis Status"
+    },
+    {
+        "name": "Sudden Cure",
+        "cost": 96,
+        "elements": [],
+        "properties": [],
+        "description": "Restores 50% of Max HP of all allies"
+    },
+    {
+        "name": "Swoop",
+        "cost": 224,
+        "elements": [],
+        "properties": [
+            "Strong vs Flying Enemies"
+        ],
+        "description": "Attacks all foes"
+    },
+    {
+        "name": "Tail Attack",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Attacks all foes"
+    },
+    {
+        "name": "Ten-Legger",
+        "cost": 164,
+        "elements": [
+            "Water"
+        ],
+        "properties": [],
+        "description": "Attacks all foes"
+    },
+    {
+        "name": "Tidal Wave",
+        "cost": 128,
+        "elements": [
+            "Ice"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Thunder",
+        "cost": 128,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Thunder Blast",
+        "cost": 96,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "1.5X normal damage"
+    },
+    {
+        "name": "Thunder Guard",
+        "cost": 128,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "Reduces Thunder Damage"
+    },
+    {
+        "name": "Thunderblock",
+        "cost": 255,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "High Defense vs Thunder Attacks"
+    },
+    {
+        "name": "Thunderball",
+        "cost": 164,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "3X normal damage"
+    },
+    {
+        "name": "Thundershriek",
+        "cost": 224,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "Attacks all foes"
+    },
+    {
+        "name": "Thunderturn",
+        "cost": 164,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "Repels all Thunder Magic Attacks"
+    },
+    {
+        "name": "Torrent",
+        "cost": 224,
+        "elements": [
+            "Water"
+        ],
+        "properties": [],
+        "description": "Attacks all foes"
+    },
+    {
+        "name": "Trick",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Increases ATP during battle"
+    },
+    {
+        "name": "Triple Attack",
+        "cost": 196,
+        "elements": [],
+        "properties": [],
+        "description": "3X normal damage"
+    },
+    {
+        "name": "Twister",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Attacks all foes"
+    },
+    {
+        "name": "Vampire",
+        "cost": 32,
+        "elements": [],
+        "properties": [],
+        "description": "Drain MP's from foes"
+    },
+    {
+        "name": "Voltage Bolt",
+        "cost": 196,
+        "elements": [
+            "Thunder"
+        ],
+        "properties": [],
+        "description": "High powered magic attack"
+    },
+    {
+        "name": "Vortex",
+        "cost": 64,
+        "elements": [
+            "Water"
+        ],
+        "properties": [],
+        "description": "Moderate powered magic attack"
+    },
+    {
+        "name": "Vulnerable",
+        "cost": 196,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases MGR of foes"
+    },
+    {
+        "name": "Water Attack",
+        "cost": 96,
+        "elements": [
+            "Water"
+        ],
+        "properties": [],
+        "description": "1.5X normal damage"
+    },
+    {
+        "name": "Water Screen",
+        "cost": 255,
+        "elements": [
+            "Water"
+        ],
+        "properties": [],
+        "description": "High Defense vs Water attacks"
+    },
+    {
+        "name": "Wavemotion",
+        "cost": 255,
+        "elements": [],
+        "properties": [],
+        "description": "Restores all HP/MP and Increases All Stats"
+    },
+    {
+        "name": "Weakpoint",
+        "cost": 128,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases DFP of foes by 1/8"
+    },
+    {
+        "name": "Weaponweak",
+        "cost": 192,
+        "elements": [],
+        "properties": [],
+        "description": "Decreases ATP of foes by 1/6"
+    },
+    {
+        "name": "Zap",
+        "cost": 128,
+        "elements": [
+            "Zap"
+        ],
+        "properties": [],
+        "description": "Powerful Magic Attack"
+    }
+]

@@ -1,0 +1,4206 @@
+LUFIA II: RISE OF THE SINISTRALS (SNES)
+WRAM-MAPPING-CHECKLISTE – NUR SPIELSPEZIFISCHE ZUSTÄNDE UND AKTIONEN
+Area in CheatEngine, Snes9x:
+====================================================================
+
+Legende:
+[ ] noch nicht zugeordnet
+[x] durch vorhandene Notizen/Dateien konkret belegt
+[~] Kandidat oder beobachtete Struktur mit noch offener Semantik/Gültigkeit
+[!] Widerspruch, Implementierungsannahme oder zwingend erneut zu verifizieren
+[ROM] linearer unheadered-ROM-Offset bzw. ROM-Referenz; keine WRAM-Adresse
+[REF] statische ID-/Navigations-/Validierungstabelle; keine neue WRAM-Adresse
+[PROC] emulator-/prozessabhängige absolute Adresse; nicht portabel
+Adresse/Struktur jeweils direkt hinter den Eintrag schreiben.
+
+QUELLENPRIORITÄT AB V5
+----------------------
+Die Inhalte aus MEMORY_ARCHITECTURE.zip stammen aus dem vom Benutzer selbst
+gebauten und live verifizierten AutoTracker. Der Tracker ist für seinen
+Snes9x-Hostspiegel funktional, aber seine als „kanonische WRAM-Offets“
+bezeichneten Werte sind laut Mesen-Liveprüfung keine echten snesWorkRam-
+Offsets. Sie dürfen deshalb nicht mehr ungeprüft Mesen/SNES-Bus-Adressen
+überschreiben.
+
+Innerhalb der ZIP gilt:
+1. atomare Mesen-snesWorkRam-Liveprüfung = kanonische Spieladresse
+2. src/helper/Core/Lufia2MemoryMap.cs = Snes9x-Hostspiegel-Layout
+3. MEMORY_ARCHITECTURE.md = historische Trackerarchitektur
+4. aktive DataReaders-/MemoryScanner-Logik = belegte Datengröße und Auswertung
+5. emulator_addresses.json = nur historisches Hostadress-Archiv
+6. statische JSON-Tabellen = Referenzdaten, sofern keine Speicheradresse genannt ist
+
+PORTABLE ADRESSKONVENTION
+-------------------------
+Kanonisch wird der relative Offset im echten 128-KiB-SNES-WRAM-Block
+verwendet. Er wird direkt über Mesens snesWorkRam oder über einen
+emulatorspezifisch validierten WRAM-Reader ermittelt.
+
+[!] Eine alte absolute Snes9x-Hostadresse darf NICHT generell durch Abzug
+    einer angenommenen Basis in einen WRAM-Offset umgerechnet werden.
+    Mesen-Liveprüfungen haben nichtlineare Hostspiegel belegt. Der häufige
+    Versatz -0x2314 stimmt für mehrere gerenderte UI-Puffer, aber bereits der
+    Save-Auswahlcursor ist ein Gegenbeispiel.
+
+Mesen / SNES-Bus:
+    Offset 0x00000–0x0FFFF -> 7E:0000–7E:FFFF
+    Offset 0x10000–0x1FFFF -> 7F:0000–7F:FFFF
+
+Alte Snes9x-Adressen bleiben ausschließlich Quellenhinweise. Jede daraus
+abgeleitete Mesen-Adresse muss einzeln gegen sichtbaren Zustand plus echtes
+snesWorkRam bestätigt werden. Abschnitt 54 ist daher ein historischer
+Rechenabgleich und keine gültige Umrechnungstabelle.
+
+
+MESEN-LIVE-KORREKTUR 2026-07-26
+-------------------------------
+
+[!] Die bisherigen Helper-Offets wie Gold 0x2D9E, Party 0x2D8F und Inventar
+    0x2DA1 sind Offsets in einem Snes9x-Hostspiegel, nicht im echten SNES-WRAM.
+    Direktes Lesen dieser Stellen in Mesens snesWorkRam liefert unmögliche
+    Werte, z. B. Party 18 58 18 5A.
+
+Für den zusammenhängenden Helper-Gameplayblock ist live bestätigt:
+
+    echter Mesen-Offset = bisheriger Helper-Offset - 0x2314
+
+Diese Regel ist nur für die unten bestätigten Helper-Felder freigegeben. Sie
+ist weiterhin keine globale Umrechnung beliebiger alter Hostadressen.
+
+Live bestätigt mit sichtbarem Menü bzw. kontrollierter Bewegung:
+
+    Party                    alt 2D8F -> Mesen 7E:0A7B
+    Gold                     alt 2D9E -> Mesen 7E:0A8A
+    Inventarstart            alt 2DA1 -> Mesen 7E:0A8D
+    Richtungs-FIFO           alt 2CB5 -> Mesen 7E:09A1
+    Stadt-X/Y                alt 28A8/28AA -> Mesen 7E:0594/0596
+    lokales X/Y              alt 2368/236E -> Mesen 7E:0054/005A
+    Dungeon-X/Y high         alt 3532/353A -> Mesen 7E:121E/1226
+    Charakterbasis Maxim     alt 2EBE -> Mesen 7E:0BAA
+    Charakterbasis Selan     alt 2F7C -> Mesen 7E:0C68
+    Charakterbasis Guy       alt 303A -> Mesen 7E:0D26
+    Charakterbasis Arty      alt 30F8 -> Mesen 7E:0DE4
+    Charakterbasis Tia       alt 31B6 -> Mesen 7E:0EA2
+    Charakterbasis Dekar     alt 3274 -> Mesen 7E:0F60
+    Charakterbasis Lexis     alt 3332 -> Mesen 7E:101E
+
+Am korrigierten Ort beobachtet, aber noch ohne passenden semantischen
+Vorher-/Nachher-Test:
+
+    Scenario                 alt 2C32 -> Mesen 7E:091E
+    Dungeonflags             alt 2A96 -> Mesen 7E:0782
+    Transport                alt 2CF5 -> Mesen 7E:09E1
+    Capsule-Status           alt 34CF -> Mesen 7E:11BB
+    Weltlauf-X/Y             alt 377F/3782 -> Mesen 7E:146B/146E
+    Ship-X/Y                 alt 379C/379F -> Mesen 7E:1488/148B
+
+Zusätzlich live bestätigt:
+
+    aktuelle Karten-/Ebenen-ID
+                            Snes9x-Hostspiegel alt 28C0
+                            -> Mesen 7E:05AC (uint8)
+        Overworld 00; Secret Skills Cave 05.
+    Herkunftskarte          -> Mesen 7E:05AE (uint8)
+        Overworld: 05 (aus Secret Skills Cave gekommen)
+        Secret Skills Cave: 00 (aus Overworld gekommen)
+
+Derzeit nicht zuverlässig:
+
+    blockierter Schritt      alt 3586 -> Kandidat 7E:1272
+        Wert 9D liegt außerhalb der dokumentierten Domäne FF/00–03
+
+Ausnahmen außerhalb dieses Helperblocks:
+
+    Save-Auswahlcursor       Mesen 7E:0108–0109
+    Namenscursor             Mesen 7E:0100–0101, nur teilweise live geprüft
+    gerenderte UI-Puffer     häufig alter Host-Low16-Wert - 0x2314
+
+Maschinenlesbarer Prüfbericht:
+    wram_discovery/mesen_bridge/validation/gameplay/results.json
+
+ROM-Daten:
+    absolute_rom_process_address = detected_rom_base + linear_rom_offset
+
+Ein Pointer-Speicherplatz wie 0xA52330 ist keine WRAM-Adresse und kann nicht
+allgemein aus der WRAM-Basis abgeleitet werden. Der portable Weg ist eine
+separat erkannte ROM-Basis plus linearer ROM-Offset.
+
+
+1. GRUNDZUSTAND DES SPIELS
+==========================
+
+[ ] Boot-/Initialisierungszustand
+[ ] Natsume-/Taito-Logo aktiv
+[ ] Titelbild aktiv
+------------------------
+[ ] Dateiauswahl aktiv
+[ ] Namenseingabe aktiv
+------------------------
+[ ] Intro/Cutscene aktiv
+[~] normales Spielfeld aktiv — Erkundung nur gemeinsam als Composite erkannt; siehe Modusblock unten
+[~] Stadt aktiv — 7E:2CBB = 11 und 7E:2CBD = 01; unterscheidet Stadt und Dungeon nicht
+[~] Dungeon aktiv — 7E:2CBB = 11 und 7E:2CBD = 01; unterscheidet Stadt und Dungeon nicht
+[ ] Weltkarte aktiv
+[ ] Sub-Screen/Hauptmenü aktiv
+[ ] Shop aktiv
+[ ] Save-Schrein aktiv
+[ ] Kampftransition aktiv
+[x] Kampf aktiv — 7E:2CBE (Snes9x 0xA32CBE): 01 während Kampfablauf, 00 nach Rückkehr zur Erkundung
+[ ] Kampfergebnis aktiv
+[ ] Casino aktiv
+[ ] Ancient Cave aktiv
+[ ] Game Over aktiv
+[ ] Ending/Credits aktiv
+[x] aktueller Hauptmodus — Composite aus 7E:2CBB / 7E:2CBD / 7E:2CBE
+    Erkundung: 11 / 01 / 00
+    Kampf:     11 / 00 / 01
+    7E:2CBB: 00 Overworld/Nicht-Map-Kontext, 11 Stadt/Dungeon
+
+[x] aktueller Untermodus / Exploration-Flag — 7E:2CBD (Snes9x 0xA32CBD)
+    01 = Dungeon-/Stadterkundung
+    04 = Select-Werkzeugmenü wird geöffnet
+    00 = Kampf bzw. nicht mehr aktive Erkundungs-UI
+
+[ ] Steuerung für den Spieler freigegeben/gesperrt
+[ ] Script/Cutscene kontrolliert die Spielfigur
+[ ] Bildschirmübergang/Fade aktiv
+[ ] aktueller Fade-Wert
+[ ] aktueller Framecounter
+[ ] globaler Spieltimer
+[ ] RNG-Zustand/Seed
+[ ] aktueller Musiktrack
+[ ] aktuell angeforderter Soundeffekt
+
+
+2. CONTROLLER UND EINGABEN
+==========================
+
+[ ] D-Pad oben 
+[ ] D-Pad unten 
+[ ] D-Pad links 
+[ ] D-Pad rechts 
+[ ] A 
+[ ] B 
+[ ] X 
+[ ] Y 
+[ ] L 
+[ ] R 
+[ ] Start
+[ ] Select 
+
+[ ] zuletzt verarbeitete Eingabe
+
+
+3. SPIELER, KARTE UND BEWEGUNG
+==============================
+
+[x] aktuelle Karten-/Ebenen-ID — Mesen snesWorkRam 7E:05AC, uint8
+    Live: Overworld 00; Secret Skills Cave 05; zwölf stabile Einzelreads.
+    Historische Snes9x-Hostspiegelquelle: 0xA328C0 / Helperoffset 0x28C0.
+    Die Zone wird über zones.txt aus der Karten-/Ebenen-ID abgeleitet:
+    06:06,07 bedeutet Zone 06 enthält die Karten/Ebenen 06 und 07.
+    Es ist kein benachbartes Zwei-Byte-Feld.
+[REF] 54 bekannte Map-IDs mit 296 POIs aus map_navigation.json; vollständige Tabelle in Abschnitt 38.
+[ ] aktuelle Raum-ID
+[x] Herkunfts-/vorherige Map-ID — Mesen 7E:05AE, uint8
+    Overworld 05 nach Verlassen des Secret Skills Cave; Cave 00 nach Eintritt
+    von der Overworld.
+[ ] vorherige Raum-ID
+[ ] Ziel-Map-ID beim Übergang
+[ ] Ziel-Raum-ID beim Übergang
+[ ] aktueller Karten-/Gebietstyp
+[~] Spieler-X — kontextabhängige Felder:
+    Stadt-X: WRAM+0x028A8 / 7E:28A8 (uint8)
+    Stadt-Horizontal-Chunk: WRAM+0x028AB / 7E:28AB (uint8)
+    DungeonXHigh: WRAM+0x03532 / 7E:3532 (uint8)
+    DungeonXLow:  WRAM+0x03534 / 7E:3534 (uint8)
+    Helper verwendet DungeonXHigh allein als Tilekoordinate; DungeonXLow wird
+    separat ausgegeben, aber nicht zu einem 16-Bit-Wert kombiniert.
+    Horizontaler Borderwert laut Helper:
+        (7E:3533 << 8) | 7E:3535
+    Zusätzlich beobachtet: 7E:2368 lokal und 7E:236B Chunk/Page-Begleiter.
+    7E:2368 steigt um 0x10 pro Tile und wird außerhalb Dungeon wiederverwendet.
+
+[~] Spieler-Y — kontextabhängige Felder:
+    Stadt-Y: WRAM+0x028AA / 7E:28AA (uint8)
+    Stadt-Vertical-Chunk: WRAM+0x028A9 / 7E:28A9 (uint8)
+    DungeonYHigh: WRAM+0x0353A / 7E:353A (uint8)
+    DungeonYLow:  WRAM+0x0353C / 7E:353C (uint8)
+    Helper verwendet DungeonYHigh allein als Tilekoordinate; DungeonYLow wird
+    separat ausgegeben, aber nicht zu einem 16-Bit-Wert kombiniert.
+    Vertikaler Borderwert laut Helper:
+        (7E:353B << 8) | 7E:353D
+    Zusätzlich beobachtet: 7E:236E lokal und 7E:236F Chunk/Page-Begleiter.
+    7E:236E steigt um 0x10 pro Tile und wird außerhalb Dungeon wiederverwendet.
+
+[x] Spieler-/Actor-Tile-X — 7E:06BA + Actor-Slot; Spieler Slot 00.
+    Rechts positiv, links negativ in kontrollierten Mesen-Proben.
+[x] Spieler-/Actor-Tile-Y — 7E:06E2 + Actor-Slot; Spieler Slot 00.
+    Unten positiv, oben negativ in kontrollierten Mesen-Proben.
+[ ] Spieler-X innerhalb des Tiles/Subpixel
+[ ] Spieler-Y innerhalb des Tiles/Subpixel
+[ ] Ziel-X des laufenden Schritts
+[ ] Ziel-Y des laufenden Schritts
+[~] Dungeon-Spawn-X — WRAM+0x0356F / 7E:356F (uint8); Helper verwendet das Byte direkt als Spawn-X
+[~] Dungeon-Spawn-Y — WRAM+0x03571 / 7E:3571 (uint8); Helper verwendet das Byte direkt als Spawn-Y
+[x] Blickrichtung — 7F:E466 + Actor-Slot, nur Bits 0–1:
+    00 Nord, 01 Süd, 02 West, 03 Ost.
+[~] tatsächliche Bewegungsrichtung / Richtungsverlauf — 7E:2CB5–7E:2CB9
+    FIFO mit jüngsten Richtungen: 00 Nord, 01 Süd, 02 West, 03 Ost.
+    Nicht als Live-Kollision oder Wandkontakt verwenden.
+
+[x] Bewegung aktiv — 7E:066A + Actor-Slot, Bit 0:
+    0 = ruht, 1 = Bewegung/Bewegungsversuch aktiv.
+    Vollwerte: 00/01 Süd, 02/03 West, 04/05 Nord, 06/07 Ost
+    (jeweils ruhend/bewegt).
+[x] stabile Actor-Bewegungsrichtung — 7E:0692 + Actor-Slot:
+    00 Süd, 02 West, 04 Nord, 06 Ost. Kontrolliert beobachtet und getrennt
+    vom transienten Movement-State 7E:066A.
+[~] Schrittfortschritt — Bewegungsphase Bit 0 bestätigt; feinere
+    Sub-Tile-Progression noch nicht getrennt.
+[ ] Bewegungs-/Animationsframe
+[ ] Spieler-Sprite-ID
+[ ] Spieler-Pose
+[x] gegen Hindernis gelaufen / fehlgeschlagener Schritt — 7E:1272:
+    FF = frei/kein blockierter Versuch
+    00 = Hindernis Norden
+    01 = Hindernis Süden
+    02 = Hindernis Westen
+    03 = Hindernis Osten
+    Kontrollierter Wandtest Süden: FF->01 bei unveränderten Actor-X/Y.
+    ROM-Code schreibt bei Kollision die versuchte Richtung und bei erfolgreicher
+    Bewegung FF. Die alte Zuordnung 7E:3586 ist nicht anwendbar.
+
+[x] Bewegung blockiert — 7E:1272 != FF; Richtung wie oben.
+[ ] Tür-/Treppen-/Exit-Übergang aktiv
+[ ] Fall-/Sprungbewegung aktiv
+[ ] automatische Bewegung aktiv
+[ ] Kamera-X
+[ ] Kamera-Y
+[ ] Kamera-Scroll aktiv
+[ ] Kamera-Zielposition
+[ ] Bildschirmshake aktiv
+[ ] Lead-Charakter/angezeigter Charakter
+[ ] aktueller Stadtnamen-/Ortsnamen-Einblendetimer
+
+
+4. FELD UND WELTKARTE
+=====================
+
+[x] Weltkarten-/Laufposition X — uint16 aus zwei Bytes:
+    low/fast  = WRAM+0x0377F / 7E:377F
+    high/slow = WRAM+0x03780 / 7E:3780
+    X = (high << 8) | low
+
+[x] Weltkarten-/Laufposition Y — uint16 aus zwei Bytes:
+    low/fast  = WRAM+0x03782 / 7E:3782
+    high/slow = WRAM+0x03783 / 7E:3783
+    Y = (high << 8) | low
+
+[ ] Weltkarten-Kamera X
+[ ] Weltkarten-Kamera Y
+[ ] betretenes Gebiet/Stadt/Dungeon
+[REF] Weltkarten-Zielkoordinaten vorhanden:
+    cities.json: 28 Städte/Orte in einem nicht dokumentierten Koordinatensystem
+    locations.json: 66 Städte/Dungeons/Schreine in einem zweiten nicht dokumentierten Koordinatensystem
+    Werte nicht als WRAM-Koordinaten behandeln, bis Skalierung und Ursprung bestätigt sind.
+    Vollständige Tabellen in Abschnitt 39.
+[ ] Zielort vor dem Betreten
+[ ] aktueller Terrain-/Gebietstyp
+[ ] Zufallskampf-Zähler
+[ ] Zufallskampf-Schwellenwert
+[ ] Zufallskampf ausgelöst
+[ ] gewählte Encounter-/Gegnergruppe
+[ ] Warp-Zielauswahl aktiv
+[ ] freigeschaltete Warp-Ziele
+[ ] aktuell markiertes Warp-Ziel
+[ ] ausgeführtes Warp-Ziel
+[ ] Excerion vorhanden/freigeschaltet
+[ ] Excerion-Modus: Boot
+[ ] Excerion-Modus: U-Boot
+[ ] Excerion-Modus: Luftschiff/Blimp
+[x] Excerion-/Ship-X — uint16 aus zwei Bytes:
+    low/fast  = WRAM+0x0379C / 7E:379C
+    high/slow = WRAM+0x0379D / 7E:379D
+    X = (high << 8) | low
+
+[x] Excerion-/Ship-Y — uint16 aus zwei Bytes:
+    low/fast  = WRAM+0x0379F / 7E:379F
+    high/slow = WRAM+0x037A0 / 7E:37A0
+    Y = (high << 8) | low
+
+[ ] Spieler befindet sich im Excerion
+[ ] Excerion wird betreten
+[ ] Excerion wird verlassen
+[ ] Excerion taucht ab
+[ ] Excerion taucht auf
+[ ] Excerion startet
+[ ] Excerion landet
+[ ] Excerion-Bewegungsrichtung
+[~] Excerion-/Transportmodus — WRAM+0x02CF5 / 7E:2CF5 (uint8)
+    Helper-Auswertung: FF = „ship“, jeder andere Wert = „walk“.
+    Diese Auswertung unterscheidet Boot, U-Boot und Luftschiff nicht und ist
+    deshalb nur als grober Transport-vs.-Laufen-Indikator bestätigt.
+
+
+
+5. STÄDTE, NPCS UND KARTENOBJEKTE
+=================================
+
+[ ] Anzahl aktiver NPCs/Objekte im Raum
+[ ] NPC-/Objekt-Slot aktiv
+[ ] NPC-/Objekt-ID
+[ ] NPC-/Objekt-Sprite-ID
+[ ] NPC-/Objekt-X
+[ ] NPC-/Objekt-Y
+[ ] NPC-/Objekt-Blickrichtung
+[ ] NPC-/Objekt-Bewegungsrichtung
+[ ] NPC-/Objekt-Animationsframe
+[ ] NPC-/Objekt-Bewegungstimer
+[ ] NPC-/Objekt-Bewegungsmuster
+[ ] NPC-/Objekt-Script-ID
+[ ] NPC-/Objekt-Event-ID
+[ ] NPC-/Objekt sichtbar
+[ ] NPC-/Objekt kollidierbar
+[ ] NPC-/Objekt ansprechbar
+[ ] NPC-/Objekt temporär entfernt
+[ ] Objekt/NPC direkt vor dem Spieler
+[ ] A-Interaktion mit NPC
+[ ] A-Interaktion mit Tür
+[ ] A-Interaktion mit Schild/Hinweis
+[ ] Gebäude betreten
+[ ] Gebäude verlassen
+[ ] Treppe hoch
+[ ] Treppe runter
+
+
+6. DUNGEON-MONSTER
+==================
+
+[ ] Anzahl aktiver Dungeon-Monster
+[x] Dungeon-Monster-Slot aktiv — 40 gemeinsame Actor-Slots 00–27;
+    Sprite-ID FF bei leerem Slot, FE ist ein separat behandelter Spezialwert.
+[ ] Dungeon-Monster-ID — Battle-ID ist nicht direkt die Dungeon-Sprite-ID;
+    Zuordnung statisch über monster_overworld_sprites.txt.
+[x] Dungeon-Monster-Sprite-ID — 7E:05D2 + Actor-Slot.
+[x] Dungeon-Monster-X — 7E:06BA + Actor-Slot (Tilekoordinate).
+[x] Dungeon-Monster-Y — 7E:06E2 + Actor-Slot (Tilekoordinate).
+[x] Dungeon-Monster-Blickrichtung — 7F:E466 + Actor-Slot, Bits 0–1:
+    00 Nord, 01 Süd, 02 West, 03 Ost.
+[x] Dungeon-Monster-Bewegungsrichtung — 7E:066A + Actor-Slot:
+    00/01 Süd, 02/03 West, 04/05 Nord, 06/07 Ost;
+    Bit 0 kennzeichnet aktive Bewegung.
+    Stabile Richtung zusätzlich bei 7E:0692 + Slot:
+    00 Süd, 02 West, 04 Nord, 06 Ost.
+[~] Dungeon-Monster-Bewegungsmuster — statische ROM-Seite bestätigt:
+    Terrorwave MonsterMoveObject bei Datei-Offset 27F6B5, 112 Einträge,
+    struct_monster_move.txt: movement u8. Index = Overworld-Sprite-ID - 80.
+    Das Byte ist ein Index in eine Bewegungsroutinen-Sprungtabelle, also ein
+    Verhaltensmodus und kein Koordinaten- oder Geschwindigkeitswert.
+    Laufende Randomizer-ROM: Ramia/Sprite AE -> Modus 2F;
+    Garbost/Sprite D8 -> Modus 1C. Die Semantik der einzelnen Modi sowie
+    aktuelle Actor-Position/Timer im WRAM müssen noch ergänzt werden.
+[x] Dungeon-Monster bewegt sich — 7E:066A + Slot, Bit 0.
+[ ] Dungeon-Monster reagiert auf Spielerschritt
+[ ] Dungeon-Monster kollidiert mit Spieler
+[ ] Dungeon-Monster löst Kampf aus
+[ ] Dungeon-Monster durch Pfeil betäubt
+[ ] Dungeon-Monster durch Feuerpfeil betäubt
+[ ] Dungeon-Monster durch Hook betäubt
+[ ] Dungeon-Monster durch Hammer betäubt
+[ ] Dungeon-Monster-Betäubungstimer
+[ ] Dungeon-Monster besiegt/entfernt
+[x] Dungeon-Monster nach Raum-Reset wiederhergestellt — Red Jelly im selben
+    Secret-Skills-Cave-Raum nach Select, Hoch, A wieder sichtbar und als
+    beweglicher Actor an seiner Ausgangsposition vorhanden. Spielregel:
+    besiegte Nicht-Bosse des aktuellen Raums werden wiederhergestellt; Bosse
+    sind ausgenommen.
+
+
+7. DUNGEON-SPEZIALFÄHIGKEITEN
+=============================
+
+[x] aktuell fokussierte Spezialfähigkeit im Select-Menü — Legacy
+    0x2D1A–0x2D1B, Mesen 7E:0A06–7E:0A07.
+    Bomb live bestätigt: A8 01 zusammen mit ASCII-Name "Bomb" bei 7E:0B77.
+    Die alten vollständigen Zwei-Byte-Werte mit Highbyte 03 dürfen nicht
+    ungeprüft als echte Mesen-WRAM-Werte übernommen werden.
+    Vollständige Zwei-Byte-Werte im WRAM / numerische Little-Endian-Codes:
+    A7 03 = Hook       (0x03A7)
+    A8 03 = Bomb       (0x03A8)
+    A9 03 = Arrow      (0x03A9)
+    AA 03 = Fire Arrow (0x03AA)
+    AB 03 = Hammer     (0x03AB)
+    7E:2D1A allein enthält das führende A7–AB-Auswahlbyte.
+    Zusätzlich: 7E:2D1D / 7E:2D1E sind begleitende Klassifikations-/Statusbytes
+    mit noch nicht vollständig entschlüsselter Bedeutung.
+    CurrentToolName-Buffer: WRAM+0x02E8B / 7E:2E8B, Helper liest 10 Bytes
+    als ASCII bis 00. Ob dies in allen Spiel-/Sprachversionen zuverlässig ist,
+    bleibt zu testen.
+
+[ ] Select-Spezialfähigkeitenmenü geöffnet
+[ ] Cursor im Spezialfähigkeitenmenü
+[x] Schwert mit B benutzt — ein normaler Schwertschlag lässt Mesen
+    7E:09A8 durchgehend auf 00. Dieses Aktionsbyte bildet das Schwert nicht ab.
+[x] Werkzeug-/Aktionsanimation allgemein — Legacy 0x2CBC,
+    Mesen 7E:09A8.
+    Das Byte ist für mehrere Werkzeuge belegt, aber kein persistentes Auswahlbyte.
+    Für das Schwert ist in den Notizen kein eigener Wert dokumentiert.
+
+[ ] Schwert-Treffer erkannt
+[ ] Pfeil ausgewählt
+[ ] Pfeil abgefeuert
+[x] Pfeilprojektil/Werkzeuganimation aktiv — Mesen 7E:09A8
+    Pfeil live: 6F, kurz 6E, erneut 6F, danach 00.
+    Der alte Zwischenwert 4E trat in der Mesen-Abfrage nicht auf.
+
+[ ] Pfeil-X
+[ ] Pfeil-Y
+[ ] Pfeil trifft Monster
+[ ] Pfeil trifft Schalter
+[ ] Bombe ausgewählt
+[x] Bombe sichtbar/platziert — Mesen 7E:09A8
+    77 während sichtbar; kann kurz 37 werden.
+
+[ ] Bomben-X
+[ ] Bomben-Y
+[ ] Bomben-Schritt-/Explosionszähler
+[x] Bombe explodiert — Mesen 7E:09A8
+    7F bei Explosion; danach 00.
+    Live-Ablauf: 00 idle -> 77 platziert -> nach Fuse-Ticks 7F für fünf
+    aufeinanderfolgende Abfragen -> 00. Bewegung und Schwertschlag reduzieren
+    beide den Bombenzähler.
+
+[ ] Bombe zerstört schwache Wand
+[ ] Bombe trifft Monster
+[ ] Hook ausgewählt
+[ ] Hook abgefeuert
+[x] Hookprojektil/Werkzeuganimation aktiv — Mesen 7E:09A8
+    7E während Hook-Aktion; danach 00.
+
+[ ] Hook-Ziel erkannt
+[ ] Hook zieht Gruppe über Lücke
+[ ] Feuerpfeil ausgewählt
+[ ] Feuerpfeil abgefeuert
+[x] Feuerpfeilprojektil/Werkzeuganimation aktiv — Mesen 7E:09A8
+    Live: 6F, kurz 6E, erneut 6F, danach 00.
+
+[ ] Feuerpfeil verbrennt Gras/Moos
+[ ] Feuerpfeil trifft Schalter
+[ ] Feuerpfeil trifft Monster
+[ ] Hammer ausgewählt
+[ ] Hammer benutzt
+[x] Hammer-Aktion aktiv — Mesen 7E:09A8
+    7F während der beobachteten Hammer-Aktion, danach 00;
+    Trefferwirkung selbst nicht separat belegt.
+
+[ ] Hammer bewegt/zerstört Dungeonobjekt
+[x] Reset-Fähigkeit ausgewählt — im Raum Select einmal, Hoch einmal.
+[x] aktueller Raum wird zurückgesetzt — Auswahl mit A ausführen.
+[x] Reset abgeschlossen — 7E:09A9 kehrt nach der Reset-Animation auf 01
+    zurück; Position bestimmen und erst danach fortfahren. Ein live besiegter
+    Red Jelly erschien dadurch erneut.
+
+
+8. DUNGEON-PUZZLES UND OBJEKTE
+==============================
+
+[ ] Schatztruhe vorhanden
+[ ] Schatztruhen-ID
+[ ] Schatztruhe geschlossen
+[ ] Schatztruhe geöffnet
+[ ] Schatztruhen-Inhalt
+[ ] Schatztruhen-Inhalt bereits erhalten
+[ ] Dungeon-Schlüssel erhalten
+[ ] Dungeon-Schlüssel vorhanden
+[ ] Dungeon-Schlüssel automatisch benutzt
+[ ] verschlossene Tür
+[~] Tür geöffnet — im Live-Map-Buffer beobachtet:
+    verschlossene Tür als 10
+    zugehöriges Öffnen/Entsperren: 30 -> 20
+    Noch nicht als universelle Türcodierung bestätigt.
+
+[ ] Bodenschalter nicht gedrückt
+[~] Hebel-/Schalterfamilie — Live-Map-Buffer beobachtet:
+    06 = Hebel
+    07 = belegt/aktiv
+    Nicht automatisch mit jedem Bodenschalter gleichsetzen.
+
+[ ] Pfeilschalter nicht aktiviert
+[ ] Pfeilschalter aktiviert
+[ ] Brücke eingefahren
+[ ] Brücke ausgefahren
+[ ] Leiter unvollständig/eingefahren
+[ ] Leiter ausgefahren
+[ ] Block-/Statue-ID
+[ ] Block-/Statue-X
+[ ] Block-/Statue-Y
+[ ] Block/Statue wird geschoben
+[ ] Block/Statue steht auf Schalter
+[ ] Vase/tragbares Objekt vorhanden
+[ ] Vase/Objekt aufgenommen
+[ ] Vase/Objekt wird getragen
+[ ] Vase/Objekt abgestellt
+[ ] Vase/Objekt-X
+[ ] Vase/Objekt-Y
+[ ] Gras/Moos vorhanden
+[x] Gras/Ranken geschnitten — Live-Map-Buffer beobachtet: 08 -> 00
+[ ] versteckter Schalter freigelegt
+[ ] geheimer Durchgang freigelegt
+[ ] schwache Wand intakt
+[ ] schwache Wand zerstört
+[ ] schwacher Boden intakt
+[ ] schwacher Boden bricht
+[ ] Spieler fällt durch Boden
+[ ] Sprungpfeil-/Absprungfeld erkannt
+[ ] Spieler springt eine Ebene hinunter
+[ ] Hint Sign gelesen
+[ ] HP-Heilfeld betreten
+[ ] MP-Heilfeld betreten
+[ ] Save-Feld betreten
+[~] einzelne dynamische Puzzleänderungen im Live-Map-Buffer:
+    Loch durch Hebel gefüllt: 02 -> 00
+    Busch/Ranken entfernt: 08 -> 00
+    Türbegleittile geöffnet: 30 -> 20
+
+[ ] Raum-Puzzle gelöst
+[ ] permanenter Dungeon-Schalter
+[ ] temporärer Raum-Schalter
+[~] Raumobjekt-/Live-Map-Buffer — für Secret Skills Cave beobachtet:
+    Mesen WRAM 7E:642B–7E:6FA6
+    Snes9x-Prozess 0xA3642B–0xA36FA6
+    Horizontale Nachbarn liegen nebeneinander.
+    Beobachteter stabiler Zeilen-Stride: 0x3A.
+    Bereichslänge und Stride sind nicht als universell für alle Dungeons bestätigt.
+
+[~] Raumobjekt-Zustandsbytes / beobachtete Tile-Familien im Live-Map-Buffer:
+    00 = normale begehbare Familie
+    01 = berührte/belegte Variante von 00
+    20 = alternative begehbare Familie
+    21 = berührte/belegte Variante von 20
+    10 = Struktur-/Kanten-/Eckenfamilie
+    11 = berührte/belegte Variante von 10
+    30 = weitere Struktur-/Kantenfamilie
+    31 = berührte/belegte Variante von 30; bei NPC-Belegung beobachtet
+    02 = Loch-/Lückenfamilie
+    03 = kontextabhängige 02-Variante; einmal als offene Truhe beobachtet
+    06 = Hebel-Tile
+    07 = belegte/aktive Hebelvariante
+    08 = Hindernisfamilie: Säule, Busch, Topf, Ranken, bewegliche Blöcke
+    09 = belegte/aktive Hindernisvariante
+    Niedrigstes Bit wirkt häufig als Belegungs-/Kontaktbit.
+
+
+
+9. TEXTE UND TEXTBOXEN
+======================
+
+[~] Textbox geschlossen — für normale NPC-Dialoge zeigt Mesen
+    7E:099B–7E:099C den Wert 00 00. Andere Textboxfamilien noch separat testen.
+[ ] Textbox wird geöffnet
+[~] Textbox aktiv — normale NPC-Dialoge: 7E:099B–7E:099C = 88 01.
+    Bei zwei verschiedenen NPCs Closed -> 88 01 -> Closed bestätigt.
+    Im geöffneten Shop bleibt der Wert 00 00 und ist daher nicht als
+    allgemeines Textboxflag zu verwenden.
+[ ] Text wird Zeichen für Zeichen ausgegeben
+[ ] Textseite vollständig
+[ ] Text wartet auf A/L
+[ ] Text wechselt zur nächsten Seite
+[ ] Textbox wird geschlossen
+[ ] aktuelle Text-/Message-ID
+[ ] aktueller Textpointer
+[ ] aktueller Zeichenindex
+[ ] aktuelle Zeile
+[ ] aktuelle Textseite
+[ ] Textausgabe-Timer
+[ ] eingestellte Textgeschwindigkeit
+[x] Dialog eines normalen NPCs — Mesen 7E:099B–7E:099C:
+    00 00 geschlossen, 88 01 bei den beiden getesteten offenen NPC-Dialogen.
+    7E:0622 (20/21) und 7E:06F1 (06/05) wechseln ebenfalls, reagieren aber
+    auch auf Shops und sind nur allgemeine Interaktionskandidaten.
+[ ] Hinweisschild-Text
+[ ] Item-erhalten-Textbox
+[ ] Schlüssel-erhalten-Textbox
+[ ] Systemmeldung
+[ ] Kampfmeldung
+[ ] Shopdialog
+[ ] Save-Dialog
+[ ] Ja/Nein-Auswahl aktiv
+[ ] Anzahl Auswahlmöglichkeiten
+[ ] Auswahlcursor
+[ ] bestätigte Auswahl
+[ ] abgebrochene Auswahl
+[ ] dynamisch eingesetzter Charaktername
+[ ] dynamisch eingesetzter Itemname
+[ ] dynamisch eingesetzter Zahlenwert
+[ ] Namenseingabe-Puffer
+[ ] Namenseingabe-Cursor
+[ ] bestätigter Maxim-Name
+
+
+10. SUB-SCREEN / HAUPTMENÜ
+==========================
+
+[ ] Sub-Screen geschlossen
+[ ] Sub-Screen geöffnet
+[ ] aktuell markierte Hauptkategorie
+[ ] Item-Kategorie gewählt
+[ ] Spell-Kategorie gewählt
+[ ] Capsule-Kategorie gewählt
+[ ] Equip-Kategorie gewählt
+[ ] Status-Kategorie gewählt
+[ ] Change-Kategorie gewählt
+[ ] Config-Kategorie gewählt
+[ ] Scenario-Kategorie gewählt
+[ ] Hauptmenü-Cursor
+[ ] Untermenü-Cursor
+[ ] Listen-Scrollposition
+[ ] aktuell ausgewählter Charakter
+[ ] Menü-Eingabesperre
+[ ] Menü wird geschlossen
+[ ] angezeigte Spielzeit
+[ ] angezeigtes Gold
+
+
+11. ITEM-INVENTAR
+=================
+
+[x] Inventar-Datenstrom — echtes Mesen-WRAM 7E:0A8D–7E:0B4C inklusive.
+    Kanonische Länge: 0xC0 = 192 Bytes = 96 feste Zweibyte-Slots.
+    Die alten Helperwerte 0x02DA1–0x02E60 bezeichnen denselben Bereich im
+    historischen Snes9x-Hostspiegel; 0x02E60 ist inklusive.
+    Der frühere Helperwert 0xBF war ein Off-by-one und ließ das zweite Byte
+    des 96. Slots aus.
+
+[x] Bekannte 16-Bit-Itemcodes werden als zwei aufeinanderfolgende Bytes im
+    Datenstrom gesucht:
+        Bytefolge = Low-Byte, High-Byte
+        Beispiel Arrow 0x03A9 -> A9 03
+    Der verifizierte Reader sucht die Bytefolge an jeder Byteposition und
+    setzt keine feste Zwei-Byte-Slotausrichtung voraus.
+
+[x] Item-ID/Rohcode pro Inventarplatz — feste Zweibyte-Slots bestätigt.
+    Byte 1 ist die Item-ID; Byte 2 kodiert Menge und Listenparität wie im
+    bestehenden Reader.
+[REF] Roh-ID-/Namenslisten für Weapon, Armor/Shield/Helmet/Ring/Rock, Iris Treasures
+      und Spells aus items_spells.json; siehe Abschnitt 41.
+[ ] Itemanzahl pro Inventarplatz
+[x] leerer Inventarplatz — 00 00; bleibt im Itemmenü als navigierbare leere
+    Zeile erhalten.
+[x] Anzahl Inventarplätze — fest 96; belegte Slots separat durch Byte 2 != 0
+    zählen.
+[ ] aktuell markiertes Item
+[ ] Item-Liste-Scrollposition
+[ ] Item benutzen
+[ ] Itemziel auswählen
+[ ] Item auf Charakter anwenden
+[ ] Item im Kampf anwenden
+[ ] Item außerhalb des Kampfes anwenden
+[ ] Itemverbrauch erfolgreich
+[ ] Item kann nicht benutzt werden
+[ ] Item-Sortierung ausgelöst
+[ ] Item-Sortierung abgeschlossen
+[ ] Item fallenlassen/Drop gewählt
+[ ] Item fallenlassen bestätigt
+[ ] Itemmenge sinkt
+[ ] Itemstack verschwindet bei Menge 0
+[ ] neues Item erhalten
+[ ] Inventar voll
+[ ] zuletzt erhaltenes Item
+[ ] zuletzt benutztes Item
+[ ] Item-Informationsfenster mit X
+[ ] aktuelle Itembeschreibung/Text-ID
+
+
+12. SCENARIO-ITEMS UND SCHLÜSSEL
+===============================
+
+[ ] Scenario-Liste geöffnet
+[x] Scenario-Bereich — WRAM+0x02C32–0x02C34 / 7E:2C32–7E:2C34
+    Der Helper liest drei Bytes und kehrt ihre Reihenfolge für die 24-Bit-
+    Maskendarstellung um. Die konkreten Byte-/Bitzuordnungen stehen in Abschnitt 51.
+
+[x] Scenario-Item vorhanden — direktes Bit in 7E:2C32–7E:2C34; siehe Abschnitt 51
+[ ] aktuell markiertes Scenario-Item
+[ ] Scenario-Liste-Scrollposition
+[~] Schlüssel durch Storyevent erhalten — Änderung der passenden 24-Bit-Maske in 7E:2C32–7E:2C34
+[~] Schlüssel an passender Tür verbraucht/verwendet — Maske vor/nach Verwendung prüfen; Datei sagt nicht, ob Bits gelöscht werden
+[~] Schlüssel bleibt nach Verwendung in der Liste — über Persistenz der jeweiligen Maske testbar
+[ ] Dragon Egg vorhanden
+[ ] Dragon-Egg-Anzahl
+[ ] einzelne Dragon-Egg-Fundflags
+[ ] Jewel Sonar vorhanden
+[ ] VIP Card vorhanden
+[ ] Providence vorhanden
+[ ] Iris-Treasure-Fundflags
+
+
+13. ZAUBER
+==========
+
+[x] Zauberliste pro Charakter — 36 Bytes bei Charakterbasis +0x99–+0xBC.
+    Jeder Eintrag wird vom Helper als einzelne Spell-ID gelesen.
+    [!] Spell-ID 00 ist „Flash“, der aktuelle Helper filtert 00 jedoch als leer
+        heraus. Für vollständige Listen darf 00 nicht pauschal verworfen werden.
+    FF wird vom Helper ebenfalls als leer/ungenutzt behandelt.
+    Charakterblockgröße laut Map: 0xBE; Basen siehe CHARAKTERWERTE.
+
+[ ] Zauber gelernt/gekauft
+[ ] Zauber-ID im aktiven Menü/Kampf — Laufzeitadresse noch offen
+[REF] 40 Spell-ID-zu-Name-Zuordnungen aus items_spells.json; siehe Abschnitt 41.
+[REF] spells_info.json ergänzt für IDs 00–27 MP-Kosten, Kampfverfügbarkeit,
+      Nutzerkürzel und Beschreibungen; vollständige Tabelle siehe Abschnitt 49.
+[ ] aktuell markierter Zauber
+[ ] Zauberlisten-Scrollposition
+[ ] Zauber-Informationsfenster
+[REF] Zauberkosten — spells_info.json ordnet allen IDs 00–27 MP-Kosten zu; keine separate Laufzeitadresse
+[REF] Zauber außerhalb Kampf auswählbar — IDs 24 Warp, 25 Escape, 26 Reset, 27 Light sind als combat=false markiert
+[ ] Zauber außerhalb Kampf benutzt
+[REF] Zauber im Kampf auswählbar — IDs 00–23 sind als combat=true markiert
+[ ] Zauber im Kampf benutzt
+[ ] Zauberziel
+[ ] Einzelziel
+[ ] alle Verbündeten als Ziel
+[ ] einzelner Gegner als Ziel
+[ ] alle Gegner als Ziel
+[ ] nicht genug MP
+[ ] MP wird abgezogen
+[ ] Heilzauber-Ergebnis
+[ ] Schadenszauber-Ergebnis
+[ ] Statuszauber-Ergebnis
+[ ] Wiederbelebungszauber-Ergebnis
+[ ] Zauberanimation aktiv
+[ ] aktuell ausgeführte Zauber-ID
+
+
+14. PARTY UND SPIELBARE CHARAKTERE
+=================================
+
+[x] Partygröße — Anzahl der Werte ungleich FF in 7E:2D8F–7E:2D92
+[x] Partyreihenfolge / aktive Charakter-IDs — 7E:2D8F–7E:2D92; IDs 00–06, FF leer
+[~] Lead-Charakter — wahrscheinlich erster belegter Party-Slot 7E:2D8F; separat gegen angezeigten Feld-Sprite prüfen
+[x] Partyplatz 1 / Charakter-ID — 7E:2D8F
+[x] Partyplatz 2 / Charakter-ID — 7E:2D90
+[x] Partyplatz 3 / Charakter-ID — 7E:2D91
+[x] Partyplatz 4 / Charakter-ID — 7E:2D92
+[x] Maxim-Charakter-ID — 00
+[x] Tia-Charakter-ID — 04
+[x] Guy-Charakter-ID — 02
+[x] Selan-Charakter-ID — 01
+[x] Dekar-Charakter-ID — 05
+[x] Lexis-Charakter-ID — 06
+[x] Arty-Charakter-ID — 03
+[x] Charakter der Party beigetreten — Änderung eines Slots 7E:2D8F–7E:2D92 von FF auf ID 00–06
+[x] Charakter hat Party verlassen — Änderung eines Slots 7E:2D8F–7E:2D92 auf FF bzw. Neuordnung
+[ ] Change-Menü aktiv
+[ ] erster für Tausch gewählter Charakter
+[ ] zweiter für Tausch gewählter Charakter
+[x] Partyreihenfolge geändert — Reihenfolge der vier Bytes 7E:2D8F–7E:2D92 verändert
+
+
+15. CHARAKTERWERTE
+==================
+
+Für jeden der sieben spielbaren Charaktere:
+
+[x] Charakterblock-Struktur — Größe 0xBE
+    Maxim: 7E:2EBE
+    Selan: 7E:2F7C
+    Guy:   7E:303A
+    Artea: 7E:30F8
+    Tia:   7E:31B6
+    Dekar: 7E:3274
+    Lexis: 7E:3332
+
+    Alle folgenden Feldadressen werden als Charakterbasis + Feldoffset berechnet.
+    uint8: Level, Status, DefendFlag und der verwendete IP-Kandidat.
+    uint16 little-endian: HP, MP, MaxHP, MaxMP, Attribute, Vergleichswerte und
+    Ausrüstungs-Rohcodes.
+
+[x] WRAM-Basis-Suchanker in Charakterdaten:
+    Selan-String „SSelan“ bei WRAM+0x02F7E
+    Artea-String „AArty“ bei WRAM+0x030FE
+    Lexis-String „LLexis“ bei WRAM+0x03326
+    WRAM-Basis = gefundene Hostadresse - jeweiliger kanonischer Offset.
+    Diese drei Offsets stammen aus der live verifizierten kanonischen Map.
+[~] vollständiger Namenspuffer je Charakter — weiterhin nicht vollständig
+    als allgemeine Struktur dokumentiert.
+
+[x] Level — Charakterbasis + 0x11 (uint8)
+[ ] aktuelle EXP
+[ ] EXP bis zum nächsten Level
+[x] aktuelle HP — Charakterbasis + 0x14 (uint16 LE)
+[x] maximale HP — Charakterbasis + 0x28 (uint16 LE)
+[x] aktuelle MP — Charakterbasis + 0x16 (uint16 LE)
+[x] maximale MP — Charakterbasis + 0x2A (uint16 LE)
+[x] ATP — Charakterbasis + 0x2C
+[x] DFP — Charakterbasis + 0x2E
+[x] STR — Charakterbasis + 0x30
+[x] AGL — Charakterbasis + 0x32
+[x] INT — Charakterbasis + 0x34
+[x] GUT — Charakterbasis + 0x36
+[x] MGR — Charakterbasis + 0x38
+[x] aktueller IP-Wert — uint8 bei Charakterbasis + 0xBF.
+    Mesen-Liveprüfung für Guy: korrigierte Basis 7E:0D26 + 0xBF = 7E:0DE5,
+    Rohwert 0x60/96, STATUS-Bildschirm zeigt 37%.
+    Die Überlappung mit dem nächsten 0xBE-Charakterblock ist absichtlich:
+    +0xBF liegt bei Basis+1 des Folgeblocks; dessen Namensanker beginnt erst
+    bei Basis+2. Die exakte Prozent-Rundungsformel bleibt separat festzulegen.
+[ ] maximaler IP-Wert
+[x] Poison — Statusbyte Charakterbasis + 0x12, Bit 0 / Maske 0x01
+[x] Sleep — Statusbyte Charakterbasis + 0x12, Bit 5 / Maske 0x20
+[x] Paralyze — Statusbyte Charakterbasis + 0x12, Bit 3 / Maske 0x08
+[x] Confusion — Statusbyte Charakterbasis + 0x12, Bit 4 / Maske 0x10
+[x] tot/kampfunfähig — CurrentHP = 0 ODER Statusbyte Bit 2 / Maske 0x04
+[x] aktuelles Statusbyte/-feld — Charakterbasis + 0x12
+    Einzelbitwerte: 0x01 Poison, 0x02 Silence, 0x04 Dead, 0x08 Paralyzed,
+    0x10 Confused, 0x20 Sleep. Kombinationen grundsätzlich bitweise OR.
+    Hinweis: Einige ausgeschriebene Kombinationsnamen in ram_map.json sind
+    inkonsistent; für Logik die Einzelbitmasken verwenden und gegenprüfen.
+[x] Silence — Statusbyte Charakterbasis + 0x12, Bit 1 / Maske 0x02
+[ ] effektive Elementresistenzen
+[ ] effektive Statusresistenzen
+[ ] permanenter Wert nach Stat-Potion
+[ ] Level-up aktiv
+[ ] HP-Zuwachs beim Level-up
+[ ] MP-Zuwachs beim Level-up
+[ ] STR-Zuwachs beim Level-up
+[ ] AGL-Zuwachs beim Level-up
+[ ] INT-Zuwachs beim Level-up
+[ ] GUT-Zuwachs beim Level-up
+[ ] MGR-Zuwachs beim Level-up
+
+
+16. AUSRÜSTUNG
+==============
+
+Für jeden Charakter:
+
+[x] ausgerüstete Weapon-ID — Charakterbasis + 0x69 (16 Bit)
+[REF] 110 Weapon-Rohcodes und Namen vorhanden; siehe Abschnitt 41.
+[x] ausgerüstete Armor-ID — Charakterbasis + 0x6B (16 Bit)
+[REF] Kombinierte Equipment-Rohcodetabelle mit 230 Einträgen vorhanden; enthält
+      Armor, Shields, Helmets, Rings und Rocks. Siehe Abschnitt 41.
+[x] ausgerüstete Shield-ID — Charakterbasis + 0x6D, in ram_map.json „Hands“ (16 Bit)
+[x] ausgerüstete Helmet-ID — Charakterbasis + 0x6F, in ram_map.json „Headwear“ (16 Bit)
+[x] ausgerüstete Ring-ID — Charakterbasis + 0x71, in ram_map.json „Accessories“ (16 Bit)
+[x] ausgerüstete Rock-ID — Charakterbasis + 0x73, in ram_map.json „Jewels“ (16 Bit)
+[ ] leerer Ausrüstungsslot
+[ ] aktuell ausgewählter Ausrüstungsslot
+[~] aktuell markiertes Ersatzitem / Ersatzliste — gerenderte Liste 7E:57DD–7E:59FD;
+    kanonische ausgewählte Item-ID weiterhin offen
+[ ] Ausrüstungswechsel bestätigt
+[ ] Ausrüstung abgelegt
+[ ] Strongest/automatische beste Ausrüstung gewählt
+[ ] Equipability für ausgewählten Charakter
+[x] ATP-Vergleichswert/Vorschau — Charakterbasis + 0x3A
+[x] DFP-Vergleichswert/Vorschau — Charakterbasis + 0x3C
+[x] STR-Vergleichswert/Vorschau — Charakterbasis + 0x3E
+[x] AGL-Vergleichswert/Vorschau — Charakterbasis + 0x40
+[x] INT-Vergleichswert/Vorschau — Charakterbasis + 0x42
+[x] GUT-Vergleichswert/Vorschau — Charakterbasis + 0x44
+[x] MGR-Vergleichswert/Vorschau — Charakterbasis + 0x46
+[~] IP-Fähigkeit der ausgerüsteten Weapon — im EQUIP->X-UI sichtbar über:
+    Meta 7E:42DD–7E:4304, Name 7E:631A, Beschreibung 7E:5898–7E:597D,
+    Renderpane 7E:53DE–7E:56CE; kanonische Gear->IP-ID-Zuordnung weiterhin offen
+[~] IP-Fähigkeit der ausgerüsteten Armor — über dieselben EQUIP->X-UI-Puffer lesbar; kanonische Gear->IP-ID-Zuordnung offen
+[~] IP-Fähigkeit des ausgerüsteten Shield — über dieselben EQUIP->X-UI-Puffer lesbar; kanonische Gear->IP-ID-Zuordnung offen
+[~] IP-Fähigkeit des ausgerüsteten Helmet — über dieselben EQUIP->X-UI-Puffer lesbar; kanonische Gear->IP-ID-Zuordnung offen
+[~] IP-Fähigkeit des ausgerüsteten Ring — über dieselben EQUIP->X-UI-Puffer lesbar; kanonische Gear->IP-ID-Zuordnung offen
+[~] IP-Fähigkeit des ausgerüsteten Rock — über dieselben EQUIP->X-UI-Puffer lesbar; kanonische Gear->IP-ID-Zuordnung offen
+[ ] verfluchte Ausrüstung
+[ ] Ausrüstung kann nicht abgelegt werden
+
+
+17. CAPSULE MONSTERS
+====================
+
+[x] Capsule-Menü geöffnet — Mesen-Liveprüfung 2026-07-26
+[x] Capsule-Monster-Fund-/Statusbereich — Mesen 7E:11BB–7E:11C1
+    Legacy-Helper 0x034CF–0x034D5.
+    Im geprüften randomisierten Save: 01 01 01 03 01 01 01, alle sieben
+    Capsule Monster vorhanden.
+[ ] Capsule-Monster-Auswahlcursor
+[!] Keine feste Zuordnung „Adresse = Jelze/Flash/Gusto/Zeppy/Darbi/Sully/Blaze“.
+    Im Randomizer können die Capsule Monster an anderen der sieben Positionen
+    liegen. Der Bytewert bzw. die Randomizer-Zuordnung bestimmt das Capsule
+    Monster an der jeweiligen Position. Diese Ausnahme gilt nur für Capsules.
+[x] Capsule-Position 1 — 7E:11BB
+[x] Capsule-Position 2 — 7E:11BC
+[x] Capsule-Position 3 — 7E:11BD
+[x] Capsule-Position 4 — 7E:11BE
+[x] Capsule-Position 5 — 7E:11BF
+[x] Capsule-Position 6 — 7E:11C0
+[x] Capsule-Position 7 — 7E:11C1
+[ROM] Capsule-Spritewerte: ROM+0xBDCB8 + (CapsuleIndex * 10), jeweils erste 2 Bytes.
+
+Für jedes Capsule Monster:
+
+[ ] Name
+[ ] Element
+[ ] aktuelle Klasse/Form
+[ ] M-Klasse/Mutation erreicht
+[ ] Level
+[ ] aktuelle EXP
+[ ] EXP bis nächstes Level
+[ ] aktuelle HP
+[ ] maximale HP
+[ ] ATP
+[ ] DFP
+[ ] STR
+[ ] AGL
+[ ] INT
+[ ] GUT
+[ ] MGR
+[ ] gelernte Fähigkeiten
+[ ] aktuelle Growth-Meter-Füllung
+[ ] aktuelles Craving
+[ ] Feed-Menü aktiv
+[ ] aktuell markiertes Futteritem
+[ ] Item verfüttert
+[ ] Growth-Meter steigt
+[ ] Klassenwechsel verfügbar
+[ ] Klassenwechsel durchgeführt
+[ ] Mutation durchgeführt
+[ ] Name-Menü aktiv
+[ ] Capsule-Monster umbenannt
+[ ] Capsule Monster im Kampf aktiv
+[ ] Capsule-Monster-Aktion
+[ ] Capsule-Monster-Ziel
+[ ] Capsule Monster erhält Schaden
+[ ] Capsule Monster wird kampfunfähig
+[ ] Capsule Monster flieht aus Kampf
+
+
+18. SHOP UND DIENSTE
+====================
+
+[ ] Shop aktiv
+[ ] Shop-ID
+[ ] Shoptyp
+[ ] Item-Shop-Kategorie
+[ ] Weapon-Shop-Kategorie
+[ ] Armor-Shop-Kategorie
+[ ] Spell-Shop
+[ ] Sell-Modus
+[~] Shop-Angebotsliste — aktive WRAM-Liste noch offen.
+[ROM] shop_addresses.json enthält ROM-Bereiche für 24 Städte; shop_data.json enthält
+      die daraus abgeleiteten Weapon-/Armor-/Spell-Angebote. Siehe Abschnitt 48.
+[REF] angebotene Item-/Spell-ID — statisch je Stadt in shop_data.json vorhanden; aktive WRAM-Auswahladresse offen
+[x] Preis des aktuell ausgewählten Items — Mesen 7E:0B89–7E:0B8A,
+    uint16 little-endian. Live bestätigt im Dankirk-Shop:
+    Hi-Potion 95, Confuse ball 79, Escape 95.
+    Die alte Snes9x-/Helperangabe 0x02CCE und ihr pauschaler
+    -0x2314-Kandidat 7E:09BA sind für echtes Mesen-WRAM widerlegt.
+[x] Name des aktuell ausgewählten Shop-Items — Mesen 7E:0B77 ff.,
+    nullterminierter ASCII-Puffer. Live bestätigt mit Hi-Potion,
+    Confuse ball und Escape.
+[x] Shop-Cursorposition — Mesen 7E:1574–7E:1575, uint16 little-endian.
+    Erste drei sichtbare Zeilen: 0000, 000C, 0018; Zeilenstride 0x0C.
+    Legacy-Helperwert 0x03888 wird nicht direkt als Mesen-WRAM verwendet.
+[ ] Shop-Scrollposition
+[ ] aktuell ausgewählter Käufer/Charakter
+[ ] Item kann von Charakter ausgerüstet werden
+[ ] Kauf bestätigt
+[ ] Kauf abgebrochen
+[ ] Verkauf bestätigt
+[ ] Verkauf abgebrochen
+[x] Gold vor Transaktion — WRAM+0x02D9E / 7E:2D9E, uint24 little-endian
+[x] Gold nach Transaktion — WRAM+0x02D9E / 7E:2D9E, uint24 little-endian
+[ ] gekaufte Menge
+[ ] verkaufte Menge
+[ ] Inventar voll beim Kauf
+[ ] zu wenig Gold
+[ ] Pawn-Shop-/Rückkauf-Inventar
+[ ] verkauftes Item im Pawn Shop
+[ ] Item aus Pawn Shop zurückgekauft
+[ ] Inn aktiv
+[ ] Inn-Preis
+[ ] Übernachtung bestätigt
+[ ] Party nach Übernachtung geheilt
+[ ] Save-Schrein aktiv
+[ ] Wiederbelebung am Schrein
+[ ] Statusheilung am Schrein
+[ ] HP-Heilfeld benutzt
+[ ] MP-Heilfeld benutzt
+
+
+19. SAVE, DATEIAUSWAHL UND SPIELMODI
+===================================
+
+[x] vier Save-Slot-Strukturen
+
+Savedatei Auswahl Screen
+
+Cursor @ 0xA32454 - 0xA32455 (Legacy-Snes9x-Hostspiegel, nicht linear umrechnen)
+Mesen/SNES-WRAM live verifiziert: 7E:0108 - 7E:0109 (Wert + Beiwert)
+"START": 10 14
+"RETRY": 50 14
+"GIFT" : 90 14
+"SAVE FILE 1" : 10 34
+"SAVE FILE 2" : 88 34
+"SAVE FILE 3" : 10 8C
+"SAVE FILE 4" : 88 8C
+[x] Mesen 2.1.1 live gegengeprüft: alle sieben Auswahlpositionen stimmen an
+    7E:0108-7E:0109 gleichzeitig mit dem sichtbaren Cursor überein.
+
+[x] Save-Slot bennenen
+
+Savedatei Auswahl Screen "START", "RETRY" oder "GIFT" gewählt:
+
+Name the character screen:
+"NAME" @ 0xA35460 . 0xA35467 4E 20 41 20 4D 20 45 20
+namefield @ 0xA35476 - 0xA3547F (max characters (range)
+
+CURSOR @ column 0xA32414, row 0xA32415
+0, 0 = "0" 2D 43
+9, 0 = "9" C5 43
+0, 1 = "A" 2D 53
+9, 1 = "e" C5 53
+0, 2 = "F" 2D 63
+9, 2 = "j" C5 63
+0, 3 = "K" 2D 73
+9, 3 = "o" C5 73
+0, 4 = "P" 2D 83
+9, 4 = "t" C5 83
+0, 5 = "U" 2D 93
+9, 5 = "y" C5 93
+0, 6 = "Z" 2D A3
+7, 6 = "?" A5 A3
+
+[x] Mesen 2.1.1: alle 15 statischen Text-/Zeichentabellen-Angaben dieses
+    Namensbildschirms bytegenau bestätigt. Für diese gerenderten UI-Puffer
+    gilt jeweils: Mesen-Offset = untere 16 Bit der alten Hostadresse - 0x2314.
+    Beispiele:
+    NAME 0xA35460 -> 7E:314C
+    Namensfeld 0xA35476 -> 7E:3162
+    Ziffern 0xA35560 -> 7E:324C
+    Zeichenzeilen 0xA355E0–0xA3587E -> 7E:32CC–7E:356A
+
+[!] Namenscursor 0xA32414–0xA32415: die statischen UI-Puffer beweisen keine
+    globale Umrechnung. Der Cursor wird separat mit Einzelschritt plus
+    atomarem Screenshot validiert; bis dahin nicht als 7E:0100–0101 verwenden.
+
+Characters selection Trennbyte 20 20 20 zwischen jedem Zeichen
+numerals @ 0xA35560 - 0xA35587
+capital letters A - E @ 0xA355E0 - 0x355F0
+lower case a - e @ 0xA355F6 - 0xA35606
+capital letter F -J @ 0xA35660 - 0xA35670
+lower case f - j @ 0xA35676 - 0xA35686
+capital letter K - O @ 0xA356E0 - 0xA356F0
+lower case k - o @ 0xA356F6 - 0xA35706
+capital letter P - T @ 0xA35760 - 0xA35770
+lower case p - t @ 0xA35776 - 0xA35786
+capital letter U - Y @ 0xA357E0 - 0xA357F0
+lower case u - y @ 0xA357F6 - 0xA35806
+capital Z and ! ? @ 0xA35860 - 0xA35868
+lower case z and ! ? @ 0xA35876 - 0xA3587E
+
+[x] Save-Slot-Charaktername
+
+Savefile 1 Name (oben links):
+"NAME" @ 0xA354DC - 0xA354E2 4E 20 41 20 4D 20 45
+Trennbyte 20 @ 0xA354E3 - 0xA354E5
+Filename (max characters range) @ 0xA354E6 - 0xA354EE 
+
+Savefile 2 Name (oben rechts):
+"NAME" @ 0xA354FA - 0xA35500 4E 20 41 20 4D 20 45
+Trennbyte 20 @ 0xA35501 - 0xA35503
+Filename (max characters range) @ 0xA35504 - 0xA3550D 
+
+Savefile 3 Name (unten links):
+"NAME" @ 0xA3579C - 0xA357A2 4E 20 41 20 4D 20 45
+Trennbyte 20 @ 0xA357A3 - 0xA357A5
+Filename (max characters range) @ 0xA357A6 - 0xA357AE
+
+Savefile 4 Name (unten rechts):
+"NAME" @ 0xA357BA - 0xA357C0 4E 20 41 20 4D 20 45
+Trennbyte 20 @ 0xA357C1 - 0xA357C3
+Filename (max characters range) @ 0xA357C4 - 0xA357CC
+
+[x] Save-Slot-Spielzeit
+
+Save 1
+"TIME" @ 0xA3555C - 0xA35562 54 20 49 20 4D 20 45
+Trennbyte 20 @ 0xA35563 - 0xA35565
+time value @ 0xA35566 - 0xA3556E
+
+Save 2
+"TIME" @ 0xA3557A - 0xA35580 54 20 49 20 4D 20 45
+Trennbyte 20 @ 0xA35581 - 0xA35583
+time value @ 0xA35584 - 0xA3558C
+
+Save 3
+"TIME" @ 0xA3581C - 0xA35822 54 20 49 20 4D 20 45
+Trennbyte 20 @ 0xA35823 - 0xA35825
+time value @ 0xA35826 - 0xA3582E
+
+Save 4
+"TIME" @ 0xA3583A - 0xA35840 54 20 49 20 4D 20 45
+Trennbyte 20 @ 0xA35841 - 0xA35843
+time value @ 0xA35844 - 0xA3584C
+
+
+[x] Save-Slot-Party
+[x] Save-Slot-Levelanzeige
+
+Save 1
+Level per active hero:
+hero 1 @ 0xA3569A - 0xA3569C (level (0)1 = 20 20 31)
+Trennbyte 20 @ 0xA3569D
+Leerraum 00 @ 0xA3569E - 0xA3569F
+
+hero 2 @ 0xA356A0 - 0xA356A2
+Trennbyte 20 @ 0xA356A3
+Leerraum 00 @ 0xA356A4 - 0xA356A5
+
+hero 3 @ 0xA356A6 - 0xA356A8
+Trennbyte 20 @ 0xA356A9
+Leerraum 00 @ 0xA356AA - 0xA356AB
+
+hero 4 @ 0xA356AC - 0xA356AE
+Trennbyte 20 @ 0xA356AF
+Leerraum 00 @ 0xA356B0 - 0xA356B1
+
+Save 2
+Level per active hero:
+hero 1 @ 0xA356B8 - 0xA356BA (level (0)1 = 20 20 31)
+Trennbyte 20 @ 0xA356BB
+Leerraum 00 @ 0xA356BC - 0xA356BE
+
+hero 2 @ 0xA356BF - 0xA356C0
+Trennbyte 20 @ 0xA356C1
+Leerraum 00 @ 0xA356C2 - 0xA356C3
+
+hero 3 @ 0xA356C4 - 0xA356C6
+Trennbyte 20 @ 0xA356C7
+Leerraum 00 @ 0xA356C8 - 0xA356C9
+
+hero 4 @ 0xA356CA - 0xA356CC
+Trennbyte 20 @ 0xA356CD
+Leerraum 00 @ 0xA356CE - 0xA356CF
+
+Save 3
+Level per active hero:
+hero 1 @ 0xA3595A - 0xA3595C (level (0)1 = 20 20 31)
+Trennbyte 20 @ 0xA3595D
+Leerraum 00 @ 0xA3595E - 0xA3595F
+
+hero 2 @ 0xA35960 - 0xA35963
+Trennbyte 20 @ 0xA35964
+Leerraum 00 @ 0xA35965 - 0xA35967
+
+hero 3 @ 0xA35968 - 0xA3596A
+Trennbyte 20 @ 0xA3596B
+Leerraum 00 @ 0xA3596C - 0xA3596D
+
+hero 4 @ 0xA3596E - 0xA35970
+Trennbyte 20 @ 0xA35971
+Leerraum 00 @ 0xA35972 - 0xA35974
+
+Save 4
+Level per active hero:
+hero 1 @ 0xA35978 - 0xA35981 (level (0)1 = 20 20 31)
+Trennbyte 20 @ 0xA35982
+Leerraum 00 @ 0xA35983 - 0xA35984
+
+hero 2 @ 0xA35985 - 0xA35988
+Trennbyte 20 @ 0xA35989
+Leerraum 00 @ 0xA3598A - 0xA3598B
+
+hero 3 @ 0xA3598C - 0xA3598E
+Trennbyte 20 @ 0xA3598F
+Leerraum 00 @ 0xA35990 - 0xA35991
+
+hero 4 @ 0xA35992 - 0xA35994
+Trennbyte 20 @ 0xA35995
+Leerraum 00 @ 0xA35996 - 0xA35997
+
+[x] aktuell markierter Save-Slot
+
+Cursor @ 0xA32454 - 0xA32455 (Legacy-Snes9x-Hostspiegel, nicht linear umrechnen)
+Mesen/SNES-WRAM live verifiziert: 7E:0108 - 7E:0109 (Wert + Beiwert)
+"SAVE FILE 1" : 10 34
+"SAVE FILE 2" : 88 34
+"SAVE FILE 3" : 10 8C
+"SAVE FILE 4" : 88 8C
+
+[x] aktueller geladener Save-Slot
+
+Confirm File Screen:
+CURSOR for Savefile 1, 3 & 4 @ 0xA32435
+"YES" : B8
+"NO" : C4
+
+CURSOR for Savefile 2 @ 0xA32455
+"YES" : B8
+"NO" : C4
+
+Screen indicator text "Start" @ 0xA357FC - 0xA35804 53 20 74 20 61 20 72 20 74
+"Yes" @ 0xA35982 - 0x35987 59 20 45 20 53 20
+"No" @ 0x35A02 - 0xA35A05 4E 20 4F 20
+
+[x] Save-Dialog aktiv (Bei Priester)
+
+"SAVE" @ 0xA35802 - 0xA35809 CURSOR 90 @ 0xA32425
+"CURE" @ 0xA35882 - 0xA35889 CURSOR 9C @ 0xA32425
+"LIFT" @ 0xA35902 - 0xA35909 CURSOR A8 @ 0xA32425
+ 
+[x] Überschreiben-Bestätigung
+
+Confirm File Screen:
+CURSOR for Savefile 1, 3 & 4 @ 0xA32435
+"YES" : B8
+"NO" : C4
+
+CURSOR for Savefile 2 @ 0xA32455
+"YES" : B8
+"NO" : C4
+
+[ ] Speichern gestartet
+[x] Speichern abgeschlossen
+"Game saved" @ 0xA3595C - 0xA3596E
+
+[ ] Laden gestartet
+[ ] Laden abgeschlossen
+[x] Normal Mode verfügbar
+
+"START" @ 0xA353DC - 0xA353E4 53 20 54 20 41 20 52 20 54 
+Trennbyte 20 @ 0xA353E5
+Leerraum 00 @ 0xA353E6 - 0xA353EB
+
+[x] Retry Mode freigeschaltet
+
+"RETRY" @ 0xA353EC - 0xA353F4 52 20 45 20 54 20 52 20 59 
+Trennbyte 20 @ 0xA353F5
+Leerraum 00 @ 0xA353F6 - 0xA353FB
+
+[x] Gift Mode freigeschaltet
+
+"GIFT" @ 0xA353FC - 0xA35402 47 20 49 20 46 20 54
+Trennbyte 20 @ 0xA35403
+
+[ ] aktueller Modus: Normal
+[ ] aktueller Modus: Retry
+[ ] aktueller Modus: Gift
+[ ] Spiel abgeschlossen/Clear-Flag
+[ ] Game-Over-Zustand
+[x] Continue nach Game Over
+-> vier save-slot struktur screen
+
+
+20. STORY, EVENTS UND FLAGS
+===========================
+
+[ ] aktuelle Event-/Script-ID
+[ ] aktueller Scriptpointer
+[ ] aktueller Script-Schritt
+[ ] Script wartet auf Text
+[ ] Script wartet auf Eingabe
+[ ] Script wartet auf Bewegung
+[ ] Script wartet auf Kampfende
+[ ] Script wartet auf Timer
+[ ] aktueller Script-Timer
+[ ] lokale Eventvariable
+[x] globale Event-/Storyflag-Region — 7E:077E–7E:079D; einzelne Bits noch zuzuordnen
+[ ] einmaliges Dialogflag
+[ ] NPC erschienen
+[ ] NPC verschwunden
+[ ] Storytür geöffnet
+[ ] Storybrücke repariert/aktiviert
+[ ] Stadt-/Gebietsstatus geändert
+[ ] Boss-besiegt-Flag
+[ ] Sinistral-Kampfstatus
+[ ] Partybeitritt-Flag
+[ ] Partyaustritt-Flag
+[ ] Storyitem erhalten
+[ ] Storyitem verwendet
+[ ] Schatztruhe-permanent-geöffnet-Flags
+[x] Dungeon-Flag-Region — 7E:2A96–7E:2A9F
+[x] Byte-/Bit-Zuordnung zu 38 benannten Orten aus dungeon_flags_snes9x.json:
+    7E:2A96 (0xA32A96):
+      Bitmaske 40 (0100 0000) = Foomy Woods
+      Bitmaske 01 (0000 0001) = Secret Skills Cave
+      Bitmaske 04 (0000 0100) = Cave to Sundletan
+      Bitmaske 10 (0001 0000) = Lake Cave
+    7E:2A97 (0xA32A97):
+      Bitmaske 40 (0100 0000) = Ruby Cave Capsule
+      Bitmaske 01 (0000 0001) = Alunze Basement
+      Bitmaske 04 (0000 0100) = Alunze Cave
+      Bitmaske 10 (0001 0000) = Tanbel Tower
+    7E:2A98 (0xA32A98):
+      Bitmaske 40 (0100 0000) = Cave Bridge
+      Bitmaske 04 (0000 0100) = Treasure Sword Shrine
+      Bitmaske 01 (0000 0001) = Ruby Cave
+      Bitmaske 10 (0001 0000) = Gordovan Tower
+    7E:2A99 (0xA32A99):
+      Bitmaske 04 (0000 0100) = North Dungeon
+      Bitmaske 01 (0000 0001) = North Dungeon Capsule
+      Bitmaske 10 (0001 0000) = Ancient Tower
+      Bitmaske 40 (0100 0000) = Lighthouse
+    7E:2A9A (0xA32A9A):
+      Bitmaske 80 (1000 0000) = Tower of Sacrifice
+      Bitmaske 20 (0010 0000) = Sacrifice Capsule
+      Bitmaske 01 (0000 0001) = Phantom Mountain
+    7E:2A9B (0xA32A9B):
+      Bitmaske 08 (0000 1000) = Shaia Lab
+      Bitmaske 20 (0010 0000) = Flower Capsule
+      Bitmaske 40 (0100 0000) = Flower Mountain
+      Bitmaske 02 (0000 0010) = Karlloon Shrine
+    7E:2A9C (0xA32A9C):
+      Bitmaske 10 (0001 0000) = Mnt.Of No Return
+      Bitmaske 01 (0000 0001) = Dankirk Dungeon
+      Bitmaske 40 (0100 0000) = Divine Shrine
+      Bitmaske 04 (0000 0100) = Ferim Tower
+    7E:2A9D (0xA32A9D):
+      Bitmaske 40 (0100 0000) = Submarine Shrine
+      Bitmaske 01 (0000 0001) = Shrine of Vengeance
+      Bitmaske 04 (0000 0100) = Tower of Truth
+      Bitmaske 10 (0001 0000) = Dragon Mountain
+    7E:2A9E (0xA32A9E):
+      Bitmaske 10 (0001 0000) = Stradah Tower
+      Bitmaske 40 (0100 0000) = Karmirno Tower
+      Bitmaske 08 (0000 1000) = Shuman Tower
+      Bitmaske 01 (0000 0001) = Gratze Castle
+    7E:2A9F (0xA32A9F):
+      Bitmaske 10 (0001 0000) = Darbi Shrine
+      Bitmaske 40 (0100 0000) = Zeppy Cave
+      Bitmaske 01 (0000 0001) = Daos' Shrine
+    Offen bleibt, welche Semantik ein gesetztes Bit exakt hat
+    (z. B. besucht, freigeschaltet, abgeschlossen oder Trackerstatus).
+    Vollständige kompakte Wiederholung in Abschnitt 37.
+[ ] Dragon-Egg-Fundflags
+[ ] Capsule-Monster-Fundflags
+[ ] freigeschaltete Warp-Orte
+[ ] Excerion-Upgrade-Flags
+[ ] Retry-/Gift-Unlockflags
+
+
+21. KAMPF – GLOBAL
+==================
+
+[ ] Kampfstart
+[ ] Kampftransition
+[~] Kampfmodus erkannt — Composite:
+    7E:2CBB = 11
+    7E:2CBD = 00
+    7E:2CBE = 01
+    Dies bestätigt den Kampfablauf, aber noch nicht separat „vollständig geladen“.
+
+[ ] Encounter-/Formation-ID
+[ ] Kampf-Hintergrund-ID
+[ ] Anzahl Gegner
+[ ] Anzahl aktiver Partycharaktere
+[ ] Capsule Monster im Kampf vorhanden
+[ ] Überraschungsangriff gegen die Party
+[ ] normaler Kampfbeginn
+[ ] Boss-/Scriptkampf
+[ ] aktuelle Kampfrunde
+[~] aktuelle Kampfphase — Composite plus zustandsbehafteten Input-Driver verwenden:
+    7F:F55E wurde in einzelnen Aufnahmen mit 00/01 beobachtet, trennt aber
+    Gruppenmenü und cursorloses Aktionskreuz nicht universell. 7E:0027 & 80
+    belegt die Zielauswahl; 7F:F44E plus Initiative-Queue belegt
+    die Ausführung. Nach dem letzten Gegner wurden 7E:0B4E=29 für EXP/GOLD
+    2A für die Capsule-Zeile und 2B für die vollständig gerenderte letzte
+    Reward-Seite beobachtet. 7E:0B4E ist außerhalb dieser
+    bestätigten Zustände ausdrücklich kein universelles Phasenbyte.
+[ ] aktueller Actor
+[ ] aktueller Eingabecharakter
+[ ] Eingabephase
+[ ] Aktionsausführung
+[ ] Animation läuft
+[ ] Schadensauswertung
+[ ] Rundenende
+[ ] Sieg
+[ ] Niederlage
+[ ] Fluchtversuch
+[ ] Flucht erfolgreich
+[ ] Flucht fehlgeschlagen
+[ ] Rückkehr zur Karte
+[ ] Kampf-RNG-Zustand
+
+
+22. KAMPF – HAUPTMENÜ UND BEFEHLE
+=================================
+
+[~] Battle-Hauptmenü aktiv — 7E:0B4E belegt dort die gehaltene Auswahl
+    Fight 09 / Trade 0A / Escape 0B. 7F:F55E allein ist kein verlässlicher
+    Universalindikator für die Abgrenzung zum cursorlosen Aktionskreuz.
+[ ] Battle-Hauptmenü-Cursor
+[x] Trade Places markiert — Gruppenmenü-Auswahl Mesen 7E:0B4E = 0A.
+[x] Trade Places gewählt — öffnet die Formationseingabe.
+[x] Battle-Partyreihenfolge geändert — Mesen 7E:153D–7E:1540.
+    Guy/Arty-Test: 02 03 01 04 -> 03 02 01 04.
+    Die kanonische Party 7E:0A7B–7E:0A7E blieb dabei unverändert.
+[x] Attack-Hauptoption markiert — Gruppenmenü-Auswahl 7E:0B4E = 09.
+[ ] Attack-Hauptoption gewählt
+[x] Escape markiert — Gruppenmenü-Auswahl 7E:0B4E = 0B.
+[x] Escape gewählt — erfolgreiche Flucht live bestätigt:
+    Exploration 7E:09A9 = 01, Battle 7E:09AA = 00 nach Rückkehr.
+    Gegner-HP-Puffer wird dabei nicht zuverlässig gelöscht; ein Slot enthielt
+    nach der Flucht weiterhin 307 HP. Deshalb niemals EnemyHP > 0 allein als
+    Kampfaktiv-Regel verwenden. Enemy-Slots sind nur gültig, wenn 7E:09AA != 0.
+[x] Charakter-Aktionskreuz aktiv — besitzt keinen Cursor. Der Input-Driver
+    kennt den Zustand aus dem bestätigten Übergang Fight/A und führt ihn
+    zustandsbehaftet; leere Rendertexte oder 7F:F55E dürfen ihn nicht erraten.
+[x] B auf dem neutral ruhenden Aktionskreuz — zurück zum Vormenu mit
+    Fight / Trade Places / Escape; dabei werden die Rundeneingaben verworfen.
+    Live-Wiederholung mit der Mesen-Bridge: 7E:0B4E blieb beim ruhenden
+    Übergang auf 13. Die Werte 09/0A/0B gelten nur für gehaltene Auswahl und
+    dürfen nicht als Idle-Verifikation des Vormenus verwendet werden.
+[x] Aktionskreuz-Eingaben — Attack: A; Magic: Richtung oben halten + A;
+    IP: unten halten + A; Item: links halten + A; Defend: rechts halten + A.
+    Erst innerhalb einer geöffneten Liste bzw. Zielauswahl gelten einfache
+    Richtungsimpulse, einfaches A und einmaliges R für alle Ziele.
+[x] Attack-Befehl gewählt — Party-Battle-Commands:
+    Mesen 7F:F560 + (PartySlot * 0x0C) + 0x04, Wert 01.
+[x] Use Magic gewählt — Party-Battle-Commandwert 02.
+[x] Battle-Spellliste — dieselbe feste 36-Slot-Reihenfolge wie außerhalb
+    des Kampfes. Guy-Beispiel 7E:0DBF–7E:0DE2; belegte Spell-IDs gefolgt von
+    FF-Leerslots. Leere Slots bleiben navigierbar, A wird dort ignoriert.
+[x] Spelllisten-Fensterstart — 7E:0011, absoluter Spellslot-Cursor 7E:0012.
+    Spalte 7E:0013: 00 links, 01 rechts. Sichtbare Zeile 7E:0014.
+    Cursor-X/Y 7E:0100–7E:0101.
+[x] Spelllisten-Renderpuffer — Prompt 7E:3046; erste Renderzeile 7E:3146,
+    Zeilenstride 0x80, rechte Spalte +0x1C.
+[x] Spell im Kampf ausführbar — Attribut bei Spaltenstart +0x01:
+    20 ausführbar, 24 deaktiviert. Reset/Warp werden sichtbar gerendert,
+    aber trotz Kosten 0 mit 24 deaktiviert. FF-Slots sind leer.
+[!] Spellkosten — aus dem Live-Rendertext lesen. Die randomisierte ROM zeigte
+    abweichende Kosten gegenüber data/spells_info.json, z. B. Thunder 26
+    statt 24, Dragon 23 statt 22, Champion 17 statt 16.
+[x] Spell-ID im Party-Command — Fireball-Test:
+    Command 02 bei 7F:F564, Spell-ID 04 bei 7F:F566.
+[x] MP-Verbrauch bei Ausführung — Guys CurrentMP 7E:0D3C–0D3D blieb nach
+    Fireball-Auswahl zunächst 471 und sank erst bei der Aktionsausführung auf
+    465. Das entspricht exakt den live gerenderten Kosten 6.
+[x] Use Item gewählt — Party-Battle-Commandwert 03.
+[x] Battle-Itemliste — dieselben 96 festen Roh-Inventarslots wie außerhalb
+    des Kampfes; keine Komprimierung. Live: Slot 1 leer, Charred newt Slot 2,
+    Curselifter Slot 3.
+[x] Itemlisten-Auswahl — Fensterstart-Byteoffset 7E:0011,
+    ausgewählter Byteoffset 7E:0012 = 2*(Slot-1), sichtbare Zeile 7E:0014.
+    Cursor-X/Y 7E:0100–7E:0101.
+[x] Itemlisten-Renderpuffer — Prompt 7E:3046, erste Zeile 7E:3147,
+    Zeilenstride 0x80.
+[x] Item im Kampf nutzbar — Attribut bei Zeile +0x02:
+    20 nutzbar, 24 sichtbar aber deaktiviert.
+    Charred newt/Shriek/Freeze ball waren 20; Curselifter/Escape waren 24.
+[x] Item-Rohpaar im Party-Command — Charred-newt-Test:
+    Command 03 bei 7F:F564; 01 02 bei 7F:F566–F567 entsprach exakt
+    Inventar-Slot 2.
+[x] Itemverbrauch bei Ausführung — der atomare Dump im Auswahlübergang zeigte
+    Slot 2 kurzzeitig 00 00; im wenige Frames später stabilen Zielbild war
+    wieder 01 02 lesbar. Der Slot wird beim Einreihen also temporär
+    reserviert/entfernt. Erst nach der Ausführung blieb Slot 2 leer und Guys
+    MP stiegen von 465 auf 470, passend zum Charred-newt-Effekt +5 MP.
+[!] Ein leer gewordener Inventarslot allein beweist deshalb noch keine
+    abgeschlossene Itemaktion; Battlephase beziehungsweise Wirkung mitprüfen.
+[x] Use IP gewählt — Party-Battle-Commandwert 08.
+[x] Defend gewählt — derselbe Command-Slot, Wert 04.
+[ ] Befehl abgebrochen
+[ ] Befehl für Charakter bestätigt
+[x] gespeicherter Befehl pro Partyplatz — vier live bestätigte Adressen:
+    Slot 1 7F:F564, Slot 2 7F:F570, Slot 3 7F:F57C, Slot 4 7F:F588.
+    Der Slotstride beträgt 0x0C. Gespiegelte Guy/Arty-Tests und zusätzliche
+    Selan/Tia-Tests bestätigten Attack 01 und Defend 04.
+    Vollständige beobachtete Commandwerte:
+    Attack 01, Magic 02, Item 03, Defend 04, IP 08.
+    Gewählte Aktions-/Fähigkeitsdaten beginnen im jeweiligen Slot bei +0x06.
+    Korrektur aus dem Targeting-Audit: +0x00 ist die gespeicherte Zielmaske;
+    +0x0A ist die Akteurmaske und kein Ziel-/Begleitwert.
+[ ] nächste Figur zur Befehlseingabe
+[ ] alle Befehle eingegeben
+[ ] Aktionsreihenfolge/Queue
+
+
+23. KAMPF – ZIELAUSWAHL
+=======================
+
+[x] Zielauswahl aktiv — temporärer nullbasierter Gegnerindex bei 7E:0026.
+    Live links/mitte/rechts: 00/01/02. Der Wert beschreibt nur den festen
+    Cursor und reicht nicht aus, um den temporären R/Alle-Modus zu erkennen.
+[x] Zielcursor — Gegnerpositionen im Dreierkampf hatten Cursor-X 42/7A/B2.
+[x] einzelner Gegner als Ziel — gespeicherte Zielmaske im Party-Command
+    bei 7F:F560 + (PartySlot * 0x0C) + 0x00.
+    Feindflag 80 plus Zielbit: live bestätigt 81/82/84.
+[x] mehrere/alle Gegner als Ziel — Fireball auf alle drei speicherte 87;
+    auf die zwei verbliebenen Gegner mit Bits 02|04 wurde 86 gespeichert.
+    Bis zu sechs Gegner sind möglich. Bits 08/10/20 und alle sechs BF sind
+    aus der bestätigten Bitstruktur abgeleitet, aber noch nicht live gesehen.
+[x] einzelner Verbündeter als Ziel — Guy/Arty/Selan/Tia:
+    Zielmasken 01/02/04/08, mit Guys Champion kontrolliert.
+[x] mehrere/alle Verbündeten als Ziel — Champion auf alle vier: 0F.
+[x] Capsule Monster als Ziel — Zielbit 10. In der Ramia-Runde zielte ein
+    Gegner auf 10; kein menschlicher HP-Wert änderte sich dabei.
+[x] eigener Charakter als Ziel — Guy setzte Champion auf Guy: 01.
+[x] Zielmaske — Command +0x00; Party ohne Präfix, Gegner mit Flag 80.
+[ ] Ziel mit L gewechselt
+[x] alle Ziele mit R gewählt — R einmal betätigen reicht; nicht halten.
+    Der Alle-Modus bleibt temporär bis zur Bestätigung, während der feste
+    Cursor auf einem Einzelziel verweilt.
+[ ] ungültiges Ziel
+[x] Ziel bestätigt — erst danach ist Command +0x00 die autoritative
+    Einzel-/Mehrzielmaske.
+[ ] Zielauswahl abgebrochen
+
+
+24. KAMPF – PARTYDATEN
+======================
+
+Für jeden aktiven Partyplatz:
+
+[x] Charakter-ID — aus 7E:2D8F–7E:2D92; 00 Maxim, 01 Selan, 02 Guy, 03 Artea,
+    04 Tia, 05 Dekar, 06 Lexis, FF leer
+[ ] Battle-Slot
+[x] aktuelle HP — Charakterblock + 0x14
+[x] maximale HP — Charakterblock + 0x28
+[x] aktuelle MP — Charakterblock + 0x16
+[x] maximale MP — Charakterblock + 0x2A
+[~] aktueller IP-Wert — Charakterblock + 0xBF laut ram_map.json; Überlappung verifizieren
+[x] Poison — Status +0x12 & 0x01
+[x] Sleep — Status +0x12 & 0x20
+[x] Paralyze — Status +0x12 & 0x08
+[x] Confusion — Status +0x12 & 0x10
+[x] Silence — Status +0x12 & 0x02
+[x] Disabled/tot — HP=0 oder Status +0x12 & 0x04
+[!] Defend aktiv — die alte Behauptung Charakterblock + 0x13 ist widerlegt;
+    das Byte blieb in vier kontrollierten Attack-/Defend-Zuständen 00.
+    Der gespeicherte Battle-Command liegt stattdessen im Party-Battle-Slot.
+[x] gewählter Befehl — 7F:F560 + (PartySlot * 0x0C) + 0x04.
+    Live bestätigt: Attack 01, Defend 04.
+[x] aktuell markierte Spell-ID — Charakter-SpellsStart +
+    absoluter Index aus 7E:0012. Guy-Beispiel: 7E:0DBF + Index.
+[ ] gewählte Item-ID
+[ ] gewählte IP-Fähigkeit
+[ ] gewähltes Ziel
+[ ] Initiative/Aktionsreihenfolge
+[ ] Aktion wird ausgeführt
+[ ] Aktion abgeschlossen
+[ ] Charakter erhält Schaden
+[ ] Charakter wird geheilt
+[ ] Charakter wird kampfunfähig
+[ ] Charakter wird wiederbelebt
+
+
+25. KAMPF – GEGNERDATEN
+=======================
+
+Für jeden Gegnerslot:
+
+[x] Gegnerblock-Struktur — 6 Slots, vollständiger Struct jeweils 0xBE.
+    Korrigierter Mesen-Struct-Anker: 7E:1618 + SlotIndex*0xBE.
+    Slot-Structs: 1618, 16D6, 1794, 1852, 1910, 19CE.
+    Die bislang als „Basen“ geführten Werte 162C,16EA,17A8,1866,1924,19E2
+    sind tatsächlich CurrentHP-Anker bei Struct +0x14.
+
+    Die alten Helperwerte 0x3940/39FE/3ABC/3B7A/3C38/3CF6 sind
+    Snes9x-Hostspiegel-Offets derselben CurrentHP-Anker.
+    Live-Beleg: drei sichtbare Garbost mit je 637 HP in Slots 1–3; nach der
+    Angriffsrunde wechselte Slot 1 auf 0, Slot 2 auf 336 und Slot 3 blieb 637.
+
+    Drei identische Garbost-Blöcke bestätigten die charaktergleiche
+    Combat-Stat-Struktur. Nach einer Runde änderten sich nur CurrentHP und
+    beim besiegten Slot Status; Maximalwerte und übrige Stats blieben stabil.
+
+
+[x] Gegnerslot aktiv — nur während BattleMode 7E:09AA != 0 auswerten;
+    CurrentHP > 0. Nach Flucht können Werte stale bleiben.
+[x] Gegneridentität — Name direkt im Gegner-Struct +0x03, 13 ASCII-Bytes.
+    Live: Garbost und Ramia jeweils identisch in allen drei aktiven Slots.
+    Damit ist für die AI keine externe numerische Gegner-ID erforderlich.
+[x] numerische Gegner-ID — Gegner-Struct +0x53, uint8.
+    Live Garbost 54 und Ramia 3B; beide stimmen exakt mit Abyssonyms vollständiger
+    monster_overworld_sprites.txt überein. Die zweite Tabellenspalte ist die
+    Overworld-Sprite-ID, nicht die Battle-Gegner-ID.
+[REF] Monster_List.json enthält Validierungswerte für 10 ausgewählte Gegner/Bosse
+      (HP, MP, ATP, DFP, EXP, Gold, Drop, Angriffe), jedoch keine internen IDs.
+      Siehe Abschnitt 43.
+[ ] Gegner-Instanz
+[ ] Gegnerposition
+[x] Gegnerlevel — Gegner-Struct +0x11; Garbost live 50
+[x] aktuelle HP — Gegner-Struct +0x14
+[x] aktuelle MP — Gegner-Struct +0x16; Garbost live 32
+[x] maximale HP — Gegner-Struct +0x28; Garbost live 637
+[x] maximale MP — Gegner-Struct +0x2A; Garbost live 32
+[x] ATP — Gegner-Struct +0x2C; Garbost live 135
+[x] DFP — Gegner-Struct +0x2E; Garbost live 298
+[x] STR — Gegner-Struct +0x30; Garbost live 0
+[x] AGL — Gegner-Struct +0x32; Garbost live 154
+[x] INT — Gegner-Struct +0x34; Garbost live 92
+[x] GUT — Gegner-Struct +0x36; Garbost live 120
+[x] MGR — Gegner-Struct +0x38; Garbost live 50
+[x] aktueller Status — Gegner-Struct +0x12.
+    Adressen der sechs Slots: 7E:162A,16E8,17A6,1864,1922,19E0.
+    Dasselbe Bitlayout wie bei den Party-Structs:
+    01 Poison, 02 Silence, 04 Disabled, 08 Paralyze, 10 Confusion, 20 Sleep.
+    Beim besiegten Garbost live 00->04; Status 04/Disabled damit bestätigt.
+[x] Poison — Status &01 aus identischem Party-/Gegnerlayout übernommen
+[x] Silence — Status &02 aus identischem Party-/Gegnerlayout übernommen
+[x] Sleep — Status &20 aus identischem Party-/Gegnerlayout übernommen
+[x] Paralyze — Status &08; Freeze ball setzte den unbeschädigten rechten
+    Garbost live von Status 00 auf 08 bei unveränderten 637 HP.
+[x] Confusion — Status &10 aus identischem Party-/Gegnerlayout übernommen
+[x] Disabled/tot — Status &04 und CurrentHP=0 live gemeinsam beobachtet.
+[ ] effektive Elementresistenzen
+[ ] effektive Statusresistenzen
+[ ] gewählte Gegneraktion
+[x] gewählte Gegneraktion — aktive Aktion 7F:F44E:
+    Akteur +0x00, Ziel +0x02, Command/Aktionstyp +0x06,
+    ausgewählte Action-ID +0x0A. Ramia live: Command 05, Action-ID 16,
+    zusätzlicher Parameter +0x0C = 20. Die Aktionsnamen-Pointertabelle der
+    laufenden randomisierten ROM bestätigt: 15=Miracle voice,
+    16=Tail attack, 17=Picking (IDs hexadezimal). Ramia führte damit
+    dreimal Tail attack aus.
+[x] Gegnerziel — aktive Aktion +0x02. Ramia-Ziele 08/10/08;
+    08 korrelierte zweimal mit Tias HP-Verlust, 10 ist das Capsule Monster.
+[x] Gegnerinitiative/Aktionsreihenfolge — Queue 7E:1B8C,
+    Eintrag ActorMask u8 + Initiative u16 LE, Stride 3, maximal 11 Akteure.
+    Live absteigend: Arty 266, Guy 187, Selan 140, Tia 133, Capsule 108,
+    Gegner 0/2/1 mit 45/45/43.
+[x] Gegneraktion wird ausgeführt — aktueller Akteur bei 7F:F44E +0x00;
+    Feindakteur = 80 | (1<<Gegnerindex).
+[ ] Gegner erhält Schaden
+[ ] Gegner wird geheilt
+[ ] Gegner besiegt
+[ ] Gegner entfernt
+[ ] Gegner-Drop-ID
+[ ] Gegner-Dropchance
+[ ] Gegner-EXP
+[ ] Gegner-Gold
+
+
+26. KAMPF – SCHADEN, HEILUNG UND STATUS
+=======================================
+
+[ ] aktuell ausgeführte Aktions-ID
+[ ] aktuell ausgeführte Spell-ID
+[ ] aktuell ausgeführte Item-ID — Laufzeitadresse noch offen
+[REF] 35 Kampfitem-ID-Zuordnungen aus combat_items.json inklusive Effekt und
+      teilweise Zieltyp; siehe Abschnitt 40.
+[ ] aktuell ausgeführte IP-ID
+[ ] physischer Treffer
+[ ] magischer Treffer
+[ ] Schaden berechnet
+[ ] finaler Schadenswert
+[ ] angezeigter Schadenswert
+[ ] Heilwert
+[ ] Miss
+[ ] kritischer Treffer
+[ ] Resist/verminderter Effekt
+[ ] Immunität
+[ ] Status erfolgreich zugefügt
+[ ] Status fehlgeschlagen
+[ ] Poison zugefügt
+[ ] Sleep zugefügt
+[ ] Paralyze zugefügt
+[ ] Confusion zugefügt
+[ ] Disabled ausgelöst
+[ ] Status geheilt
+[ ] Schadenszahl aktiv
+[ ] Schadenszahl-Timer
+[ ] Kampftext-/Message-ID
+[ ] IP steigt durch erhaltenen Treffer
+[ ] IP wird durch IP-Fähigkeit verbraucht
+
+
+27. KAMPFENDE UND BELOHNUNGEN
+=============================
+
+[ ] alle Gegner besiegt
+[ ] Siegmeldung aktiv
+[x] erhaltene EXP gesamt — Mesen 7E:1605–7E:1606, uint16 LE.
+    Live: sichtbare 2689 EXP entsprachen exakt 0x0A81.
+    Die alte Angabe 7E:541C blieb zwischen Ergebnisphasen unverändert und ist
+    als Mesen-Ergebnistext widerlegt.
+    kanonischer numerischer Belohnungswert noch offen
+[x] erhaltenes Gold — Mesen 7E:1608–7E:1609, uint16 LE.
+    Live: sichtbare 4140 GOLD entsprachen exakt 0x102C.
+    Die alte Angabe 7E:5744 blieb unverändert und ist widerlegt.
+    EXP/Gold bleiben nach Rückkehr in den Dungeon stale; nur während des
+    passenden Battle-Result-Zustands auswerten.
+    globales Gold nach Übernahme weiterhin 7E:2D9E
+[ ] Drop vorhanden
+[ ] erhaltene Drop-Item-ID
+[ ] Dropmenge
+[ ] EXP auf Partycharaktere verteilt
+[ ] EXP auf Capsule Monster verteilt
+[ ] Charakter-Level-up
+[ ] Capsule-Monster-Level-up
+[ ] Capsule-Monster-Klassenwechsel möglich
+[ ] Kampfergebnis bestätigt
+[ ] Bossflag nach Kampf gesetzt
+[ ] Script nach Kampf gestartet
+[ ] Party vollständig besiegt
+[ ] Game Over ausgelöst
+
+
+28. IP-SYSTEM
+=============
+
+[~] IP-Wert pro Charakter außerhalb Kampf — Charakterbasis + 0xBF laut ram_map.json; siehe Abschnitt 47
+[~] IP-Wert pro Charakter im Kampf — dieselben Kandidatenadressen wie außerhalb Kampf; live gegen Treffer/IP-Nutzung testen
+[ ] IP-Gewinn durch Treffer
+[ ] IP-Anzeige/Gauge
+[x] verfügbares IP durch aktuell angelegte Ausrüstung — die sechs ausgerüsteten
+    Item-IDs werden beim geöffneten Battle-IP-Menü in Slotreihenfolge nach
+    7E:1357–7E:1362 kopiert (sechs uint16 little-endian).
+[x] IP-Menü geöffnet — sichtbarer Prompt als interleaved ASCII ab 7E:3046.
+[x] ausrüstungsgebundene IP-Fähigkeitenliste — sechs Renderzeilen:
+    Zeile 1 beginnt bei 7E:3147, Zeilenstride 0x80.
+    Der sichtbare Itemname beginnt bei Zeile +0x01, der sichtbare IP-Name bei
+    Zeile +0x1B. Das vollständige Renderpane endet bei 7E:3447.
+    Live mit Guys sechs Slots bestätigt:
+    Zirco ax/Holy mirror, Zircon plate/Anger mirror,
+    Mage shield/Sleep stinger, Old helmet/Bomb attack,
+    Sonic ring/Sluggish, Black eye/Hardboiled.
+[x] aktuell markierter IP-Menüslot — 7E:0014, Werte 00–05.
+    Cursor-Y 7E:0101 = 20,2C,38,44,50,5C (Stride 0x0C).
+[x] IP-Fähigkeit ausführbar — Renderattribut bei Zeile +0x02:
+    20 = ausführbar, 24 = nicht genug IP.
+    Live hatte Guy 96 IP bei 7E:0DE5. Die Kosten 96,64,8 waren mit 20
+    markiert; 164,216,128 mit 24. Damit ist die Regel aktuelle IP >= Kosten
+    einschließlich des Gleichstandsfalls bestätigt.
+[x] IP-Verbrauch bei Ausführung — Sleep stinger kostete 96 bei Guy=96:
+    Auswahl und Zielbestätigung ließen 7E:0DE5 zunächst auf 60 hex.
+    Erst die tatsächliche Aktionsausführung änderte den Wert auf 00.
+    Der eingereihte Party-Command war 08, beobachteter Auswahlwert bei +0x06
+    war 1B. Nach der Runde wurden die Party-Command-Slots wieder geleert.
+[!] aktuell markierte IP-Fähigkeits-ID — keine separate Sechserliste aus
+    IP-IDs im WRAM beobachtet. Das Menü hält Item-IDs und gerenderten Text;
+    die eigentliche Item->IP-Zuordnung stammt aus der randomisierten ROM.
+[REF] ip_skills.json enthält 151 Fähigkeiten mit Name, Kosten, Elementen,
+      Eigenschaften und Beschreibung, aber keine expliziten numerischen IDs.
+      Reihenfolge nicht ungeprüft als ID verwenden; siehe Abschnitt 42.
+[x] benötigte IP-Menge — über den gerenderten IP-Namen gegen ip_skills.json
+    auflösen; im bestätigten Menü keine eigene Kostenliste im WRAM beobachtet.
+    Bestätigte Namen/Kosten: Holy mirror 164, Anger mirror 216,
+    Sleep stinger 96, Bomb attack 64, Sluggish 128, Hardboiled/Hard Boiled 8.
+[REF] Kostenwerte für 151 IP-Fähigkeiten vorhanden; Zuordnung erst nach Fund der
+      ausgewählten Fähigkeits-ID belastbar.
+[ ] IP-Fähigkeit nicht verfügbar
+[ ] IP-Fähigkeit gewählt
+[ ] IP-Fähigkeit ausgeführt
+[ ] IP-Kosten abgezogen
+[ ] IP-Fähigkeitsziel
+[ ] IP-Fähigkeitsergebnis
+
+
+29. CASINO
+==========
+
+[ ] Casino betreten
+[ ] Casino-Coin-Bestand
+[ ] aktuell gewähltes Casinospiel
+
+Pachinko Slot:
+[ ] Pachinko Slot aktiv
+[ ] Einsatz
+[ ] Walze 1
+[ ] Walze 2
+[ ] Walze 3
+[ ] Walze 1 gestoppt
+[ ] Walze 2 gestoppt
+[ ] Walze 3 gestoppt
+[ ] Gewinnkombination
+[ ] Auszahlung
+
+Black Jack:
+[ ] Black Jack aktiv
+[ ] Einsatz
+[ ] Spielerdeck/Hand
+[ ] Dealerdeck/Hand
+[ ] Spieler-Handwert
+[ ] Dealer-Handwert
+[ ] Hit gewählt
+[ ] Stand gewählt
+[ ] Bust
+[ ] Gewinn/Verlust/Unentschieden
+[ ] Auszahlung
+
+Slot Machine:
+[ ] Slot Machine aktiv
+[ ] Einsatz
+[ ] Walzenzustände
+[ ] Walzen gestoppt
+[ ] Gewinnlinie
+[ ] Auszahlung
+
+Stud Poker:
+[ ] Stud Poker aktiv
+[ ] Einsatz
+[ ] ausgeteilte Karten
+[ ] gehaltene Karten
+[ ] ersetzte Karten
+[ ] fertige Pokerhand
+[ ] Auszahlung
+
+Action Bingo:
+[ ] Action Bingo aktiv
+[ ] Einsatz
+[ ] Bingofeld
+[ ] aktuell gezogene Zahl/Kugel
+[ ] markierte Felder
+[ ] vollständige Reihe/Spalte/Diagonale
+[ ] Spiel beendet
+[ ] Auszahlung
+
+
+30. DRAGON EGGS UND EGG DRAGON
+==============================
+
+[ ] Anzahl gefundener Dragon Eggs
+[ ] Fundflag für jedes Dragon Egg
+[ ] alle acht Dragon Eggs gesammelt
+[ ] Egg-Dragon-Begegnung aktiv
+[ ] Wunsch-Auswahl aktiv
+[ ] Wunsch-Cursor
+[ ] gewählter Wunsch
+[ ] Belohnung erhalten
+[ ] aktueller Dragon-Egg-Zyklus
+[ ] Dragon Eggs nach Wunsch neu verteilt
+[ ] neue Dragon-Egg-Ortsflags
+[ ] Egg Dragon als Kampfgegner aktiv
+[ ] Egg Dragon besiegt
+
+
+31. ANCIENT CAVE
+================
+
+[ ] Ancient-Cave-Modus aktiv
+[ ] aktuelle Etage
+[ ] aktuelle Raum-ID
+[ ] aktueller Cave-Layout-/Generierungsseed
+[ ] generierter Raumzustand
+[ ] Treppen nach unten vorhanden
+[ ] Treppe zur nächsten Etage benutzt
+[ ] rote Truhe
+[ ] blaue Truhe
+[ ] Mimic statt Truhe
+[ ] Item aus roter Truhe
+[ ] Item aus blauer Truhe
+[ ] temporäres Ancient-Cave-Inventar
+[ ] dauerhaft mitnehmbares Blue-Chest-Item
+[ ] außerhalb gefundene Blue-Chest-Items beim Eintritt
+[ ] Providence gefunden
+[ ] Providence benutzt
+[ ] Ancient Cave verlassen
+[ ] Party beim Eintritt auf Level 1 gesetzt
+[ ] Startinventar der Ancient Cave
+[ ] aktuelle Ancient-Cave-Party
+[ ] Gift-Mode-Partyauswahl
+[ ] Gift-Mode-Capsule-Auswahl
+[ ] Iris Treasure gefunden
+[ ] Iris-Treasure-Fundflags
+[ ] Iris-Treasure-Abgabe in Gruberik
+[ ] ausgestellte Iris Treasures
+[ ] Jelly/Royal-Jelly-Begegnung aktiv
+[ ] Jelly-Rundenzähler
+[ ] Jelly besiegt
+[ ] Etage 99 erreicht
+[ ] Ancient-Cave-Lauf beendet
+
+
+32. CONFIG
+==========
+
+[ ] Config-Menü geöffnet
+[ ] Config-Cursor
+[ ] sämtliche Config-Optionswerte
+[ ] Message-/Textgeschwindigkeit
+[ ] geänderte Config-Option bestätigt
+[ ] Config-Werte im Save gespeichert
+
+
+33. TECHNISCHE ZUSTÄNDE, DIE FÜR EINEN AGENTEN NÜTZLICH SIND
+============================================================
+
+[ ] aktueller Event-/Script-Timer
+[ ] aktueller Animationstimer
+[ ] aktueller Texttimer
+[ ] aktueller Bewegungstimer
+[ ] aktueller Dungeon-Monster-Timer
+[ ] aktueller Encounter-RNG
+[ ] aktueller Kampf-RNG
+[ ] aktueller Casino-RNG
+[ ] aktueller Ancient-Cave-Seed
+[~] Spieler hat seit letzter Aktion Position verändert — je Kontext über:
+    Stadt 7E:28A8 / 7E:28AA
+    Dungeon lokal 7E:2368 / 7E:236E plus Chunk 7E:236B / 7E:236F
+    weitere Positionskandidaten siehe Abschnitt 3 und 4.
+
+[x] Map hat seit letzter Aktion gewechselt — uint8-Vergleich von 7E:05AC;
+    7E:05AE bewahrt die Herkunftskarte
+[ ] Textbox hat seit letzter Aktion gewechselt
+[ ] Menü hat seit letzter Aktion gewechselt
+[~] Kampf-/Erkundungsmodus gewechselt — Vergleich 7E:2CBB / 7E:2CBD / 7E:2CBE
+[x] HP/MP hat sich seit letzter Aktion verändert — Diff der Charakterfelder +0x14/+0x16;
+[~] IP-Änderung — Diff der +0xBF-Kandidaten
+[x] Inventar hat sich verändert — Diff des kanonischen Bereichs 7E:2DA1–7E:2E5F beziehungsweise [0x2DA1, 0x2E60)
+[x] Story-/Dungeonflag hat sich verändert — Diff der Bereiche:
+    Eventflags 7E:077E–7E:079D
+    Dungeonflags 7E:2A96–7E:2A9F
+    Scenario 7E:2C32–7E:2C34
+
+[ ] keine Zustandsänderung/Fortschritt
+[ ] gleiche Aktion wiederholt sich ohne Fortschritt
+[ ] letzter stabiler Spielzustand
+[ ] letzter bestätigter Controllerzustand
+[ ] letzter abgeschlossener Scriptzustand
+
+34. IMPORTIERTE ROM- UND REFERENZDATEN – NICHT ALS WRAM ABHAKEN
+==============================================================
+
+Diese Daten stammen aus den hochgeladenen Referenzdateien, enthalten aber
+keine ausreichend belegte WRAM-Adresse. Sie bleiben deshalb getrennt.
+
+ROM-/TABELLENREFERENZEN
+-----------------------
+[ROM] PointerBaseAddress: 0xA52330
+[ROM] ShopOffset: 0xBF09F
+[ROM] ItemTableBase: 0xB4F69
+[ROM] SpellPointerTable: 0xAFAAB
+[ROM] ShopDirectoryBase: 0xBEE9F
+[ROM] IPSkillTableStart: 0xDE0C5
+[ROM] IPSkillTableEnd: 0xDEB9C
+[ROM] IPSkillTableFromShopOffset: 0x1F026
+[ROM] CapsuleSpriteOffset: 0xBDCB8
+
+Hinweis:
+- Der ältere Snes9x-Hostspiegeleintrag MapIDAddress 0xA328C0 aus
+  rom_pointers.json ist inhaltlich richtig. Im echten Mesen-snesWorkRam
+  entspricht er 7E:05AC.
+- 7E:351E und der mechanisch abgeleitete Kandidat 7E:120A sind als aktuelle
+  Karten-ID live widerlegt.
+
+BOSS-/SPECIAL-ENEMY-SPRITEINDIZES
+---------------------------------
+Diese Indizes können später bei „Gegner-ID/Sprite-ID“ als Referenztabelle
+verwendet werden. Sie sind selbst keine WRAM-Adressen.
+
+    lizardman: 0x9E
+    catfish: 0xC5
+    #skeleton: 0xA0
+    #goblin: 0x9D
+    regal_goblin: 0x9D
+    followers: 0x76
+    camu: 0x75
+    tarantula: 0xC6
+    #pierre1: 0x77
+    #daniele1: 0x78
+    gades1: 0x7A
+    mummies: 0xA8
+    trolls: 0xA9
+    gades2: 0x7A
+    idura1: 0x74
+    pierre2: 0x77
+    daniele2: 0x78
+    lions: 0xB7
+    idura2: 0x74
+    idura3: 0x74
+    flower: 0x96
+    soldiers1: 0x18
+    gargoyles: 0xC4
+    venge_ghost: 0xD0
+    white_dragons: 0xC0
+    fire_dragon: 0xC0
+    ghost_ship: 0xC8
+    soldiers2: 0x18
+    soldiers3: 0x18
+    tank: 0xC7
+    gades3: 0x7A
+    amon1: 0x79
+    gades4: 0x7A
+    amon2: 0x79
+    erim: 0x7C
+    daos: 0x7B
+    #egg_dragon: 0xC0
+    #master_jelly: 0x94
+
+BOSS-/SPECIAL-LOCATION-PAARE
+----------------------------
+Die Datei liefert pro Ort ein Bytepaar, erklärt aber nicht, ob es sich um
+Map/Raum, X/Y oder eine andere Codierung handelt. Deshalb wurden die Paare
+nicht als Map-ID oder Koordinaten in der Checkliste eingetragen.
+
+    Secret Skills Cave: [0x31, 0x05]
+    Foomy Woods: [0x0f, 0x12]
+    Capsule Monster Shrine: [0x0f, 0x09]
+    Capsule Monster Cave: [0x0a, 0x07]
+    Cave to Sundletan: [0x21, 0x10]
+    Lake Cave: [0x09, 0x0f]
+    Alunze Basement: [0x0a, 0x1c]
+    North-West Cave: [0x3f, 0x06]
+    Tanbel East Tower: [0x11, 0x08]
+    Ruby Cave: [0x18, 0x0d]
+    Ruby Cave Capsule: [0x15, 0x19]
+    Treasure Sword Shrine: [0x08, 0x11]
+    Gordovan West Tower: [0x0f, 0x15]
+    Cave to Bound Kingdom: [0x08, 0x13]
+    Northern Labyrinth: [0x1b, 0x0a]
+    Northern Labyrinth Capsule: [0x2c, 0x0c]
+    Ancient Tower: [0x0a, 0x26]
+    Northern Lighthouse: [0x0a, 0x07]
+    Phantom Mountain: [0x08, 0x1b]
+    Tower of Sacrifice: [0x0e, 0x08]
+    Tower of Sacrifice Capsule: [0x14, 0x16]
+    Karlloon North Shrine: [0x0e, 0x1e]
+    Shaia Lab: [0x03, 0x08]
+    Flower Mountain: [0x34, 0x26]
+    Flower Mountain Capsule: [0x12, 0x0d]
+    Dankirk North Dungeon: [0x34, 0x23]
+    North-East Tower: [0x0a, 0x10]
+    Mountain of No Return: [0x1d, 0x0c]
+    Divine Shrine: [0x1a, 0x19]
+    Shrine of Vengeance: [0x07, 0x12]
+    Tower of Truth: [0x10, 0x15]
+    Dragon Mountain: [0x1d, 0x1b]
+    Dual Blade Shrine: [0x09, 0x0b]
+    Gratze Kingdom: [0x1d, 0x07]
+    Shuman Sealed Tower: [0x10, 0x0c]
+    Stradah Sealed Tower: [0x0a, 0x0f]
+    Karmirno Sealed Tower: [0x10, 0x0c]
+    Daos' Shrine: [0x10, 0x17]
+
+
+35. ZUSÄTZLICHE VERIFIZIERTE HINWEISE AUS DEN RE-NOTIZEN
+========================================================
+
+[x] 7E:2CBB = map_context_flag
+    00 = Overworld/Nicht-Map-Kontext
+    11 = Stadt/Dungeon
+
+[x] 7E:2CBD = exploration_mode_flag
+    01 = aktive Stadt-/Dungeon-Erkundung
+    04 = Werkzeugmenü wird über Select geöffnet
+    00 = Kampf oder Erkundungs-UI nicht aktiv
+
+[x] 7E:2CBE = battle_mode_flag
+    01 = Kampfablauf
+    00 = kein Kampfablauf
+
+[x] 7E:3586 = Ergebnis eines fehlgeschlagenen Schritts
+    FF frei; 00 Nord; 01 Süd; 02 West; 03 Ost.
+    Kein Wandtyp.
+
+[x] 7E:2CB5–7E:2CB9 = Richtungsverlauf/FIFO
+    Kein verlässlicher Kollisionswert.
+
+[x] 7E:2D1A = fokussiertes Werkzeug im Select-Menü
+[x] 7E:2D1D / 7E:2D1E = Werkzeug-Begleitbytes, Semantik offen
+[x] 7E:2CBC = aktive Werkzeuganimation/-ausführung
+
+[~] 7E:2368 / 7E:236B = Dungeon-X lokal + Chunk/Page
+[~] 7E:236E / 7E:236F = Dungeon-Y lokal + Chunk/Page
+    Nur im Dungeonkontext verwenden; mindestens lokale Bytes werden in
+    Kampf/UI wiederverwendet.
+
+[~] 7E:642B–7E:6FA6 = beobachteter Live-Map-Buffer in Secret Skills Cave
+    Beobachteter Zeilen-Stride 0x3A; nicht universell bestätigt.
+
+36. WEITERE EMULATOR-/WRAM-ADRESSEN AUS emulator_addresses.json
+================================================================
+
+Die folgenden Mesen-Adressen wurden aus den Snes9x-1.62.3-Prozessadressen
+0xA3xxxx in relative WRAM-Adressen 7E:xxxx umgerechnet.
+
+[x] aktive Party-Slots: 7E:2D8F–7E:2D92
+[x] Capsule-Slotbereich: Mesen 7E:11BB–7E:11C1; Capsule-Identitäten sind im
+    Randomizer positionsabhängig und nicht fest an einzelne Adressen gebunden
+[~] Dungeon-X-Paar: 7E:3532 / 7E:3534
+[~] horizontale Chunk-/Borderbytes: 7E:3533 / 7E:3535
+[~] Dungeon-Y-Paar: 7E:353A / 7E:353C
+[~] vertikale Chunk-/Borderbytes: 7E:353B / 7E:353D
+[~] Dungeon-Spawn: X 7E:356F / Y 7E:3571
+[~] Stadt-X: 7E:28A8
+[~] Stadt-Y: 7E:28AA
+[~] Stadt-Begleitbyte „vertical“: 7E:28A9
+[~] Stadt-Begleitbyte „horizontal“: 7E:28AB
+
+Die Feldnamen stammen aus der Datei. Wo [~] steht, ist die konkrete Semantik
+oder Skalierung noch nicht durch die beigefügten Notizen ausreichend belegt.
+
+37. DUNGEON-FLAG-BITMAP
+=======================
+
+WRAM-Bereich: 7E:2A96–7E:2A9F
+Die Ort-zu-Bit-Zuordnung ist vorhanden; die genaue Bedeutung eines gesetzten
+Bits muss weiterhin im Spiel getestet werden.
+
+7E:2A96:
+  40 (0100 0000)  Foomy Woods
+  01 (0000 0001)  Secret Skills Cave
+  04 (0000 0100)  Cave to Sundletan
+  10 (0001 0000)  Lake Cave
+
+7E:2A97:
+  40 (0100 0000)  Ruby Cave Capsule
+  01 (0000 0001)  Alunze Basement
+  04 (0000 0100)  Alunze Cave
+  10 (0001 0000)  Tanbel Tower
+
+7E:2A98:
+  40 (0100 0000)  Cave Bridge
+  04 (0000 0100)  Treasure Sword Shrine
+  01 (0000 0001)  Ruby Cave
+  10 (0001 0000)  Gordovan Tower
+
+7E:2A99:
+  04 (0000 0100)  North Dungeon
+  01 (0000 0001)  North Dungeon Capsule
+  10 (0001 0000)  Ancient Tower
+  40 (0100 0000)  Lighthouse
+
+7E:2A9A:
+  80 (1000 0000)  Tower of Sacrifice
+  20 (0010 0000)  Sacrifice Capsule
+  01 (0000 0001)  Phantom Mountain
+
+7E:2A9B:
+  08 (0000 1000)  Shaia Lab
+  20 (0010 0000)  Flower Capsule
+  40 (0100 0000)  Flower Mountain
+  02 (0000 0010)  Karlloon Shrine
+
+7E:2A9C:
+  10 (0001 0000)  Mnt.Of No Return
+  01 (0000 0001)  Dankirk Dungeon
+  40 (0100 0000)  Divine Shrine
+  04 (0000 0100)  Ferim Tower
+
+7E:2A9D:
+  40 (0100 0000)  Submarine Shrine
+  01 (0000 0001)  Shrine of Vengeance
+  04 (0000 0100)  Tower of Truth
+  10 (0001 0000)  Dragon Mountain
+
+7E:2A9E:
+  10 (0001 0000)  Stradah Tower
+  40 (0100 0000)  Karmirno Tower
+  08 (0000 1000)  Shuman Tower
+  01 (0000 0001)  Gratze Castle
+
+7E:2A9F:
+  10 (0001 0000)  Darbi Shrine
+  40 (0100 0000)  Zeppy Cave
+  01 (0000 0001)  Daos' Shrine
+
+38. MAP-ID- UND POI-REFERENZTABELLE
+===================================
+
+Quelle: map_navigation.json — 54 Map-IDs, 296 POIs.
+Diese Tabelle ordnet den kanonischen uint8-Kartenwert aus Mesen 7E:05AC
+semantisch zu.
+Die POI-Koordinaten sind Referenzwerte der Datei; ihre genaue Beziehung zu
+7E:28A8/28AA oder anderen Laufzeitkoordinaten ist separat zu bestätigen.
+
+Map-ID   3 (0x03) — Elcid
+  (120, 128)  Inn entrance
+  (152, 80)  Shop entrance
+  (232, 160)  Church entrance
+  (120, 160)  Spells entrance
+  (232, 240)  leave town
+
+Map-ID   4 (0x04) — Elcid
+  (24, 96)  Shop Clerk
+  (208, 240)  Inn keeper
+  (40, 0)  Priest
+  (216, 48)  Spells Clerk
+
+Map-ID   8 (0x08) — Sundletan
+  (136, 144)  Inn entrance
+  (184, 144)  Shop entrance
+  (200, 160)  Church entrance
+  (120, 192)  Spells entrance
+  (152, 144)  Tea Shop
+  (40, 16)  leave town
+
+Map-ID   9 (0x09) — Sundletan
+  (200, 192)  Shop Clerk
+  (168, 192)  Inn keeper
+  (72, 240)  Priest
+  (200, 144)  Spells Clerk
+  (216, 0)  Tea Shop Clerk
+
+Map-ID  15 (0x0F) — Alunze
+  (232, 96)  Inn entrance
+  (88, 112)  Shop entrance
+  (136, 192)  Church entrance
+  (24, 0)  leave town
+  (152, 16)  1F Castle entrance
+  (152, 208)  leave town
+  (168, 96)  2F Castle entrance (Throne area)
+  (8, 32)  2F Castle entrance (towards Basement)
+  (232, 208)  10    1F Stairs Up (from exit)
+  (56, 176)  2F Stairs Down (to exit)
+  (56, 144)  2F King
+  (56, 224)  2F Exit
+  (88, 80)  2F Exit (from basement)
+  (88, 32)  2F Stairs (towards basement)
+  (104, 240)  1F Stairs up to 2F
+  (104, 0)  1F Stairs down to B1
+  (184, 112)  B1 Stairs to 1F
+  (72, 112)  B1 Stairs to B2
+  (216, 16)  B2 Stairs to B1
+  (136, 48)  B2 Door to Dungeon
+
+Map-ID  16 (0x10) — Alunze
+  (232, 224)  Shop Clerk
+  (24, 16)  Inn keeper
+  (56, 16)  Priest
+
+Map-ID  25 (0x19) — Clamento
+  (72, 176)  Inn entrance
+  (200, 160)  Shop entrance
+  (184, 16)  Church entrance
+  (88, 144)  Spells entrance
+  (168, 160)  Jyad House (Items)
+  (24, 176)  Mayor House
+  (24, 0)  leave town
+
+Map-ID  26 (0x1A) — Clamento
+  (168, 176)  Shop Clerk
+  (248, 176)  Inn keeper
+  (72, 240)  Priest
+  (104, 192)  Spells Clerk
+  (56, 240)  Jyad House, his wife
+  (184, 240)  Jyad (sells items)
+  (72, 32)  Jyad House Exit
+  (248, 128)  Mayor
+
+Map-ID  28 (0x1C) — Tanbel
+  (216, 208)  Inn entrance
+  (184, 64)  Shop entrance
+  (248, 208)  Church entrance
+  (88, 128)  Spells entrance
+  (24, 48)  leave town
+
+Map-ID  29 (0x1D) — Tanbel
+  (232, 240)  Shop Clerk
+  (248, 208)  Priest
+  (232, 176)  Spells Clerk
+
+Map-ID  36 (0x24) — Gordovan
+  (72, 96)  Inn entrance
+  (120, 176)  Church entrance
+  (8, 208)  leave town
+
+Map-ID  44 (0x2C) — Parcelyte
+  (56, 224)  Inn entrance
+  (184, 192)  Shop entrance
+  (248, 176)  Church entrance
+  (88, 160)  Item Shop
+  (248, 48)  leave town
+
+Map-ID  45 (0x2D) — Parcelyte
+  (184, 112)  Shop Clerk
+  (184, 176)  Item Clerk
+  (248, 240)  Inn keeper
+  (184, 0)  Priest
+  (200, 144)  1F Castle entrance
+  (200, 64)  2F Castle Entrance (Throne Room)
+  (200, 144)  Castle entrance
+  (200, 128)  leave Castle
+  (232, 48)  1F Castle Exit
+  (232, 224)  1F Stairs to B1
+  (88, 224)  B1 Stairs to 1F
+  (216, 224)  B1 Guard
+  (200, 224)  B1 Treasure Door
+  (8, 144)  2F Exit (from Throne) int
+  (8, 128)  2F King
+  (200, 128)  Castle entrance
+  (200, 144)  leave town
+
+Map-ID  46 (0x2E) — Bound Kingdom
+  (216, 32)  Shop Clerk
+  (40, 128)  Castle exit
+  (232, 0)  Inn keeper
+  (104, 16)  1F Stairs to B1
+  (184, 128)  B1 Stairs to 1F
+  (216, 128)  B1 Stairs to B2
+  (56, 0)  B2 Stairs to B1
+  (120, 240)  2F Priest
+  (104, 0)  B2 Item Clerk
+  (184, 16)  1F Stairs to 2F
+  (152, 0)  2F Stairs to 1F
+
+Map-ID  62 (0x3E) — Merix
+  (56, 192)  Inn entrance
+  (104, 208)  Shop entrance
+  (120, 112)  Church entrance
+  (232, 224)  Spells Shop
+  (8, 224)  leave town
+
+Map-ID  63 (0x3F) — Merix
+  (88, 224)  Shop Clerk
+  (216, 0)  Inn keeper
+  (40, 240)  Priest
+  (232, 16)  Spells Clerk
+
+Map-ID  68 (0x44) — Gruberik
+  (72, 240)  Inn entrance
+  (168, 160)  Shop entrance
+  (88, 176)  Church entrance
+  (24, 16)  leave town
+
+Map-ID  69 (0x45) — Gruberik
+  (200, 144)  Shop Clerk
+  (200, 122)  Inn keeper
+  (232, 96)  Priest
+
+Map-ID  73 (0x49) — Karlloon
+  (24, 176)  Inn entrance
+  (120, 160)  Shop entrance
+  (200, 128)  Church entrance
+  (184, 80)  Spells entrance
+  (200, 0)  leave town
+
+Map-ID  74 (0x4A) — Karlloon
+  (184, 240)  Shop Clerk
+  (8, 224)  Inn keeper
+  (24, 240)  Priest
+  (216, 16)  Spells Clerk
+
+Map-ID  85 (0x55) — Forfeit Island
+  (200, 48)  Inn entrance
+  (72, 192)  Shop entrance
+  (248, 176)  Church entrance
+  (104, 128)  Bar entrance
+  (248, 128)  leave town
+
+Map-ID  86 (0x56) — Forfeit Island
+  (184, 0)  Weapon Clerk 1F
+  (232, 208)  Stairs down to B1
+  (168, 208)  Stairs up to 1F
+  (184, 224)  Armor Clerk B1
+  (168, 16)  Stairs down to B2
+  (104, 16)  Stairs up to B1
+  (104, 240)  Item Clerk B2
+  (168, 208)  Inn keeper
+  (232, 192)  Priest
+  (248, 160)  Bar Keep
+
+Map-ID  88 (0x58) — Dankirk
+  (8, 144)  Castle entrance
+  (8, 240)  leave Castle
+
+Map-ID  89 (0x59) — Dankirk
+  (184, 240)  Shop Clerk
+  (232, 224)  1F Stairs to B1
+  (72, 240)  B1 Stairs to 1F
+  (216, 224)  Inn keeper
+  (40, 0)  Priest
+  (120, 240)  B1 Spells Clerk
+  (72, 128)  Castle Exit
+
+Map-ID  91 (0x5B) — Ferim
+  (136, 176)  Castle entrance
+  (136, 64)  leave Castle
+
+Map-ID  92 (0x5C) — Ferim
+  (216, 240)  Shop Clerk
+  (200, 208)  Inn keeper
+  (184, 240)  1F Stairs to B1 Priest
+  (200, 176)  B1 Stairs from Priest to 1F
+  (168, 144)  B1 Priest
+  (216, 240)  1F Stairs to B1 Spells Clerk
+  (136, 224)  B1 Stairs from Spells to 1F
+  (168, 192)  Spells Clerk
+  (72, 112)  Castle Exit
+
+Map-ID  94 (0x5E) — Aleyn
+  (88, 160)  Inn entrance
+  (136, 176)  Shop entrance
+  (200, 192)  Church entrance
+  (232, 208)  Spells entrance
+  (152, 80)  Bar entrance
+  (24, 32)  leave town
+
+Map-ID  95 (0x5F) — Aleyn
+  (184, 192)  Shop Clerk
+  (104, 240)  Inn keeper
+  (216, 160)  Priest
+  (216, 192)  Spells Clerk
+  (168, 240)  Bar keep
+
+Map-ID 106 (0x6A) — Narcysus
+  (200, 224)  Inn entrance
+  (168, 112)  Shop entrance
+  (104, 192)  Church entrance
+  (8, 160)  Item Shop entrance
+  (24, 240)  leave town
+
+Map-ID 107 (0x6B) — Narcysus
+  (152, 208)  Shop Clerk
+  (104, 240)  Inn keeper
+  (216, 208)  Priest
+  (248, 240)  Item clerk
+
+Map-ID 122 (0x7A) — Treadool
+  (232, 160)  Inn entrance
+  (136, 160)  Shop entrance
+  (72, 32)  Church entrance
+  (104, 160)  Item Shop entrance
+  (232, 240)  leave town
+
+Map-ID 123 (0x7B) — Treadool
+  (136, 240)  Shop Clerk
+  (136, 176)  Inn keeper
+  (216, 224)  Priest
+  (216, 240)  Item Shop Clerk
+
+Map-ID 124 (0x7C) — Shaia Lab
+  (184, 144)  Exit
+  (56, 64)  1st door in
+  (120, 144)  2nd door in
+  (104, 96)  3rd door in
+  (168, 112)  4th door in
+  (184, 0)  1F Stairs to B1
+  (216, 144)  B1 Stairs to 1F
+  (200, 16)  Lexis / Boss
+  (168, 80)  4th door out
+  (72, 112)  5th door in to B1
+  (202, 128)  Plattform
+  (184, 144)  Esc B1 Stairs to 1F
+
+Map-ID 138 (0x8A) — Auralio
+  (56, 128)  Inn entrance
+  (120, 144)  Shop entrance
+  (136, 48)  Church entrance
+  (200, 192)  Item Shop entrance
+  (216, 32)  leave town
+
+Map-ID 139 (0x8B) — Auralio
+  (216, 240)  Shop Clerk
+  (200, 240)  Inn keeper
+  (136, 192)  Priest
+  (104, 240)  Item Shop Clerk
+
+Map-ID 154 (0x9A) — Agurio
+  (40, 112)  Egg Girl
+  (24, 208)  leave town
+
+Map-ID 155 (0x9B) — Treble
+  (136, 160)  Inn entrance
+  (24, 128)  Shop entrance
+  (8, 16)  Church entrance
+  (200, 144)  Item Shop entrance
+  (8, 160)  leave town
+
+Map-ID 156 (0x9C) — Treble
+  (40, 240)  Shop Clerk
+  (248, 192)  Inn keeper
+  (120, 240)  Priest
+  (216, 240)  Item Shop Clerk
+
+Map-ID 157 (0x9D) — Pico
+  (136, 80)  Inn entrance
+  (104, 128)  Church entrance
+  (216, 160)  leave town
+
+Map-ID 158 (0x9E) — Pico
+  (72, 240)  Inn keeper
+  (120, 240)  Priest
+
+Map-ID 160 (0xA0) — Portravia
+  (56, 48)  Inn entrance
+  (168, 48)  Shop entrance
+  (136, 176)  Church entrance
+  (24, 192)  Lab entrance
+  (24, 96)  leave town
+
+Map-ID 161 (0xA1) — Portravia
+  (152, 240)  Shop Clerk
+  (120, 0)  Shop 1F Stairs to B1
+  (184, 0)  Shop B1 Stairs to 1F
+  (88, 48)  Inn keeper
+  (216, 176)  Priest
+  (232, 240)  Shop B1 Spells Clerk
+  (216, 128)  Lab exit
+  (168, 0)  1F Lab Stairs to B1
+  (216, 48)  B1 Lab Stairs to 1F
+  (88, 128)  B1 Lab Scientist
+
+Map-ID 166 (0xA6) — Eserikto
+  (184, 128)  Inn entrance
+  (56, 144)  Shop entrance
+  (8, 176)  Church entrance
+  (136, 240)  Spells entrance
+  (248, 224)  leave town
+
+Map-ID 167 (0xA7) — Eserikto
+  (72, 240)  Shop Clerk
+  (24, 224)  Inn keeper
+  (120, 240)  Priest
+  (200, 16)  Spells Clerk
+
+Map-ID 172 (0xAC) — Barnan
+  (200, 192)  Inn entrance
+  (88, 224)  Shop entrance
+  (88, 176)  Church entrance
+  (8, 144)  Item Shop entrance
+  (248, 16)  leave town
+
+Map-ID 173 (0xAD) — Barnan
+  (24, 0)  Shop Clerk
+  (56, 240)  Inn keeper
+  (232, 208)  Priest
+  (168, 0)  Item Shop Clerk
+
+Map-ID 181 (0xB5) — Durale
+  (40, 192)  Inn entrance
+  (136, 64)  Shop entrance
+  (40, 144)  Church entrance
+  (184, 144)  Spells entrance
+  (152, 144)  Tea Shop entrance
+  (248, 0)  leave town
+
+Map-ID 182 (0xB6) — Durale
+  (56, 240)  Shop Clerk
+  (184, 240)  Inn keeper
+  (136, 224)  Priest
+  (104, 240)  Tea Shop Clerk
+  (248, 240)  Spells Clerk
+
+Map-ID 190 (0xBE) — Chaed
+  (232, 176)  Inn entrance
+  (56, 80)  Shop entrance
+  (152, 80)  Item Shop entrance
+  (88, 176)  Church entrance
+  (24, 0)  leave town
+
+Map-ID 191 (0xBF) — Chaed
+  (184, 240)  Shop Clerk
+  (120, 240)  Item Shop Clerk
+  (72, 240)  Inn keeper
+  (232, 208)  Priest
+
+Map-ID 201 (0xC9) — Preamarl
+  (152, 128)  Inn entrance
+  (136, 128)  Shop entrance
+  (56, 96)  Church entrance
+  (248, 208)  leave town (ship)
+  (248, 144)  board ship
+
+Map-ID 202 (0xCA) — Preamarl
+  (136, 0)  Shop Clerk
+  (24, 224)  Inn keeper
+  (72, 32)  Priest
+
+Map-ID 216 (0xD8) — Narvick
+  (104, 128)  Inn entrance
+  (232, 224)  Shop entrance
+  (88, 208)  Church entrance
+  (56, 160)  leave town
+
+Map-ID 217 (0xD9) — Narvick
+  (120, 240)  Shop Clerk
+  (184, 240)  Inn keeper
+  (40, 240)  Priest
+
+39. WELTKARTEN-ZIELKOORDINATEN – REFERENZ, KEIN WRAM-FUND
+==========================================================
+
+cities.json und locations.json enthalten unterschiedliche Koordinatenräume.
+Ohne dokumentierte Skalierung, Ursprung und Bezug zu den Fast/Slow-Werten
+7E:377F–3783 beziehungsweise 7E:379C–37A0 werden sie nicht als WRAM-Werte
+abgehakt.
+
+Ort | cities.json | locations.json
+------------------------------------
+Agurio | 1108, 264 | 3481.6, 1105.92
+Aleyn | 386, 225 | 1310.72, 1024
+Alunze Basement | - | 573.44, 2407.36
+Alunze Cave | - | 358.4, 2396.16
+Alunze Kingdom | 144, 700 | 542.72, 2508.08
+Ancient Tower | - | 972.8, 911.36
+Auralio Kingdom | 979, 449 | 3092.48, 1689.6
+Barnan | 957, 812 | 3031.04, 2785.28
+Bound Kingdom | 168, 204 | 655.36, 942.08
+Cave Bridge | - | 471.04, 1208.32
+Cave to Sundletan | - | 737.28, 3194.88
+Chaed | 593, 1047 | 1914.88, 3502.08
+Clamento | 375, 612 | 1269.76, 2191.36
+Dankirk Dungeon | - | 3307.52, 931.84
+Dankirk Kingdom | 916, 358 | 2908.16, 1413.12
+Daos' Shrine | - | 2068.48, 2068.48
+Darbi Shrine | - | 2364.96, 2888.16
+Divine Shrine | - | 3276.8, 3450.88
+Dragon Mountain | - | 1710.08, 3768.32
+Durale | 913, 1097 | 2908.16, 3655.68
+Elcid | 161, 1062 | 624.64, 3553.28
+Eserikto | 1103, 938 | 3481.6, 3174.4
+Ferim Kingdom | 958, 553 | 3041.28, 1986.56
+Ferim Tower | - | 3563.52, 1689.6
+Flower Capsule | - | 2889.12, 1217.36
+Flower Mountain | - | 2969.12, 1167.36
+Foomy Woods | - | 563.2, 3072
+Forfeit Island | 846, 430 | 2713.6, 1617.92
+Gordovan | 176, 525 | 655.36, 1914.88
+Gordovan Tower | - | 409.6, 1873.92
+Gratze Castle | - | 3194.88, 583.68
+Gruberik | 447, 59 | 1505.28, 501.76
+Karlloon | 759, 175 | 2437.12, 870.4
+Karlloon Shrine | - | 2478.08, 522.24
+Karmirno Tower | - | 1946.32, 2119.68
+Lake Cave | - | 829.44, 2959.36
+Lighthouse | - | 1433.6, 1341.44
+Merix | 61, 419 | 348.16, 1751.04
+Mnt.Of No Return | - | 3645.44, 3082.24
+Narcysus | 604, 234 | 1976.32, 1034.24
+Narvick | 655, 650 | 2185.16, 2293.76
+North Dungeon | - | 573.44, 686.8
+North Dungeon Capsule | - | 503.44, 726.8
+Parcelyte Kingdom | 330, 427 | 1136.64, 1638.4
+Phantom Mountain | - | 1003.52, 614.4
+Pico Woods | 1193, 708 | 3758.08, 2457.6
+Portravia | 1057, 794 | 3338.24, 2734.08
+Preamarl | 713, 877 | 2273.28, 2999.84
+Ruby Cave | - | 1330.96, 1700.56
+Ruby Cave Capsule | - | 1290.96, 1770.56
+Sacrifice Capsule | - | 2029.44, 580.44
+Secret Skills Cave | - | 665.6, 3665.44
+Shaia Lab | - | 2938.88, 563.2
+Shrine of Vengeance | - | 2713.6, 3143.68
+Shuman Tower | - | 2068.96, 2395.68
+Stradah Tower | - | 2232.32, 2170.88
+Submarine Shrine | - | 2078.72, 2211.84
+Sundletan | 260, 899 | 921.6, 3072
+Tanbel | 207, 574 | 757.76, 2078.72
+Tanbel Tower | - | 1228.8, 2355.2
+Tower of Sacrifice | - | 2109.44, 543.44
+Tower of Truth | - | 2519.04, 3624.96
+Treadool | 879, 153 | 2785.28, 798.72
+Treasure Sword Shrine | - | 1044.48, 1402.88
+Treble | 993, 671 | 3143.68, 2355.2
+Zeppy Cave | - | 972.8, 1832.96
+40. KAMPFITEM-ID-REFERENZ
+=========================
+
+Die Gruppennamen „even“ und „odd“ werden exakt aus combat_items.json
+übernommen; ihre technische Bedeutung ist in der Datei nicht erklärt.
+
+even:
+  0x01 = Charred Newt | Restores 5HP + 5MP
+  0x02 = Potion | Restores 30HP
+  0x03 = Hi-Potion | Restores 90HP
+  0x04 = Ex-Potion | Restores 300HP
+  0x08 = Regain | Restores Life, and 100HP
+  0x09 = Miracle | Restores Life, and All HP + MP
+  0x05 = Magic Jar | Restores 8MP
+  0x06 = Hi-Magic | Restores 40MP
+  0x07 = Ex-Magic | Restores 95MP
+  0x0A = Antidote | Heals poison
+  0x0C = Shriek | Cures Confusion Status
+  0x0B = Awake | Cures Sleep Status
+  0x0D = Mystery Pin | Cures Paralysis Status
+  0x24 = Boomerang | Damage all enemies | Ziel: All
+  0x25 = Big-Boomer | Stronger PHYSICAL attack | Ziel: All
+  0x26 = Ex-Boomer | Powerful PHYSICAL attack | Ziel: All
+  0x27 = Dragon Tooth | Stronger PHYSICAL attack | Ziel: All
+  0x20 = Ice Ball | Inflicts Cold Damage | Ziel: Single
+  0x21 = Fire Ball | Inflicts Fire Damage | Ziel: Single
+  0x1C = Sleep Ball | Puts foes to sleep | Ziel: Single
+  0x1F = Smoke Ball | Escape from Battle!
+  0x22 = Terror Ball | Total Annihilation | Ziel: Single
+  0x1E = Freeze Ball | Inflicts Paralysis | Ziel: Single
+  0x1D = Confuse Ball | Brain Damages Foes | Ziel: Single
+  0x17 = Pear Cider | Increases ATP in battle and Restores 8HP
+  0x18 = Sour Cider | Increases ATP in battle and Restores 10HP
+  0x19 = Lime Cider | Increases ATP in battle and Restores 15HP
+  0x1A = Plum Cider | Increases ATP in battle and Restores 20HP
+  0x1B = Apple Cider | Increases ATP in battle and Restores 165HP
+
+odd:
+  0x91 = Statue | Restores 200HP | Ziel: All
+  0x8F = Zap Charm | Casts 'Flash' on foes | Ziel: Single
+  0x8E = Flame Charm | Casts 'Spark' on foes | Ziel: Single
+  0x90 = Magic Lamp | Buster Attack | Ziel: All
+
+41. ITEM-, EQUIPMENT-, IRIS- UND SPELL-ID-REFERENZ
+==================================================
+
+Rohcodes werden exakt wie in items_spells.json wiedergegeben.
+Bei vierstelligen Codes ist Byte-Reihenfolge/Endianness vor Verwendung als
+numerischer Laufzeitwert zu prüfen.
+
+Weapon (110 Einträge):
+  3600 = Dual Blade
+  3700 = Frypan
+  3800 = Knife
+  3900 = Small Knife
+  3A00 = Rapier
+  3B00 = Battle Knife
+  3C00 = Dagger
+  3D00 = Insect Crush
+  3E00 = Long Knife
+  3F00 = Short sword
+  4000 = Light Knife
+  4100 = Kukri
+  4200 = Gladius
+  4300 = Cold Rapier
+  4400 = Scmitar
+  4500 = Deadly Sword
+  4600 = Deadly Sword
+  4700 = SuhrCustom11
+  4800 = Bronze Sword
+  4900 = Fire Dagger
+  4A00 = War Rapier
+  4B00 = Long Sword
+  4C00 = Berserk Blade
+  4D00 = Berserk Blade
+  4E00 = Multi Sword
+  4F00 = Rockbreaker
+  5000 = Broadsword
+  5100 = Estok
+  5200 = Silvo Rapier
+  5300 = Burn Sword
+  5400 = Dekar Blade
+  5500 = Crazy Blade
+  5600 = Deadly Sword
+  5700 = Deadly Sword
+  5800 = Luck Rapier*
+  5900 = Luck Rapier**
+  5A00 = Aqua Sword
+  5B00 = Red Saber
+  5C00 = Lucky Blade*
+  5D00 = Lucky Blade**
+  5E00 = Mist Rapier
+  5F00 = Boom Sword
+  6000 = Freeze Sword
+  6100 = Silver Sword
+  6200 = Flying Blow
+  6300 = Super Sword
+  6400 = Buster Sword
+  6500 = Rune Raiper
+  6600 = Old Sword
+  6700 = Lizard Blow
+  6800 = Zirco Sword
+  6900 = Sizzle Sword
+  6A00 = Blaze Sword
+  6B00 = Myth Blade
+  6C00 = Gades Blade
+  6D00 = Sky Sword
+  6E00 = Snow Sword
+  6F00 = Fry Sword
+  7000 = Egg Sword
+  7100 = Franshiska
+  7200 = Thunder ax
+  7300 = Hand ax
+  7400 = Bronze ax
+  7500 = Flying ax
+  7600 = Rainy ax
+  7700 = Great ax
+  7800 = Zirco ax
+  7900 = Mega ax
+  7A00 = Mace
+  7B00 = Rod
+  7C00 = Staff
+  7D00 = Deadly rod
+  7E00 = Deadly rod
+  7F00 = Sleep rod
+  8000 = Long staff
+  8100 = Holy staff
+  8200 = Morning star
+  8300 = Pounder rod
+  8400 = Crystal wand
+  8500 = Silver rod
+  8600 = Zirco rod
+  8700 = Zirco flail
+  8800 = Spark staff
+  8900 = Whip
+  8A00 = Wire
+  8B00 = Chain
+  8C00 = Aqua whip
+  8D00 = Cutter whip
+  8E00 = Royal whip
+  8F00 = Holy whip
+  9000 = Zirco whip
+  9100 = Air whip
+  9200 = Fatal pick
+  9300 = Fatal pick
+  9400 = Spear
+  9500 = Trident
+  9600 = Halberd
+  9700 = Heavy lance
+  9800 = Water spear
+  9900 = Dragon spear
+  9A00 = Vice pliers
+  9B00 = Coma hit
+  9C00 = Figgoru
+  9D00 = Superdriver
+  9E00 = Stun gun
+  9F00 = Battledriver
+  A000 = Launcher
+  A100 = Freeze bow
+  A200 = Cursed bow
+  A300 = Arty's bow
+
+Armor (230 Einträge):
+  A400 = Apron
+  A500 = Dress
+  A600 = Cloth
+  A700 = Lab-coat
+  A800 = Hide armor
+  A900 = Frock
+  AA00 = Robe
+  AB00 = Cloth armor
+  AC00 = Coat
+  AD00 = Tough hide
+  AE00 = Light dress
+  AF00 = Light armor
+  B000 = Camu armor
+  B100 = Baggy
+  B200 = Tight dress
+  B300 = Chainmail
+  B400 = Holy wings
+  B500 = Ironmail
+  B600 = Toga
+  B700 = Chain armor
+  B800 = Thick cloth
+  B900 = Stone plate
+  BA00 = Long robe
+  BB00 = Plated cloth
+  BC00 = Iron plate
+  BD00 = Metal mail
+  BE00 = Silk toga
+  BF00 = Silver armor
+  C000 = Light jacket
+  C100 = Metal coat
+  C200 = Silver mail
+  C300 = Power jacket
+  C400 = Quilted silk
+  C500 = Metal armor
+  C600 = Power cape
+  C700 = Magic bikini
+  C800 = Silver robe
+  C900 = Evening gown
+  CA00 = Plate armor
+  CB00 = Plati plate
+  CC00 = Silk robe
+  CD00 = Revive Armor
+  CE00 = Crystal mail
+  CF00 = Crystal robe
+  D000 = Heal armor
+  D100 = Metal jacket
+  D200 = Deadly Armor*
+  D300 = Deadly Armor**
+  D400 = Eron dress
+  D500 = Bright armor
+  D600 = Bright cloth
+  D700 = Power robe
+  D800 = Magic scale
+  D900 = Holy robe
+  DA00 = Ghostclothes
+  DB00 = Royal dress
+  DC00 = Full mail
+  DD00 = Old armor
+  DE00 = Zircon plate
+  DF00 = Zircon armor
+  E000 = Mirak plate
+  E100 = Ruse armor
+  E200 = Pearl Armor
+  E300 = Chop board
+  E400 = Small shield
+  E500 = Hide shield
+  E600 = Buckler
+  E700 = Mini shield
+  E800 = Wood shield
+  E900 = Bracelet
+  EA00 = Power brace
+  EB00 = Kite shield
+  EC00 = Tough gloves
+  ED00 = Brone shield
+  EE00 = Anger brace
+  EF00 = Block shield
+  F000 = Tecto gloves
+  F100 = Round shield
+  F200 = Pearl brace
+  F300 = Fayza shield
+  F400 = Big shield
+  F500 = Tall shield
+  F600 = Silvo shield
+  F700 = Spike shield
+  F800 = Slash shield
+  F900 = Mage shield
+  FA00 = Tuff buckler
+  FB00 = Tect buckler
+  FC00 = Gold gloves
+  FD00 = Gold shield
+  FE00 = Plati gloves
+  FF00 = Plati shield
+  0001 = Gauntlet
+  0100 = Rune Gloves
+  0200 = Holy Shield
+  0300 = Zirco Gloves
+  0400 = Zirco Shield
+  0500 = Ancient (Old) Shield
+  0600 = Flame Shield
+  0700 = Water Gaunt
+  0800 = Bolt Shield
+  0900 = Cryst Shield
+  0A00 = Mega Shield
+  0B00 = Dark Mirror*
+  0C00 = Dark Mirror**
+  0D00 = Apron Shield
+  0E00 = Pearl (Divine) Shield
+  0F01 = Pot
+  1001 = Beret
+  1101 = Cap
+  1201 = Cloth Helmet
+  1301 = Hairband
+  1401 = Headband
+  1501 = Hide Helmet
+  1601 = Jet Helm
+  1701 = Red Beret
+  1801 = Glass Cap
+  1901 = Wood Helmet
+  1A01 = Blue Beret
+  1B01 = Brone Helmet
+  1C01 = Stone Helmet
+  1D01 = Cloche
+  1E01 = Fury Helmet
+  1F01 = Iron Helmet
+  2001 = Tight Helmet
+  2101 = Turban
+  2201 = Plate Cap
+  2301 = Roomy Helmet
+  2401 = Tight Turban
+  2501 = Glass Cloche
+  2601 = Plate Helmet
+  2701 = Rock Helmet
+  2801 = Jute Helmet
+  2901 = Shade Hat
+  2A01 = Metal Cloche
+  2B01 = Silver Helmet
+  2C01 = Fury Ribbon
+  2D01 = Silver hat
+  2E01 = Eron Hat
+  2F01 = Circlet
+  3001 = Golden Helm
+  3101 = Gold Band
+  3201 = Plati Band
+  3301 = Plati Helm
+  3401 = Crysto Beret
+  3501 = Crysto Helm
+  3601 = Holy Cap
+  3701 = Safety Hat
+  3801 = Zirco Band
+  3901 = Zirco Helmet
+  3A01 = Ancient (Old) Helmet
+  3B01 = Agony Helm
+  3C01 = Boom Turban
+  3D01 = Aqua Helm
+  3E01 = Ice Hairband
+  3F01 = Legend Helm
+  4001 = Hairpin
+  4101 = Brill Helm
+  4201 = Pearl (Divine) Helmet
+  4301 = Ear Jewel
+  4401 = Glass Brace
+  4501 = Glass Ring
+  4601 = Earring
+  4701 = Speedy Ring
+  4801 = Power Ring
+  4901 = Muscle Ring
+  4A01 = Protect Ring
+  4B01 = Mind Ring
+  4C01 = Witch Ring
+  4D01 = Fire Ring
+  4E01 = Water Ring
+  4F01 = Ice Ring
+  5001 = Thunder Ring
+  5101 = Fury Ring
+  5201 = Mystery Ring
+  5301 = Sonic Ring
+  5401 = Hipower Ring
+  5501 = Trick Ring
+  5601 = Fake Ring
+  5701 = S-Fire Ring
+  5801 = S-Water Ring
+  5901 = S-Ice Ring
+  5A01 = S-Thun Ring
+  5B01 = S-Power Ring
+  5C01 = S-Mind Ring
+  5D01 = S-Pro Ring
+  5E01 = S-Witch Ring
+  5F01 = Undead Ring
+  6001 = Rocket Ring
+  6101 = Ghost Ring
+  6201 = Angry Ring
+  6301 = S-Myst Ring
+  6401 = Dia Ring
+  6501 = Sea Ring
+  6601 = Dragon Ring
+  6701 = Engage Ring
+  6801 = Egg Ring
+  6901 = Horse Rock
+  6A01 = Eagle Rock
+  6B01 = Lion Fang
+  6C01 = Bee Rock
+  6D01 = Snake Rock
+  6E01 = Cancer Rock
+  6F01 = Pumpkin Jewel
+  7001 = Uni Jewel
+  7101 = Mysto Jewel
+  7201 = Samu Jewel
+  7301 = Bat Rock
+  7401 = Hidora Rock
+  7501 = Flame Jewel
+  7601 = Water Jewel
+  7701 = Thundo Jewel
+  7801 = Earth Jewel
+  7901 = Twist Jewel
+  7A01 = Gloom Jewel
+  7B01 = Tidal Jewel
+  7C01 = Magma Rock
+  7D01 = Evil Jewel*
+  7E01 = Evil Jewel**
+  7F01 = GorgOn Rock
+  8001 = Song Rock
+  8101 = Kraken Rock
+  8201 = Catfish Jewel
+  8301 = Camu Jewel
+  8401 = Spido Jewel
+  8501 = Gorgon Rock
+  8601 = Light Jewel
+  8701 = Black Eye
+  8801 = Silver Eye
+  8901 = Gold Eye
+
+Iris Treasures (10 Einträge):
+  9C01 = Iris Sword
+  9D01 = Iris Shield
+  9E01 = Iris Helmet
+  9F01 = Iris Armor
+  A001 = Iris Ring
+  A101 = Iris Jewel
+  A201 = Iris Staff
+  A301 = Iris Pot
+  A401 = Iris Tiara
+  A501 = Power Jelly
+
+Spell (40 Einträge):
+  12 = Absorb
+  0E = Drowsy
+  16 = Bravery
+  23 = Release
+  0A = Blizzard
+  04 = Fireball
+  1B = Champion
+  26 = Reset
+  01 = Bolt
+  05 = Firebird
+  17 = Courage
+  21 = Shield
+  0F = Coma
+  00 = Flash
+  25 = Escape
+  19 = Strong
+  15 = Confuse
+  09 = Gale
+  13 = Fake
+  1A = Stronger
+  11 = Deflect
+  0B = Ice Valk
+  1F = Fry
+  14 = Trick
+  0D = Destroy
+  0C = Perish
+  27 = Light
+  1E = Valor
+  08 = Dragon
+  03 = Spark
+  18 = Mirror
+  22 = Waken
+  10 = Dread
+  02 = Thunder
+  1C = Poison
+  24 = Warp
+  06 = Droplet
+  07 = Vortex
+  1D = Rally
+  20 = Zap
+
+42. IP-FÄHIGKEITEN – EFFEKT-/KOSTENREFERENZ
+============================================
+
+151 Einträge. Die Quelldatei enthält keine explizite ID.
+Die Listenposition wird deshalb nicht als interne IP-ID behauptet.
+
+001. Ancient Power | Kosten 128 | Elemente: - | Eigenschaften: - | 2X MGR & DFP for a short period of time
+002. Anger Mirror | Kosten 216 | Elemente: - | Eigenschaften: - | Repels Attacks and counterattack
+003. Antidote | Kosten 16 | Elemente: - | Eigenschaften: - | Cures Poison status for all allies
+004. Aqua Attack | Kosten 164 | Elemente: Water | Eigenschaften: - | 3X normal damage
+005. Aqua Mirror | Kosten 164 | Elemente: Water | Eigenschaften: - | Repels All Water Attacks
+006. Arctic Freeze | Kosten 224 | Elemente: Ice | Eigenschaften: - | Powerful attack on all enemies
+007. Aura Protect | Kosten 196 | Elemente: - | Eigenschaften: - | Increases MGR during battle
+008. Ax Attack | Kosten 164 | Elemente: - | Eigenschaften: - | Decreases HP of foes by 1/8
+009. Battle Cry | Kosten 128 | Elemente: - | Eigenschaften: - | Decreases HP of foes by 1/6
+010. Battle Fury | Kosten 192 | Elemente: - | Eigenschaften: - | Decreases HP of foes by 1/4
+011. Battle Lust | Kosten 32 | Elemente: - | Eigenschaften: - | Increases ATP during battle
+012. Beserker | Kosten 64 | Elemente: - | Eigenschaften: - | Increases ATP during battle
+013. Bite | Kosten 128 | Elemente: - | Eigenschaften: - | 2X normal damage
+014. Blaze Attack | Kosten 164 | Elemente: Fire | Eigenschaften: - | 3X normal damage
+015. Blizzard | Kosten 64 | Elemente: Ice | Eigenschaften: - | Moderate magic attack
+016. Bolt | Kosten 64 | Elemente: Thunder | Eigenschaften: - | Moderate magic attack
+017. Bomb Attack | Kosten 64 | Elemente: - | Eigenschaften: - | Attack all enemies
+018. Boomerang | Kosten 164 | Elemente: - | Eigenschaften: - | Repels attacks and counterattack with 1/2 damage
+019. Bravery | Kosten 32 | Elemente: - | Eigenschaften: - | Increases DFP during battle
+020. Brilliance | Kosten 255 | Elemente: - | Eigenschaften: - | Repels attacks and counterattack with 2x damage
+021. Buster Attack | Kosten 128 | Elemente: Fire | Eigenschaften: - | High powered Magic Attack
+022. Celestial | Kosten 224 | Elemente: Zap | Eigenschaften: - | Attacks all enemies
+023. Champion | Kosten 128 | Elemente: - | Eigenschaften: - | Restores HP (INT+999)/Allies
+024. Combo Attack | Kosten 196 | Elemente: Thunder, Water, Fire, Ice | Eigenschaften: - | Attack using four different elements
+025. Confuse | Kosten 32 | Elemente: - | Eigenschaften: - | Inflicts Confusion Status
+026. Confusion | Kosten 96 | Elemente: - | Eigenschaften: - | Basic attack, instlicts Confusion Status
+027. Courage | Kosten 64 | Elemente: - | Eigenschaften: - | Increases DFP during battle
+028. Crisis Cure | Kosten 164 | Elemente: - | Eigenschaften: - | Restores Max HP to all allies
+029. Dark Force | Kosten 128 | Elemente: Dark | Eigenschaften: - | Powerful Magic Attack possible instant death
+030. Dark Mirror | Kosten 164 | Elemente: Dark | Eigenschaften: - | Repels all magic attacks
+031. Dark Mist | Kosten 255 | Elemente: Dark | Eigenschaften: - | High Defense vs Dark Attacks
+032. Dash | Kosten 96 | Elemente: - | Eigenschaften: - | 2X normal damage
+033. Deadly Smash | Kosten 164 | Elemente: - | Eigenschaften: Strong vs Flying Enemies | 3X normal damage
+034. Deep Freeze | Kosten 255 | Elemente: - | Eigenschaften: - | Hit all foes and cast "Ice Valk" Spell
+035. Deflect | Kosten 32 | Elemente: - | Eigenschaften: - | Freezes Magic of all foes
+036. Destroy | Kosten 128 | Elemente: - | Eigenschaften: - | Instant death
+037. Devastation | Kosten 64 | Elemente: - | Eigenschaften: - | Decreases HP of foes by 1/8
+038. Diamond Dust | Kosten 196 | Elemente: Water, Ice | Eigenschaften: - | Powerful  Magic attack
+039. Dimwit | Kosten 196 | Elemente: - | Eigenschaften: - | Decreases INT of foes
+040. Dive | Kosten 128 | Elemente: - | Eigenschaften: Strong vs Flying Enemies | 2X normal damage
+041. Dive Bomber | Kosten 96 | Elemente: - | Eigenschaften: Strong vs Flying Enemies | 1.5X normal damage
+042. Divine Cure | Kosten 96 | Elemente: - | Eigenschaften: - | Restores 25% of Max HP to all allies
+043. Do-Re-Mi | Kosten 96 | Elemente: - | Eigenschaften: - | Inflicts Confusion Status
+044. Dragon | Kosten 128 | Elemente: Water | Eigenschaften: - | Powerful magic attack
+045. Dragon Rush | Kosten 164 | Elemente: - | Eigenschaften: Strong vs Dragons | 3X normal damage
+046. Dread | Kosten 32 | Elemente: - | Eigenschaften: - | Decreases DFP of foes
+047. Fake | Kosten 32 | Elemente: - | Eigenschaften: - | Increases AGL during battle
+048. Fatal Blow | Kosten 255 | Elemente: - | Eigenschaften: - | Decreases HP of foes by 1/2
+049. Fireball | Kosten 64 | Elemente: Fire | Eigenschaften: - | Moderate magic attack
+050. Fire Bird | Kosten 128 | Elemente: Fire | Eigenschaften: - | Powerful magic attack
+051. Firestorm | Kosten 224 | Elemente: Fire | Eigenschaften: - | Attack all enemies
+052. Flameblock | Kosten 255 | Elemente: Fire | Eigenschaften: - | High Defense vs Fire Attacks
+053. Flame Guard | Kosten 128 | Elemente: Fire | Eigenschaften: - | Reduces Fire Damage!
+054. Flame Return | Kosten 164 | Elemente: Fire | Eigenschaften: - | Repels all fire magic attacks!
+055. Flash | Kosten 96 | Elemente: Zap | Eigenschaften: - | High powered magic attack
+056. Fleet | Kosten 32 | Elemente: - | Eigenschaften: - | Increases AGL during battle
+057. Flood | Kosten 255 | Elemente: - | Eigenschaften: - | Hit all foes! Casts "Dragon" Spell!
+058. Forcefield | Kosten 64 | Elemente: - | Eigenschaften: - | Increases DFP during battle
+059. Forgetful | Kosten 128 | Elemente: - | Eigenschaften: - | Decreases INT
+060. Free Magic | Kosten 16 | Elemente: - | Eigenschaften: - | Unfreezes Magic of all allies
+061. Frenzy | Kosten 96 | Elemente: - | Eigenschaften: - | 1.5X normal damage
+062. Frost | Kosten 164 | Elemente: Ice | Eigenschaften: - | High powered magic attack
+063. Glacial Blast | Kosten 164 | Elemente: Ice | Eigenschaften: - | 3X normal damage
+064. Gloomy | Kosten 164 | Elemente: Dark | Eigenschaften: - | High powered magic attack
+065. Gloomsplash | Kosten 196 | Elemente: Fire, Dark | Eigenschaften: - | Extreme magic attack
+066. Groundshock | Kosten 164 | Elemente: Earth | Eigenschaften: - | High powered magic attack
+067. Hard Boiled | Kosten 8 | Elemente: - | Eigenschaften: - | Affects enemy's attributes
+068. Head Attack | Kosten 164 | Elemente: - | Eigenschaften: - | 2X normal damage
+069. Holy Attack | Kosten 164 | Elemente: Zap | Eigenschaften: - | 3X normal damage
+070. Holy Healing | Kosten 128 | Elemente: - | Eigenschaften: - | Restores 75% of Max HP to all allies
+071. Holy Mirror | Kosten 164 | Elemente: Zap | Eigenschaften: - | Repels all magic attacks
+072. Holy Shield | Kosten 255 | Elemente: Ice | Eigenschaften: - | High defense vs ice attacks
+073. Holy Wall | Kosten 255 | Elemente: Zap | Eigenschaften: - | High defense vs zap attacks
+074. Ice..... | Kosten 128 | Elemente: Ice | Eigenschaften: - | High powered magic attack
+075. Ice Attack | Kosten 96 | Elemente: Ice | Eigenschaften: - | 1.5X normal damage
+076. Ice Guard | Kosten 128 | Elemente: Ice | Eigenschaften: - | Reduces Ice Damage!
+077. Ice Mirror | Kosten 164 | Elemente: Ice | Eigenschaften: - | Repels all ice magic attacks
+078. Immobilize | Kosten 128 | Elemente: - | Eigenschaften: - | Basic Attack, can cause Lock status
+079. Incendiary | Kosten 164 | Elemente: Fire | Eigenschaften: - | High powered magic attack
+080. Iron Barrier | Kosten 255 | Elemente: - | Eigenschaften: - | High Defense vs Physical Attacks
+081. Ironclad | Kosten 32 | Elemente: - | Eigenschaften: - | Increases DFP during battle
+082. Ironkick | Kosten 48 | Elemente: - | Eigenschaften: - | Attacks all foes
+083. Light Attack | Kosten 96 | Elemente: Zap | Eigenschaften: - | 1.5X normal damage
+084. Light Guard | Kosten 128 | Elemente: Zap | Eigenschaften: - | High Defense vs Zap attacks
+085. Lightbulb | Kosten 32 | Elemente: - | Eigenschaften: - | Increases INT during battle
+086. Magic Cure | Kosten 128 | Elemente: - | Eigenschaften: - | Restores 25% of Max MP
+087. Magic Healing | Kosten 192 | Elemente: - | Eigenschaften: - | Restores 50% of Max MP
+088. Magic Rebirth | Kosten 255 | Elemente: - | Eigenschaften: - | Restores all of Max MP
+089. Magma Blast | Kosten 164 | Elemente: Fire | Eigenschaften: - | High powered magic attack
+090. Megaquake | Kosten 20 | Elemente: Earth | Eigenschaften: - | Moderate powered magic attack
+091. Meltdown | Kosten 192 | Elemente: - | Eigenschaften: - | Decreases ATP of foes by 1/6
+092. Menace | Kosten 128 | Elemente: - | Eigenschaften: - | Decreases ATP of foes by 1/8
+093. Miracle Care | Kosten 128 | Elemente: - | Eigenschaften: - | Take zero damage for a short period of time
+094. Mirror | Kosten 32 | Elemente: - | Eigenschaften: - | Repels Magic Attacks
+095. Mirror Block | Kosten 32 | Elemente: - | Eigenschaften: - | Protects vs Mirror Spell
+096. Ninja | Kosten 128 | Elemente: - | Eigenschaften: - | Instant Death
+097. Paralysis Cure | Kosten 16 | Elemente: - | Eigenschaften: - | Cures Paralysis Status
+098. Perish | Kosten 64 | Elemente: - | Eigenschaften: - | Instant Death
+099. Phoenix | Kosten 255 | Elemente: - | Eigenschaften: - | Restores Life, all HP, and all MP
+100. Phoenix Blow | Kosten 255 | Elemente: Fire | Eigenschaften: - | Hits all foes! Casts "Firebird" Spell
+101. Power Guard | Kosten 128 | Elemente: - | Eigenschaften: - | High Defense vs Physical Attacks
+102. Power Healing | Kosten 128 | Elemente: - | Eigenschaften: - | Restores all of Max HP
+103. Quicksilver | Kosten 64 | Elemente: - | Eigenschaften: - | Increases AGL during battle
+104. Reawaken | Kosten 16 | Elemente: - | Eigenschaften: - | Cures Sleep Status
+105. Rebirth | Kosten 224 | Elemente: - | Eigenschaften: - | Restores all of Max HP
+106. Recovery | Kosten 128 | Elemente: - | Eigenschaften: - | Restores all of users HP
+107. Regeneration | Kosten 255 | Elemente: - | Eigenschaften: - | Revives and Restores HP
+108. Rejuvenation | Kosten 192 | Elemente: - | Eigenschaften: - | Restores 50% of Max HP to all allies
+109. Revival Sleep | Kosten 64 | Elemente: - | Eigenschaften: - | Cures all Status ailments
+110. Reviver | Kosten 164 | Elemente: - | Eigenschaften: - | Revives and Restores with 50% of Max HP
+111. Re-energize | Kosten 32 | Elemente: - | Eigenschaften: - | Restores 50% of Max HP
+112. Sacred Song | Kosten 64 | Elemente: - | Eigenschaften: - | Restores all of Max HP
+113. Samurai | Kosten 128 | Elemente: - | Eigenschaften: - | 2X normal damage
+114. Scissor Slash | Kosten 96 | Elemente: - | Eigenschaften: - | 2X normal damage to all enemies
+115. Shadow Guard | Kosten 128 | Elemente: Dark | Eigenschaften: - | High Defense vs Dark Attacks
+116. Sizzle | Kosten 255 | Elemente: Zap | Eigenschaften: - | Hits all foes! Casts "Zap" Spell
+117. Skysplitter | Kosten 255 | Elemente: Thunder | Eigenschaften: - | Hits all foes! Casts "Thunder" spell
+118. Sleep Stinger | Kosten 96 | Elemente: - | Eigenschaften: - | Basic Attack, inflicts Sleep Status
+119. Slow | Kosten 196 | Elemente: - | Eigenschaften: - | Reduces speed of all foes
+120. Sluggish | Kosten 128 | Elemente: - | Eigenschaften: - | Decreases AGL of foes
+121. Spell Repel | Kosten 32 | Elemente: - | Eigenschaften: - | Increases MGR during battle
+122. Spellstruck | Kosten 128 | Elemente: - | Eigenschaften: - | Decreases MGR of foes
+123. Spiderweb | Kosten 64 | Elemente: - | Eigenschaften: - | Decreases AGL of foes
+124. Stardust Blow | Kosten 224 | Elemente: Thunder, Zap | Eigenschaften: - | Powerful magic attack
+125. Stun Shocker | Kosten 96 | Elemente: - | Eigenschaften: - | Basic Attack., Inflicts Paralysis Status
+126. Sudden Cure | Kosten 96 | Elemente: - | Eigenschaften: - | Restores 50% of Max HP of all allies
+127. Swoop | Kosten 224 | Elemente: - | Eigenschaften: Strong vs Flying Enemies | Attacks all foes
+128. Tail Attack | Kosten 128 | Elemente: - | Eigenschaften: - | Attacks all foes
+129. Ten-Legger | Kosten 164 | Elemente: Water | Eigenschaften: - | Attacks all foes
+130. Tidal Wave | Kosten 128 | Elemente: Ice | Eigenschaften: - | High powered magic attack
+131. Thunder | Kosten 128 | Elemente: Thunder | Eigenschaften: - | High powered magic attack
+132. Thunder Blast | Kosten 96 | Elemente: Thunder | Eigenschaften: - | 1.5X normal damage
+133. Thunder Guard | Kosten 128 | Elemente: Thunder | Eigenschaften: - | Reduces Thunder Damage
+134. Thunderblock | Kosten 255 | Elemente: Thunder | Eigenschaften: - | High Defense vs Thunder Attacks
+135. Thunderball | Kosten 164 | Elemente: Thunder | Eigenschaften: - | 3X normal damage
+136. Thundershriek | Kosten 224 | Elemente: Thunder | Eigenschaften: - | Attacks all foes
+137. Thunderturn | Kosten 164 | Elemente: Thunder | Eigenschaften: - | Repels all Thunder Magic Attacks
+138. Torrent | Kosten 224 | Elemente: Water | Eigenschaften: - | Attacks all foes
+139. Trick | Kosten 32 | Elemente: - | Eigenschaften: - | Increases ATP during battle
+140. Triple Attack | Kosten 196 | Elemente: - | Eigenschaften: - | 3X normal damage
+141. Twister | Kosten 128 | Elemente: - | Eigenschaften: - | Attacks all foes
+142. Vampire | Kosten 32 | Elemente: - | Eigenschaften: - | Drain MP's from foes
+143. Voltage Bolt | Kosten 196 | Elemente: Thunder | Eigenschaften: - | High powered magic attack
+144. Vortex | Kosten 64 | Elemente: Water | Eigenschaften: - | Moderate powered magic attack
+145. Vulnerable | Kosten 196 | Elemente: - | Eigenschaften: - | Decreases MGR of foes
+146. Water Attack | Kosten 96 | Elemente: Water | Eigenschaften: - | 1.5X normal damage
+147. Water Screen | Kosten 255 | Elemente: Water | Eigenschaften: - | High Defense vs Water attacks
+148. Wavemotion | Kosten 255 | Elemente: - | Eigenschaften: - | Restores all HP/MP and Increases All Stats
+149. Weakpoint | Kosten 128 | Elemente: - | Eigenschaften: - | Decreases DFP of foes by 1/8
+150. Weaponweak | Kosten 192 | Elemente: - | Eigenschaften: - | Decreases ATP of foes by 1/6
+151. Zap | Kosten 128 | Elemente: Zap | Eigenschaften: - | Powerful Magic Attack
+43. MONSTER-/BOSS-VALIDIERUNGSWERTE
+===================================
+
+Quelle enthält 10 ausgewählte Gegner. Keine internen IDs.
+Diese Werte sind nur zur Gegenprüfung gefundener Gegnerstrukturen gedacht.
+
+Ammonite: HP 198, MP 52, ATP 183, DFP 188, EXP 725, Gold 840, Drop Sleep ball, Odds 200, Angriffe: Tentacle
+Amon: HP 10000, MP 5000, ATP 800, DFP 200, EXP 50000, Gold 50000, Drop -, Odds -, Angriffe: Chaos wave, Galactic lancer
+Behemoth: HP 1272, MP 280, ATP 358, DFP 322, EXP 6325, Gold 6994, Drop Earth fruit, Odds 100, Angriffe: Earthquake, Groundshock
+Black Dragon: HP 1200, MP 400, ATP 398, DFP 300, EXP 9386, Gold 9263, Drop Dark fruit, Odds 100, Angriffe: Gloomsplash
+Daos: HP 20000, MP 500, ATP 400, DFP 50, EXP 50000, Gold 50000, Drop -, Odds -, Angriffe: Terror wave, Dark reflector, Dark fry
+Egg Dragon: HP 65535, MP 2000, ATP 1500, DFP 500, EXP 60000, Gold 60000, Drop -, Odds -, Angriffe: Sunny-side up, Over-easy, Scrambled egg
+Erim: HP 15000, MP 5000, ATP 300, DFP 250, EXP 50000, Gold 50000, Drop -, Odds -, Angriffe: Devastation wave, Dark fry, Eerie light
+Gades (Incarnation 1): HP 7500, MP 320, ATP 420, DFP 290, EXP 50000, Gold 50000, Drop Gades sword (conditional), Odds -, Angriffe: Destructo-wave
+Master (Ancient Cave Boss): HP 9980, MP 0, ATP 10, DFP 1, EXP 1, Gold 1, Drop -, Odds -, Angriffe: LetsRegainStrength, RightLetsGo, Are we ready?, I'm out of here
+Tank: HP 10000, MP 0, ATP 1100, DFP 300, EXP 40000, Gold 1, Drop -, Odds -, Angriffe: Piercer, MagGaleBull, IncendBomb, MachineGunAtt, MissileBlast
+
+Hinweise aus der Quelle:
+  winning_objects: The list only includes randomly won objects, not those given automatically.
+  drop_odds: Odds of 200 represent approximately an even chance of winning the object.
+  accuracy_warning: The Special Attacks column may not be fully complete or accurate regarding magic spells.
+  danielle_pierre_variation: On the second attempt, Danielle and Pierre provide 2300 Exp and 4000 Gold.
+  gades_secret: Gades' first incarnation can be beaten for a Gades sword, but the game story continues as if the party lost.
+  master_cave_boss: Must be defeated within three rounds to obtain the key to the Ancient Cave; can also be beaten by killing your own party within three rounds.
+
+44. SCENARIO-ITEM-MASKEN AUS scenario_items.json / tool_items.json
+=================================================================
+
+WRAM-Kandidatenbereich: 7E:2C32–7E:2C34.
+Die folgenden Werte sind die gelieferten vollständigen 24-Bit-Muster. Sie
+belegen die Item-zu-Maske-Zuordnung, aber ohne auswertenden Quellcode ist noch
+nicht sicher, ob das links dargestellte Byte 7E:2C32 oder 7E:2C34 entspricht.
+Ein einziger bekannter Besitzstand-Dump genügt, um die Byte-Reihenfolge zu
+bestätigen; danach können alle Einträge exakt auf Byte und Bit verteilt werden.
+
+[~] Door key: 0000 0000 0000 0000 0000 0010
+[~] Shrine: 0000 0000 0000 0000 0000 0100
+[~] Basement: 0000 0010 0000 0000 0000 0000
+[~] Cloud: 0000 0000 0000 0000 1000 0000
+[~] Dankirk: 0000 0001 0000 0000 0000 0000
+[~] Flower: 0000 0000 0000 1000 0000 0000
+[~] Ghost: 0000 0000 0100 0000 0000 0000
+[~] Heart: 0000 0000 0010 0000 0000 0000
+[~] Lake: 0000 0000 0000 0000 0001 0000
+[~] Light: 0000 0000 0000 0001 0000 0000
+[~] Magma: 0000 0000 0001 0000 0000 0000
+[~] Narcysus: 0000 0100 0000 0000 0000 0000
+[~] Ruby: 0000 0000 0000 0000 0010 0000
+[~] Sky: 0000 0000 0000 0000 0000 1000
+[~] Sword: 0000 0000 0000 0010 0000 0000
+[~] Tree: 0000 0000 0000 0100 0000 0000
+[~] Trial: 0000 0000 1000 0000 0000 0000
+[~] Truth: 0000 1000 0000 0000 0000 0000
+[~] Wind: 0000 0000 0000 0000 0100 0000
+
+UNZUGEORDNETE 24-BIT-SPEZIALMASKEN AUS tool_items.json
+-----------------------------------------------------
+[REF] Jade:   0001 0000 0000 0000 0000 0000
+[REF] Engine: 0010 0000 0000 0000 0000 0000
+Die Datei nennt keine Adresse. Nicht ungeprüft 7E:2C32–7E:2C34 zuordnen.
+
+Normalwerkzeug-Codes, als 16-Bit-Numerik / Bytes im WRAM:
+[REF] Hook 0x03A7 / A7 03
+[REF] Bomb 0x03A8 / A8 03
+[REF] Arrow 0x03A9 / A9 03
+[REF] Fire Arrow 0x03AA / AA 03
+[REF] Hammer 0x03AB / AB 03
+
+
+45. ERWEITERTE CHARAKTER-ADRESSMATRIX AUS ram_map.json
+======================================================
+
+Alle Werte sind Mesen-WRAM-Adressen in Bank 7E. Die IP-Felder sind mit [~]
+zu behandeln, weil der Struktur-Offset +0xBF außerhalb der genannten
+Blockgröße 0xBE liegt; die übrigen Felder sind konsistent aus den Basen und
+Strukturoffsets berechnet.
+
+[Maxim]
+    Level=7E:2ECF | Status=7E:2ED0 | DefendFlag=7E:2ED1 | CurrentHP=7E:2ED2 | CurrentMP=7E:2ED4 | MaxHP=7E:2EE6 | MaxMP=7E:2EE8 | Weapon=7E:2F27 | Armor=7E:2F29 | Hands=7E:2F2B | Headwear=7E:2F2D | Accessories=7E:2F2F | Jewels=7E:2F31 | ATP=7E:2EEA | DFP=7E:2EEC | STR=7E:2EEE | AGL=7E:2EF0 | INT=7E:2EF2 | GUT=7E:2EF4 | MGR=7E:2EF6 | ATP_Compare=7E:2EF8 | DFP_Compare=7E:2EFA | STR_Compare=7E:2EFC | AGL_Compare=7E:2EFE | INT_Compare=7E:2F00 | GUT_Compare=7E:2F02 | MGR_Compare=7E:2F04 | SpellsStart=7E:2F57 | SpellsEnd=7E:2F7A | IP=7E:2F7D
+[Selan]
+    Level=7E:2F8D | Status=7E:2F8E | DefendFlag=7E:2F8F | CurrentHP=7E:2F90 | CurrentMP=7E:2F92 | MaxHP=7E:2FA4 | MaxMP=7E:2FA6 | Weapon=7E:2FE5 | Armor=7E:2FE7 | Hands=7E:2FE9 | Headwear=7E:2FEB | Accessories=7E:2FED | Jewels=7E:2FEF | ATP=7E:2FA8 | DFP=7E:2FAA | STR=7E:2FAC | AGL=7E:2FAE | INT=7E:2FB0 | GUT=7E:2FB2 | MGR=7E:2FB4 | ATP_Compare=7E:2FB6 | DFP_Compare=7E:2FB8 | STR_Compare=7E:2FBA | AGL_Compare=7E:2FBC | INT_Compare=7E:2FBE | GUT_Compare=7E:2FC0 | MGR_Compare=7E:2FC2 | SpellsStart=7E:3015 | SpellsEnd=7E:3038 | IP=7E:303B
+[Guy]
+    Level=7E:304B | Status=7E:304C | DefendFlag=7E:304D | CurrentHP=7E:304E | CurrentMP=7E:3050 | MaxHP=7E:3062 | MaxMP=7E:3064 | Weapon=7E:30A3 | Armor=7E:30A5 | Hands=7E:30A7 | Headwear=7E:30A9 | Accessories=7E:30AB | Jewels=7E:30AD | ATP=7E:3066 | DFP=7E:3068 | STR=7E:306A | AGL=7E:306C | INT=7E:306E | GUT=7E:3070 | MGR=7E:3072 | ATP_Compare=7E:3074 | DFP_Compare=7E:3076 | STR_Compare=7E:3078 | AGL_Compare=7E:307A | INT_Compare=7E:307C | GUT_Compare=7E:307E | MGR_Compare=7E:3080 | SpellsStart=7E:30D3 | SpellsEnd=7E:30F6 | IP=7E:30F9
+[Artea]
+    Level=7E:3109 | Status=7E:310A | DefendFlag=7E:310B | CurrentHP=7E:310C | CurrentMP=7E:310E | MaxHP=7E:3120 | MaxMP=7E:3122 | Weapon=7E:3161 | Armor=7E:3163 | Hands=7E:3165 | Headwear=7E:3167 | Accessories=7E:3169 | Jewels=7E:316B | ATP=7E:3124 | DFP=7E:3126 | STR=7E:3128 | AGL=7E:312A | INT=7E:312C | GUT=7E:312E | MGR=7E:3130 | ATP_Compare=7E:3132 | DFP_Compare=7E:3134 | STR_Compare=7E:3136 | AGL_Compare=7E:3138 | INT_Compare=7E:313A | GUT_Compare=7E:313C | MGR_Compare=7E:313E | SpellsStart=7E:3191 | SpellsEnd=7E:31B4 | IP=7E:31B7
+[Tia]
+    Level=7E:31C7 | Status=7E:31C8 | DefendFlag=7E:31C9 | CurrentHP=7E:31CA | CurrentMP=7E:31CC | MaxHP=7E:31DE | MaxMP=7E:31E0 | Weapon=7E:321F | Armor=7E:3221 | Hands=7E:3223 | Headwear=7E:3225 | Accessories=7E:3227 | Jewels=7E:3229 | ATP=7E:31E2 | DFP=7E:31E4 | STR=7E:31E6 | AGL=7E:31E8 | INT=7E:31EA | GUT=7E:31EC | MGR=7E:31EE | ATP_Compare=7E:31F0 | DFP_Compare=7E:31F2 | STR_Compare=7E:31F4 | AGL_Compare=7E:31F6 | INT_Compare=7E:31F8 | GUT_Compare=7E:31FA | MGR_Compare=7E:31FC | SpellsStart=7E:324F | SpellsEnd=7E:3272 | IP=7E:3275
+[Dekar]
+    Level=7E:3285 | Status=7E:3286 | DefendFlag=7E:3287 | CurrentHP=7E:3288 | CurrentMP=7E:328A | MaxHP=7E:329C | MaxMP=7E:329E | Weapon=7E:32DD | Armor=7E:32DF | Hands=7E:32E1 | Headwear=7E:32E3 | Accessories=7E:32E5 | Jewels=7E:32E7 | ATP=7E:32A0 | DFP=7E:32A2 | STR=7E:32A4 | AGL=7E:32A6 | INT=7E:32A8 | GUT=7E:32AA | MGR=7E:32AC | ATP_Compare=7E:32AE | DFP_Compare=7E:32B0 | STR_Compare=7E:32B2 | AGL_Compare=7E:32B4 | INT_Compare=7E:32B6 | GUT_Compare=7E:32B8 | MGR_Compare=7E:32BA | SpellsStart=7E:330D | SpellsEnd=7E:3330 | IP=7E:3333
+[Lexis]
+    Level=7E:3343 | Status=7E:3344 | DefendFlag=7E:3345 | CurrentHP=7E:3346 | CurrentMP=7E:3348 | MaxHP=7E:335A | MaxMP=7E:335C | Weapon=7E:339B | Armor=7E:339D | Hands=7E:339F | Headwear=7E:33A1 | Accessories=7E:33A3 | Jewels=7E:33A5 | ATP=7E:335E | DFP=7E:3360 | STR=7E:3362 | AGL=7E:3364 | INT=7E:3366 | GUT=7E:3368 | MGR=7E:336A | ATP_Compare=7E:336C | DFP_Compare=7E:336E | STR_Compare=7E:3370 | AGL_Compare=7E:3372 | INT_Compare=7E:3374 | GUT_Compare=7E:3376 | MGR_Compare=7E:3378 | SpellsStart=7E:33CB | SpellsEnd=7E:33EE | IP=7E:33F1
+
+Statusbitmaske für Status-Feld:
+[x] 0x01 Poison
+[x] 0x02 Silence
+[x] 0x04 Dead
+[x] 0x08 Paralyzed
+[x] 0x10 Confused
+[x] 0x20 Sleep
+[x] Tod zusätzlich bei CurrentHP = 0
+[!] Einzelbitwerte sind klar; einzelne ausgeschriebene Kombinationsnamen in
+    ram_map.json enthalten Inkonsistenzen. Kombinationen bitweise auswerten.
+
+Party-ID-Tabelle:
+[x] 00 Maxim | 01 Selan | 02 Guy | 03 Artea | 04 Tia | 05 Dekar | 06 Lexis | FF Empty
+
+
+46. EQUIPMENT- UND ERGEBNIS-UI-PUFFER AUS ram_map.json
+======================================================
+
+Diese Bereiche sind beobachtete oder benannte gerenderte UI-/Arbeitsbuffer.
+Sie helfen einem Agenten, sind aber nicht automatisch die kanonischen Werte.
+
+[~] Equipment-Metadaten: 7E:42DD–7E:4304
+[x] Battle-IP-Equipment-Prompt beginnt: Mesen 7E:3046
+[x] Battle-IP-Render-Pane: Mesen 7E:30CA–7E:3447
+[x] erster gerenderter Battle-IP-Equipment-Eintrag: Mesen 7E:3147
+    Weitere Einträge mit Stride 0x80; IP-Name jeweils bei +0x1B.
+    Die alte Grenze 7E:56CE war ein Snes9x-Helperwert und schnitt nach
+    Übersetzung außerdem die sechste Zeile ab.
+[~] Equipment-Ersatzliste: 7E:57DD–7E:59FD
+[~] Equipment-Beschreibung: 7E:5898–7E:597D
+[~] Equipment-Name: 7E:631A
+[!] Alte Battle-Result-EXP-Textangabe 7E:541C — in Mesen widerlegt.
+[!] Alte Battle-Result-Gold-Textangabe 7E:5744 — in Mesen widerlegt.
+[x] Numerische Battle-Rewards: EXP uint16 @ 7E:1605,
+    Gold uint16 @ 7E:1608. Aktuell gerenderte Dezimalziffern wurden während
+    der Seiten bei 7E:056B beobachtet, dieser Renderpuffer wird danach
+    wiederverwendet und ist keine kanonische Rewardadresse.
+
+
+47. GEGNER- UND OFFENE STRUKTURFELDER AUS ram_map.json
+=======================================================
+
+[x] Gegner CurrentHP = Gegner-Slotbasis + 0x00, uint16 little-endian
+[ ] weitere Gegnerwerte: ram_map.json nennt keine bestätigten Feldoffsets
+[ ] BattleState: in ram_map.json ausdrücklich pending_investigation
+[x] Gear->IP-Skill-Zuordnung im geöffneten Kampfmenü:
+    Equipment-Arbeitsliste 7E:1357–1362 und sechs gerenderte Paarungen ab
+    7E:3147. Keine separate Laufzeitliste aus sechs IP-IDs beobachtet; für
+    eine ID-basierte Auflösung muss die randomisierte ROM-Tabelle geparst
+    werden. Für die Agentenentscheidung reichen die gerenderten Namen plus
+    ip_skills.json-Kosten bereits ohne OCR.
+[~] IP pro Charakter = Charakterbasis + 0xBF laut Datei; separat verifizieren
+
+
+48. SHOP-ROMBEREICHE UND STATISCHE SHOPINVENTARE
+=================================================
+
+Die folgenden Bereiche sind lineare unheadered-ROM-Offets, keine WRAM-
+Adressen. shop_data.json liefert dazu die statischen Angebote. Die aktive
+Shop-ID, der aktive Listenbuffer und die aktuelle Zeile im WRAM bleiben offen.
+
+[ROM] Elcid: WEAPON=bf0a3-bf0c2 | ARMOR=bf0a3-bf0c2 | SPELL=bf0c9 - bf0cd
+[ROM] Sundletan: WEAPON=bf0cf - bf0f8 | ARMOR=bf0cf - bf0f8 | SPELL=bf0ff - bf105 | MISC=bf107 - bf113
+[ROM] Alunze Kingdom: WEAPON=bf118 - bf143 | ARMOR=bf118 - bf143
+[ROM] Tanbel: WEAPON=bf147 - bf15e | ARMOR=bf147 - bf15e | SPELL=bf165 - bf16e
+[ROM] Clamento: WEAPON=bf185 - bf1a8 | ARMOR=bf185 - bf1a8 | SPELL=bf1af - bf1b8
+[ROM] Parcelyte Kingdom: WEAPON=bf1c3 - bf1f1 | ARMOR=bf1c3 - bf1f1
+[ROM] Merix: WEAPON=bf1f9 - bf20a | ARMOR=bf1f9 - bf20a | SPELL=bf211 - bf217
+[ROM] Bound Kingdom: WEAPON=bf217 - bf23f | ARMOR=bf217 - bf23f
+[ROM] Aleyn: WEAPON=bf246 - bf268 | ARMOR=bf246 - bf268 | SPELL=bf26f - bf275 | MISC=bf275 - bf284
+[ROM] Gruberik: WEAPON=bf287 - bf2Ab | ARMOR=bf287 - bf2Ab
+[ROM] Narcysus: WEAPON=bf2BE - bf2d5 | ARMOR=bf2BE - bf2d5 | ITEM=bf2CA - bf2ec
+[ROM] Karlloon: WEAPON=bf2ee - bf313 | ARMOR=bf2ee - bf313 | SPELL=bf31a - bf323
+[ROM] Treadool: WEAPON=bf323 - bf342 | ARMOR=bf323 - bf342 | ITEM=bf346 - bf35b
+[ROM] Forfeit Island: WEAPON=bf36a - bf3b9 | ARMOR=bf36a - bf3b9 | MISC=bf35b - bf36a
+[ROM] Dankirk Kingdom: WEAPON=bf405 - bf426 | ARMOR=bf405 - bf426 | SPELL=bf42d - bf432
+[ROM] Auralio Kingdom: WEAPON=bf432 - bf458 | ARMOR=bf432 - bf458
+[ROM] Ferim Kingdom: WEAPON=bf45e - bf477 | ARMOR=bf45e - bf477 | SPELL=bf47e - bf482
+[ROM] Treble: WEAPON=bf482 - bf4ac | ARMOR=bf482 - bf4ac
+[ROM] Portravia: WEAPON=bf4b2 - bf4ed | ARMOR=bf4b2 - bf4ed | SPELL=bf4f4 - bf4f8
+[ROM] Eserikto: WEAPON=bf4fa - bf51f | ARMOR=bf4fa - bf51f | SPELL=bf526 - bf52c
+[ROM] Barnan: WEAPON=bf52c - bf552 | ARMOR=bf52c - bf552
+[ROM] Durale: WEAPON=bf559 - bf57f | ARMOR=bf559 - bf57f | SPELL=bf586 - bf589 | MISC=bf589 - bf598
+[ROM] Preamarl: WEAPON=bf5c3 - bf5e5 | ARMOR=bf5c3 - bf5e5
+[ROM] Narvick: WEAPON=bf5eb - bf61e | ARMOR=bf5eb - bf61e
+
+STATISCHE ANGEBOTE
+------------------
+[Elcid]
+    weapon: Knife [3800]
+    armor: Small shield [E400]
+    spell: Flash [00], Drowsy [0E], Confuse [15]
+[Sundletan]
+    weapon: Battle Knife [3B00]
+    armor: Lab-coat [A700], Frock [A900], Small shield [E400], Hide shield [E500], Buckler [E600], Cap [1101], Headband [1401]
+    spell: Spark [03], Droplet [06], Drowsy [0E], Strong [19], Poison [1C]
+[Alunze Kingdom]
+    weapon: Small Knife [3900], Dagger [3C00], Mace [7A00], Whip [8900]
+    armor: Dress [A500], Lab-coat [A700], Frock [A900], Cloth armor [AB00], Coat [AC00], Chop board [E300], Hide shield [E500], Ear Jewel [4301]
+[Tanbel]
+    weapon: Water spear [9800], Long Knife [3E00], Light Knife [4000], Kukri [4100], Mace [7A00]
+    armor: Light armor [AF00], Camu armor [B000], Power brace [EA00], Jet Helm [1601], Ear Jewel [4301], Speedy Ring [4701]
+    spell: Vortex [07], Perish [0C], Trick [14], Stronger [1A], Rally [1D], Shield [21], Waken [22], Warp [24]
+[Clamento]
+    weapon: Knife [3800], Battle Knife [3B00], Rod [7B00]
+    armor: Robe [AA00], Cloth armor [AB00], Light dress [AE00], Wood shield [E800], Bracelet [E900], Pot [0F01], Water Ring [4E01]
+    spell: Spark [03], Droplet [06], Gale [09], Bravery [16], Strong [19], Poison [1C], Release [23], Escape [25]
+[Parcelyte Kingdom]
+    weapon: Water spear [9800], Gladius [4200], Chain [8B00], Small Knife [3900], Battle Knife [3B00]
+    armor: Cloth [A600]
+[Merix]
+    weapon: Rapier [3A00], Whip [8900]
+    armor: Cloth [A600], Tight dress [B200], Jute Helmet [2801], Mind Ring [4B01]
+    spell: Fake [13], Confuse [15], Waken [22], Warp [24], Escape [25]
+[Bound Kingdom]
+    weapon: Water spear [9800], Aqua whip [8C00], Battle Knife [3B00]
+    armor: Tough hide [AD00], Cap [1101]
+[Aleyn]
+    weapon: War Rapier [4A00]
+    armor: Tight dress [B200], Chain armor [B700], Thick cloth [B800], Block shield [EF00], Mage shield [F900], Beret [1001], Headband [1401], Power Ring [4801], Ice Ring [4F01], Eagle Rock [6A01]
+    spell: Thunder [02], Ice Valk [0B], Absorb [12], Champion [1B], Valor [1E]
+[Gruberik]
+    weapon: Rapier [3A00], Bronze Sword [4800], Thunder ax [7200], Bronze ax [7400]
+    armor: Cloth [A600], Frock [A900], Coat [AC00], Plated cloth [BB00], Metal mail [BD00], Chop board [E300], Anger brace [EE00], Fury Helmet [1E01], Tight Helmet [2001], Witch Ring [4C01], S-Ice Ring [5901]
+[Narcysus]
+    weapon: Water spear [9800], SuhrCustom11 [4700], Bronze Sword [4800], Thunder ax [7200], Rod [7B00], Morning star [8200]
+    armor: Power cape [C600], Plate Helmet [2601], Metal Cloche [2A01], Fury Ring [5101], S-Water Ring [5801]
+[Karlloon]
+    weapon: Deadly Sword [4500], Hand ax [7300], Long staff [8000]
+    armor: Cloth [A600], Robe [AA00], Ironmail [B500], Power jacket [C300], Anger brace [EE00], Round shield [F100], Beret [1001], Cloche [1D01], S-Witch Ring [5E01]
+    spell: Bolt [01], Fireball [04], Firebird [05], Dragon [08], Blizzard [0A], Coma [0F], Fake [13], Courage [17]
+[Treadool]
+    weapon: Water spear [9800], Estok [5100], Deadly rod [7E00], Holy staff [8100]
+    armor: Chain armor [B700], Thick cloth [B800], Silk toga [BE00], Tall shield [F500], Mage shield [F900], Tect buckler [FB00], Silver Helmet [2B01], Plati Helm [3301], S-Fire Ring [5701], S-Water Ring [5801], S-Thun Ring [5A01]
+[Forfeit Island]
+    weapon: Spark staff [8800], Bronze Sword [4800], Estok [5100], Morning star [8200], Fatal pick [9200], Figgoru [9C00], Zirco whip [9000], Crystal wand [8400], Small Knife [3900], Dagger [3C00], Insect Crush [3D00]
+    armor: Dress [A500], Hide shield [E500], Cap [1101], Hairband [1301]
+[Dankirk Kingdom]
+    weapon: Long Knife [3E00], Cutter whip [8D00], Royal whip [8E00], Vice pliers [9A00]
+    armor: Dress [A500], Hide armor [A800], Plati shield [FF00], Plati Helm [3301], Sonic Ring [5301], S-Witch Ring [5E01], Rocket Ring [6001], Cancer Rock [6E01]
+    spell: Fireball [04], Courage [17], Mirror [18], Stronger [1A]
+[Auralio Kingdom]
+    weapon: Water spear [9800], Long Sword [4B00], Cutter whip [8D00]
+    armor: Power jacket [C300], Magic bikini [C700], Tecto gloves [F000], Tuff buckler [FA00], Silver Helmet [2B01], Angry Ring [6201], Earth Jewel [7801], Zirco Gloves [0300], Lab-coat [A700]
+[Ferim Kingdom]
+    weapon: Rapier [3A00], Spear [9400]
+    armor: Frock [A900], Plated cloth [BB00], Silk toga [BE00], Evening gown [C900], Hairband [1301], Circlet [2F01], Gloom Jewel [7A01]
+    spell: Firebird [05], Perish [0C], Rally [1D]
+[Treble]
+    weapon: Water spear [9800], Holy staff [8100], Superdriver [9D00], Mace [7A00], Rod [7B00]
+    armor: Cloth [A600], Beret [1001], Cap [1101]
+[Portravia]
+    weapon: Knife [3800], Dagger [3C00], Thunder ax [7200], Rainy ax [7600]
+    armor: Dress [A500], Cloth [A600], Lab-coat [A700], Plati plate [CB00], Crystal mail [CE00], Tuff buckler [FA00], Gold gloves [FC00], S-Myst Ring [6301], Bee Rock [6C01], Bat Rock [7301]
+    spell: Thunder [02], Dragon [08], Valor [1E]
+[Eserikto]
+    weapon: Rapier [3A00], Berserk Blade [4D00], Rod [7B00], Holy whip [8F00]
+    armor: Dress [A500], Cloth [A600], Coat [AC00], Silver robe [C800], Plati shield [FF00], Golden Helm [3001], Holy Cap [3601], Earth Jewel [7801]
+    spell: Ice Valk [0B], Destroy [0D], Absorb [12], Champion [1B], Fry [1F]
+[Barnan]
+    weapon: Water spear [9800], Estok [5100], Luck Rapier* [5800], Freeze Sword [6000], Rainy ax [7600], Spear [9400], Battle Knife [3B00], Long Knife [3E00], Staff [7C00]
+    armor: Apron [A400], Small shield [E400]
+[Durale]
+    weapon: Dagger [3C00], Long Knife [3E00], Deadly Sword [5600], Luck Rapier* [5800], Flying Blade [6200], Whip [8900]
+    armor: Dress [A500], Plati plate [CB00], Bright cloth [D600], Chop board [E300], Small shield [E400], Cap [1101], Cloche [1D01], Ancient (Old) Helmet [3A01], Gloom Jewel [7A01], Magma Rock [7C01]
+    spell: Destroy [0D], Zap [20]
+[Preamarl]
+    weapon: Zirco Sword [6800], Mace [7A00], Rod [7B00], Zirco rod [8600], Whip [8900]
+    armor: Frock [A900], Power robe [D700], Aqua Helm [3D01], Hidora Rock [7401]
+[Narvick]
+    weapon: Buster Sword [6400], Lizard Blow [6700], Zirco ax [7800], Zirco whip [9000], Air whip [9100]
+    armor: Apron [A400], Lab-coat [A700], Hide armor [A800], Holy robe [D900], Zircon plate [DE00], Zirco Band [3801], Glass Ring [4501], Witch Ring [4C01], Kraken Rock [8101], Black Eye [8701]
+
+
+49. SPELL-ID-, MP- UND VERWENDUNGSREFERENZ AUS spells_info.json
+===============================================================
+
+Diese Tabelle vervollständigt die Semantik der Spell-IDs 00–27, liefert aber
+keine neue Laufzeitadresse. Die bereits bekannte Zauberliste liegt je
+Charakter bei Blockoffset 0x99–0xBC.
+
+[REF] 00 Flash | MP 5 | combat=true | users=TSMLA | Thunder Magic Attack - Standard
+[REF] 01 Bolt | MP 10 | combat=true | users=TSMLA | Thunder Magic Attack - Moderate
+[REF] 02 Thunder | MP 24 | combat=true | users=TSMLA | Thunder Magic Attack - Severe
+[REF] 03 Spark | MP 3 | combat=true | users=TSLA | Small fireballs hit enemy
+[REF] 04 Fireball | MP 6 | combat=true | users=TSLA | Fire Magic Attack - Moderate
+[REF] 05 Firebird | MP 20 | combat=true | users=TSLA | Fire Magic Attack - Severe
+[REF] 06 Droplet | MP 4 | combat=true | users=TSMLA | Water Magic Attack - Standard
+[REF] 07 Vortex | MP 7 | combat=true | users=TSMLA | Water Magic Attack - Moderate
+[REF] 08 Dragon | MP 22 | combat=true | users=TSMLA | Water Magic Attack - Severe
+[REF] 09 Gale | MP 4 | combat=true | users=TSMLA | Ice Magic Attack - Standard
+[REF] 0A Blizzard | MP 8 | combat=true | users=TSMLA | Ice Magic Attack - Moderate
+[REF] 0B Ice Valk | MP 22 | combat=true | users=TSMLA | Ice Magic Attack - Severe
+[REF] 0C Perish | MP 4 | combat=true | users=TSML | Instant Death (Small Chance)
+[REF] 0D Destroy | MP 8 | combat=true | users=TSML | Instant Death (Better Chance)
+[REF] 0E Drowsy | MP 3 | combat=true | users=TSMLA | Puts foes into a deep sleep
+[REF] 0F Coma | MP 4 | combat=true | users=TSMLA | Inflicts 'Sleep' Status
+[REF] 10 Dread | MP 5 | combat=true | users=TSMLA | Decreases DFP
+[REF] 11 Deflect | MP 5 | combat=true | users=TMA | Freezes Magic
+[REF] 12 Absorb | MP 1 | combat=true | users=TSMLA | Absorbs MP from foes to refill allies
+[REF] 13 Fake | MP 4 | combat=true | users=TSMLA | Increases AGL in Battle
+[REF] 14 Trick | MP 5 | combat=true | users=TSMLA | Increases ATP in Battle
+[REF] 15 Confuse | MP 3 | combat=true | users=TSMLA | Inflicts 'Confusion' Status
+[REF] 16 Bravery | MP 3 | combat=true | users=TSMLA | Increases DFP in Battle a little
+[REF] 17 Courage | MP 5 | combat=true | users=TSMLA | Increases DFP in Battle a lot
+[REF] 18 Mirror | MP 3 | combat=true | users=TSMLA | Repels Magic Attacks
+[REF] 19 Strong | MP 3 | combat=true | users=TSMLA | Restores some HP; (INT+20)/Allies
+[REF] 1A Stronger | MP 8 | combat=true | users=TSMLA | Restores HP (INT+120)/Allies
+[REF] 1B Champion | MP 16 | combat=true | users=TSMLA | Restores HP (INT+999)/Allies
+[REF] 1C Poison | MP 2 | combat=true | users=TSMLA | Antidote for poison
+[REF] 1D Rally | MP 10 | combat=true | users=TSMLA | Revives fallen allies, Restores HP = to 100/Allies
+[REF] 1E Valor | MP 30 | combat=true | users=TSMLA | Revives fallen allies, Restores HP = to 2000/Allies
+[REF] 1F Fry | MP 20 | combat=true | users=A | Luminous Magic Attack - Moderate
+[REF] 20 Zap | MP 30 | combat=true | users=A | Luminous Magic Attack - Severe
+[REF] 21 Shield | MP 4 | combat=true | users=TSMLA | Increases MGR in Battle
+[REF] 22 Waken | MP 4 | combat=true | users=TSMLA | Wakes up Sleeping Allies
+[REF] 23 Release | MP 2 | combat=true | users=TSMLA | Cures Paralysis Status
+[REF] 24 Warp | MP 8 | combat=false | users=TSA | Revisit previous villages and towns on the world map
+[REF] 25 Escape | MP 8 | combat=false | users=TSA | Escape from Dungeons, Towers & Lexis Shaia's Lab
+[REF] 26 Reset | MP 0 | combat=false | users=M | Resets a room to its original setup
+[REF] 27 Light | MP 0 | combat=false | users=S | Lights up Darkened Areas
+
+
+50. DATEIEN OHNE NEUE WRAM-ZUORDNUNG
+====================================
+
+[-] reward_flags.json ist leer ({}); daraus konnte nichts ergänzt werden.
+[-] runtime_config.py enthält nur Emulatorfenstertitel, Helper-Pfad,
+    Startverzögerung und LLM-Endpunkt/Timeout; keine WRAM-Adressen.
+[-] intel_synthesizer.py erzeugt Softwarezustände wie PRE_BATTLE,
+    GATHERING_ACTIONS, TARGETING oder ACTION_LOCKED aus bereits gelieferten
+    Daten. Diese Namen sind keine nachgewiesenen Spiel-/WRAM-Zustände und
+    wurden deshalb nicht als Adressen in die Checkliste übernommen.
+
+51. EXAKTE SCENARIO-/SPEZIALITEM-BITMAP AUS HELPER-LOGIK
+========================================================
+
+Der Helper liest 7E:2C32–7E:2C34, kehrt die drei Bytes um und vergleicht die
+24-Bit-Masken. Daraus folgt folgende direkte Byte-/Bitzuordnung:
+
+[x] Door key: WRAM+0x02C32 / 7E:2C32, Bit 1, Maske 0x02
+[x] Shrine: WRAM+0x02C32 / 7E:2C32, Bit 2, Maske 0x04
+[x] Sky: WRAM+0x02C32 / 7E:2C32, Bit 3, Maske 0x08
+[x] Lake: WRAM+0x02C32 / 7E:2C32, Bit 4, Maske 0x10
+[x] Ruby: WRAM+0x02C32 / 7E:2C32, Bit 5, Maske 0x20
+[x] Wind: WRAM+0x02C32 / 7E:2C32, Bit 6, Maske 0x40
+[x] Cloud: WRAM+0x02C32 / 7E:2C32, Bit 7, Maske 0x80
+[x] Light: WRAM+0x02C33 / 7E:2C33, Bit 0, Maske 0x01
+[x] Sword: WRAM+0x02C33 / 7E:2C33, Bit 1, Maske 0x02
+[x] Tree: WRAM+0x02C33 / 7E:2C33, Bit 2, Maske 0x04
+[x] Flower: WRAM+0x02C33 / 7E:2C33, Bit 3, Maske 0x08
+[x] Magma: WRAM+0x02C33 / 7E:2C33, Bit 4, Maske 0x10
+[x] Heart: WRAM+0x02C33 / 7E:2C33, Bit 5, Maske 0x20
+[x] Ghost: WRAM+0x02C33 / 7E:2C33, Bit 6, Maske 0x40
+[x] Trial: WRAM+0x02C33 / 7E:2C33, Bit 7, Maske 0x80
+[x] Dankirk: WRAM+0x02C34 / 7E:2C34, Bit 0, Maske 0x01
+[x] Basement: WRAM+0x02C34 / 7E:2C34, Bit 1, Maske 0x02
+[x] Narcysus: WRAM+0x02C34 / 7E:2C34, Bit 2, Maske 0x04
+[x] Truth: WRAM+0x02C34 / 7E:2C34, Bit 3, Maske 0x08
+[x] Jade: WRAM+0x02C34 / 7E:2C34, Bit 4, Maske 0x10
+[x] Engine: WRAM+0x02C34 / 7E:2C34, Bit 5, Maske 0x20
+
+[x] Diese Byte-/Bitzuordnung wird vom live verifizierten AutoTracker
+    verwendet. Der Reader liest 7E:2C32–7E:2C34, kehrt die drei Bytes für
+    seine 24-Bit-Maskendarstellung um und prüft die dokumentierten Masken.
+
+
+52. PORTABLE WRAM- UND ROM-BASISERKENNUNG AUS DEM HELPER
+========================================================
+
+WRAM:
+[x] vollständiger SNES-WRAM-Block = 0x20000 Bytes
+[x] absolute Prozessadresse = erkannte WRAM-Basis + relativer Offset
+[x] Goldanker: WRAM-Basis = absolute Goldadresse - 0x2D9E
+[x] Signaturanker:
+    „SSelan“ gefunden -> WRAM-Basis = Fundadresse - 0x2F7E
+    „AArty“ gefunden  -> WRAM-Basis = Fundadresse - 0x30FE
+    „LLexis“ gefunden -> WRAM-Basis = Fundadresse - 0x3326
+[x] Scanner prüft Lesbarkeit bei WRAM+0x00000 und WRAM+0x1FFFF.
+
+ROM:
+[x] absolute ROM-Prozessadresse = erkannte ROM-Basis + linearer ROM-Offset
+[x] Header-/Titelsignatur liegt laut Scanner bei ROM+0xFFC0.
+[x] Capsule-Sprite-Tabelle wird bei ROM+0xBDCB8 erwartet und zur Korrektur
+    einer gefundenen ROM-Basis verwendet.
+[ROM] ItemTableBase       = ROM+0xB4F69
+[ROM] SpellPointerTable   = ROM+0xAFAAB
+[ROM] ShopDirectoryBase   = ROM+0xBEE9F
+[ROM] ShopOffset          = ROM+0xBF09F
+[ROM] IPSkillTable        = ROM+0xDE0C5–0xDEB9C
+[ROM] CapsuleSpriteOffset = ROM+0xBDCB8
+
+[PROC] x64 PointerBaseAddress 0xA52330:
+    Bezogen auf die beobachtete x64-WRAM-Basis 0xA30000 liegt dieser
+    Speicherplatz bei +0x22330 und damit außerhalb des 0x20000-Byte-WRAM.
+    Er ist ein emulatorabhängiger Pointer-Speicherplatz, kein WRAM-Offset.
+    Das NWA-Profil verwendet mit 0xBA0598 einen völlig anderen Ort.
+    Nicht in eine portable WRAM-Map übernehmen; stattdessen ROM-Basis scannen.
+
+
+53. DATENTYPEN UND LIVE-TRACKER-AUSWERTUNG
+==========================================
+
+KANONISCH UND LIVE VERIFIZIERT
+------------------------------
+[x] WRAM-Größe: 0x20000 Bytes.
+[x] Gold 7E:2D9E: uint24 little-endian; gültiger Scannerbereich 0–9.999.999.
+[x] Party 7E:2D8F–7E:2D92: vier uint8-IDs.
+    00 Maxim, 01 Selan, 02 Guy, 03 Artea, 04 Tia, 05 Dekar, 06 Lexis, FF leer.
+    Nichtleere IDs müssen für die Scannervalidierung eindeutig sein.
+[x] Scenario 7E:2C32–7E:2C34: exakt drei Bytes.
+[x] Capsule-Fundstatus Mesen 7E:11BB–7E:11C1: sieben einzelne Bytes.
+    Legacy-Helper 7E:34CF–7E:34D5 war ein Snes9x-Hostspiegel-Layout.
+    Im Randomizer keine feste Capsule-Identität pro Position annehmen.
+[x] Dungeonflags 7E:2A96–7E:2A9F: zehn Bytes.
+[x] Transport 7E:2CF5: uint8.
+    FF wird als Ship/Airship ausgewertet.
+    00–05 gelten beim Scanner als plausible Transportwerte; der aktuelle
+    Positionsreader behandelt alle Werte außer FF als Walk.
+[x] Lauf-X = (7E:3780 << 8) | 7E:377F.
+[x] Lauf-Y = (7E:3783 << 8) | 7E:3782.
+[x] Ship-X = (7E:379D << 8) | 7E:379C.
+[x] Ship-Y = (7E:37A0 << 8) | 7E:379F.
+[x] Karten-/Ebenen-ID: Mesen 7E:05AC, uint8.
+[x] Herkunftskarte: Mesen 7E:05AE, uint8.
+[x] Inventar: 191-Byte-Datenstrom [7E:2DA1, 7E:2E60).
+[x] Normalwerkzeuge werden als Little-Endian-Bytefolge an beliebiger Position
+    im Inventardatenstrom gesucht.
+[x] Capsule-ROMtabelle: ROM+0xBDCB8, sieben Einträge, Stride 10 Bytes;
+    je Eintrag werden die ersten zwei Bytes als Spritewert gelesen.
+
+DURCH DIE ZIP AUFGELÖSTE FRÜHERE WIDERSPRÜCHE
+---------------------------------------------
+[x] Standard- und NWA-Dungeonflagdatei enthalten nach Normalisierung exakt
+    dieselben 38 Zuordnungen.
+    Standardminimum 0xA32A96 -> relativer Start 0.
+    NWA-Minimum      0xE2CC4A -> relativer Start 0.
+    Kanonisch bleibt daher für beide Layouts WRAM+0x2A96.
+[x] Absolute Emulatoradressen werden nicht mehr als Spieladressen verwendet.
+    Aktiver Zugriff erfolgt ausschließlich über WramBase + kanonischer Offset.
+[x] Der historische Helperoffset 0x28C0 ist ein Snes9x-Hostspiegel und
+    entspricht dem live bestätigten Mesen-Offset 7E:05AC.
+[x] Inventar-Endadresse 7E:2E60 ist exklusiv; es liegt kein abgeschnittener
+    „96. Slot“ vor.
+[x] Aktuelle v1.4.11-DataReaders lesen keine Charakterstats, Zauberlisten,
+    Eventflags, Kampfwerte oder Shop-Laufzeitstrukturen. Entsprechende frühere
+    Einträge dieser Checkliste stammen aus anderen verifizierten Quellen,
+    nicht aus dem aktuellen ZIP-Reader.
+
+ARCHITEKTURGRENZEN
+------------------
+[PROC] emulator_addresses.json ist laut MEMORY_ARCHITECTURE.md nur noch Archiv.
+[PROC] Root-Hints speichern nur eine bekannte Gold-Hostadresse und rekonstruieren:
+       WRAM-Root = ProcessBase + GoldProcessOffset - 0x2D9E.
+[ROM] ROM-Funktionen bleiben optional. Ohne validierte ROM-Basis funktionieren
+      WRAM-Inventar, Party, Capsule-Fundstatus, Scenario, Dungeonflags und
+      Position weiterhin.
+[PROC] Spoilerlog wird separat über die ASCII-Signatur „ITEM LOCATIONS“ im
+       Prozess gesucht; es ist kein kanonischer WRAM-Offset.
+
+
+54. UMGERECHNETE ABSOLUTE x64-WRAM-ADRESSEN
+===========================================
+
+Diese Tabelle enthält alle im bisherigen Dokument oder den neuen C#-Dateien
+gefundenen absoluten Adressen innerhalb des beobachteten x64-WRAM-Bereichs
+0xA30000–0xA4FFFF. Die NWA-Spalte ist rein rechnerisch mit der aus dem
+Goldanker abgeleiteten Beispielbasis 0xE2A1B4 erstellt. Für jeden laufenden
+Prozess gilt ausschließlich:
+
+    Prozessadresse = aktuell erkannte WRAM-Basis + WRAM-Offset
+
+[MAP] 0xA30000 -> WRAM+0x00000 -> 7E:0000 -> NWA-Beispiel 0xE2A1B4
+[MAP] 0xA3077E -> WRAM+0x0077E -> 7E:077E -> NWA-Beispiel 0xE2A932
+[MAP] 0xA3079D -> WRAM+0x0079D -> 7E:079D -> NWA-Beispiel 0xE2A951
+[MAP] 0xA32368 -> WRAM+0x02368 -> 7E:2368 -> NWA-Beispiel 0xE2C51C
+[MAP] 0xA3236E -> WRAM+0x0236E -> 7E:236E -> NWA-Beispiel 0xE2C522
+[MAP] 0xA3236F -> WRAM+0x0236F -> 7E:236F -> NWA-Beispiel 0xE2C523
+[MAP] 0xA32414 -> WRAM+0x02414 -> 7E:2414 -> NWA-Beispiel 0xE2C5C8
+[MAP] 0xA32415 -> WRAM+0x02415 -> 7E:2415 -> NWA-Beispiel 0xE2C5C9
+[MAP] 0xA32425 -> WRAM+0x02425 -> 7E:2425 -> NWA-Beispiel 0xE2C5D9
+[MAP] 0xA32435 -> WRAM+0x02435 -> 7E:2435 -> NWA-Beispiel 0xE2C5E9
+[CORRECTED-MESEN] 0xA32454 ist ein Legacy-Snes9x-Hostspiegel; live verifizierter Spielwert: WRAM+0x00108 -> 7E:0108
+[CORRECTED-MESEN] 0xA32455 ist der zugehörige Beiwert; live verifiziert: WRAM+0x00109 -> 7E:0109
+[MAP] 0xA328A8 -> WRAM+0x028A8 -> 7E:28A8 -> NWA-Beispiel 0xE2CA5C
+[MAP] 0xA328A9 -> WRAM+0x028A9 -> 7E:28A9 -> NWA-Beispiel 0xE2CA5D
+[MAP] 0xA328AA -> WRAM+0x028AA -> 7E:28AA -> NWA-Beispiel 0xE2CA5E
+[MAP] 0xA328AB -> WRAM+0x028AB -> 7E:28AB -> NWA-Beispiel 0xE2CA5F
+[CORRECTED-MESEN] 0xA328C0 ist der Snes9x-Hostspiegel der aktuellen
+Karten-/Ebenen-ID -> Mesen snesWorkRam 7E:05AC, uint8
+[DISPROVED-MAP] 0xA3351E / 7E:351E ist nicht die aktuelle Karten-ID
+[MAP] 0xA32A96 -> WRAM+0x02A96 -> 7E:2A96 -> NWA-Beispiel 0xE2CC4A
+[MAP] 0xA32A97 -> WRAM+0x02A97 -> 7E:2A97 -> NWA-Beispiel 0xE2CC4B
+[MAP] 0xA32A98 -> WRAM+0x02A98 -> 7E:2A98 -> NWA-Beispiel 0xE2CC4C
+[MAP] 0xA32A99 -> WRAM+0x02A99 -> 7E:2A99 -> NWA-Beispiel 0xE2CC4D
+[MAP] 0xA32A9A -> WRAM+0x02A9A -> 7E:2A9A -> NWA-Beispiel 0xE2CC4E
+[MAP] 0xA32A9B -> WRAM+0x02A9B -> 7E:2A9B -> NWA-Beispiel 0xE2CC4F
+[MAP] 0xA32A9C -> WRAM+0x02A9C -> 7E:2A9C -> NWA-Beispiel 0xE2CC50
+[MAP] 0xA32A9D -> WRAM+0x02A9D -> 7E:2A9D -> NWA-Beispiel 0xE2CC51
+[MAP] 0xA32A9E -> WRAM+0x02A9E -> 7E:2A9E -> NWA-Beispiel 0xE2CC52
+[MAP] 0xA32A9F -> WRAM+0x02A9F -> 7E:2A9F -> NWA-Beispiel 0xE2CC53
+[MAP] 0xA32C32 -> WRAM+0x02C32 -> 7E:2C32 -> NWA-Beispiel 0xE2CDE6
+[MAP] 0xA32C34 -> WRAM+0x02C34 -> 7E:2C34 -> NWA-Beispiel 0xE2CDE8
+[MAP] 0xA32CB5 -> WRAM+0x02CB5 -> 7E:2CB5 -> NWA-Beispiel 0xE2CE69
+[MAP] 0xA32CBB -> WRAM+0x02CBB -> 7E:2CBB -> NWA-Beispiel 0xE2CE6F
+[MAP] 0xA32CBD -> WRAM+0x02CBD -> 7E:2CBD -> NWA-Beispiel 0xE2CE71
+[MAP] 0xA32CBE -> WRAM+0x02CBE -> 7E:2CBE -> NWA-Beispiel 0xE2CE72
+[MAP] 0xA32CCE -> WRAM+0x02CCE -> 7E:2CCE -> NWA-Beispiel 0xE2CE82
+[MAP] 0xA32CF5 -> WRAM+0x02CF5 -> 7E:2CF5 -> NWA-Beispiel 0xE2CEA9
+[MAP] 0xA32D8F -> WRAM+0x02D8F -> 7E:2D8F -> NWA-Beispiel 0xE2CF43
+[MAP] 0xA32D90 -> WRAM+0x02D90 -> 7E:2D90 -> NWA-Beispiel 0xE2CF44
+[MAP] 0xA32D91 -> WRAM+0x02D91 -> 7E:2D91 -> NWA-Beispiel 0xE2CF45
+[MAP] 0xA32D92 -> WRAM+0x02D92 -> 7E:2D92 -> NWA-Beispiel 0xE2CF46
+[MAP] 0xA32D9E -> WRAM+0x02D9E -> 7E:2D9E -> NWA-Beispiel 0xE2CF52
+[MAP] 0xA32DA1 -> WRAM+0x02DA1 -> 7E:2DA1 -> NWA-Beispiel 0xE2CF55
+[BOUNDARY] 0xA32E60 -> WRAM+0x02E60 -> 7E:2E60 -> inklusives letztes Byte von Inventar-Slot 96; NWA-Beispiel 0xE2D014
+[MAP] 0xA334CF -> WRAM+0x034CF -> 7E:34CF -> NWA-Beispiel 0xE2D683
+[MAP] 0xA334D5 -> WRAM+0x034D5 -> 7E:34D5 -> NWA-Beispiel 0xE2D689
+[MAP] 0xA33532 -> WRAM+0x03532 -> 7E:3532 -> NWA-Beispiel 0xE2D6E6
+[MAP] 0xA33533 -> WRAM+0x03533 -> 7E:3533 -> NWA-Beispiel 0xE2D6E7
+[MAP] 0xA33534 -> WRAM+0x03534 -> 7E:3534 -> NWA-Beispiel 0xE2D6E8
+[MAP] 0xA33535 -> WRAM+0x03535 -> 7E:3535 -> NWA-Beispiel 0xE2D6E9
+[MAP] 0xA3353A -> WRAM+0x0353A -> 7E:353A -> NWA-Beispiel 0xE2D6EE
+[MAP] 0xA3353B -> WRAM+0x0353B -> 7E:353B -> NWA-Beispiel 0xE2D6EF
+[MAP] 0xA3353C -> WRAM+0x0353C -> 7E:353C -> NWA-Beispiel 0xE2D6F0
+[MAP] 0xA3353D -> WRAM+0x0353D -> 7E:353D -> NWA-Beispiel 0xE2D6F1
+[MAP] 0xA3356F -> WRAM+0x0356F -> 7E:356F -> NWA-Beispiel 0xE2D723
+[MAP] 0xA33571 -> WRAM+0x03571 -> 7E:3571 -> NWA-Beispiel 0xE2D725
+[MAP] 0xA33586 -> WRAM+0x03586 -> 7E:3586 -> NWA-Beispiel 0xE2D73A
+[MAP] 0xA3377F -> WRAM+0x0377F -> 7E:377F -> NWA-Beispiel 0xE2D933
+[MAP] 0xA33780 -> WRAM+0x03780 -> 7E:3780 -> NWA-Beispiel 0xE2D934
+[MAP] 0xA33782 -> WRAM+0x03782 -> 7E:3782 -> NWA-Beispiel 0xE2D936
+[MAP] 0xA33783 -> WRAM+0x03783 -> 7E:3783 -> NWA-Beispiel 0xE2D937
+[MAP] 0xA3379C -> WRAM+0x0379C -> 7E:379C -> NWA-Beispiel 0xE2D950
+[MAP] 0xA3379D -> WRAM+0x0379D -> 7E:379D -> NWA-Beispiel 0xE2D951
+[MAP] 0xA3379F -> WRAM+0x0379F -> 7E:379F -> NWA-Beispiel 0xE2D953
+[MAP] 0xA337A0 -> WRAM+0x037A0 -> 7E:37A0 -> NWA-Beispiel 0xE2D954
+[MAP] 0xA33888 -> WRAM+0x03888 -> 7E:3888 -> NWA-Beispiel 0xE2DA3C
+[MAP] 0xA353DC -> WRAM+0x053DC -> 7E:53DC -> NWA-Beispiel 0xE2F590
+[MAP] 0xA353E4 -> WRAM+0x053E4 -> 7E:53E4 -> NWA-Beispiel 0xE2F598
+[MAP] 0xA353E5 -> WRAM+0x053E5 -> 7E:53E5 -> NWA-Beispiel 0xE2F599
+[MAP] 0xA353E6 -> WRAM+0x053E6 -> 7E:53E6 -> NWA-Beispiel 0xE2F59A
+[MAP] 0xA353EB -> WRAM+0x053EB -> 7E:53EB -> NWA-Beispiel 0xE2F59F
+[MAP] 0xA353EC -> WRAM+0x053EC -> 7E:53EC -> NWA-Beispiel 0xE2F5A0
+[MAP] 0xA353F4 -> WRAM+0x053F4 -> 7E:53F4 -> NWA-Beispiel 0xE2F5A8
+[MAP] 0xA353F5 -> WRAM+0x053F5 -> 7E:53F5 -> NWA-Beispiel 0xE2F5A9
+[MAP] 0xA353F6 -> WRAM+0x053F6 -> 7E:53F6 -> NWA-Beispiel 0xE2F5AA
+[MAP] 0xA353FB -> WRAM+0x053FB -> 7E:53FB -> NWA-Beispiel 0xE2F5AF
+[MAP] 0xA353FC -> WRAM+0x053FC -> 7E:53FC -> NWA-Beispiel 0xE2F5B0
+[MAP] 0xA35402 -> WRAM+0x05402 -> 7E:5402 -> NWA-Beispiel 0xE2F5B6
+[MAP] 0xA35403 -> WRAM+0x05403 -> 7E:5403 -> NWA-Beispiel 0xE2F5B7
+[MAP] 0xA35460 -> WRAM+0x05460 -> 7E:5460 -> NWA-Beispiel 0xE2F614
+[MAP] 0xA35467 -> WRAM+0x05467 -> 7E:5467 -> NWA-Beispiel 0xE2F61B
+[MAP] 0xA35476 -> WRAM+0x05476 -> 7E:5476 -> NWA-Beispiel 0xE2F62A
+[MAP] 0xA3547F -> WRAM+0x0547F -> 7E:547F -> NWA-Beispiel 0xE2F633
+[MAP] 0xA354DC -> WRAM+0x054DC -> 7E:54DC -> NWA-Beispiel 0xE2F690
+[MAP] 0xA354E2 -> WRAM+0x054E2 -> 7E:54E2 -> NWA-Beispiel 0xE2F696
+[MAP] 0xA354E3 -> WRAM+0x054E3 -> 7E:54E3 -> NWA-Beispiel 0xE2F697
+[MAP] 0xA354E5 -> WRAM+0x054E5 -> 7E:54E5 -> NWA-Beispiel 0xE2F699
+[MAP] 0xA354E6 -> WRAM+0x054E6 -> 7E:54E6 -> NWA-Beispiel 0xE2F69A
+[MAP] 0xA354EE -> WRAM+0x054EE -> 7E:54EE -> NWA-Beispiel 0xE2F6A2
+[MAP] 0xA354FA -> WRAM+0x054FA -> 7E:54FA -> NWA-Beispiel 0xE2F6AE
+[MAP] 0xA35500 -> WRAM+0x05500 -> 7E:5500 -> NWA-Beispiel 0xE2F6B4
+[MAP] 0xA35501 -> WRAM+0x05501 -> 7E:5501 -> NWA-Beispiel 0xE2F6B5
+[MAP] 0xA35503 -> WRAM+0x05503 -> 7E:5503 -> NWA-Beispiel 0xE2F6B7
+[MAP] 0xA35504 -> WRAM+0x05504 -> 7E:5504 -> NWA-Beispiel 0xE2F6B8
+[MAP] 0xA3550D -> WRAM+0x0550D -> 7E:550D -> NWA-Beispiel 0xE2F6C1
+[MAP] 0xA3555C -> WRAM+0x0555C -> 7E:555C -> NWA-Beispiel 0xE2F710
+[MAP] 0xA35560 -> WRAM+0x05560 -> 7E:5560 -> NWA-Beispiel 0xE2F714
+[MAP] 0xA35562 -> WRAM+0x05562 -> 7E:5562 -> NWA-Beispiel 0xE2F716
+[MAP] 0xA35563 -> WRAM+0x05563 -> 7E:5563 -> NWA-Beispiel 0xE2F717
+[MAP] 0xA35565 -> WRAM+0x05565 -> 7E:5565 -> NWA-Beispiel 0xE2F719
+[MAP] 0xA35566 -> WRAM+0x05566 -> 7E:5566 -> NWA-Beispiel 0xE2F71A
+[MAP] 0xA3556E -> WRAM+0x0556E -> 7E:556E -> NWA-Beispiel 0xE2F722
+[MAP] 0xA3557A -> WRAM+0x0557A -> 7E:557A -> NWA-Beispiel 0xE2F72E
+[MAP] 0xA35580 -> WRAM+0x05580 -> 7E:5580 -> NWA-Beispiel 0xE2F734
+[MAP] 0xA35581 -> WRAM+0x05581 -> 7E:5581 -> NWA-Beispiel 0xE2F735
+[MAP] 0xA35583 -> WRAM+0x05583 -> 7E:5583 -> NWA-Beispiel 0xE2F737
+[MAP] 0xA35584 -> WRAM+0x05584 -> 7E:5584 -> NWA-Beispiel 0xE2F738
+[MAP] 0xA35587 -> WRAM+0x05587 -> 7E:5587 -> NWA-Beispiel 0xE2F73B
+[MAP] 0xA3558C -> WRAM+0x0558C -> 7E:558C -> NWA-Beispiel 0xE2F740
+[MAP] 0xA355E0 -> WRAM+0x055E0 -> 7E:55E0 -> NWA-Beispiel 0xE2F794
+[MAP] 0xA355F6 -> WRAM+0x055F6 -> 7E:55F6 -> NWA-Beispiel 0xE2F7AA
+[MAP] 0xA35606 -> WRAM+0x05606 -> 7E:5606 -> NWA-Beispiel 0xE2F7BA
+[MAP] 0xA35660 -> WRAM+0x05660 -> 7E:5660 -> NWA-Beispiel 0xE2F814
+[MAP] 0xA35670 -> WRAM+0x05670 -> 7E:5670 -> NWA-Beispiel 0xE2F824
+[MAP] 0xA35676 -> WRAM+0x05676 -> 7E:5676 -> NWA-Beispiel 0xE2F82A
+[MAP] 0xA35686 -> WRAM+0x05686 -> 7E:5686 -> NWA-Beispiel 0xE2F83A
+[MAP] 0xA3569A -> WRAM+0x0569A -> 7E:569A -> NWA-Beispiel 0xE2F84E
+[MAP] 0xA3569C -> WRAM+0x0569C -> 7E:569C -> NWA-Beispiel 0xE2F850
+[MAP] 0xA3569D -> WRAM+0x0569D -> 7E:569D -> NWA-Beispiel 0xE2F851
+[MAP] 0xA3569E -> WRAM+0x0569E -> 7E:569E -> NWA-Beispiel 0xE2F852
+[MAP] 0xA3569F -> WRAM+0x0569F -> 7E:569F -> NWA-Beispiel 0xE2F853
+[MAP] 0xA356A0 -> WRAM+0x056A0 -> 7E:56A0 -> NWA-Beispiel 0xE2F854
+[MAP] 0xA356A2 -> WRAM+0x056A2 -> 7E:56A2 -> NWA-Beispiel 0xE2F856
+[MAP] 0xA356A3 -> WRAM+0x056A3 -> 7E:56A3 -> NWA-Beispiel 0xE2F857
+[MAP] 0xA356A4 -> WRAM+0x056A4 -> 7E:56A4 -> NWA-Beispiel 0xE2F858
+[MAP] 0xA356A5 -> WRAM+0x056A5 -> 7E:56A5 -> NWA-Beispiel 0xE2F859
+[MAP] 0xA356A6 -> WRAM+0x056A6 -> 7E:56A6 -> NWA-Beispiel 0xE2F85A
+[MAP] 0xA356A8 -> WRAM+0x056A8 -> 7E:56A8 -> NWA-Beispiel 0xE2F85C
+[MAP] 0xA356A9 -> WRAM+0x056A9 -> 7E:56A9 -> NWA-Beispiel 0xE2F85D
+[MAP] 0xA356AA -> WRAM+0x056AA -> 7E:56AA -> NWA-Beispiel 0xE2F85E
+[MAP] 0xA356AB -> WRAM+0x056AB -> 7E:56AB -> NWA-Beispiel 0xE2F85F
+[MAP] 0xA356AC -> WRAM+0x056AC -> 7E:56AC -> NWA-Beispiel 0xE2F860
+[MAP] 0xA356AE -> WRAM+0x056AE -> 7E:56AE -> NWA-Beispiel 0xE2F862
+[MAP] 0xA356AF -> WRAM+0x056AF -> 7E:56AF -> NWA-Beispiel 0xE2F863
+[MAP] 0xA356B0 -> WRAM+0x056B0 -> 7E:56B0 -> NWA-Beispiel 0xE2F864
+[MAP] 0xA356B1 -> WRAM+0x056B1 -> 7E:56B1 -> NWA-Beispiel 0xE2F865
+[MAP] 0xA356B8 -> WRAM+0x056B8 -> 7E:56B8 -> NWA-Beispiel 0xE2F86C
+[MAP] 0xA356BA -> WRAM+0x056BA -> 7E:56BA -> NWA-Beispiel 0xE2F86E
+[MAP] 0xA356BB -> WRAM+0x056BB -> 7E:56BB -> NWA-Beispiel 0xE2F86F
+[MAP] 0xA356BC -> WRAM+0x056BC -> 7E:56BC -> NWA-Beispiel 0xE2F870
+[MAP] 0xA356BE -> WRAM+0x056BE -> 7E:56BE -> NWA-Beispiel 0xE2F872
+[MAP] 0xA356BF -> WRAM+0x056BF -> 7E:56BF -> NWA-Beispiel 0xE2F873
+[MAP] 0xA356C0 -> WRAM+0x056C0 -> 7E:56C0 -> NWA-Beispiel 0xE2F874
+[MAP] 0xA356C1 -> WRAM+0x056C1 -> 7E:56C1 -> NWA-Beispiel 0xE2F875
+[MAP] 0xA356C2 -> WRAM+0x056C2 -> 7E:56C2 -> NWA-Beispiel 0xE2F876
+[MAP] 0xA356C3 -> WRAM+0x056C3 -> 7E:56C3 -> NWA-Beispiel 0xE2F877
+[MAP] 0xA356C4 -> WRAM+0x056C4 -> 7E:56C4 -> NWA-Beispiel 0xE2F878
+[MAP] 0xA356C6 -> WRAM+0x056C6 -> 7E:56C6 -> NWA-Beispiel 0xE2F87A
+[MAP] 0xA356C7 -> WRAM+0x056C7 -> 7E:56C7 -> NWA-Beispiel 0xE2F87B
+[MAP] 0xA356C8 -> WRAM+0x056C8 -> 7E:56C8 -> NWA-Beispiel 0xE2F87C
+[MAP] 0xA356C9 -> WRAM+0x056C9 -> 7E:56C9 -> NWA-Beispiel 0xE2F87D
+[MAP] 0xA356CA -> WRAM+0x056CA -> 7E:56CA -> NWA-Beispiel 0xE2F87E
+[MAP] 0xA356CC -> WRAM+0x056CC -> 7E:56CC -> NWA-Beispiel 0xE2F880
+[MAP] 0xA356CD -> WRAM+0x056CD -> 7E:56CD -> NWA-Beispiel 0xE2F881
+[MAP] 0xA356CE -> WRAM+0x056CE -> 7E:56CE -> NWA-Beispiel 0xE2F882
+[MAP] 0xA356CF -> WRAM+0x056CF -> 7E:56CF -> NWA-Beispiel 0xE2F883
+[MAP] 0xA356E0 -> WRAM+0x056E0 -> 7E:56E0 -> NWA-Beispiel 0xE2F894
+[MAP] 0xA356F0 -> WRAM+0x056F0 -> 7E:56F0 -> NWA-Beispiel 0xE2F8A4
+[MAP] 0xA356F6 -> WRAM+0x056F6 -> 7E:56F6 -> NWA-Beispiel 0xE2F8AA
+[MAP] 0xA35706 -> WRAM+0x05706 -> 7E:5706 -> NWA-Beispiel 0xE2F8BA
+[MAP] 0xA35760 -> WRAM+0x05760 -> 7E:5760 -> NWA-Beispiel 0xE2F914
+[MAP] 0xA35770 -> WRAM+0x05770 -> 7E:5770 -> NWA-Beispiel 0xE2F924
+[MAP] 0xA35776 -> WRAM+0x05776 -> 7E:5776 -> NWA-Beispiel 0xE2F92A
+[MAP] 0xA35786 -> WRAM+0x05786 -> 7E:5786 -> NWA-Beispiel 0xE2F93A
+[MAP] 0xA3579C -> WRAM+0x0579C -> 7E:579C -> NWA-Beispiel 0xE2F950
+[MAP] 0xA357A2 -> WRAM+0x057A2 -> 7E:57A2 -> NWA-Beispiel 0xE2F956
+[MAP] 0xA357A3 -> WRAM+0x057A3 -> 7E:57A3 -> NWA-Beispiel 0xE2F957
+[MAP] 0xA357A5 -> WRAM+0x057A5 -> 7E:57A5 -> NWA-Beispiel 0xE2F959
+[MAP] 0xA357A6 -> WRAM+0x057A6 -> 7E:57A6 -> NWA-Beispiel 0xE2F95A
+[MAP] 0xA357AE -> WRAM+0x057AE -> 7E:57AE -> NWA-Beispiel 0xE2F962
+[MAP] 0xA357BA -> WRAM+0x057BA -> 7E:57BA -> NWA-Beispiel 0xE2F96E
+[MAP] 0xA357C0 -> WRAM+0x057C0 -> 7E:57C0 -> NWA-Beispiel 0xE2F974
+[MAP] 0xA357C1 -> WRAM+0x057C1 -> 7E:57C1 -> NWA-Beispiel 0xE2F975
+[MAP] 0xA357C3 -> WRAM+0x057C3 -> 7E:57C3 -> NWA-Beispiel 0xE2F977
+[MAP] 0xA357C4 -> WRAM+0x057C4 -> 7E:57C4 -> NWA-Beispiel 0xE2F978
+[MAP] 0xA357CC -> WRAM+0x057CC -> 7E:57CC -> NWA-Beispiel 0xE2F980
+[MAP] 0xA357E0 -> WRAM+0x057E0 -> 7E:57E0 -> NWA-Beispiel 0xE2F994
+[MAP] 0xA357F0 -> WRAM+0x057F0 -> 7E:57F0 -> NWA-Beispiel 0xE2F9A4
+[MAP] 0xA357F6 -> WRAM+0x057F6 -> 7E:57F6 -> NWA-Beispiel 0xE2F9AA
+[MAP] 0xA357FC -> WRAM+0x057FC -> 7E:57FC -> NWA-Beispiel 0xE2F9B0
+[MAP] 0xA35802 -> WRAM+0x05802 -> 7E:5802 -> NWA-Beispiel 0xE2F9B6
+[MAP] 0xA35804 -> WRAM+0x05804 -> 7E:5804 -> NWA-Beispiel 0xE2F9B8
+[MAP] 0xA35806 -> WRAM+0x05806 -> 7E:5806 -> NWA-Beispiel 0xE2F9BA
+[MAP] 0xA35809 -> WRAM+0x05809 -> 7E:5809 -> NWA-Beispiel 0xE2F9BD
+[MAP] 0xA3581C -> WRAM+0x0581C -> 7E:581C -> NWA-Beispiel 0xE2F9D0
+[MAP] 0xA35822 -> WRAM+0x05822 -> 7E:5822 -> NWA-Beispiel 0xE2F9D6
+[MAP] 0xA35823 -> WRAM+0x05823 -> 7E:5823 -> NWA-Beispiel 0xE2F9D7
+[MAP] 0xA35825 -> WRAM+0x05825 -> 7E:5825 -> NWA-Beispiel 0xE2F9D9
+[MAP] 0xA35826 -> WRAM+0x05826 -> 7E:5826 -> NWA-Beispiel 0xE2F9DA
+[MAP] 0xA3582E -> WRAM+0x0582E -> 7E:582E -> NWA-Beispiel 0xE2F9E2
+[MAP] 0xA3583A -> WRAM+0x0583A -> 7E:583A -> NWA-Beispiel 0xE2F9EE
+[MAP] 0xA35840 -> WRAM+0x05840 -> 7E:5840 -> NWA-Beispiel 0xE2F9F4
+[MAP] 0xA35841 -> WRAM+0x05841 -> 7E:5841 -> NWA-Beispiel 0xE2F9F5
+[MAP] 0xA35843 -> WRAM+0x05843 -> 7E:5843 -> NWA-Beispiel 0xE2F9F7
+[MAP] 0xA35844 -> WRAM+0x05844 -> 7E:5844 -> NWA-Beispiel 0xE2F9F8
+[MAP] 0xA3584C -> WRAM+0x0584C -> 7E:584C -> NWA-Beispiel 0xE2FA00
+[MAP] 0xA35860 -> WRAM+0x05860 -> 7E:5860 -> NWA-Beispiel 0xE2FA14
+[MAP] 0xA35868 -> WRAM+0x05868 -> 7E:5868 -> NWA-Beispiel 0xE2FA1C
+[MAP] 0xA35876 -> WRAM+0x05876 -> 7E:5876 -> NWA-Beispiel 0xE2FA2A
+[MAP] 0xA3587E -> WRAM+0x0587E -> 7E:587E -> NWA-Beispiel 0xE2FA32
+[MAP] 0xA35882 -> WRAM+0x05882 -> 7E:5882 -> NWA-Beispiel 0xE2FA36
+[MAP] 0xA35889 -> WRAM+0x05889 -> 7E:5889 -> NWA-Beispiel 0xE2FA3D
+[MAP] 0xA35902 -> WRAM+0x05902 -> 7E:5902 -> NWA-Beispiel 0xE2FAB6
+[MAP] 0xA35909 -> WRAM+0x05909 -> 7E:5909 -> NWA-Beispiel 0xE2FABD
+[MAP] 0xA3595A -> WRAM+0x0595A -> 7E:595A -> NWA-Beispiel 0xE2FB0E
+[MAP] 0xA3595C -> WRAM+0x0595C -> 7E:595C -> NWA-Beispiel 0xE2FB10
+[MAP] 0xA3595D -> WRAM+0x0595D -> 7E:595D -> NWA-Beispiel 0xE2FB11
+[MAP] 0xA3595E -> WRAM+0x0595E -> 7E:595E -> NWA-Beispiel 0xE2FB12
+[MAP] 0xA3595F -> WRAM+0x0595F -> 7E:595F -> NWA-Beispiel 0xE2FB13
+[MAP] 0xA35960 -> WRAM+0x05960 -> 7E:5960 -> NWA-Beispiel 0xE2FB14
+[MAP] 0xA35963 -> WRAM+0x05963 -> 7E:5963 -> NWA-Beispiel 0xE2FB17
+[MAP] 0xA35964 -> WRAM+0x05964 -> 7E:5964 -> NWA-Beispiel 0xE2FB18
+[MAP] 0xA35965 -> WRAM+0x05965 -> 7E:5965 -> NWA-Beispiel 0xE2FB19
+[MAP] 0xA35967 -> WRAM+0x05967 -> 7E:5967 -> NWA-Beispiel 0xE2FB1B
+[MAP] 0xA35968 -> WRAM+0x05968 -> 7E:5968 -> NWA-Beispiel 0xE2FB1C
+[MAP] 0xA3596A -> WRAM+0x0596A -> 7E:596A -> NWA-Beispiel 0xE2FB1E
+[MAP] 0xA3596B -> WRAM+0x0596B -> 7E:596B -> NWA-Beispiel 0xE2FB1F
+[MAP] 0xA3596C -> WRAM+0x0596C -> 7E:596C -> NWA-Beispiel 0xE2FB20
+[MAP] 0xA3596D -> WRAM+0x0596D -> 7E:596D -> NWA-Beispiel 0xE2FB21
+[MAP] 0xA3596E -> WRAM+0x0596E -> 7E:596E -> NWA-Beispiel 0xE2FB22
+[MAP] 0xA35970 -> WRAM+0x05970 -> 7E:5970 -> NWA-Beispiel 0xE2FB24
+[MAP] 0xA35971 -> WRAM+0x05971 -> 7E:5971 -> NWA-Beispiel 0xE2FB25
+[MAP] 0xA35972 -> WRAM+0x05972 -> 7E:5972 -> NWA-Beispiel 0xE2FB26
+[MAP] 0xA35974 -> WRAM+0x05974 -> 7E:5974 -> NWA-Beispiel 0xE2FB28
+[MAP] 0xA35978 -> WRAM+0x05978 -> 7E:5978 -> NWA-Beispiel 0xE2FB2C
+[MAP] 0xA35981 -> WRAM+0x05981 -> 7E:5981 -> NWA-Beispiel 0xE2FB35
+[MAP] 0xA35982 -> WRAM+0x05982 -> 7E:5982 -> NWA-Beispiel 0xE2FB36
+[MAP] 0xA35983 -> WRAM+0x05983 -> 7E:5983 -> NWA-Beispiel 0xE2FB37
+[MAP] 0xA35984 -> WRAM+0x05984 -> 7E:5984 -> NWA-Beispiel 0xE2FB38
+[MAP] 0xA35985 -> WRAM+0x05985 -> 7E:5985 -> NWA-Beispiel 0xE2FB39
+[MAP] 0xA35988 -> WRAM+0x05988 -> 7E:5988 -> NWA-Beispiel 0xE2FB3C
+[MAP] 0xA35989 -> WRAM+0x05989 -> 7E:5989 -> NWA-Beispiel 0xE2FB3D
+[MAP] 0xA3598A -> WRAM+0x0598A -> 7E:598A -> NWA-Beispiel 0xE2FB3E
+[MAP] 0xA3598B -> WRAM+0x0598B -> 7E:598B -> NWA-Beispiel 0xE2FB3F
+[MAP] 0xA3598C -> WRAM+0x0598C -> 7E:598C -> NWA-Beispiel 0xE2FB40
+[MAP] 0xA3598E -> WRAM+0x0598E -> 7E:598E -> NWA-Beispiel 0xE2FB42
+[MAP] 0xA3598F -> WRAM+0x0598F -> 7E:598F -> NWA-Beispiel 0xE2FB43
+[MAP] 0xA35990 -> WRAM+0x05990 -> 7E:5990 -> NWA-Beispiel 0xE2FB44
+[MAP] 0xA35991 -> WRAM+0x05991 -> 7E:5991 -> NWA-Beispiel 0xE2FB45
+[MAP] 0xA35992 -> WRAM+0x05992 -> 7E:5992 -> NWA-Beispiel 0xE2FB46
+[MAP] 0xA35994 -> WRAM+0x05994 -> 7E:5994 -> NWA-Beispiel 0xE2FB48
+[MAP] 0xA35995 -> WRAM+0x05995 -> 7E:5995 -> NWA-Beispiel 0xE2FB49
+[MAP] 0xA35996 -> WRAM+0x05996 -> 7E:5996 -> NWA-Beispiel 0xE2FB4A
+[MAP] 0xA35997 -> WRAM+0x05997 -> 7E:5997 -> NWA-Beispiel 0xE2FB4B
+[MAP] 0xA35A05 -> WRAM+0x05A05 -> 7E:5A05 -> NWA-Beispiel 0xE2FBB9
+[MAP] 0xA3642B -> WRAM+0x0642B -> 7E:642B -> NWA-Beispiel 0xE305DF
+[MAP] 0xA36FA6 -> WRAM+0x06FA6 -> 7E:6FA6 -> NWA-Beispiel 0xE3115A
+
+
+55. DATEIEN DIESER RUNDE – NUTZEN FÜR DIE CHECKLISTE
+=====================================================
+
+[x] DataReaders.cs:
+    Datentypen, Inventarformat, Scenario-Byte-Reihenfolge, Charakter-/Spell-
+    Leser, Capsule-Slotsemantik, Positionsformeln, Gegner-HP und ROM-Zugriff.
+
+[x] MemoryProfile.cs:
+    absolute Profile, generisches Offsetprofil und bekannte Emulatorvarianten.
+
+[x] MemoryScanner.cs:
+    portable WRAM-/ROM-Basiserkennung und Signaturanker.
+
+[x] GameData.cs:
+    Charakter-IDs, Werkzeugcodes und Scenario-Masken; keine zusätzlichen
+    Laufzeitadressen über die bereits dokumentierten Bereiche hinaus.
+
+[REF] GameState.cs:
+    Ausgabe-/Transportmodell des Helpers. Property-Namen sind keine neuen
+    WRAM-Funde.
+
+[REF] ConfigLoader.cs, ProcessScanner.cs, TrackerClient.cs:
+    Konfigurations-, Prozesserkennungs- und TCP-Transportcode; keine neuen
+    Spieladressen.
+
+55. KANONISCHE CORE-MAP AUS MEMORY_ARCHITECTURE.ZIP
+====================================================
+
+Die folgende kompakte Tabelle ist die zentrale live verifizierte Map des
+aktuellen Trackers. Alle WRAM-Werte sind relative Offsets ab Anfang des
+linearen 128-KiB-WRAM-Blocks.
+
+Bezeichnung                 Offset      Mesen/SNES             Größe/Auswertung
+--------------------------------------------------------------------------------
+Gold                        0x02D9E     7E:2D9E               3 Byte, uint24 LE
+PartyStart                  0x02D8F     7E:2D8F               4 Byte
+InventoryStart              0x02DA1     Snes9x-Helper         0xC0 Byte
+InventoryInclusiveEnd       0x02E60     Snes9x-Helper         letztes Byte enthalten
+ScenarioStart               0x02C32     7E:2C32               3 Byte
+CapsuleStart                0x034CF     7E:34CF               7 Byte
+DungeonFlagsStart           0x02A96     7E:2A96               10 Byte
+Transport                   0x02CF5     7E:2CF5               1 Byte
+ShipXLow/High               0x0379C/D   7E:379C/379D          uint16 LE
+ShipYLow/High               0x0379F/A0  7E:379F/37A0          uint16 LE
+WalkXLow/High               0x0377F/80  7E:377F/3780          uint16 LE
+WalkYLow/High               0x03782/83  7E:3782/3783          uint16 LE
+CurrentMap                  0x028C0     7E:05AC (Mesen)       1 Byte, uint8
+PreviousMap                 —           7E:05AE (Mesen)       1 Byte, uint8
+SelanAnchor                 0x02F7E     7E:2F7E               ASCII „SSelan“
+ArteaAnchor                 0x030FE     7E:30FE               ASCII „AArty“
+LexisAnchor                 0x03326     7E:3326               ASCII „LLexis“
+
+ROM:
+[ROM] interner Header/Titelsignatur: ROM+0x0FFC0
+[ROM] Capsule-Sprite-Tabelle: ROM+0x0BDCB8
+[ROM] Capsule-Sprite-Stride: 10 Bytes
+[ROM] Capsule-Sprite-Anzahl: 7
+[ROM] Ausgelesen werden je Eintrag die ersten zwei Bytes.
+
+
+56. VERIFIZIERTE HOST-ROOT-HINTS UND EMULATORKOMPATIBILITÄT
+============================================================
+
+[PROC] Snes9x 1.62.3 standard: Prozesse=snes9x-x64; GoldProcessOffset=0xA32D9E; daraus WRAM-Root-Offset=0xA30000
+[PROC] Snes9x 1.62.3 NWA: Prozesse=snes9x-x64,snes9x; GoldProcessOffset=0xE2CF52; daraus WRAM-Root-Offset=0xE2A1B4
+
+Live verifiziert laut EMULATOR_COMPATIBILITY.md:
+[x] Snes9x 1.62.3: WRAM, ROM-Funktionen und State-Payload
+[x] Snes9x 1.62.3-nwa: WRAM, ROM-Funktionen und State-Payload
+[x] bsnes-plus v05: WRAM, ROM-Funktionen und State-Payload
+
+Mesen/Mesen-S, RetroArch, higan, ares und BizHawk/EmuHawk sind im aktuellen
+Projekt als Prozesskandidaten vorgesehen. Ein Attachment wird aber nur nach
+derselben inhaltlichen WRAM-Validierung akzeptiert.
+
+
+57. STANDARD-/NWA-DUNGEONFLAGS – PORTABLE IDENTITÄT
+====================================================
+
+[x] Standard-Hostminimum: 0xA32A96
+[x] NWA-Hostminimum:      0xE2CC4A
+[x] Beide Dateien normalisieren auf 10 kanonische Bytes ab WRAM+0x2A96.
+[x] Beide normalisierten Listen enthalten 38 identische
+    Location-/Bitmasken-Zuordnungen.
+
+Damit müssen keine getrennten NWA-Spieloffsets in der Checkliste gepflegt
+werden. Nur der Host-WRAM-Root unterscheidet sich.
+
+
+58. TRACKER-LOGIKREFERENZ FÜR ZUGANGSVORAUSSETZUNGEN – KEIN WRAM
+=================================================================
+
+Diese Regeln helfen einem späteren Agenten bei der Planung. Sie vervollständigen
+keine Speicheradresse und bleiben deshalb als [REF] markiert.
+
+[REF] Alunze Basement: [Bomb] ODER [Hammer]
+[REF] Alunze Cave: [Bomb] ODER [Hammer]
+[REF] Ancient Tower: [Bomb,Hook,Cloud] ODER [Hammer,Hook,Cloud]
+[REF] Cave Bridge: [Bomb,Hook] ODER [Hammer,Hook]
+[REF] Cave to Sundletan: keine zusätzliche Tracker-Voraussetzung
+[REF] Chaed: [Engine] ODER [Jade]
+[REF] Dankirk Dungeon: [Bomb,Hook,Dankirk]
+[REF] Daos' Shrine: [Claire,Lisa,Marie, Engine]
+[REF] Darbi Shrine: keine zusätzliche Tracker-Voraussetzung
+[REF] Divine Shrine: [Heart,Hook,Hammer]
+[REF] Dragon Mountain: [Magma,Hook,Hammer,Fire,Engine] ODER [Magma,Hook,Hammer,Fire,Jade]
+[REF] Ferim Tower: [Hook,Hammer,Trial]
+[REF] Flower Capsule: [Hammer,Hook]
+[REF] Flower Mountain: [Hammer,Flower]
+[REF] Foomy Woods: keine zusätzliche Tracker-Voraussetzung
+[REF] Gordovan Tower: [Bomb,Hook,Wind]
+[REF] Gratze Castle: [Basement,Engine,Arrow] ODER [Basement,Engine,Fire] ODER [Basement,Engine,Hook] ODER [Basement,Jade,Arrow] ODER [Basement,Jade,Fire] ODER [Basement,Jade,Hook] ODER [Bomb,Hook,Dankirk,Basement]
+[REF] Karlloon Shrine: [Bomb,Hook]
+[REF] Karmirno Tower: [Engine]
+[REF] Lake Cave: [Lake,Arrow] ODER [Lake,Fire] ODER [Lake,Hook]
+[REF] Lighthouse: [Light]
+[REF] M. No Return: keine zusätzliche Tracker-Voraussetzung
+[REF] Narvick: [Engine]
+[REF] North Dungeon: [Bomb,Hook]
+[REF] North Dungeon Capsule: [Hook]
+[REF] Phantom Mountain: [Bomb,Hook,Fire,Tree]
+[REF] Preamarl: [Jade]
+[REF] Ruby Cave: [Ruby]
+[REF] Ruby Cave Capsule: [Bomb] ODER [Hammer]
+[REF] Sacrifice Capsule: [Narcysus,Hook,Bomb] ODER [Narcysus,Hook,Hammer]
+[REF] Secret Skills Cave: [Arrow] ODER [Fire] ODER [Hook]
+[REF] Shaia Lab: keine zusätzliche Tracker-Voraussetzung
+[REF] Shrine of Vengeance: [Ghost,Jade,Bomb,Hammer]
+[REF] Shuman Tower: [Engine]
+[REF] Stradah Tower: [Engine]
+[REF] Submarine Shrine: [Jade]
+[REF] Tanbel Tower: [Sky]
+[REF] Tower of Sacrifice: [Narcysus,Hook,Bomb]
+[REF] Tower of Truth: [Truth,Hook,Bomb] ODER [Truth,Hook,Hammer]
+[REF] Treasure Sword Shrine: [Sword,Bomb]
+[REF] Zeppy Cave: [Jade]
+
+
+59. WARP_DATA-ROHREFERENZ – SEMANTISCHE SPEICHERADRESSE NOCH OFFEN
+==================================================================
+
+warp_data.json enthält verifizierte Code-/Zielwertpaare. Die Datei nennt
+jedoch keinen WRAM-Puffer, keinen Cursor und keine aktive Warp-Auswahladresse.
+Die Tabelle ist daher eine Decoderreferenz für einen später gefundenen Wert.
+
+[REF] Code 030A -> Zielwert 10
+[REF] Code 0802 -> Zielwert 2
+[REF] Code 0E0F -> Zielwert 15
+[REF] Code 1703 -> Zielwert 1
+[REF] Code 1E0C -> Zielwert 12
+[REF] Code 2712 -> Zielwert 12
+[REF] Code 2E17 -> Zielwert 16
+[REF] Code 381B -> Zielwert 17
+[REF] Code 401F -> Zielwert 19
+[REF] Code 4720 -> Zielwert 20
+[REF] Code 6026 -> Zielwert 26
+[REF] Code 6A28 -> Zielwert 28
+[REF] Code 6C29 -> Zielwert 29
+[REF] Code 752B -> Zielwert 42
+[REF] Code 7C2F -> Zielwert 42
+[REF] Code 7F30 -> Zielwert 30
+[REF] Code 8732 -> Zielwert 42
+[REF] Code 8A33 -> Zielwert 42
+[REF] Code 8C35 -> Zielwert 42
+[REF] Code 9336 -> Zielwert 42
+[REF] Code 9C3A -> Zielwert 42
+[REF] Code 9D3B -> Zielwert 42
+[REF] Code 9F3C -> Zielwert 42
+[REF] Code A23D -> Zielwert 42
+[REF] Code A840 -> Zielwert 42
+[REF] Code AE42 -> Zielwert 42
+[REF] Code B844 -> Zielwert 42
+[REF] Code C146 -> Zielwert 42
+[REF] Code E24A -> Zielwert 42
+
+
+60. ZIP-DUPLIKAT- UND RELEVANZPRÜFUNG
+=====================================
+
+Ausgewertet wurden 68 Quell-/Daten-/Dokumentationsdateien nach Ausschluss von
+bin/, obj/ und __pycache__.
+
+Byteidentische bereits zuvor gelieferte Dateien (8):
+    boss_locations.json, boss_sprites.json, cities.json, dungeon_flags_snes9x.json, items_spells.json, scenario_items.json, shop_data.json, tool_items.json
+
+Neue oder gegenüber den Einzeluploads geänderte Daten-/Metadateien
+(17):
+    README.md, characters.json, characters_bw.json, default_layout_config.json, dungeon_flags_snes9x-nwa.json, emulator_addresses.json, emulator_root_hints.json, layout_config.json, location_name_mapping.json, locations.json, locations_logic.json, progress_temp.json, reward_flags.json, scenario_items_bw.json, shop_addresses.json, tool_items_bw.json, warp_data.json
+
+Für die WRAM-Checkliste direkt relevant:
+[x] MEMORY_ARCHITECTURE.md
+[x] Lufia2MemoryMap.cs
+[x] DataReaders.cs
+[x] MemoryProfile.cs
+[x] MemoryScanner.cs
+[x] standard- und NWA-Dungeonflagdateien
+[x] emulator_root_hints.json
+[x] korrigiertes emulator_addresses.json als Archivabgleich
+[x] korrigiertes shop_addresses.json
+[x] korrigiertes locations.json
+
+Nur statische/agentische Referenz, keine neue WRAM-Adresse:
+[REF] locations_logic.json
+[REF] location_name_mapping.json
+[REF] warp_data.json
+[REF] characters*.json, sofern nur Bild-/UI-Metadaten enthalten
+[REF] Layout-, GUI-, StateManager- und LogicEngine-Dateien
+
+Ohne nutzbaren Speicherinhalt:
+[-] reward_flags.json ist leer.
+[-] *_bw.json enthält hauptsächlich ausgegraute Bildpfade.
+[-] Buildartefakte, DLLs, EXEs, PDBs und Python-Bytecode wurden ignoriert.

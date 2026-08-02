@@ -1,0 +1,20 @@
+Dumpgröße: 131072 Bytes
+Geänderte Bytes: 30
+Zusammenhängende Bereiche: 16
+
+7E:0040 – 7E:0043 | Offset 0x00040–0x00043 | 4 Byte(s)
+7E:0180 – 7E:0180 | Offset 0x00180–0x00180 | 1 Byte(s)
+7E:0184 – 7E:0184 | Offset 0x00184–0x00184 | 1 Byte(s)
+7E:0188 – 7E:0188 | Offset 0x00188–0x00188 | 1 Byte(s)
+7E:018C – 7E:018C | Offset 0x0018C–0x0018C | 1 Byte(s)
+7E:0190 – 7E:0190 | Offset 0x00190–0x00190 | 1 Byte(s)
+7E:0194 – 7E:0194 | Offset 0x00194–0x00194 | 1 Byte(s)
+7E:0B4E – 7E:0B4F | Offset 0x00B4E–0x00B4F | 2 Byte(s)
+7E:1230 – 7E:1239 | Offset 0x01230–0x01239 | 10 Byte(s)
+7E:1401 – 7E:1402 | Offset 0x01401–0x01402 | 2 Byte(s)
+7E:4974 – 7E:4974 | Offset 0x04974–0x04974 | 1 Byte(s)
+7E:4979 – 7E:4979 | Offset 0x04979–0x04979 | 1 Byte(s)
+7E:497E – 7E:497E | Offset 0x0497E–0x0497E | 1 Byte(s)
+7E:4983 – 7E:4983 | Offset 0x04983–0x04983 | 1 Byte(s)
+7E:4988 – 7E:4988 | Offset 0x04988–0x04988 | 1 Byte(s)
+7E:498D – 7E:498D | Offset 0x0498D–0x0498D | 1 Byte(s)

@@ -1,0 +1,8 @@
+# Active Mesen runtime
+requests
+Pillow
+
+# Dungeon curation and local visual analysis tools
+numpy
+opencv-python
+PyQt6

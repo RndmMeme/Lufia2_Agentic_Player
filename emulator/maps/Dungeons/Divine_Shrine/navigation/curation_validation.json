@@ -1,0 +1,23 @@
+{
+  "schema": "lufia2-dungeon-curation-validation-v1",
+  "dungeon": "Divine_Shrine",
+  "marker_count": 230,
+  "type_counts": {
+    "door": 14,
+    "walkable": 63,
+    "npc": 2,
+    "stairs": 22,
+    "monster": 26,
+    "puzzle": 57,
+    "blocked": 33,
+    "chest": 5,
+    "switch": 8
+  },
+  "severity_counts": {
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "code_counts": {},
+  "findings": []
+}

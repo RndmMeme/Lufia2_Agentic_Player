@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-08-02T00:39:10.246262",
+  "contract": "schema-bound intents plus one gated Mesen screenshot",
+  "models": [
+    {
+      "model": "hf.co/unsloth/gemma-4-E2B-it-GGUF:UD-Q4_K_XL",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "rationale": "Explore the current area to find objectives or obstacles."
+          },
+          "seconds": 18.11
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "rationale": "Explore the current area to gather more information."
+          },
+          "seconds": 4.14
+        },
+        {
+          "case": "dialog",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "rationale": "Show current surroundings as the mode is dialog and exploration is the goal."
+          },
+          "seconds": 4.235
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "rationale": "Gather information about the current situation and enemies before deciding on an action."
+          },
+          "seconds": 4.328
+        }
+      ],
+      "vision": null,
+      "planner_passes": 0
+    }
+  ]
+}

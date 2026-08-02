@@ -1,0 +1,157 @@
+{
+  "timestamp": "2026-08-02T05:00:53.485389",
+  "contract": "schema-bound intents plus one gated Mesen screenshot",
+  "models": [
+    {
+      "model": "hf.co/unsloth/gemma-4-E2B-it-GGUF:UD-Q4_K_XL",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "tool": null,
+            "rationale": "Need to explore the current area before moving east."
+          },
+          "seconds": 4.375
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "tool": null,
+            "rationale": "Need to explore the current area before moving west."
+          },
+          "seconds": 4.375
+        },
+        {
+          "case": "dialog",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "tool": null,
+            "rationale": "Need to explore the current area and understand the dialog context."
+          },
+          "seconds": 4.407
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "intent": {
+            "kind": "look",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "tool": null,
+            "rationale": "Examine the surroundings to decide the next move in the battle mode."
+          },
+          "seconds": 4.875
+        }
+      ],
+      "vision": {
+        "passed_schema": true,
+        "result": {
+          "confidence": 0.95,
+          "navigation_hypothesis": "The player is currently at the entrance/exit of a corridor or room and can move forward along the visible path.",
+          "relevant_objects": [
+            {
+              "object": "floor",
+              "semantics": "walkable_surface"
+            },
+            {
+              "object": "corridor/pathway",
+              "semantics": "path"
+            }
+          ],
+          "safe_next_test": "move_forward",
+          "scene_type": "dungeon_corridor"
+        },
+        "seconds": 9.609
+      },
+      "planner_passes": 0
+    },
+    {
+      "model": "gemma3:4b",
+      "planner": [
+        {
+          "case": "corridor",
+          "passed": false,
+          "error": "move intent requires north/south/east/west",
+          "seconds": 28.016
+        },
+        {
+          "case": "blocked_redirect",
+          "passed": false,
+          "error": "move intent requires north/south/east/west",
+          "seconds": 7.984
+        },
+        {
+          "case": "dialog",
+          "passed": true,
+          "intent": {
+            "kind": "interact",
+            "direction": null,
+            "count": 1,
+            "question": null,
+            "query": null,
+            "tool": null,
+            "rationale": "The dialog is active; I must interact to proceed."
+          },
+          "seconds": 8.359
+        },
+        {
+          "case": "battle",
+          "passed": false,
+          "error": "move intent requires north/south/east/west",
+          "seconds": 9.485
+        }
+      ],
+      "vision": {
+        "passed_schema": true,
+        "result": {
+          "scene_type": "room",
+          "relevant_objects": [
+            {
+              "name": "Vertical Shaft",
+              "x": 32,
+              "y": 56,
+              "description": "A dark vertical shaft dominates the center of the room. It appears to be a passage or well.",
+              "navigation_semantics": [
+                "northwest",
+                "northeast"
+              ]
+            },
+            {
+              "name": "Player Character",
+              "x": 28,
+              "y": 54,
+              "description": "The player character is standing at the bottom of the shaft.",
+              "navigation_semantics": [
+                "north"
+              ]
+            }
+          ],
+          "navigation_hypothesis": "The player can move north to proceed deeper into the cave. The vertical shaft presents a potential navigation challenge.",
+          "confidence": 0.8,
+          "safe_next_test": "north"
+        },
+        "seconds": 56.25
+      },
+      "planner_passes": 1
+    }
+  ]
+}
