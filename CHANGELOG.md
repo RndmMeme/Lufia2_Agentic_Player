@@ -3,8 +3,10 @@
 ## 2026-08-06 — RTX-Spatial-Baseline und schlanker Exploration-Kontext
 
 - Run 41 lieferte den ersten bestaetigten autonomen Qwen-Live-Durchgang durch
-  Raum 3: Bruecke aktivieren, West-Kollision umgehen, Tueranker `(17,23)`
-  erreichen und nach Norden in den sichtbaren Zwei-Tueren-Transitraum gehen.
+  Raum 3; Run 42 reproduzierte dasselbe Ergebnis unabhaengig und endete erneut
+  bei `(17,20)` im sichtbaren Zwei-Tueren-Transitraum: Bruecke aktivieren,
+  West-Kollision umgehen, Tueranker `(17,23)` erreichen und nach Norden durch
+  die Tuer gehen.
   Kollisionen bleiben dafuer ueber reine Drehungen erhalten; erreichte
   Door/Exit-Landmarks exponieren ihre kuratierte Blickrichtung als
   datengetriebene Traversalaktion. Der noch faelschlich auf `room_3` stehende

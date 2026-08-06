@@ -1,14 +1,15 @@
 # Handover: AI Lufia II Player
 
-Stand: 2026-08-03, aktives Refactoring.
+Stand: 2026-08-06, reproduzierbarer Raum-3-Live-Erfolg.
 
 ## Letzter dokumentierter Live-Zustand
 
-- Zuletzt lesend ueber die Mesen-Bridge verifiziert: Secret Skills Cave,
-  Raum 3, Figurposition `(28,29)`, Blickrichtung Nord.
-- Pfeil ist ausgewaehlt.
-- Die Bruecke ist inaktiv; Mapbuffer `[02,22,20]`.
-- Kein Agent-Run sollte derzeit aktiv sein. Vor einem neuen Run trotzdem nur lesend pruefen.
+- Run 42 endete wie Run 41 bei `(17,20)`, Blickrichtung Nord, im sichtbaren
+  Zwei-Tueren-Transitraum. Der Mapper bezeichnet ihn noch faelschlich als
+  `room_3`, weil `map_id=5` unveraendert bleibt.
+- Die Bruecke wurde erfolgreich aktiviert und durchquert.
+- Run 42 stoppte kontrolliert am Zeitlimit; kein Agent-Run sollte derzeit aktiv
+  sein. Vor einem neuen Run trotzdem nur lesend pruefen.
 - Niemals parallel zum Runner eine zweite File-Bridge-Abfrage starten; das erzeugte bereits eine `request.tmp`-Race.
 - Der begrenzte Qwen-Live-Smoke hat keine Eingabe gesendet: Die Lua-Bridge war
   bereits beim Verbindungsaufbau nicht mehr erreichbar. Nach einem Lua-Neustart
@@ -143,10 +144,13 @@ aber noch nicht verdrahtet. Das ist kein bewiesener aktiver Bestandteil.
   erfolgreicher Weltaktion eingefrorenen `POST_ACTION_EFFECT_REGION`-3x3 am
   entfernten Wirkungsort. PREVIOUS/CURRENT plus WRAM-Tilewechsel bilden damit
   die menschliche Wahrnehmungskette ab.
-- **Run 41 ist der erste bestaetigte Qwen-Live-Erfolg fuer Raum 3:** Das
+- **Runs 41 und 42 bestaetigen reproduzierbar den Qwen-Live-Erfolg fuer Raum
+  3:** Das
   RTX-Spatial-Q8 aktivierte die Bruecke, fand nach den West-Kollisionen den
   Nordumweg, erreichte den Tueranker `(17,23)` und ging anschliessend dreimal
-  nach Norden in den sichtbaren Zwei-Tueren-Transitraum. Zwei kleine, allgemeine
+  nach Norden in den sichtbaren Zwei-Tueren-Transitraum. Run 42 endete wie Run
+  41 bei `(17,20)`; damit ist der Durchgang kein Einzelerfolg. Zwei kleine,
+  allgemeine
   Kontextkorrekturen waren dafuer noetig: Eine bestaetigte Kollision bleibt
   ueber reines Drehen am selben Ort erhalten, und ein erreichtes Door/Exit-
   Landmark exponiert `move <facing>` als Traversalaktion.
@@ -160,11 +164,9 @@ aber noch nicht verdrahtet. Das ist kein bewiesener aktiver Bestandteil.
 1. Den sichtbaren Transitraum trotz unveraendertem `map_id=5` und
    ueberlappenden Koordinaten automatisch erkennen; den Room-3-Erfolg nicht aus
    Bounds allein ableiten.
-2. Raum 3 zuruecksetzen und denselben minimalen Lauf ein zweites Mal
-   wiederholen, damit der Erfolg kein Zufall bleibt.
-3. Erst danach den Zwei-Tueren-Transitraum und Raum 4 als naechstes einzelnes
+2. Den Zwei-Tueren-Transitraum und Raum 4 als naechstes einzelnes
    Ziel behandeln; keine weitere Cave-Route vorgeben.
-4. Erst nach einem echten wiederholten Stall genau einen Hinweis, Micro-Map-
+3. Erst nach einem echten wiederholten Stall genau einen Hinweis, Micro-Map-
    Ausschnitt oder Referenzpose eskalieren.
 
 ## Danach noch offen
@@ -184,7 +186,8 @@ aber noch nicht verdrahtet. Das ist kein bewiesener aktiver Bestandteil.
 - Keine globalen Ollama- oder System-Einstellungen aendern.
 - Globales Ollama auf `127.0.0.1:11434` und andere Anwendungen unangetastet lassen.
 - Aktuelle Live-Baseline: `Qwen3-VL-4B-Spatial-Analysisv2.Q8_0.gguf`, resident
-  auf der RTX. Run 41 absolvierte Raum 3 bis in den sichtbaren Transitraum.
+  auf der RTX. Runs 41 und 42 absolvierten Raum 3 bis in den sichtbaren
+  Transitraum und endeten beide bei `(17,20)`.
   Run 29 bleibt der historische Vorlaeufer, der zwei Tiles vor der linken Tuer
   endete.
 - Der offizielle `Qwen3-VL-8B-Instruct` Q4_K_M plus Q8-mmproj bleibt ein
