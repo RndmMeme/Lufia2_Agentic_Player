@@ -1,6 +1,7 @@
 param(
     [switch]$Execute,
     [switch]$EnableLlm,
+    [switch]$StartQwen,
     [switch]$EnableBattle,
     [int]$MaxActions = 0,
     [string]$Goal = "Finish the randomized game as quickly as safely possible."
@@ -15,8 +16,10 @@ if (-not (Test-Path -LiteralPath $python)) {
 
 $arguments = @("run_agent.py", "--goal", $Goal)
 if ($Execute) { $arguments += "--execute" }
+if ($StartQwen) {
+    & (Join-Path $projectRoot "start_project_qwen3_vl_vulkan.ps1")
+}
 if ($EnableLlm) {
-    & (Join-Path $projectRoot "start_project_ollama_cuda.ps1")
     $arguments += "--enable-llm"
 }
 if ($EnableBattle) { $arguments += "--enable-battle" }

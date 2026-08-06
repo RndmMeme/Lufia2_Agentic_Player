@@ -127,6 +127,31 @@ class OnlineNavigationMapperTests(unittest.TestCase):
         self.assertNotIn("north", mapper.state["edges"][mapper.node_key(5, 10, 10, "room_1")])
         self.assertIn("south", mapper.state["edges"][mapper.node_key(5, 20, 10, "room_2")])
 
+    def test_room_reset_expires_only_resettable_landmark_completions(self):
+        objective = {
+            "map_id": 5,
+            "rooms": [{
+                "id": "room_1",
+                "bounds": {"min_x": 0, "min_y": 0, "max_x": 19, "max_y": 19},
+                "reference_landmarks": [
+                    {"id": "bridge_switch", "resettable": True},
+                    {"id": "opened_chest"},
+                ],
+            }],
+        }
+        mapper = OnlineNavigationMapper(objective)
+        mapper.state["completed_landmarks"] = {
+            "room_1:bridge_switch": {"landmark_id": "bridge_switch"},
+            "room_1:opened_chest": {"landmark_id": "opened_chest"},
+        }
+        event = mapper.record_room_reset(observation(x=10))
+        self.assertNotIn("room_1:bridge_switch", mapper.state["completed_landmarks"])
+        self.assertIn("room_1:opened_chest", mapper.state["completed_landmarks"])
+        self.assertEqual(
+            ["bridge_switch"],
+            [item["landmark_id"] for item in event["expired_completed_landmarks"]],
+        )
+
     def test_overlap_uses_prior_room_then_directed_successor(self):
         objective = {
             "map_id": 5,
@@ -149,6 +174,21 @@ class OnlineNavigationMapperTests(unittest.TestCase):
         mapper.observe(observation(x=25))
         self.assertEqual(mapper.state["current_room"], "room_4")
         self.assertEqual(mapper.room_for(observation(x=15)), "room_4")
+
+    def test_secret_cave_west_door_approach_stays_in_room_three(self):
+        objective_path = (
+            Path(__file__).resolve().parent.parent
+            / "data/navigation_objectives/secret_skills_cave_room_sweep.json"
+        )
+        import json
+        mapper = OnlineNavigationMapper(json.loads(objective_path.read_text(encoding="utf-8")))
+        mapper.observe(observation(x=28, y=25))
+        mapper.observe(observation(x=21, y=25))
+        event = mapper.record_move(
+            observation(x=21, y=25), "west", observation(x=20, y=25)
+        )
+        self.assertEqual("room_3", mapper.state["current_room"])
+        self.assertFalse(event.get("new_room", False))
 
     def test_loop_completion_requires_return_to_start(self):
         objective = dict(self.objective)
@@ -187,6 +227,29 @@ class OnlineNavigationMapperTests(unittest.TestCase):
         landmark = mapper.current_room_context()["nearby_live_landmarks"][0]
         self.assertTrue(landmark["derived_relation"]["at_landmark"])
         self.assertEqual(landmark["action_readiness"]["next_precondition"], "face west")
+
+    def test_door_landmark_exposes_data_driven_traversal_at_anchor(self):
+        objective = {
+            "map_id": 5,
+            "rooms": [{
+                "id": "room_3",
+                "bounds": {"min_x": 0, "min_y": 0, "max_x": 30, "max_y": 30},
+                "reference_landmarks": [{
+                    "id": "west_door_approach",
+                    "live": [17, 23],
+                    "facing": "north",
+                    "kind": "door",
+                }],
+            }],
+        }
+        mapper = OnlineNavigationMapper(objective)
+        mapper.observe(observation(x=17, y=23))
+        landmark = mapper.current_room_context()["nearby_live_landmarks"][0]
+        self.assertEqual("move", landmark["traversal"]["action"])
+        self.assertEqual("north", landmark["traversal"]["direction"])
+        self.assertTrue(landmark["traversal"]["position_ready"])
+        self.assertFalse(landmark["traversal"]["interaction_required"])
+        self.assertIn("map_id may remain unchanged", landmark["traversal"]["success_signal"])
 
     def test_semantic_map_change_completes_matching_action_landmark(self):
         objective = {

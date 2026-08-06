@@ -50,36 +50,49 @@ intent into a small, reversible action batch. Invalid, stale, overlong, or
 out-of-state intents are rejected. The model cannot send arbitrary key streams,
 filesystem operations, shell commands, or unbounded loops.
 
-Normal corridors should not require model calls. Every tactical battle choice
-does: deterministic code exposes legal commands and advisory facts, while the
-model selects the move. Non-tactical execution waits and result-page advances
-remain deterministic.
+Every route and exploration direction is chosen by the model. The controller
+may execute the selected direction as a short humanoid hold/batch, but map code
+must not silently choose a corridor. Every tactical battle choice likewise
+comes from the model: deterministic code exposes legal commands and advisory
+facts, while non-tactical input execution and result-page advances remain
+bounded machinery.
 
 The local transport is provider-neutral: it probes Ollama, llama.cpp, then
-KoboldCpp. Planning and vision may use different models, but the current
-default deliberately uses the same Gemma 4 E2B IT Q4 for both roles. Ollama
-reports tools, completion, vision and audio capabilities, 4.65B total
-parameters and Q4_K_M quantization. A live contract benchmark showed reliable
-exploration intents and schema-valid visual output; Gemma 3 4B failed every
-planner case. E2B avoids a model swap before LOOK, while larger Gemma and Qwen
-models remain fallback candidates. Cline is a development client, not a
-gameplay provider.
+KoboldCpp. The earlier Gemma E2B and other provider experiments remain
+historical evidence, not the current default. The active design keeps one
+multimodal model resident for planning and vision so LOOK does not trigger a
+model swap. Cline is a development client, not a gameplay provider.
 
-Ollama targets the Intel Arc A770 eGPU with 16 GB VRAM through Vulkan. The
-internal RTX 5070 Laptop GPU and Radeon 880M are not the intended inference
-path. Capacity is treated as headroom, not a target: Ollama uses a strict
-single-resident policy and the shared Gemma model avoids the roughly 13.5 GB
-base-weight footprint of keeping Gemma and Qwen resident together. Planner
-requests use a 3072-token context, LOOK uses 4096 tokens, and the shared Gemma
-instance may stay resident for two minutes. Model calls are serialized. If
-benchmarks show memory pressure, context size is reduced before model size is
-increased.
+The current live baseline is `Qwen3-VL-4B-Spatial-Analysisv2.Q8_0.gguf` kept
+resident on the RTX. The user-confirmed Run 29 latency and navigation result
+belong to this CUDA/RTX path. The Intel Arc A770 Vulkan experiment took more
+than 30 seconds per live decision and is not the active performance baseline.
+Bridge transport and inference latency must be measured separately: the
+persistent mailbox removes a repeated two-second Windows lock fallback, but it
+does not explain or eliminate slow Vulkan image inference. A larger model is
+not promoted until the 4B spatial model shows a repeatable capacity failure
+with correct WRAM, map and visual context. Model calls remain serialized and
+all GPU/backend choices are local to this project.
+
+Dungeon tools and scenario keys have separate context policies. Every dungeon
+decision sees all five tool states because tools solve puzzles and can stun
+enemies. Scenario keys are consumed internally by access logic; the model sees
+semantic reachable locations and a selected strategic goal, not raw flags or
+missing-key lists.
+
+Inventory visibility is also mode- and stage-specific. Exploration omits the
+full inventory and rate-limits an explicit inventory retrieval to once per ten
+minutes. At the battle action cross, the model receives curated subsets of
+items actually owned (healing, MP recovery, revive, remedy, attack, control,
+escape, defense and buff) so it can judge whether selecting Item is worthwhile.
+Only after Item is selected does the legal-option payload contain every owned,
+battle-usable item with quantity, effect and stable storage slot. Equipment and
+other irrelevant inventory noise remain absent.
 
 Planner, LOOK and tactical calls require schema-bound JSON immediately. The
-current Gemma-4-E2B Ollama build explicitly rejects the `think` API flag, so
-model-internal thinking is disabled for it. Deliberate calls still receive the
-larger 4096-token/480-output budget and must provide rationale, risk and
-contingency. The 30-second watchdog and 120-second stale-decision ceiling remain
+current spatial baseline uses bounded output and no model swap between planning
+and vision. Deliberate calls still receive a larger output budget and must
+provide rationale, risk and contingency. The watchdog remains
 active; a future model may enable internal thinking only if its API advertises
 and passes that contract.
 

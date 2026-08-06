@@ -20,13 +20,13 @@
     "execution_enabled": false
   },
   "llm": {
-    "enabled": false,
-    "provider": "auto",
+    "enabled": true,
+    "provider": "llama_cpp",
     "model": "",
-    "planner_model": "qwen3-vl:4b",
-    "vision_model": "qwen3-vl:4b",
-    "deliberate_model": "qwen3-vl:4b",
-    "battle_model": "qwen3-vl:4b",
+    "planner_model": "",
+    "vision_model": "",
+    "deliberate_model": "",
+    "battle_model": "",
     "resident_policy": "single",
     "planner_keep_alive": -1,
     "vision_keep_alive": -1,
@@ -67,12 +67,16 @@
     "max_thinking_seconds": 270,
     "watchdog_warning_seconds": 30,
     "watchdog_bark_interval_seconds": 30,
-    "max_prompt_chars": 9000,
+    "max_prompt_chars": 10500,
     "max_same_intent_without_change": 2,
     "max_reasoning_steps_per_stall": 12,
     "max_tokens": 220,
     "temperature": 0.1,
-    "min_actions_between_calls": 0
+    "min_actions_between_calls": 0,
+    "exploration_inventory_cooldown_seconds": 600,
+    "exploration_visual_context": true,
+    "exploration_visual_history_frames": 2,
+    "exploration_visual_burst_on_blocked": 3
   },
   "limits": {
     "max_actions_per_run": 200,

@@ -2,6 +2,7 @@ import tempfile
 import threading
 import time
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 from unittest.mock import Mock
 
@@ -9,6 +10,31 @@ from wram_discovery.mesen_bridge import SAVE_CURSOR_VALUES, MesenFileBridge, WRA
 
 
 class MesenBridgeProtocolTests(unittest.TestCase):
+    def test_publish_request_falls_back_to_persistent_windows_mailbox(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            bridge = MesenFileBridge(root=root, timeout=2.0)
+            bridge.start()
+            bridge.request_path.write_text("", encoding="utf-8")
+
+            with patch("wram_discovery.mesen_bridge.os.replace", side_effect=PermissionError):
+                bridge._publish_request("request-id\tPING")
+
+            self.assertEqual(
+                bridge.request_path.read_text(encoding="utf-8"),
+                "request-id\tPING",
+            )
+            self.assertFalse(bridge.request_path.with_suffix(".tmp").exists())
+            self.assertTrue(bridge._persistent_mailbox)
+
+            with patch("wram_discovery.mesen_bridge.os.replace") as replace:
+                bridge._publish_request("second-id\tPING")
+            replace.assert_not_called()
+            self.assertEqual(
+                bridge.request_path.read_text(encoding="utf-8"),
+                "second-id\tPING",
+            )
+
     def test_lua_acknowledges_before_processing(self):
         lua = (Path(__file__).parent / "mesen_bridge" / "mesen_wram_bridge.lua").read_text(
             encoding="utf-8"

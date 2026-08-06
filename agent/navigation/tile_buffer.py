@@ -47,7 +47,15 @@ class TileBufferRegistry:
             return {"value": value, **base, "occupied": bool(value & 1)}
         return {"value": value, "family": "unknown", "occupied": bool(value & 1)}
 
-    def context(self, map_id: int, x: int, y: int, wram: bytes, radius: int = 2) -> dict:
+    def context(
+        self,
+        map_id: int,
+        x: int,
+        y: int,
+        wram: bytes,
+        radius: int = 2,
+        mark_actor: bool = True,
+    ) -> dict:
         registration = self.registration(map_id)
         if registration is None:
             return {"available": False, "reason": "no_confirmed_map_buffer_registration"}
@@ -67,7 +75,11 @@ class TileBufferRegistry:
                     symbols.append("?")
                     continue
                 value = wram[address]
-                symbols.append("@" if (tile_x, tile_y) == (x, y) else self.SYMBOLS.get(value, "?"))
+                symbols.append(
+                    "@"
+                    if mark_actor and (tile_x, tile_y) == (x, y)
+                    else self.SYMBOLS.get(value, "?")
+                )
                 if abs(tile_x - x) + abs(tile_y - y) <= 1:
                     cells.append({
                         "relative": [tile_x - x, tile_y - y],
@@ -79,16 +91,54 @@ class TileBufferRegistry:
         return {
             "available": True,
             "scope": registration["scope"],
+            "role": "ACTOR_LOCAL_3X3" if mark_actor and radius == 1 else "ACTOR_LOCAL_WINDOW",
             "center_live": [x, y],
             "radius": radius,
             "rows": rows,
             "cardinal_cells": cells,
-            "legend": "@ actor feet; . floor; O gap; L lever/switch; X obstacle; [/] structural; : alternate floor; ? unknown",
+            "legend": (
+                "@ actor feet; . floor; O gap; L lever/switch; X obstacle; [/] structural; : alternate floor; ? unknown"
+                if mark_actor
+                else ". floor; O gap; L lever/switch; X obstacle; [/] structural; : alternate floor; ? unknown"
+            ),
             "policy": (
                 "This is map-scoped tile-family evidence. Combine it with blocked_now and room semantics; "
                 "never infer universal walkability from a family value alone."
             ),
         }
+
+    def effect_context(
+        self,
+        map_id: int,
+        changes: list[dict],
+        wram: bytes,
+        radius: int = 1,
+    ) -> dict:
+        """Snapshot a small window centered on an action's changed tiles.
+
+        Unlike the ordinary actor-centered window, this is captured immediately
+        after the action and then persisted.  It therefore keeps the spatial
+        meaning of a remote switch effect even after the camera/scroll window
+        moves away from it.
+        """
+        points = [
+            (int(change["live"][0]), int(change["live"][1]))
+            for change in changes
+            if change.get("semantic_family_change") and change.get("live")
+        ]
+        if not points:
+            return {"available": False, "reason": "no_semantic_changed_tiles"}
+        center_x = round(sum(x for x, _y in points) / len(points))
+        center_y = round(sum(y for _x, y in points) / len(points))
+        result = self.context(
+            map_id, center_x, center_y, wram, radius=radius, mark_actor=False
+        )
+        result.update({
+            "role": "POST_ACTION_EFFECT_REGION",
+            "changed_live_tiles": [[x, y] for x, y in points],
+            "captured_before_scroll": True,
+        })
+        return result
 
     def diff(
         self,

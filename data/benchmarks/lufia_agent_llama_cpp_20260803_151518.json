@@ -1,0 +1,110 @@
+{
+  "schema": "lufia2-model-contract-report-v1",
+  "timestamp": "2026-08-03T15:14:44.877886",
+  "contract": "D:\\Projects\\AI_Emu_Player\\data\\benchmarks\\lufia_agent_contract_v1.json",
+  "minimum_pass_rate": 0.9,
+  "provider": {
+    "name": "llama_cpp",
+    "base_url": "http://127.0.0.1:8080/v1",
+    "model": "D:\\KoboldCpp\\models\\admin\\gemma-4-E4B-it-OBLITERATED-Q8_0\\gemma-4-E4B-it-OBLITERATED-Q8_0.gguf",
+    "capabilities": [
+      "completion"
+    ]
+  },
+  "repeats": 1,
+  "offline_only": true,
+  "results": [
+    {
+      "case": "bridge_inactive_use_arrow",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "use_tool",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": "arrow",
+        "rationale": "Arrow is ready to be fired at the switch location."
+      },
+      "accepted": [
+        {
+          "kind": "use_tool"
+        }
+      ],
+      "passed": true,
+      "seconds": 11.985
+    },
+    {
+      "case": "bridge_complete_continue_west",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "move",
+        "direction": "west",
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Go through the west door of the cave."
+      },
+      "accepted": [
+        {
+          "kind": "move",
+          "direction": "west"
+        }
+      ],
+      "passed": true,
+      "seconds": 8.532
+    },
+    {
+      "case": "wrong_tool_must_switch_to_arrow",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "look",
+        "direction": null,
+        "count": 1,
+        "question": "what is this place?",
+        "query": null,
+        "tool": null,
+        "rationale": "Check for arrow or switch here."
+      },
+      "accepted": [
+        {
+          "kind": "select_tool",
+          "tool": "arrow"
+        }
+      ],
+      "passed": false,
+      "seconds": 7.984
+    },
+    {
+      "case": "dialog_requires_interact",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "interact",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "NA: Lets see if there is more dialog here."
+      },
+      "accepted": [
+        {
+          "kind": "interact"
+        }
+      ],
+      "passed": true,
+      "seconds": 5.281
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "total": 4,
+    "pass_rate": 0.75,
+    "qualified": false
+  }
+}

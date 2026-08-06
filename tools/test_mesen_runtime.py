@@ -1,10 +1,13 @@
 import tempfile
 import unittest
+from dataclasses import replace
 from types import SimpleNamespace
 from unittest.mock import patch
 from pathlib import Path
 
-from agent.game_state import CHARACTER_BASE, CHARACTER_STRIDE, ENEMY_BASE, GameState
+from agent.game_state import (
+    CHARACTER_BASE, CHARACTER_STRIDE, ENEMY_BASE, GameState, InventoryItem
+)
 from agent.intent import Intent, gate_intent
 from agent.knowledge import KnowledgeRetriever
 from agent.mesen_controller import MesenController
@@ -51,6 +54,15 @@ class GameStateTests(unittest.TestCase):
         self.assertEqual(state.inventory[0].quantity, 1)
         self.assertIn("Basement", state.progression_flags)
 
+        with_equipment_noise = replace(
+            state,
+            inventory=state.inventory + (
+                InventoryItem(1, 999, "equipment", "Buster Sword", 1),
+            ),
+        ).compact()
+        self.assertIn("Basement key", with_equipment_noise["progression_items"])
+        self.assertNotIn("Buster Sword", with_equipment_noise["progression_items"])
+
     def test_stale_enemy_structs_are_hidden_outside_battle(self):
         data = bytearray(0x20000)
         data[ENEMY_BASE + 0x03:ENEMY_BASE + 0x10] = b"Old Enemy    "
@@ -89,6 +101,14 @@ class IntentTests(unittest.TestCase):
         gate_intent(face, "exploration")
         with self.assertRaises(ValueError):
             Intent.from_dict({"kind": "select_tool", "tool": "imaginary"})
+
+    def test_interact_accepts_optional_cardinal_direction(self):
+        directed = Intent.from_dict({"kind": "interact", "direction": "south"})
+        plain = Intent.from_dict({"kind": "interact", "direction": None})
+        self.assertEqual("south", directed.direction)
+        self.assertIsNone(plain.direction)
+        with self.assertRaises(ValueError):
+            Intent.from_dict({"kind": "interact", "direction": "diagonal"})
 
     def test_json_null_optional_fields_remain_none(self):
         intent = Intent.from_dict({

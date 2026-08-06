@@ -1,0 +1,566 @@
+{
+  "schema": "lufia2-model-contract-report-v1",
+  "timestamp": "2026-08-03T15:27:33.917967",
+  "contract": "D:\\Projects\\AI_Emu_Player\\data\\benchmarks\\lufia_agent_contract_v1.json",
+  "minimum_pass_rate": 0.9,
+  "provider": {
+    "name": "llama_cpp",
+    "base_url": "http://127.0.0.1:8080/v1",
+    "model": "D:\\KoboldCpp\\models\\admin\\Qwen3-VL-8B-Instruct-GGUF\\Qwen3VL-8B-Instruct-Q4_K_M.gguf",
+    "capabilities": [
+      "completion",
+      "multimodal"
+    ]
+  },
+  "repeats": 2,
+  "offline_only": true,
+  "results": [
+    {
+      "case": "bridge_inactive_use_arrow",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "use_tool",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": "arrow",
+        "rationale": "Shoot switch at [02,22] to activate bridge."
+      },
+      "accepted": [
+        {
+          "kind": "use_tool"
+        }
+      ],
+      "passed": true,
+      "seconds": 12.5
+    },
+    {
+      "case": "bridge_complete_continue_west",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "move",
+        "direction": "west",
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Continue west to reach the bridge and west door."
+      },
+      "accepted": [
+        {
+          "kind": "move",
+          "direction": "west"
+        }
+      ],
+      "passed": true,
+      "seconds": 7.032
+    },
+    {
+      "case": "wrong_tool_must_switch_to_arrow",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "select_tool",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": "arrow",
+        "rationale": "Switch requires arrow; hook is selected but not suitable."
+      },
+      "accepted": [
+        {
+          "kind": "select_tool",
+          "tool": "arrow"
+        }
+      ],
+      "passed": true,
+      "seconds": 5.687
+    },
+    {
+      "case": "dialog_requires_interact",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "interact",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Continue dialog by interacting with active NPC."
+      },
+      "accepted": [
+        {
+          "kind": "interact"
+        }
+      ],
+      "passed": true,
+      "seconds": 3.875
+    },
+    {
+      "case": "room3_before_arrow_visual_action",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "use_tool",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": "arrow",
+        "rationale": "Shoot switch to activate bridge."
+      },
+      "accepted": [
+        {
+          "kind": "use_tool"
+        }
+      ],
+      "passed": true,
+      "seconds": 28.406
+    },
+    {
+      "case": "room3_after_arrow_visual_progress",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "move",
+        "direction": "west",
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Proceed west to reach the bridge and continue toward the west door."
+      },
+      "accepted": [
+        {
+          "kind": "move",
+          "direction": "west"
+        }
+      ],
+      "passed": true,
+      "seconds": 21.516
+    },
+    {
+      "case": "room5_ladder_base_move_up",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "move",
+        "direction": "south",
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Move south to approach ladder base for climbing."
+      },
+      "accepted": [
+        {
+          "kind": "move",
+          "direction": "north"
+        }
+      ],
+      "passed": false,
+      "seconds": 23.937
+    },
+    {
+      "case": "room7_hidden_switch_cut_bush",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "move",
+        "direction": "north",
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Move north to reach the bush covering the switch."
+      },
+      "accepted": [
+        {
+          "kind": "sword"
+        }
+      ],
+      "passed": false,
+      "seconds": 24.468
+    },
+    {
+      "case": "room8_pick_up_vase",
+      "type": "intent",
+      "repeat": 1,
+      "actual": {
+        "kind": "interact",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Pick up the upper vase to progress."
+      },
+      "accepted": [
+        {
+          "kind": "interact"
+        }
+      ],
+      "passed": true,
+      "seconds": 23.891
+    },
+    {
+      "case": "room6_ladders_visual_grounding",
+      "type": "vision",
+      "repeat": 1,
+      "actual": {
+        "scene_type": "exploration",
+        "relevant_objects": [
+          "ladder"
+        ],
+        "navigation_hypothesis": "The actor can climb the ladder to return from the lower channel to the raised floor.",
+        "confidence": 0.95,
+        "safe_next_test": "Attempt to climb the ladder from the current position."
+      },
+      "required_keyword_groups": [
+        [
+          "ladder",
+          "leiter"
+        ],
+        [
+          "upper",
+          "raised",
+          "elevation",
+          "hoch",
+          "erhoeht"
+        ]
+      ],
+      "missing_keyword_groups": [],
+      "passed": true,
+      "seconds": 22.985
+    },
+    {
+      "case": "room8_vase_switch_visual_grounding",
+      "type": "vision",
+      "repeat": 1,
+      "actual": {
+        "scene_type": "puzzle",
+        "relevant_objects": [
+          {
+            "type": "movable",
+            "name": "white block",
+            "position": [
+              288,
+              288
+            ],
+            "description": "A white block with a triangular top, likely a puzzle piece or switch."
+          },
+          {
+            "type": "floor",
+            "name": "wooden floor",
+            "position": [
+              288,
+              288
+            ],
+            "description": "The wooden floor tile directly beneath the white block."
+          }
+        ],
+        "navigation_hypothesis": "The white block must be moved onto the wooden floor tile to complete the puzzle or trigger an event.",
+        "confidence": 0.95,
+        "safe_next_test": "Attempt to move the white block onto the wooden floor tile."
+      },
+      "required_keyword_groups": [
+        [
+          "vase",
+          "pot",
+          "jar"
+        ],
+        [
+          "switch",
+          "button",
+          "plate"
+        ]
+      ],
+      "missing_keyword_groups": [],
+      "passed": true,
+      "seconds": 26.39
+    },
+    {
+      "case": "bridge_inactive_use_arrow",
+      "type": "intent",
+      "repeat": 2,
+      "actual": {
+        "kind": "use_tool",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": "arrow",
+        "rationale": "Shoot switch at arrow_firing_position to activate bridge."
+      },
+      "accepted": [
+        {
+          "kind": "use_tool"
+        }
+      ],
+      "passed": true,
+      "seconds": 1.984
+    },
+    {
+      "case": "bridge_complete_continue_west",
+      "type": "intent",
+      "repeat": 2,
+      "actual": {
+        "kind": "move",
+        "direction": "west",
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Continue west to reach the bridge and west door."
+      },
+      "accepted": [
+        {
+          "kind": "move",
+          "direction": "west"
+        }
+      ],
+      "passed": true,
+      "seconds": 6.547
+    },
+    {
+      "case": "wrong_tool_must_switch_to_arrow",
+      "type": "intent",
+      "repeat": 2,
+      "actual": {
+        "kind": "select_tool",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": "arrow",
+        "rationale": "Switch requires arrow; hook is selected but not suitable."
+      },
+      "accepted": [
+        {
+          "kind": "select_tool",
+          "tool": "arrow"
+        }
+      ],
+      "passed": true,
+      "seconds": 1.969
+    },
+    {
+      "case": "dialog_requires_interact",
+      "type": "intent",
+      "repeat": 2,
+      "actual": {
+        "kind": "interact",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Continue dialog by interacting with active NPC."
+      },
+      "accepted": [
+        {
+          "kind": "interact"
+        }
+      ],
+      "passed": true,
+      "seconds": 3.75
+    },
+    {
+      "case": "room3_before_arrow_visual_action",
+      "type": "intent",
+      "repeat": 2,
+      "actual": {
+        "kind": "use_tool",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": "arrow",
+        "rationale": "Shoot switch at [22,20] to activate bridge."
+      },
+      "accepted": [
+        {
+          "kind": "use_tool"
+        }
+      ],
+      "passed": true,
+      "seconds": 25.25
+    },
+    {
+      "case": "room3_after_arrow_visual_progress",
+      "type": "intent",
+      "repeat": 2,
+      "actual": {
+        "kind": "move",
+        "direction": "west",
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Proceed west to reach the bridge and continue toward the west door."
+      },
+      "accepted": [
+        {
+          "kind": "move",
+          "direction": "west"
+        }
+      ],
+      "passed": true,
+      "seconds": 2.171
+    },
+    {
+      "case": "room5_ladder_base_move_up",
+      "type": "intent",
+      "repeat": 2,
+      "actual": {
+        "kind": "move",
+        "direction": "south",
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Move south to approach ladder base for elevation."
+      },
+      "accepted": [
+        {
+          "kind": "move",
+          "direction": "north"
+        }
+      ],
+      "passed": false,
+      "seconds": 2.0
+    },
+    {
+      "case": "room7_hidden_switch_cut_bush",
+      "type": "intent",
+      "repeat": 2,
+      "actual": {
+        "kind": "move",
+        "direction": "north",
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Move north to reach the bush covering the switch."
+      },
+      "accepted": [
+        {
+          "kind": "sword"
+        }
+      ],
+      "passed": false,
+      "seconds": 2.032
+    },
+    {
+      "case": "room8_pick_up_vase",
+      "type": "intent",
+      "repeat": 2,
+      "actual": {
+        "kind": "interact",
+        "direction": null,
+        "count": 1,
+        "question": null,
+        "query": null,
+        "tool": null,
+        "rationale": "Pick up the upper vase to progress."
+      },
+      "accepted": [
+        {
+          "kind": "interact"
+        }
+      ],
+      "passed": true,
+      "seconds": 1.984
+    },
+    {
+      "case": "room6_ladders_visual_grounding",
+      "type": "vision",
+      "repeat": 2,
+      "actual": {
+        "scene_type": "exploration",
+        "relevant_objects": [
+          "ladder"
+        ],
+        "navigation_hypothesis": "The actor can climb the ladder to return from the lower channel to the raised floor.",
+        "confidence": 0.95,
+        "safe_next_test": "Attempt to climb the ladder from the current position."
+      },
+      "required_keyword_groups": [
+        [
+          "ladder",
+          "leiter"
+        ],
+        [
+          "upper",
+          "raised",
+          "elevation",
+          "hoch",
+          "erhoeht"
+        ]
+      ],
+      "missing_keyword_groups": [],
+      "passed": true,
+      "seconds": 2.938
+    },
+    {
+      "case": "room8_vase_switch_visual_grounding",
+      "type": "vision",
+      "repeat": 2,
+      "actual": {
+        "scene_type": "puzzle",
+        "relevant_objects": [
+          {
+            "object_id": "puzzle_object",
+            "type": "movable",
+            "description": "The white triangular object with a black border near the top of the screen, positioned above a stone archway."
+          },
+          {
+            "object_id": "floor_object_1",
+            "type": "floor",
+            "description": "The brown wooden floor tile directly beneath the puzzle object."
+          },
+          {
+            "object_id": "floor_object_2",
+            "type": "floor",
+            "description": "The brown wooden floor tile directly beneath the player character."
+          }
+        ],
+        "navigation_hypothesis": "The movable puzzle object must be placed on the brown wooden floor tile directly beneath it to proceed. The player must move to the tile adjacent to the puzzle object to interact with it, and then push it onto the floor tile below the archway to open the passage.",
+        "confidence": 0.95,
+        "safe_next_test": "Move to the tile adjacent to the puzzle object and attempt to push it onto the floor tile beneath the archway."
+      },
+      "required_keyword_groups": [
+        [
+          "vase",
+          "pot",
+          "jar"
+        ],
+        [
+          "switch",
+          "button",
+          "plate"
+        ]
+      ],
+      "missing_keyword_groups": [
+        [
+          "switch",
+          "button",
+          "plate"
+        ]
+      ],
+      "passed": false,
+      "seconds": 9.046
+    }
+  ],
+  "summary": {
+    "passed": 17,
+    "total": 22,
+    "pass_rate": 0.7727,
+    "qualified": false
+  }
+}

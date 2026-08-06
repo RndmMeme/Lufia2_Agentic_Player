@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 from enum import Enum
 from pathlib import Path
 
@@ -45,6 +46,41 @@ def _target_semantics(description: str) -> tuple[str, bool]:
         word in text for word in enemy_words
     ) else "unknown"
     return side, "all" in text
+
+
+def _item_categories(description: str) -> tuple[str, ...]:
+    """Map curated item descriptions to compact tactical macros."""
+    text = description.casefold()
+    categories = []
+    if "hp" in text and ("restore" in text or "heal" in text):
+        categories.append("healing")
+    if "mp" in text and "restore" in text:
+        categories.append("mp_restore")
+    if "restores life" in text or "revive" in text:
+        categories.append("revive")
+    remedy = any(word in text for word in ("cures ", "heals poison", "removes status"))
+    if remedy:
+        categories.append("remedy")
+    if "escape from battle" in text:
+        categories.append("escape")
+    if any(word in text for word in ("increases ", "raises ", "boosts ")):
+        categories.append("buff")
+    if any(word in text for word in ("defense", "defence", "repels", "resistance", "barrier")):
+        categories.append("defense")
+    if any(word in text for word in (
+        "attack", "damage", "annihilation", "on foes", "on enemies",
+    )):
+        categories.append("attack")
+    if not remedy and any(word in text for word in (
+        "puts foes", "sleep", "confusion", "paralysis", "brain damages",
+    )):
+        categories.append("control")
+    return tuple(dict.fromkeys(categories))
+
+
+def _estimated_healing(description: str) -> int:
+    match = re.search(r"restores?\s+(\d+)\s*hp", description, re.IGNORECASE)
+    return int(match.group(1)) if match else 0
 
 
 class BattleMenuReader:
@@ -94,6 +130,56 @@ class BattleMenuReader:
         if (actor.ip or 0) > 0:
             options.append(BattleOption("ip_menu", actor_slot, "IP", 0, option_id=f"command:{actor_slot}:ip"))
         return options
+
+    @staticmethod
+    def battle_items(state: BattleState, actor_slot: int) -> list[BattleOption]:
+        """Return every owned, curated battle-usable item from stable WRAM slots."""
+        options = []
+        for item in state.game.inventory:
+            meta = COMBAT_ITEMS.get(item.list_type, {}).get(f"{item.item_id:02X}")
+            if not meta or item.quantity <= 0:
+                continue
+            description = str(meta.get("desc", ""))
+            side, inferred_all = _target_semantics(description)
+            all_targets = str(meta.get("target", "")).casefold() == "all" or inferred_all
+            categories = _item_categories(description)
+            options.append(BattleOption(
+                "item",
+                actor_slot,
+                str(meta.get("name") or item.name),
+                0,
+                consumes_item=True,
+                estimated_healing=_estimated_healing(description),
+                revives="revive" in categories,
+                all_targets=all_targets,
+                option_id=(
+                    f"item:{actor_slot}:{item.slot}:{item.item_id:02X}:{item.list_type}"
+                ),
+                menu_index=item.slot * 2,
+                storage_slot=item.slot,
+                ability_id=item.item_id,
+                description=description,
+                target_side=side,
+                quantity=item.quantity,
+                item_categories=categories,
+            ))
+        return options
+
+    @classmethod
+    def item_macros(cls, state: BattleState, actor_slot: int) -> dict[str, list[dict]]:
+        """Expose tactical subsets without leaking the complete battle inventory."""
+        macros: dict[str, list[dict]] = {}
+        for option in cls.battle_items(state, actor_slot):
+            record = {
+                "name": option.name,
+                "quantity": option.quantity,
+                "effect": option.description,
+                "target_side": option.target_side,
+                "all_targets": option.all_targets,
+            }
+            for category in option.item_categories:
+                macros.setdefault(category, []).append(record)
+        return macros
 
     @staticmethod
     def visible_magic(data: bytes, actor_slot: int, actor_identity: int) -> list[BattleOption]:
@@ -175,6 +261,8 @@ class BattleMenuReader:
                 ability_id=item_id,
                 description=description,
                 target_side=side,
+                quantity=quantity_byte // 2,
+                item_categories=_item_categories(description),
             ))
         return options
 

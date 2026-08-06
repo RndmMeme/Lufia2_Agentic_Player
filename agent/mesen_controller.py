@@ -112,7 +112,9 @@ class MesenController:
         )
         return self.observe_stable()
 
-    def interact(self) -> Observation:
+    def interact(self, direction: str | None = None) -> Observation:
+        if direction is not None:
+            return self.chord(BUTTON_FOR_DIRECTION[direction], "a")
         return self.pulse("a")
 
     def _wait_exploration_mode(self, expected: int, timeout: float = 3.0) -> None:

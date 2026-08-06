@@ -36,6 +36,13 @@ PROGRESSION_FLAG_MASKS = {
     **_flag_masks("tool_items.json"),
 }
 
+DUNGEON_TOOL_NAMES = {"Arrow", "Bomb", "Fire Arrow", "Hammer", "Hook"}
+SCENARIO_DISPLAY_NAMES = {
+    "Door key": "Door key",
+    "Jade": "Mermaid Jade",
+    "Engine": "Engine",
+}
+
 
 def u16(data: bytes, offset: int) -> int:
     return data[offset] | (data[offset + 1] << 8)
@@ -128,15 +135,16 @@ class GameState:
         inventory_progression = [
             item.name
             for item in self.inventory
-            if any(
-                token in item.name.casefold()
-                for token in (
-                    "key", "bomb", "hammer", "hook", "arrow", "engine", "jade",
-                    "cloud", "heart", "flower", "magma", "truth", "sword",
-                )
-            )
+            if item.name in DUNGEON_TOOL_NAMES
         ]
-        result["progression_items"] = sorted(set(inventory_progression) | set(self.progression_flags))
+        progression_tokens = sorted(set(inventory_progression) | set(self.progression_flags))
+        result["progression_tokens"] = progression_tokens
+        result["progression_items"] = sorted(
+            SCENARIO_DISPLAY_NAMES.get(name, f"{name} key")
+            if name in self.progression_flags
+            else name
+            for name in progression_tokens
+        )
         return result
 
     @classmethod

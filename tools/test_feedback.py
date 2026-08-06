@@ -38,15 +38,30 @@ class FeedbackLedgerTests(unittest.TestCase):
         self.assertEqual(FeedbackLedger.visual_change_ratio(png("black"), png("black")), 0)
         self.assertEqual(FeedbackLedger.visual_change_ratio(png("black"), png("white")), 1)
 
-    def test_immediate_backtrack_is_negative_despite_movement(self):
+    def test_immediate_backtrack_is_not_globally_penalized(self):
         with tempfile.TemporaryDirectory() as root:
             ledger = FeedbackLedger(Path(root) / "feedback.json")
             result = ledger.record(
                 "move", observation(x=2), observation(x=1), immediate_backtrack=True
             )
-        self.assertLess(result["delta"], 0)
-        self.assertIn("immediate return", result["feedback"])
+        self.assertGreaterEqual(result["delta"], 0)
+        self.assertIn("backtracking observed", result["feedback"])
 
+    def test_active_landmark_distance_controls_movement_reward(self):
+        with tempfile.TemporaryDirectory() as root:
+            ledger = FeedbackLedger(Path(root) / "feedback.json")
+            away = ledger.record(
+                "move", observation(x=28, y=29), observation(x=28, y=30),
+                objective_target=[28, 24],
+            )
+            toward = ledger.record(
+                "move", observation(x=28, y=29), observation(x=28, y=28),
+                objective_target=[28, 24],
+            )
+        self.assertGreaterEqual(away["delta"], 0)
+        self.assertIn("valid detour or backtrack", away["feedback"])
+        self.assertGreater(toward["delta"], 0)
+        self.assertIn("distance to active landmark decreased", toward["feedback"])
 
 if __name__ == "__main__":
     unittest.main()

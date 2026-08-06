@@ -73,6 +73,17 @@ class BattleCoordinatorTests(unittest.TestCase):
         self.assertNotIn("inventory", decisions.seen[0][0])
         self.assertIn("party", decisions.seen[0][0])
 
+    def test_action_cross_gets_item_macros_but_not_full_inventory(self):
+        controller = FakeController([observation("battle_target_enemy_1.bin")])
+        decisions = QueuedDecisions(["command:0:attack"])
+        battle = BattleCoordinator(controller, decisions)
+        battle.driver.resume_at_action_cross(actor_slot=0)
+        battle.step(observation("battle_item_cursor_1.bin"))
+        state_payload, _options, advisory = decisions.seen[0]
+        self.assertNotIn("inventory", state_payload)
+        self.assertIn("available_item_macros", advisory)
+        self.assertIn("healing", advisory["available_item_macros"])
+
     def test_mid_battle_unknown_stage_sends_no_input(self):
         controller = FakeController([])
         battle = BattleCoordinator(controller, QueuedDecisions([]))

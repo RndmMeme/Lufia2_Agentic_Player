@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import time
-from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -23,6 +22,11 @@ from agent.tutorial_guide import TutorialGuide
 from agent.feedback import FeedbackLedger
 from agent.watchdog import DecisionWatchdog, ModelStallError
 from agent.battle import BattleCoordinator, BattleDecision, BattleOption
+from agent.dungeons import get_dungeon
+from agent.context_builder import ContextBuilder
+from agent.feedback_manager import FeedbackManager
+from agent.model_gateway import ModelGateway
+from agent.battle_runner import BattleRunner
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -85,10 +89,52 @@ class MesenOrchestrator:
         self.battle = BattleCoordinator(self.controller, self._ask_battle_model)
         self.actions = 0
         self.last_model_action = -10_000
-        self.reasoning_evidence = []
-        self.recent_agent_actions = []
-        self.reasoning_steps = 0
-        self.stall_repeats = 0
+        self.last_exploration_inventory_read: float | None = None
+        self.last_intent_frame: Path | None = None
+        self.active_navigation_target: dict | None = None
+        # Modular components
+        self.context_builder = ContextBuilder(self.progression, self.dungeons, self.tutorial, self.tile_buffers)
+        self.feedback_manager = FeedbackManager(self.feedback, self.action_recorder, self.mapper, self.tile_buffers, run_dir)
+        self.model_gateway = ModelGateway(
+            self.model,
+            self.watchdog,
+            self.journal,
+            self.thinking_gate,
+            action_count=lambda: self.actions,
+        )
+        self.battle_runner = BattleRunner(self.battle, self.model_gateway, self.journal, self.feedback_manager)
+
+    @property
+    def reasoning_evidence(self) -> list:
+        return self.feedback_manager.reasoning_evidence
+
+    @reasoning_evidence.setter
+    def reasoning_evidence(self, value: list) -> None:
+        self.feedback_manager.reasoning_evidence = value
+
+    @property
+    def recent_agent_actions(self) -> list:
+        return self.feedback_manager.recent_agent_actions
+
+    @recent_agent_actions.setter
+    def recent_agent_actions(self, value: list) -> None:
+        self.feedback_manager.recent_agent_actions = value
+
+    @property
+    def reasoning_steps(self) -> int:
+        return self.feedback_manager.reasoning_steps
+
+    @reasoning_steps.setter
+    def reasoning_steps(self, value: int) -> None:
+        self.feedback_manager.reasoning_steps = value
+
+    @property
+    def stall_repeats(self) -> int:
+        return self.feedback_manager.stall_repeats
+
+    @stall_repeats.setter
+    def stall_repeats(self, value: int) -> None:
+        self.feedback_manager.stall_repeats = value
 
     def _load_mapper(self, map_id: int) -> OnlineNavigationMapper:
         graph_path = self.run_dir / "online_navigation_graph.json"
@@ -103,62 +149,9 @@ class MesenOrchestrator:
         return OnlineNavigationMapper(objective)
 
     def _context(self, observation) -> dict:
-        compact = observation.game.compact()
-        navigation_progress = self.mapper.progress() if self.mapper else {}
-        local_objective_active = (
-            int(navigation_progress.get("rooms_expected", 0)) > 0
-            and not navigation_progress.get("complete", False)
+        raw = self.context_builder.build(
+            observation, self.goal, self.mapper, self.feedback, self.reasoning_evidence, self.recent_agent_actions
         )
-        strategic_progression = (
-            {
-                "deferred": True,
-                "reason": "Finish the active room-scoped dungeon objective before choosing another world destination.",
-            }
-            if local_objective_active
-            else self.progression.choose_goal(compact["progression_items"])
-        )
-        selected_tool = {
-            0xA7: "hook", 0xA8: "bomb", 0xA9: "arrow", 0xAA: "fire_arrow", 0xAB: "hammer"
-        }.get(observation.wram[0x0A06])
-        raw = {
-            "goal": self.goal,
-            "game": compact,
-            "strategic_progression": strategic_progression,
-            "dungeon_context": self.dungeons.context(
-                observation.game.map_id, observation.game.x, observation.game.y, radius=9
-            ),
-            "navigation_map": self.dungeons.navigation_briefing(
-                observation.game.map_id, observation.game.x, observation.game.y
-            ),
-            "tile_buffer": self.tile_buffers.context(
-                observation.game.map_id,
-                observation.game.x,
-                observation.game.y,
-                observation.wram,
-                radius=2,
-            ),
-            "tutorial": self.tutorial.context(
-                observation.game.map_id, observation.game.x, observation.game.y
-            ),
-            "selected_dungeon_tool": selected_tool,
-            "available_actions": [
-                "move(direction,count=1..4)",
-                "face(direction) using R+direction without moving",
-                "interact using A",
-                "sword using B",
-                "select_tool(tool)",
-                "use_tool using Y",
-                "look at current frame",
-                "look_map at current frame plus full curated dungeon map",
-                "retrieve(query)",
-                "reset_room",
-            ],
-            "recent_agent_actions": self.recent_agent_actions,
-            "feedback": self.feedback.context(),
-            "navigation": self.mapper.context_for_llm() if self.mapper else {},
-            "recent_events": self.mapper.state["events"][-6:] if self.mapper else [],
-            "reasoning_evidence": self.reasoning_evidence,
-        }
         return self.context_harness.compact(raw)
 
     def _ask_model(self, observation) -> Intent:
@@ -168,28 +161,15 @@ class MesenOrchestrator:
         if self.actions - self.last_model_action < minimum_gap and not self.reasoning_evidence:
             return Intent("wait", rationale="LLM call cooldown")
         context = self._context(observation)
+        self.active_navigation_target = context.get("navigation", {}).get("active_landmark")
+        frames = self._intent_frames(context)
         started = time.monotonic()
         try:
-            def bark(elapsed: float) -> None:
-                message = (
-                    f"[LLM watchdog] {elapsed:.0f}s without a decision; "
-                    "emulator input remains paused."
-                )
-                print(message, flush=True)
-                self.journal.write(
-                    "model_watchdog_bark",
-                    elapsed_seconds=round(elapsed, 3),
-                    action=self.actions,
-                    state_fingerprint=list(self.thinking_gate.fingerprint(context)),
-                )
-
-            intent, elapsed = self.watchdog.run(
-                lambda: self.model.choose_intent(
-                    context, int(self.config["limits"]["max_move_batch"])
-                ),
-                bark,
+            intent = self.model_gateway.ask_intent(
+                context,
+                int(self.config["limits"]["max_move_batch"]),
+                frames=frames,
             )
-            self.thinking_gate.validate(intent, context, elapsed)
         except (ModelDriftError, ModelStallError, RuntimeError, ValueError, OSError) as exc:
             self.journal.write(
                 "thinking_gate_rejected",
@@ -205,14 +185,74 @@ class MesenOrchestrator:
             self.feedback.penalize("model_rejection", str(exc))
             return Intent("wait", rationale="model watchdog or drift gate requested a safe pause")
         self.last_model_action = self.actions
-        self.journal.write(
-            "model_intent",
-            intent=asdict(intent),
-            elapsed_seconds=round(time.monotonic() - started, 3),
-            context_budget=context.get("context_budget"),
-            perception="structured_state_only; use look or look_map for an on-demand screenshot",
-        )
         return intent
+
+    def _intent_frames(self, context: dict) -> list[Path]:
+        llm_config = self.config.get("llm", {})
+        if (
+            context.get("game", {}).get("mode") != "exploration"
+            or not llm_config.get("exploration_visual_context", False)
+        ):
+            return []
+        frame_dir = self.run_dir / "intent_frames"
+        frame_dir.mkdir(parents=True, exist_ok=True)
+        current = frame_dir / f"intent_{self.actions:05d}_{time.monotonic_ns()}.png"
+        current.write_bytes(self.controller.screenshot())
+        frames = [current]
+        history_count = max(1, int(llm_config.get("exploration_visual_history_frames", 2)))
+        if self.last_intent_frame is not None and self.last_intent_frame.exists() and history_count > 1:
+            frames.insert(0, self.last_intent_frame)
+        if (
+            context.get("game", {}).get("blocked_direction")
+            and int(llm_config.get("exploration_visual_burst_on_blocked", 2)) > len(frames)
+        ):
+            burst = frame_dir / f"intent_{self.actions:05d}_{time.monotonic_ns()}_burst.png"
+            burst.write_bytes(self.controller.screenshot())
+            frames.append(burst)
+        max_frames = max(
+            history_count,
+            int(llm_config.get("exploration_visual_burst_on_blocked", history_count)),
+        )
+        frames = frames[-max_frames:]
+        self.last_intent_frame = frames[-1]
+        return frames
+
+    @staticmethod
+    def _is_inventory_query(query: str) -> bool:
+        normalized = " ".join(query.casefold().replace("_", " ").split())
+        phrases = (
+            "current inventory", "full inventory", "inventory list",
+            "aktuelles inventar", "vollständiges inventar", "inventarliste",
+            "item list", "itemliste", "gegenstandsliste",
+        )
+        return any(phrase in normalized for phrase in phrases)
+
+    def _retrieve(self, observation, query: str) -> list[dict]:
+        if observation.game.mode == "exploration" and self._is_inventory_query(query):
+            cooldown = float(
+                self.config.get("llm", {}).get("exploration_inventory_cooldown_seconds", 600)
+            )
+            now = time.monotonic()
+            elapsed = (
+                None if self.last_exploration_inventory_read is None
+                else now - self.last_exploration_inventory_read
+            )
+            if elapsed is not None and elapsed < cooldown:
+                return [{
+                    "type": "inventory_cooldown",
+                    "message": "The full exploration inventory was already read recently.",
+                    "retry_after_seconds": max(1, round(cooldown - elapsed)),
+                }]
+            self.last_exploration_inventory_read = now
+            return [{
+                "type": "live_wram_inventory",
+                "items": [
+                    {"name": item.name, "quantity": item.quantity}
+                    for item in observation.game.inventory
+                    if item.quantity > 0
+                ],
+            }]
+        return self.knowledge.search(query or self.goal)
 
     def _look(self, observation, question: str) -> dict:
         frame = self.run_dir / f"look_{self.actions:05d}.png"
@@ -229,8 +269,9 @@ class MesenOrchestrator:
         frame = self.run_dir / f"look_map_{self.actions:05d}.png"
         frame.write_bytes(self.controller.screenshot())
         context = self._context(observation)
-        map_path = Path(str(context.get("navigation_map", {}).get("full_map_image", "")))
-        if not map_path.exists():
+        map_value = context.get("navigation_map", {}).get("full_map_image")
+        map_path = Path(str(map_value)) if map_value else None
+        if map_path is None or not map_path.is_file():
             result = {"status": "map_unavailable", "frame": str(frame), "question": question}
         elif not self.config["llm"].get("enabled", False):
             result = {
@@ -242,7 +283,11 @@ class MesenOrchestrator:
         else:
             result = self.model.look(frame, context, question, map_frame=map_path)
         self.journal.write(
-            "look_map", question=question, frame=str(frame), map=str(map_path), result=result
+            "look_map",
+            question=question,
+            frame=str(frame),
+            map=str(map_path) if map_path is not None else None,
+            result=result,
         )
         return result
 
@@ -254,124 +299,32 @@ class MesenOrchestrator:
     ) -> BattleDecision:
         if not self.config["llm"].get("enabled", False):
             raise RuntimeError("Battle tactics require the configured LLM")
-        started = time.monotonic()
+        return self.model_gateway.ask_battle(battle_state, legal_options, tactical_advisory)
 
-        def bark(elapsed: float) -> None:
-            print(
-                f"[Battle LLM watchdog] {elapsed:.0f}s without a decision; "
-                "emulator input remains paused.",
-                flush=True,
-            )
-            self.journal.write(
-                "battle_model_watchdog_bark",
-                elapsed_seconds=round(elapsed, 3),
-                ui_stage=battle_state.get("ui_stage"),
-            )
-
-        decision, elapsed = self.watchdog.run(
-            lambda: self.model.choose_battle_action(
-                battle_state,
-                legal_options,
-                tactical_advisory,
-            ),
-            bark,
-        )
-        self.journal.write(
-            "battle_model_decision",
-            decision=asdict(decision),
-            legal_option_ids=[option.resolved_id for option in legal_options],
-            ui_stage=battle_state.get("ui_stage"),
-            elapsed_seconds=round(elapsed, 3),
-            total_elapsed_seconds=round(time.monotonic() - started, 3),
-        )
-        return decision
+    def _dungeon_feedback(self, hook: str, before, after, **kwargs) -> str | None:
+        """Delegate to the active dungeon module for feedback, if registered."""
+        dungeon_cls = get_dungeon(before.game.map_id)
+        if dungeon_cls is None:
+            return None
+        dungeon = dungeon_cls(self.controller)
+        method = getattr(dungeon, hook, None)
+        if method is None:
+            return None
+        return method(before, after, **kwargs)
 
     def _clear_reasoning(self, action_feedback: dict | None = None) -> None:
-        if action_feedback is not None and int(action_feedback.get("delta", 0)) <= 0:
-            self.reasoning_evidence = self.reasoning_evidence[-2:] + [{
-                "type": "action_no_progress",
-                "feedback": action_feedback.get("feedback"),
-                "instruction": "The last emulator action had no confirmed effect. Do not repeat it unchanged; inspect, retrieve, or choose a different reversible action.",
-            }]
-            self.reasoning_steps += 1
-            return
-        self.reasoning_evidence = []
-        self.reasoning_steps = 0
-        self.stall_repeats = 0
+        self.feedback_manager.clear_reasoning(action_feedback)
 
     def _remember_action(
         self, kind: str, before, after, navigation_event: dict | None = None, **details
     ) -> dict:
-        previous_action = self.recent_agent_actions[-1] if self.recent_agent_actions else None
-        if (
-            kind == "move"
-            and previous_action
-            and previous_action.get("kind") == "move"
-            and previous_action.get("before", {}).get("position") == [after.game.x, after.game.y]
-            and previous_action.get("after", {}).get("position") == [before.game.x, before.game.y]
-            and not (navigation_event or {}).get("new_room")
-        ):
-            details["immediate_backtrack"] = True
-        tile_diff = self.tile_buffers.diff(
-            before.game.map_id,
-            before.wram,
-            after.wram,
-            ignore_live_points={
-                (before.game.x, before.game.y),
-                (after.game.x, after.game.y),
-            },
-        ) if before.game.map_id == after.game.map_id else {
-            "available": False, "count": 0, "changes": []
-        }
-        details = {
-            **details,
-            "map_tile_change_count": int(tile_diff.get("semantic_count", 0)),
-            "map_tile_observation_count": int(tile_diff.get("count", 0)),
-            "map_tile_changes": tile_diff.get("changes", []),
-        }
-        completed_landmark = None
-        if self.mapper is not None:
-            completed_landmark = self.mapper.record_action_landmark_effect(
-                kind, before.navigation, tile_diff
-            )
-        if completed_landmark:
-            details["completed_landmark"] = completed_landmark
-            self.mapper.save(self.run_dir / "online_navigation_graph.json")
-        feedback = self.feedback.record(
-            kind, before, after, navigation_event=navigation_event, **details
-        )
-        self.recent_agent_actions.append({
-            "kind": kind,
-            "before": {
-                "position": [before.game.x, before.game.y],
-                "direction": before.game.direction,
-                "mode": before.game.mode,
-            },
-            "after": {
-                "position": [after.game.x, after.game.y],
-                "direction": after.game.direction,
-                "mode": after.game.mode,
-                "blocked_direction": after.game.blocked_direction,
-            },
-            "feedback": feedback,
-            **details,
-        })
-        self.recent_agent_actions = self.recent_agent_actions[-6:]
-        self.action_recorder.record(
-            kind,
-            before,
-            after,
-            feedback,
-            navigation_event=navigation_event,
-            tile_diff=tile_diff,
-            **details,
-        )
-        return feedback
+        return self.feedback_manager.remember_action(kind, before, after, navigation_event, **details)
 
     def run(self) -> dict:
         info = self.controller.connect()
         observation = self.controller.observe()
         self.mapper = self._load_mapper(observation.game.map_id)
+        self.feedback_manager.mapper = self.mapper
         self.mapper.observe(observation.navigation)
         self.journal.write("start", goal=self.goal, execute=self.execute, emulator=info, state=observation.game.compact())
         if not self.execute:
@@ -383,7 +336,6 @@ class MesenOrchestrator:
         limits = self.config["limits"]
         stop_reason = "action_limit"
         started_inside_battle = observation.game.in_battle
-        battle_active = False
         while self.actions < int(limits["max_actions_per_run"]):
             if time.monotonic() - started >= float(limits["max_minutes_per_run"]) * 60:
                 stop_reason = "time_limit"
@@ -408,69 +360,17 @@ class MesenOrchestrator:
                     stop_reason = "battle_model_required"
                     self.journal.write("battle_gate", result=stop_reason)
                     break
-                if not battle_active:
-                    if started_inside_battle and self.actions == 0:
-                        if self.resume_battle_stage == "pre_menu":
-                            self.battle.driver.begin_at_pre_menu()
-                        elif self.resume_battle_stage == "action_cross":
-                            self.battle.driver.resume_at_action_cross(self.resume_battle_actor)
-                        elif self.resume_battle_stage == "results":
-                            self.battle.driver.resume_at_results()
-                        else:
-                            stop_reason = "battle_resume_stage_required"
-                            self.journal.write(
-                                "battle_gate",
-                                result=stop_reason,
-                                reason="A mid-battle launch does not guess pre-menu versus action cross.",
-                            )
-                            break
-                        self.journal.write(
-                            "battle_resumed",
-                            ui_stage=self.resume_battle_stage,
-                            actor_slot=self.resume_battle_actor,
-                        )
-                    else:
-                        self.battle.begin_new_battle()
-                    battle_active = True
-                    self.journal.write("battle_started", state=observation.game.compact())
-                before_battle_step = observation
-                try:
-                    result = self.battle.step(observation)
-                except (ModelStallError, RuntimeError, ValueError, OSError) as exc:
-                    attempted_inputs = self.battle.driver.last_input_count
-                    self.actions += attempted_inputs
-                    stop_reason = "battle_step_rejected"
-                    self.journal.write(
-                        "battle_step_rejected",
-                        error=str(exc),
-                        ui_stage=self.battle.driver.session.stage.value,
-                        attempted_inputs=attempted_inputs,
-                    )
-                    break
-                observation = result.observation
-                self.actions += result.inputs
-                if result.inputs:
-                    self._remember_action(
-                        "battle_step",
-                        before_battle_step,
-                        observation,
-                        battle_event=result.event,
-                        ui_stage=self.battle.driver.session.stage.value,
-                        inputs=result.inputs,
-                    )
-                self.journal.write(
-                    "battle_step",
-                    battle_event=result.event,
-                    inputs=result.inputs,
-                    ui_stage=self.battle.driver.session.stage.value,
-                    state=observation.game.compact(),
+                observation, inputs, stop_reason = self.battle_runner.step(
+                    observation, started_inside_battle, self.actions, self.resume_battle_stage, self.resume_battle_actor
                 )
+                self.actions += inputs
+                if stop_reason:
+                    break
                 if not observation.game.in_battle:
-                    battle_active = False
                     started_inside_battle = False
                     self.mapper.observe(observation.navigation)
                     self._clear_reasoning()
-                elif result.inputs == 0:
+                elif inputs == 0:
                     time.sleep(float(self.config["emulator"].get("settle_seconds", 0.32)))
                 continue
 
@@ -507,7 +407,7 @@ class MesenOrchestrator:
                 self.reasoning_steps += 1
                 continue
             if intent.kind == "retrieve":
-                hits = self.knowledge.search(intent.query or self.goal)
+                hits = self._retrieve(observation, intent.query or self.goal)
                 self.journal.write("retrieval", query=intent.query, hits=hits)
                 self.reasoning_evidence.append(
                     {"type": "retrieval", "query": intent.query, "hits": hits}
@@ -516,11 +416,17 @@ class MesenOrchestrator:
                 continue
             if intent.kind == "interact":
                 before_action = observation
-                observation = self.controller.interact()
+                observation = self.controller.interact(intent.direction)
                 self.actions += 1
-                action_feedback = self._remember_action("interact", before_action, observation)
+                action_feedback = self._remember_action(
+                    "interact", before_action, observation,
+                    requested_direction=intent.direction,
+                )
                 self.mapper.observe(observation.navigation)
-                self.journal.write("interact", action=self.actions, state=observation.game.compact())
+                self.journal.write(
+                    "interact", action=self.actions, direction=intent.direction,
+                    state=observation.game.compact(),
+                )
                 self._clear_reasoning(action_feedback)
                 continue
             if intent.kind == "face":
@@ -565,7 +471,14 @@ class MesenOrchestrator:
                     {"type": "use_tool", "outcome": "observe_effect", "action": self.actions},
                     after_frame,
                 )
+                # Dungeon-specific feedback (e.g. bridge status in Secret Skills Cave)
+                dungeon_msg = self._dungeon_feedback("on_use_tool", before_action, observation)
                 self._clear_reasoning(action_feedback)
+                if dungeon_msg:
+                    self.reasoning_evidence.append({
+                        "type": "dungeon_feedback",
+                        "message": dungeon_msg,
+                    })
                 continue
             if intent.kind == "sword":
                 before_action = observation
@@ -589,7 +502,14 @@ class MesenOrchestrator:
                     after=observation.game.compact(),
                     navigation_event=reset_event,
                 )
+                # Dungeon-specific reset feedback
+                reset_msg = self._dungeon_feedback("on_reset_room", before_reset, observation)
                 self._clear_reasoning(action_feedback)
+                if reset_msg:
+                    self.reasoning_evidence.append({
+                        "type": "dungeon_reset",
+                        "message": reset_msg,
+                    })
                 continue
             if intent.kind == "move":
                 before_action = observation
@@ -600,6 +520,8 @@ class MesenOrchestrator:
                 action_feedback = self._remember_action(
                     "move", before_action, observation, navigation_event=event,
                     requested_direction=intent.direction, requested_tiles=intent.count,
+                    objective_target=(self.active_navigation_target or {}).get("live"),
+                    objective_landmark=(self.active_navigation_target or {}).get("id"),
                 )
                 self.mapper.save(self.run_dir / "online_navigation_graph.json")
                 self.journal.write(

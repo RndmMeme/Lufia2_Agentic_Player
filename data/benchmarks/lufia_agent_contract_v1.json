@@ -1,0 +1,162 @@
+{
+  "schema": "lufia2-model-contract-v1",
+  "description": "Offline contract derived from the completed Mesen Secret Skills Cave reference run. It never controls the emulator.",
+  "minimum_pass_rate": 0.9,
+  "cases": [
+    {
+      "id": "bridge_inactive_use_arrow",
+      "type": "intent",
+      "context": {
+        "goal": "Solve the Room 3 bridge puzzle and continue through the west door.",
+        "game": {"map_id": 5, "map_name": "Secret Skills Cave", "position": [28, 24], "direction": "west", "blocked_direction": null, "mode": "exploration", "progression_items": ["Arrow"]},
+        "selected_dungeon_tool": "arrow",
+        "available_actions": ["move(direction,count=1..4)", "face(direction)", "interact", "sword", "select_tool(tool)", "use_tool", "look", "look_map", "retrieve", "reset_room"],
+        "navigation": {"current_room": {"id": "room_3", "objective": "Shoot the distant switch, cross the completed bridge and take the west door.", "nearby_live_landmarks": [{"id": "arrow_firing_position", "action": "use_tool", "tool": "arrow", "completed": false, "derived_relation": {"at_landmark": true, "manhattan_tiles": 0}, "action_readiness": {"completed": false, "position_ready": true, "facing_now": "west", "required_facing": "west", "facing_ready": true, "next_precondition": null}}]}},
+        "reasoning_evidence": [{"type": "dungeon_feedback", "message": "Bridge inactive; proven tiles [02,22,20]."}],
+        "feedback": {"recent": []}
+      },
+      "accepted_intents": [{"kind": "use_tool"}]
+    },
+    {
+      "id": "bridge_inactive_approach_arrow_position",
+      "type": "intent",
+      "context": {
+        "goal": "Solve the Room 3 bridge puzzle and continue through the west door.",
+        "game": {"map_id": 5, "map_name": "Secret Skills Cave", "position": [28, 29], "direction": "north", "blocked_direction": null, "mode": "exploration", "progression_items": ["Arrow"]},
+        "selected_dungeon_tool": "arrow",
+        "available_actions": ["move(direction,count=1..4)", "face(direction)", "interact", "sword", "select_tool(tool)", "use_tool", "look", "look_map", "retrieve", "reset_room"],
+        "navigation": {
+          "active_landmark": {"id": "arrow_firing_position", "live": [28, 24], "relative": [0, -5], "selection_reason": "bridge is inactive; activate it first", "derived_relation": {"at_landmark": false, "manhattan_tiles": 5, "steps_to_reach": [{"direction": "north", "tiles": 5}], "coordinate_rule": "x increases east; y increases south"}},
+          "current_room": {"id": "room_3", "objective": "On the forward leg shoot the distant switch, cross the completed bridge and take the west door.", "nearby_live_landmarks": [{"id": "arrow_firing_position", "live": [28, 24], "active": true, "action": "use_tool", "tool": "arrow", "completed": false, "derived_relation": {"at_landmark": false, "manhattan_tiles": 5, "steps_to_reach": [{"direction": "north", "tiles": 5}], "coordinate_rule": "x increases east; y increases south"}, "action_readiness": {"completed": false, "position_ready": false, "facing_now": "north", "required_facing": "west", "facing_ready": false, "next_precondition": "reach the landmark first"}}, {"id": "return_to_room_2", "live": [28, 33], "active": false, "relative": [0, 4]}]}
+        },
+        "reasoning_evidence": [{"type": "dungeon_feedback", "message": "Bridge inactive; proven tiles [02,22,20]."}],
+        "feedback": {"recent": []}
+      },
+      "accepted_intents": [{"kind": "move", "direction": "north"}]
+    },
+    {
+      "id": "bridge_complete_continue_west",
+      "type": "intent",
+      "context": {
+        "goal": "Cross the completed Room 3 bridge and continue through the west door.",
+        "game": {"map_id": 5, "map_name": "Secret Skills Cave", "position": [28, 24], "direction": "west", "blocked_direction": null, "mode": "exploration", "progression_items": ["Arrow"]},
+        "selected_dungeon_tool": "arrow",
+        "available_actions": ["move(direction,count=1..4)", "face(direction)", "interact", "sword", "select_tool(tool)", "use_tool", "look", "look_map", "retrieve", "reset_room"],
+        "navigation": {"current_room": {"id": "room_3", "objective": "Cross the completed bridge and take the west door.", "nearby_live_landmarks": [{"id": "arrow_firing_position", "action": "use_tool", "tool": "arrow", "completed": true, "completion_evidence": {"semantic_tile_changes": 3}}, {"id": "bridge_left_side", "kind": "walkable_after_switch", "completed": false, "derived_relation": {"at_landmark": false, "manhattan_tiles": 9, "steps_to_reach": [{"direction": "west", "tiles": 7}, {"direction": "south", "tiles": 2}]}}]}},
+        "reasoning_evidence": [{"type": "dungeon_feedback", "message": "Bridge active; proven tiles [00,02,00]. Do not fire again."}],
+        "feedback": {"recent": [{"kind": "use_tool", "outcome": "positive", "delta": 3}]}
+      },
+      "accepted_intents": [{"kind": "move", "direction": "west"}]
+    },
+    {
+      "id": "wrong_tool_must_switch_to_arrow",
+      "type": "intent",
+      "context": {
+        "goal": "Activate the distant Room 3 switch with Arrow.",
+        "game": {"map_id": 5, "map_name": "Secret Skills Cave", "position": [28, 24], "direction": "west", "blocked_direction": null, "mode": "exploration", "progression_items": ["Hook", "Arrow"]},
+        "selected_dungeon_tool": "hook",
+        "available_actions": ["move(direction,count=1..4)", "face(direction)", "interact", "sword", "select_tool(tool)", "use_tool", "look", "look_map", "retrieve", "reset_room"],
+        "navigation": {"current_room": {"id": "room_3", "objective": "Use Arrow on the distant switch.", "nearby_live_landmarks": [{"id": "arrow_firing_position", "action": "use_tool", "tool": "arrow", "completed": false, "action_readiness": {"completed": false, "position_ready": true, "facing_now": "west", "required_facing": "west", "facing_ready": true, "next_precondition": null}}]}},
+        "reasoning_evidence": [{"type": "tool_mismatch", "message": "Hook is selected, but this landmark explicitly requires Arrow."}],
+        "feedback": {"recent": []}
+      },
+      "accepted_intents": [{"kind": "select_tool", "tool": "arrow"}]
+    },
+    {
+      "id": "dialog_requires_interact",
+      "type": "intent",
+      "context": {
+        "goal": "Continue the active NPC dialog.",
+        "game": {"map_id": 5, "map_name": "Secret Skills Cave", "position": [42, 23], "direction": "north", "blocked_direction": null, "mode": "dialog", "dialog_active": true, "progression_items": []},
+        "selected_dungeon_tool": null,
+        "available_actions": ["interact", "look", "retrieve", "wait"],
+        "navigation": {"current_room": {"id": "room_9"}},
+        "reasoning_evidence": [],
+        "feedback": {"recent": []}
+      },
+      "accepted_intents": [{"kind": "interact"}]
+    },
+    {
+      "id": "room3_before_arrow_visual_action",
+      "type": "intent",
+      "frame": "data/runs/codex_reference_cave/room3_before_arrow.png",
+      "context_ref": "bridge_inactive_use_arrow",
+      "accepted_intents": [{"kind": "use_tool"}]
+    },
+    {
+      "id": "room3_after_arrow_visual_progress",
+      "type": "intent",
+      "frame": "data/runs/codex_reference_cave/room3_after_arrow.png",
+      "context_ref": "bridge_complete_continue_west",
+      "accepted_intents": [{"kind": "move", "direction": "west"}]
+    },
+    {
+      "id": "room5_ladder_base_move_up",
+      "type": "intent",
+      "frame": "data/runs/codex_reference_cave/room5_ladder_align.png",
+      "context": {
+        "goal": "Climb the ladder to restore the upper route.",
+        "game": {"map_id": 5, "map_name": "Secret Skills Cave", "position": [13, 13], "direction": "north", "blocked_direction": null, "mode": "exploration", "progression_items": []},
+        "selected_dungeon_tool": null,
+        "available_actions": ["move(direction,count=1..4)", "face(direction)", "interact", "look", "look_map", "retrieve"],
+        "navigation": {"current_room": {"id": "room_5", "objective": "Reach the upper route using the ladder.", "nearby_live_landmarks": [{"id": "ladder_base", "kind": "elevation_up", "completed": false, "derived_relation": {"at_landmark": true, "manhattan_tiles": 0}}]}},
+        "reasoning_evidence": [{"type": "elevation_rule", "message": "Ladders connect the lower and upper levels."}],
+        "feedback": {"recent": []}
+      },
+      "accepted_intents": [{"kind": "move", "direction": "north"}]
+    },
+    {
+      "id": "room7_hidden_switch_cut_bush",
+      "type": "intent",
+      "frame": "data/runs/codex_reference_cave/room7_switch_approach.png",
+      "context": {
+        "goal": "Expose the switch concealed under the central bush.",
+        "game": {"map_id": 5, "map_name": "Secret Skills Cave", "position": [50, 13], "direction": "north", "blocked_direction": null, "mode": "exploration", "progression_items": []},
+        "selected_dungeon_tool": null,
+        "available_actions": ["move(direction,count=1..4)", "face(direction)", "interact", "sword", "look", "look_map", "retrieve"],
+        "navigation": {"current_room": {"id": "room_7", "objective": "Cut only the necessary bush and activate the hidden switch.", "nearby_live_landmarks": [{"id": "switch_south_approach", "action": "sword", "completed": false, "derived_relation": {"at_landmark": true, "manhattan_tiles": 0}, "action_readiness": {"completed": false, "position_ready": true, "facing_now": "north", "required_facing": "north", "facing_ready": true, "next_precondition": null}}]}},
+        "reasoning_evidence": [{"type": "tutorial", "message": "The switch is under the bush directly north on the pale central floor."}],
+        "feedback": {"recent": []}
+      },
+      "accepted_intents": [{"kind": "sword"}]
+    },
+    {
+      "id": "room8_pick_up_vase",
+      "type": "intent",
+      "frame": "data/runs/codex_reference_cave/room8_pot1_approach.png",
+      "context": {
+        "goal": "Pick up the upper vase so it can be placed on the right floor switch.",
+        "game": {"map_id": 5, "map_name": "Secret Skills Cave", "position": [54, 19], "direction": "north", "blocked_direction": null, "mode": "exploration", "progression_items": []},
+        "selected_dungeon_tool": null,
+        "available_actions": ["move(direction,count=1..4)", "face(direction)", "interact", "look", "look_map", "retrieve", "reset_room"],
+        "navigation": {"current_room": {"id": "room_8", "objective": "Place the upper vase on the right switch.", "nearby_live_landmarks": [{"id": "upper_vase", "kind": "vase", "completed": false, "derived_relation": {"at_landmark": true, "manhattan_tiles": 0}}]}},
+        "reasoning_evidence": [{"type": "tutorial", "message": "A picks up or places a vase."}],
+        "feedback": {"recent": []}
+      },
+      "accepted_intents": [{"kind": "interact"}]
+    },
+    {
+      "id": "room6_ladders_visual_grounding",
+      "type": "vision",
+      "frame": "data/runs/codex_reference_cave/room6_current_ladders.png",
+      "question": "Which visible navigation object lets the actor return from the lower channel to a raised floor?",
+      "context": {"game": {"map_id": 5, "position": [31, 11], "mode": "exploration"}, "known_rule": "Arrow ledges descend; ladders restore elevation."},
+      "required_keyword_groups": [["ladder", "leiter"], ["upper", "raised", "elevation", "hoch", "erhoeht"]]
+    },
+    {
+      "id": "room8_vase_switch_visual_grounding",
+      "type": "vision",
+      "frame": "data/runs/codex_reference_cave/room8_pot1_approach.png",
+      "question": "Identify the movable puzzle object and the floor objects it must be placed on.",
+      "context": {
+        "game": {"map_id": 5, "position": [54, 19], "mode": "exploration"},
+        "show_and_tell": [
+          "The round brown jar beside the actor is the movable vase.",
+          "The two outlined square floor tiles are the pressure switches.",
+          "The white triangle at the north doorway is a door-threshold arrow, not a movable object."
+        ]
+      },
+      "required_keyword_groups": [["vase", "pot", "jar"], ["switch", "button", "plate"]]
+    }
+  ]
+}

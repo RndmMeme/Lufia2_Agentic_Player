@@ -29,6 +29,8 @@ class BattleOption:
     ability_id: int | None = None
     description: str = ""
     target_side: str = "unknown"
+    quantity: int | None = None
+    item_categories: tuple[str, ...] = ()
 
     @property
     def resolved_id(self) -> str:

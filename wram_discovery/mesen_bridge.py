@@ -62,6 +62,7 @@ class MesenFileBridge:
         self.timeout = timeout
         self.latest_state: dict = {"backend": "mesen"}
         self._lock = threading.Lock()
+        self._persistent_mailbox = False
 
     def start(self) -> None:
         self.root.mkdir(parents=True, exist_ok=True)
@@ -77,9 +78,7 @@ class MesenFileBridge:
         with self._lock:
             self.root.mkdir(parents=True, exist_ok=True)
             self._retry_file_action(lambda: self.response_path.unlink(missing_ok=True))
-            temporary = self.request_path.with_suffix(".tmp")
-            temporary.write_text(payload, encoding="utf-8")
-            self._retry_file_action(lambda: os.replace(temporary, self.request_path))
+            self._publish_request(payload)
 
             deadline = time.monotonic() + wait_seconds
             while time.monotonic() < deadline:
@@ -109,6 +108,42 @@ class MesenFileBridge:
                 f"'{LUA_SCRIPT}' im Script Window, aktiviere 'Allow access to I/O "
                 "and OS functions' und starte es mit F5."
             )
+
+    def _publish_request(self, payload: str) -> None:
+        """Publish a request despite cross-user Windows delete restrictions.
+
+        The regular path remains an atomic temp-file replacement.  Mesen can
+        read and truncate a request created by the sandbox account, but on
+        some Windows ACLs it cannot delete that file.  Its frame callback then
+        polls the persistent empty file often enough that replacing the target
+        can remain denied.  In that one case, overwrite the already-empty
+        mailbox in place; Lua ignores the short empty interval and processes
+        the complete payload on a later frame.
+        """
+        def overwrite_mailbox() -> None:
+            with self.request_path.open("w", encoding="utf-8", newline="") as handle:
+                handle.write(payload)
+                handle.flush()
+
+        # Once cross-user ACLs prove that Mesen can truncate but not delete the
+        # mailbox, do not spend the retry timeout rediscovering that fact for
+        # every dump, screenshot and input command in the same controller run.
+        if self._persistent_mailbox:
+            self._retry_file_action(overwrite_mailbox)
+            return
+
+        temporary = self.request_path.with_suffix(".tmp")
+        temporary.write_text(payload, encoding="utf-8")
+        try:
+            self._retry_file_action(lambda: os.replace(temporary, self.request_path))
+            return
+        except PermissionError:
+            self._persistent_mailbox = True
+
+        try:
+            self._retry_file_action(overwrite_mailbox)
+        finally:
+            self._retry_file_action(lambda: temporary.unlink(missing_ok=True))
 
     @staticmethod
     def _retry_file_action(action, timeout: float = 2.0) -> None:

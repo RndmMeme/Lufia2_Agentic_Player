@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Benchmark local multimodal models against the actual bounded agent contract."""
+"""Deprecated prototype benchmark.
+
+It mixed synthetic cases with a live Mesen screenshot and could therefore touch
+the bridge before a model was qualified.  Use ``benchmark_lufia_agent.py``;
+that replacement is recorded, machine-checkable, and strictly offline.
+"""
 
 from __future__ import annotations
 
@@ -79,6 +84,9 @@ def unload(base_url: str, model: str) -> None:
 
 
 def main() -> int:
+    raise SystemExit(
+        "Deprecated unsafe benchmark. Use: python tools\\benchmark_lufia_agent.py"
+    )
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--models", nargs="+", default=list(DEFAULT_MODELS))
     parser.add_argument("--skip-vision", action="store_true")

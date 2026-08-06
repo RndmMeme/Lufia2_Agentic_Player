@@ -84,6 +84,28 @@ class BattleMenuCaptureTests(unittest.TestCase):
         self.assertEqual(by_name["Charred newt"].menu_index, 2)
         self.assertFalse(by_name["Curselifter"].usable)
 
+    def test_owned_battle_items_are_categorized_without_full_inventory_noise(self):
+        data = capture("battle_item_cursor_1.bin")
+        state = BattleState.from_wram(data)
+        options = BattleMenuReader.battle_items(state, actor_slot=0)
+        by_name = {option.name: option for option in options}
+        self.assertIn("Charred Newt", by_name)
+        self.assertEqual(1, by_name["Charred Newt"].quantity)
+        self.assertIn("healing", by_name["Charred Newt"].item_categories)
+        self.assertIn("mp_restore", by_name["Charred Newt"].item_categories)
+        self.assertEqual(2, by_name["Charred Newt"].menu_index)
+        self.assertIn("Shriek", by_name)
+        self.assertIn("remedy", by_name["Shriek"].item_categories)
+        self.assertNotIn("control", by_name["Shriek"].item_categories)
+        self.assertIn("Freeze Ball", by_name)
+        self.assertIn("control", by_name["Freeze Ball"].item_categories)
+        self.assertNotIn("Buster Sword", by_name)
+
+        macros = BattleMenuReader.item_macros(state, actor_slot=0)
+        self.assertIn("healing", macros)
+        self.assertIn("remedy", macros)
+        self.assertIn("control", macros)
+
     def test_ip_capture_uses_rendered_skill_and_equipment_id(self):
         data = capture("battle_ip_cursor_1_zirco_ax.bin")
         options = BattleMenuReader.visible_ip(data, actor_slot=0)

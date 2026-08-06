@@ -565,7 +565,17 @@ class OnlineNavigationMapper:
             completion = self.state.get("completed_landmarks", {}).get(completion_key)
             item["completed"] = bool(completion)
             if completion:
-                item["completion_evidence"] = completion
+                item["completion_evidence"] = {
+                    "action": completion.get("action"),
+                    "position": completion.get("position"),
+                    "semantic_tile_change_count": completion.get("semantic_tile_change_count"),
+                    "changed_live_tiles": [
+                        change.get("live")
+                        for change in completion.get("tile_changes", [])
+                        if change.get("live")
+                    ],
+                    "completed_at": completion.get("completed_at"),
+                }
             item["derived_relation"] = {
                 "at_landmark": at_landmark,
                 "manhattan_tiles": abs(dx) + abs(dy),
@@ -587,6 +597,28 @@ class OnlineNavigationMapper:
                             if at_landmark and required_facing
                             else "reach the landmark first"
                         )
+                    ),
+                }
+            landmark_kind = str(landmark.get("kind", "")).casefold()
+            is_transit = (
+                "door" in landmark_kind
+                or "exit" in landmark_kind
+                or landmark_kind == "transition"
+            )
+            if is_transit and required_facing in DIRECTIONS:
+                item["traversal"] = {
+                    "action": "move",
+                    "direction": required_facing,
+                    "position_ready": at_landmark,
+                    "next_step": (
+                        f"move {required_facing} through the threshold"
+                        if at_landmark
+                        else "reach the landmark first"
+                    ),
+                    "interaction_required": False,
+                    "success_signal": (
+                        "confirmed room transit or coordinate/layout discontinuity; "
+                        "map_id may remain unchanged"
                     ),
                 }
             landmarks.append(item)
@@ -649,6 +681,7 @@ class OnlineNavigationMapper:
                 "facing": facing,
                 "semantic_tile_change_count": int(tile_diff.get("semantic_count", 0)),
                 "tile_changes": changes[:12],
+                "effect_region_after": tile_diff.get("effect_region_after"),
                 "completed_at": datetime.now(timezone.utc).isoformat(),
             }
             self.state["completed_landmarks"][key] = completion
@@ -677,8 +710,20 @@ class OnlineNavigationMapper:
             ):
                 continue
             for direction in list(edges):
-                if edges[direction].get("outcome") == "blocked_now":
-                    expired.append({"source": node_key, "direction": direction, "edge": edges.pop(direction)})
+                    if edges[direction].get("outcome") == "blocked_now":
+                        expired.append({"source": node_key, "direction": direction, "edge": edges.pop(direction)})
+        expired_landmarks = []
+        room = self._room_record(current_room)
+        resettable_ids = {
+            str(landmark.get("id"))
+            for landmark in (room or {}).get("reference_landmarks", [])
+            if landmark.get("resettable")
+        }
+        for landmark_id in resettable_ids:
+            key = f"{current_room}:{landmark_id}"
+            completion = self.state["completed_landmarks"].pop(key, None)
+            if completion is not None:
+                expired_landmarks.append(completion)
         node, _ = self.observe(observation)
         event = {
             "index": len(self.state["events"]) + 1,
@@ -686,6 +731,7 @@ class OnlineNavigationMapper:
             "node": node,
             "room": current_room,
             "expired_blocked_now": expired,
+            "expired_completed_landmarks": expired_landmarks,
         }
         self.state["events"].append(event)
         return event

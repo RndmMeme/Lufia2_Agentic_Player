@@ -33,10 +33,12 @@ class Intent:
         direction = value.get("direction")
         if direction is not None:
             direction = str(direction).casefold()
-        count = int(value.get("count", 1))
+        count = int(value.get("count") or 1)
         if kind in {"move", "face"}:
             if direction not in MOVE_DIRECTIONS:
                 raise ValueError(f"{kind} intent requires north/south/east/west")
+        if kind == "interact" and direction is not None and direction not in MOVE_DIRECTIONS:
+            raise ValueError("interact direction must be north/south/east/west or null")
         if kind == "move":
             if not 1 <= count <= max_move_batch:
                 raise ValueError(f"Move count must be 1..{max_move_batch}")

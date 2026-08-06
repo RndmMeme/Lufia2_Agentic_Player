@@ -51,8 +51,26 @@ class FeedbackLedger:
             delta += 15
             reasons.append("map transition reached")
         elif distance:
-            delta += min(8, distance * 2)
-            reasons.append(f"position advanced by {distance} tile(s)")
+            target = details.get("objective_target")
+            if isinstance(target, (list, tuple)) and len(target) == 2:
+                before_distance = abs(before_pos[0] - int(target[0])) + abs(before_pos[1] - int(target[1]))
+                after_distance = abs(after_pos[0] - int(target[0])) + abs(after_pos[1] - int(target[1]))
+                improvement = before_distance - after_distance
+                details["objective_distance_before"] = before_distance
+                details["objective_distance_after"] = after_distance
+                if improvement > 0:
+                    delta += min(8, improvement * 2)
+                    reasons.append(f"distance to active landmark decreased by {improvement} tile(s)")
+                elif improvement < 0:
+                    reasons.append(
+                        f"distance to active landmark increased by {abs(improvement)} tile(s); "
+                        "this may be a valid detour or backtrack"
+                    )
+                else:
+                    reasons.append("movement did not reduce distance to the active landmark")
+            else:
+                delta += min(8, distance * 2)
+                reasons.append(f"position advanced by {distance} tile(s)")
         if before.game.event_flags != after.game.event_flags or before.game.dungeon_flags != after.game.dungeon_flags:
             delta += 8
             reasons.append("persistent game or dungeon state changed")
@@ -80,8 +98,7 @@ class FeedbackLedger:
             delta += 2
             reasons.append(f"tool selection verified: {details.get('tool')}")
         if details.get("immediate_backtrack"):
-            delta -= 6
-            reasons.append("immediate return to the previous position without new evidence")
+            reasons.append("backtracking observed; valid for route testing or dungeon topology")
         visual_change_ratio = float(details.get("visual_change_ratio", 0.0))
         if visual_change_ratio >= 0.005:
             delta += 5

@@ -30,6 +30,7 @@ ALIASES = {
     "trial key": "trial",
     "truth key": "truth",
     "wind key": "wind",
+    "shrine key": "shrine",
 }
 
 

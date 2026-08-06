@@ -86,11 +86,18 @@ class BattleCoordinator:
         usable = [option for option in options if option.usable]
         if not usable:
             raise RuntimeError(f"No legal option at battle stage {self.driver.session.stage.value}")
-        decision = self.decide(
-            self._state_payload(state, self.driver.session.stage),
-            usable,
-            self.policy.situation(state, self.memory),
-        )
+        stage = self.driver.session.stage
+        payload = self._state_payload(state, stage)
+        advisory = self.policy.situation(state, self.memory)
+        if stage == BattleInputStage.ACTION_CROSS:
+            item_macros = BattleMenuReader.item_macros(state, self.driver.session.actor_slot)
+            if item_macros:
+                advisory["available_item_macros"] = item_macros
+                advisory["item_visibility_policy"] = (
+                    "These are curated tactical subsets of owned items. Choose Item to inspect "
+                    "the complete usable battle inventory."
+                )
+        decision = self.decide(payload, usable, advisory)
         selected = next(
             (option for option in usable if option.resolved_id == decision.option_id),
             None,
@@ -128,7 +135,10 @@ class BattleCoordinator:
             identity = state.game.party[actor].identity
             options = BattleMenuReader.visible_magic(data, actor, identity)
         elif menu == BattleMenuType.ITEM:
-            options = BattleMenuReader.visible_items(data, actor)
+            # Once Item has been explicitly selected, expose every curated,
+            # owned battle-usable item. Stable storage slots allow the driver
+            # to scroll to entries outside the six currently rendered rows.
+            options = BattleMenuReader.battle_items(state, actor)
         elif menu == BattleMenuType.IP:
             options = BattleMenuReader.visible_ip(data, actor)
         else:

@@ -22,6 +22,9 @@ class TileBufferRegistryTests(unittest.TestCase):
         data[0x4C91] = 0x08
         context = self.registry.context(5, 28, 55, bytes(data), radius=1)
         self.assertTrue(context["available"])
+        self.assertEqual("ACTOR_LOCAL_3X3", context["role"])
+        self.assertEqual(3, len(context["rows"]))
+        self.assertTrue(all(len(row) == 3 for row in context["rows"]))
         self.assertEqual(context["rows"][1][1], "@")
         west = next(cell for cell in context["cardinal_cells"] if cell["relative"] == [-1, 0])
         self.assertEqual(west["family"], "obstacle")
@@ -54,6 +57,22 @@ class TileBufferRegistryTests(unittest.TestCase):
         self.assertEqual(result["count"], 2)
         self.assertEqual(result["semantic_count"], 0)
         self.assertEqual(result["occupancy_count"], 2)
+
+    def test_effect_context_is_three_by_three_around_remote_changes(self):
+        registration = self.registry.registration(5)
+        data = bytearray(0x20000)
+        for y, value in zip((26, 27, 28), (0x00, 0x02, 0x00)):
+            data[self.registry._address(registration["buffer"], 24, y)] = value
+        changes = [
+            {"live": [24, y], "semantic_family_change": True}
+            for y in (26, 27, 28)
+        ]
+        effect = self.registry.effect_context(5, changes, bytes(data), radius=1)
+        self.assertEqual([24, 27], effect["center_live"])
+        self.assertEqual(3, len(effect["rows"]))
+        self.assertTrue(all(len(row) == 3 for row in effect["rows"]))
+        self.assertNotIn("@", "".join(effect["rows"]))
+        self.assertEqual([[24, 26], [24, 27], [24, 28]], effect["changed_live_tiles"])
 
 
 if __name__ == "__main__":

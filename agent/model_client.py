@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import copy
 import json
 import re
 import threading
@@ -17,7 +18,7 @@ from .battle.policy import BattleOption
 
 
 DEFAULT_PROVIDERS = (
-    {"name": "ollama", "base_url": "http://127.0.0.1:11434"},
+    {"name": "ollama", "base_url": "http://127.0.0.1:11435"},
     {"name": "llama_cpp", "base_url": "http://127.0.0.1:8080/v1"},
     {"name": "koboldcpp", "base_url": "http://127.0.0.1:5001/v1"},
 )
@@ -121,7 +122,8 @@ class LocalModelClient:
                 else:
                     response = requests.get(self._join(base_url, "models"), timeout=timeout)
                     self._raise_with_provider_error(response)
-                    models = [item.get("id") for item in response.json().get("data", [])]
+                    provider_payload = response.json()
+                    models = [item.get("id") for item in provider_payload.get("data", [])]
                 models = [model for model in models if model]
                 model = candidate.get("model") or self.config.get("model") or (models[0] if models else None)
                 if not model:
@@ -129,6 +131,16 @@ class LocalModelClient:
                     continue
                 resolved = dict(candidate)
                 resolved["model"] = model
+                if name != "ollama":
+                    advertised = provider_payload.get("models", [])
+                    matching = next(
+                        (
+                            item for item in advertised
+                            if item.get("name") == model or item.get("model") == model
+                        ),
+                        advertised[0] if advertised else {},
+                    )
+                    resolved["capabilities"] = matching.get("capabilities", [])
                 self._resolved = resolved
                 return dict(resolved)
             except (requests.RequestException, OSError, ValueError, KeyError, TypeError) as exc:
@@ -200,9 +212,16 @@ class LocalModelClient:
         payload = {
             "model": model,
             "messages": messages,
-            "max_tokens": int(self.config.get("max_tokens", 220)),
+            "max_tokens": int(
+                self.config.get(f"{role}_max_tokens", self.config.get("max_tokens", 220))
+            ),
             "temperature": float(self.config.get("temperature", 0.1)),
         }
+        if response_format is not None:
+            payload["response_format"] = {
+                "type": "json_schema",
+                "json_schema": {"name": f"lufia2_{role}", "schema": response_format},
+            }
         response = requests.post(
             self._join(provider["base_url"], "chat/completions"),
             json=payload,
@@ -229,7 +248,13 @@ class LocalModelClient:
             )
             self._raise_with_provider_error(unload)
 
-    def choose_intent(self, context: dict, max_move_batch: int, frame: Path | None = None) -> Intent:
+    def choose_intent(
+        self,
+        context: dict,
+        max_move_batch: int,
+        frame: Path | None = None,
+        frames: list[Path] | None = None,
+    ) -> Intent:
         system = (
             "You are the bounded decision layer for a Lufia II randomizer speedrun agent. "
             "You alone choose exploration directions; map and WRAM code never choose for you. "
@@ -237,33 +262,50 @@ class LocalModelClient:
             "A directed blocked_now observation is not automatically a wall or reverse block. "
             "Valid exploration kinds: move, face, interact, sword, select_tool, use_tool, "
             "look, look_map, reset_room, wait, retrieve. "
-            "If mode is dialog, choose interact. If mode is battle, choose battle_attack unless evidence "
-            "requires fleeing. Use reset_room only to reset a failed puzzle state or intentionally respawn room actors. "
-            "Use face to turn without walking. select_tool requires tool=hook|bomb|arrow|fire_arrow|hammer; "
-            "use_tool presses Y; sword presses B; interact presses A. "
-            "Facing only turns in place. Never choose face when already facing that direction; "
-            "move to align the actor's row or column with a visible ranged target before use_tool. "
-            "Only use an ASCII @ marker when coordinate_semantics_available is true. When runtime alignment is "
-            "room_landmarks, the stitched map is visual reference only and active-room live landmarks are authoritative. "
-            "Curated markers are evidence, not commands. "
-            "tile_buffer is a small actor-centered, map-scoped WRAM view: @ is the actor's feet. "
-            "Use it as local tile-family evidence only; unknown values and occupancy do not prove walkability. "
-            "For live landmarks, trust derived_relation: x increases east and y increases south. "
-            "Never move north to reach a landmark whose derived step says south. At an action landmark, stop moving; "
-            "satisfy action_readiness (facing/tool) and then execute the stated action. "
-            "If the current frame and context are insufficient, ask look_map or retrieve rather than guessing. "
-            "Use the feedback ledger: repeat positively rewarded behavior when relevant and change choices after "
-            "negative feedback. Reversible experiments are better than passive waiting; use wait only for an active animation. "
-            "Do not immediately return to the prior position after a rewarded open move unless new evidence requires it; "
-            "a known reverse edge is not forward progress toward the room objective. "
-            "Your output budget is scarce: decide within the supplied evidence and keep the rationale short. "
-            "If reasoning_evidence contains LOOK or retrieval results, use them and choose an executable next intent."
+            "If mode is dialog, choose interact. Use reset_room only to reset a failed puzzle "
+            "or intentionally respawn room actors. Use face to turn without walking. "
+            "select_tool requires tool=hook|bomb|arrow|fire_arrow|hammer; use_tool presses Y; "
+            "sword presses B; interact with direction=null presses A, while interact(direction) "
+            "presses direction+A to test pushing, pickup, or directional activation. Chests and NPCs "
+            "use interact. Normal dungeon doors "
+            "are traversed by moving through their north-south threshold unless curated evidence names "
+            "another action; never use use_tool merely to open a door. "
+            "Treat available_actions as the executable contract for this decision. The kind must match "
+            "the action named in your rationale. For live landmarks, trust derived_relation: "
+            "x increases east and y increases south. At an incomplete action landmark, consider "
+            "action_readiness and the observed result. "
+            "If decision_phase.mode is act_now, choose an executable emulator action instead of more perception. "
+            "When an action landmark is fully ready, perform its required action before leaving it. "
+            "When navigation.active_landmark exists, it is the single state-resolved current target; "
+            "other nearby landmarks are context, not competing objectives. "
+            "Outside battle, read game.position, navigation_map.ascii_crop, tile_buffer, and the "
+            "chronological screenshots together. The newest screenshot is authoritative. "
+            "When spatial_correlation is present, it joins the failed action, collision byte, "
+            "actor-local adjacent tile, and target vector. Prefer that correlated evidence over "
+            "an unsupported navigation guess. A collision plus a tile family proves only impassable_now; "
+            "only curated blocked evidence proves a wall. "
+            "A direction aligned with the target is only a heuristic, not proof of a valid local "
+            "path. Try other local edges when needed. Backtracking is always allowed and is often "
+            "required by dungeon topology; distinguish useful backtracking from pointless oscillation. "
+            "Room labels are hypotheses unless a known transit or coordinate discontinuity confirms them; "
+            "map_id identifies the dungeon/floor, not an internal room. "
+            "The full inventory is deliberately omitted during exploration. Only if it is necessary, "
+            "request retrieve with query='current inventory'; this request has a ten-minute cooldown. "
+            "Dungeon tools are never omitted: exploration_relevant_items lists every tool and whether "
+            "it is owned, selected, or locally required. Available tools may solve puzzles and can "
+            "stun dungeon enemies to avoid unnecessary battles. Never select an unavailable tool. "
+            "A completed landmark is history: "
+            "continue to the next objective and do not repeat it. Use the feedback ledger and change "
+            "choices after neutral or negative feedback. Ask look, look_map, or retrieve when evidence "
+            "is insufficient. "
+            "Return exactly kind, direction, count, question, query, tool, rationale. Use null for unused "
+            "direction/question/query/tool. Keep rationale below 20 words."
         )
         user = {
             "state_and_goal": context,
             "schema": {
-                "kind": "valid kind",
-                "direction": "north|south|east|west for move",
+                "kind": "valid kind for the current game mode",
+                "direction": "north|south|east|west for move or directed interact",
                 "count": f"1..{max_move_batch}",
                 "question": "for look",
                 "query": "for retrieve",
@@ -273,17 +315,43 @@ class LocalModelClient:
         }
         role = "deliberate" if len(context.get("reasoning_evidence", [])) >= 2 else "planner"
         content: str | list[dict] = json.dumps(user, ensure_ascii=False)
-        if frame is not None:
-            encoded = base64.b64encode(frame.read_bytes()).decode("ascii")
-            content = [
-                {"type": "text", "text": json.dumps(user, ensure_ascii=False)},
-                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{encoded}"}},
-            ]
+        visual_frames = list(frames or ([] if frame is None else [frame]))
+        if visual_frames:
+            content = [{
+                "type": "text",
+                "text": (
+                    json.dumps(user, ensure_ascii=False)
+                    + "\nScreenshots follow in chronological order (oldest to newest). "
+                    "Use the newest as the current visual state."
+                ),
+            }]
+            for index, visual_frame in enumerate(visual_frames, start=1):
+                encoded = base64.b64encode(visual_frame.read_bytes()).decode("ascii")
+                content.append({
+                    "type": "text",
+                    "text": f"Frame {index}/{len(visual_frames)}"
+                    + (" (CURRENT)" if index == len(visual_frames) else " (PREVIOUS)"),
+                })
+                content.append({
+                    "type": "image_url",
+                    "image_url": {"url": f"data:image/png;base64,{encoded}"},
+                })
             role = "vision"
+        intent_format = copy.deepcopy(INTENT_FORMAT)
+        available_kinds = {
+            str(action).split(" ", 1)[0].split("(", 1)[0]
+            for action in context.get("available_actions", [])
+        }
+        allowed_kinds = [
+            kind for kind in INTENT_FORMAT["properties"]["kind"]["enum"]
+            if kind in available_kinds
+        ]
+        if allowed_kinds:
+            intent_format["properties"]["kind"]["enum"] = allowed_kinds
         raw = self._chat(
             [{"role": "system", "content": system}, {"role": "user", "content": content}],
             role=role,
-            response_format=INTENT_FORMAT,
+            response_format=intent_format,
         )
         parsed = self._json_object(raw)
         try:
@@ -292,6 +360,13 @@ class LocalModelClient:
             raise ValueError(f"{exc}; model_json={json.dumps(parsed, ensure_ascii=False)[:700]}") from exc
 
     def look(self, frame: Path, context: dict, question: str, map_frame: Path | None = None) -> dict:
+        provider = self.detect()
+        capabilities = provider.get("capabilities", [])
+        if capabilities and not ({"vision", "multimodal"} & set(capabilities)):
+            raise RuntimeError(
+                f"Loaded {provider['name']} model exposes {capabilities}, not vision; "
+                "start it with a compatible multimodal projector or configure a vision provider"
+            )
         encoded = base64.b64encode(frame.read_bytes()).decode("ascii")
         prompt = (
             f"Question: {question}\n"
@@ -311,6 +386,7 @@ class LocalModelClient:
         raw = self._chat(
             [{"role": "user", "content": content}],
             role="vision",
+            response_format=VISION_FORMAT,
         )
         return self._json_object(raw)
 
@@ -328,6 +404,9 @@ class LocalModelClient:
             "Consider initiative, probable incoming damage, healing timing, HP/MP/IP reserves, status, "
             "items, observed physical or elemental effectiveness, enemy remaining HP, escape, defend, "
             "and RNG risk. A non-caster cannot cast. Do not invent actions, costs, resistances or targets. "
+            "At the action cross, available_item_macros contains only curated tactical subsets of items "
+            "actually owned. The complete usable battle inventory is intentionally withheld until Item "
+            "is selected; then legal_options contains the complete list. "
             "Return concise JSON with your choice, rationale, risk_assessment, and a contingency for the "
             "next command phase if the result is poor. Keep each explanation field below 30 words."
         )
