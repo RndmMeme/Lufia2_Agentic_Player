@@ -57,6 +57,39 @@ class ContextHarnessTests(unittest.TestCase):
         for noisy in ("party", "enemies", "gold", "progression_items", "inventory"):
             self.assertNotIn(noisy, game)
         self.assertNotIn("dialog_active", game)
+        for redundant in ("feedback", "episode_summary", "recent_events", "dungeon_context"):
+            self.assertNotIn(redundant, compact)
+
+    def test_exploration_context_stays_small_with_redundant_history(self):
+        raw = raw_context()
+        raw.update({
+            "navigation_map": {
+                "available": True,
+                "ascii_crop": "\n".join([f"{y:02d} " + "." * 19 for y in range(19)]),
+                "nearby_curated_markers": [{"type": "door", "notes": "x" * 100}] * 16,
+            },
+            "navigation": {
+                "current_room": {
+                    "id": "room_3", "objective": "Reach the west door",
+                    "success_evidence": "Transit reached",
+                    "nearby_live_landmarks": [
+                        {"id": f"target_{index}", "live": [index, index],
+                         "derived_relation": {"manhattan_tiles": index}}
+                        for index in range(8)
+                    ],
+                },
+                "progress": {"room_history": [{"from": "a", "to": "b"}] * 40},
+            },
+            "feedback": {"recent": [{"feedback": "noise" * 100}] * 6},
+            "recent_events": [{"index": index, "outcome": "open"} for index in range(20)],
+            "reasoning_evidence": [{"type": "look", "result": "evidence" * 100}],
+            "memory_access": {"available": True, "query": "short term memory"},
+        })
+        with tempfile.TemporaryDirectory() as directory:
+            compact = ContextHarness({"max_prompt_chars": 10500}, Path(directory)).compact(raw)
+            self.assertLess(compact["context_budget"]["chars"], 7000)
+            self.assertEqual(3, len(compact["navigation"]["current_room"]["reference_landmarks"]))
+            self.assertTrue((Path(directory) / "prompt_stats.jsonl").exists())
 
     def test_dialog_and_battle_fields_are_mode_gated(self):
         raw = raw_context()
@@ -114,6 +147,52 @@ class ContextHarnessTests(unittest.TestCase):
         self.assertEqual("ACTOR_LOCAL_3X3", compact["tile_buffer"]["role"])
         effect = compact["navigation"]["confirmed_world_changes"][0]["effect_region_after"]
         self.assertEqual("POST_ACTION_EFFECT_REGION", effect["role"])
+
+    def test_task_progress_separates_completed_goal_clause_from_current_step(self):
+        raw = raw_context()
+        raw["navigation"] = {
+            "active_landmark": {
+                "id": "bridge_left_side", "live": [21, 26],
+                "selection_reason": "bridge activated; cross west",
+            },
+            "confirmed_world_changes": [{
+                "source_landmark": "arrow_firing_position",
+                "effect": {"message": "Bridge activated; do not shoot again."},
+            }],
+            "current_room": {"id": "room_3", "nearby_live_landmarks": []},
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            compact = ContextHarness({"max_prompt_chars": 5000}, Path(directory)).compact(raw)
+        self.assertEqual("arrow_firing_position", compact["task_progress"]["completed_steps"][0]["landmark"])
+        self.assertEqual("bridge_left_side", compact["task_progress"]["current_step"]["landmark"])
+
+    def test_task_progress_uses_transit_continuation_checkpoint(self):
+        raw = raw_context()
+        raw["navigation"] = {
+            "active_landmark": {
+                "id": "west_door_approach",
+                "live": [17, 23],
+                "effective_live": [17, 21],
+                "selection_reason": "continue through the door",
+                "traversal": {
+                    "phase": "crossing_threshold",
+                    "direction": "north",
+                    "next_step": "continue north through the threshold",
+                },
+                "checkpoint": {
+                    "id": "west_door_approach",
+                    "type": "traversal",
+                    "status": "crossing_threshold",
+                },
+            },
+            "current_room": {"id": "room_3", "nearby_live_landmarks": []},
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            compact = ContextHarness({"max_prompt_chars": 5000}, Path(directory)).compact(raw)
+        step = compact["task_progress"]["current_step"]
+        self.assertEqual([17, 21], step["target"])
+        self.assertEqual("crossing_threshold", step["traversal_phase"])
+        self.assertEqual("continue through the door", step["reason"])
 
     def test_thinking_gate_rejects_repeat_without_state_change(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -234,6 +313,57 @@ class ContextHarnessTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(ModelDriftError, "unavailable action look"):
             gate.validate(Intent("look"), context, 1)
+
+    def test_thinking_gate_rejects_model_initiated_room_reset(self):
+        gate = ThinkingGate({"max_thinking_seconds": 270})
+        context = {
+            "game": {"map_id": 5, "position": [17, 20], "mode": "exploration"},
+            "available_actions": ["move(direction,count=1..4)", "face(direction)"],
+            "navigation": {"current_room": {"nearby_live_landmarks": []}},
+        }
+        with self.assertRaisesRegex(ModelDriftError, "unavailable action reset_room"):
+            gate.validate(Intent("reset_room"), context, 1)
+
+    def test_thinking_gate_requires_recovery_ticket_even_if_reset_is_advertised(self):
+        gate = ThinkingGate({"max_thinking_seconds": 270})
+        context = {
+            "game": {"map_id": 5, "position": [7, 21], "mode": "exploration"},
+            "available_actions": ["reset_room (conditional puzzle recovery)"],
+            "room_reset_recovery": {"eligible": False},
+            "navigation": {"current_room": {"nearby_live_landmarks": []}},
+        }
+        with self.assertRaisesRegex(ModelDriftError, "no current curated recovery ticket"):
+            gate.validate(Intent("reset_room"), context, 1)
+
+        context["room_reset_recovery"]["eligible"] = True
+        gate.validate(Intent("reset_room"), context, 1)
+
+    def test_thinking_gate_enforces_dungeon_tool_landmark_preconditions(self):
+        gate = ThinkingGate({"max_thinking_seconds": 270})
+        context = {
+            "game": {"map_id": 5, "position": [28, 29], "mode": "exploration"},
+            "selected_dungeon_tool": "arrow",
+            "available_actions": ["move(direction,count=1..4)", "interact(direction optional)", "use_tool using Y"],
+            "navigation": {
+                "active_landmark": {
+                    "id": "arrow_firing_position", "action": "use_tool",
+                    "action_readiness": {
+                        "completed": False, "position_ready": False,
+                        "facing_ready": False, "required_facing": "west",
+                    },
+                },
+                "current_room": {"nearby_live_landmarks": []},
+            },
+        }
+        with self.assertRaisesRegex(ModelDriftError, "requires reaching"):
+            gate.validate(Intent("use_tool", rationale="shoot arrow"), context, 1)
+        with self.assertRaisesRegex(ModelDriftError, "interact presses A"):
+            gate.validate(Intent("interact", direction="west", rationale="shoot arrow"), context, 1)
+        gate.validate(Intent("move", direction="north"), context, 1)
+
+        readiness = context["navigation"]["active_landmark"]["action_readiness"]
+        readiness.update(position_ready=True, facing_ready=True)
+        gate.validate(Intent("use_tool", rationale="shoot arrow"), context, 1)
 
     def test_spatial_correlation_does_not_override_available_actions(self):
         gate = ThinkingGate({"max_thinking_seconds": 270})

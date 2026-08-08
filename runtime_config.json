@@ -75,8 +75,9 @@
     "min_actions_between_calls": 0,
     "exploration_inventory_cooldown_seconds": 600,
     "exploration_visual_context": true,
-    "exploration_visual_history_frames": 2,
-    "exploration_visual_burst_on_blocked": 3
+    "exploration_visual_history_frames": 1,
+    "exploration_visual_burst_on_blocked": 1,
+    "cleanup_intent_frames_after_call": true
   },
   "limits": {
     "max_actions_per_run": 200,

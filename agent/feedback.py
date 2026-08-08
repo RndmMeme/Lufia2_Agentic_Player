@@ -99,6 +99,13 @@ class FeedbackLedger:
             reasons.append(f"tool selection verified: {details.get('tool')}")
         if details.get("immediate_backtrack"):
             reasons.append("backtracking observed; valid for route testing or dungeon topology")
+        completed_checkpoint = details.get("completed_checkpoint")
+        if completed_checkpoint:
+            delta += 4
+            reasons.append(
+                f"checkpoint confirmed: {completed_checkpoint.get('id')} "
+                f"({completed_checkpoint.get('success')})"
+            )
         visual_change_ratio = float(details.get("visual_change_ratio", 0.0))
         if visual_change_ratio >= 0.005:
             delta += 5

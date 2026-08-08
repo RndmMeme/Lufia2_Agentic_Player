@@ -27,6 +27,7 @@ from agent.context_builder import ContextBuilder
 from agent.feedback_manager import FeedbackManager
 from agent.model_gateway import ModelGateway
 from agent.battle_runner import BattleRunner
+from agent.short_term_memory import ShortTermMemory
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -76,6 +77,9 @@ class MesenOrchestrator:
         self.journal = RunJournal(run_dir)
         self.action_recorder = ActionOutcomeRecorder(run_dir / "action_outcomes.jsonl")
         self.feedback = FeedbackLedger(run_dir / "feedback_ledger.json")
+        self.short_term_memory = ShortTermMemory(
+            run_dir / "short_term_memory.json", goal
+        )
         self.keyframes = KeyframeObserver(run_dir, min_action_gap=5)
         self.context_harness = ContextHarness(config["llm"], run_dir)
         self.thinking_gate = ThinkingGate(config["llm"])
@@ -94,7 +98,10 @@ class MesenOrchestrator:
         self.active_navigation_target: dict | None = None
         # Modular components
         self.context_builder = ContextBuilder(self.progression, self.dungeons, self.tutorial, self.tile_buffers)
-        self.feedback_manager = FeedbackManager(self.feedback, self.action_recorder, self.mapper, self.tile_buffers, run_dir)
+        self.feedback_manager = FeedbackManager(
+            self.feedback, self.action_recorder, self.mapper, self.tile_buffers,
+            run_dir, memory=self.short_term_memory,
+        )
         self.model_gateway = ModelGateway(
             self.model,
             self.watchdog,
@@ -152,6 +159,8 @@ class MesenOrchestrator:
         raw = self.context_builder.build(
             observation, self.goal, self.mapper, self.feedback, self.reasoning_evidence, self.recent_agent_actions
         )
+        self.short_term_memory.update_context(raw, self.actions)
+        raw["memory_access"] = self.short_term_memory.prompt_hint()
         return self.context_harness.compact(raw)
 
     def _ask_model(self, observation) -> Intent:
@@ -184,8 +193,20 @@ class MesenOrchestrator:
             })
             self.feedback.penalize("model_rejection", str(exc))
             return Intent("wait", rationale="model watchdog or drift gate requested a safe pause")
+        finally:
+            if self.config.get("llm", {}).get("cleanup_intent_frames_after_call", False):
+                self._cleanup_intent_frames(frames)
         self.last_model_action = self.actions
         return intent
+
+    def _cleanup_intent_frames(self, frames: list[Path]) -> None:
+        for frame in frames:
+            try:
+                if frame.is_file() and frame.parent == self.run_dir / "intent_frames":
+                    frame.unlink()
+            except OSError:
+                pass
+        self.last_intent_frame = None
 
     def _intent_frames(self, context: dict) -> list[Path]:
         llm_config = self.config.get("llm", {})
@@ -227,7 +248,20 @@ class MesenOrchestrator:
         )
         return any(phrase in normalized for phrase in phrases)
 
+    @staticmethod
+    def _is_short_term_memory_query(query: str) -> bool:
+        normalized = " ".join(query.casefold().replace("_", " ").split())
+        return any(phrase in normalized for phrase in (
+            "short term memory", "recent memory", "recent actions",
+            "current run memory", "kurzzeitgedächtnis", "letzte aktionen",
+        ))
+
     def _retrieve(self, observation, query: str) -> list[dict]:
+        if self._is_short_term_memory_query(query):
+            return [{
+                "type": "short_term_memory",
+                "snapshot": self.short_term_memory.recall(),
+            }]
         if observation.game.mode == "exploration" and self._is_inventory_query(query):
             cooldown = float(
                 self.config.get("llm", {}).get("exploration_inventory_cooldown_seconds", 600)
@@ -263,6 +297,7 @@ class MesenOrchestrator:
         else:
             result = self.model.look(frame, context, question)
         self.journal.write("look", question=question, frame=str(frame), result=result)
+        self.short_term_memory.record_perception("look", question, result)
         return result
 
     def _look_map(self, observation, question: str) -> dict:
@@ -289,6 +324,7 @@ class MesenOrchestrator:
             map=str(map_path) if map_path is not None else None,
             result=result,
         )
+        self.short_term_memory.record_perception("look_map", question, result)
         return result
 
     def _ask_battle_model(
@@ -520,8 +556,13 @@ class MesenOrchestrator:
                 action_feedback = self._remember_action(
                     "move", before_action, observation, navigation_event=event,
                     requested_direction=intent.direction, requested_tiles=intent.count,
-                    objective_target=(self.active_navigation_target or {}).get("live"),
+                    objective_target=(
+                        (self.active_navigation_target or {}).get("effective_live")
+                        or (self.active_navigation_target or {}).get("live")
+                    ),
                     objective_landmark=(self.active_navigation_target or {}).get("id"),
+                    objective_traversal=(self.active_navigation_target or {}).get("traversal"),
+                    objective_checkpoint=(self.active_navigation_target or {}).get("checkpoint"),
                 )
                 self.mapper.save(self.run_dir / "online_navigation_graph.json")
                 self.journal.write(

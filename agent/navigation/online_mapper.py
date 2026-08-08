@@ -600,26 +600,115 @@ class OnlineNavigationMapper:
                     ),
                 }
             landmark_kind = str(landmark.get("kind", "")).casefold()
-            is_transit = (
-                "door" in landmark_kind
-                or "exit" in landmark_kind
-                or landmark_kind == "transition"
+            configured_traversal = landmark.get("traversal")
+            explicit_traversal = (
+                configured_traversal
+                if isinstance(configured_traversal, dict)
+                else {}
             )
-            if is_transit and required_facing in DIRECTIONS:
+            is_transit = bool(explicit_traversal) or bool(landmark.get("transit")) or any(
+                token in landmark_kind
+                for token in ("door", "exit", "entrance", "transition", "gate", "portal")
+            )
+            traversal_direction = (
+                explicit_traversal.get("direction")
+                or landmark.get("traversal_direction")
+                or required_facing
+            )
+            if is_transit and traversal_direction in DIRECTIONS:
+                step_x, step_y = DIRECTIONS[traversal_direction]
+                actor_from_anchor_x = x - int(live[0])
+                actor_from_anchor_y = y - int(live[1])
+                forward_steps = (
+                    actor_from_anchor_x * step_x + actor_from_anchor_y * step_y
+                )
+                lateral_offset = abs(
+                    actor_from_anchor_x * step_y - actor_from_anchor_y * step_x
+                )
+                crossing_threshold = forward_steps > 0 and lateral_offset == 0
+                if crossing_threshold:
+                    phase = "crossing_threshold"
+                    next_step = (
+                        f"continue {traversal_direction} through the threshold until transit is confirmed"
+                    )
+                    effective_live = [x + step_x, y + step_y]
+                elif at_landmark:
+                    phase = "threshold_ready"
+                    next_step = f"move {traversal_direction} through the threshold"
+                    effective_live = [x + step_x, y + step_y]
+                else:
+                    phase = "approach"
+                    next_step = "reach the landmark first"
+                    effective_live = [int(live[0]), int(live[1])]
+
+                item["effective_live"] = effective_live
                 item["traversal"] = {
+                    **explicit_traversal,
                     "action": "move",
-                    "direction": required_facing,
-                    "position_ready": at_landmark,
-                    "next_step": (
-                        f"move {required_facing} through the threshold"
-                        if at_landmark
-                        else "reach the landmark first"
+                    "direction": traversal_direction,
+                    "phase": phase,
+                    "anchor_live": [int(live[0]), int(live[1])],
+                    "next_live": effective_live,
+                    "position_ready": at_landmark or crossing_threshold,
+                    "forward_steps_beyond_anchor": max(0, forward_steps),
+                    "next_step": next_step,
+                    "interaction_required": bool(
+                        explicit_traversal.get("interaction_required", False)
                     ),
-                    "interaction_required": False,
-                    "success_signal": (
-                        "confirmed room transit or coordinate/layout discontinuity; "
-                        "map_id may remain unchanged"
+                    "success_signal": explicit_traversal.get(
+                        "success_signal",
+                        "confirmed room transit or coordinate/layout discontinuity; map_id may remain unchanged",
                     ),
+                    "progress_rule": (
+                        "The anchor is an approach point, not the destination. Once beyond it in the "
+                        "traversal direction, continue forward; do not return merely because distance "
+                        "to the anchor increased."
+                    ),
+                }
+                if crossing_threshold:
+                    item["relative"] = [step_x, step_y]
+                    item["derived_relation"] = {
+                        "at_landmark": False,
+                        "manhattan_tiles": 1,
+                        "steps_to_reach": [
+                            {"direction": traversal_direction, "tiles": 1}
+                        ],
+                        "coordinate_rule": "x increases east; y increases south",
+                    }
+            if item.get("action"):
+                readiness = item.get("action_readiness", {})
+                checkpoint_status = (
+                    "completed"
+                    if readiness.get("completed")
+                    else "ready"
+                    if readiness.get("position_ready") and readiness.get("facing_ready")
+                    else "approach"
+                )
+                item["checkpoint"] = {
+                    "id": item.get("id"),
+                    "type": "action",
+                    "status": checkpoint_status,
+                    "success_when": (
+                        "the named action is executed at the exact feet coordinate and its game-state "
+                        "or semantic map effect is observed"
+                    ),
+                }
+            elif item.get("traversal"):
+                traversal = item["traversal"]
+                item["checkpoint"] = {
+                    "id": item.get("id"),
+                    "type": "traversal",
+                    "status": traversal.get("phase"),
+                    "target": traversal.get("next_live"),
+                    "success_when": traversal.get("success_signal"),
+                }
+            else:
+                item["checkpoint"] = {
+                    "id": item.get("id"),
+                    "type": "coordinate",
+                    "status": "reached" if at_landmark else "approach",
+                    "target": [int(live[0]), int(live[1])],
+                    "success_when": "the actor feet coordinate reaches this live position",
                 }
             landmarks.append(item)
         landmarks.sort(key=lambda item: abs(item["relative"][0]) + abs(item["relative"][1]))
@@ -633,6 +722,7 @@ class OnlineNavigationMapper:
             "predecessors": room.get("predecessors", []),
             "successors": room.get("successors", []),
             "elevation_rules": room.get("elevation_rules", []),
+            "reset_policy": room.get("reset_policy"),
             "nearby_live_landmarks": landmarks[:8],
             "coordinate_policy": (
                 "Landmark live coordinates use WRAM feet positions. Curated chess coordinates, when present, "

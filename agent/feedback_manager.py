@@ -11,12 +11,13 @@ from agent.feedback import FeedbackLedger
 class FeedbackManager:
     """Manages action feedback, reasoning evidence, and the feedback ledger."""
 
-    def __init__(self, feedback: FeedbackLedger, action_recorder: ActionOutcomeRecorder, mapper: Any, tile_buffers: Any, run_dir: Any) -> None:
+    def __init__(self, feedback: FeedbackLedger, action_recorder: ActionOutcomeRecorder, mapper: Any, tile_buffers: Any, run_dir: Any, memory: Any = None) -> None:
         self.feedback = feedback
         self.action_recorder = action_recorder
         self.mapper = mapper
         self.tile_buffers = tile_buffers
         self.run_dir = run_dir
+        self.memory = memory
         self.reasoning_evidence: list = []
         self.recent_agent_actions: list = []
         self.reasoning_steps: int = 0
@@ -76,11 +77,36 @@ class FeedbackManager:
             )
         if completed_landmark:
             details["completed_landmark"] = completed_landmark
+            details["completed_checkpoint"] = {
+                "id": completed_landmark.get("landmark_id"),
+                "type": "action",
+                "success": "observed semantic game-state change",
+            }
             self.mapper.save(self.run_dir / "online_navigation_graph.json")
+        checkpoint = details.get("objective_checkpoint") or {}
+        if kind == "move" and checkpoint and not details.get("completed_checkpoint"):
+            checkpoint_type = checkpoint.get("type")
+            after_position = [after.game.x, after.game.y]
+            if checkpoint_type == "coordinate" and after_position == checkpoint.get("target"):
+                details["completed_checkpoint"] = {
+                    "id": checkpoint.get("id"),
+                    "type": "coordinate",
+                    "success": "actor feet reached the live checkpoint coordinate",
+                }
+            elif checkpoint_type == "traversal" and (
+                before.game.map_id != after.game.map_id
+                or (navigation_event or {}).get("outcome") == "transition"
+                or (navigation_event or {}).get("new_room")
+            ):
+                details["completed_checkpoint"] = {
+                    "id": checkpoint.get("id"),
+                    "type": "traversal",
+                    "success": "room or layout transit was observed",
+                }
         feedback = self.feedback.record(
             kind, before, after, navigation_event=navigation_event, **details
         )
-        self.recent_agent_actions.append({
+        action_record = {
             "kind": kind,
             "before": {
                 "position": [before.game.x, before.game.y],
@@ -95,8 +121,11 @@ class FeedbackManager:
             },
             "feedback": feedback,
             **details,
-        })
+        }
+        self.recent_agent_actions.append(action_record)
         self.recent_agent_actions = self.recent_agent_actions[-6:]
+        if self.memory is not None:
+            self.memory.record_action(action_record)
         self.action_recorder.record(
             kind,
             before,

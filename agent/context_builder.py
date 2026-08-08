@@ -33,6 +33,7 @@ class ContextBuilder:
         mapper: Any,
         selected_tool: str | None,
         reasoning_evidence: list | None = None,
+        room_reset_recovery: dict | None = None,
     ) -> list[str]:
         """Return the available actions filtered by the current situation."""
         actions = ["move(direction,count=1..4)", "face(direction) using R+direction without moving"]
@@ -69,35 +70,172 @@ class ContextBuilder:
         # retrieve is always available for knowledge
         actions.append("retrieve(query)")
 
-        # reset_room is only available when a puzzle state needs to be reset
-        # For now, keep it available — the model will decide if it's useful
-        actions.append("reset_room")
+        # Reset is destructive to the current room state. It is exposed only
+        # when curated room policy and observed action outcomes jointly produce
+        # a recovery ticket; it is never a generic exploration action.
+        if (room_reset_recovery or {}).get("eligible"):
+            actions.append("reset_room (conditional puzzle recovery)")
 
         return actions
 
     @staticmethod
-    def _restrict_fully_ready_landmark_action(actions: list[str], navigation: dict) -> list[str]:
-        """Make advertised actions agree with the existing landmark gate."""
+    def _room_reset_recovery(navigation: dict, recent_agent_actions: list) -> dict:
+        """Issue a conservative reset ticket from curated and observed evidence."""
         room = navigation.get("current_room", {})
-        for landmark in room.get("nearby_live_landmarks", []):
-            readiness = landmark.get("action_readiness", {})
-            if readiness.get("completed"):
+        policy = room.get("reset_policy")
+        if not isinstance(policy, dict) or not policy.get("enabled"):
+            return {
+                "eligible": False,
+                "reason": "current room has no curated reset policy",
+            }
+
+        actions = list(recent_agent_actions)
+        last_reset = max(
+            (index for index, action in enumerate(actions) if action.get("kind") == "reset_room"),
+            default=-1,
+        )
+        mutation_kinds = set(policy.get("mutation_actions", ["interact", "sword", "use_tool"]))
+        mutation_index = None
+        for index in range(last_reset + 1, len(actions)):
+            action = actions[index]
+            if (
+                action.get("kind") in mutation_kinds
+                and int(action.get("map_tile_change_count", 0)) > 0
+                and not action.get("completed_landmark")
+            ):
+                mutation_index = index
+        if mutation_index is None:
+            return {
+                "eligible": False,
+                "reason": "no unconfirmed puzzle-state mutation observed since the last room reset",
+                "policy": policy,
+            }
+
+        probe_kinds = set(policy.get("failure_probe_actions", ["move", "interact"]))
+        failed = []
+        for action in actions[mutation_index + 1:]:
+            if action.get("kind") not in probe_kinds:
                 continue
-            if not readiness.get("position_ready"):
-                continue
-            required = landmark.get("action")
-            fully_ready = (
-                readiness.get("facing_ready")
-                and readiness.get("next_precondition") is None
-                and required in {"use_tool", "sword", "interact"}
+            unchanged = action.get("before", {}).get("position") == action.get("after", {}).get("position")
+            no_effect = (
+                int(action.get("map_tile_change_count", 0)) == 0
+                and not action.get("navigation_relevant_change")
             )
-            if fully_ready:
-                matching = [
-                    action for action in actions
-                    if str(action).split(" ", 1)[0].split("(", 1)[0] == required
-                ]
-                return matching or actions
-            break
+            if unchanged and no_effect:
+                failed.append({
+                    "kind": action.get("kind"),
+                    "position": action.get("after", {}).get("position"),
+                    "direction": action.get("requested_direction"),
+                })
+
+        required = max(1, int(policy.get("minimum_failed_actions_after_mutation", 2)))
+        eligible = len(failed) >= required
+        return {
+            "eligible": eligible,
+            "reason": (
+                "curated resettable puzzle was changed, then repeated recovery probes had no effect"
+                if eligible else
+                f"puzzle changed, but only {len(failed)}/{required} ineffective recovery probes were observed"
+            ),
+            "failed_probe_count": len(failed),
+            "required_failed_probe_count": required,
+            "evidence": failed[-3:],
+            "use_when": policy.get("use_when"),
+            "do_not_use_when": policy.get("do_not_use_when"),
+        }
+
+    @staticmethod
+    def _position_update(position: list, recent_agent_actions: list, active_landmark: dict | None) -> dict:
+        """Give the model one explicit, actor-centred movement result."""
+        result = {
+            "current": list(position),
+            "coordinate_rule": "x increases east; y increases south",
+        }
+        if recent_agent_actions and recent_agent_actions[-1].get("kind") == "move":
+            action = recent_agent_actions[-1]
+            before = action.get("before", {}).get("position") or position
+            after = action.get("after", {}).get("position") or position
+            dx, dy = int(after[0]) - int(before[0]), int(after[1]) - int(before[1])
+            result["last_move"] = {
+                "requested": {
+                    "direction": action.get("requested_direction"),
+                    "tiles": action.get("requested_tiles"),
+                },
+                "from": list(before),
+                "to": list(after),
+                "actual_delta": [dx, dy],
+                "actual_tiles": abs(dx) + abs(dy),
+                "outcome": "blocked_or_no_displacement" if dx == 0 and dy == 0 else "position_changed",
+            }
+        target = (
+            (active_landmark or {}).get("effective_live")
+            or (active_landmark or {}).get("live")
+        )
+        if isinstance(target, list) and len(target) == 2:
+            dx = int(target[0]) - int(position[0])
+            dy = int(target[1]) - int(position[1])
+            result["active_target"] = {
+                "id": active_landmark.get("id"),
+                "position": list(target),
+                "role": (
+                    "next_threshold_step"
+                    if (active_landmark.get("traversal") or {}).get("phase")
+                    in {"threshold_ready", "crossing_threshold"}
+                    else "landmark"
+                ),
+                "delta_from_current": [dx, dy],
+                "manhattan_tiles": abs(dx) + abs(dy),
+            }
+        return result
+
+    @staticmethod
+    def _restrict_fully_ready_landmark_action(
+        actions: list[str], navigation: dict, selected_tool: str | None = None
+    ) -> list[str]:
+        """Sequence an action landmark only after its exact position is reached.
+
+        En route, keep the full action set available: tools may still be useful
+        for enemies or another local object.  Once the actor is standing on the
+        curated action coordinate, advertise only the missing precondition or
+        the final action.  This avoids making the model rediscover action
+        semantics without constraining its route through the room.
+        """
+        room = navigation.get("current_room", {})
+        landmark = navigation.get("active_landmark")
+        if not isinstance(landmark, dict) or not landmark:
+            landmark = next(
+                (
+                    item
+                    for item in room.get("nearby_live_landmarks", [])
+                    if item.get("active") and not item.get("completed")
+                ),
+                None,
+            )
+        if not landmark:
+            return actions
+
+        readiness = landmark.get("action_readiness", {})
+        if readiness.get("completed") or not readiness.get("position_ready"):
+            return actions
+
+        def only(kind: str) -> list[str]:
+            matching = [
+                action
+                for action in actions
+                if str(action).split(" ", 1)[0].split("(", 1)[0] == kind
+            ]
+            return matching or actions
+
+        required = landmark.get("action")
+        required_tool = landmark.get("tool")
+        if required == "use_tool" and required_tool and selected_tool != required_tool:
+            return only("select_tool")
+        if not readiness.get("facing_ready"):
+            return only("face")
+        if readiness.get("next_precondition") is None and required in {
+            "use_tool", "sword", "interact"
+        }:
+            return only(required)
         return actions
 
     @staticmethod
@@ -351,11 +489,12 @@ class ContextBuilder:
             for tool_id, display_name in DUNGEON_TOOLS
         ]
 
+        room_reset_recovery = self._room_reset_recovery(navigation, recent_agent_actions)
         available_actions = self._available_actions(
-            observation, mapper, selected_tool, reasoning_evidence
+            observation, mapper, selected_tool, reasoning_evidence, room_reset_recovery
         )
         available_actions = self._restrict_fully_ready_landmark_action(
-            available_actions, navigation
+            available_actions, navigation, selected_tool
         )
         available_kinds = {
             str(action).split(" ", 1)[0].split("(", 1)[0]
@@ -378,6 +517,11 @@ class ContextBuilder:
                 ),
             },
             "game": compact,
+            "position_update": self._position_update(
+                [observation.game.x, observation.game.y],
+                recent_agent_actions,
+                navigation.get("active_landmark"),
+            ),
             "strategic_progression": strategic_progression,
             "dungeon_context": self.dungeons.context(
                 observation.game.map_id, observation.game.x, observation.game.y, radius=9
@@ -391,6 +535,7 @@ class ContextBuilder:
             "selected_dungeon_tool": selected_tool,
             "exploration_relevant_items": exploration_relevant_items,
             "available_actions": available_actions,
+            "room_reset_recovery": room_reset_recovery,
             "recent_agent_actions": recent_agent_actions,
             "feedback": feedback.context(),
             "navigation": navigation,

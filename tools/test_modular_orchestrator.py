@@ -18,6 +18,7 @@ from agent.model_client import INTENT_FORMAT, VISION_FORMAT, LocalModelClient
 from agent.model_gateway import ModelGateway
 from agent.orchestrator import MesenOrchestrator
 from agent.watchdog import ModelStallError
+from run_agent import validate_run_directory
 
 
 class _Response:
@@ -80,6 +81,86 @@ class ModularOrchestratorTests(unittest.TestCase):
         self.assertIn("select_tool(tool)", actions)
         self.assertIn("use_tool using Y", actions)
 
+    def test_room_reset_is_advertised_only_with_recovery_ticket(self) -> None:
+        builder = ContextBuilder.__new__(ContextBuilder)
+        actions = builder._available_actions(None, None, "arrow")
+        self.assertNotIn("reset_room", actions)
+        eligible_actions = builder._available_actions(
+            None, None, "arrow", room_reset_recovery={"eligible": True}
+        )
+        self.assertIn("reset_room (conditional puzzle recovery)", eligible_actions)
+        self.assertIn(
+            "reset_room",
+            INTENT_FORMAT["properties"]["kind"]["enum"],
+        )
+
+    def test_room_reset_recovery_requires_mutation_and_two_failed_probes(self) -> None:
+        navigation = {"current_room": {"reset_policy": {
+            "enabled": True,
+            "mutation_actions": ["interact"],
+            "minimum_failed_actions_after_mutation": 2,
+        }}}
+        actions = [{
+            "kind": "interact",
+            "before": {"position": [8, 21]},
+            "after": {"position": [7, 21]},
+            "map_tile_change_count": 1,
+            "navigation_relevant_change": True,
+        }]
+        self.assertFalse(ContextBuilder._room_reset_recovery(navigation, actions)["eligible"])
+        for direction in ("north", "west"):
+            actions.append({
+                "kind": "move",
+                "before": {"position": [7, 21]},
+                "after": {"position": [7, 21]},
+                "requested_direction": direction,
+                "map_tile_change_count": 0,
+                "navigation_relevant_change": False,
+            })
+        recovery = ContextBuilder._room_reset_recovery(navigation, actions)
+        self.assertTrue(recovery["eligible"])
+        self.assertEqual(2, recovery["failed_probe_count"])
+
+    def test_room_reset_recovery_requires_new_mutation_after_reset(self) -> None:
+        navigation = {"current_room": {"reset_policy": {"enabled": True}}}
+        actions = [
+            {"kind": "interact", "map_tile_change_count": 1},
+            {"kind": "reset_room", "map_tile_change_count": 0},
+            {"kind": "move", "before": {"position": [7, 21]}, "after": {"position": [7, 21]}},
+            {"kind": "move", "before": {"position": [7, 21]}, "after": {"position": [7, 21]}},
+        ]
+        self.assertFalse(ContextBuilder._room_reset_recovery(navigation, actions)["eligible"])
+
+    def test_position_update_reports_actual_delta_and_remaining_target(self) -> None:
+        update = ContextBuilder._position_update(
+            [17, 23],
+            [{
+                "kind": "move",
+                "before": {"position": [21, 26]},
+                "after": {"position": [17, 23]},
+                "requested_direction": "west",
+                "requested_tiles": 4,
+            }],
+            {"id": "west_door_approach", "live": [17, 23]},
+        )
+        self.assertEqual([-4, -3], update["last_move"]["actual_delta"])
+        self.assertEqual([0, 0], update["active_target"]["delta_from_current"])
+
+    def test_position_update_uses_forward_transit_target_not_anchor(self) -> None:
+        update = ContextBuilder._position_update(
+            [17, 22],
+            [],
+            {
+                "id": "west_door_approach",
+                "live": [17, 23],
+                "effective_live": [17, 21],
+                "traversal": {"phase": "crossing_threshold"},
+            },
+        )
+        self.assertEqual([17, 21], update["active_target"]["position"])
+        self.assertEqual([0, -1], update["active_target"]["delta_from_current"])
+        self.assertEqual("next_threshold_step", update["active_target"]["role"])
+
     def test_perception_is_once_per_unchanged_state(self) -> None:
         builder = ContextBuilder.__new__(ContextBuilder)
         first = builder._available_actions(None, None, "arrow", [])
@@ -102,7 +183,9 @@ class ModularOrchestratorTests(unittest.TestCase):
         ]
         navigation = {"current_room": {"nearby_live_landmarks": [{
             "id": "arrow_firing_position",
+            "active": True,
             "action": "use_tool",
+            "tool": "arrow",
             "action_readiness": {
                 "completed": False,
                 "position_ready": True,
@@ -112,7 +195,64 @@ class ModularOrchestratorTests(unittest.TestCase):
         }]}}
         self.assertEqual(
             ["use_tool using Y"],
-            ContextBuilder._restrict_fully_ready_landmark_action(actions, navigation),
+            ContextBuilder._restrict_fully_ready_landmark_action(
+                actions, navigation, selected_tool="arrow"
+            ),
+        )
+
+    def test_landmark_does_not_restrict_actions_while_en_route(self) -> None:
+        actions = [
+            "move(direction,count=1..4)",
+            "interact(direction optional) using A or direction+A",
+            "use_tool using Y",
+        ]
+        navigation = {"active_landmark": {
+            "id": "arrow_firing_position",
+            "action": "use_tool",
+            "tool": "arrow",
+            "action_readiness": {
+                "completed": False,
+                "position_ready": False,
+                "facing_ready": False,
+                "next_precondition": "reach the landmark first",
+            },
+        }}
+        self.assertEqual(
+            actions,
+            ContextBuilder._restrict_fully_ready_landmark_action(
+                actions, navigation, selected_tool="arrow"
+            ),
+        )
+
+    def test_landmark_at_position_advertises_missing_precondition(self) -> None:
+        actions = [
+            "move(direction,count=1..4)",
+            "face(direction) using R+direction without moving",
+            "select_tool(tool)",
+            "use_tool using Y",
+        ]
+        landmark = {
+            "id": "arrow_firing_position",
+            "action": "use_tool",
+            "tool": "arrow",
+            "action_readiness": {
+                "completed": False,
+                "position_ready": True,
+                "facing_ready": False,
+                "next_precondition": "face west",
+            },
+        }
+        self.assertEqual(
+            ["select_tool(tool)"],
+            ContextBuilder._restrict_fully_ready_landmark_action(
+                actions, {"active_landmark": landmark}, selected_tool="bomb"
+            ),
+        )
+        self.assertEqual(
+            ["face(direction) using R+direction without moving"],
+            ContextBuilder._restrict_fully_ready_landmark_action(
+                actions, {"active_landmark": landmark}, selected_tool="arrow"
+            ),
         )
 
     def test_blocked_direction_requires_causal_failed_move(self) -> None:
@@ -391,6 +531,42 @@ class ModularOrchestratorTests(unittest.TestCase):
         self.assertEqual("live_wram_inventory", first[0]["type"])
         self.assertEqual([{"name": "Potion", "quantity": 3}], first[0]["items"])
         self.assertEqual("inventory_cooldown", second[0]["type"])
+
+    def test_short_term_memory_is_retrievable_on_demand(self) -> None:
+        orchestrator = object.__new__(MesenOrchestrator)
+        orchestrator.short_term_memory = SimpleNamespace(
+            recall=lambda: {"recent_actions": [{"kind": "move"}]}
+        )
+        orchestrator.knowledge = SimpleNamespace(search=lambda query: [])
+        observation = SimpleNamespace(game=SimpleNamespace(mode="exploration"))
+        result = orchestrator._retrieve(observation, "short term memory")
+        self.assertEqual("short_term_memory", result[0]["type"])
+        self.assertEqual("move", result[0]["snapshot"]["recent_actions"][0]["kind"])
+
+    def test_consumed_intent_frames_are_deleted(self) -> None:
+        orchestrator = object.__new__(MesenOrchestrator)
+        with tempfile.TemporaryDirectory() as directory:
+            orchestrator.run_dir = Path(directory)
+            frame_dir = orchestrator.run_dir / "intent_frames"
+            frame_dir.mkdir()
+            consumed = frame_dir / "intent_1.png"
+            retained = orchestrator.run_dir / "look_1.png"
+            consumed.write_bytes(b"temporary")
+            retained.write_bytes(b"evidence")
+            orchestrator.last_intent_frame = consumed
+            orchestrator._cleanup_intent_frames([consumed])
+            self.assertFalse(consumed.exists())
+            self.assertTrue(retained.exists())
+            self.assertIsNone(orchestrator.last_intent_frame)
+
+    def test_existing_run_state_requires_explicit_resume(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            run_dir = Path(directory)
+            validate_run_directory(run_dir, resume=False)
+            (run_dir / "online_navigation_graph.json").write_text("{}", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "already contains state"):
+                validate_run_directory(run_dir, resume=False)
+            validate_run_directory(run_dir, resume=True)
 
     def test_llama_multimodal_capability_is_accepted_as_vision(self) -> None:
         client = LocalModelClient({"enabled": True})

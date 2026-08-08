@@ -20,6 +20,7 @@ class ContextHarness:
     def __init__(self, config: dict, run_dir: Path):
         self.max_chars = int(config.get("max_prompt_chars", 9000))
         self.summary_path = run_dir / "context_summary.json"
+        self.stats_path = run_dir / "prompt_stats.jsonl"
         self.summary = {
             "schema": 1,
             "maps_seen": [],
@@ -73,10 +74,182 @@ class ContextHarness:
     @staticmethod
     def _event(event: dict) -> dict:
         allowed = (
-            "type", "outcome", "direction", "from", "to", "new_room", "room",
+            "index", "type", "outcome", "direction", "from", "to", "new_room", "room",
             "map_id", "x", "y",
         )
         return {key: event[key] for key in allowed if key in event}
+
+    @staticmethod
+    def _landmark(landmark: dict) -> dict:
+        result = {
+            key: landmark.get(key)
+            for key in (
+                "id", "live", "effective_live", "relative", "kind", "action", "tool", "facing",
+                "selection_reason", "active", "completed", "action_readiness", "traversal",
+                "checkpoint",
+            )
+            if landmark.get(key) is not None
+        }
+        relation = landmark.get("derived_relation", {})
+        if relation:
+            result["relation"] = {
+                key: relation.get(key)
+                for key in ("at_landmark", "manhattan_tiles", "steps_to_reach")
+                if relation.get(key) is not None
+            }
+        return result
+
+    @classmethod
+    def _exploration_context(cls, context: dict) -> dict:
+        """Keep one authoritative copy of live exploration evidence."""
+        navigation = context.get("navigation", {})
+        room = navigation.get("current_room", {}) if isinstance(navigation, dict) else {}
+        active = cls._landmark(navigation.get("active_landmark", {}))
+        active_id = active.get("id")
+        references = [
+            {
+                key: item.get(key)
+                for key in ("id", "live", "kind", "action", "tool", "facing")
+                if item.get(key) is not None
+            }
+            for item in room.get("nearby_live_landmarks", [])
+            if item.get("id") != active_id
+        ][:3]
+        compact_room = {
+            "id": room.get("id"),
+            "objective": room.get("objective"),
+            "success_evidence": room.get("success_evidence"),
+            "reference_landmarks": references,
+        }
+        compact_navigation = {
+            "current_room": compact_room,
+            "active_landmark": active,
+            "observed_edges": navigation.get("observed_edges", {}),
+            "confirmed_world_changes": navigation.get("confirmed_world_changes", [])[-2:],
+        }
+        if not compact_navigation["active_landmark"]:
+            compact_navigation.pop("active_landmark")
+        if not compact_navigation["confirmed_world_changes"]:
+            compact_navigation.pop("confirmed_world_changes")
+        if not compact_navigation["observed_edges"]:
+            compact_navigation.pop("observed_edges")
+
+        confirmed_changes = navigation.get("confirmed_world_changes", [])[-2:]
+        confirmed_landmarks = {
+            change.get("source_landmark") for change in confirmed_changes
+        }
+        recent_checkpoint_completions = []
+        for action in context.get("recent_agent_actions", [])[-4:]:
+            checkpoint = action.get("completed_checkpoint")
+            if (
+                checkpoint
+                and checkpoint.get("id") not in confirmed_landmarks
+                and not any(
+                item.get("landmark") == checkpoint.get("id")
+                for item in recent_checkpoint_completions
+                )
+            ):
+                recent_checkpoint_completions.append({
+                    "landmark": checkpoint.get("id"),
+                    "result": checkpoint.get("success"),
+                })
+        task_progress = {
+            "completed_steps": ([
+                {
+                    "landmark": change.get("source_landmark"),
+                    "result": change.get("effect", {}).get("message"),
+                }
+                for change in confirmed_changes
+            ] + recent_checkpoint_completions),
+            "current_step": {
+                "landmark": active.get("id"),
+                "target": active.get("effective_live") or active.get("live"),
+                "reason": active.get("selection_reason"),
+                "traversal_phase": (active.get("traversal") or {}).get("phase"),
+                "next_step": (active.get("traversal") or {}).get("next_step"),
+                "checkpoint": active.get("checkpoint"),
+            } if active else None,
+            "instruction": (
+                "Completed goal clauses are finished. Act on current_step; do not restart the goal text."
+            ),
+        }
+
+        navigation_map = context.get("navigation_map", {})
+        compact_map = {
+            key: navigation_map.get(key)
+            for key in (
+                "available", "dungeon", "coordinate_bounds", "ascii_crop",
+                "legend", "full_map_image",
+            )
+            if navigation_map.get(key) is not None
+        }
+        compact_map["nearby_curated_markers"] = [
+            {
+                key: marker.get(key)
+                for key in ("type", "relative", "traversal", "required_action", "notes")
+                if marker.get(key) is not None
+            }
+            for marker in navigation_map.get("nearby_curated_markers", [])[:4]
+        ]
+
+        tutorial = context.get("tutorial", {})
+        compact_tutorial = {
+            "current_lessons": [
+                {
+                    key: lesson.get(key)
+                    for key in ("id", "known_mechanic", "lesson")
+                    if lesson.get(key) is not None
+                }
+                for lesson in tutorial.get("current_lessons", [])[:2]
+            ]
+        } if tutorial.get("active") else {"active": False}
+
+        tile_buffer = context.get("tile_buffer", {})
+        compact_tiles = {
+            key: tile_buffer.get(key)
+            for key in ("available", "role", "center_live", "rows")
+            if tile_buffer.get(key) is not None
+        }
+        compact_tiles["cardinal_cells"] = [
+            {
+                key: cell.get(key)
+                for key in ("relative", "family", "occupied")
+                if cell.get(key) is not None
+            }
+            for cell in tile_buffer.get("cardinal_cells", [])[:4]
+        ]
+
+        tools = [
+            {
+                key: item.get(key)
+                for key in ("name", "available", "selected", "locally_required")
+            }
+            for item in context.get("exploration_relevant_items", [])
+        ]
+        result = {
+            "goal": context.get("goal"),
+            "game": context.get("game", {}),
+            "position_update": context.get("position_update", {}),
+            "navigation_map": compact_map,
+            "tile_buffer": compact_tiles,
+            "tutorial": compact_tutorial,
+            "selected_dungeon_tool": context.get("selected_dungeon_tool"),
+            "exploration_relevant_items": tools,
+            "available_actions": context.get("available_actions", []),
+            "recent_agent_actions": context.get("recent_agent_actions", [])[-1:],
+            "navigation": compact_navigation,
+            "task_progress": task_progress,
+            "reasoning_evidence": context.get("reasoning_evidence", [])[-1:],
+            "memory_access": context.get("memory_access", {}),
+        }
+        for key in ("spatial_correlation", "strategic_progression"):
+            value = context.get(key)
+            if value and not (key == "strategic_progression" and value.get("deferred")):
+                result[key] = value
+        recovery = context.get("room_reset_recovery", {})
+        if recovery.get("eligible"):
+            result["room_reset_recovery"] = recovery
+        return result
 
     def compact(self, raw: dict) -> dict:
         game = self._game(raw["game"])
@@ -86,13 +259,20 @@ class ContextHarness:
         self.summary["progression_items"] = []
 
         events = [self._event(event) for event in raw.get("recent_events", [])[-6:]]
+        seen_events = self.summary.setdefault("seen_event_indices", [])
         for event in events:
+            event_index = event.get("index")
+            if event_index is not None and event_index in seen_events:
+                continue
+            if event_index is not None:
+                seen_events.append(event_index)
             if event.get("outcome"):
                 self.summary["recent_outcomes"].append(event)
             if event.get("outcome") == "blocked_now":
                 key = f"{event.get('from')}:{event.get('direction')}"
                 self.summary["blocked_counts"][key] = self.summary["blocked_counts"].get(key, 0) + 1
         self.summary["recent_outcomes"] = self.summary["recent_outcomes"][-12:]
+        self.summary["seen_event_indices"] = seen_events[-100:]
         self.summary["compactions"] = int(self.summary.get("compactions", 0)) + 1
 
         dungeon = raw.get("dungeon_context", {})
@@ -143,6 +323,8 @@ class ContextHarness:
                 "feedback": action_feedback.get("feedback"),
                 "reward": action_feedback.get("delta"),
             }
+            if action.get("completed_checkpoint"):
+                compact_action["completed_checkpoint"] = action.get("completed_checkpoint")
             semantic_changes = action.get("map_tile_changes", [])
             if int(action.get("map_tile_change_count", 0)) > 0:
                 completion = action.get("completed_landmark") or {}
@@ -178,6 +360,7 @@ class ContextHarness:
         context = {
             "goal": str(raw.get("goal", ""))[:500],
             "game": game,
+            "position_update": raw.get("position_update", {}),
             "strategic_progression": raw.get("strategic_progression", {}),
             "dungeon_context": dungeon,
             "navigation_map": navigation_map,
@@ -187,13 +370,17 @@ class ContextHarness:
             "selected_dungeon_tool": raw.get("selected_dungeon_tool"),
             "exploration_relevant_items": raw.get("exploration_relevant_items", []),
             "available_actions": raw.get("available_actions", []),
+            "room_reset_recovery": raw.get("room_reset_recovery", {}),
             "recent_agent_actions": recent_actions,
             "feedback": feedback,
             "navigation": raw.get("navigation", {}),
             "episode_summary": self.summary,
             "recent_events": events,
             "reasoning_evidence": raw.get("reasoning_evidence", [])[-4:],
+            "memory_access": raw.get("memory_access", {}),
         }
+        if game.get("mode") == "exploration":
+            context = self._exploration_context(context)
         # Leave headroom for the context_budget field and small schema changes.
         target_chars = max(1000, self.max_chars - min(1000, self.max_chars // 5))
         encoded = json.dumps(context, ensure_ascii=False, separators=(",", ":"))
@@ -211,8 +398,10 @@ class ContextHarness:
                     if key in compact_map
                 }
                 context["navigation_map"]["nearby_curated_markers"] = context["navigation_map"].get("nearby_curated_markers", [])[:6]
-            context["episode_summary"]["recent_outcomes"] = self.summary["recent_outcomes"][-5:]
-            context["episode_summary"]["progression_items"] = []
+            episode = context.get("episode_summary")
+            if isinstance(episode, dict):
+                episode["recent_outcomes"] = self.summary["recent_outcomes"][-5:]
+                episode["progression_items"] = []
             encoded = json.dumps(context, ensure_ascii=False, separators=(",", ":"))
         if len(encoded) > target_chars:
             if "party" in context["game"]:
@@ -223,10 +412,12 @@ class ContextHarness:
             encoded = json.dumps(context, ensure_ascii=False, separators=(",", ":"))
         if len(encoded) > target_chars:
             context["recent_agent_actions"] = context["recent_agent_actions"][-2:]
-            context["feedback"]["recent"] = context["feedback"].get("recent", [])[-3:]
-            context["episode_summary"]["recent_outcomes"] = context["episode_summary"].get(
-                "recent_outcomes", []
-            )[-3:]
+            feedback = context.get("feedback")
+            if isinstance(feedback, dict):
+                feedback["recent"] = feedback.get("recent", [])[-3:]
+            episode = context.get("episode_summary")
+            if isinstance(episode, dict):
+                episode["recent_outcomes"] = episode.get("recent_outcomes", [])[-3:]
             encoded = json.dumps(context, ensure_ascii=False, separators=(",", ":"))
         if len(encoded) > target_chars:
             navigation = context.get("navigation", {})
@@ -353,6 +544,19 @@ class ContextHarness:
             "estimated_tokens": (len(encoded) + 3) // 4,
             "max_chars": self.max_chars,
         }
+        field_chars = {
+            key: len(json.dumps(value, ensure_ascii=False, separators=(",", ":")))
+            for key, value in context.items()
+            if key != "context_budget"
+        }
+        with self.stats_path.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps({
+                "chars": len(encoded),
+                "estimated_tokens": (len(encoded) + 3) // 4,
+                "largest_fields": dict(sorted(
+                    field_chars.items(), key=lambda item: item[1], reverse=True
+                )[:8]),
+            }, ensure_ascii=False, separators=(",", ":")) + "\n")
         return context
 
 
@@ -404,6 +608,8 @@ class ThinkingGate:
             raise ModelDriftError("model tried to re-select the already selected dungeon tool")
         if intent.kind == "use_tool" and context.get("selected_dungeon_tool") is None:
             raise ModelDriftError("use_tool is technically unavailable because no dungeon tool is selected")
+        if intent.kind == "reset_room" and not context.get("room_reset_recovery", {}).get("eligible"):
+            raise ModelDriftError("room reset has no current curated recovery ticket")
         if intent.kind == "select_tool":
             tool_state = {
                 item.get("name"): bool(item.get("available"))
@@ -414,8 +620,38 @@ class ThinkingGate:
                     f"model tried to select unavailable dungeon tool {intent.tool}"
                 )
 
-        room = context.get("navigation", {}).get("current_room", {})
-        for landmark in room.get("nearby_live_landmarks", []):
+        navigation = context.get("navigation", {})
+        active = navigation.get("active_landmark", {})
+        active_readiness = active.get("action_readiness", {})
+        if (
+            active.get("action") == "use_tool"
+            and intent.kind == "use_tool"
+            and not active_readiness.get("completed")
+        ):
+            if not active_readiness.get("position_ready"):
+                raise ModelDriftError(
+                    f"use_tool requires reaching active landmark {active.get('id')} first"
+                )
+            if not active_readiness.get("facing_ready"):
+                raise ModelDriftError(
+                    f"use_tool requires facing {active_readiness.get('required_facing')} first"
+                )
+        rationale = intent.rationale.casefold()
+        if (
+            active.get("action") == "use_tool"
+            and intent.kind == "interact"
+            and any(word in rationale for word in ("shoot", "fire", "arrow", "use tool"))
+        ):
+            raise ModelDriftError(
+                "rationale describes dungeon-tool use, but interact presses A; choose use_tool at the ready landmark"
+            )
+
+        room = navigation.get("current_room", {})
+        active_landmark = navigation.get("active_landmark")
+        candidate_landmarks = (
+            [active_landmark] if isinstance(active_landmark, dict) and active_landmark else []
+        ) + list(room.get("nearby_live_landmarks", []))
+        for landmark in candidate_landmarks:
             readiness = landmark.get("action_readiness", {})
             if readiness.get("completed"):
                 continue

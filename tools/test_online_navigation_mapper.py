@@ -248,8 +248,47 @@ class OnlineNavigationMapperTests(unittest.TestCase):
         self.assertEqual("move", landmark["traversal"]["action"])
         self.assertEqual("north", landmark["traversal"]["direction"])
         self.assertTrue(landmark["traversal"]["position_ready"])
+        self.assertEqual("threshold_ready", landmark["traversal"]["phase"])
+        self.assertEqual([17, 22], landmark["effective_live"])
+        self.assertEqual("traversal", landmark["checkpoint"]["type"])
         self.assertFalse(landmark["traversal"]["interaction_required"])
         self.assertIn("map_id may remain unchanged", landmark["traversal"]["success_signal"])
+
+        # Run-49 regression: after entering the doorway, the next target must
+        # remain forward instead of pulling the actor back to the anchor.
+        mapper.observe(observation(x=17, y=22))
+        landmark = mapper.current_room_context()["nearby_live_landmarks"][0]
+        self.assertEqual("crossing_threshold", landmark["traversal"]["phase"])
+        self.assertEqual([17, 21], landmark["effective_live"])
+        self.assertEqual(
+            [{"direction": "north", "tiles": 1}],
+            landmark["derived_relation"]["steps_to_reach"],
+        )
+        self.assertIn("continue north", landmark["traversal"]["next_step"])
+
+    def test_explicit_directional_traversal_is_location_agnostic(self):
+        objective = {
+            "map_id": 12,
+            "rooms": [{
+                "id": "town_square",
+                "bounds": {"min_x": 0, "min_y": 0, "max_x": 30, "max_y": 30},
+                "reference_landmarks": [{
+                    "id": "inn_entrance",
+                    "live": [8, 9],
+                    "kind": "poi",
+                    "traversal": {
+                        "direction": "east",
+                        "success_signal": "interior layout is observed",
+                    },
+                }],
+            }],
+        }
+        mapper = OnlineNavigationMapper(objective)
+        mapper.observe(observation(x=9, y=9, map_id=12))
+        landmark = mapper.current_room_context()["nearby_live_landmarks"][0]
+        self.assertEqual("crossing_threshold", landmark["traversal"]["phase"])
+        self.assertEqual([10, 9], landmark["effective_live"])
+        self.assertEqual("interior layout is observed", landmark["checkpoint"]["success_when"])
 
     def test_semantic_map_change_completes_matching_action_landmark(self):
         objective = {
