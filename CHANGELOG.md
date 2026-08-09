@@ -1,5 +1,46 @@
 # Changelog
 
+## 2026-08-09 — Raum-4-Puzzle, Raum-5-Transit und dynamische Gegner
+
+- Qwen löste das Säulenrätsel in Raum 4 live mit der korrigierten Minimalfolge:
+  Säule einmal von `[8,21]` nach `[8,20]` nord schieben, Guy über
+  `[9,21] -> [9,20]` auf die Ostseite bringen und anschließend west bis zum
+  Schalter `[4,20]` schieben. Run 76 ist der erste Live-Nachweis dieser Folge.
+- Der Kontext liefert nach dem einmaligen Nord-Push sofort natürlichsprachliches
+  Erfolgsfeedback. Eine Wiederholung ist im exakten Folgezustand `not_advised`,
+  nicht global verboten. Das lässt dieselbe Aktion für andere Gegner oder
+  Rätsel weiterhin zu.
+- Das temporäre Puzzle-ASCII wird pro Entscheidung erzeugt und kann Actor,
+  bewegliches Objekt, Empfänger, nächste Standposition und temporäre Barrieren
+  darstellen. Nach erreichtem Objektziel werden die temporären Barrieren
+  entfernt, damit sie den realen Ausgang nicht als Wand maskieren.
+- Die gemeinsam per Mesen aufgenommenen Raumgrenzen ersetzen fehlerhafte
+  Schätzungen: Raum-4-Ausgangsschwelle `[6,17]`, stabiler Raum-5-Entry `[6,14]`.
+  Die gelöste Exitroute benutzt jetzt x=6 statt x=5.
+- Raum 5 wurde mit WRAM-Koordinaten und Referenzbildern vermessen:
+  - Sprünge `[7,9] -> [8,11]` und `[7,10] -> [8,12]`
+  - Leiter `[13,12] <-> [13,10]`
+  - Ausgangsschwelle `[16,8]`
+- Der U-förmige Transit Raum 5 -> Raum 6 ist als explizite Checkpointfolge
+  hinterlegt: `[16,8] -> [16,6] -> [19,6] -> [19,8]`. Er wird nicht mehr als
+  eigener nummerierter Raum behandelt.
+- `OnlineNavigationMapper.room_for()` priorisiert nun den exakt verifizierten
+  ersten Tile eines Nachfolgeraums gegenüber überlappenden Vorgänger-Bounds.
+  Ein Regressionstest deckt den überlappenden Raum-5/6-Entry bei `[19,8]` ab.
+- Secret-Skills-Cave-spezifische Resetregel dokumentiert: Nach Verlassen eines
+  Raums darf nicht resetet werden, wenn der vorherige Raum noch benötigt wird,
+  weil eine Rückkehr danach unmöglich ist.
+- Für bewegliche Dungeon-Gegner wurde die Datenautorität geklärt: Actor-Slots
+  liefern Sprite-ID und exakte X/Y-Position; der Mapbuffer zeigt nur
+  entity-agnostische Belegung. Ein Guy-Schritt, Schwertschlag oder Toolzug kann
+  einen Monsterzug auslösen, garantiert aber kein X/Y-Delta. Unveränderte
+  Position wird daher niemals als Untätigkeit, Wand oder Niederlage gedeutet.
+- Referenzaufnahmen wurden unter
+  `data/vision_observations/secret_skills_cave_room5*` und
+  `data/vision_observations/secret_skills_cave_room6/` abgelegt.
+- Verifikation: 110 fokussierte Navigation-/Kontext-/Dungeon-Tests sowie die
+  vollständigen 206 Tool-/Agent-Tests und 11 WRAM-Discovery-Tests grün.
+
 ## 2026-08-06 — RTX-Spatial-Baseline und schlanker Exploration-Kontext
 
 - Run 41 lieferte den ersten bestaetigten autonomen Qwen-Live-Durchgang durch

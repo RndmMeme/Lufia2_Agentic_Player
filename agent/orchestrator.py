@@ -96,6 +96,8 @@ class MesenOrchestrator:
         self.last_exploration_inventory_read: float | None = None
         self.last_intent_frame: Path | None = None
         self.active_navigation_target: dict | None = None
+        self.suppress_generic_movement_reward = False
+        self.last_decision_context: dict | None = None
         # Modular components
         self.context_builder = ContextBuilder(self.progression, self.dungeons, self.tutorial, self.tile_buffers)
         self.feedback_manager = FeedbackManager(
@@ -145,14 +147,14 @@ class MesenOrchestrator:
 
     def _load_mapper(self, map_id: int) -> OnlineNavigationMapper:
         graph_path = self.run_dir / "online_navigation_graph.json"
-        if graph_path.exists():
-            return OnlineNavigationMapper.load(graph_path)
         objective_path = OBJECTIVES.get(map_id)
         objective = (
             json.loads(objective_path.read_text(encoding="utf-8"))
             if objective_path and objective_path.exists()
             else {"name": self.goal, "allowed_map_ids": []}
         )
+        if graph_path.exists():
+            return OnlineNavigationMapper.load(graph_path, objective=objective)
         return OnlineNavigationMapper(objective)
 
     def _context(self, observation) -> dict:
@@ -160,8 +162,326 @@ class MesenOrchestrator:
             observation, self.goal, self.mapper, self.feedback, self.reasoning_evidence, self.recent_agent_actions
         )
         self.short_term_memory.update_context(raw, self.actions)
+        memory_snapshot = self.short_term_memory.recall()
+        room_episode = memory_snapshot.get("room_episode", {})
+        if (
+            room_episode.get("origin") in {"reset_room", "external_reset"}
+            and room_episode.get("intent_status") == "none"
+        ):
+            raw["room_episode"] = room_episode
+        visual_exit = self._visual_exit_hypothesis(memory_snapshot)
+        if visual_exit:
+            raw.setdefault("navigation", {})["visual_progress_hypothesis"] = visual_exit
+        remembered_changes = memory_snapshot.get("confirmed_world_changes", [])
+        if remembered_changes:
+            navigation = raw.setdefault("navigation", {})
+            navigation["confirmed_world_changes"] = remembered_changes
+            tracked_change = next(
+                (
+                    change for change in reversed(remembered_changes)
+                    if change.get("movable_object_after")
+                ),
+                None,
+            )
+            if tracked_change:
+                target = list(tracked_change["movable_object_after"])
+                current = raw.get("position_update", {}).get("current", target)
+                tracking = {
+                    "estimated_live": target,
+                    "last_actor_after_push": tracked_change.get("actor_after"),
+                    "last_push_direction": tracked_change.get("direction"),
+                    "delta_from_current": [
+                        target[0] - current[0], target[1] - current[1]
+                    ],
+                    "status": (
+                        "intermediate movable-object position, not puzzle success; approach an adjacent side, "
+                        "then push only in a direction supported by the separate receiver/switch geometry"
+                    ),
+                    "authority": tracked_change.get("tracking_authority"),
+                }
+                tracking["direct_distance_reducing_directions"] = (
+                    self._directions_reducing_delta(tracking["delta_from_current"])
+                )
+                tracking["manhattan_distance"] = sum(
+                    abs(value) for value in tracking["delta_from_current"]
+                )
+                interaction_direction = self._direction_for_adjacent_delta(
+                    tracking["delta_from_current"]
+                )
+                blocked_direction = interaction_direction or tracked_change.get("direction")
+                blocked_push = self._blocked_push_evidence(
+                    target,
+                    blocked_direction,
+                    memory_snapshot.get("recent_actions", []),
+                )
+                wall_confirmation = self._wall_confirmation(memory_snapshot)
+                post_push_assessment_required = self._post_push_assessment_required(
+                    memory_snapshot, self.actions
+                )
+                if blocked_push:
+                    tracking["blocked_push_evidence"] = blocked_push
+                if blocked_push and wall_confirmation:
+                    tracking["wall_confirmation"] = wall_confirmation
+                if post_push_assessment_required:
+                    tracking["post_push_assessment_required"] = True
+                tracking["action_readiness"] = (
+                    {
+                        "ready": False,
+                        "action": "reset_room" if wall_confirmation else "inspect_then_recover",
+                        "instruction": (
+                            "Repeated directed pushes had no effect and vision confirms the object is "
+                            "against a wall. Reset this room; further movement or inspection adds no evidence."
+                            if wall_confirmation else
+                            "The same directed push from the exact adjacent tile repeatedly had no effect. "
+                            "Do not repeat it. Inspect whether the object is against a wall; reset only if "
+                            "the arrangement is visibly unsalvageable."
+                        ),
+                    }
+                    if blocked_push else ({
+                        "ready": False,
+                        "action": "look",
+                        "instruction": (
+                            "A single push just changed the object position. Before any further push, "
+                            "visually locate the pillar and the separate floor switch. Check whether the pillar "
+                            "moved closer to that switch, whether it now occupies it, and whether the door changed."
+                        ),
+                    } if post_push_assessment_required else
+                    {
+                        "ready": True,
+                        "action": "interact",
+                        "direction": interaction_direction,
+                        "instruction": (
+                            "A directed push is mechanically possible from this adjacent side. Choose it "
+                            "only if the visible floor-switch geometry makes this push useful."
+                        ),
+                    }
+                    if interaction_direction else
+                    {"ready": False, "action": "approach_adjacent_tile"})
+                )
+                navigation["tracked_movable_object"] = tracking
+                raw.setdefault("position_update", {})["tracked_movable_object"] = tracking
+                room = navigation.get("current_room", {})
+                reset_policy = room.get("reset_policy", {})
+                if blocked_push and reset_policy.get("enabled"):
+                    raw["room_reset_recovery"] = {
+                        "eligible": True,
+                        "reason": (
+                            "a directed push from the exact adjacent tile repeatedly produced no actor "
+                            "or object movement"
+                        ),
+                        "evidence": blocked_push,
+                        "use_when": reset_policy.get("use_when"),
+                        "do_not_use_when": reset_policy.get("do_not_use_when"),
+                        "vision_requirement": (
+                            "current screenshot must confirm the movable object is against a wall and "
+                            "the arrangement is unsalvageable"
+                        ),
+                    }
+                    if wall_confirmation:
+                        raw["room_reset_recovery"]["vision_confirmation"] = wall_confirmation
+                        raw["room_reset_recovery"]["next_action"] = "reset_room"
+                    reset_action = "reset_room (conditional puzzle recovery)"
+                    actions = raw.setdefault("available_actions", [])
+                    if reset_action not in actions:
+                        actions.append(reset_action)
         raw["memory_access"] = self.short_term_memory.prompt_hint()
         return self.context_harness.compact(raw)
+
+    @staticmethod
+    def _directions_reducing_delta(delta: list[int]) -> list[str]:
+        candidates = []
+        if delta[0]:
+            candidates.append((abs(delta[0]), "east" if delta[0] > 0 else "west"))
+        if delta[1]:
+            candidates.append((abs(delta[1]), "south" if delta[1] > 0 else "north"))
+        return [direction for _, direction in sorted(candidates, reverse=True)]
+
+    @staticmethod
+    def _direction_for_adjacent_delta(delta: list[int]) -> str | None:
+        return {
+            (0, -1): "north",
+            (0, 1): "south",
+            (-1, 0): "west",
+            (1, 0): "east",
+        }.get(tuple(delta))
+
+    @staticmethod
+    def _blocked_push_evidence(
+        object_position: list[int],
+        interaction_direction: str | None,
+        remembered_actions: list[dict],
+    ) -> dict | None:
+        if interaction_direction is None:
+            return None
+        delta = {
+            "north": (0, -1), "south": (0, 1),
+            "west": (-1, 0), "east": (1, 0),
+        }[interaction_direction]
+        actor_position = [
+            object_position[0] - delta[0],
+            object_position[1] - delta[1],
+        ]
+        count = 0
+        for action in reversed(remembered_actions):
+            if (
+                action.get("kind") == "interact"
+                and action.get("direction") == interaction_direction
+                and action.get("from") == actor_position
+                and action.get("to") == actor_position
+                and int(action.get("semantic_tile_changes", 0)) == 0
+            ):
+                count += 1
+                continue
+            if count:
+                break
+        if count < 2:
+            return None
+        return {
+            "actor_live": actor_position,
+            "object_live": object_position,
+            "direction": interaction_direction,
+            "consecutive_no_effect_pushes": count,
+            "interpretation": (
+                "push destination is impassable; vision must distinguish wall from temporary obstruction"
+            ),
+        }
+
+    @staticmethod
+    def _post_push_assessment_required(memory_snapshot: dict, action_count: int) -> bool:
+        actions = memory_snapshot.get("recent_actions", [])
+        if not actions:
+            return False
+        latest = actions[-1]
+        if not (
+            latest.get("kind") == "interact"
+            and int(latest.get("semantic_tile_changes", 0)) > 0
+            and latest.get("from") != latest.get("to")
+        ):
+            return False
+        perceptions = memory_snapshot.get("recent_perceptions", [])
+        return not (
+            perceptions
+            and perceptions[-1].get("kind") in {"look", "look_map"}
+            and perceptions[-1].get("action_count") == action_count
+        )
+
+    @staticmethod
+    def _wall_confirmation(memory_snapshot: dict) -> dict | None:
+        strong_phrases = (
+            "blocked by a wall",
+            "against a wall",
+            "against the wall",
+            "wall-trapped",
+            "at the wall",
+        )
+        for perception in reversed(memory_snapshot.get("recent_perceptions", [])):
+            result = perception.get("result", {})
+            hypothesis = str(result.get("navigation_hypothesis", ""))
+            normalized = hypothesis.casefold()
+            objects = " ".join(str(item) for item in result.get("relevant_objects", [])).casefold()
+            if any(phrase in normalized for phrase in (
+                "not a wall", "not against a wall", "can be moved", "still movable"
+            )):
+                return None
+            if (
+                ("pillar" in normalized or "pillar" in objects or "movable" in normalized)
+                and any(phrase in normalized for phrase in strong_phrases)
+            ):
+                return {
+                    "confirmed": True,
+                    "source": perception.get("kind"),
+                    "evidence": hypothesis[:300],
+                }
+        return None
+
+    @staticmethod
+    def _visual_exit_hypothesis(memory_snapshot: dict) -> dict | None:
+        positive = []
+        negative = []
+        for perception in memory_snapshot.get("recent_perceptions", []):
+            hypothesis = str(
+                perception.get("result", {}).get("navigation_hypothesis", "")
+            )
+            normalized = hypothesis.casefold()
+            on_switch = "pillar is on the floor switch" in normalized
+            door_passable = any(phrase in normalized for phrase in (
+                "door is passable", "door is open", "door opened"
+            ))
+            if on_switch and door_passable:
+                positive.append(hypothesis)
+            if any(phrase in normalized for phrase in (
+                "not yet on the floor switch", "door is blocked", "door is not passable"
+            )):
+                negative.append(hypothesis)
+        if len(positive) < 2:
+            return None
+        combined = " ".join(positive).casefold()
+        direction = next(
+            (name for name in ("north", "south", "east", "west") if f"{name} door" in combined),
+            None,
+        )
+        return {
+            "status": "corroborated_visual_hypothesis_pending_wram_traversal_test",
+            "positive_observations": len(positive),
+            "conflicting_observations": len(negative),
+            "exit_direction": direction,
+            "next_step": (
+                f"attempt movement {direction} through the visibly passable door"
+                if direction else
+                "attempt movement through the visibly passable door"
+            ),
+            "success_evidence": "WRAM-confirmed room transition",
+            "do_not_repeat": "pillar manipulation unless the current door traversal test is blocked",
+            "evidence": positive[-1][:300],
+        }
+
+    def _default_look_question(self) -> str:
+        memory = self.short_term_memory.recall()
+        actions = memory.get("recent_actions", [])
+        if actions and (
+            actions[-1].get("kind") == "interact"
+            and int(actions[-1].get("semantic_tile_changes", 0)) > 0
+        ):
+            return (
+                "After the last single push, separately locate (1) the movable pillar and (2) the floor button "
+                "in the middle of the brick floor. Did the pillar move closer to that separate button, does the "
+                "pillar itself now occupy it, and did the door change? Guy is only the pusher and must not step "
+                "onto the button as a test. "
+                "If another push is needed, name the push direction and the actor approach side that move the "
+                "pillar toward the button."
+            )
+        provisional = (
+            (self.last_decision_context or {})
+            .get("navigation", {})
+            .get("provisional_object_target", {})
+        )
+        if provisional.get("live"):
+            return (
+                f"Correlate the screenshot with the established map-buffer object candidate at live "
+                f"{provisional.get('live')}, relative {provisional.get('relative')}. Is it the visible "
+                "movable object? Do not invent a nearer coordinate; identify a cardinally adjacent contact side."
+            )
+        return "What blocks progress?"
+
+    @staticmethod
+    def _movement_feedback_target(context: dict) -> dict | None:
+        navigation = context.get("navigation", {})
+        active = navigation.get("active_landmark")
+        if active:
+            return active
+        current_step = context.get("task_progress", {}).get("current_step") or {}
+        if (
+            current_step.get("target_type") == "actor_position_for_final_push"
+            and current_step.get("target")
+        ):
+            return {
+                "id": "current_step_actor_target",
+                "live": current_step["target"],
+            }
+        # Reaching a movable object is necessary setup, but it is not puzzle
+        # progress. Rewarding actor distance to it made short loops look
+        # successful while the object stayed off its receiver.
+        return None
 
     def _ask_model(self, observation) -> Intent:
         if not self.config["llm"].get("enabled", False):
@@ -170,7 +490,16 @@ class MesenOrchestrator:
         if self.actions - self.last_model_action < minimum_gap and not self.reasoning_evidence:
             return Intent("wait", rationale="LLM call cooldown")
         context = self._context(observation)
-        self.active_navigation_target = context.get("navigation", {}).get("active_landmark")
+        self.last_decision_context = context
+        self.active_navigation_target = self._movement_feedback_target(context)
+        navigation = context.get("navigation", {})
+        self.suppress_generic_movement_reward = bool(
+            not self.active_navigation_target
+            and (
+                navigation.get("tracked_movable_object")
+                or navigation.get("provisional_object_target")
+            )
+        )
         frames = self._intent_frames(context)
         started = time.monotonic()
         try:
@@ -295,9 +624,18 @@ class MesenOrchestrator:
         if not self.config["llm"].get("enabled", False):
             result = {"status": "queued_no_model", "frame": str(frame), "question": question}
         else:
-            result = self.model.look(frame, context, question)
+            try:
+                result = self.model.look(frame, context, question)
+            except (RuntimeError, ValueError, OSError) as exc:
+                result = {
+                    "status": "vision_response_invalid",
+                    "error": str(exc)[:500],
+                    "safe_next_test": (
+                        "Use WRAM, local map context and reversible movement; vision supplied no reliable evidence."
+                    ),
+                }
         self.journal.write("look", question=question, frame=str(frame), result=result)
-        self.short_term_memory.record_perception("look", question, result)
+        self.short_term_memory.record_perception("look", question, result, self.actions)
         return result
 
     def _look_map(self, observation, question: str) -> dict:
@@ -316,7 +654,16 @@ class MesenOrchestrator:
                 "question": question,
             }
         else:
-            result = self.model.look(frame, context, question, map_frame=map_path)
+            try:
+                result = self.model.look(frame, context, question, map_frame=map_path)
+            except (RuntimeError, ValueError, OSError) as exc:
+                result = {
+                    "status": "vision_response_invalid",
+                    "error": str(exc)[:500],
+                    "safe_next_test": (
+                        "Use WRAM and curated map context; vision supplied no reliable evidence."
+                    ),
+                }
         self.journal.write(
             "look_map",
             question=question,
@@ -324,7 +671,7 @@ class MesenOrchestrator:
             map=str(map_path) if map_path is not None else None,
             result=result,
         )
-        self.short_term_memory.record_perception("look_map", question, result)
+        self.short_term_memory.record_perception("look_map", question, result, self.actions)
         return result
 
     def _ask_battle_model(
@@ -350,6 +697,24 @@ class MesenOrchestrator:
 
     def _clear_reasoning(self, action_feedback: dict | None = None) -> None:
         self.feedback_manager.clear_reasoning(action_feedback)
+
+    def _reset_room_cognition(self) -> None:
+        """Start a clean decision episode after the emulator restored the room."""
+        self.recent_agent_actions = self.recent_agent_actions[-1:]
+        self.active_navigation_target = None
+        self.last_decision_context = None
+        self.last_intent_frame = None
+        self.context_harness.reset_room_episode()
+        self.thinking_gate.reset_room_episode()
+        self._clear_reasoning()
+        self.reasoning_evidence.append({
+            "type": "room_episode_reset",
+            "message": (
+                "The room was reset. Its puzzle is unsolved again. All pre-reset "
+                "perceptions, object hypotheses, progress assumptions, and intentions are invalid; "
+                "reobserve the live room and form a new plan."
+            ),
+        })
 
     def _remember_action(
         self, kind: str, before, after, navigation_event: dict | None = None, **details
@@ -421,7 +786,7 @@ class MesenOrchestrator:
 
             intent = self._ask_model(observation)
             if intent.kind == "look":
-                result = self._look(observation, intent.question or "What blocks progress?")
+                result = self._look(observation, intent.question or self._default_look_question())
                 if not self.config["llm"].get("enabled"):
                     stop_reason = "needs_model_or_user_review"
                     break
@@ -457,6 +822,7 @@ class MesenOrchestrator:
                 action_feedback = self._remember_action(
                     "interact", before_action, observation,
                     requested_direction=intent.direction,
+                    suppress_generic_movement_reward=self.suppress_generic_movement_reward,
                 )
                 self.mapper.observe(observation.navigation)
                 self.journal.write(
@@ -532,20 +898,19 @@ class MesenOrchestrator:
                 action_feedback = self._remember_action(
                     "reset_room", before_reset, observation, navigation_event=reset_event
                 )
+                # A room reset is a hard cognitive episode boundary.
+                self._reset_room_cognition()
                 self.journal.write(
                     "room_reset",
                     before=before_reset.game.compact(),
                     after=observation.game.compact(),
                     navigation_event=reset_event,
                 )
-                # Dungeon-specific reset feedback
+                # Keep dungeon-specific reset evidence as diagnostics only. It
+                # must not override the fresh "puzzle unsolved" decision state.
                 reset_msg = self._dungeon_feedback("on_reset_room", before_reset, observation)
-                self._clear_reasoning(action_feedback)
                 if reset_msg:
-                    self.reasoning_evidence.append({
-                        "type": "dungeon_reset",
-                        "message": reset_msg,
-                    })
+                    self.journal.write("room_reset_observation", message=reset_msg)
                 continue
             if intent.kind == "move":
                 before_action = observation
@@ -553,6 +918,9 @@ class MesenOrchestrator:
                 observation = self.controller.move(intent.direction, tiles=intent.count)
                 self.actions += 1
                 event = self.mapper.record_move(before, intent.direction, observation.navigation)
+                completed_traversal = self.mapper.record_traversal_segment_result(
+                    self.active_navigation_target, event
+                )
                 action_feedback = self._remember_action(
                     "move", before_action, observation, navigation_event=event,
                     requested_direction=intent.direction, requested_tiles=intent.count,
@@ -563,6 +931,8 @@ class MesenOrchestrator:
                     objective_landmark=(self.active_navigation_target or {}).get("id"),
                     objective_traversal=(self.active_navigation_target or {}).get("traversal"),
                     objective_checkpoint=(self.active_navigation_target or {}).get("checkpoint"),
+                    completed_checkpoint=completed_traversal,
+                    suppress_generic_movement_reward=self.suppress_generic_movement_reward,
                 )
                 self.mapper.save(self.run_dir / "online_navigation_graph.json")
                 self.journal.write(

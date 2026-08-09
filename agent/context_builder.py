@@ -6,6 +6,7 @@ from typing import Any
 
 from agent.dungeon_context import DungeonContextRegistry
 from agent.dungeons import get_dungeon
+from agent.established_memory import global_memory_context
 from agent.progression import ProgressionPlanner
 from agent.tutorial_guide import TutorialGuide
 
@@ -40,7 +41,7 @@ class ContextBuilder:
 
         # A alone handles NPCs/chests; direction+A is also needed to probe
         # pushable, pickable, or otherwise directional dungeon objects.
-        actions.append("interact(direction optional) using A or direction+A")
+        actions.append("interact(direction optional) using A or hold-A+direction-impulse")
 
         # sword is only available when there are bushes, enemies, or switches that can be influenced
         # For now, keep it available — the model will decide if it's useful
@@ -111,7 +112,10 @@ class ContextBuilder:
                 "policy": policy,
             }
 
-        probe_kinds = set(policy.get("failure_probe_actions", ["move", "interact"]))
+        # Walking near a puzzle object is exploration, not an attempted state
+        # correction. Only directed interactions can probe whether a prior
+        # movable-object mutation is still recoverable.
+        probe_kinds = set(policy.get("failure_probe_actions", ["interact"]))
         failed = []
         for action in actions[mutation_index + 1:]:
             if action.get("kind") not in probe_kinds:
@@ -237,6 +241,113 @@ class ContextBuilder:
         }:
             return only(required)
         return actions
+
+    @staticmethod
+    def _suppress_unresolved_transit_context(
+        navigation: dict, navigation_map: dict
+    ) -> tuple[dict, bool]:
+        """Hide the previous room's priors after a traversal boundary.
+
+        Some internal room transitions keep the same map id and overlapping
+        WRAM coordinates.  Once a directed traversal segment has ended, the
+        old curated room map is actively misleading until the mapper can
+        resolve a new stable room.  Keep live position, screenshot, and the
+        actor-local tile buffer available, but make this uncertainty explicit.
+        """
+        segment = navigation.get("completed_traversal_segment")
+        if not isinstance(segment, dict) or not segment:
+            return navigation_map, False
+
+        previous_room = navigation.get("current_room", {})
+        navigation.pop("active_landmark", None)
+        navigation["previous_room_context"] = {
+            "id": previous_room.get("id") if isinstance(previous_room, dict) else None,
+            "status": "left_via_completed_traversal_segment",
+        }
+        navigation["local_layout_resolution"] = {
+            "status": "unresolved_after_transit",
+            "instruction": (
+                "Explore the current local layout and find a passable exit. "
+                "Use live screenshot, actor-local tiles, movement, and collision feedback."
+            ),
+            "stale_context_suppressed": True,
+        }
+        navigation["current_room"] = {
+            "id": None,
+            "resolved": False,
+            "objective": "Explore the current local layout and find a passable exit.",
+            "success_evidence": "A new stable room or layout transition is observed.",
+            "nearby_live_landmarks": [],
+        }
+        return {
+            "available": False,
+            "reason": (
+                "The curated map belongs to the previous room context and is "
+                "suppressed until the live room transition resolves."
+            ),
+            "local_policy": (
+                "Use the screenshot, actor-local tile buffer, collision feedback, "
+                "and reversible movement to explore this transit layout."
+            ),
+            "nearby_curated_markers": [],
+        }, True
+
+    @staticmethod
+    def _local_route_evidence(
+        navigation: dict, recent_agent_actions: list | None = None
+    ) -> dict:
+        """Summarize tested WRAM edges at the actor's exact current tile."""
+        reverse_direction = {"north": "south", "south": "north", "west": "east", "east": "west"}
+        recent_non_progressing = None
+        if recent_agent_actions:
+            last = recent_agent_actions[-1]
+            traversal_count = int(
+                (last.get("feedback") or {}).get("local_edge_traversal_count", 0)
+            )
+            moved = last.get("before", {}).get("position") != last.get("after", {}).get("position")
+            requested = last.get("requested_direction")
+            if last.get("kind") == "move" and moved and requested and traversal_count >= 3:
+                recent_non_progressing = {
+                    "reverse_from_current": reverse_direction.get(requested),
+                    "traversal_count": traversal_count,
+                    "status": "deprioritize_now_not_forbidden",
+                    "reason": "this immediate reverse continues the observed A-B-A-B loop",
+                }
+        observed = navigation.get("observed_edges", {})
+        passable = []
+        impassable_now = []
+        for direction in ("north", "south", "west", "east"):
+            edge = observed.get(direction)
+            if not isinstance(edge, dict):
+                continue
+            outcome = edge.get("outcome")
+            if outcome in {"open", "transition"} and edge.get("to"):
+                passable.append({
+                    "direction": direction,
+                    "to": edge.get("to"),
+                    "evidence": "WRAM-confirmed traversal",
+                    "recent_non_progressing": bool(
+                        recent_non_progressing
+                        and direction == recent_non_progressing.get("reverse_from_current")
+                    ),
+                })
+            elif outcome == "blocked_now":
+                impassable_now.append({
+                    "direction": direction,
+                    "evidence": "WRAM-confirmed collision in this direction and state",
+                })
+        return {
+            "scope": "actor's exact current feet coordinate and current room state",
+            "passable": passable,
+            "impassable_now": impassable_now,
+            "untried": list(navigation.get("unknown_directions", [])),
+            "recent_non_progressing_edge": recent_non_progressing,
+            "instruction": (
+                "Use tested WRAM movement over a conflicting visual guess. During stagnation, "
+                "prefer a passable or untried local edge not marked recent_non_progressing. "
+                "The marked edge remains legal when deliberate backtracking is actually required."
+            ),
+        }
 
     @staticmethod
     def _confirmed_blocked_direction(compact: dict, recent_agent_actions: list) -> str | None:
@@ -411,18 +522,32 @@ class ContextBuilder:
 
         navigation = mapper.context_for_llm() if mapper else {}
         dungeon_cls = get_dungeon(observation.game.map_id)
-        if dungeon_cls is not None and mapper is not None:
+        dungeon_instance = dungeon_cls(None) if dungeon_cls is not None else None
+        if mapper is not None:
             room_context = navigation.get("current_room", {})
-            active_landmark = dungeon_cls(None).navigation_target(
-                observation, mapper, room_context
+            active_landmark = (
+                dungeon_instance.navigation_target(observation, mapper, room_context)
+                if dungeon_instance is not None else None
             )
+            if active_landmark is None:
+                active_landmark = mapper.next_room_landmark(room_context)
             if active_landmark is not None:
-                navigation["active_landmark"] = active_landmark
                 active_id = active_landmark.get("id")
+                completed_segment = mapper.completed_traversal_segment(
+                    room_context.get("id"), active_id
+                )
                 landmarks = room_context.get("nearby_live_landmarks", [])
                 for landmark in landmarks:
-                    landmark["active"] = landmark.get("id") == active_id
-                landmarks.sort(key=lambda item: 0 if item.get("active") else 1)
+                    is_target = landmark.get("id") == active_id
+                    landmark["active"] = is_target and completed_segment is None
+                    if is_target and completed_segment is not None:
+                        landmark["completed"] = True
+                        landmark.setdefault("checkpoint", {})["status"] = completed_segment.get("status")
+                if completed_segment is None:
+                    navigation["active_landmark"] = active_landmark
+                    landmarks.sort(key=lambda item: 0 if item.get("active") else 1)
+                else:
+                    navigation["completed_traversal_segment"] = completed_segment
             confirmed_effects = []
             for landmark in room_context.get("nearby_live_landmarks", []):
                 if not landmark.get("completed") or not landmark.get("success_effect"):
@@ -449,6 +574,21 @@ class ContextBuilder:
             observation.wram,
             radius=1,
         )
+        visible_object_candidates = self.tile_buffers.object_candidates(
+            observation.game.map_id,
+            observation.game.x,
+            observation.game.y,
+            observation.wram,
+            radius=4,
+        )
+        if dungeon_instance is not None:
+            provisional_target = dungeon_instance.provisional_object_target(
+                observation,
+                navigation.get("current_room", {}),
+                visible_object_candidates,
+            )
+            if provisional_target:
+                navigation["provisional_object_target"] = provisional_target
         navigation_map = self.dungeons.navigation_briefing(
             observation.game.map_id, observation.game.x, observation.game.y
         )
@@ -462,6 +602,23 @@ class ContextBuilder:
             navigation.get("active_landmark"),
             curated_priors,
         )
+
+        navigation_map, unresolved_transit = self._suppress_unresolved_transit_context(
+            navigation, navigation_map
+        )
+        navigation["local_route_evidence"] = self._local_route_evidence(
+            navigation, recent_agent_actions
+        )
+        if unresolved_transit:
+            # Correlation against the previous room's curated edges would turn
+            # a live collision into false wall evidence in the transit layout.
+            spatial_correlation = self._spatial_correlation(
+                [observation.game.x, observation.game.y],
+                blocked_direction,
+                actor_tile_buffer,
+                None,
+                {},
+            )
 
         previous_direction = None
         if recent_agent_actions:
@@ -493,6 +650,11 @@ class ContextBuilder:
         available_actions = self._available_actions(
             observation, mapper, selected_tool, reasoning_evidence, room_reset_recovery
         )
+        if unresolved_transit:
+            available_actions = [
+                action for action in available_actions
+                if str(action).split(" ", 1)[0].split("(", 1)[0] != "look_map"
+            ]
         available_actions = self._restrict_fully_ready_landmark_action(
             available_actions, navigation, selected_tool
         )
@@ -501,6 +663,34 @@ class ContextBuilder:
             for action in available_actions
         }
         perception_exhausted = not ({"look", "look_map"} & available_kinds)
+        room_context = navigation.get("current_room", {})
+        dungeon_memory = (
+            dungeon_instance.established_memory(observation, room_context)
+            if dungeon_instance is not None else []
+        )
+        room_objective = str(room_context.get("objective") or "").casefold()
+        movable_object = any(
+            token in room_objective for token in ("pillar", "vase", "push", "button")
+        ) or bool(navigation.get("tracked_movable_object"))
+        after_reset = bool(
+            recent_agent_actions
+            and recent_agent_actions[-1].get("kind") == "reset_room"
+        )
+        at_threshold = any("threshold" in str(item.get("id", "")) for item in dungeon_memory)
+        established_memory = {
+            "policy": (
+                "Run-independent established facts only. Live state decides whether a conditional fact applies; "
+                "never turn an unverified model hypothesis into memory."
+            ),
+            "global": global_memory_context(
+                observation.game.mode,
+                blocked=bool(blocked_direction),
+                movable_object=movable_object,
+                after_reset=after_reset,
+                at_threshold=at_threshold,
+            ),
+            "dungeon": dungeon_memory,
+        }
 
         return {
             "goal": goal,
@@ -528,10 +718,12 @@ class ContextBuilder:
             ),
             "navigation_map": navigation_map,
             "tile_buffer": actor_tile_buffer,
+            "visible_object_candidates": visible_object_candidates,
             "spatial_correlation": spatial_correlation,
             "tutorial": self.tutorial.context(
                 observation.game.map_id, observation.game.x, observation.game.y
             ),
+            "established_memory": established_memory,
             "selected_dungeon_tool": selected_tool,
             "exploration_relevant_items": exploration_relevant_items,
             "available_actions": available_actions,

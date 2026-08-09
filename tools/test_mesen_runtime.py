@@ -121,6 +121,14 @@ class IntentTests(unittest.TestCase):
 
 
 class ControllerMovementTests(unittest.TestCase):
+    def test_directed_interact_holds_a_before_direction_impulse(self):
+        controller = object.__new__(MesenController)
+        calls = []
+        controller.chord = lambda held, pressed: calls.append((held, pressed)) or "stable"
+
+        self.assertEqual("stable", controller.interact("north"))
+        self.assertEqual([("a", "up")], calls)
+
     def test_tile_distance_controls_humanoid_hold_frames(self):
         calls = []
 

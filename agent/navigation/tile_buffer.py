@@ -107,6 +107,53 @@ class TileBufferRegistry:
             ),
         }
 
+    def object_candidates(
+        self,
+        map_id: int,
+        x: int,
+        y: int,
+        wram: bytes,
+        radius: int = 4,
+        limit: int = 8,
+    ) -> dict:
+        """List nearby dynamic-family cells without pretending to classify their sprite."""
+        registration = self.registration(map_id)
+        if registration is None:
+            return {"available": False, "reason": "no_confirmed_map_buffer_registration"}
+        buffer = registration["buffer"]
+        width, height = int(buffer["width"]), int(buffer["height"])
+        radius = max(1, min(int(radius), 4))
+        candidates = []
+        for tile_y in range(max(0, y - radius), min(height, y + radius + 1)):
+            for tile_x in range(max(0, x - radius), min(width, x + radius + 1)):
+                address = self._address(buffer, tile_x, tile_y)
+                if not 0 <= address < len(wram):
+                    continue
+                decoded = self._family(registration, wram[address])
+                if decoded.get("family") not in {"obstacle", "lever_or_switch"}:
+                    continue
+                candidates.append({
+                    "live": [tile_x, tile_y],
+                    "relative": [tile_x - x, tile_y - y],
+                    "manhattan_tiles": abs(tile_x - x) + abs(tile_y - y),
+                    "family": decoded.get("family"),
+                    "value": f"{wram[address]:02X}",
+                    "occupied": decoded.get("occupied", False),
+                    "examples": decoded.get("examples", []),
+                })
+        candidates.sort(key=lambda item: (item["manhattan_tiles"], item["live"][1], item["live"][0]))
+        return {
+            "available": True,
+            "scope": registration["scope"],
+            "role": "ACTOR_LOCAL_DYNAMIC_TILE_CANDIDATES",
+            "radius": radius,
+            "candidates": candidates[:max(1, int(limit))],
+            "policy": (
+                "These are map-buffer family candidates, not sprite identities. Correlate them with the "
+                "current screenshot and room objective before calling one a pillar, bush, pot, or switch."
+            ),
+        }
+
     def effect_context(
         self,
         map_id: int,

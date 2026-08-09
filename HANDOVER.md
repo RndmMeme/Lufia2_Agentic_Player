@@ -1,211 +1,180 @@
 # Handover: AI Lufia II Player
 
-Stand: 2026-08-06, reproduzierbarer Raum-3-Live-Erfolg.
+Stand: 2026-08-09. Secret Skills Cave Räume 3 bis 5 sind live vermessen; das
+Säulenrätsel in Raum 4 wurde durch Qwen live gelöst. Als Nächstes folgen die
+dynamischen Pflichtgegner und die statische Geometrie von Raum 6.
 
-## Letzter dokumentierter Live-Zustand
+## Harte Betriebsregeln
 
-- Run 42 endete wie Run 41 bei `(17,20)`, Blickrichtung Nord, im sichtbaren
-  Zwei-Tueren-Transitraum. Der Mapper bezeichnet ihn noch faelschlich als
-  `room_3`, weil `map_id=5` unveraendert bleibt.
-- Die Bruecke wurde erfolgreich aktiviert und durchquert.
-- Run 42 stoppte kontrolliert am Zeitlimit; kein Agent-Run sollte derzeit aktiv
-  sein. Vor einem neuen Run trotzdem nur lesend pruefen.
-- Niemals parallel zum Runner eine zweite File-Bridge-Abfrage starten; das erzeugte bereits eine `request.tmp`-Race.
-- Der begrenzte Qwen-Live-Smoke hat keine Eingabe gesendet: Die Lua-Bridge war
-  bereits beim Verbindungsaufbau nicht mehr erreichbar. Nach einem Lua-Neustart
-  denselben Lauf mit maximal 10 Aktionen wiederholen.
+- Läuft ein `run_agent.py`-Prozess, den Codex nicht selbst gestartet hat, vor
+  jedem Eingriff nachfragen. Weder Emulator noch Bridge oder Prozess ungefragt
+  übernehmen oder stoppen.
+- Keine zweite schreibende Steuerung parallel zu einem Agent-Run. Read-only
+  Diagnose ebenfalls erst nach Klärung des Run-Besitzers.
+- Secret-Skills-Cave-Ausnahme: Wurde ein Raum verlassen und danach `Reset`
+  ausgeführt, ist die Rückkehr in den vorherigen Raum nicht mehr möglich.
+  Deshalb nach einem Raumübergang niemals resetten, solange der Rückweg noch
+  benötigt wird.
+- Raumreset nur bei einem tatsächlich unlösbar gewordenen Rätsel. In Raum 4
+  heißt das: Die Säule wurde an eine Wand geschoben und kann nicht mehr auf den
+  Schalter gebracht werden. Unsicherheit, Kollision oder Stillstand reichen
+  nicht.
+- Resetfolge: Select einmal, Up einmal, Sanduhr/Reset mit A bestätigen. Nach
+  Reset Wahrnehmung, Puzzlefortschritt und Intention vollständig neu aufbauen.
+- Exploration darf Richtungen menschlich halten. Push: A halten, einen
+  Richtungsimpuls geben und nach erreichter Zielposition loslassen.
 
-## Gerade bewiesenes Mapbuffer-Signal
+## Bewiesene Live-Meilensteine
 
-Action Outcome 64 in `data/runs/qwen_cave_probe_01/action_outcomes.jsonl` beweist beim ersten `use_tool`:
+- Runs 41 und 42: Qwen aktivierte die Raum-3-Brücke, überquerte sie und
+  erreichte reproduzierbar den westlichen Transit.
+- Run 74 zeigte den Fehler der alten Raum-4-Sequenz: zuerst west schieben und
+  erst am Ende nord führte in einen Loop.
+- Run 75 bewies den einmaligen Nord-Push der Säule von `[8,21]` nach `[8,20]`,
+  zeigte aber unzureichendes unmittelbares Feedback.
+- Run 76 löste das Säulenrätsel live mit der korrigierten Reihenfolge:
+  einmal nord, östlich um die Säule herum, anschließend west bis zum Schalter.
+- Run 77 zeigte eine falsche Ausgangsannahme. Die Schwellen wurden anschließend
+  gemeinsam per Live-Mesen-Aufnahme exakt vermessen.
 
-- live `(24,26)`, Adresse `0x45FC`: `02` (hole_or_gap) -> `00` (plain_floor)
-- live `(24,27)`, Adresse `0x4636`: `22` (unknown) -> `02` (hole_or_gap)
-- live `(24,28)`, Adresse `0x4670`: `20` (alternate_floor) -> `00` (plain_floor)
-- `semantic_count=3`, danach bei weiteren Pfeilschuessen jeweils `semantic_count=0`
+## Secret Skills Cave: bestätigte Live-Koordinaten
 
-Das ist das eindeutige Erfolgssignal fuer die geschaltete Bruecke. Keine Vision-Heuristik dafuer verwenden.
+### Raum 3
 
-## Orchestrator-Refactoring (integriert, noch nicht live abgenommen)
+- Arrow firing position: `[28,24]`, west
+- Brückenziel nach Aktivierung: `[21,26]`
+- Westtür-Anker: `[17,23]`
+- Brückensignal im Mapbuffer:
+  - `(24,26)`: `02 -> 00`
+  - `(24,27)`: `22 -> 02`
+  - `(24,28)`: `20 -> 00`
 
-### Ziel-Architektur
+### Raum 4: Säulenrätsel
 
-```
-agent/
-  orchestrator.py          -> nur Run-Loop + Koordination (~350 Zeilen)
-  context_builder.py       -> _context(), Kontext-Kompaktierung
-  model_gateway.py         -> _ask_model(), _look(), _look_map(), _ask_battle_model()
-  action_executor.py       -> vorbereitete Aktionsgrenze; noch nicht vom Run-Loop benutzt
-  feedback_manager.py      -> _remember_action(), _clear_reasoning(), Feedback-Ledger
-  battle_runner.py         -> Battle-Loop (extrahiert aus orchestrator)
-  dungeons/                -> BaseDungeon, SecretSkillsCave, 28 weitere Stubs
-```
+- erster stabiler Raum-4-Tile: `[14,23]`
+- Säulenanker ist immer der untere Fuß-/Basistile, nicht der obere Sprite-Tile
+- initiale Säule: `[8,21]`
+- Guy für den einmaligen Nord-Push: `[8,22]`
+- Ergebnis des Nord-Pushs: Säule `[8,20]`
+- Route auf die Ostseite: `[9,21] -> [9,20]`
+- anschließend west schieben, bis die Säule den Schalter bei `[4,20]` belegt
+- Guy darf niemals als Ersatzgewicht auf `[4,20]` gestellt werden
+- bestätigte Raum-4-Ausgangsschwelle: `[6,17]`
+- erster stabiler Raum-5-Entry: `[6,14]`
 
-### Abhaengigkeiten
+Nach erreichtem Schalter verschwinden die nur während des Schiebens verwendeten
+temporären ASCII-Barrieren. Die Exitroute läuft über x=6 nach Norden; die alte
+x=5-Annahme ist verworfen.
 
-```
-orchestrator.py
-  -> context_builder.py
-  -> feedback_manager.py
-  -> model_gateway.py
-  -> battle_runner.py
-  -> dungeons/
+### Raum 5: Höhenwechsel und Transit
 
-`action_executor.py` bleibt als gewuenschte Modulvorbereitung erhalten, ist
-aber noch nicht verdrahtet. Das ist kein bewiesener aktiver Bestandteil.
-```
+- Raum-5-Entry: `[6,14]`
+- nördlicher Sprung: `[7,9] -> [8,11]`, Eingabe ost
+- südlicher Sprung: `[7,10] -> [8,12]`, Eingabe ost
+- Leiterfuß: `[13,12]`
+- Leiterkopf: `[13,10]`
+- Raum-5-Ausgangsschwelle: `[16,8]`, nord
+- Transit-Eingang von Raum 5: `[16,6]`
+- Transit-Ausgang zu Raum 6: `[19,6]`
+- erster stabiler Raum-6-Entry: `[19,8]`
 
-### Dungeon-Module (29 Stubs mit korrekten map_ids aus zones.txt)
+Die verifizierte U-Route lautet:
 
-| map_id | Dungeon | Datei |
-|--------|---------|-------|
-| 5 | Secret Skills Cave | `secret_skills_cave.py` |
-| 6 | Sundletan Cave | `cave_to_sundletan.py` |
-| 10 | Lake Cave | `lake_cave.py` |
-| 15 | Alunze Castle | `alunze_castle_basement.py` |
-| 24 | Alunze Cave | `alunze_northwest_cave.py` |
-| 30 | Tanbel Tower | `tanbel_southeast_tower.py` |
-| 39 | Ruby Cave | `ruby_cave.py` |
-| 48 | Treasure Sword Shrine | `treasure_sword_shrine.py` |
-| 55 | Gordovan Tower | `gordovan_west_tower.py` |
-| 64 | Cave Bridge | `cave_to_bound_kingdom.py` |
-| 75 | Ancient Tower | `ancient_tower.py` |
-| 96 | Phantom Tree Mountain | `phantom_tree_mountain.py` |
-| 108 | Tower of Sacrifice | `tower_of_sacrifice.py` |
-| 117 | Karlloon Shrine | `karlloon_north_shrine.py` |
-| 126 | Flower Mountain | `flower_mountain.py` |
-| 140 | Dankirk Dungeon | `dankirk_north_dungeon.py` |
-| 163 | Mountain of No Return | `mountain_of_no_return.py` |
-| 168 | Divine Shrine | `divine_shrine.py` |
-| 174 | Shrine of Vengeance | `shrine_of_vengeance.py` |
-| 183 | Tower of Truth | `tower_of_truth.py` |
-| 192 | Dragon Mountain | `dragon_mountain.py` |
-| 209 | Gratze Castle | `gratze_castle.py` |
-| 218 | Shuman Tower | `shuman_tower.py` |
-| 222 | Strahda Tower | `strahda_tower.py` |
-| 226 | Kamirno Tower | `kamirno_tower.py` |
-| 230 | Daos Shrine | `daos_shrine.py` |
+`[16,8] -> nord -> [16,6] -> ost -> [19,6] -> süd -> [19,8]`
 
-**Hinweis:** Sundletan Cave hat zwei Ebenen: `06` (erste Ebene) und `07` (zweite Ebene). Der Stub `cave_to_sundletan.py` hat `map_id=6`.
+Der Transit ist kein nummerierter Dungeonraum. Die exakte Entry-Verifikation
+hat Vorrang vor überlappenden Bounds; `map_id` bleibt im gesamten Cave `5`.
 
-## Zuletzt implementiert
+Referenzaufnahmen liegen unter:
 
-- `agent/navigation/online_mapper.py`
-  - State besitzt jetzt `completed_landmarks`.
-  - `record_action_landmark_effect(...)` schliesst ein Landmark nur ab, wenn Aktion, exakte Fussposition und erforderliche Blickrichtung passen UND der Mapbuffer mindestens eine semantische Tile-Aenderung zeigt.
-  - `current_room_context()` liefert `completed` und `completion_evidence`.
-- `agent/context_harness.py`
-  - Thinking Gate blockiert das Verlassen eines bereits abgeschlossenen Action-Landmarks nicht mehr.
-- `agent/orchestrator.py`
-  - `_remember_action()` uebergibt Tile-Diffs an den Mapper und speichert Landmark-Abschluesse sofort im Navigation-Graphen.
-- `agent/intent.py`
-  - Striktes Intent-Schema mit `kind`, `direction`, `count`, `question`,
-    `query`, `tool`, `rationale`; keine unbelegten Aliasfelder.
-- `agent/dungeons/` — Dungeon-spezifische Feedback-Logik (BaseDungeon, SecretSkillsCave mit Brücken-Logik)
-- `runtime_config.json` — projektlokaler OpenAI-kompatibler llama.cpp-Provider auf Port 8080
-- `tools/test_intent_parsing.py` — 8 Intent-Parsing-Tests
-- `tools/test_sanduhr_reset_diff.py` — Mapbuffer-Diff-Test für Sanduhr-Reset und Pfeilschuss
-- `tools/test_modular_orchestrator.py` — fokussierte Regressionstests fuer
-  Toolwechsel, Bridgewerte, Watchdog, JSON-Schema und Room-3-Navigation
-- `tools/create_dungeon_stubs.py` — 28 Dungeon-Stubs aus `emulator/maps/Dungeons/`
-- `tools/update_dungeon_map_ids.py` — map_ids aus `zones.txt` in die Stubs eintragen
+- `data/vision_observations/secret_skills_cave_room5/`
+- `data/vision_observations/secret_skills_cave_room5_to_room6_transit/`
+- `data/vision_observations/secret_skills_cave_room6/`
 
-## Test-Ergebnisse
+## Temporäres Puzzle-Overlay und Qwen-Feedback
 
-- **132/132 Tool-Tests** gruen
-- **11/11 WRAM-Discovery-Tests** gruen
-- **8/8 einfache Intent-Parsing-Checks** — strikte Kinds, Richtungen und
-  `count: null`; keine behauptete Alias-Kompatibilitaet
-- Der als Erfolg bezeichnete Live-Run war **kein Cave-Fortschritt**: 20 Aktionen,
-  Oszillation zwischen `(27,25)` und `(28,25)`, zehn wirkungslose Pfeilschuesse,
-  Ende durch Action-Limit. Nicht als Modellnachweis verwenden.
-- Historischer Text-only-Drei-Schritt-Vertragstest des E4B nach der
-  Promptkorrektur: `move west`, `move west`, `interact` fuer Bruecke, Bruecke
-  und Westtuer. Ein separater Landmark-Test waehlt bei unfertiger Bruecke
-  korrekt `use_tool`. Das beweist nur isolierte Intentsemantik, noch keine
-  Live-Navigation.
-- Run 30 blieb wegen eines Harness-Fehlers stehen: `$1272` enthielt noch die
-  letzte Kollisionsrichtung und wurde beim neuen Runner faelschlich als aktuell
-  blockierte Richtung ausgegeben. Gleichzeitig blieb `look` im unveraenderten
-  Zustand unbegrenzt verfuegbar.
-- Der Fix ist live bestaetigt: Blockierung wird nur noch kausal nach einem
-  unmittelbar fehlgeschlagenen Move ausgegeben; `look`/`look_map` jeweils nur
-  einmal pro unveraendertem Zustand. Run 31 bewegte Qwen in zwei Entscheidungen
-  `(28,30) -> (28,29) -> (28,28)` in 6.391 Sekunden.
-- Die rekonstruierte Raum-3-Referenzroute, Fehleranalyse und der kompakte
-  Imitationsentwurf stehen in `docs/room3_spatial_imitation_analysis.md`.
-- Run 30 enthaelt drei an denselben Ordner angehaengte Sessions. Die ersten
-  beiden endeten ohne Eingabe in LOOK-Schleifen. Die dritte absolvierte 16
-  Emulatoraktionen bis `(23,26)` und endete erst nach zehn vom Gate abgelehnten
-  weiteren LOOK-Wuenschen. `reasoning_step_limit` bedeutet 12 aufeinanderfolgende
-  Wahrnehmungs-/Retrieval-/abgelehnte Entscheidungen ohne bestaetigten
-  Emulatorfortschritt; es ist weder Tokenlimit noch Denkzeitlimit.
-- Der Livekontext trennt nun `ACTOR_LOCAL_3X3` um die Figur und einen nach
-  erfolgreicher Weltaktion eingefrorenen `POST_ACTION_EFFECT_REGION`-3x3 am
-  entfernten Wirkungsort. PREVIOUS/CURRENT plus WRAM-Tilewechsel bilden damit
-  die menschliche Wahrnehmungskette ab.
-- **Runs 41 und 42 bestaetigen reproduzierbar den Qwen-Live-Erfolg fuer Raum
-  3:** Das
-  RTX-Spatial-Q8 aktivierte die Bruecke, fand nach den West-Kollisionen den
-  Nordumweg, erreichte den Tueranker `(17,23)` und ging anschliessend dreimal
-  nach Norden in den sichtbaren Zwei-Tueren-Transitraum. Run 42 endete wie Run
-  41 bei `(17,20)`; damit ist der Durchgang kein Einzelerfolg. Zwei kleine,
-  allgemeine
-  Kontextkorrekturen waren dafuer noetig: Eine bestaetigte Kollision bleibt
-  ueber reines Drehen am selben Ort erhalten, und ein erreichtes Door/Exit-
-  Landmark exponiert `move <facing>` als Traversalaktion.
-- Der Mapper hielt den Zustand danach trotzdem faelschlich auf `room_3`, weil
-  `map_id=5` unveraendert bleibt und sich interne Raumkoordinaten ueberlappen.
-  Der aktuelle Screenshot ist der Erfolgsbeweis; die automatische
-  Transit-Erkennung ist der naechste getrennte Fehler.
+- Das Overlay wird pro Entscheidung neu erzeugt und nicht dauerhaft als Karte
+  gespeichert.
+- Zeichen: `@` Actor-Füße, `P` beweglicher Anker, `S` Empfänger/Schalter, `T`
+  nächste Actor-Position, `*` Objekt auf Empfänger, `#` temporäre Puzzlewand.
+- Nach dem ersten Nord-Push erhält Qwen sofort natürlichsprachliches
+  Erfolgsfeedback. Eine Wiederholung wird als `not_advised`, nicht als verboten,
+  markiert und gilt nur für den exakt beobachteten Objektzustand.
+- Ein Raumreset löscht Puzzlefortschritt und Intention; das Rätsel gilt wieder
+  als ungelöst.
 
-## Unmittelbar als Naechstes
+## Dynamische Dungeon-Gegner: bestätigtes Arbeitsmodell
 
-1. Den sichtbaren Transitraum trotz unveraendertem `map_id=5` und
-   ueberlappenden Koordinaten automatisch erkennen; den Room-3-Erfolg nicht aus
-   Bounds allein ableiten.
-2. Den Zwei-Tueren-Transitraum und Raum 4 als naechstes einzelnes
-   Ziel behandeln; keine weitere Cave-Route vorgeben.
-3. Erst nach einem echten wiederholten Stall genau einen Hinweis, Micro-Map-
-   Ausschnitt oder Referenzpose eskalieren.
+Der Mapbuffer allein identifiziert keinen Gegner. Er zeigt nur eine
+entity-agnostische Belegung, häufig `base -> base+1`. Die maßgebliche Quelle ist
+die bestätigte Dungeon-Actor-Tabelle:
 
-## Danach noch offen
+- Sprite-ID: `7E:05D2 + slot`
+- Movement-State: `7E:066A + slot`
+- Richtung: `7E:0692 + slot`
+- Tile-X: `7E:06BA + slot`
+- Tile-Y: `7E:06E2 + slot`
+- Movement-Mode: `7E:070A + slot`
+- 40 Slots `00..27`; `FF` bedeutet leer
 
-- Normales Action-Limit darf einen laufenden Kampf nicht mitten in Aktions- oder Zielauswahl stranden. Kampf bis Ende/Result-Screen innerhalb `max_battle_inputs` kontrolliert zu Ende fuehren.
-- Battle-End-Screen: A menschlich lange halten, weil EXP/Level-Seiten variabel lang sind.
-- Secret Skills Cave einmal komplett beenden und danach ein zweites Mal vom Start wiederholen. Vorher keine Ausweitung auf andere Dungeons oder Overworld.
-- Lessons Learned weiterhin strikt trennen:
-  - global anwendbare Spiel-/Navigationsregeln
-  - ausschliesslich Secret-Skills-Cave-spezifische Hinweise
-- Room-3-Brueckensignal spaeter als kuratierte map-spezifische Semantik dokumentieren.
-- 28 Dungeon-Stubs implementieren (derzeit nur `SecretSkillsCave` mit Brücken-Logik).
+Monster erhalten einen Zug, wenn Guy sich bewegt, das Schwert schwingt oder ein
+Tool benutzt. Eine solche Aktion garantiert aber keinen Positionswechsel: Ein
+Monster kann wiederholt gegen eine Wand laufen. Deshalb gilt:
+
+- nur ein X/Y-Delta beweist tatsächliche Bewegung
+- unverändertes X/Y bedeutet ausschließlich `position_changed=false`
+- Movement-State/Richtung dürfen keinen erfolgreichen Schritt oder eine Wand
+  behaupten
+- der Mapbuffer bestätigt eine verschobene Belegung, ist aber nicht die
+  Identitätsquelle
+- Gegnerpositionen sind kurzlebige Laufzeitdaten und gehören nicht als feste
+  Koordinaten in die Dungeon-Memory
+- ein Pflichtgegner gilt erst nach korreliertem Kampfbeginn, gewonnenem Kampf
+  und anschließend nicht mehr präsentem Overworld-Actor als besiegt
+
+Die aktuelle read-only Raum-6-Baseline zeigte bewegungsaktive Kandidaten in
+Slot 10/Sprite `83` bei `[28,6]` und Slot 11/Sprite `94` bei `[33,6]`. Diese
+Slots sind noch nicht endgültig den beiden Pflichtgegnern zugeordnet; andere
+geladene Actor-Slots können zu weiteren Cave-Räumen gehören.
+
+## Verifikation
+
+- Nach der Raum-4/5/6-Ankerkorrektur: 110 fokussierte Tests grün
+  (`test_online_navigation_mapper`, `test_context_harness`,
+  `test_modular_orchestrator`).
+- Vollständiger Stand vor dem Checkpoint: 206 Tool-/Agent-Tests und 11
+  WRAM-Discovery-Tests grün.
+- Die exakten Raum-5-/Transitpunkte besitzen jeweils Screenshot und WRAM-Kontext.
+
+## Unmittelbar als Nächstes
+
+1. Einen kleinen read-only Dungeon-Actor-Decoder bauen, der pro Beobachtung
+   `slot`, `sprite_id`, `current_live`, `previous_live`, `position_changed` und
+   `present` liefert.
+2. Die zwei Raum-6-Pflichtgegner visuell/semantisch einmal den Actor-Slots
+   zuordnen und danach slotstabil verfolgen. Keine Bewegung pro Guy-Aktion
+   voraussetzen.
+3. Qwen nur die aktuell relevanten dynamischen Ziele und den Fortschritt
+   `required/defeated/remaining` geben.
+4. Raum 6 statisch weitervermessen: Abstiege, Leitern, Ausgang, Transit und
+   Raum-7-Entry. Bewegliche Gegner nicht in die statische Karte schreiben.
+5. Danach den Cave komplett durchlaufen und ein zweites Mal wiederholen.
+6. `HANDOVER.md` und `CHANGELOG.md` nach erfolgreicher Live-Abnahme erneut
+   aktualisieren; Commit und Push nur auf ausdrücklichen Auftrag.
 
 ## Projektlokale Modell-/GPU-Regel
 
-- GPU-/Backend-Auswahl gilt ausschliesslich fuer diesen Workspace/use case.
-- Keine globalen Ollama- oder System-Einstellungen aendern.
-- Globales Ollama auf `127.0.0.1:11434` und andere Anwendungen unangetastet lassen.
-- Aktuelle Live-Baseline: `Qwen3-VL-4B-Spatial-Analysisv2.Q8_0.gguf`, resident
-  auf der RTX. Runs 41 und 42 absolvierten Raum 3 bis in den sichtbaren
-  Transitraum und endeten beide bei `(17,20)`.
-  Run 29 bleibt der historische Vorlaeufer, der zwei Tiles vor der linken Tuer
-  endete.
-- Der offizielle `Qwen3-VL-8B-Instruct` Q4_K_M plus Q8-mmproj bleibt ein
-  historisch offline qualifizierter Kandidat (22/22), aber Arc/Vulkan brauchte
-  live mehr als 30 Sekunden pro Entscheidung. Diese Zeiten duerfen nicht Run 29
-  zugeschrieben werden.
-- Vorerst kein groesseres Modell: Erst ein reproduzierbarer semantischer Fehler
-  bei korrektem WRAM-, Karten- und Bildkontext rechtfertigt den Wechsel. Die
-  bisherigen Live-Probleme waren ueberwiegend Kontext- und Raumzuordnungsfehler.
-- GPU-/Backend-Startparameter bleiben projektlokal; keine globalen Ollama-,
-  Vulkan-, CUDA- oder Systemeinstellungen aendern. Modelle bleiben resident.
-- `start_project_qwen3_vl_vulkan.ps1` dokumentiert weiterhin nur den separaten
-  Arc/8B-Versuch und ist nicht der Startweg der aktuellen RTX-Spatial-Baseline.
+- Aktuelle Baseline: `Qwen3-VL-4B-Spatial-Analysisv2.Q8_0.gguf` resident auf
+  der RTX. Kein größeres Modell ohne reproduzierbaren Kapazitätsfehler.
+- GPU-/Backend-Einstellungen gelten ausschließlich für diesen Workspace.
+  Globale Ollama-, CUDA-, Vulkan- oder Systemeinstellungen nicht verändern.
+- Modelle resident halten; kein Cold-Start pro Entscheidung.
+- Der Watchdog meldet lange Denkpausen, bricht aber nicht blind hart ab.
 
-## Wichtige Bedienregeln
+## Kampfbedienung
 
-- Exploration darf Richtungen menschlich halten; nicht tap-by-tap erzwingen.
-- Kampf: Initiale Aktionsauswahl im Kreuz benoetigt Richtung halten plus A. Danach Auswahl und Ziel jeweils einfache Bestaetigung.
-- B im neutralen Aktionskreuz geht zum Pre-Menu fuer Flucht/Positionswechsel.
-- Raumreset: Select einmal, Up einmal, Reset/Sanduhr mit A ausfuehren; humanoide Eingabetimings.
-- Ein besiegtes normales Monster respawnt durch Raumreset; Bossmonster nicht.
+- Initiale Aktionswahl im Kreuz: Richtung halten plus A.
+- Danach Menüeintrag und Ziel jeweils einfach bestätigen.
+- B im neutralen Aktionskreuz öffnet das Pre-Menu für Flucht/Positionswechsel.
+- Battle-End-Screen: A menschlich lange halten, da EXP-/Level-Seiten variabel
+  lang sein können.

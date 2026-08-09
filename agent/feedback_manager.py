@@ -54,13 +54,20 @@ class FeedbackManager:
         )
         if effect_region.get("available"):
             tile_diff["effect_region_after"] = effect_region
+        observed_semantic_count = int(tile_diff.get("semantic_count", 0))
+        credited_semantic_count = 0 if kind == "move" else observed_semantic_count
         details = {
             **details,
-            "map_tile_change_count": int(tile_diff.get("semantic_count", 0)),
+            "map_tile_change_count": credited_semantic_count,
+            "map_tile_semantic_observation_count": observed_semantic_count,
             "map_tile_observation_count": int(tile_diff.get("count", 0)),
             "map_tile_changes": tile_diff.get("changes", []),
             "map_effect_region_after": tile_diff.get("effect_region_after"),
         }
+        if kind == "move" and observed_semantic_count:
+            details["map_tile_change_credit_policy"] = (
+                "movement-time map-buffer diffs are scroll observations, not puzzle-success evidence"
+            )
         details["navigation_relevant_change"] = bool(
             before.game.map_id != after.game.map_id
             or (before.game.x, before.game.y) != (after.game.x, after.game.y)
@@ -93,6 +100,10 @@ class FeedbackManager:
                     "type": "coordinate",
                     "success": "actor feet reached the live checkpoint coordinate",
                 }
+                if self.mapper.record_coordinate_checkpoint(
+                    checkpoint, after.navigation
+                ):
+                    self.mapper.save(self.run_dir / "online_navigation_graph.json")
             elif checkpoint_type == "traversal" and (
                 before.game.map_id != after.game.map_id
                 or (navigation_event or {}).get("outcome") == "transition"
@@ -120,6 +131,7 @@ class FeedbackManager:
                 "blocked_direction": after.game.blocked_direction,
             },
             "feedback": feedback,
+            "navigation_event": navigation_event,
             **details,
         }
         self.recent_agent_actions.append(action_record)

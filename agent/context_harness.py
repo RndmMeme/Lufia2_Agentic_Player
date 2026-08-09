@@ -32,6 +32,15 @@ class ContextHarness:
         if self.summary_path.exists():
             self.summary.update(json.loads(self.summary_path.read_text(encoding="utf-8")))
 
+    def reset_room_episode(self) -> None:
+        """Discard prompt-summary evidence that belongs to the pre-reset room state."""
+        self.summary["recent_outcomes"] = []
+        self.summary["blocked_counts"] = {}
+        self.summary_path.write_text(
+            json.dumps(self.summary, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+
     @staticmethod
     def _game(game: dict) -> dict:
         mode = str(game.get("mode", "other"))
@@ -85,7 +94,7 @@ class ContextHarness:
             key: landmark.get(key)
             for key in (
                 "id", "live", "effective_live", "relative", "kind", "action", "tool", "facing",
-                "selection_reason", "active", "completed", "action_readiness", "traversal",
+                "semantic_action", "sequence_index", "selection_reason", "active", "completed", "action_readiness", "traversal",
                 "checkpoint",
             )
             if landmark.get(key) is not None
@@ -99,11 +108,118 @@ class ContextHarness:
             }
         return result
 
+    @staticmethod
+    def _live_puzzle_overlay(
+        navigation_map: dict,
+        actor_live: list,
+        object_live: list,
+        receiver_live: list,
+        stance_live: list | None,
+        anchor_semantics: str | None = None,
+        barrier_live: list[list[int]] | None = None,
+    ) -> dict | None:
+        """Overlay transient puzzle anchors on a small copy of the curated ASCII map."""
+        points = [actor_live, object_live, receiver_live]
+        if stance_live:
+            points.append(stance_live)
+        barriers = [
+            point for point in (barrier_live or [])
+            if isinstance(point, list) and len(point) == 2
+        ]
+        points.extend(barriers)
+        if not all(isinstance(point, list) and len(point) == 2 for point in points):
+            return None
+        bounds = navigation_map.get("coordinate_bounds", {})
+        source = navigation_map.get("ascii_crop")
+        if not source or not all(key in bounds for key in ("min_x", "max_x", "min_y", "max_y")):
+            return None
+
+        min_x, max_x = int(bounds["min_x"]), int(bounds["max_x"])
+        min_y, max_y = int(bounds["min_y"]), int(bounds["max_y"])
+        source_rows = {}
+        for line in str(source).splitlines():
+            prefix, separator, row_cells = line.partition(" ")
+            if not separator:
+                continue
+            try:
+                row_y = int(prefix)
+            except ValueError:
+                continue
+            source_rows[row_y] = list(row_cells)
+        if not source_rows:
+            return None
+
+        local_min_x = max(min_x, min(int(point[0]) for point in points) - 1)
+        local_max_x = min(max_x, max(int(point[0]) for point in points) + 1)
+        local_min_y = max(min_y, min(int(point[1]) for point in points) - 1)
+        local_max_y = min(max_y, max(int(point[1]) for point in points) + 1)
+        cells = {}
+        for row_y in range(local_min_y, local_max_y + 1):
+            row = source_rows.get(row_y, [])
+            for column_x in range(local_min_x, local_max_x + 1):
+                index = column_x - min_x
+                cells[(column_x, row_y)] = row[index] if 0 <= index < len(row) else "?"
+
+        actor = tuple(int(value) for value in actor_live)
+        movable = tuple(int(value) for value in object_live)
+        receiver = tuple(int(value) for value in receiver_live)
+        stance = tuple(int(value) for value in stance_live) if stance_live else None
+        for barrier in barriers:
+            cells[tuple(int(value) for value in barrier)] = "#"
+        cells[receiver] = "S"
+        if stance is not None:
+            cells[stance] = "T"
+        cells[movable] = "*" if movable == receiver else "P"
+        cells[actor] = "@"
+
+        rows = [
+            "      " + " ".join(
+                f"{column_x:02d}" for column_x in range(local_min_x, local_max_x + 1)
+            )
+        ]
+        for row_y in range(local_min_y, local_max_y + 1):
+            rows.append(
+                f"y{row_y:02d}   "
+                + "  ".join(cells[(column_x, row_y)] for column_x in range(local_min_x, local_max_x + 1))
+            )
+        return {
+            "scope": "ephemeral_current_decision",
+            "rows": "\n".join(rows),
+            "legend": "@ actor feet; P movable-object anchor; S receiver; T next required actor stance; # temporary puzzle wall; * object anchor occupies receiver",
+            "coordinate_rule": "x increases east; y increases south",
+            "entities": {
+                "actor_live": list(actor),
+                "object_live": list(movable),
+                "receiver_live": list(receiver),
+                "next_stance_live": list(stance) if stance is not None else None,
+                "actor_at_next_stance": actor == stance if stance is not None else None,
+                "object_on_receiver": movable == receiver,
+            },
+            "anchor_semantics": anchor_semantics,
+            "lifetime": "discard after this model decision; regenerate from the next live state",
+        }
+
     @classmethod
     def _exploration_context(cls, context: dict) -> dict:
         """Keep one authoritative copy of live exploration evidence."""
         navigation = context.get("navigation", {})
         room = navigation.get("current_room", {}) if isinstance(navigation, dict) else {}
+        tracked_object = navigation.get("tracked_movable_object", {})
+        # Once WRAM has tracked a moved object, the provisional object at its
+        # initial coordinate is stale and only gives the model two competing
+        # targets for the same puzzle.
+        provisional_object = (
+            {} if tracked_object.get("estimated_live")
+            else navigation.get("provisional_object_target", {})
+        )
+        dungeon_memory = context.get("established_memory", {}).get("dungeon", [])
+        object_intent = next(
+            (
+                item for item in dungeon_memory
+                if isinstance(item, dict) and item.get("form") == "object_intent"
+            ),
+            {},
+        )
         active = cls._landmark(navigation.get("active_landmark", {}))
         active_id = active.get("id")
         references = [
@@ -114,6 +230,7 @@ class ContextHarness:
             }
             for item in room.get("nearby_live_landmarks", [])
             if item.get("id") != active_id
+            and not item.get("completed")
         ][:3]
         compact_room = {
             "id": room.get("id"),
@@ -126,18 +243,51 @@ class ContextHarness:
             "active_landmark": active,
             "observed_edges": navigation.get("observed_edges", {}),
             "confirmed_world_changes": navigation.get("confirmed_world_changes", [])[-2:],
+            "completed_traversal_segment": navigation.get("completed_traversal_segment"),
+            "local_layout_resolution": navigation.get("local_layout_resolution"),
+            "local_route_evidence": navigation.get("local_route_evidence"),
+            "tracked_movable_object": tracked_object,
+            "provisional_object_target": provisional_object,
+            "visual_progress_hypothesis": navigation.get("visual_progress_hypothesis"),
         }
         if not compact_navigation["active_landmark"]:
             compact_navigation.pop("active_landmark")
         if not compact_navigation["confirmed_world_changes"]:
             compact_navigation.pop("confirmed_world_changes")
+        if not compact_navigation["completed_traversal_segment"]:
+            compact_navigation.pop("completed_traversal_segment")
+        if not compact_navigation["local_layout_resolution"]:
+            compact_navigation.pop("local_layout_resolution")
+        if not compact_navigation["local_route_evidence"]:
+            compact_navigation.pop("local_route_evidence")
+        if not compact_navigation["tracked_movable_object"]:
+            compact_navigation.pop("tracked_movable_object")
+        if not compact_navigation["provisional_object_target"]:
+            compact_navigation.pop("provisional_object_target")
+        if not compact_navigation["visual_progress_hypothesis"]:
+            compact_navigation.pop("visual_progress_hypothesis")
         if not compact_navigation["observed_edges"]:
             compact_navigation.pop("observed_edges")
 
         confirmed_changes = navigation.get("confirmed_world_changes", [])[-2:]
+        completed_changes = [
+            change for change in confirmed_changes
+            if change.get("source_landmark") != "observed_world_change"
+        ]
+        observed_state_changes = [
+            {
+                "action": change.get("source_landmark"),
+                "result": change.get("effect", {}).get("message"),
+                "status": "puzzle state changed; objective completion not yet proven",
+            }
+            for change in confirmed_changes
+            if change.get("source_landmark") == "observed_world_change"
+        ]
         confirmed_landmarks = {
-            change.get("source_landmark") for change in confirmed_changes
+            change.get("source_landmark") for change in completed_changes
         }
+        completed_segment = navigation.get("completed_traversal_segment")
+        visual_progress = navigation.get("visual_progress_hypothesis", {})
         recent_checkpoint_completions = []
         for action in context.get("recent_agent_actions", [])[-4:]:
             checkpoint = action.get("completed_checkpoint")
@@ -153,24 +303,365 @@ class ContextHarness:
                     "landmark": checkpoint.get("id"),
                     "result": checkpoint.get("success"),
                 })
+        final_alignment = object_intent.get("final_alignment", {})
+        at_final_alignment = bool(
+            final_alignment
+            and tracked_object.get("estimated_live")
+            == final_alignment.get("when_object_live")
+        )
+        object_at_required = bool(
+            object_intent.get("required_live")
+            and tracked_object.get("estimated_live")
+            == object_intent.get("required_live")
+        )
+        if at_final_alignment or object_at_required:
+            # current_step now targets the actor's pushing position. Keeping
+            # the object's approach delta alongside it gives the model two
+            # different movement targets for the same decision.
+            compact_navigation.pop("tracked_movable_object", None)
+        actor_live = context.get("position_update", {}).get("current", [])
+        alignment_actor_target = final_alignment.get("actor_target_live", [])
+        alignment_actor_route = [
+            point for point in final_alignment.get("actor_route_live", [])
+            if isinstance(point, list) and len(point) == 2
+        ]
+        if not alignment_actor_route and len(alignment_actor_target) == 2:
+            alignment_actor_route = [alignment_actor_target]
+        actor_at_alignment_target = bool(
+            len(actor_live) == 2
+            and len(alignment_actor_target) == 2
+            and actor_live == alignment_actor_target
+        )
+        alignment_current_target = alignment_actor_target
+        if at_final_alignment and alignment_actor_route and not actor_at_alignment_target:
+            if actor_live in alignment_actor_route:
+                route_index = alignment_actor_route.index(actor_live)
+                alignment_current_target = alignment_actor_route[
+                    min(route_index + 1, len(alignment_actor_route) - 1)
+                ]
+            else:
+                alignment_current_target = alignment_actor_route[0]
+        alignment_delta = (
+            [
+                int(alignment_current_target[0]) - int(actor_live[0]),
+                int(alignment_current_target[1]) - int(actor_live[1]),
+            ]
+            if len(actor_live) == 2 and len(alignment_current_target) == 2
+            else None
+        )
+        alignment_move = None
+        if alignment_delta:
+            delta_x, delta_y = alignment_delta
+            if delta_x == 0 and delta_y != 0:
+                alignment_move = {
+                    "direction": "south" if delta_y > 0 else "north",
+                    "count": abs(delta_y),
+                }
+            elif delta_y == 0 and delta_x != 0:
+                alignment_move = {
+                    "direction": "east" if delta_x > 0 else "west",
+                    "count": abs(delta_x),
+                }
+        movable_live = (
+            tracked_object.get("estimated_live")
+            or provisional_object.get("live")
+            or object_intent.get("initial_live")
+        )
+        opening_push = object_intent.get("opening_push", {})
+        opening_active = bool(
+            movable_live
+            and movable_live == opening_push.get("when_object_live")
+        )
+        alignment_entry = object_intent.get("alignment_entry", {})
+        entry_active = bool(
+            movable_live
+            and movable_live == alignment_entry.get("when_object_live")
+        )
+        alignment_push_direction = object_intent.get("alignment_push_direction")
+        active_push_direction = (
+            opening_push.get("interact_direction")
+            if opening_active else alignment_push_direction
+        )
+        active_object_target = (
+            opening_push.get("result_object_live")
+            if opening_active else (
+                object_intent.get("alignment_waypoint_live")
+                or object_intent.get("required_live")
+            )
+        )
+        required_push_side = {
+            "north": "south of the object",
+            "south": "north of the object",
+            "west": "east of the object",
+            "east": "west of the object",
+        }.get(active_push_direction)
+        push_side_vectors = {
+            "north": (0, 1),
+            "south": (0, -1),
+            "west": (1, 0),
+            "east": (-1, 0),
+        }
+        entry_route = [
+            point for point in alignment_entry.get("actor_route_live", [])
+            if isinstance(point, list) and len(point) == 2
+        ]
+        entry_target = entry_route[-1] if entry_route else []
+        entry_current_target = entry_target
+        if entry_active and entry_route and actor_live != entry_target:
+            if actor_live in entry_route:
+                route_index = entry_route.index(actor_live)
+                entry_current_target = entry_route[min(route_index + 1, len(entry_route) - 1)]
+            else:
+                entry_current_target = entry_route[0]
+        stance_live = None
+        if at_final_alignment:
+            stance_live = alignment_current_target
+        elif opening_active and len(opening_push.get("actor_target_live", [])) == 2:
+            stance_live = opening_push["actor_target_live"]
+        elif entry_active and len(entry_current_target) == 2:
+            stance_live = entry_current_target
+        elif movable_live and active_push_direction in push_side_vectors:
+            stance_dx, stance_dy = push_side_vectors[active_push_direction]
+            stance_live = [
+                int(movable_live[0]) + stance_dx,
+                int(movable_live[1]) + stance_dy,
+            ]
+        push_stance_delta = (
+            [
+                int(stance_live[0]) - int(actor_live[0]),
+                int(stance_live[1]) - int(actor_live[1]),
+            ]
+            if (
+                not at_final_alignment
+                and len(actor_live) == 2
+                and isinstance(stance_live, list)
+                and len(stance_live) == 2
+            )
+            else None
+        )
+        push_stance_move = None
+        if push_stance_delta:
+            delta_x, delta_y = push_stance_delta
+            if delta_x == 0 and delta_y != 0:
+                push_stance_move = {
+                    "direction": "south" if delta_y > 0 else "north",
+                    "count": abs(delta_y),
+                }
+            elif delta_y == 0 and delta_x != 0:
+                push_stance_move = {
+                    "direction": "east" if delta_x > 0 else "west",
+                    "count": abs(delta_x),
+                }
+        actor_at_push_stance = bool(push_stance_delta == [0, 0])
+        push_checkpoint_action = ({
+            "kind": "interact",
+            "direction": active_push_direction,
+        } if actor_at_push_stance and active_push_direction else None)
+        opening_completed = bool(
+            opening_push.get("result_object_live")
+            and movable_live == opening_push.get("result_object_live")
+        )
+        opening_feedback = ({
+            "status": "success",
+            "message": (
+                f"{opening_push.get('interact_direction', '').capitalize()} push succeeded once. "
+                f"Another {opening_push.get('interact_direction')} push is not advised in this state. "
+                + (
+                    f"Move {push_stance_move['direction']} {push_stance_move['count']} tile(s) now."
+                    if push_stance_move else
+                    "Follow the next checkpoint now."
+                )
+            ),
+            "completed_once": f"interact({opening_push.get('interact_direction')})",
+            "object_after_live": movable_live,
+            "not_advised": f"interact({opening_push.get('interact_direction')})",
+            "reason": "the one-time opening push already reached its required object state",
+            "next_actor_target_live": stance_live,
+            **({"next_checkpoint_move": push_stance_move} if push_stance_move else {}),
+            **({"next_checkpoint_action": push_checkpoint_action} if push_checkpoint_action else {}),
+        } if opening_completed else None)
+        solved_exit = object_intent.get("solved_exit", {})
+        solved_exit_route = [
+            point for point in solved_exit.get("actor_route_live", [])
+            if isinstance(point, list) and len(point) == 2
+        ]
+        solved_exit_target = solved_exit_route[0] if solved_exit_route else None
+        if object_at_required and solved_exit_route and actor_live in solved_exit_route:
+            route_index = solved_exit_route.index(actor_live)
+            if route_index + 1 < len(solved_exit_route):
+                solved_exit_target = solved_exit_route[route_index + 1]
+            else:
+                delta = {
+                    "north": (0, -1), "south": (0, 1),
+                    "west": (-1, 0), "east": (1, 0),
+                }.get(solved_exit.get("transition_direction"), (0, 0))
+                solved_exit_target = [
+                    int(actor_live[0]) + delta[0], int(actor_live[1]) + delta[1]
+                ]
+        solved_exit_move = None
+        if object_at_required and solved_exit_target and len(actor_live) == 2:
+            delta_x = int(solved_exit_target[0]) - int(actor_live[0])
+            delta_y = int(solved_exit_target[1]) - int(actor_live[1])
+            if delta_x == 0 and delta_y != 0:
+                solved_exit_move = {
+                    "direction": "south" if delta_y > 0 else "north",
+                    "count": abs(delta_y),
+                }
+            elif delta_y == 0 and delta_x != 0:
+                solved_exit_move = {
+                    "direction": "east" if delta_x > 0 else "west",
+                    "count": abs(delta_x),
+                }
         task_progress = {
             "completed_steps": ([
                 {
                     "landmark": change.get("source_landmark"),
                     "result": change.get("effect", {}).get("message"),
                 }
-                for change in confirmed_changes
-            ] + recent_checkpoint_completions),
-            "current_step": {
+                for change in completed_changes
+            ] + ([{
+                "landmark": completed_segment.get("id"),
+                "result": completed_segment.get("success"),
+            }] if completed_segment else []) + recent_checkpoint_completions),
+            "current_step": ({
                 "landmark": active.get("id"),
                 "target": active.get("effective_live") or active.get("live"),
                 "reason": active.get("selection_reason"),
                 "traversal_phase": (active.get("traversal") or {}).get("phase"),
                 "next_step": (active.get("traversal") or {}).get("next_step"),
                 "checkpoint": active.get("checkpoint"),
-            } if active else None,
+            } if active else ({
+                "objective": visual_progress.get("next_step"),
+                "direction": visual_progress.get("exit_direction"),
+                "success_evidence": visual_progress.get("success_evidence"),
+                "status": visual_progress.get("status"),
+            } if (
+                not completed_segment and visual_progress.get("next_step")
+            ) else ({
+                "objective": "verify the solved puzzle state and use the opened exit",
+                "object_current_live": tracked_object.get("estimated_live"),
+                **({
+                    "target": solved_exit_target,
+                    "target_type": "opened_door_threshold",
+                    "checkpoint_move": solved_exit_move,
+                    "action_now": (
+                        f"move({solved_exit_move['direction']}, count={solved_exit_move['count']})"
+                    ),
+                } if solved_exit_move else {
+                    "action_now": "look or look_map, then navigate through the opened exit",
+                }),
+                "success_evidence": navigation.get("current_room", {}).get("success_evidence"),
+                "status": "object target achieved; do not push it again",
+            } if (
+                not completed_segment
+                and object_at_required
+            ) else ({
+                "objective": "finish aligning the tracked movable object",
+                "target": alignment_current_target,
+                "target_type": (
+                    "actor_position_for_final_push"
+                    if alignment_current_target == alignment_actor_target
+                    else "actor_route_waypoint"
+                ),
+                "object_current_live": tracked_object.get("estimated_live"),
+                "delta_from_actor": alignment_delta,
+                **({"checkpoint_move": alignment_move} if alignment_move else {}),
+                **({"checkpoint_action": {
+                    "kind": "interact",
+                    "direction": final_alignment.get("interact_direction"),
+                }} if actor_at_alignment_target else {}),
+                "action_now": (
+                    f"interact({final_alignment.get('interact_direction')}) exactly once"
+                    if actor_at_alignment_target else (
+                        f"move({alignment_move['direction']}, count={alignment_move['count']})"
+                        if alignment_move else "move toward the current target"
+                    )
+                ),
+                "then": (
+                    None if actor_at_alignment_target else (
+                        f"at target, use interact({final_alignment.get('interact_direction')}) exactly once"
+                        if alignment_current_target == alignment_actor_target else
+                        "regenerate the live puzzle overlay for the next checkpoint"
+                    )
+                ),
+                "success_evidence": navigation.get("current_room", {}).get("success_evidence"),
+                "status": (
+                    "actor is at target; perform the stated final push now"
+                    if actor_at_alignment_target else
+                    "reposition the actor with move; do not interact before reaching target"
+                ),
+            } if (
+                not completed_segment
+                and at_final_alignment
+            ) else ({
+                "objective": navigation.get("current_room", {}).get("objective"),
+                "target": stance_live or tracked_object.get("estimated_live"),
+                "target_type": "actor_position_for_push" if stance_live else "movable_object",
+                "object_current_live": tracked_object.get("estimated_live"),
+                **({"delta_from_actor": push_stance_delta} if push_stance_delta is not None else {}),
+                **({"checkpoint_move": push_stance_move} if push_stance_move else {}),
+                **({"checkpoint_action": push_checkpoint_action} if push_checkpoint_action else {}),
+                **({
+                    "required_object_live": (
+                        active_object_target
+                    ),
+                    "useful_push_direction": active_push_direction,
+                    "required_push_side": required_push_side,
+                    "next_stance_live": stance_live,
+                    "actor_forbidden_live": object_intent.get("actor_forbidden_live"),
+                } if object_intent else {}),
+                "action_readiness": tracked_object.get("action_readiness"),
+                "intermediate_progress_evidence": (
+                    "Actor reaches a cardinally adjacent tile, then a directed interact "
+                    "visibly changes the movable object's position."
+                ),
+                "success_evidence": navigation.get("current_room", {}).get("success_evidence"),
+                "status": (
+                    "manipulate the tracked object until the room success evidence is proven; "
+                    "actor adjacency or one successful push is intermediate only"
+                ),
+            } if (
+                not completed_segment
+                and tracked_object.get("estimated_live")
+            ) else ({
+                "objective": (
+                    "reach the required push stance for the established movable object"
+                    if object_intent else
+                    "approach and contact-test the established provisional object candidate"
+                ),
+                "target": stance_live or movable_live,
+                "target_type": "actor_position_for_push" if stance_live else provisional_object.get("identity"),
+                "object_current_live": movable_live,
+                **({"delta_from_actor": push_stance_delta} if push_stance_delta is not None else {}),
+                **({"checkpoint_move": push_stance_move} if push_stance_move else {}),
+                **({"checkpoint_action": push_checkpoint_action} if push_checkpoint_action else {}),
+                "distance_reducing_directions": provisional_object.get(
+                    "direct_distance_reducing_directions"
+                ),
+                "action_readiness": provisional_object.get("action_readiness"),
+                "success_evidence": provisional_object.get("success_evidence"),
+                "status": provisional_object.get("status"),
+            } if (
+                not completed_segment
+                and (
+                    provisional_object.get("live")
+                    or (object_intent and movable_live)
+                )
+            ) else ({
+                "objective": navigation.get("current_room", {}).get("objective"),
+                "success_evidence": navigation.get("current_room", {}).get("success_evidence"),
+                "status": "in_progress",
+            } if (
+                not completed_segment
+                and navigation.get("current_room", {}).get("objective")
+            ) else None))))))),
+            "observed_state_changes": observed_state_changes,
+            **({"immediate_phase_feedback": opening_feedback} if opening_feedback else {}),
             "instruction": (
-                "Completed goal clauses are finished. Act on current_step; do not restart the goal text."
+                "Only completed_steps are finished. An observed_state_change is an attempt or intermediate "
+                "puzzle state, not proof of completion. Continue current_step until its success_evidence is observed. "
+                "For a movable-object puzzle, reaching the object or moving it once is not room completion. "
+                "If a traversal segment just completed and current_step is null, choose the next local route freely."
             ),
         }
 
@@ -179,7 +670,7 @@ class ContextHarness:
             key: navigation_map.get(key)
             for key in (
                 "available", "dungeon", "coordinate_bounds", "ascii_crop",
-                "legend", "full_map_image",
+                "legend", "full_map_image", "reason", "local_policy",
             )
             if navigation_map.get(key) is not None
         }
@@ -191,6 +682,17 @@ class ContextHarness:
             }
             for marker in navigation_map.get("nearby_curated_markers", [])[:4]
         ]
+        puzzle_overlay = cls._live_puzzle_overlay(
+            navigation_map,
+            actor_live,
+            movable_live or [],
+            object_intent.get("required_live", []),
+            None if object_at_required else stance_live,
+            object_intent.get("anchor_semantics"),
+            None if object_at_required else object_intent.get("ephemeral_barrier_live"),
+        )
+        if puzzle_overlay:
+            compact_map["live_puzzle_overlay"] = puzzle_overlay
 
         tutorial = context.get("tutorial", {})
         compact_tutorial = {
@@ -226,13 +728,25 @@ class ContextHarness:
             }
             for item in context.get("exploration_relevant_items", [])
         ]
+        established_memory = context.get("established_memory", {})
+        if tracked_object.get("estimated_live") and object_intent:
+            established_memory = dict(established_memory)
+            established_memory["dungeon"] = [
+                item for item in established_memory.get("dungeon", [])
+                if item is not object_intent
+            ]
+        position_update = dict(context.get("position_update", {}))
+        if at_final_alignment or object_at_required:
+            position_update.pop("tracked_movable_object", None)
         result = {
             "goal": context.get("goal"),
             "game": context.get("game", {}),
-            "position_update": context.get("position_update", {}),
+            "position_update": position_update,
             "navigation_map": compact_map,
             "tile_buffer": compact_tiles,
+            "visible_object_candidates": context.get("visible_object_candidates", {}),
             "tutorial": compact_tutorial,
+            "established_memory": established_memory,
             "selected_dungeon_tool": context.get("selected_dungeon_tool"),
             "exploration_relevant_items": tools,
             "available_actions": context.get("available_actions", []),
@@ -241,6 +755,7 @@ class ContextHarness:
             "task_progress": task_progress,
             "reasoning_evidence": context.get("reasoning_evidence", [])[-1:],
             "memory_access": context.get("memory_access", {}),
+            "room_episode": context.get("room_episode", {}),
         }
         for key in ("spatial_correlation", "strategic_progression"):
             value = context.get(key)
@@ -365,8 +880,10 @@ class ContextHarness:
             "dungeon_context": dungeon,
             "navigation_map": navigation_map,
             "tile_buffer": tile_buffer,
+            "visible_object_candidates": raw.get("visible_object_candidates", {}),
             "spatial_correlation": spatial,
             "tutorial": raw.get("tutorial", {}),
+            "established_memory": raw.get("established_memory", {}),
             "selected_dungeon_tool": raw.get("selected_dungeon_tool"),
             "exploration_relevant_items": raw.get("exploration_relevant_items", []),
             "available_actions": raw.get("available_actions", []),
@@ -378,6 +895,7 @@ class ContextHarness:
             "recent_events": events,
             "reasoning_evidence": raw.get("reasoning_evidence", [])[-4:],
             "memory_access": raw.get("memory_access", {}),
+            "room_episode": raw.get("room_episode", {}),
         }
         if game.get("mode") == "exploration":
             context = self._exploration_context(context)
@@ -385,6 +903,41 @@ class ContextHarness:
         target_chars = max(1000, self.max_chars - min(1000, self.max_chars // 5))
         encoded = json.dumps(context, ensure_ascii=False, separators=(",", ":"))
         if len(encoded) > target_chars:
+            established = context.get("established_memory", {})
+            if isinstance(established, dict):
+                # Current dungeon facts outrank global mechanics, which are
+                # also present in the stable system contract.
+                established["global"] = []
+            navigation = context.get("navigation", {})
+            if isinstance(navigation, dict):
+                # The full explored-edge graph persists in the mapper. The
+                # current decision already has local_route_evidence, so replaying
+                # the historical graph only consumes prompt budget.
+                navigation.pop("observed_edges", None)
+                recent_changed_landmarks = {
+                    (action.get("confirmed_world_change") or {}).get("completed_landmark")
+                    for action in context.get("recent_agent_actions", [])
+                    if action.get("confirmed_world_change")
+                }
+                compact_changes = []
+                for change in navigation.get("confirmed_world_changes", []):
+                    if change.get("source_landmark") in recent_changed_landmarks:
+                        compact_changes.append(change)
+                        continue
+                    effect = change.get("effect", {})
+                    compact_changes.append({
+                        "source_landmark": change.get("source_landmark"),
+                        "source_live": change.get("source_live"),
+                        "effect": {
+                            key: effect.get(key)
+                            for key in ("state", "message")
+                            if effect.get(key) is not None
+                        },
+                        "changed_live_tiles": change.get("changed_live_tiles", [])[:6],
+                        "authority": change.get("authority"),
+                    })
+                if compact_changes:
+                    navigation["confirmed_world_changes"] = compact_changes
             context["recent_events"] = events[-3:]
             context["reasoning_evidence"] = context["reasoning_evidence"][-2:]
             compact_dungeon = context.get("dungeon_context")
@@ -394,7 +947,10 @@ class ContextHarness:
             if isinstance(compact_map, dict):
                 context["navigation_map"] = {
                     key: compact_map[key]
-                    for key in ("available", "dungeon", "coordinate_bounds", "ascii_crop", "legend", "nearby_curated_markers", "policy")
+                    for key in (
+                        "available", "dungeon", "coordinate_bounds", "ascii_crop",
+                        "legend", "nearby_curated_markers", "live_puzzle_overlay", "policy",
+                    )
                     if key in compact_map
                 }
                 context["navigation_map"]["nearby_curated_markers"] = context["navigation_map"].get("nearby_curated_markers", [])[:6]
@@ -533,8 +1089,25 @@ class ContextHarness:
                 context.pop("strategic_progression", None)
             encoded = json.dumps(context, ensure_ascii=False, separators=(",", ":"))
         if len(encoded) > self.max_chars:
+            largest = sorted(
+                (
+                    (key, len(json.dumps(value, ensure_ascii=False, separators=(",", ":"))))
+                    for key, value in context.items()
+                ),
+                key=lambda item: item[1],
+                reverse=True,
+            )[:8]
+            navigation_sizes = sorted(
+                (
+                    (key, len(json.dumps(value, ensure_ascii=False, separators=(",", ":"))))
+                    for key, value in context.get("navigation", {}).items()
+                ),
+                key=lambda item: item[1],
+                reverse=True,
+            )
             raise ValueError(
-                f"Compacted model context is still {len(encoded)} chars; budget is {self.max_chars}"
+                f"Compacted model context is still {len(encoded)} chars; budget is {self.max_chars}; "
+                f"largest_fields={largest}; navigation_fields={navigation_sizes}"
             )
         self.summary_path.write_text(
             json.dumps(self.summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
@@ -566,6 +1139,12 @@ class ThinkingGate:
     def __init__(self, config: dict):
         self.max_seconds = min(float(config.get("max_thinking_seconds", 270)), 295.0)
         self.max_same_intent = int(config.get("max_same_intent_without_change", 2))
+        self._last_signature = None
+        self._last_fingerprint = None
+        self._repeat_count = 0
+
+    def reset_room_episode(self) -> None:
+        """Forget intent-loop history from the puzzle state that was reset."""
         self._last_signature = None
         self._last_fingerprint = None
         self._repeat_count = 0
@@ -610,6 +1189,20 @@ class ThinkingGate:
             raise ModelDriftError("use_tool is technically unavailable because no dungeon tool is selected")
         if intent.kind == "reset_room" and not context.get("room_reset_recovery", {}).get("eligible"):
             raise ModelDriftError("room reset has no current curated recovery ticket")
+        recent_actions = context.get("recent_agent_actions", [])
+        if intent.kind == "interact" and intent.direction and recent_actions:
+            previous = recent_actions[-1]
+            if (
+                previous.get("kind") == "interact"
+                and previous.get("requested_direction") == intent.direction
+                and previous.get("from") == context["game"].get("position")
+                and previous.get("to") == context["game"].get("position")
+                and not previous.get("confirmed_world_change")
+            ):
+                raise ModelDriftError(
+                    "the same directed interact already had no effect at this exact tile; "
+                    "change position, direction, or inspect the scene"
+                )
         if intent.kind == "select_tool":
             tool_state = {
                 item.get("name"): bool(item.get("available"))
@@ -669,7 +1262,14 @@ class ThinkingGate:
                 )
             break
 
-        signature = json.dumps(asdict(intent), sort_keys=True)
+        signature = json.dumps({
+            "kind": intent.kind,
+            "direction": intent.direction,
+            "count": intent.count,
+            "question": intent.question,
+            "query": intent.query,
+            "tool": intent.tool,
+        }, sort_keys=True)
         fingerprint = self.fingerprint(context)
         if signature == self._last_signature and fingerprint == self._last_fingerprint:
             self._repeat_count += 1

@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
 
@@ -16,6 +18,43 @@ from wram_discovery.mesen_bridge import MesenBridgeError
 RUN_STATE_FILES = (
     "journal.jsonl", "online_navigation_graph.json", "short_term_memory.json",
 )
+
+
+@contextmanager
+def run_directory_lock(run_dir: Path):
+    """Prevent two agent processes from controlling one run/emulator session."""
+    run_dir.mkdir(parents=True, exist_ok=True)
+    path = run_dir / ".run_agent.lock"
+    handle = path.open("a+b")
+    try:
+        handle.seek(0, os.SEEK_END)
+        if handle.tell() == 0:
+            handle.write(b"\0")
+            handle.flush()
+        handle.seek(0)
+        try:
+            if os.name == "nt":
+                import msvcrt
+                msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as exc:
+            raise RuntimeError(
+                f"Run directory is already controlled by another agent process: {run_dir}"
+            ) from exc
+        try:
+            yield
+        finally:
+            handle.seek(0)
+            if os.name == "nt":
+                import msvcrt
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+    finally:
+        handle.close()
 
 
 def validate_run_directory(run_dir: Path, resume: bool) -> None:
@@ -76,14 +115,15 @@ def main() -> int:
     )
     try:
         validate_run_directory(run_dir, args.resume_run)
-        summary = MesenOrchestrator(
-            config,
-            args.goal,
-            run_dir,
-            execute=args.execute,
-            resume_battle_stage=args.resume_battle_stage,
-            resume_battle_actor=args.resume_battle_actor,
-        ).run()
+        with run_directory_lock(run_dir):
+            summary = MesenOrchestrator(
+                config,
+                args.goal,
+                run_dir,
+                execute=args.execute,
+                resume_battle_stage=args.resume_battle_stage,
+                resume_battle_actor=args.resume_battle_actor,
+            ).run()
     except (MesenBridgeError, TimeoutError, OSError, RuntimeError, ValueError) as exc:
         print(f"ERROR: {exc}")
         return 1

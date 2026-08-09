@@ -114,7 +114,10 @@ class MesenController:
 
     def interact(self, direction: str | None = None) -> Observation:
         if direction is not None:
-            return self.chord(BUTTON_FOR_DIRECTION[direction], "a")
+            # Lufia II pushes/picks up by holding A first and then applying one
+            # bounded direction impulse. Direction-first+A faces the object but
+            # does not move it in the live game.
+            return self.chord("a", BUTTON_FOR_DIRECTION[direction])
         return self.pulse("a")
 
     def _wait_exploration_mode(self, expected: int, timeout: float = 3.0) -> None:

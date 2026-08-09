@@ -32,6 +32,18 @@ class BaseDungeon:
         """Select a state-aware active landmark, if this dungeon defines one."""
         return None
 
+    def established_memory(
+        self, observation: Any, room_context: dict
+    ) -> list[dict]:
+        """Return curated run-independent facts for the currently classified room."""
+        return []
+
+    def provisional_object_target(
+        self, observation: Any, room_context: dict, candidates: dict
+    ) -> dict | None:
+        """Correlate a live dynamic-cell candidate with established dungeon state."""
+        return None
+
     def tile_address(self, x: int, y: int) -> int:
         """Return the WRAM address for a live tile coordinate."""
         raise NotImplementedError

@@ -102,6 +102,7 @@ class OnlineNavigationMapper:
             "current_node": None,
             "action_count": 0,
             "completed_landmarks": {},
+            "completed_traversal_segments": {},
         }
         if self.state.get("schema") == self.LEGACY_SCHEMA:
             self._migrate_v1_state()
@@ -113,6 +114,9 @@ class OnlineNavigationMapper:
         self.state.setdefault("room_history", [])
         self.state.setdefault("left_start_room", False)
         self.state.setdefault("completed_landmarks", {})
+        self.state.setdefault("completed_traversal_segments", {})
+        self.state.setdefault("verified_room_entries", {})
+        self._drop_stale_traversal_completions()
         # A failed movement proves only a directed, momentary collision. It does
         # not prove a wall: doors, actors, movable blocks and puzzle state can
         # all produce the same WRAM evidence. Migrate early probe graphs that
@@ -126,6 +130,35 @@ class OnlineNavigationMapper:
         for event in self.state.get("events", []):
             if event.get("outcome") == "blocked":
                 event["outcome"] = "blocked_now"
+
+    def _drop_stale_traversal_completions(self) -> None:
+        """Expire derived completions that contradict the current curated route."""
+        completions = self.state.get("completed_traversal_segments", {})
+        for key, completion in list(completions.items()):
+            room_id, separator, landmark_id = str(key).partition(":")
+            if not separator:
+                completions.pop(key, None)
+                continue
+            room = self._room_record(room_id)
+            landmark = next(
+                (
+                    item for item in (room or {}).get("reference_landmarks", [])
+                    if str(item.get("id")) == landmark_id
+                ),
+                None,
+            )
+            if landmark is None:
+                completions.pop(key, None)
+                continue
+            configured = landmark.get("traversal")
+            configured = configured if isinstance(configured, dict) else {}
+            current_direction = (
+                configured.get("direction")
+                or landmark.get("traversal_direction")
+                or landmark.get("facing")
+            )
+            if current_direction and completion.get("direction") != current_direction:
+                completions.pop(key, None)
 
     def _migrate_v1_state(self) -> None:
         """Re-key legacy nodes so overlapping subrooms cannot alias each other."""
@@ -202,28 +235,166 @@ class OnlineNavigationMapper:
             None,
         )
 
+    def _entry_matches(
+        self, room_id: str, observation: LiveNavigationObservation
+    ) -> bool:
+        room = self._room_record(room_id)
+        marker = room.get("entry_verification") if room else None
+        if not marker:
+            return True
+        if list(marker.get("position", [])) != [observation.x, observation.y]:
+            return False
+        global_position = marker.get("global_position")
+        return global_position is None or list(global_position) == [
+            observation.global_x,
+            observation.global_y,
+        ]
+
+    def _reconcile_verified_entry(
+        self, room_id: str, observation: LiveNavigationObservation
+    ) -> None:
+        """Discard pre-verification nodes falsely attributed to an overlapping room."""
+        if room_id in self.state["verified_room_entries"]:
+            return
+        room = self._room_record(room_id) or {}
+        prefix = f"{observation.map_id:02X}:{room_id}:"
+        self.state["nodes"] = {
+            key: node
+            for key, node in self.state.get("nodes", {}).items()
+            if not key.startswith(prefix)
+        }
+        cleaned_edges = {}
+        for source, directions in self.state.get("edges", {}).items():
+            if source.startswith(prefix):
+                continue
+            remaining = {
+                direction: edge
+                for direction, edge in directions.items()
+                if not str(edge.get("to") or "").startswith(prefix)
+            }
+            cleaned_edges[source] = remaining
+        self.state["edges"] = cleaned_edges
+        self.state["events"] = [
+            event
+            for event in self.state.get("events", [])
+            if not any(
+                str(event.get(field) or "").startswith(prefix)
+                for field in ("source", "target", "node")
+            )
+        ]
+        self.state["room_history"] = [
+            item
+            for item in self.state.get("room_history", [])
+            if room_id not in {item.get("from"), item.get("to")}
+        ]
+        self.state["visited_rooms"] = [
+            visited
+            for visited in self.state.get("visited_rooms", [])
+            if visited != room_id
+        ]
+        for field in ("completed_landmarks", "completed_traversal_segments"):
+            self.state[field] = {
+                key: value
+                for key, value in self.state.get(field, {}).items()
+                if not key.startswith(f"{room_id}:")
+            }
+        predecessors = [str(value) for value in room.get("predecessors", [])]
+        prior = next(
+            (
+                candidate
+                for candidate in reversed(self.state.get("visited_rooms", []))
+                if candidate in predecessors
+            ),
+            None,
+        )
+        self.state["current_room"] = prior
+        self.state["current_node"] = None
+        self.state["verified_room_entries"][room_id] = {
+            "position": [observation.x, observation.y],
+            "global_position": [observation.global_x, observation.global_y],
+            "verified_at": datetime.now(timezone.utc).isoformat(),
+            "authority": (room.get("entry_verification") or {}).get("authority"),
+        }
+
+    @staticmethod
+    def controller_action(action: str | None) -> str | None:
+        """Translate curated object semantics into an executable intent kind."""
+        normalized = str(action or "").casefold()
+        if normalized == "push":
+            return "interact"
+        return normalized or None
+
+    def next_room_landmark(self, room_context: dict) -> dict | None:
+        """Return the next unfinished curated checkpoint in authored order."""
+        landmarks = sorted(
+            room_context.get("nearby_live_landmarks", []),
+            key=lambda item: int(item.get("sequence_index", 1_000_000)),
+        )
+        for landmark in landmarks:
+            checkpoint = landmark.get("checkpoint", {})
+            if landmark.get("completed") or checkpoint.get("status") in {"completed", "reached"}:
+                continue
+            return {
+                **landmark,
+                "selection_reason": "next unfinished curated room checkpoint",
+            }
+        return None
+
     def room_for(
         self,
         observation: LiveNavigationObservation,
         previous_room: str | None = None,
     ) -> str | None:
         """Resolve overlapping WRAM room bounds without inventing a global image projection."""
+        prior = previous_room if previous_room is not None else self.state.get("current_room")
         candidates = self.room_candidates(observation)
-        if len(candidates) == 1:
-            return candidates[0]
         if not candidates:
             return None
-        prior = previous_room if previous_room is not None else self.state.get("current_room")
+        prior_record = self._room_record(prior)
+        successors = set(prior_record.get("successors", [])) if prior_record else set()
+        verified_successors = [
+            candidate
+            for candidate in candidates
+            if (
+                candidate in successors
+                and (self._room_record(candidate) or {}).get("entry_verification")
+                and self._entry_matches(candidate, observation)
+            )
+        ]
+        if len(verified_successors) == 1:
+            # An exact authored first stable tile is stronger than overlapping
+            # predecessor bounds (common in small door-transit regions).
+            return verified_successors[0]
         # Remaining inside the same candidate is stronger evidence than a
         # graph edge; this prevents repeated observations from oscillating.
         if prior in candidates:
             return prior
-        prior_record = self._room_record(prior)
-        successors = set(prior_record.get("successors", [])) if prior_record else set()
+        gated_successors = [
+            candidate
+            for candidate in candidates
+            if candidate in successors and not self._entry_matches(candidate, observation)
+        ]
+        if gated_successors:
+            # Bounds may include a vestibule or transit corridor. Until the
+            # authored first tile is observed, retain the predecessor room.
+            return prior
+        candidates = [
+            candidate
+            for candidate in candidates
+            if self._entry_matches(candidate, observation)
+        ]
+        if len(candidates) == 1:
+            return candidates[0]
+        if not candidates:
+            return None
         reachable = [candidate for candidate in candidates if candidate in successors]
         return reachable[0] if len(reachable) == 1 else None
 
     def observe(self, observation: LiveNavigationObservation) -> tuple[str, bool]:
+        for candidate in self.room_candidates(observation):
+            room = self._room_record(candidate) or {}
+            if room.get("entry_verification") and self._entry_matches(candidate, observation):
+                self._reconcile_verified_entry(candidate, observation)
         previous_room = self.state.get("current_room")
         room = self.room_for(observation, previous_room=previous_room)
         key = self.node_key(observation.map_id, observation.x, observation.y, room)
@@ -258,6 +429,11 @@ class OnlineNavigationMapper:
             start_room = self.objective.get("start", {}).get("room_id")
             if previous_room == start_room and room not in {None, start_room}:
                 self.state["left_start_room"] = True
+            if previous_room:
+                prefix = f"{previous_room}:"
+                for segment_key in list(self.state.get("completed_traversal_segments", {})):
+                    if segment_key.startswith(prefix):
+                        self.state["completed_traversal_segments"].pop(segment_key, None)
         self.state["current_room"] = room
         self.state["current_node"] = key
         return key, new_room
@@ -374,6 +550,73 @@ class OnlineNavigationMapper:
         self.state["events"].append(event)
         self.state["action_count"] = int(self.state.get("action_count", 0)) + 1
         return event
+
+    def record_traversal_segment_result(
+        self, active_landmark: dict | None, event: dict
+    ) -> dict | None:
+        """Finish only the straight segment beyond a directional transit anchor.
+
+        A map or room id often remains unchanged inside door vestibules, town
+        entrances and other scroll regions.  Once the actor advanced beyond an
+        explicit anchor, either a confirmed transition or a collision in the
+        same direction proves that this straight segment has ended.  It does
+        not prescribe the following route; local navigation becomes free again.
+        """
+        landmark = active_landmark or {}
+        traversal = landmark.get("traversal") or {}
+        if traversal.get("phase") != "crossing_threshold":
+            return None
+        direction = traversal.get("direction")
+        if direction not in DIRECTIONS or event.get("direction") != direction:
+            return None
+        forward_steps = int(traversal.get("forward_steps_beyond_anchor", 0))
+        if forward_steps <= 0:
+            return None
+        outcome = event.get("outcome")
+        if event.get("new_room") or outcome == "transition":
+            status = "transit_confirmed"
+            success = "room or coordinate-layout transition observed"
+        elif outcome == "blocked_now":
+            status = "segment_boundary_reached"
+            success = (
+                "forward collision after advancing beyond the anchor ended the straight transit segment"
+            )
+        else:
+            return None
+
+        room_id = self.state.get("current_room")
+        landmark_id = landmark.get("id")
+        if not room_id or not landmark_id:
+            return None
+        result = {
+            "id": landmark_id,
+            "type": "traversal",
+            "status": status,
+            "success": success,
+            "room_id": room_id,
+            "anchor_live": traversal.get("anchor_live") or landmark.get("live"),
+            "boundary_live": [event["after"]["x"], event["after"]["y"]],
+            "direction": direction,
+            "forward_steps": forward_steps,
+            "event_index": event.get("index"),
+            "completed_at": datetime.now(timezone.utc).isoformat(),
+        }
+        self.state["completed_traversal_segments"][f"{room_id}:{landmark_id}"] = result
+        self.state["events"].append({
+            "index": len(self.state["events"]) + 1,
+            "type": "traversal_segment_completed",
+            **result,
+        })
+        return result
+
+    def completed_traversal_segment(
+        self, room_id: str | None, landmark_id: str | None
+    ) -> dict | None:
+        if not room_id or not landmark_id:
+            return None
+        return self.state.get("completed_traversal_segments", {}).get(
+            f"{room_id}:{landmark_id}"
+        )
 
     def unknown_directions(self, node: str) -> list[str]:
         known = self.state["edges"].get(node, {})
@@ -547,11 +790,17 @@ class OnlineNavigationMapper:
             int(current_node.get("last_observation", {}).get("direction", -1))
         )
         landmarks = []
-        for landmark in room.get("reference_landmarks", []):
+        for sequence_index, landmark in enumerate(room.get("reference_landmarks", [])):
             live = landmark.get("live")
             if not live:
                 continue
             item = dict(landmark)
+            item["sequence_index"] = sequence_index
+            curated_action = item.get("action")
+            executable_action = self.controller_action(curated_action)
+            if curated_action and executable_action != curated_action:
+                item["semantic_action"] = curated_action
+                item["action"] = executable_action
             dx, dy = int(live[0]) - x, int(live[1]) - y
             item["relative"] = [dx, dy]
             steps = []
@@ -582,7 +831,7 @@ class OnlineNavigationMapper:
                 "steps_to_reach": steps,
                 "coordinate_rule": "x increases east; y increases south",
             }
-            if landmark.get("action"):
+            if item.get("action"):
                 item["action_readiness"] = {
                     "completed": bool(completion),
                     "position_ready": at_landmark,
@@ -750,7 +999,7 @@ class OnlineNavigationMapper:
             return None
         facing = FACING_CODES.get(int(observation.direction))
         for landmark in room.get("reference_landmarks", []):
-            if landmark.get("action") != action:
+            if self.controller_action(landmark.get("action")) != action:
                 continue
             live = landmark.get("live")
             if not live or [int(live[0]), int(live[1])] != [observation.x, observation.y]:
@@ -783,6 +1032,37 @@ class OnlineNavigationMapper:
             return completion
         return None
 
+    def record_coordinate_checkpoint(
+        self,
+        checkpoint: dict,
+        observation: LiveNavigationObservation,
+    ) -> dict | None:
+        """Persist an authored waypoint once its exact live feet tile is reached."""
+        if checkpoint.get("type") != "coordinate":
+            return None
+        target = checkpoint.get("target")
+        if list(target or []) != [observation.x, observation.y]:
+            return None
+        room_id = self.state.get("current_room")
+        landmark_id = checkpoint.get("id")
+        if not room_id or not landmark_id:
+            return None
+        key = f"{room_id}:{landmark_id}"
+        existing = self.state["completed_landmarks"].get(key)
+        if existing:
+            return existing
+        completion = {
+            "landmark_id": landmark_id,
+            "room": room_id,
+            "action": "reach_coordinate",
+            "position": [observation.x, observation.y],
+            "semantic_tile_change_count": 0,
+            "tile_changes": [],
+            "completed_at": datetime.now(timezone.utc).isoformat(),
+        }
+        self.state["completed_landmarks"][key] = completion
+        return completion
+
     def record_room_reset(self, observation: LiveNavigationObservation) -> dict:
         """Expire only momentary collisions in the current curated room."""
         current_room = self.room_for(observation, previous_room=self.state.get("current_room"))
@@ -814,6 +1094,13 @@ class OnlineNavigationMapper:
             completion = self.state["completed_landmarks"].pop(key, None)
             if completion is not None:
                 expired_landmarks.append(completion)
+        expired_traversal_segments = []
+        prefix = f"{current_room}:"
+        for key in list(self.state.get("completed_traversal_segments", {})):
+            if key.startswith(prefix):
+                expired_traversal_segments.append(
+                    self.state["completed_traversal_segments"].pop(key)
+                )
         node, _ = self.observe(observation)
         event = {
             "index": len(self.state["events"]) + 1,
@@ -822,6 +1109,7 @@ class OnlineNavigationMapper:
             "room": current_room,
             "expired_blocked_now": expired,
             "expired_completed_landmarks": expired_landmarks,
+            "expired_traversal_segments": expired_traversal_segments,
         }
         self.state["events"].append(event)
         return event
@@ -871,5 +1159,10 @@ class OnlineNavigationMapper:
         path.write_text(json.dumps(self.state, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     @classmethod
-    def load(cls, path: Path) -> "OnlineNavigationMapper":
-        return cls(state=json.loads(path.read_text(encoding="utf-8")))
+    def load(
+        cls, path: Path, objective: dict | None = None
+    ) -> "OnlineNavigationMapper":
+        state = json.loads(path.read_text(encoding="utf-8"))
+        if objective:
+            state["objective"] = objective
+        return cls(objective=objective, state=state)

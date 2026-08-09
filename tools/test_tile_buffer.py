@@ -74,6 +74,20 @@ class TileBufferRegistryTests(unittest.TestCase):
         self.assertNotIn("@", "".join(effect["rows"]))
         self.assertEqual([[24, 26], [24, 27], [24, 28]], effect["changed_live_tiles"])
 
+    def test_object_candidates_report_coordinates_without_claiming_sprite_identity(self):
+        registration = self.registry.registration(5)
+        data = bytearray(0x20000)
+        obstacle = self.registry._address(registration["buffer"], 8, 21)
+        switch = self.registry._address(registration["buffer"], 7, 20)
+        data[obstacle] = 0x08
+        data[switch] = 0x06
+        result = self.registry.object_candidates(5, 4, 18, bytes(data), radius=4)
+        by_family = {item["family"]: item for item in result["candidates"]}
+        self.assertEqual([8, 21], by_family["obstacle"]["live"])
+        self.assertEqual([4, 3], by_family["obstacle"]["relative"])
+        self.assertEqual([7, 20], by_family["lever_or_switch"]["live"])
+        self.assertNotIn("pillar", by_family["obstacle"])
+
 
 if __name__ == "__main__":
     unittest.main()

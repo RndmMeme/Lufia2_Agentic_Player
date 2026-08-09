@@ -12,13 +12,15 @@ from unittest.mock import patch
 from agent.battle_runner import BattleRunner
 from agent.context_builder import ContextBuilder, DUNGEON_TOOLS
 from agent.context_harness import ModelDriftError, ThinkingGate
+from agent.feedback_manager import FeedbackManager
 from agent.dungeons.secret_skills_cave import SecretSkillsCave
+from agent.established_memory import global_memory_context
 from agent.intent import Intent
 from agent.model_client import INTENT_FORMAT, VISION_FORMAT, LocalModelClient
 from agent.model_gateway import ModelGateway
 from agent.orchestrator import MesenOrchestrator
 from agent.watchdog import ModelStallError
-from run_agent import validate_run_directory
+from run_agent import run_directory_lock, validate_run_directory
 
 
 class _Response:
@@ -75,6 +77,146 @@ class _StalledBattle:
 
 
 class ModularOrchestratorTests(unittest.TestCase):
+    def test_global_push_memory_requires_real_object_displacement(self) -> None:
+        memories = global_memory_context("exploration", movable_object=True)
+        push = next(item for item in memories if item["id"] == "push_requires_world_change")
+        self.assertIn("object/map-state displacement", push["then"])
+
+    def test_feedback_manager_marks_move_tile_diffs_as_scroll_observations(self) -> None:
+        captured = {}
+
+        class _Feedback:
+            def record(self, kind, before, after, **details):
+                captured.update(details)
+                return {"delta": 0, "feedback": "neutral"}
+
+        tile_buffers = SimpleNamespace(
+            diff=lambda *args, **kwargs: {
+                "semantic_count": 2, "count": 2, "changes": [{"live": [1, 1]}],
+            },
+            effect_context=lambda *args, **kwargs: {"available": False},
+        )
+        recorder = SimpleNamespace(record=lambda *args, **kwargs: None)
+        manager = FeedbackManager(
+            _Feedback(), recorder, None, tile_buffers, Path("."), memory=None
+        )
+
+        def observed(x):
+            return SimpleNamespace(
+                game=SimpleNamespace(
+                    map_id=5, x=x, y=20, direction="east", mode="exploration",
+                    blocked_direction=None, event_flags="00", dungeon_flags="00",
+                ),
+                wram=bytes(0x10000),
+            )
+
+        manager.remember_action("move", observed(4), observed(5))
+        action = manager.recent_agent_actions[-1]
+        self.assertEqual(0, action["map_tile_change_count"])
+        self.assertEqual(2, action["map_tile_semantic_observation_count"])
+        self.assertIn("scroll observations", action["map_tile_change_credit_policy"])
+        self.assertEqual(0, captured["map_tile_change_count"])
+
+    def test_delta_is_translated_to_distance_reducing_directions(self) -> None:
+        self.assertEqual(
+            ["east", "south"],
+            MesenOrchestrator._directions_reducing_delta([5, 1]),
+        )
+        self.assertEqual(
+            ["west", "north"],
+            MesenOrchestrator._directions_reducing_delta([-2, -2]),
+        )
+        self.assertEqual(
+            "south", MesenOrchestrator._direction_for_adjacent_delta([0, 1])
+        )
+        self.assertIsNone(MesenOrchestrator._direction_for_adjacent_delta([2, 0]))
+
+    def test_only_repeated_no_effect_interacts_at_object_count_as_blocked_push(self) -> None:
+        walking = [{
+            "kind": "move", "direction": "east",
+            "from": [10, 19], "to": [10, 19], "semantic_tile_changes": 0,
+        }] * 3
+        self.assertIsNone(
+            MesenOrchestrator._blocked_push_evidence([11, 19], "east", walking)
+        )
+        pushes = [{
+            "kind": "interact", "direction": "east",
+            "from": [10, 19], "to": [10, 19], "semantic_tile_changes": 0,
+        }] * 2
+        evidence = MesenOrchestrator._blocked_push_evidence([11, 19], "east", pushes)
+        self.assertEqual(2, evidence["consecutive_no_effect_pushes"])
+        self.assertEqual([11, 19], evidence["object_live"])
+
+    def test_successful_push_requires_one_current_visual_assessment(self) -> None:
+        memory = {
+            "recent_actions": [{
+                "kind": "interact", "from": [7, 19], "to": [8, 19],
+                "semantic_tile_changes": 3,
+            }],
+            "recent_perceptions": [],
+        }
+        self.assertTrue(MesenOrchestrator._post_push_assessment_required(memory, 12))
+        memory["recent_perceptions"].append({"kind": "look", "action_count": 12})
+        self.assertFalse(MesenOrchestrator._post_push_assessment_required(memory, 12))
+
+    def test_strong_pillar_wall_vision_is_persistent_recovery_evidence(self) -> None:
+        memory = {"recent_perceptions": [{
+            "kind": "look",
+            "result": {
+                "relevant_objects": ["pillar", "wall"],
+                "navigation_hypothesis": "The pillar is blocked by a wall and cannot move east.",
+            },
+        }]}
+        confirmation = MesenOrchestrator._wall_confirmation(memory)
+        self.assertTrue(confirmation["confirmed"])
+
+        memory["recent_perceptions"][0]["result"]["navigation_hypothesis"] = (
+            "A wall or temporary obstruction may be nearby."
+        )
+        self.assertIsNone(MesenOrchestrator._wall_confirmation(memory))
+
+    def test_corroborated_switch_and_door_vision_requests_reversible_exit_test(self) -> None:
+        positive = {
+            "result": {
+                "navigation_hypothesis": (
+                    "The pillar is on the floor switch and the north door is passable."
+                )
+            }
+        }
+        memory = {"recent_perceptions": [positive, positive, {
+            "result": {"navigation_hypothesis": "The door is blocked."}
+        }]}
+        hypothesis = MesenOrchestrator._visual_exit_hypothesis(memory)
+        self.assertEqual("north", hypothesis["exit_direction"])
+        self.assertEqual(2, hypothesis["positive_observations"])
+        self.assertEqual(1, hypothesis["conflicting_observations"])
+        self.assertEqual("WRAM-confirmed room transition", hypothesis["success_evidence"])
+
+    def test_movable_object_approach_is_not_scored_as_puzzle_progress(self) -> None:
+        context = {"navigation": {"tracked_movable_object": {"estimated_live": [8, 19]}}}
+        self.assertIsNone(MesenOrchestrator._movement_feedback_target(context))
+
+        active = {"id": "door", "live": [4, 5]}
+        context["navigation"]["active_landmark"] = active
+        self.assertIs(active, MesenOrchestrator._movement_feedback_target(context))
+
+        context = {"navigation": {"provisional_object_target": {
+            "id": "pillar_candidate", "live": [8, 21],
+        }}}
+        self.assertIsNone(MesenOrchestrator._movement_feedback_target(context))
+
+        context = {
+            "navigation": {},
+            "task_progress": {"current_step": {
+                "target_type": "actor_position_for_final_push",
+                "target": [4, 22],
+            }},
+        }
+        self.assertEqual(
+            [4, 22],
+            MesenOrchestrator._movement_feedback_target(context)["live"],
+        )
+
     def test_wrong_selected_tool_can_be_replaced(self) -> None:
         builder = ContextBuilder.__new__(ContextBuilder)
         actions = builder._available_actions(None, None, "arrow")
@@ -110,7 +252,7 @@ class ModularOrchestratorTests(unittest.TestCase):
         self.assertFalse(ContextBuilder._room_reset_recovery(navigation, actions)["eligible"])
         for direction in ("north", "west"):
             actions.append({
-                "kind": "move",
+                "kind": "interact",
                 "before": {"position": [7, 21]},
                 "after": {"position": [7, 21]},
                 "requested_direction": direction,
@@ -120,6 +262,26 @@ class ModularOrchestratorTests(unittest.TestCase):
         recovery = ContextBuilder._room_reset_recovery(navigation, actions)
         self.assertTrue(recovery["eligible"])
         self.assertEqual(2, recovery["failed_probe_count"])
+
+    def test_room_reset_recovery_does_not_treat_blocked_walking_as_correction(self) -> None:
+        navigation = {"current_room": {"reset_policy": {
+            "enabled": True,
+            "mutation_actions": ["interact"],
+            "minimum_failed_actions_after_mutation": 2,
+        }}}
+        actions = [{"kind": "interact", "map_tile_change_count": 1}]
+        for direction in ("north", "west", "south"):
+            actions.append({
+                "kind": "move",
+                "before": {"position": [7, 21]},
+                "after": {"position": [7, 21]},
+                "requested_direction": direction,
+                "map_tile_change_count": 0,
+                "navigation_relevant_change": False,
+            })
+        recovery = ContextBuilder._room_reset_recovery(navigation, actions)
+        self.assertFalse(recovery["eligible"])
+        self.assertEqual(0, recovery["failed_probe_count"])
 
     def test_room_reset_recovery_requires_new_mutation_after_reset(self) -> None:
         navigation = {"current_room": {"reset_policy": {"enabled": True}}}
@@ -173,6 +335,80 @@ class ModularOrchestratorTests(unittest.TestCase):
         self.assertIn("look_map at current frame plus full curated dungeon map", after_look)
         self.assertNotIn("look at current frame", after_both)
         self.assertNotIn("look_map at current frame plus full curated dungeon map", after_both)
+
+    def test_completed_transit_masks_stale_previous_room_context(self) -> None:
+        navigation = {
+            "completed_traversal_segment": {
+                "id": "north_door",
+                "status": "segment_boundary_reached",
+            },
+            "active_landmark": {"id": "north_door", "live": [17, 23]},
+            "current_room": {
+                "id": "room_3",
+                "objective": "Old room objective",
+                "nearby_live_landmarks": [{"id": "old_switch"}],
+            },
+        }
+        navigation_map, unresolved = ContextBuilder._suppress_unresolved_transit_context(
+            navigation,
+            {"available": True, "ascii_crop": "stale map"},
+        )
+        self.assertTrue(unresolved)
+        self.assertFalse(navigation_map["available"])
+        self.assertNotIn("ascii_crop", navigation_map)
+        self.assertNotIn("active_landmark", navigation)
+        self.assertIsNone(navigation["current_room"]["id"])
+        self.assertFalse(navigation["current_room"]["resolved"])
+        self.assertEqual(
+            "unresolved_after_transit",
+            navigation["local_layout_resolution"]["status"],
+        )
+
+    def test_normal_room_keeps_curated_map_context(self) -> None:
+        navigation = {"current_room": {"id": "room_3"}}
+        navigation_map = {"available": True, "ascii_crop": "current map"}
+        result, unresolved = ContextBuilder._suppress_unresolved_transit_context(
+            navigation, navigation_map
+        )
+        self.assertFalse(unresolved)
+        self.assertIs(result, navigation_map)
+        self.assertEqual("room_3", navigation["current_room"]["id"])
+
+    def test_local_route_evidence_separates_tested_and_untried_edges(self) -> None:
+        evidence = ContextBuilder._local_route_evidence({
+            "observed_edges": {
+                "east": {"outcome": "open", "to": "05:room_3:18,23"},
+                "west": {"outcome": "blocked_now", "to": None},
+            },
+            "unknown_directions": ["south"],
+        })
+        self.assertEqual("east", evidence["passable"][0]["direction"])
+        self.assertEqual("west", evidence["impassable_now"][0]["direction"])
+        self.assertEqual(["south"], evidence["untried"])
+
+    def test_local_route_evidence_marks_only_immediate_loop_reverse(self) -> None:
+        evidence = ContextBuilder._local_route_evidence(
+            {
+                "observed_edges": {
+                    "north": {"outcome": "open", "to": "north_node"},
+                    "east": {"outcome": "open", "to": "east_node"},
+                },
+                "unknown_directions": [],
+            },
+            [{
+                "kind": "move",
+                "requested_direction": "south",
+                "before": {"position": [17, 22]},
+                "after": {"position": [17, 23]},
+                "feedback": {"local_edge_traversal_count": 5},
+            }],
+        )
+        self.assertEqual(
+            "north", evidence["recent_non_progressing_edge"]["reverse_from_current"]
+        )
+        by_direction = {item["direction"]: item for item in evidence["passable"]}
+        self.assertTrue(by_direction["north"]["recent_non_progressing"])
+        self.assertFalse(by_direction["east"]["recent_non_progressing"])
 
     def test_fully_ready_landmark_advertises_only_required_action(self) -> None:
         actions = [
@@ -361,6 +597,75 @@ class ModularOrchestratorTests(unittest.TestCase):
         self.assertEqual("inactive", cave._bridge_state([0x02, 0x22, 0x20]))
         self.assertEqual("unknown", cave._bridge_state([0x00, 0x00, 0x00]))
 
+    def test_secret_cave_memory_is_room_scoped(self) -> None:
+        cave = SecretSkillsCave(None)
+        room_two = cave.established_memory(None, {"id": "room_2"})
+        room_three = cave.established_memory(None, {"id": "room_3"})
+        self.assertEqual(["room2_north_threshold"], [item["id"] for item in room_two])
+        self.assertEqual(
+            ["room3_forward_bridge_action", "room3_after_bridge_activation"],
+            [item["id"] for item in room_three],
+        )
+        self.assertEqual([], cave.established_memory(None, {"id": "room_7"}))
+        self.assertIn("move west", room_three[1]["then"])
+
+        target = cave.provisional_object_target(None, {"id": "room_4"}, {
+            "candidates": [{
+                "live": [8, 21], "relative": [4, 2], "family": "obstacle",
+            }],
+        })
+        self.assertEqual([8, 21], target["live"])
+        self.assertEqual(["east", "south"], target["direct_distance_reducing_directions"])
+        self.assertFalse(target["action_readiness"]["ready"])
+        adjacent = cave.provisional_object_target(None, {"id": "room_4"}, {
+            "candidates": [{
+                "live": [8, 21], "relative": [1, 0], "family": "obstacle",
+            }],
+        })
+        self.assertTrue(adjacent["action_readiness"]["ready"])
+        self.assertEqual("east", adjacent["action_readiness"]["direction"])
+        self.assertIn("interact(east)", adjacent["action_readiness"]["instruction"])
+        self.assertIsNone(cave.provisional_object_target(
+            None, {"id": "room_4"}, {"candidates": []}
+        ))
+        room_four = cave.established_memory(None, {"id": "room_4"})
+        self.assertEqual(
+            ["room4_floor_button_receiver", "room4_reset_condition"],
+            [item["id"] for item in room_four],
+        )
+        intent = room_four[0]
+        self.assertEqual("object_intent", intent["form"])
+        self.assertEqual([8, 21], intent["initial_live"])
+        self.assertEqual("west", intent["alignment_push_direction"])
+        self.assertEqual([4, 20], intent["required_live"])
+        self.assertEqual([4, 20], intent["actor_forbidden_live"])
+        self.assertEqual(
+            [
+                [4, 19], [5, 19], [6, 19], [7, 19], [8, 19],
+                [4, 21], [5, 21], [6, 21], [7, 21],
+            ],
+            intent["ephemeral_barrier_live"],
+        )
+        self.assertEqual([8, 21], intent["opening_push"]["when_object_live"])
+        self.assertEqual([8, 22], intent["opening_push"]["actor_target_live"])
+        self.assertEqual("north", intent["opening_push"]["interact_direction"])
+        self.assertEqual([8, 20], intent["opening_push"]["result_object_live"])
+        self.assertEqual([8, 20], intent["alignment_entry"]["when_object_live"])
+        self.assertEqual([[9, 21], [9, 20]], intent["alignment_entry"]["actor_route_live"])
+        self.assertEqual(
+            [[6, 20], [6, 19], [6, 18], [6, 17], [6, 16], [6, 15], [6, 14]],
+            intent["solved_exit"]["actor_route_live"],
+        )
+        self.assertEqual("north", intent["solved_exit"]["transition_direction"])
+        self.assertIn("lower foot/base", intent["anchor_semantics"])
+        self.assertIn("upper sprite", intent["anchor_semantics"])
+        self.assertIn("smaller x is west", intent["coordinate_rule"])
+        self.assertIn("smaller y is north", intent["coordinate_rule"])
+        self.assertIn("only the pusher", intent["constraint"])
+        self.assertIn("intermediate push is not success", intent["constraint"])
+        self.assertIn("success iff pillar current_live equals required_live", intent["then"])
+        self.assertIn("after any room transition", room_four[1]["then"])
+
     def test_secret_cave_room_three_target_follows_bridge_phase(self) -> None:
         cave = SecretSkillsCave(None)
         room = {
@@ -464,6 +769,27 @@ class ModularOrchestratorTests(unittest.TestCase):
             client.look(frame, {}, "What is visible?")
         self.assertEqual("vision", captured["role"])
         self.assertIs(VISION_FORMAT, captured["response_format"])
+        self.assertEqual(8, VISION_FORMAT["properties"]["relevant_objects"]["maxItems"])
+        self.assertTrue(VISION_FORMAT["properties"]["relevant_objects"]["uniqueItems"])
+
+    def test_invalid_optional_vision_response_does_not_abort_run(self) -> None:
+        orchestrator = object.__new__(MesenOrchestrator)
+        with tempfile.TemporaryDirectory() as directory:
+            orchestrator.run_dir = Path(directory)
+            orchestrator.actions = 3
+            orchestrator.controller = SimpleNamespace(screenshot=lambda: b"png")
+            orchestrator.config = {"llm": {"enabled": True}}
+            orchestrator.model = SimpleNamespace(
+                look=lambda *args, **kwargs: (_ for _ in ()).throw(
+                    ValueError("truncated vision JSON")
+                )
+            )
+            orchestrator._context = lambda observation: {"game": {"mode": "exploration"}}
+            orchestrator.journal = _Journal()
+            orchestrator.short_term_memory = SimpleNamespace(record_perception=lambda *args: None)
+            result = orchestrator._look(object(), "What is visible?")
+        self.assertEqual("vision_response_invalid", result["status"])
+        self.assertIn("WRAM", result["safe_next_test"])
 
     def test_intent_frames_are_sent_in_chronological_order(self) -> None:
         client = LocalModelClient({"enabled": True})
@@ -494,7 +820,7 @@ class ModularOrchestratorTests(unittest.TestCase):
         captured = {}
 
         def fake_chat(messages, role="planner", response_format=None):
-            captured["response_format"] = response_format
+            captured.update(messages=messages, response_format=response_format)
             return json.dumps({
                 "kind": "move", "direction": "north", "count": 1,
                 "question": None, "query": None, "tool": None,
@@ -514,6 +840,15 @@ class ModularOrchestratorTests(unittest.TestCase):
             ["move", "interact"],
             captured["response_format"]["properties"]["kind"]["enum"],
         )
+        system = captured["messages"][0]["content"]
+        self.assertIn("stand on its opposite side", system)
+        self.assertIn("same interact may be repeated", system)
+        self.assertIn("x increases east and y increases south", system)
+        self.assertIn("live_puzzle_overlay", system)
+        self.assertIn("Reach T before the stated push", system)
+        self.assertIn("checkpoint_move", system)
+        self.assertIn("checkpoint_action", system)
+        self.assertIn("immediate_phase_feedback", system)
         self.assertIn("look", INTENT_FORMAT["properties"]["kind"]["enum"])
 
     def test_exploration_inventory_retrieval_has_ten_minute_cooldown(self) -> None:
@@ -567,6 +902,16 @@ class ModularOrchestratorTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "already contains state"):
                 validate_run_directory(run_dir, resume=False)
             validate_run_directory(run_dir, resume=True)
+
+    def test_run_directory_rejects_concurrent_agent(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            run_dir = Path(directory)
+            with run_directory_lock(run_dir):
+                with self.assertRaisesRegex(RuntimeError, "already controlled"):
+                    with run_directory_lock(run_dir):
+                        pass
+            with run_directory_lock(run_dir):
+                pass
 
     def test_llama_multimodal_capability_is_accepted_as_vision(self) -> None:
         client = LocalModelClient({"enabled": True})
