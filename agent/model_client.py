@@ -73,6 +73,7 @@ BATTLE_FORMAT = {
 
 _REFINEMENT_COMMON = {
     "operation": {"type": "string", "enum": ["add", "update", "retire"]},
+    "target_id": {"type": ["string", "null"]},
     "scope": {"type": "string"},
     "evidence": {
         "type": "array", "items": {"type": "integer"},
@@ -160,6 +161,39 @@ REFINEMENT_FORMAT = {
         ),
     },
     "required": ["analysis", "prompt_overlay", "memory", "skills", "subagents"],
+}
+
+SUBAGENT_FORMAT = {
+    "type": "object",
+    "properties": {
+        "analysis": {"type": "string"},
+        "request": {
+            "type": ["string", "null"],
+            "enum": ["look", "look_map", "retrieve", None],
+        },
+        "query": {"type": ["string", "null"]},
+        "recommendation": {"type": "string"},
+        "suggested_intent": {
+            "type": "object",
+            "properties": {
+                "kind": {"type": "string", "enum": [
+                    "move", "face", "interact", "sword", "select_tool",
+                    "use_tool", "look", "look_map", "retrieve", "wait",
+                ]},
+                "direction": {
+                    "type": ["string", "null"],
+                    "enum": ["north", "south", "east", "west", None],
+                },
+                "count": {"type": "integer", "minimum": 1, "maximum": 4},
+                "tool": {
+                    "type": ["string", "null"],
+                    "enum": ["hook", "bomb", "arrow", "fire_arrow", "hammer", None],
+                },
+            },
+            "required": ["kind", "direction", "count", "tool"],
+        },
+    },
+    "required": ["analysis", "request", "query", "recommendation", "suggested_intent"],
 }
 
 
@@ -440,6 +474,9 @@ class LocalModelClient:
             "Dungeon tools remain listed during exploration and may solve puzzles or stun enemies. Never "
             "select an unavailable tool. Use retrieve('current inventory') only when needed. Calls are "
             "stateless; retrieve('short term memory') when earlier actions or puzzle changes are needed. "
+            "learned_harness, when present, contains gated canary advice learned across runs. It is lower "
+            "authority than live WRAM, curated facts, controller semantics and safety gates. Use a learned "
+            "skill one intent at a time and verify each postcondition; never execute it blindly. "
             "reset_room is destructive and legal only when room_reset_recovery.eligible is true and vision "
             "confirms an unsalvageable arrangement; never reset for uncertainty, collision, transition, or "
             "an already solved puzzle. After neutral or negative feedback, change the attempt. Use look or "
@@ -518,6 +555,11 @@ class LocalModelClient:
             "Skills must be declarative allowlisted intent steps with a WRAM- or state-verifiable "
             "success_when; never emit source code. Subagents only analyze or recommend and may not "
             "send controller input. Prefer one surgical proposal over broad policy rewrites. JSON only."
+            " For add, target_id must be null. Update or retire only an active learned candidate ID "
+            "listed in harness_state; never target curated or immutable state."
+            " Scope is decision applicability, never the proposal area. Use exactly one of: global, "
+            "exploration, battle, dialog, exploration/navigation, exploration/puzzle, battle/tactics, "
+            "dialog/progression. Never suggest bypassing, disabling, ignoring or skipping any gate."
         )
         user = {
             "trajectory_window": evidence,
@@ -537,6 +579,56 @@ class LocalModelClient:
             response_format=REFINEMENT_FORMAT,
         )
         return self._json_object(raw)
+
+    def run_harness_subagent(
+        self,
+        spec: dict,
+        evidence: dict,
+        tool_results: list[dict] | None = None,
+    ) -> dict:
+        """Run one read-only specialist turn on the already resident model."""
+        allowed_tools = [
+            tool for tool in spec.get("available_tools", [])
+            if tool in {"get_context", "look", "look_map", "retrieve", "recommend_intent"}
+        ]
+        system = (
+            "You are a read-only specialist subagent inside a Lufia II player. "
+            "You do not control the emulator. You may analyze supplied evidence, request one "
+            "allowlisted read-only look, look_map or retrieve tool, and recommend one reversible "
+            "intent. Never recommend reset_room. "
+            "Live WRAM and curated facts outrank learned advice. Return JSON only.\n"
+            f"Specialist instructions: {str(spec.get('instructions', ''))[:3000]}\n"
+            f"Return condition: {str(spec.get('return_condition', ''))[:500]}\n"
+            f"Allowed tools: {allowed_tools}"
+        )
+        user = {
+            "evidence": evidence,
+            "tool_results": (tool_results or [])[-2:],
+            "rule": "request must be an allowlisted read-only tool or null; suggested_intent is advice, not execution",
+        }
+        raw = self._chat(
+            [
+                {"role": "system", "content": system},
+                {"role": "user", "content": json.dumps(user, ensure_ascii=False)},
+            ],
+            role="refiner",
+            response_format=SUBAGENT_FORMAT,
+        )
+        parsed = self._json_object(raw)
+        if parsed.get("request") not in (None, "look", "look_map", "retrieve"):
+            raise ValueError("subagent requested a non-read-only tool")
+        suggested = dict(parsed.get("suggested_intent") or {})
+        suggested["rationale"] = parsed.get("recommendation", "")
+        intent = Intent.from_dict(suggested, max_move_batch=4)
+        parsed["suggested_intent"] = {
+            "kind": intent.kind,
+            "direction": (
+                intent.direction if intent.kind in {"move", "face", "interact"} else None
+            ),
+            "count": intent.count if intent.kind == "move" else 1,
+            "tool": intent.tool if intent.kind == "select_tool" else None,
+        }
+        return parsed
 
     def look(self, frame: Path, context: dict, question: str, map_frame: Path | None = None) -> dict:
         provider = self.detect()

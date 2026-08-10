@@ -28,7 +28,7 @@ from agent.feedback_manager import FeedbackManager
 from agent.model_gateway import ModelGateway
 from agent.battle_runner import BattleRunner
 from agent.short_term_memory import ShortTermMemory
-from agent.adaptation import ShadowHarnessRefiner
+from agent.adaptation import ContinualHarnessManager
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -113,11 +113,12 @@ class MesenOrchestrator:
             action_count=lambda: self.actions,
         )
         self.battle_runner = BattleRunner(self.battle, self.model_gateway, self.journal, self.feedback_manager)
-        self.harness_refiner = ShadowHarnessRefiner(
+        self.harness_refiner = ContinualHarnessManager(
             config.get("harness_evolution", {}),
             run_dir,
             self.model,
             self.journal,
+            PROJECT_ROOT,
         )
 
     @property
@@ -292,6 +293,7 @@ class MesenOrchestrator:
                     if reset_action not in actions:
                         actions.append(reset_action)
         raw["memory_access"] = self.short_term_memory.prompt_hint()
+        raw = self.harness_refiner.enrich_context(raw)
         return self.context_harness.compact(raw)
 
     @staticmethod
@@ -726,7 +728,11 @@ class MesenOrchestrator:
     def _remember_action(
         self, kind: str, before, after, navigation_event: dict | None = None, **details
     ) -> dict:
-        return self.feedback_manager.remember_action(kind, before, after, navigation_event, **details)
+        feedback = self.feedback_manager.remember_action(
+            kind, before, after, navigation_event, **details
+        )
+        self.harness_refiner.observe_latest_action()
+        return feedback
 
     def run(self) -> dict:
         info = self.controller.connect()
@@ -987,6 +993,18 @@ class MesenOrchestrator:
                         "type": "anti_stall",
                         "instruction": "Waiting produced no progress. Choose a reversible executable action, look_map, or retrieve next.",
                     })
+                    current_context = self.last_decision_context or self._context(observation)
+                    self.reasoning_evidence.extend(
+                        self.harness_refiner.subagent_advice(
+                            "model_wait_loop",
+                            current_context,
+                            read_tools={
+                                "retrieve": lambda query: self._retrieve(observation, query),
+                                "look": lambda question: self._look(observation, question),
+                                "look_map": lambda question: self._look_map(observation, question),
+                            },
+                        )
+                    )
                     self.harness_refiner.maybe_refine(
                         self.action_recorder.index,
                         explicit_reason="model_wait_loop",
@@ -1006,6 +1024,7 @@ class MesenOrchestrator:
             "elapsed_seconds": round(time.monotonic() - started, 3),
             "state": observation.game.compact(),
             "navigation": self.mapper.progress(),
+            "harness": self.harness_refiner.summary(),
         }
         self.mapper.save(self.run_dir / "online_navigation_graph.json")
         (self.run_dir / "summary.json").write_text(

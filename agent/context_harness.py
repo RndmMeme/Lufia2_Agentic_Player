@@ -756,6 +756,7 @@ class ContextHarness:
             "reasoning_evidence": context.get("reasoning_evidence", [])[-1:],
             "memory_access": context.get("memory_access", {}),
             "room_episode": context.get("room_episode", {}),
+            "learned_harness": context.get("learned_harness", {}),
         }
         for key in ("spatial_correlation", "strategic_progression"):
             value = context.get(key)
@@ -896,6 +897,7 @@ class ContextHarness:
             "reasoning_evidence": raw.get("reasoning_evidence", [])[-4:],
             "memory_access": raw.get("memory_access", {}),
             "room_episode": raw.get("room_episode", {}),
+            "learned_harness": raw.get("learned_harness", {}),
         }
         if game.get("mode") == "exploration":
             context = self._exploration_context(context)

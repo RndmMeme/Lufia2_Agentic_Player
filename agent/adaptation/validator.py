@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from agent.intent import Intent
+
 
 AREAS = ("prompt_overlay", "memory", "skills", "subagents")
 OPERATIONS = {"add", "update", "retire"}
@@ -14,6 +16,23 @@ SKILL_ACTIONS = {
 SUBAGENT_TOOLS = {
     "get_context", "look", "look_map", "retrieve", "recommend_intent",
 }
+SCOPES = {
+    "global", "exploration", "battle", "dialog",
+    "exploration/navigation", "exploration/puzzle",
+    "battle/tactics", "dialog/progression",
+}
+IMMUTABLE_BYPASS_PHRASES = (
+    "bypass the thinking gate",
+    "disable the thinking gate",
+    "ignore the thinking gate",
+    "do not wait for a thinking gate",
+    "without waiting for a thinking gate",
+    "bypass safety",
+    "disable safety",
+    "ignore safety gate",
+    "override controller",
+    "skip validation",
+)
 
 
 class HarnessProposalValidator:
@@ -23,7 +42,18 @@ class HarnessProposalValidator:
         self.max_per_area = max(1, int(max_per_area))
 
     @staticmethod
-    def _common(item: dict[str, Any], evidence_indices: set[int]) -> dict[str, Any]:
+    def _reject_immutable_bypass(*values: Any) -> None:
+        text = " ".join(str(value).lower() for value in values if value is not None)
+        for phrase in IMMUTABLE_BYPASS_PHRASES:
+            if phrase in text:
+                raise ValueError(f"proposal attempts to bypass immutable policy: {phrase}")
+
+    @staticmethod
+    def _common(
+        item: dict[str, Any],
+        evidence_indices: set[int],
+        active_candidate_ids: set[str],
+    ) -> dict[str, Any]:
         operation = str(item.get("operation", ""))
         if operation not in OPERATIONS:
             raise ValueError(f"unsupported proposal operation: {operation!r}")
@@ -37,6 +67,7 @@ class HarnessProposalValidator:
             normalized_evidence.append(value)
         result = {
             "operation": operation,
+            "target_id": str(item.get("target_id") or "") or None,
             "scope": str(item.get("scope", ""))[:160],
             "evidence": sorted(set(normalized_evidence)),
             "expected_benefit": str(item.get("expected_benefit", ""))[:500],
@@ -44,12 +75,22 @@ class HarnessProposalValidator:
         }
         if not result["scope"] or not result["expected_benefit"]:
             raise ValueError("proposal scope and expected_benefit are required")
+        if result["scope"].lower() not in SCOPES:
+            raise ValueError(
+                f"unsupported proposal scope: {result['scope']!r}; use a decision applicability scope"
+            )
+        if operation == "add" and result["target_id"] is not None:
+            raise ValueError("add proposal may not target an existing candidate")
+        if operation in {"update", "retire"}:
+            if result["target_id"] not in active_candidate_ids:
+                raise ValueError("update/retire must target an active learned candidate")
         return result
 
     def validate(
         self,
         payload: dict[str, Any],
         evidence_indices: set[int],
+        active_candidate_ids: set[str] | None = None,
     ) -> dict[str, Any]:
         if not isinstance(payload, dict):
             raise ValueError("refiner response must be a JSON object")
@@ -64,11 +105,14 @@ class HarnessProposalValidator:
             for item in values[: self.max_per_area]:
                 if not isinstance(item, dict):
                     raise ValueError(f"{area} proposal must be an object")
-                common = self._common(item, evidence_indices)
+                common = self._common(
+                    item, evidence_indices, active_candidate_ids or set()
+                )
                 if area in {"prompt_overlay", "memory"}:
                     content = str(item.get("content", ""))[:2000]
                     if not content:
                         raise ValueError(f"{area} proposal requires content")
+                    self._reject_immutable_bypass(content)
                     accepted.append({**common, "content": content})
                 elif area == "skills":
                     if item.get("code"):
@@ -83,11 +127,17 @@ class HarnessProposalValidator:
                         kind = str(step.get("kind", ""))
                         if kind not in SKILL_ACTIONS:
                             raise ValueError(f"skill uses non-allowlisted action: {kind!r}")
+                        intent = Intent.from_dict(step, max_move_batch=4)
                         normalized_steps.append({
-                            key: step.get(key)
-                            for key in ("kind", "direction", "count", "tool", "query")
-                            if step.get(key) is not None
+                            "kind": intent.kind,
+                            **({"direction": intent.direction} if intent.kind in {"move", "face", "interact"} and intent.direction else {}),
+                            **({"count": intent.count} if intent.kind == "move" else {}),
+                            **({"tool": intent.tool} if intent.kind == "select_tool" else {}),
+                            **({"query": intent.query} if intent.kind == "retrieve" and intent.query else {}),
                         })
+                    self._reject_immutable_bypass(
+                        item.get("name"), item.get("success_when")
+                    )
                     accepted.append({
                         **common,
                         "name": str(item.get("name", "unnamed"))[:100],
@@ -101,11 +151,15 @@ class HarnessProposalValidator:
                     unknown = {str(tool) for tool in tools} - SUBAGENT_TOOLS
                     if unknown:
                         raise ValueError(f"subagent requests unsafe tools: {sorted(unknown)}")
+                    normalized_tools = list(dict.fromkeys(str(tool) for tool in tools))
+                    self._reject_immutable_bypass(
+                        item.get("name"), item.get("instructions"), item.get("return_condition")
+                    )
                     accepted.append({
                         **common,
                         "name": str(item.get("name", "unnamed"))[:100],
                         "instructions": str(item.get("instructions", ""))[:3000],
-                        "available_tools": [str(tool) for tool in tools],
+                        "available_tools": normalized_tools,
                         "max_turns": min(max(int(item.get("max_turns", 1)), 1), 12),
                         "return_condition": str(item.get("return_condition", ""))[:500],
                     })

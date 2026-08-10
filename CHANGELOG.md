@@ -1,6 +1,6 @@
 # Changelog
 
-## 2026-08-11 — Continual-Harness Shadow Mode
+## 2026-08-11 — Continual-Harness Shadow und Gated Mode
 
 - Ein provider-neutraler, evidenzbasierter Shadow-Refiner kann über
   `--enable-harness-refiner` explizit zugeschaltet werden; Default bleibt
@@ -31,7 +31,24 @@
 - Große `maxLength`-Angaben ließen den llama.cpp-Grammarparser scheitern. Die
   Provider-Grammatik verzichtet nun darauf; die unveränderten Längenlimits
   werden nach der Ausgabe im `HarnessProposalValidator` erzwungen.
-- Verifiziert: 215 Tool-/Agent-Tests und 11 WRAM-Discovery-Tests grün.
+- Verifiziert: 230 Tool-/Agent-Tests und 11 WRAM-Discovery-Tests grün.
+- Der vollständige runübergreifende Flow ergänzt kanonische Kandidaten,
+  Zwei-Run-Promotion, Add/Update/Retire mit gelernter `target_id`, begrenzte
+  aktive Canaries, per-Action-Metriken und automatischen Rollback.
+- Gated Advice wird als niedriger priorisierter `learned_harness`-Kontext
+  eingespeist. Deklarative Skills passieren den echten Intent-Parser;
+  Runtime-Subagents nutzen dasselbe residente Modell, ausschließlich read-only
+  Werkzeuge und liefern nur normalisierte Empfehlungen.
+- Shadow und Gated sind hart getrennt: Shadow sammelt, sieht und attribuiert
+  aber keine aktiven Canaries. Isolierte Stores sind über
+  `--harness-state-path` möglich.
+- Der semantische Validator blockiert ungültige Anwendungs-Scopes,
+  Safety-/Thinking-Gate-Umgehung, unsichere Skill-Schritte und duplizierte oder
+  nicht allowlistete Subagent-Tools.
+- Ein isolierter Gated-Mesen-Live-Smoke bestätigte den gesamten Pfad von echter
+  WRAM-Action-Evidenz über Refiner und globalen Kandidatenstore bis zur
+  inaktiven Review-Queue; keine Testkandidaten gelangten in den produktiven
+  Store.
 
 ## 2026-08-09 — Raum-4-Puzzle, Raum-5-Transit und dynamische Gegner
 

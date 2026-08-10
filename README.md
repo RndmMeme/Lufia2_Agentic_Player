@@ -71,6 +71,20 @@ python run_agent.py --execute --enable-llm --enable-battle `
   --resume-battle-stage action_cross --resume-battle-actor 0
 ```
 
+Optional run-over-run learning is disabled by default. Shadow mode only
+collects evidence-backed proposals; gated mode additionally promotes proposals
+repeated in independent runs, measures them as canaries, and rolls them back on
+poor outcomes:
+
+```powershell
+python run_agent.py --execute --enable-llm --enable-harness-refiner
+python run_agent.py --execute --enable-llm --enable-harness-gated
+python tools\harness_control.py status
+```
+
+See [docs/continual_harness.md](./docs/continual_harness.md) for lifecycle,
+isolated A/B stores, runtime subagents, promotion and rollback.
+
 Cline can help develop the workspace, but it is not part of the autonomous
 player's runtime or authority chain.
 
@@ -88,6 +102,7 @@ PowerShell wrapper:
 - [agent/mesen_controller.py](./agent/mesen_controller.py): verified Mesen input
 - [agent/intent.py](./agent/intent.py): model-action schema and state gate
 - [agent/model_client.py](./agent/model_client.py): local text/VLM client
+- [agent/adaptation](./agent/adaptation): continual-harness refinement, global state and rollback
 - [agent/navigation](./agent/navigation): directed online graph and POIs
 - [agent/perception](./agent/perception): sparse visual keyframes
 - [agent/knowledge.py](./agent/knowledge.py): deterministic lightweight RAG

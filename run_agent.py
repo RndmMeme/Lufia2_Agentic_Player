@@ -86,6 +86,19 @@ def main() -> int:
         ),
     )
     parser.add_argument(
+        "--enable-harness-gated",
+        action="store_true",
+        help=(
+            "Enable the full gated continual-harness lifecycle. Independently repeated "
+            "candidates may become active canaries and are automatically rolled back on failure."
+        ),
+    )
+    parser.add_argument(
+        "--harness-state-path",
+        type=Path,
+        help="Project-local global harness state override for isolated A/B or smoke runs.",
+    )
+    parser.add_argument(
         "--enable-battle",
         action="store_true",
         help="Enable the verified battle coordinator (also requires --enable-llm).",
@@ -105,6 +118,8 @@ def main() -> int:
     parser.add_argument("--max-actions", type=int)
     parser.add_argument("--max-minutes", type=float)
     args = parser.parse_args()
+    if args.enable_harness_refiner and args.enable_harness_gated:
+        parser.error("choose either --enable-harness-refiner or --enable-harness-gated")
     config = load_config(args.config)
     if args.enable_llm:
         config["llm"]["enabled"] = True
@@ -113,6 +128,15 @@ def main() -> int:
         config["harness_evolution"]["mode"] = "shadow"
         if not config["llm"].get("enabled", False):
             parser.error("--enable-harness-refiner requires an enabled LLM provider")
+    if args.enable_harness_gated:
+        config.setdefault("harness_evolution", {})["enabled"] = True
+        config["harness_evolution"]["mode"] = "gated"
+        if not config["llm"].get("enabled", False):
+            parser.error("--enable-harness-gated requires an enabled LLM provider")
+    if args.harness_state_path is not None:
+        config.setdefault("harness_evolution", {})["global_state_path"] = str(
+            args.harness_state_path
+        )
     if args.enable_battle:
         config.setdefault("battle", {})["execution_enabled"] = True
     if args.max_actions is not None:

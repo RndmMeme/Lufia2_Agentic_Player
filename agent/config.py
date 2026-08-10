@@ -30,11 +30,15 @@ def load_config(path: Path = CONFIG_PATH) -> dict:
     evolution = config.get("harness_evolution", {})
     if not isinstance(evolution.get("enabled", False), bool):
         raise ValueError("harness_evolution.enabled must be true or false")
-    if evolution.get("enabled") and evolution.get("mode", "shadow") != "shadow":
-        raise ValueError("Only harness_evolution.mode=shadow is currently supported")
+    if evolution.get("enabled") and evolution.get("mode", "shadow") not in {"shadow", "gated"}:
+        raise ValueError("harness_evolution.mode must be shadow or gated")
     for key in (
         "min_window_actions", "max_window_actions", "max_journal_events",
-        "cooldown_actions", "max_proposals_per_area",
+        "cooldown_actions", "max_proposals_per_area", "promotion_confirmations",
+        "promotion_distinct_runs", "rollback_min_exposures",
+        "rollback_consecutive_failures", "max_subagents_per_trigger",
+        "subagent_max_turns",
+        "max_active_per_area",
     ):
         if key in evolution and int(evolution[key]) <= 0:
             raise ValueError(f"harness_evolution.{key} must be positive")

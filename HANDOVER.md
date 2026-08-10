@@ -142,16 +142,16 @@ geladene Actor-Slots können zu weiteren Cave-Räumen gehören.
 - Nach der Raum-4/5/6-Ankerkorrektur: 110 fokussierte Tests grün
   (`test_online_navigation_mapper`, `test_context_harness`,
   `test_modular_orchestrator`).
-- Vollständiger Stand nach der Shadow-Refiner-Implementierung: 215
+- Vollständiger Stand nach dem kompletten Continual-Harness-Flow: 230
   Tool-/Agent-Tests und 11 WRAM-Discovery-Tests grün.
 - Die exakten Raum-5-/Transitpunkte besitzen jeweils Screenshot und WRAM-Kontext.
 
 ## Unmittelbar als Nächstes
 
-### Continual-Harness-Einführung (Step by step)
+### Continual-Harness-Einführung (implementiert)
 
-Diese Reihenfolge ist der Rückkehrpunkt, falls die Implementierung unterbrochen
-wird. Keine spätere Stufe vorziehen.
+Die ursprüngliche Implementierungsreihenfolge ist abgeschlossen und bleibt als
+Entscheidungsprotokoll erhalten.
 
 1. `shadow` als einzigen initialen Modus einführen. Der Refiner darf
    Trajektorien lesen und versionierte Vorschläge schreiben, aber weder den
@@ -229,6 +229,25 @@ Implementierungsstand 2026-08-11:
 - Die dabei gefundene llama.cpp-Inkompatibilität mit großen JSON-Schema-
   `maxLength`-Grammatiken ist behoben: Der Provider erhält keine Stringlimits;
   `HarnessProposalValidator` erzwingt weiterhin alle bisherigen Grenzen.
+- Der vollständige Gated-Lifecycle liegt in `agent/adaptation/manager.py` und
+  `global_store.py`: runübergreifende Kandidaten, standardmäßig zwei getrennte
+  Bestätigungsruns, aktive Canaries, Add/Update/Retire per stabiler `target_id`,
+  per-Action-Wirkungsmessung und automatischer Rollback.
+- `--enable-harness-gated` aktiviert den vollständigen Flow;
+  `--harness-state-path` isoliert A/B- und Smoke-Landschaften. Shadow-Runs sehen
+  vorhandene aktive Canaries ausdrücklich nicht.
+- Gelernte Prompt-Overlays, Memories und deklarative Skills erscheinen nur im
+  niedrig priorisierten `learned_harness`-Kontext. Runtime-Subagents sind
+  getrennte Aufrufe desselben residenten Modells, dürfen nur read-only
+  `look`/`look_map`/`retrieve` anfragen und liefern normalisierte Empfehlungen.
+- Der isolierte Gated-Mesen-Smoke
+  `data/runs/harness_gated_live_smoke_01` bestätigte echte Action-Evidenz,
+  Kandidatensammlung und `active: 0`. Dabei erkannte Validator-Hardening
+  unzulässige Scope-Namen und Thinking-Gate-Umgehungssprache; beides wird nun
+  vor dem globalen Kandidatenstore verworfen.
+- Bedienung und Sicherheitsgrenzen stehen in `docs/continual_harness.md`;
+  `tools/harness_control.py` zeigt Status/Review-Queue und ermöglicht explizite
+  Promotion oder Rollback.
 
 ### Gameplay-Arbeit
 

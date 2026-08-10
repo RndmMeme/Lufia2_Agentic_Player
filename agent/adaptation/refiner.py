@@ -19,14 +19,16 @@ class ShadowHarnessRefiner:
         run_dir: Path,
         model: Any,
         journal: Any,
+        global_context: Any = None,
     ) -> None:
         self.config = dict(config or {})
         self.enabled = bool(self.config.get("enabled", False))
         self.mode = str(self.config.get("mode", "shadow"))
-        if self.enabled and self.mode != "shadow":
-            raise ValueError("Only harness_evolution.mode=shadow is currently supported")
+        if self.enabled and self.mode not in {"shadow", "gated"}:
+            raise ValueError("harness_evolution.mode must be shadow or gated")
         self.model = model
         self.journal = journal
+        self.global_context = global_context
         self.window = TrajectoryWindow(
             run_dir,
             max_actions=int(self.config.get("max_window_actions", 24)),
@@ -66,6 +68,10 @@ class ShadowHarnessRefiner:
             return None
 
         evidence = self.window.build(trigger)
+        if self.global_context is not None:
+            global_context = self.global_context()
+            if global_context:
+                evidence["harness_state"] = global_context
         action_range = evidence.get("action_index_range")
         evidence_indices = {
             int(record["index"])
@@ -74,7 +80,13 @@ class ShadowHarnessRefiner:
         }
         try:
             raw = self.model.refine_harness(evidence)
-            proposals = self.validator.validate(raw, evidence_indices)
+            active_ids = {
+                str(item.get("id"))
+                for values in evidence.get("harness_state", {}).get("active", {}).values()
+                for item in values
+                if item.get("id")
+            }
+            proposals = self.validator.validate(raw, evidence_indices, active_ids)
             record = self.state.write(
                 trigger=trigger,
                 action_range=action_range,

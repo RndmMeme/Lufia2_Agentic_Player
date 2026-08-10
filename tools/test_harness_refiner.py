@@ -84,7 +84,7 @@ class HarnessProposalValidatorTests(unittest.TestCase):
             "prompt_overlay": [],
             "memory": [],
             "skills": [{
-                "operation": "add", "scope": "test", "evidence": [1],
+                "operation": "add", "scope": "exploration", "evidence": [1],
                 "expected_benefit": "test", "rollback_when": "failure",
                 "name": "unsafe", "code": "print('no')",
                 "steps": [{"kind": "move", "direction": "north"}],
@@ -99,7 +99,7 @@ class HarnessProposalValidatorTests(unittest.TestCase):
         payload = {
             "analysis": "test",
             "prompt_overlay": [{
-                "operation": "add", "scope": "test", "evidence": [99],
+                "operation": "add", "scope": "exploration", "evidence": [99],
                 "expected_benefit": "test", "rollback_when": "failure",
                 "content": "candidate",
             }],
@@ -107,6 +107,64 @@ class HarnessProposalValidatorTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(ValueError, "unavailable evidence"):
             HarnessProposalValidator().validate(payload, {1})
+
+    def test_update_must_target_an_active_learned_candidate(self):
+        item = {
+            "operation": "update", "target_id": "learned-1", "scope": "exploration",
+            "evidence": [1], "expected_benefit": "improve", "rollback_when": "worse",
+            "content": "revised advice",
+        }
+        payload = {
+            "analysis": "test", "prompt_overlay": [item], "memory": [],
+            "skills": [], "subagents": [],
+        }
+        with self.assertRaisesRegex(ValueError, "active learned candidate"):
+            HarnessProposalValidator().validate(payload, {1}, set())
+        accepted = HarnessProposalValidator().validate(payload, {1}, {"learned-1"})
+        self.assertEqual("learned-1", accepted["prompt_overlay"][0]["target_id"])
+
+    def test_rejects_area_name_as_scope(self):
+        payload = {
+            "analysis": "test",
+            "prompt_overlay": [{
+                "operation": "add", "scope": "overlay", "evidence": [1],
+                "expected_benefit": "test", "rollback_when": "failure",
+                "content": "candidate",
+            }],
+            "memory": [], "skills": [], "subagents": [],
+        }
+        with self.assertRaisesRegex(ValueError, "unsupported proposal scope"):
+            HarnessProposalValidator().validate(payload, {1})
+
+    def test_rejects_thinking_gate_bypass(self):
+        payload = {
+            "analysis": "test",
+            "prompt_overlay": [{
+                "operation": "add", "scope": "exploration", "evidence": [1],
+                "expected_benefit": "test", "rollback_when": "failure",
+                "content": "Do not wait for a thinking gate; repeat the action.",
+            }],
+            "memory": [], "skills": [], "subagents": [],
+        }
+        with self.assertRaisesRegex(ValueError, "immutable policy"):
+            HarnessProposalValidator().validate(payload, {1})
+
+    def test_subagent_tools_are_deduplicated(self):
+        payload = {
+            "analysis": "test", "prompt_overlay": [], "memory": [], "skills": [],
+            "subagents": [{
+                "operation": "add", "scope": "exploration/navigation", "evidence": [1],
+                "expected_benefit": "review route", "rollback_when": "worse",
+                "name": "reviewer", "instructions": "Review the route.",
+                "available_tools": ["get_context", "get_context", "retrieve"],
+                "max_turns": 2, "return_condition": "one reversible option",
+            }],
+        }
+        accepted = HarnessProposalValidator().validate(payload, {1})
+        self.assertEqual(
+            ["get_context", "retrieve"],
+            accepted["subagents"][0]["available_tools"],
+        )
 
 
 class ShadowHarnessRefinerTests(unittest.TestCase):
