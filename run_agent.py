@@ -78,6 +78,14 @@ def main() -> int:
     parser.add_argument("--execute", action="store_true", help="Actually send controller input to Mesen.")
     parser.add_argument("--enable-llm", action="store_true")
     parser.add_argument(
+        "--enable-harness-refiner",
+        action="store_true",
+        help=(
+            "Enable inert shadow harness proposals. Suggestions are logged but never applied "
+            "to prompts, memory, skills, code, or emulator control."
+        ),
+    )
+    parser.add_argument(
         "--enable-battle",
         action="store_true",
         help="Enable the verified battle coordinator (also requires --enable-llm).",
@@ -100,6 +108,11 @@ def main() -> int:
     config = load_config(args.config)
     if args.enable_llm:
         config["llm"]["enabled"] = True
+    if args.enable_harness_refiner:
+        config.setdefault("harness_evolution", {})["enabled"] = True
+        config["harness_evolution"]["mode"] = "shadow"
+        if not config["llm"].get("enabled", False):
+            parser.error("--enable-harness-refiner requires an enabled LLM provider")
     if args.enable_battle:
         config.setdefault("battle", {})["execution_enabled"] = True
     if args.max_actions is not None:

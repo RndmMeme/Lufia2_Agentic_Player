@@ -142,11 +142,95 @@ geladene Actor-Slots können zu weiteren Cave-Räumen gehören.
 - Nach der Raum-4/5/6-Ankerkorrektur: 110 fokussierte Tests grün
   (`test_online_navigation_mapper`, `test_context_harness`,
   `test_modular_orchestrator`).
-- Vollständiger Stand vor dem Checkpoint: 206 Tool-/Agent-Tests und 11
-  WRAM-Discovery-Tests grün.
+- Vollständiger Stand nach der Shadow-Refiner-Implementierung: 215
+  Tool-/Agent-Tests und 11 WRAM-Discovery-Tests grün.
 - Die exakten Raum-5-/Transitpunkte besitzen jeweils Screenshot und WRAM-Kontext.
 
 ## Unmittelbar als Nächstes
+
+### Continual-Harness-Einführung (Step by step)
+
+Diese Reihenfolge ist der Rückkehrpunkt, falls die Implementierung unterbrochen
+wird. Keine spätere Stufe vorziehen.
+
+1. `shadow` als einzigen initialen Modus einführen. Der Refiner darf
+   Trajektorien lesen und versionierte Vorschläge schreiben, aber weder den
+   aktiven Prompt noch Python, kuratierte Memory oder Controlleraktionen ändern.
+2. Als Eingabe nur vorhandene Run-Artefakte verwenden: `journal.jsonl`,
+   `action_outcomes.jsonl`, `short_term_memory.json`, Promptstatistik sowie
+   referenzierte Keyframes. Daraus ein begrenztes jüngstes Trajektorienfenster
+   bilden; keine komplette Run-Historie in jeden Refiner-Aufruf kopieren.
+3. Harness-State in vier getrennte Vorschlagsbereiche schreiben:
+   `prompt_overlay`, `memory`, `skills`, `subagents`. Jeder Vorschlag benötigt
+   Quelle/Schrittbereich, Evidenz, Scope, erwarteten Nutzen und
+   Rücknahmebedingung.
+4. Sub-Agents zunächst als Spezifikationen desselben residenten Modells
+   behandeln: eigener Systemprompt, Tool-Allowlist, Turn-Limit, Rückgabeschema
+   und Return-Condition. Keine parallele Emulatorsteuerung und kein zusätzlich
+   geladenes Modell voraussetzen.
+5. Skills zunächst deklarativ halten. Nur bestehende allowlistete Controller-
+   Aktionen zusammensetzen und Erfolg über WRAM/Postconditions prüfen; keinen
+   frei generierten Python-Code ausführen.
+6. Refiner ereignisbasiert auslösen: echter Loop/Stall, Reasoning-Limit,
+   abgeschlossener Raum/Puzzle/Kampf oder expliziter Aufruf. Nicht nach jeder
+   einzelnen Eingabe und niemals mitten in einer unvollständigen Controller-
+   Sequenz.
+7. Shadow-Vorschläge gegen historische Runs und Tests auswerten. Erst nach
+   nachvollziehbar hilfreichen, schema-validen Ergebnissen einen separaten
+   `gated`-Modus bauen. Der unveränderliche Kernprompt, kuratierte Fakten und
+   Secret-Cave-Resetregeln bleiben auch dann schreibgeschützt.
+8. Optional später einen stärkeren Refiner (lokal auf der Arc oder über Prime
+   Intellect/API) anbinden. Actor und Refiner bleiben provider-neutral; das
+   langsame eGPU-Modell läuft nur zwischen Meilensteinen, nicht pro Bewegung.
+
+Geplante minimale Modulgrenze:
+
+```text
+agent/adaptation/
+  trajectory_window.py   # begrenzte, normalisierte Run-Evidenz
+  harness_state.py       # versionierte Shadow-Vorschläge
+  refiner.py             # strukturierter Modellaufruf
+  validator.py           # Schema, Scope, Allowlist und Immutable-Kernel
+```
+
+Run-Konfiguration: `disabled` bleibt Default; Aktivierung ausschließlich über
+einen expliziten projektlokalen CLI-/Config-Schalter. Jeder Refiner-Aufruf muss
+in `harness_evolution.jsonl` protokolliert und ohne Emulatoraktion abbrechbar
+sein.
+
+Implementierungsstand 2026-08-11:
+
+- Der provider-neutrale Shadow-Refiner liegt in `agent/adaptation/` und wird nur
+  mit `--enable-harness-refiner` aktiviert. Ohne den Schalter entstehen keine
+  Harness-Artefakte.
+- Auslöser sind abgeschlossene Meilensteine/Modus- oder Raumwechsel, erkannte
+  Navigationsloops, wiederholter Stillstand und explizite Abbruchgründe. Der
+  Aufruf erfolgt nur zwischen abgeschlossenen Aktionen, nie mitten in einer
+  Controllersequenz.
+- Vorschläge werden ausschließlich als inaktive Generationen unter
+  `<run-dir>/harness_evolution/generation_NNNN.json` und zusätzlich in
+  `<run-dir>/harness_evolution.jsonl` geschrieben. Modell- und Schemafehler
+  bleiben auf diesen Nebenpfad begrenzt und stoppen das Spiel nicht.
+- Skills sind deklarative Folgen bereits freigegebener Intents; frei erzeugter
+  Code und `reset_room` sind ausgeschlossen. Sub-Agent-Vorschläge dürfen nur
+  analysieren und einen Intent empfehlen, nicht den Emulator steuern.
+- Ein isolierter realer Smoke-Test gegen
+  `Qwen3-VL-4B-Spatial-Analysisv8-Q8_0.gguf` auf CUDA bestand Schema und
+  Validator. Das Modell erkannte die synthetische A-B-A-B-Navigationsschleife
+  korrekt und gab konservativ keine unbelegte Änderung aus. Mesen wurde dabei
+  nicht angesprochen.
+- Der anschließende vollständige Live-Smoke
+  `data/runs/harness_shadow_live_smoke_02/live` bewies auch die
+  Orchestrator-Integration: eine WRAM-bestätigte `face west`-Aktion löste
+  `model_wait_loop` aus; `generation_0001.json` blieb mit `active: false` und
+  `status: proposed_not_applied` inert. Position, Raum und Puzzle blieben
+  unverändert. Smoke 01 war absichtlich folgenlos, weil Guy bereits nach Osten
+  blickte und das Thinking Gate die redundante Aktion korrekt verwarf.
+- Die dabei gefundene llama.cpp-Inkompatibilität mit großen JSON-Schema-
+  `maxLength`-Grammatiken ist behoben: Der Provider erhält keine Stringlimits;
+  `HarnessProposalValidator` erzwingt weiterhin alle bisherigen Grenzen.
+
+### Gameplay-Arbeit
 
 1. Einen kleinen read-only Dungeon-Actor-Decoder bauen, der pro Beobachtung
    `slot`, `sprite_id`, `current_live`, `previous_live`, `position_changed` und

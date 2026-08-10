@@ -28,6 +28,7 @@ from agent.feedback_manager import FeedbackManager
 from agent.model_gateway import ModelGateway
 from agent.battle_runner import BattleRunner
 from agent.short_term_memory import ShortTermMemory
+from agent.adaptation import ShadowHarnessRefiner
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -112,6 +113,12 @@ class MesenOrchestrator:
             action_count=lambda: self.actions,
         )
         self.battle_runner = BattleRunner(self.battle, self.model_gateway, self.journal, self.feedback_manager)
+        self.harness_refiner = ShadowHarnessRefiner(
+            config.get("harness_evolution", {}),
+            run_dir,
+            self.model,
+            self.journal,
+        )
 
     @property
     def reasoning_evidence(self) -> list:
@@ -744,6 +751,10 @@ class MesenOrchestrator:
 
             progress = self.mapper.progress()
             if progress["complete"]:
+                self.harness_refiner.maybe_refine(
+                    self.action_recorder.index,
+                    explicit_reason="objective_complete",
+                )
                 stop_reason = "objective_complete"
                 self.journal.write("objective_complete", navigation=progress)
                 break
@@ -775,7 +786,15 @@ class MesenOrchestrator:
                     time.sleep(float(self.config["emulator"].get("settle_seconds", 0.32)))
                 continue
 
+            # Shadow refinement runs only between complete exploration actions.
+            # It has no controller tool and cannot mutate active harness state.
+            self.harness_refiner.maybe_refine(self.action_recorder.index)
+
             if self.reasoning_steps >= int(self.config["llm"].get("max_reasoning_steps_per_stall", 4)):
+                self.harness_refiner.maybe_refine(
+                    self.action_recorder.index,
+                    explicit_reason="reasoning_step_limit",
+                )
                 stop_reason = "reasoning_step_limit"
                 self.journal.write(
                     "reasoning_step_limit",
@@ -968,6 +987,10 @@ class MesenOrchestrator:
                         "type": "anti_stall",
                         "instruction": "Waiting produced no progress. Choose a reversible executable action, look_map, or retrieve next.",
                     })
+                    self.harness_refiner.maybe_refine(
+                        self.action_recorder.index,
+                        explicit_reason="model_wait_loop",
+                    )
                     self.stall_repeats = 0
                 time.sleep(float(self.config["emulator"].get("settle_seconds", 0.32)))
                 observation = self.controller.observe_stable()

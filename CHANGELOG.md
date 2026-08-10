@@ -1,5 +1,38 @@
 # Changelog
 
+## 2026-08-11 — Continual-Harness Shadow Mode
+
+- Ein provider-neutraler, evidenzbasierter Shadow-Refiner kann über
+  `--enable-harness-refiner` explizit zugeschaltet werden; Default bleibt
+  deaktiviert und der aktive Actor-Prompt wird nicht verändert.
+- Der Refiner nutzt begrenzte Ausschnitte vorhandener Run-Artefakte und kann
+  dasselbe resident geladene Modell mit einer getrennten Refiner-Rolle nutzen.
+  Ein späterer Refiner auf Arc oder über Prime Intellect bleibt durch dieselbe
+  Schnittstelle möglich.
+- Strukturierte Vorschläge sind in `prompt_overlay`, `memory`, `skills` und
+  `subagents` getrennt und müssen Aktionsevidenz, Scope, erwarteten Nutzen und
+  Rücknahmebedingung nennen.
+- Skills dürfen nur deklarative, allowlistete Intents enthalten; generierter
+  Code und Raum-Reset sind ausgeschlossen. Sub-Agent-Spezifikationen bleiben
+  read-only und dürfen lediglich Intents empfehlen.
+- Ereignisbasierte Trigger laufen nur zwischen abgeschlossenen Aktionen.
+  Inaktive Generationen werden versioniert im Run-Verzeichnis gespeichert;
+  Modell- oder Validierungsfehler beeinträchtigen den Gameplay-Loop nicht.
+- Ein echter, emulatorfreier Shadow-Smoke gegen
+  `Qwen3-VL-4B-Spatial-Analysisv8-Q8_0.gguf` auf CUDA bestand Schema und
+  Validator. Das Modell erkannte eine A-B-A-B-Navigationsschleife und schlug
+  mangels ausreichender Evidenz konservativ keine aktive Änderung vor.
+- Ein vollständiger Mesen-Live-Smoke erzeugte aus einer harmlosen, bestätigten
+  Blickrichtungsänderung die inaktive Generation
+  `harness_shadow_live_smoke_02/live/harness_evolution/generation_0001.json`.
+  Der Trigger `model_wait_loop`, Action-Range `[1,1]`, `active: false` und
+  `proposed_not_applied` bestätigen den verdrahteten Shadow-Pfad ohne
+  Gameplay-Mutation.
+- Große `maxLength`-Angaben ließen den llama.cpp-Grammarparser scheitern. Die
+  Provider-Grammatik verzichtet nun darauf; die unveränderten Längenlimits
+  werden nach der Ausgabe im `HarnessProposalValidator` erzwungen.
+- Verifiziert: 215 Tool-/Agent-Tests und 11 WRAM-Discovery-Tests grün.
+
 ## 2026-08-09 — Raum-4-Puzzle, Raum-5-Transit und dynamische Gegner
 
 - Qwen löste das Säulenrätsel in Raum 4 live mit der korrigierten Minimalfolge:

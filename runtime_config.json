@@ -44,6 +44,11 @@
     "vision_max_tokens": 320,
     "deliberate_max_tokens": 480,
     "battle_max_tokens": 260,
+    "refiner_model": "",
+    "refiner_keep_alive": -1,
+    "refiner_context_tokens": 8192,
+    "refiner_think": false,
+    "refiner_max_tokens": 900,
     "ollama_num_batch": 128,
     "providers": [
       {
@@ -78,6 +83,15 @@
     "exploration_visual_history_frames": 1,
     "exploration_visual_burst_on_blocked": 1,
     "cleanup_intent_frames_after_call": true
+  },
+  "harness_evolution": {
+    "enabled": false,
+    "mode": "shadow",
+    "min_window_actions": 4,
+    "max_window_actions": 24,
+    "max_journal_events": 24,
+    "cooldown_actions": 4,
+    "max_proposals_per_area": 3
   },
   "limits": {
     "max_actions_per_run": 200,

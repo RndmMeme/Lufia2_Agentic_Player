@@ -27,4 +27,15 @@ def load_config(path: Path = CONFIG_PATH) -> dict:
         raise ValueError("llm.max_prompt_chars must be positive")
     if not isinstance(config.get("battle", {}).get("execution_enabled", False), bool):
         raise ValueError("battle.execution_enabled must be true or false")
+    evolution = config.get("harness_evolution", {})
+    if not isinstance(evolution.get("enabled", False), bool):
+        raise ValueError("harness_evolution.enabled must be true or false")
+    if evolution.get("enabled") and evolution.get("mode", "shadow") != "shadow":
+        raise ValueError("Only harness_evolution.mode=shadow is currently supported")
+    for key in (
+        "min_window_actions", "max_window_actions", "max_journal_events",
+        "cooldown_actions", "max_proposals_per_area",
+    ):
+        if key in evolution and int(evolution[key]) <= 0:
+            raise ValueError(f"harness_evolution.{key} must be positive")
     return config

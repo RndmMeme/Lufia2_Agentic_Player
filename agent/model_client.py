@@ -71,6 +71,97 @@ BATTLE_FORMAT = {
     "required": ["option_id", "rationale", "risk_assessment", "contingency"],
 }
 
+_REFINEMENT_COMMON = {
+    "operation": {"type": "string", "enum": ["add", "update", "retire"]},
+    "scope": {"type": "string"},
+    "evidence": {
+        "type": "array", "items": {"type": "integer"},
+        "minItems": 1, "maxItems": 12, "uniqueItems": True,
+    },
+    "expected_benefit": {"type": "string"},
+    "rollback_when": {"type": "string"},
+}
+
+
+def _refinement_items(extra: dict, required: list[str]) -> dict:
+    return {
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+            "type": "object",
+            "properties": {**_REFINEMENT_COMMON, **extra},
+            "required": [
+                "operation", "scope", "evidence", "expected_benefit",
+                "rollback_when", *required,
+            ],
+        },
+    }
+
+
+REFINEMENT_FORMAT = {
+    "type": "object",
+    "properties": {
+        # String lengths are bounded again by HarnessProposalValidator. Large
+        # maxLength values make the llama.cpp JSON-schema grammar fail to parse.
+        "analysis": {"type": "string"},
+        "prompt_overlay": _refinement_items(
+            {"content": {"type": "string"}}, ["content"]
+        ),
+        "memory": _refinement_items(
+            {"content": {"type": "string"}}, ["content"]
+        ),
+        "skills": _refinement_items(
+            {
+                "name": {"type": "string"},
+                "steps": {
+                    "type": "array", "minItems": 1, "maxItems": 12,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "kind": {"type": "string", "enum": [
+                                "move", "face", "interact", "sword",
+                                "select_tool", "use_tool", "look", "look_map",
+                                "retrieve",
+                            ]},
+                            "direction": {
+                                "type": ["string", "null"],
+                                "enum": ["north", "south", "east", "west", None]
+                            },
+                            "count": {"type": "integer", "minimum": 1, "maximum": 4},
+                            "tool": {
+                                "type": ["string", "null"],
+                                "enum": ["hook", "bomb", "arrow", "fire_arrow", "hammer", None]
+                            },
+                            "query": {"type": ["string", "null"]},
+                        },
+                        "required": ["kind"],
+                    },
+                },
+                "success_when": {"type": "string"},
+            },
+            ["name", "steps", "success_when"],
+        ),
+        "subagents": _refinement_items(
+            {
+                "name": {"type": "string"},
+                "instructions": {"type": "string"},
+                "available_tools": {
+                    "type": "array", "minItems": 1, "maxItems": 5,
+                    "items": {"type": "string", "enum": [
+                        "get_context", "look", "look_map", "retrieve",
+                        "recommend_intent",
+                    ]},
+                    "uniqueItems": True,
+                },
+                "max_turns": {"type": "integer", "minimum": 1, "maximum": 12},
+                "return_condition": {"type": "string"},
+            },
+            ["name", "instructions", "available_tools", "max_turns", "return_condition"],
+        ),
+    },
+    "required": ["analysis", "prompt_overlay", "memory", "skills", "subagents"],
+}
+
 
 class LocalModelClient:
     def __init__(self, config: dict):
@@ -413,6 +504,39 @@ class LocalModelClient:
             return Intent.from_dict(parsed, max_move_batch=max_move_batch)
         except (TypeError, ValueError) as exc:
             raise ValueError(f"{exc}; model_json={json.dumps(parsed, ensure_ascii=False)[:700]}") from exc
+
+    def refine_harness(self, evidence: dict) -> dict:
+        """Propose inert harness edits from cited trajectory evidence."""
+        system = (
+            "You are the conservative SHADOW refiner for a Lufia II embodied-agent harness. "
+            "You cannot control the emulator and none of your suggestions will be applied. "
+            "Analyze only the supplied bounded trajectory. Cite action indices that exist in it. "
+            "Return minimal proposals in four independent areas: prompt_overlay, memory, skills, "
+            "and subagents. Empty lists are correct when evidence is insufficient. Never rewrite "
+            "the immutable controller semantics, curated facts, safety gates, humanoid input timing, "
+            "or dungeon reset restrictions. Memory must distinguish observation from inference. "
+            "Skills must be declarative allowlisted intent steps with a WRAM- or state-verifiable "
+            "success_when; never emit source code. Subagents only analyze or recommend and may not "
+            "send controller input. Prefer one surgical proposal over broad policy rewrites. JSON only."
+        )
+        user = {
+            "trajectory_window": evidence,
+            "rules": {
+                "mode": "shadow_not_applied",
+                "max_proposals_per_area": 3,
+                "evidence": "Every proposal must cite one or more supplied action indices.",
+                "retire": "Use retire only for a clearly evidenced harmful learned entry.",
+            },
+        }
+        raw = self._chat(
+            [
+                {"role": "system", "content": system},
+                {"role": "user", "content": json.dumps(user, ensure_ascii=False)},
+            ],
+            role="refiner",
+            response_format=REFINEMENT_FORMAT,
+        )
+        return self._json_object(raw)
 
     def look(self, frame: Path, context: dict, question: str, map_frame: Path | None = None) -> dict:
         provider = self.detect()
