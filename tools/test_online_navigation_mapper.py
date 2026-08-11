@@ -341,6 +341,19 @@ class OnlineNavigationMapperTests(unittest.TestCase):
         self.assertEqual("room_3", mapper.state["current_room"])
         self.assertFalse(event.get("new_room", False))
 
+        # Live-run regression: (17,23) is the approach tile below the west
+        # door.  The cave door itself is traversed north-south, despite its
+        # location on the west side of the room.
+        mapper.observe(observation(x=17, y=23))
+        landmark = next(
+            item
+            for item in mapper.current_room_context()["nearby_live_landmarks"]
+            if item["id"] == "west_door_approach"
+        )
+        self.assertEqual("threshold_ready", landmark["traversal"]["phase"])
+        self.assertEqual("north", landmark["traversal"]["direction"])
+        self.assertEqual([17, 22], landmark["effective_live"])
+
     def test_loop_completion_requires_return_to_start(self):
         objective = dict(self.objective)
         objective["completion"] = "visit_all_rooms_and_return_to_start"

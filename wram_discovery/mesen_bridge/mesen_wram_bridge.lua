@@ -11,7 +11,7 @@ local BRIDGE_ROOT = "D:/Projects/AI_Emu_Player/wram_discovery/mesen_bridge/share
 local REQUEST_PATH = BRIDGE_ROOT .. "/request.txt"
 local RESPONSE_PATH = BRIDGE_ROOT .. "/response.txt"
 local WRAM = emu.memType.snesWorkRam
-local BRIDGE_PROTOCOL_VERSION = 2
+local BRIDGE_PROTOCOL_VERSION = 4
 local POLL_EVERY_FRAMES = 3
 local VALID_BUTTONS = {
     up = true, down = true, left = true, right = true,
@@ -19,6 +19,14 @@ local VALID_BUTTONS = {
     l = true, r = true, start = true, select = true,
 }
 local pendingPulse = nil
+-- Immutable, manually curated recovery anchor.  The bridge intentionally has
+-- no command that creates or overwrites a Mesen savestate.
+local RECOVERY_ANCHOR_PATH = "C:/Users/admin/Documents/Mesen2/SaveStates/Lufia_II_-_Rise_of_the_Sinistrals_USA.1721649189_3.mss"
+local EXEC_START = 0x000000
+local EXEC_END = 0xFFFFFF
+local stateOperation = nil
+local stateOperationStatus = "idle"
+local stateCallbackRef = nil
 
 if io == nil or os == nil then
     emu.displayMessage(
@@ -100,6 +108,62 @@ local function writeBinary(path, value)
     handle:write(value)
     handle:close()
     return #value
+end
+
+local function readBinary(path)
+    local handle = io.open(path, "rb")
+    if handle == nil then
+        return nil
+    end
+    local value = handle:read("*a")
+    handle:close()
+    return value
+end
+
+local function onStateOperationExec()
+    if stateCallbackRef ~= nil then
+        emu.removeMemoryCallback(
+            stateCallbackRef,
+            emu.callbackType.exec,
+            EXEC_START,
+            EXEC_END
+        )
+        stateCallbackRef = nil
+    end
+    local operation = stateOperation
+    stateOperation = nil
+    local ok, result = pcall(function()
+        if operation == "load_recovery_anchor" then
+            local state = readBinary(RECOVERY_ANCHOR_PATH)
+            if state == nil or #state == 0 then
+                error("Recovery anchor slot 3 is missing")
+            end
+            pendingPulse = nil
+            emu.loadSavestate(state)
+            return "loaded:" .. tostring(#state)
+        end
+        error("Unknown state operation")
+    end)
+    if ok then
+        stateOperationStatus = result
+    else
+        stateOperationStatus = "error:" .. sanitize(result)
+    end
+end
+
+local function scheduleStateOperation(operation)
+    if stateOperation ~= nil or stateCallbackRef ~= nil then
+        return false
+    end
+    stateOperation = operation
+    stateOperationStatus = "scheduled:" .. operation
+    stateCallbackRef = emu.addMemoryCallback(
+        onStateOperationExec,
+        emu.callbackType.exec,
+        EXEC_START,
+        EXEC_END
+    )
+    return true
 end
 
 local function readHex(offset, length)
@@ -195,6 +259,39 @@ local function processRequest(raw)
             readHex(offset, length),
             tostring(screenshotSize),
             screenshotPath,
+        }, "\t")
+    end
+
+    if command == "RECOVERY_INFO" then
+        local anchor = readBinary(RECOVERY_ANCHOR_PATH)
+        return table.concat({
+            requestId,
+            "OK",
+            "RECOVERY_INFO",
+            RECOVERY_ANCHOR_PATH,
+            tostring(anchor and #anchor or 0),
+        }, "\t")
+    end
+
+    if command == "LOAD_RECOVERY_ANCHOR" then
+        local anchor = readBinary(RECOVERY_ANCHOR_PATH)
+        if anchor == nil or #anchor == 0 then
+            return requestId .. "\tERROR\tRecovery anchor slot 3 is missing"
+        end
+        if not scheduleStateOperation("load_recovery_anchor") then
+            return requestId .. "\tERROR\tSavestate operation already pending"
+        end
+        return table.concat({requestId, "OK", "LOAD_RECOVERY_ANCHOR", "scheduled"}, "\t")
+    end
+
+    if command == "STATE_STATUS" then
+        local anchor = readBinary(RECOVERY_ANCHOR_PATH)
+        return table.concat({
+            requestId,
+            "OK",
+            "STATE_STATUS",
+            stateOperationStatus,
+            tostring(anchor and #anchor or 0),
         }, "\t")
     end
 

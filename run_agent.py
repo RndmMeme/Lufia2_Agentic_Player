@@ -6,7 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 from datetime import datetime
 from pathlib import Path
 
@@ -18,13 +18,13 @@ from wram_discovery.mesen_bridge import MesenBridgeError
 RUN_STATE_FILES = (
     "journal.jsonl", "online_navigation_graph.json", "short_term_memory.json",
 )
+CONTROLLER_LOCK_PATH = PROJECT_ROOT / "data" / "runtime" / "mesen_controller.lock"
 
 
 @contextmanager
-def run_directory_lock(run_dir: Path):
-    """Prevent two agent processes from controlling one run/emulator session."""
-    run_dir.mkdir(parents=True, exist_ok=True)
-    path = run_dir / ".run_agent.lock"
+def exclusive_file_lock(path: Path, failure_message: str):
+    """Hold one byte of a project-local file as a cross-process mutex."""
+    path.parent.mkdir(parents=True, exist_ok=True)
     handle = path.open("a+b")
     try:
         handle.seek(0, os.SEEK_END)
@@ -40,9 +40,7 @@ def run_directory_lock(run_dir: Path):
                 import fcntl
                 fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
         except OSError as exc:
-            raise RuntimeError(
-                f"Run directory is already controlled by another agent process: {run_dir}"
-            ) from exc
+            raise RuntimeError(f"{failure_message}: {path}") from exc
         try:
             yield
         finally:
@@ -55,6 +53,16 @@ def run_directory_lock(run_dir: Path):
                 fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
     finally:
         handle.close()
+
+
+@contextmanager
+def run_directory_lock(run_dir: Path):
+    """Prevent two agent processes from controlling one run/emulator session."""
+    with exclusive_file_lock(
+        run_dir / ".run_agent.lock",
+        "Run directory is already controlled by another agent process",
+    ):
+        yield
 
 
 def validate_run_directory(run_dir: Path, resume: bool) -> None:
@@ -117,6 +125,10 @@ def main() -> int:
     )
     parser.add_argument("--max-actions", type=int)
     parser.add_argument("--max-minutes", type=float)
+    parser.add_argument(
+        "--stop-file", type=Path,
+        help="Cooperative stop request checked only between completed actions.",
+    )
     args = parser.parse_args()
     if args.enable_harness_refiner and args.enable_harness_gated:
         parser.error("choose either --enable-harness-refiner or --enable-harness-gated")
@@ -147,20 +159,27 @@ def main() -> int:
         if args.max_minutes <= 0:
             parser.error("--max-minutes must be positive")
         config["limits"]["max_minutes_per_run"] = args.max_minutes
+    if args.stop_file is not None:
+        config.setdefault("runtime", {})["stop_request_file"] = str(args.stop_file.resolve())
     run_dir = args.run_dir or (
         PROJECT_ROOT / "data/runs" / datetime.now().strftime("%Y%m%d_%H%M%S")
     )
     try:
         validate_run_directory(run_dir, args.resume_run)
-        with run_directory_lock(run_dir):
-            summary = MesenOrchestrator(
-                config,
-                args.goal,
-                run_dir,
-                execute=args.execute,
-                resume_battle_stage=args.resume_battle_stage,
-                resume_battle_actor=args.resume_battle_actor,
-            ).run()
+        controller_lock = (
+            exclusive_file_lock(CONTROLLER_LOCK_PATH, "Mesen controller is already locked")
+            if args.execute else nullcontext()
+        )
+        with controller_lock:
+            with run_directory_lock(run_dir):
+                summary = MesenOrchestrator(
+                    config,
+                    args.goal,
+                    run_dir,
+                    execute=args.execute,
+                    resume_battle_stage=args.resume_battle_stage,
+                    resume_battle_actor=args.resume_battle_actor,
+                ).run()
     except (MesenBridgeError, TimeoutError, OSError, RuntimeError, ValueError) as exc:
         print(f"ERROR: {exc}")
         return 1

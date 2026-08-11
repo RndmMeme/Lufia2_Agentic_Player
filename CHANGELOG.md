@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-08-11 — Read-only Slot-3-Recovery und 20-Stunden-Supervisor
+
+- `agent/session_supervisor.py` startet begrenzte, fortsetzbare Agent-Zyklen
+  über bis zu 20 Stunden und hält den Continual Harness runübergreifend aktiv.
+- Echte lokale Bewegungsloops werden aus wiederholten Kanten, Blockaden und
+  negativen Outcomes ohne Checkpoint/Weltänderung erkannt. Zyklusübergreifender
+  Stillstand bleibt als zweite Erkennungsebene erhalten.
+- Recovery bevorzugt nur einen kuratiert erlaubten Raumreset. Andernfalls wird
+  der manuell geprüfte Mesen-Slot 3 geladen; Child-Timeouts und nicht
+  fortsetzbare Agent-Stops beenden die Langzeit-Session nicht mehr hart.
+- Die Lua-Bridge wurde auf Protokoll 4 angehoben. Capture-/Save-Kommandos und
+  `emu.createSavestate` wurden entfernt. Slot 4 wird nicht verwendet.
+- Pfad, Größe und SHA-256 des Slot-3-Ankers werden beim Start fixiert und vor
+  jedem Reload geprüft. Eine während der Session veränderte Datei wird nicht
+  geladen.
+- `start_long_learning_session.bat` verbindet Modellserver-Start,
+  Bridge-Diagnose und den 20-Stunden-Lauf in einem manuell wiederholbaren
+  Einstiegspunkt.
+- Der Starter unterstützt `--status`, `--stop` und `--check`. Kooperativer
+  Stop wird zwischen Aktionen sowie nach einem Modellaufruf vor neuer Eingabe
+  erkannt; `Ctrl+C` bleibt der forcierte Notausgang.
+- Ein zusätzlicher workspace-globaler Supervisor-Lock verhindert auch zwischen
+  Agent-Zyklen zwei Long-Session-Prozesse. Child-PIDs werden persistiert; der
+  Start-Preflight verlangt sowohl freien Supervisor- als auch freien
+  Mesen-Controller-Lock.
+- Parallele Mesen-Instanzen bleiben explizit außerhalb des aktuellen Designs;
+  Bridge-Mailbox, Controller und der residente Modellslot sind single-owner.
+- Live verifiziert: Slot 3 wurde read-only geladen; drei WRAM-Snapshots waren
+  identisch bei Map 5, `[28,55]`, Exploration. Die Datei blieb unverändert bei
+  178748 Bytes und SHA-256
+  `7b2ff14affce83441786355d2db8151c95a21958b3872b91756f04d1fd496e3d`.
+- Verifiziert: 244 Tool-/Agent-Tests und 12 WRAM-Discovery-Tests grün;
+  `git diff --check` ohne Fehler.
+
 ## 2026-08-11 — Continual-Harness Shadow und Gated Mode
 
 - Ein provider-neutraler, evidenzbasierter Shadow-Refiner kann über

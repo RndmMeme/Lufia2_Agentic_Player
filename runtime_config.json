@@ -1,7 +1,7 @@
 {
   "emulator": {
     "backend": "mesen_lua",
-    "bridge_protocol": 2,
+    "bridge_protocol": 3,
     "rom_sha1": "1D0A95DDCCEB399E8FEC51BA5CBB6A6C5D30E0E0",
     "pulse_frames": 2,
     "exploration_hold_frames": 12,
@@ -88,8 +88,9 @@
     "enabled": false,
     "mode": "shadow",
     "min_window_actions": 4,
-    "max_window_actions": 24,
-    "max_journal_events": 24,
+    "max_window_actions": 16,
+    "max_journal_events": 12,
+    "max_evidence_chars": 9000,
     "cooldown_actions": 4,
     "max_proposals_per_area": 3,
     "global_state_path": "data/harness/continual_harness.json",

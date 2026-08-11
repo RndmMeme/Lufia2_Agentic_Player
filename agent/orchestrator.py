@@ -751,6 +751,11 @@ class MesenOrchestrator:
         stop_reason = "action_limit"
         started_inside_battle = observation.game.in_battle
         while self.actions < int(limits["max_actions_per_run"]):
+            stop_file = self.config.get("runtime", {}).get("stop_request_file")
+            if stop_file and Path(stop_file).exists():
+                stop_reason = "operator_stop"
+                self.journal.write("operator_stop", action=self.actions)
+                break
             if time.monotonic() - started >= float(limits["max_minutes_per_run"]) * 60:
                 stop_reason = "time_limit"
                 break
@@ -810,6 +815,13 @@ class MesenOrchestrator:
                 break
 
             intent = self._ask_model(observation)
+            if stop_file and Path(stop_file).exists():
+                stop_reason = "operator_stop"
+                self.journal.write(
+                    "operator_stop", action=self.actions,
+                    phase="after_model_before_controller_action",
+                )
+                break
             if intent.kind == "look":
                 result = self._look(observation, intent.question or self._default_look_question())
                 if not self.config["llm"].get("enabled"):

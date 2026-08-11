@@ -557,9 +557,10 @@ class LocalModelClient:
             "send controller input. Prefer one surgical proposal over broad policy rewrites. JSON only."
             " For add, target_id must be null. Update or retire only an active learned candidate ID "
             "listed in harness_state; never target curated or immutable state."
-            " Scope is decision applicability, never the proposal area. Use exactly one of: global, "
-            "exploration, battle, dialog, exploration/navigation, exploration/puzzle, battle/tactics, "
-            "dialog/progression. Never suggest bypassing, disabling, ignoring or skipping any gate."
+            " Scope is decision applicability, never the proposal area. Use exactly one scope listed "
+            "in trajectory_window.scope_context.allowed_scopes. Prefer a map or room scope for learned "
+            "layout/puzzle facts, and a generic scope only for genuinely transferable behavior. Never "
+            "suggest bypassing, disabling, ignoring or skipping any gate."
         )
         user = {
             "trajectory_window": evidence,

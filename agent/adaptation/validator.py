@@ -53,6 +53,7 @@ class HarnessProposalValidator:
         item: dict[str, Any],
         evidence_indices: set[int],
         active_candidate_ids: set[str],
+        allowed_scopes: set[str],
     ) -> dict[str, Any]:
         operation = str(item.get("operation", ""))
         if operation not in OPERATIONS:
@@ -75,7 +76,7 @@ class HarnessProposalValidator:
         }
         if not result["scope"] or not result["expected_benefit"]:
             raise ValueError("proposal scope and expected_benefit are required")
-        if result["scope"].lower() not in SCOPES:
+        if result["scope"].lower() not in allowed_scopes:
             raise ValueError(
                 f"unsupported proposal scope: {result['scope']!r}; use a decision applicability scope"
             )
@@ -91,6 +92,7 @@ class HarnessProposalValidator:
         payload: dict[str, Any],
         evidence_indices: set[int],
         active_candidate_ids: set[str] | None = None,
+        allowed_scopes: set[str] | None = None,
     ) -> dict[str, Any]:
         if not isinstance(payload, dict):
             raise ValueError("refiner response must be a JSON object")
@@ -106,7 +108,10 @@ class HarnessProposalValidator:
                 if not isinstance(item, dict):
                     raise ValueError(f"{area} proposal must be an object")
                 common = self._common(
-                    item, evidence_indices, active_candidate_ids or set()
+                    item,
+                    evidence_indices,
+                    active_candidate_ids or set(),
+                    {value.lower() for value in (allowed_scopes or SCOPES)},
                 )
                 if area in {"prompt_overlay", "memory"}:
                     content = str(item.get("content", ""))[:2000]

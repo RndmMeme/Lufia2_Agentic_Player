@@ -146,6 +146,27 @@ class MesenBridgeProtocolTests(unittest.TestCase):
         self.assertIn('if command == "HOLD_UNTIL" then', lua)
         self.assertIn("pendingPulse.stopOffset", lua)
 
+    def test_read_only_slot3_recovery_protocol_loads_without_capture(self):
+        bridge = MesenFileBridge(timeout=2.0)
+        bridge._request = Mock(side_effect=[
+            ["RECOVERY_INFO", "C:/Mesen/slot3.mss", "1234"],
+            ["LOAD_RECOVERY_ANCHOR", "scheduled"],
+            ["STATE_STATUS", "loaded:1234", "1234"],
+        ])
+        anchor = bridge.recovery_anchor_info()
+        loaded = bridge.load_recovery_anchor()
+        self.assertEqual(1234, anchor["anchor_bytes"])
+        self.assertEqual("loaded:1234", loaded["status"])
+
+        lua = (Path(__file__).parent / "mesen_bridge" / "mesen_wram_bridge.lua").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('if command == "RECOVERY_INFO" then', lua)
+        self.assertIn('if command == "LOAD_RECOVERY_ANCHOR" then', lua)
+        self.assertNotIn("emu.createSavestate()", lua)
+        self.assertNotIn("CAPTURE_BASELINE", lua)
+        self.assertIn("emu.loadSavestate(state)", lua)
+
 
 if __name__ == "__main__":
     unittest.main()

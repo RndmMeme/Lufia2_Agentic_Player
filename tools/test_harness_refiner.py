@@ -76,6 +76,40 @@ class TrajectoryWindowTests(unittest.TestCase):
         self.assertEqual([3, 6], payload["action_index_range"])
         self.assertEqual(4, len(payload["actions"]))
 
+    def test_real_serialized_payload_is_bounded_and_exposes_evidence_scopes(self):
+        with tempfile.TemporaryDirectory() as folder:
+            run_dir = Path(folder)
+            records = [
+                outcome(
+                    i, (1, i), (1, i + 1), delta=1,
+                    completed_checkpoint={"id": "door", "verbose": "x" * 4000},
+                )
+                for i in range(1, 25)
+            ]
+            (run_dir / "action_outcomes.jsonl").write_text(
+                "\n".join(json.dumps(record) for record in records) + "\n",
+                encoding="utf-8",
+            )
+            (run_dir / "short_term_memory.json").write_text(
+                json.dumps({
+                    "current": {"map_id": 5, "map_name": "Secret Skills Cave"},
+                    "room": {"id": "room_3"},
+                }),
+                encoding="utf-8",
+            )
+            payload = TrajectoryWindow(
+                run_dir, max_actions=24, max_journal_events=24, max_chars=5000
+            ).build("milestone_completed")
+
+        serialized = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+        self.assertLessEqual(len(serialized), 5000)
+        self.assertGreaterEqual(len(payload["actions"]), 8)
+        self.assertEqual("door", payload["actions"][-1]["action"]["completed_checkpoint"])
+        self.assertIn(
+            "room:secret skills cave/room_3",
+            payload["scope_context"]["allowed_scopes"],
+        )
+
 
 class HarnessProposalValidatorTests(unittest.TestCase):
     def test_rejects_executable_skill_code(self):
@@ -135,6 +169,23 @@ class HarnessProposalValidatorTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(ValueError, "unsupported proposal scope"):
             HarnessProposalValidator().validate(payload, {1})
+
+    def test_accepts_only_evidence_derived_map_scope(self):
+        item = {
+            "operation": "add", "scope": "map:secret skills cave", "evidence": [1],
+            "expected_benefit": "remember this map", "rollback_when": "contradicted",
+            "content": "The observed transit used a U-shaped local route.",
+        }
+        payload = {
+            "analysis": "test", "prompt_overlay": [], "memory": [item],
+            "skills": [], "subagents": [],
+        }
+        with self.assertRaisesRegex(ValueError, "unsupported proposal scope"):
+            HarnessProposalValidator().validate(payload, {1})
+        accepted = HarnessProposalValidator().validate(
+            payload, {1}, allowed_scopes={"map:secret skills cave"}
+        )
+        self.assertEqual("map:secret skills cave", accepted["memory"][0]["scope"])
 
     def test_rejects_thinking_gate_bypass(self):
         payload = {

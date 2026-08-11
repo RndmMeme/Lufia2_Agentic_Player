@@ -1,8 +1,9 @@
 # Handover: AI Lufia II Player
 
-Stand: 2026-08-09. Secret Skills Cave Räume 3 bis 5 sind live vermessen; das
-Säulenrätsel in Raum 4 wurde durch Qwen live gelöst. Als Nächstes folgen die
-dynamischen Pflichtgegner und die statische Geometrie von Raum 6.
+Stand: 2026-08-11. Secret Skills Cave Räume 3 bis 5 sind live vermessen; das
+Säulenrätsel in Raum 4 wurde durch Qwen live gelöst. Ein begrenzter
+20-Stunden-Supervisor mit Continual Harness, Loop-Erkennung und read-only
+Slot-3-Recovery ist implementiert und live verifiziert.
 
 ## Harte Betriebsregeln
 
@@ -145,6 +146,39 @@ geladene Actor-Slots können zu weiteren Cave-Räumen gehören.
 - Vollständiger Stand nach dem kompletten Continual-Harness-Flow: 230
   Tool-/Agent-Tests und 11 WRAM-Discovery-Tests grün.
 - Die exakten Raum-5-/Transitpunkte besitzen jeweils Screenshot und WRAM-Kontext.
+- Long-Session-Recovery: 244 Tool-/Agent-Tests und 12 WRAM-Tests grün.
+- Mesen-Bridge-Protokoll 4 lud den manuell kuratierten Slot 3 live read-only.
+  Drei WRAM-Snapshots waren stabil bei Map 5, `[28,55]`, Exploration.
+- Slot 3 blieb bytegenau unverändert: 178748 Bytes, SHA-256
+  `7b2ff14affce83441786355d2db8151c95a21958b3872b91756f04d1fd496e3d`.
+
+## Unbeaufsichtigter 20-Stunden-Betrieb
+
+- Einstieg: `start_long_learning_session.bat` prüft/startet den lokalen
+  CUDA-Modellserver, prüft die Lua-Bridge und startet den Supervisor.
+- Qwen besitzt keinerlei Save-/Load-Intent. Recovery liegt ausschließlich im
+  Supervisor.
+- Raumreset wird nur bei einem persistierten kuratierten
+  `room_reset_recovery.eligible=true` verwendet.
+- Ansonsten lädt die Bridge ausschließlich den festen Mesen-Slot 3. Sie besitzt
+  kein Capture-/Save-Kommando und benutzt Slot 4 nicht.
+- Der Supervisor fixiert Pfad, Größe und SHA-256 des Ankers beim Start und
+  prüft sie vor jedem Reload erneut.
+- Recovery wird durch wiederholte lokale Kanten/Blockaden ohne neue Evidenz,
+  mehrere unveränderte Zyklen, einen hängenden Child-Prozess oder einen nicht
+  fortsetzbaren Agent-Stop ausgelöst. Danach beginnt eine neue Episode; der
+  globale Continual-Harness-State bleibt erhalten.
+- Normaler manueller Stop: `start_long_learning_session.bat --stop`. Die
+  Anforderung wird zwischen abgeschlossenen Aktionen und nochmals direkt nach
+  einem Modellaufruf vor der nächsten Controlleraktion geprüft.
+- Status: `start_long_learning_session.bat --status`. `Ctrl+C` ist der
+  sofortige Notausgang; der Supervisor beendet den Child zuerst kontrolliert
+  und erzwingt das Ende nur nach 15 Sekunden.
+- Ein workspace-globaler Supervisor-Lock und der Mesen-Controller-Lock
+  verhindern parallele schreibende Sessions. Aktive Child-PIDs werden in
+  `session_state.json` geführt und vor jedem neuen Batch-Start geprüft.
+- Mehrere parallele Mesen-Instanzen werden derzeit bewusst nicht unterstützt:
+  Bridge-Mailbox, Controller-Lock und Modellserver-Slot sind single-owner.
 
 ## Unmittelbar als Nächstes
 
@@ -262,8 +296,9 @@ Implementierungsstand 2026-08-11:
 4. Raum 6 statisch weitervermessen: Abstiege, Leitern, Ausgang, Transit und
    Raum-7-Entry. Bewegliche Gegner nicht in die statische Karte schreiben.
 5. Danach den Cave komplett durchlaufen und ein zweites Mal wiederholen.
-6. `HANDOVER.md` und `CHANGELOG.md` nach erfolgreicher Live-Abnahme erneut
-   aktualisieren; Commit und Push nur auf ausdrücklichen Auftrag.
+6. Den kompletten Cave erneut live laufen lassen und die Recovery-Logs unter
+   `data/runs/long_*/supervisor.jsonl` auf zu frühe Resets prüfen.
+7. Commit und Push nur auf ausdrücklichen Auftrag.
 
 ## Projektlokale Modell-/GPU-Regel
 

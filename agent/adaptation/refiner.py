@@ -33,6 +33,7 @@ class ShadowHarnessRefiner:
             run_dir,
             max_actions=int(self.config.get("max_window_actions", 24)),
             max_journal_events=int(self.config.get("max_journal_events", 24)),
+            max_chars=int(self.config.get("max_evidence_chars", 9000)),
         )
         self.validator = HarnessProposalValidator(
             int(self.config.get("max_proposals_per_area", 3))
@@ -86,7 +87,14 @@ class ShadowHarnessRefiner:
                 for item in values
                 if item.get("id")
             }
-            proposals = self.validator.validate(raw, evidence_indices, active_ids)
+            proposals = self.validator.validate(
+                raw,
+                evidence_indices,
+                active_ids,
+                allowed_scopes=set(
+                    evidence.get("scope_context", {}).get("allowed_scopes", [])
+                ),
+            )
             record = self.state.write(
                 trigger=trigger,
                 action_range=action_range,

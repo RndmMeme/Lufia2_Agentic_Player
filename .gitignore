@@ -23,6 +23,7 @@ legacy/generated/
 data/runs/
 data/online_maps/
 data/vision_observations/
+data/runtime/
 *.srm
 *.sav
 *.state

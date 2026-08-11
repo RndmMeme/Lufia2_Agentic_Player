@@ -238,6 +238,41 @@ class MesenFileBridge:
             raise MesenBridgeError("Mesen lieferte keinen gültigen PNG-Screenshot.")
         return data
 
+    def state_status(self) -> dict:
+        fields = self._request("STATE_STATUS")
+        if len(fields) < 3 or fields[0] != "STATE_STATUS":
+            raise MesenBridgeError(f"Ungültige STATE_STATUS-Antwort: {fields!r}")
+        return {"status": fields[1], "anchor_bytes": int(fields[2])}
+
+    def recovery_anchor_info(self) -> dict:
+        fields = self._request("RECOVERY_INFO")
+        if len(fields) < 3 or fields[0] != "RECOVERY_INFO":
+            raise MesenBridgeError(f"Ungültige RECOVERY_INFO-Antwort: {fields!r}")
+        size = int(fields[2])
+        if size <= 0:
+            raise MesenBridgeError("Mesen recovery anchor slot 3 is missing or empty")
+        return {"path": fields[1], "anchor_bytes": size}
+
+    def _wait_state_operation(self, expected: str, timeout: float = 15.0) -> dict:
+        deadline = time.monotonic() + timeout
+        while time.monotonic() < deadline:
+            status = self.state_status()
+            value = str(status["status"])
+            if value.startswith(expected + ":"):
+                return status
+            if value.startswith("error:"):
+                raise MesenBridgeError(value.split(":", 1)[1])
+            time.sleep(0.05)
+        raise TimeoutError(f"Mesen savestate operation did not reach {expected!r}")
+
+    def load_recovery_anchor(self) -> dict:
+        fields = self._request("LOAD_RECOVERY_ANCHOR")
+        if len(fields) < 2 or fields[0] != "LOAD_RECOVERY_ANCHOR":
+            raise MesenBridgeError(
+                f"Ungültige LOAD_RECOVERY_ANCHOR-Antwort: {fields!r}"
+            )
+        return self._wait_state_operation("loaded")
+
     def probe(self, offset: int, length: int = 1) -> tuple[bytes, bytes]:
         if offset < 0 or length < 1 or offset + length > WRAM_SIZE:
             raise ValueError("PROBE liegt außerhalb des 128-KiB-SNES-WRAM.")
